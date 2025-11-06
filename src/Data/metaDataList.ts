@@ -67,9 +67,9 @@ export const metaDataList: Record<string, Metadata> = {
             googleBot: {
                 index: true,
                 follow: true,
-                maxSnippet: "max-snippet:-1",
-                maxImagePreview: "large",
-                maxVideoPreview: "max-video-preview:-1",
+                "max-snippet": -1,
+                "max-image-preview": "large",
+                "max-video-preview": "max-video-preview:-1",
             },
         },
 
