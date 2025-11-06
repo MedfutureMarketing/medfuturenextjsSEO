@@ -5,7 +5,7 @@ import { getPageMetadata } from "@/lib/getPageMetadata";
 import Menu from "@/components/Navbar/MainMenu";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("home"); // Fetch metadata by key
+  return getPageMetadata("permanent"); // Fetch metadata by key
 }
 
 

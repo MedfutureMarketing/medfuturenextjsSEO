@@ -10,9 +10,9 @@ export default function Menu() {
 
   return (
     <>
-      {/* 🔝 Top Menu Bar (hidden on mobile) */}
-      <div className="hidden lg:block bg-white border-b-2 border-gray-200 py-2   text-sm text-gray-700">
-        <div className="px-4 py-2 mx-auto max-w-screen-2xl  flex justify-center">
+     
+      <div className="hidden lg:block bg-white  py-2   text-sm text-gray-700">
+        <div className="px-4 py-2 mx-auto max-w-screen-2xl   flex justify-center">
           <div className="flex space-x-4 divide-x divide-gray-300">
             <Link href="/support" className="hover:underline pr-4">
               Medical
@@ -46,11 +46,9 @@ export default function Menu() {
           <Link href="/" aria-label="Medfuture" className="inline-flex items-center">
             <Image src={Medfuturelogo} alt="Medfuture logo" width={180} height={40} priority />
           </Link>
-
-       
           <ul className="hidden lg:flex items-center space-x-8">
             <li>
-              <Link href="/permanent-jobs" className="font-medium text-gray-700 hover:text-blue-600">
+              <Link href="/permanent" className="font-medium text-gray-700 hover:text-blue-600">
                 Permanent Jobs
               </Link>
             </li>
@@ -80,8 +78,6 @@ export default function Menu() {
               </Link>
             </li>
           </ul>
-
-        
           <div className="hidden lg:block">
             <Link
               href="/signup"
@@ -90,8 +86,6 @@ export default function Menu() {
               Sign Up
             </Link>
           </div>
-
-
           <button
             aria-label="Open Menu"
             title="Open Menu"
@@ -109,20 +103,17 @@ export default function Menu() {
           </button>
         </div>
       </header>
-
- 
       {isMenuOpen && (
         <>
-        
+
           <div
-            className="fixed inset-0 bg-black bg-opacity-40 z-40"
+            className="fixed inset-0 bg-black bg-opacity-40 z-40 "
             onClick={() => setIsMenuOpen(false)}
           />
-      
+
           <div
-            className={`fixed top-0 left-0 z-50 w-72 h-full bg-white shadow-lg transform transition-transform duration-300 ${
-              isMenuOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+            className={`fixed top-0 left-0 z-50 w-72 h-full bg-white shadow-lg overflow-y-scroll transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
           >
             <div className="flex items-center justify-between p-4 border-b">
               <Image src={Medfuturelogo} alt="Medfuture logo" width={140} height={32} />
@@ -134,8 +125,6 @@ export default function Menu() {
                 ✕
               </button>
             </div>
-
-          
             <nav className="flex flex-col p-4 space-y-4 overflow-y-auto h-full">
               <div className="border-b pb-3">
                 <p className="text-sm text-gray-500 mb-2 font-semibold">Categories</p>
