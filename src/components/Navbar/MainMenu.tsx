@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-export default function Header() {
+export default function Menu() {
 
 
   return (
@@ -32,7 +32,7 @@ export default function Header() {
               <rect x="14" y="11" width="7" height="12" />
             </svg>
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-              Company
+              Company...
             </span>
           </Link>
 
