@@ -146,7 +146,7 @@ export const metaDataList: Record<string, Metadata> = {
         //         maxImagePreview: "large",
         //         maxVideoPreview: "max-video-preview:-1",
         //     },
-        // },
+        // },sss
 
         // ✅ Optional structured data (helps Google understand your site type)
         category: "Technology",
