@@ -60,18 +60,8 @@ export const metaDataList: Record<string, Metadata> = {
         },
         manifest: "/site.webmanifest",
 
-        // ✅ Robots — SEO crawler directives
-        robots: {
-            index: true,
-            follow: true,
-            googleBot: {
-                index: true,
-                follow: true,
-                "max-snippet": -1,
-                "max-image-preview": "large",
-                "max-video-preview": "max-video-preview:-1",
-            },
-        },
+       
+
 
         // ✅ Optional structured data (helps Google understand your site type)
         category: "Technology",
@@ -146,17 +136,17 @@ export const metaDataList: Record<string, Metadata> = {
         manifest: "/site.webmanifest",
 
         // ✅ Robots — SEO crawler directives
-        robots: {
-            index: true,
-            follow: true,
-            googleBot: {
-                index: true,
-                follow: true,
-                maxSnippet: "max-snippet:-1",
-                maxImagePreview: "large",
-                maxVideoPreview: "max-video-preview:-1",
-            },
-        },
+        // robots: {
+        //     index: true,
+        //     follow: true,
+        //     googleBot: {
+        //         index: true,
+        //         follow: true,
+        //         maxSnippet: "max-snippet:-1",
+        //         maxImagePreview: "large",
+        //         maxVideoPreview: "max-video-preview:-1",
+        //     },
+        // },
 
         // ✅ Optional structured data (helps Google understand your site type)
         category: "Technology",
