@@ -1,28 +1,19 @@
-// src/app/about/page.tsx
-import type { Metadata } from 'next';
-// import JsonLd from '@/components/seo/JsonLd';
+// app/about/page.tsx
+import type { Metadata } from "next";
+import { getPageMetadata } from "@/lib/getPageMetadata";
 
-export const metadata: Metadata = {
-  title: 'About Uss | My Company',
-  description: 'Learn more about My Company and our mission.',
-  alternates: {
-    canonical: 'https://www.mycompany.com/about',
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("about"); // Fetch metadata by key
+}
 
 export default function AboutPage() {
   return (
-    <main>
-      {/* <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "My Company",
-          "url": "https://www.mycompany.com",
-        }}
-      /> */}
-      <h1>About Us</h1>
-      <p>Our mission is to deliver amazing products and services.</p>
+    <main className="px-4 py-8">
+      <h1 className="text-3xl font-bold">About Us</h1>
+      <p>
+        Learn more about our mission and how we build modern, SEO-friendly web
+        experiences with Next.js and Tailwind CSS.
+      </p>
     </main>
   );
 }
