@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import SearchHeader from "@/components/JobBoard/Searchbar";
+import Menu from "@/components/Navbar/MainMenu";
 
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata("permanent"); 
@@ -9,7 +10,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function AboutPage() {
   return (
-    <main className="px-4 py-8">
+    <main className="">
+       <Menu/>
      <SearchHeader/>
       <p>
         Learn more about our mission and how we build modern, SEO-friendly web
