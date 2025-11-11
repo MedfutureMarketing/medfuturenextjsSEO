@@ -1,16 +1,10 @@
 // components/JobDescription.tsx
 "use client"
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import RegistrationForm from '@/components/Forms/QuickApply';
 
 export default function JobDescription() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
-  const [isSticky, setIsSticky] = useState(false);
-  const [originalTop, setOriginalTop] = useState(0);
-  const [originalLeft, setOriginalLeft] = useState(0);
-  const [originalWidth, setOriginalWidth] = useState(0);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
   const handleApplyNow = () => {
@@ -30,96 +24,16 @@ export default function JobDescription() {
     }
   };
 
-  useEffect(() => {
-    // Get the original position when component mounts
-    if (headerRef.current && containerRef.current) {
-      const containerRect = containerRef.current.getBoundingClientRect();
-      const headerRect = headerRef.current.getBoundingClientRect();
-      const scrollY = window.scrollY || window.pageYOffset;
-      
-      setOriginalTop(containerRect.top + scrollY);
-      setOriginalLeft(headerRect.left);
-      setOriginalWidth(headerRect.width);
-    }
-  }, []);
-
-  useEffect(() => {
-    let ticking = false;
-    let lastScrollY = 0;
-
-    const updateSticky = () => {
-      if (headerRef.current && originalTop > 0) {
-        const scrollY = window.scrollY || window.pageYOffset;
-        const scrollDelta = Math.abs(scrollY - lastScrollY);
-        lastScrollY = scrollY;
-
-        // Make it sticky when scrolled past its original position
-        // Add a small threshold for smoother transition
-        const shouldBeSticky = scrollY > originalTop - 10;
-        
-        if (shouldBeSticky !== isSticky) {
-          setIsSticky(shouldBeSticky);
-        }
-      }
-      ticking = false;
-    };
-
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(updateSticky);
-        ticking = true;
-      }
-    };
-
-    // Use a passive scroll listener for better performance
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    // Also update on resize to maintain correct position
-    const handleResize = () => {
-      if (headerRef.current) {
-        const headerRect = headerRef.current.getBoundingClientRect();
-        setOriginalLeft(headerRect.left);
-        setOriginalWidth(headerRect.width);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [originalTop, isSticky]);
-
   return (
-    <div ref={containerRef} className="hidden lg:block">
-      {/* Sticky Header */}
-      <div 
-        ref={headerRef}
-        className={`flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-6 rounded-none bg-white transition-all duration-500 ease-out ${
-          isSticky 
-            ? 'fixed z-50 bg-white/98 backdrop-blur-sm shadow-sm border border-gray-200 transform-gpu' 
-            : 'relative transform-gpu'
-        }`}
-        style={
-          isSticky 
-            ? {
-                top: '4.5rem',
-                left: `${originalLeft}px`,
-                width: `${originalWidth}px`,
-                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-              }
-            : {
-                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
-              }
-        }
-      >
+    <div className="hidden lg:block">
+      {/* Header - No longer sticky */}
+      <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-6 rounded-none bg-white">
         <h1 className="text-2xl font-bold text-gray-900 pr-4 flex-1">
           GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
         </h1>
         <button 
           onClick={handleApplyNow}
-          className="bg-[#64CAF3] text-white px-6 py-3 rounded-lg hover:bg-[#55b8e0] transition-all duration-300 ease-out font-medium whitespace-nowrap ml-4 flex-shrink-0"
+          className="bg-[#64CAF3] text-white px-6 py-3 rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap ml-4 flex-shrink-0"
         >
           {showRegistrationForm ? 'Close Form' : 'Apply Now'}
         </button>
