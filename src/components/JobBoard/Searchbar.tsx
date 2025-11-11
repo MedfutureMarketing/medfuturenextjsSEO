@@ -159,11 +159,19 @@ const SearchHeader = ({
         return getCitiesForSuburb(suburbValue).length > 0
     }
 
-    // Desktop-specific handlers
-    const handleDesktopStateHover = (stateValue: string) => {
+    // Desktop-specific handlers with radio buttons
+    const handleDesktopStateRadioClick = (stateValue: string) => {
         if (!isMobile) {
             setHoveredState(stateValue)
             setClickedSuburb(null)
+        }
+    }
+
+    const handleDesktopSuburbRadioClick = (suburbValue: string) => {
+        if (!isMobile && hasCities(suburbValue)) {
+            setClickedSuburb(suburbValue)
+        } else {
+            handleLocationSelect(suburbValue)
         }
     }
 
@@ -181,7 +189,7 @@ const SearchHeader = ({
         }
     }
 
-    // Mobile-specific handlers
+    // Mobile-specific handlers (unchanged)
     const handleMobileStateClick = (stateValue: string) => {
         if (isMobile) {
             setHoveredState(hoveredState === stateValue ? null : stateValue)
@@ -201,10 +209,8 @@ const SearchHeader = ({
     const handleMobileSelectCurrentLevel = () => {
         if (isMobile) {
             if (clickedSuburb) {
-                // Select the suburb itself
                 handleLocationSelect(clickedSuburb)
             } else if (hoveredState) {
-                // Select the state itself
                 handleLocationSelect(hoveredState)
             }
         }
@@ -253,7 +259,6 @@ const SearchHeader = ({
             return { left: 0, right: 0 }
         }
 
-        // Always expand to the left on desktop
         const totalColumns = 1 + (hoveredState ? 1 : 0) + (clickedSuburb ? 1 : 0)
         const dropdownWidth = totalColumns * 280
 
@@ -261,15 +266,51 @@ const SearchHeader = ({
             const rect = dropdownRef.current.getBoundingClientRect()
             const spaceOnLeft = rect.left
 
-            // If there's not enough space on the left, align to right edge of trigger
             if (dropdownWidth > spaceOnLeft) {
                 return { right: 0, left: 'auto' }
             }
         }
 
-        // Default: expand to the left
         return { right: 0, left: 'auto' }
     }
+
+    // Custom radio button component
+    const RadioButton = ({ 
+        checked, 
+        onChange 
+    }: { 
+        checked: boolean; 
+        onChange: () => void 
+    }) => (
+        <div
+            onClick={(e) => {
+                e.stopPropagation()
+                onChange()
+            }}
+            style={{
+                width: '18px',
+                height: '18px',
+                borderRadius: '50%',
+                border: '2px solid #64CAF3',
+                backgroundColor: checked ? '#64CAF3' : 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'pointer',
+                flexShrink: 0,
+                marginRight: '12px'
+            }}
+        >
+            {checked && (
+                <div style={{
+                    width: '8px',
+                    height: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: 'white'
+                }} />
+            )}
+        </div>
+    )
 
     return (
         <header style={{
@@ -291,7 +332,7 @@ const SearchHeader = ({
                     margin: 0,
                     fontSize: isMobile ? '20px' : '48px',
                     fontWeight: '700',
-                    color: '#66768F', // This will work now
+                    color: '#66768F',
                     textAlign: isMobile ? 'left' : 'left',
                     lineHeight: isMobile ? '1.2' : '1'
                 }}>
@@ -318,7 +359,6 @@ const SearchHeader = ({
                             border: '2px solid #d1d5db',
                             borderRadius: '10px',
                             width: isMobile ? '100%' : '320px',
-
                             fontSize: '16px',
                             backgroundColor: 'white',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -486,7 +526,7 @@ const SearchHeader = ({
                                     </div>
                                 )}
 
-                                {/* Mobile Select Current Level Button - Show when user is in a state or suburb level */}
+                                {/* Mobile Select Current Level Button */}
                                 {isMobile && (hoveredState || clickedSuburb) && (
                                     <div style={{
                                         padding: '16px',
@@ -531,7 +571,7 @@ const SearchHeader = ({
                                     </div>
                                 )}
 
-                                {/* DESKTOP: All columns visible side-by-side */}
+                                {/* DESKTOP: All columns visible side-by-side with radio buttons */}
                                 {!isMobile && (
                                     <>
                                         {/* States Column - Always visible */}
@@ -556,7 +596,9 @@ const SearchHeader = ({
                                                     backgroundColor: selectedLocation === '' ? '#f3f4f6' : 'white',
                                                     borderBottom: '1px solid #f3f4f6',
                                                     transition: 'background-color 0.2s ease',
-                                                    fontSize: '16px'
+                                                    fontSize: '16px',
+                                                    display: 'flex',
+                                                    alignItems: 'center'
                                                 }}
                                                 onMouseOver={(e) => {
                                                     e.currentTarget.style.backgroundColor = '#f3f4f6'
@@ -567,6 +609,10 @@ const SearchHeader = ({
                                                     }
                                                 }}
                                             >
+                                                <RadioButton 
+                                                    checked={selectedLocation === ''}
+                                                    onChange={() => handleLocationSelect('')}
+                                                />
                                                 All Locations
                                             </div>
 
@@ -575,7 +621,7 @@ const SearchHeader = ({
                                                 <div
                                                     key={state.value}
                                                     onClick={() => handleDesktopStateClick(state.value)}
-                                                    onMouseEnter={() => handleDesktopStateHover(state.value)}
+                                                    onMouseEnter={() => handleDesktopStateRadioClick(state.value)}
                                                     style={{
                                                         padding: '12px 20px',
                                                         cursor: 'pointer',
@@ -597,13 +643,39 @@ const SearchHeader = ({
                                                         }
                                                     }}
                                                 >
-                                                    <span>{state.label}</span>
-                                                    <span style={{ fontSize: '12px', color: '#6b7280' }}>→</span>
+                                                    <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                                                        <RadioButton 
+                                                            checked={selectedLocation === state.value}
+                                                            onChange={() => handleDesktopStateClick(state.value)}
+                                                        />
+                                                        <span>{state.label}</span>
+                                                    </div>
+                                                    <span 
+                                                        style={{ 
+                                                            fontSize: '12px', 
+                                                            color: '#6b7280',
+                                                            cursor: 'pointer',
+                                                            padding: '4px 8px',
+                                                            borderRadius: '4px'
+                                                        }}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            handleDesktopStateRadioClick(state.value)
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#e5e7eb'
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.backgroundColor = 'transparent'
+                                                        }}
+                                                    >
+                                                        →
+                                                    </span>
                                                 </div>
                                             ))}
                                         </div>
 
-                                        {/* Suburbs Column - Show when a state is hovered */}
+                                        {/* Suburbs Column - Show when a state has radio clicked */}
                                         {hoveredState && (
                                             <div style={{
                                                 width: '280px',
@@ -619,8 +691,14 @@ const SearchHeader = ({
                                                     fontWeight: '600',
                                                     backgroundColor: '#e5e7eb',
                                                     borderBottom: '1px solid #d1d5db',
-                                                    fontSize: '16px'
+                                                    fontSize: '16px',
+                                                    display: 'flex',
+                                                    alignItems: 'center'
                                                 }}>
+                                                    <RadioButton 
+                                                        checked={selectedLocation === hoveredState}
+                                                        onChange={() => handleDesktopStateClick(hoveredState)}
+                                                    />
                                                     {getStates().find(s => s.value === hoveredState)?.label}
                                                 </div>
                                                 {getSuburbsForState(hoveredState).map((suburb) => (
@@ -648,9 +726,33 @@ const SearchHeader = ({
                                                             }
                                                         }}
                                                     >
-                                                        <span>{suburb.label}</span>
+                                                        <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                                                            <RadioButton 
+                                                                checked={selectedLocation === suburb.value}
+                                                                onChange={() => handleDesktopSuburbClick(suburb.value)}
+                                                            />
+                                                            <span>{suburb.label}</span>
+                                                        </div>
                                                         {hasCities(suburb.value) && (
-                                                            <span style={{ fontSize: '12px', color: '#6b7280' }}>
+                                                            <span 
+                                                                style={{ 
+                                                                    fontSize: '12px', 
+                                                                    color: '#6b7280',
+                                                                    cursor: 'pointer',
+                                                                    padding: '4px 8px',
+                                                                    borderRadius: '4px'
+                                                                }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation()
+                                                                    handleDesktopSuburbRadioClick(suburb.value)
+                                                                }}
+                                                                onMouseEnter={(e) => {
+                                                                    e.currentTarget.style.backgroundColor = '#e5e7eb'
+                                                                }}
+                                                                onMouseLeave={(e) => {
+                                                                    e.currentTarget.style.backgroundColor = 'transparent'
+                                                                }}
+                                                            >
                                                                 {clickedSuburb === suburb.value ? '←' : '→'}
                                                             </span>
                                                         )}
@@ -659,7 +761,7 @@ const SearchHeader = ({
                                             </div>
                                         )}
 
-                                        {/* Cities Column - Show when a suburb is clicked - appears on the RIGHT */}
+                                        {/* Cities Column - Show when a suburb has radio clicked */}
                                         {clickedSuburb && (
                                             <div style={{
                                                 width: '280px',
@@ -667,7 +769,7 @@ const SearchHeader = ({
                                                 overflowY: 'auto',
                                                 backgroundColor: '#f5f5f5',
                                                 flexShrink: 0,
-                                                order: 3 // Always last (rightmost)
+                                                order: 3
                                             }}>
                                                 <div style={{
                                                     padding: '12px 20px',
@@ -679,7 +781,13 @@ const SearchHeader = ({
                                                     alignItems: 'center',
                                                     fontSize: '16px'
                                                 }}>
-                                                    <span>{australianLocations.find(s => s.value === clickedSuburb)?.label}</span>
+                                                    <div style={{ display: 'flex', alignItems: 'center', flex: 1 }}>
+                                                        <RadioButton 
+                                                            checked={selectedLocation === clickedSuburb}
+                                                            onChange={() => handleDesktopSuburbClick(clickedSuburb)}
+                                                        />
+                                                        <span>{australianLocations.find(s => s.value === clickedSuburb)?.label}</span>
+                                                    </div>
                                                     <span
                                                         style={{
                                                             fontSize: '12px',
@@ -712,7 +820,9 @@ const SearchHeader = ({
                                                             backgroundColor: selectedLocation === city.value ? '#e5e7eb' : 'transparent',
                                                             borderBottom: '1px solid #f3f4f6',
                                                             transition: 'background-color 0.2s ease',
-                                                            fontSize: '16px'
+                                                            fontSize: '16px',
+                                                            display: 'flex',
+                                                            alignItems: 'center'
                                                         }}
                                                         onMouseEnter={(e) => {
                                                             e.currentTarget.style.backgroundColor = '#f3f4f6'
@@ -723,6 +833,10 @@ const SearchHeader = ({
                                                             }
                                                         }}
                                                     >
+                                                        <RadioButton 
+                                                            checked={selectedLocation === city.value}
+                                                            onChange={() => handleLocationSelect(city.value)}
+                                                        />
                                                         {city.label}
                                                     </div>
                                                 ))}
@@ -731,14 +845,14 @@ const SearchHeader = ({
                                     </>
                                 )}
 
-                                {/* MOBILE: Single column at a time */}
+                                {/* MOBILE: Single column at a time (unchanged) */}
                                 {isMobile && (
                                     <>
                                         {/* States Column */}
                                         {!hoveredState && (
                                             <div style={{
                                                 width: '100%',
-                                                maxHeight: clickedSuburb || hoveredState ? 'calc(100vh - 200px)' : 'calc(100vh - 120px)',
+                                                maxHeight: clickedSuburb || hoveredState ? 'calc(100vh - 100vh)' : 'calc(100vh - 120px)',
                                                 overflowY: 'auto',
                                                 flexShrink: 0
                                             }}>
@@ -902,11 +1016,10 @@ const SearchHeader = ({
                             cursor: 'pointer',
                             boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
                             transition: 'all 0.3s ease',
-                        
                             letterSpacing: '0.5px',
                             width: isMobile ? '100%' : '122px',
                             minHeight: isMobile ? '52px' : 'auto',
-                            textAlign: 'center' // Add this line
+                            textAlign: 'center'
                         }}
                         onMouseOver={(e) => {
                             if (!isMobile) {
