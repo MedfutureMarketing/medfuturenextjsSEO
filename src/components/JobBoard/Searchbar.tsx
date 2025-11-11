@@ -6,7 +6,6 @@ interface SearchHeaderProps {
     title?: string
 }
 
-// Enhanced data structure with cities under suburbs
 const australianLocations = [
     { value: '', label: 'All States', type: 'state' },
     { value: 'nsw', label: 'New South Wales', type: 'state' },
@@ -20,7 +19,7 @@ const australianLocations = [
     { value: 'nsw-newcastle-hamilton', label: 'Hamilton', type: 'city', parent: 'nsw-newcastle' },
     { value: 'nsw-wollongong', label: 'Wollongong', type: 'suburb', parent: 'nsw' },
     { value: 'nsw-central-coast', label: 'Central Coast', type: 'suburb', parent: 'nsw' },
-    
+
     { value: 'vic', label: 'Victoria', type: 'state' },
     { value: 'vic-melbourne', label: 'Melbourne', type: 'suburb', parent: 'vic' },
     { value: 'vic-melbourne-cbd', label: 'Melbourne CBD', type: 'city', parent: 'vic-melbourne' },
@@ -29,7 +28,7 @@ const australianLocations = [
     { value: 'vic-geelong', label: 'Geelong', type: 'suburb', parent: 'vic' },
     { value: 'vic-ballarat', label: 'Ballarat', type: 'suburb', parent: 'vic' },
     { value: 'vic-bendigo', label: 'Bendigo', type: 'suburb', parent: 'vic' },
-    
+
     { value: 'qld', label: 'Queensland', type: 'state' },
     { value: 'qld-brisbane', label: 'Brisbane', type: 'suburb', parent: 'qld' },
     { value: 'qld-brisbane-cbd', label: 'Brisbane CBD', type: 'city', parent: 'qld-brisbane' },
@@ -37,30 +36,30 @@ const australianLocations = [
     { value: 'qld-gold-coast', label: 'Gold Coast', type: 'suburb', parent: 'qld' },
     { value: 'qld-sunshine-coast', label: 'Sunshine Coast', type: 'suburb', parent: 'qld' },
     { value: 'qld-cairns', label: 'Cairns', type: 'suburb', parent: 'qld' },
-    
+
     { value: 'wa', label: 'Western Australia', type: 'state' },
     { value: 'wa-perth', label: 'Perth', type: 'suburb', parent: 'wa' },
     { value: 'wa-mandurah', label: 'Mandurah', type: 'suburb', parent: 'wa' },
     { value: 'wa-bunbury', label: 'Bunbury', type: 'suburb', parent: 'wa' },
-    
+
     { value: 'sa', label: 'South Australia', type: 'state' },
     { value: 'sa-adelaide', label: 'Adelaide', type: 'suburb', parent: 'sa' },
     { value: 'sa-mount-gambier', label: 'Mount Gambier', type: 'suburb', parent: 'sa' },
-    
+
     { value: 'tas', label: 'Tasmania', type: 'state' },
     { value: 'tas-hobart', label: 'Hobart', type: 'suburb', parent: 'tas' },
     { value: 'tas-launceston', label: 'Launceston', type: 'suburb', parent: 'tas' },
-    
+
     { value: 'act', label: 'Australian Capital Territory', type: 'state' },
     { value: 'act-canberra', label: 'Canberra', type: 'suburb', parent: 'act' },
-    
+
     { value: 'nt', label: 'Northern Territory', type: 'state' },
     { value: 'nt-darwin', label: 'Darwin', type: 'suburb', parent: 'nt' },
     { value: 'nt-alice-springs', label: 'Alice Springs', type: 'suburb', parent: 'nt' }
 ]
 
 const SearchHeader = ({
-    title = "Your Website"
+    title = "Permanent Jobs"
 }: SearchHeaderProps) => {
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedLocation, setSelectedLocation] = useState('')
@@ -97,12 +96,12 @@ const SearchHeader = ({
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault()
-        
+
         // Extract state, suburb, and city from selected location
         let state = ''
         let suburb = ''
         let city = ''
-        
+
         if (selectedLocation.includes('-')) {
             const parts = selectedLocation.split('-')
             if (parts.length === 2) {
@@ -116,7 +115,7 @@ const SearchHeader = ({
         } else {
             state = selectedLocation
         }
-        
+
         console.log('Search:', searchQuery, 'State:', state, 'Suburb:', suburb, 'City:', city)
         setIsDropdownOpen(false)
         setHoveredState(null)
@@ -145,13 +144,13 @@ const SearchHeader = ({
     }
 
     const getSuburbsForState = (stateValue: string) => {
-        return australianLocations.filter(loc => 
+        return australianLocations.filter(loc =>
             loc.type === 'suburb' && loc.parent === stateValue
         )
     }
 
     const getCitiesForSuburb = (suburbValue: string) => {
-        return australianLocations.filter(loc => 
+        return australianLocations.filter(loc =>
             loc.type === 'city' && loc.parent === suburbValue
         )
     }
@@ -160,13 +159,33 @@ const SearchHeader = ({
         return getCitiesForSuburb(suburbValue).length > 0
     }
 
+    // Desktop-specific handlers
+    const handleDesktopStateHover = (stateValue: string) => {
+        if (!isMobile) {
+            setHoveredState(stateValue)
+            setClickedSuburb(null)
+        }
+    }
+
+    const handleDesktopStateClick = (stateValue: string) => {
+        if (!isMobile) {
+            handleLocationSelect(stateValue)
+        }
+    }
+
+    const handleDesktopSuburbClick = (suburbValue: string) => {
+        if (!isMobile && hasCities(suburbValue)) {
+            handleSuburbClick(suburbValue)
+        } else {
+            handleLocationSelect(suburbValue)
+        }
+    }
+
     // Mobile-specific handlers
     const handleMobileStateClick = (stateValue: string) => {
         if (isMobile) {
             setHoveredState(hoveredState === stateValue ? null : stateValue)
             setClickedSuburb(null)
-        } else {
-            handleLocationSelect(stateValue)
         }
     }
 
@@ -175,6 +194,19 @@ const SearchHeader = ({
             setClickedSuburb(clickedSuburb === suburbValue ? null : suburbValue)
         } else {
             handleLocationSelect(suburbValue)
+        }
+    }
+
+    // Mobile: Select current level (state or suburb)
+    const handleMobileSelectCurrentLevel = () => {
+        if (isMobile) {
+            if (clickedSuburb) {
+                // Select the suburb itself
+                handleLocationSelect(clickedSuburb)
+            } else if (hoveredState) {
+                // Select the state itself
+                handleLocationSelect(hoveredState)
+            }
         }
     }
 
@@ -201,15 +233,50 @@ const SearchHeader = ({
             const state = australianLocations.find(loc => loc.value === hoveredState)
             return state?.label || 'Suburbs'
         }
-        return 'All Locations'
+        return 'Select Location'
+    }
+
+    // Get current selectable location for mobile
+    const getMobileCurrentSelectableLocation = () => {
+        if (clickedSuburb) {
+            return australianLocations.find(loc => loc.value === clickedSuburb)
+        }
+        if (hoveredState) {
+            return australianLocations.find(loc => loc.value === hoveredState)
+        }
+        return null
+    }
+
+    // Calculate dropdown position for desktop - ALWAYS EXPAND LEFT
+    const getDropdownPosition = () => {
+        if (isMobile) {
+            return { left: 0, right: 0 }
+        }
+
+        // Always expand to the left on desktop
+        const totalColumns = 1 + (hoveredState ? 1 : 0) + (clickedSuburb ? 1 : 0)
+        const dropdownWidth = totalColumns * 280
+
+        if (dropdownRef.current) {
+            const rect = dropdownRef.current.getBoundingClientRect()
+            const spaceOnLeft = rect.left
+
+            // If there's not enough space on the left, align to right edge of trigger
+            if (dropdownWidth > spaceOnLeft) {
+                return { right: 0, left: 'auto' }
+            }
+        }
+
+        // Default: expand to the left
+        return { right: 0, left: 'auto' }
     }
 
     return (
-        <header style={{ 
-            padding: isMobile ? '12px 16px' : '25px',
-            borderBottom: '2px solid #e5e7eb', 
-            backgroundColor: '#f8fafc' 
-        }}>
+        <header style={{
+            padding: isMobile ? '0px px' : '0px ',
+            borderBottom: '2px solid #ffffffff',
+            backgroundColor: '#ffffffff'
+        }} className='mt-16'>
             <div style={{
                 display: 'flex',
                 flexDirection: isMobile ? 'column' : 'row',
@@ -222,24 +289,21 @@ const SearchHeader = ({
                 {/* Left Side - Title */}
                 <h1 style={{
                     margin: 0,
-                    fontSize: isMobile ? '20px' : '32px',
+                    fontSize: isMobile ? '20px' : '48px',
                     fontWeight: '700',
-                    color: '#1f2937',
-                    background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    textAlign: isMobile ? 'center' : 'left',
+                    color: '#66768F', // This will work now
+                    textAlign: isMobile ? 'left' : 'left',
                     lineHeight: isMobile ? '1.2' : '1'
                 }}>
                     {title}
                 </h1>
 
                 {/* Right Side - Search Form */}
-                <form onSubmit={handleSearch} style={{ 
-                    display: 'flex', 
+                <form onSubmit={handleSearch} style={{
+                    display: 'flex',
                     flexDirection: isMobile ? 'column' : 'row',
-                    gap: isMobile ? '10px' : '15px', 
-                    alignItems: 'center', 
+                    gap: isMobile ? '10px' : '15px',
+                    alignItems: 'center',
                     position: 'relative',
                     width: isMobile ? '100%' : 'auto'
                 }}>
@@ -248,21 +312,22 @@ const SearchHeader = ({
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        placeholder="Search jobs, companies, keywords..."
+                        placeholder="Search jobs..."
                         style={{
                             padding: isMobile ? '14px 16px' : '14px 20px',
                             border: '2px solid #d1d5db',
                             borderRadius: '10px',
                             width: isMobile ? '100%' : '320px',
-                            fontSize: isMobile ? '16px' : '16px', // Larger font for mobile
+
+                            fontSize: '16px',
                             backgroundColor: 'white',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                             transition: 'all 0.3s ease',
                             outline: 'none',
-                            WebkitAppearance: 'none' // Remove iOS styling
+                            WebkitAppearance: 'none'
                         }}
                         onFocus={(e) => {
-                            e.target.style.borderColor = '#3b82f6'
+                            e.target.style.borderColor = '#64CAF3'
                             e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.2)'
                         }}
                         onBlur={(e) => {
@@ -272,10 +337,10 @@ const SearchHeader = ({
                     />
 
                     {/* Custom Location Dropdown */}
-                    <div ref={dropdownRef} style={{ 
-                        position: 'relative', 
+                    <div ref={dropdownRef} style={{
+                        position: 'relative',
                         width: isMobile ? '100%' : 'auto',
-                        zIndex: 1000
+                        zIndex: 5
                     }}>
                         {/* Dropdown Trigger */}
                         <div
@@ -283,6 +348,9 @@ const SearchHeader = ({
                                 setIsDropdownOpen(!isDropdownOpen)
                                 if (isMobile) {
                                     closeAllMobileDropdowns()
+                                } else {
+                                    setHoveredState(null)
+                                    setClickedSuburb(null)
                                 }
                             }}
                             style={{
@@ -290,7 +358,7 @@ const SearchHeader = ({
                                 border: '2px solid #d1d5db',
                                 borderRadius: '10px',
                                 width: isMobile ? '100%' : '280px',
-                                fontSize: isMobile ? '16px' : '16px',
+                                fontSize: '16px',
                                 backgroundColor: 'white',
                                 boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
                                 transition: 'all 0.3s ease',
@@ -299,11 +367,11 @@ const SearchHeader = ({
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center',
-                                minHeight: isMobile ? '52px' : 'auto' // Larger touch target
+                                minHeight: isMobile ? '52px' : 'auto'
                             }}
                             onMouseEnter={(e) => {
                                 if (!isMobile) {
-                                    e.currentTarget.style.borderColor = '#3b82f6'
+                                    e.currentTarget.style.borderColor = '#64CAF3'
                                 }
                             }}
                             onMouseLeave={(e) => {
@@ -313,15 +381,15 @@ const SearchHeader = ({
                             }}
                         >
                             <span style={{
-                                fontSize: isMobile ? '16px' : '16px',
+                                fontSize: '16px',
                                 fontWeight: isMobile ? '500' : 'normal'
                             }}>
                                 {getDisplayText()}
                             </span>
-                            <span style={{ 
-                                transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)', 
+                            <span style={{
+                                transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                                 transition: 'transform 0.3s ease',
-                                fontSize: isMobile ? '12px' : '12px'
+                                fontSize: '12px'
                             }}>
                                 ▼
                             </span>
@@ -332,16 +400,14 @@ const SearchHeader = ({
                             <div style={{
                                 position: isMobile ? 'fixed' : 'absolute',
                                 top: isMobile ? '0' : '100%',
-                                left: isMobile ? '0' : '0',
-                                right: isMobile ? '0' : 'auto',
-                                bottom: isMobile ? '0' : 'auto',
+                                ...getDropdownPosition(),
                                 backgroundColor: 'white',
                                 border: isMobile ? 'none' : '2px solid #d1d5db',
                                 borderRadius: isMobile ? '0' : '12px',
                                 boxShadow: isMobile ? 'none' : '0 8px 25px rgba(0,0,0,0.15)',
-                                zIndex: 1001,
+                                zIndex: 5,
                                 display: 'flex',
-                                flexDirection: isMobile ? 'column' : (clickedSuburb ? 'row-reverse' : 'row'),
+                                flexDirection: isMobile ? 'column' : 'row',
                                 minHeight: isMobile ? '100vh' : '300px',
                                 maxHeight: isMobile ? '100vh' : '400px',
                                 marginTop: isMobile ? '0' : '5px',
@@ -351,17 +417,16 @@ const SearchHeader = ({
                                 {/* Mobile Header */}
                                 {isMobile && (
                                     <div style={{
-                                        padding: '16px',
-                                        backgroundColor: '#3b82f6',
+                                        padding: '5px',
+                                        backgroundColor: '#ffffffff',
                                         color: 'white',
                                         display: 'flex',
                                         justifyContent: 'space-between',
                                         alignItems: 'center',
-                                        borderBottom: '1px solid #2563eb'
                                     }}>
-                                        <span style={{ 
-                                            fontSize: '18px', 
-                                            fontWeight: '600' 
+                                        <span style={{
+                                            fontSize: '18px',
+                                            fontWeight: '600'
                                         }}>
                                             {getMobileBreadcrumb()}
                                         </span>
@@ -421,193 +486,403 @@ const SearchHeader = ({
                                     </div>
                                 )}
 
-                                {/* States Column */}
-                                {(!isMobile || !hoveredState) && (
+                                {/* Mobile Select Current Level Button - Show when user is in a state or suburb level */}
+                                {isMobile && (hoveredState || clickedSuburb) && (
                                     <div style={{
-                                        width: isMobile ? '100%' : '280px',
-                                        borderRight: !isMobile && hoveredState && !clickedSuburb ? '1px solid #e5e7eb' : 'none',
-                                        borderLeft: !isMobile && clickedSuburb ? '1px solid #e5e7eb' : 'none',
-                                        maxHeight: isMobile ? 'calc(100vh - 120px)' : '400px',
-                                        overflowY: 'auto',
-                                        flexShrink: 0
+                                        padding: '16px',
+                                        backgroundColor: '#f0f9ff',
+                                        borderBottom: '1px solid #e0f2fe',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '8px'
                                     }}>
-                                        {/* All Locations Option */}
-                                        <div
-                                            onClick={() => handleLocationSelect('')}
+                                        <div style={{
+                                            fontSize: '14px',
+                                            color: '#64CAF3',
+                                            fontWeight: '500'
+                                        }}>
+                                            Select {clickedSuburb ? 'this suburb' : 'this state'}:
+                                        </div>
+                                        <button
+                                            onClick={handleMobileSelectCurrentLevel}
                                             style={{
-                                                padding: isMobile ? '16px' : '12px 20px',
+                                                padding: '12px 16px',
+                                                backgroundColor: '#0ea5e9',
+                                                color: 'white',
+                                                border: 'none',
+                                                borderRadius: '8px',
+                                                fontSize: '16px',
+                                                fontWeight: '600',
                                                 cursor: 'pointer',
-                                                backgroundColor: selectedLocation === '' ? '#f3f4f6' : 'white',
-                                                borderBottom: '1px solid #f3f4f6',
-                                                transition: 'background-color 0.2s ease',
-                                                fontSize: isMobile ? '16px' : '16px',
-                                                minHeight: isMobile ? '56px' : 'auto',
-                                                display: 'flex',
-                                                alignItems: 'center'
+                                                textAlign: 'center',
+                                                width: '100%'
                                             }}
                                             onTouchStart={(e) => {
-                                                if (isMobile) e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                e.currentTarget.style.backgroundColor = '#0284c7'
+                                                e.currentTarget.style.transform = 'scale(0.98)'
                                             }}
                                             onTouchEnd={(e) => {
-                                                if (isMobile && selectedLocation !== '') {
-                                                    e.currentTarget.style.backgroundColor = 'white'
-                                                }
+                                                e.currentTarget.style.backgroundColor = '#0ea5e9'
+                                                e.currentTarget.style.transform = 'scale(1)'
                                             }}
                                         >
-                                            All Locations
-                                        </div>
+                                            Select {getMobileCurrentSelectableLocation()?.label}
+                                        </button>
+                                    </div>
+                                )}
 
-                                        {/* States List */}
-                                        {getStates().map((state) => (
+                                {/* DESKTOP: All columns visible side-by-side */}
+                                {!isMobile && (
+                                    <>
+                                        {/* States Column - Always visible */}
+                                        <div style={{
+                                            width: '280px',
+                                            borderRight: '1px solid #e5e7eb',
+                                            maxHeight: '400px',
+                                            overflowY: 'auto',
+                                            flexShrink: 0,
+                                            order: clickedSuburb ? 1 : 0
+                                        }}>
+                                            {/* All Locations Option */}
                                             <div
-                                                key={state.value}
-                                                onClick={() => handleMobileStateClick(state.value)}
-                                                onMouseEnter={() => !isMobile && setHoveredState(state.value)}
+                                                onClick={() => handleLocationSelect('')}
+                                                onMouseEnter={() => {
+                                                    setHoveredState(null)
+                                                    setClickedSuburb(null)
+                                                }}
                                                 style={{
-                                                    padding: isMobile ? '16px' : '12px 20px',
+                                                    padding: '12px 20px',
                                                     cursor: 'pointer',
-                                                    backgroundColor: selectedLocation === state.value ? '#f3f4f6' : 'white',
+                                                    backgroundColor: selectedLocation === '' ? '#f3f4f6' : 'white',
                                                     borderBottom: '1px solid #f3f4f6',
                                                     transition: 'background-color 0.2s ease',
-                                                    display: 'flex',
-                                                    justifyContent: 'space-between',
-                                                    alignItems: 'center',
-                                                    fontSize: isMobile ? '16px' : '16px',
-                                                    minHeight: isMobile ? '56px' : 'auto'
+                                                    fontSize: '16px'
                                                 }}
-                                                onTouchStart={(e) => {
-                                                    if (isMobile) e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                onMouseOver={(e) => {
+                                                    e.currentTarget.style.backgroundColor = '#f3f4f6'
                                                 }}
-                                                onTouchEnd={(e) => {
-                                                    if (isMobile && selectedLocation !== state.value) {
+                                                onMouseOut={(e) => {
+                                                    if (selectedLocation !== '') {
                                                         e.currentTarget.style.backgroundColor = 'white'
                                                     }
                                                 }}
                                             >
-                                                <span>{state.label}</span>
-                                                <span style={{ 
-                                                    fontSize: isMobile ? '14px' : '12px', 
-                                                    color: '#6b7280' 
-                                                }}>
-                                                    {isMobile ? '→' : '→'}
-                                                </span>
+                                                All Locations
                                             </div>
-                                        ))}
-                                    </div>
-                                )}
 
-                                {/* Suburbs Column - Show when a state is selected */}
-                                {(hoveredState && (!isMobile || !clickedSuburb)) && (
-                                    <div style={{
-                                        width: isMobile ? '100%' : '280px',
-                                        borderRight: !isMobile && clickedSuburb ? '1px solid #e5e7eb' : 'none',
-                                        borderLeft: !isMobile && !clickedSuburb ? '1px solid #e5e7eb' : 'none',
-                                        maxHeight: isMobile ? 'calc(100vh - 120px)' : '400px',
-                                        overflowY: 'auto',
-                                        backgroundColor: isMobile ? 'white' : '#fafafa',
-                                        flexShrink: 0
-                                    }}>
-                                        {!isMobile && (
+                                            {/* States List */}
+                                            {getStates().map((state) => (
+                                                <div
+                                                    key={state.value}
+                                                    onClick={() => handleDesktopStateClick(state.value)}
+                                                    onMouseEnter={() => handleDesktopStateHover(state.value)}
+                                                    style={{
+                                                        padding: '12px 20px',
+                                                        cursor: 'pointer',
+                                                        backgroundColor: selectedLocation === state.value ? '#f3f4f6' :
+                                                            hoveredState === state.value ? '#f3f4f6' : 'white',
+                                                        borderBottom: '1px solid #f3f4f6',
+                                                        transition: 'background-color 0.2s ease',
+                                                        display: 'flex',
+                                                        justifyContent: 'space-between',
+                                                        alignItems: 'center',
+                                                        fontSize: '16px'
+                                                    }}
+                                                    onMouseOver={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                    }}
+                                                    onMouseOut={(e) => {
+                                                        if (selectedLocation !== state.value && hoveredState !== state.value) {
+                                                            e.currentTarget.style.backgroundColor = 'white'
+                                                        }
+                                                    }}
+                                                >
+                                                    <span>{state.label}</span>
+                                                    <span style={{ fontSize: '12px', color: '#6b7280' }}>→</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        {/* Suburbs Column - Show when a state is hovered */}
+                                        {hoveredState && (
                                             <div style={{
-                                                padding: '12px 20px',
-                                                fontWeight: '600',
-                                                backgroundColor: '#e5e7eb',
-                                                borderBottom: '1px solid #d1d5db',
-                                                fontSize: '16px'
+                                                width: '280px',
+                                                borderRight: clickedSuburb ? '1px solid #e5e7eb' : 'none',
+                                                maxHeight: '400px',
+                                                overflowY: 'auto',
+                                                backgroundColor: '#fafafa',
+                                                flexShrink: 0,
+                                                order: clickedSuburb ? 2 : 1
                                             }}>
-                                                {getStates().find(s => s.value === hoveredState)?.label}
+                                                <div style={{
+                                                    padding: '12px 20px',
+                                                    fontWeight: '600',
+                                                    backgroundColor: '#e5e7eb',
+                                                    borderBottom: '1px solid #d1d5db',
+                                                    fontSize: '16px'
+                                                }}>
+                                                    {getStates().find(s => s.value === hoveredState)?.label}
+                                                </div>
+                                                {getSuburbsForState(hoveredState).map((suburb) => (
+                                                    <div
+                                                        key={suburb.value}
+                                                        onClick={() => handleDesktopSuburbClick(suburb.value)}
+                                                        style={{
+                                                            padding: '12px 20px',
+                                                            cursor: 'pointer',
+                                                            backgroundColor: selectedLocation === suburb.value ? '#e5e7eb' :
+                                                                clickedSuburb === suburb.value ? '#e5e7eb' : 'transparent',
+                                                            borderBottom: '1px solid #f3f4f6',
+                                                            transition: 'background-color 0.2s ease',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            fontSize: '16px'
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                        }}
+                                                        onMouseOut={(e) => {
+                                                            if (selectedLocation !== suburb.value && clickedSuburb !== suburb.value) {
+                                                                e.currentTarget.style.backgroundColor = 'transparent'
+                                                            }
+                                                        }}
+                                                    >
+                                                        <span>{suburb.label}</span>
+                                                        {hasCities(suburb.value) && (
+                                                            <span style={{ fontSize: '12px', color: '#6b7280' }}>
+                                                                {clickedSuburb === suburb.value ? '←' : '→'}
+                                                            </span>
+                                                        )}
+                                                    </div>
+                                                ))}
                                             </div>
                                         )}
-                                        {getSuburbsForState(hoveredState!).map((suburb) => (
-                                            <div
-                                                key={suburb.value}
-                                                onClick={() => handleMobileSuburbClick(suburb.value)}
-                                                style={{
-                                                    padding: isMobile ? '16px' : '12px 20px',
-                                                    cursor: 'pointer',
-                                                    backgroundColor: selectedLocation === suburb.value ? '#e5e7eb' : 'transparent',
-                                                    borderBottom: '1px solid #f3f4f6',
-                                                    transition: 'background-color 0.2s ease',
+
+                                        {/* Cities Column - Show when a suburb is clicked - appears on the RIGHT */}
+                                        {clickedSuburb && (
+                                            <div style={{
+                                                width: '280px',
+                                                maxHeight: '400px',
+                                                overflowY: 'auto',
+                                                backgroundColor: '#f5f5f5',
+                                                flexShrink: 0,
+                                                order: 3 // Always last (rightmost)
+                                            }}>
+                                                <div style={{
+                                                    padding: '12px 20px',
+                                                    fontWeight: '600',
+                                                    backgroundColor: '#d1d5db',
+                                                    borderBottom: '1px solid #cbd5e1',
                                                     display: 'flex',
                                                     justifyContent: 'space-between',
                                                     alignItems: 'center',
-                                                    fontSize: isMobile ? '16px' : '16px',
-                                                    minHeight: isMobile ? '56px' : 'auto'
-                                                }}
-                                                onTouchStart={(e) => {
-                                                    if (isMobile) e.currentTarget.style.backgroundColor = '#f3f4f6'
-                                                }}
-                                                onTouchEnd={(e) => {
-                                                    if (isMobile && selectedLocation !== suburb.value) {
-                                                        e.currentTarget.style.backgroundColor = 'transparent'
-                                                    }
-                                                }}
-                                            >
-                                                <span>{suburb.label}</span>
-                                                {hasCities(suburb.value) && (
-                                                    <span style={{ 
-                                                        fontSize: isMobile ? '14px' : '12px', 
-                                                        color: '#6b7280' 
-                                                    }}>
-                                                        {isMobile ? '→' : '→'}
+                                                    fontSize: '16px'
+                                                }}>
+                                                    <span>{australianLocations.find(s => s.value === clickedSuburb)?.label}</span>
+                                                    <span
+                                                        style={{
+                                                            fontSize: '12px',
+                                                            color: '#6b7280',
+                                                            cursor: 'pointer',
+                                                            padding: '2px 6px',
+                                                            borderRadius: '4px'
+                                                        }}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation()
+                                                            setClickedSuburb(null)
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#9ca3af'
+                                                        }}
+                                                        onMouseLeave={(e) => {
+                                                            e.currentTarget.style.backgroundColor = 'transparent'
+                                                        }}
+                                                    >
+                                                        ✕
                                                     </span>
-                                                )}
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {/* Cities Column - Only show when a suburb is clicked */}
-                                {clickedSuburb && (
-                                    <div style={{
-                                        width: isMobile ? '100%' : '280px',
-                                        maxHeight: isMobile ? 'calc(100vh - 120px)' : '400px',
-                                        overflowY: 'auto',
-                                        backgroundColor: isMobile ? 'white' : '#f5f5f5',
-                                        flexShrink: 0
-                                    }}>
-                                        {!isMobile && (
-                                            <div style={{
-                                                padding: '12px 20px',
-                                                fontWeight: '600',
-                                                backgroundColor: '#d1d5db',
-                                                borderBottom: '1px solid #cbd5e1',
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                fontSize: '16px'
-                                            }}>
-                                                <span>{australianLocations.find(s => s.value === clickedSuburb)?.label}</span>
+                                                </div>
+                                                {getCitiesForSuburb(clickedSuburb).map((city) => (
+                                                    <div
+                                                        key={city.value}
+                                                        onClick={() => handleLocationSelect(city.value)}
+                                                        style={{
+                                                            padding: '12px 20px',
+                                                            cursor: 'pointer',
+                                                            backgroundColor: selectedLocation === city.value ? '#e5e7eb' : 'transparent',
+                                                            borderBottom: '1px solid #f3f4f6',
+                                                            transition: 'background-color 0.2s ease',
+                                                            fontSize: '16px'
+                                                        }}
+                                                        onMouseEnter={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                        }}
+                                                        onMouseOut={(e) => {
+                                                            if (selectedLocation !== city.value) {
+                                                                e.currentTarget.style.backgroundColor = 'transparent'
+                                                            }
+                                                        }}
+                                                    >
+                                                        {city.label}
+                                                    </div>
+                                                ))}
                                             </div>
                                         )}
-                                        {getCitiesForSuburb(clickedSuburb).map((city) => (
-                                            <div
-                                                key={city.value}
-                                                onClick={() => handleLocationSelect(city.value)}
-                                                style={{
-                                                    padding: isMobile ? '16px' : '12px 20px',
-                                                    cursor: 'pointer',
-                                                    backgroundColor: selectedLocation === city.value ? '#e5e7eb' : 'transparent',
-                                                    borderBottom: '1px solid #f3f4f6',
-                                                    transition: 'background-color 0.2s ease',
-                                                    fontSize: isMobile ? '16px' : '16px',
-                                                    minHeight: isMobile ? '56px' : 'auto',
-                                                    display: 'flex',
-                                                    alignItems: 'center'
-                                                }}
-                                                onTouchStart={(e) => {
-                                                    if (isMobile) e.currentTarget.style.backgroundColor = '#f3f4f6'
-                                                }}
-                                                onTouchEnd={(e) => {
-                                                    if (isMobile && selectedLocation !== city.value) {
-                                                        e.currentTarget.style.backgroundColor = 'transparent'
-                                                    }
-                                                }}
-                                            >
-                                                {city.label}
+                                    </>
+                                )}
+
+                                {/* MOBILE: Single column at a time */}
+                                {isMobile && (
+                                    <>
+                                        {/* States Column */}
+                                        {!hoveredState && (
+                                            <div style={{
+                                                width: '100%',
+                                                maxHeight: clickedSuburb || hoveredState ? 'calc(100vh - 200px)' : 'calc(100vh - 120px)',
+                                                overflowY: 'auto',
+                                                flexShrink: 0
+                                            }}>
+                                                {/* All Locations Option */}
+                                                <div
+                                                    onClick={() => handleLocationSelect('')}
+                                                    style={{
+                                                        padding: '16px',
+                                                        cursor: 'pointer',
+                                                        backgroundColor: selectedLocation === '' ? '#f3f4f6' : 'white',
+                                                        borderBottom: '1px solid #f3f4f6',
+                                                        transition: 'background-color 0.2s ease',
+                                                        fontSize: '16px',
+                                                        minHeight: '56px',
+                                                        display: 'flex',
+                                                        alignItems: 'center'
+                                                    }}
+                                                    onTouchStart={(e) => {
+                                                        e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                    }}
+                                                    onTouchEnd={(e) => {
+                                                        if (selectedLocation !== '') {
+                                                            e.currentTarget.style.backgroundColor = 'white'
+                                                        }
+                                                    }}
+                                                >
+                                                    All Locations
+                                                </div>
+
+                                                {/* States List */}
+                                                {getStates().map((state) => (
+                                                    <div
+                                                        key={state.value}
+                                                        onClick={() => handleMobileStateClick(state.value)}
+                                                        style={{
+                                                            padding: '16px',
+                                                            cursor: 'pointer',
+                                                            backgroundColor: selectedLocation === state.value ? '#f3f4f6' : 'white',
+                                                            borderBottom: '1px solid #f3f4f6',
+                                                            transition: 'background-color 0.2s ease',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            fontSize: '16px',
+                                                            minHeight: '56px'
+                                                        }}
+                                                        onTouchStart={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                        }}
+                                                        onTouchEnd={(e) => {
+                                                            if (selectedLocation !== state.value) {
+                                                                e.currentTarget.style.backgroundColor = 'white'
+                                                            }
+                                                        }}
+                                                    >
+                                                        <span>{state.label}</span>
+                                                        <span style={{ fontSize: '14px', color: '#6b7280' }}>→</span>
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
-                                    </div>
+                                        )}
+
+                                        {/* Suburbs Column */}
+                                        {hoveredState && !clickedSuburb && (
+                                            <div style={{
+                                                width: '100%',
+                                                maxHeight: 'calc(100vh - 200px)',
+                                                overflowY: 'auto',
+                                                backgroundColor: 'white',
+                                                flexShrink: 0
+                                            }}>
+                                                {getSuburbsForState(hoveredState).map((suburb) => (
+                                                    <div
+                                                        key={suburb.value}
+                                                        onClick={() => handleMobileSuburbClick(suburb.value)}
+                                                        style={{
+                                                            padding: '16px',
+                                                            cursor: 'pointer',
+                                                            backgroundColor: selectedLocation === suburb.value ? '#e5e7eb' : 'transparent',
+                                                            borderBottom: '1px solid #f3f4f6',
+                                                            transition: 'background-color 0.2s ease',
+                                                            display: 'flex',
+                                                            justifyContent: 'space-between',
+                                                            alignItems: 'center',
+                                                            fontSize: '16px',
+                                                            minHeight: '56px'
+                                                        }}
+                                                        onTouchStart={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                        }}
+                                                        onTouchEnd={(e) => {
+                                                            if (selectedLocation !== suburb.value) {
+                                                                e.currentTarget.style.backgroundColor = 'transparent'
+                                                            }
+                                                        }}
+                                                    >
+                                                        <span>{suburb.label}</span>
+                                                        {hasCities(suburb.value) && (
+                                                            <span style={{ fontSize: '14px', color: '#6b7280' }}>→</span>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {/* Cities Column */}
+                                        {clickedSuburb && (
+                                            <div style={{
+                                                width: '100%',
+                                                maxHeight: 'calc(100vh - 200px)',
+                                                overflowY: 'auto',
+                                                backgroundColor: 'white',
+                                                flexShrink: 0
+                                            }}>
+                                                {getCitiesForSuburb(clickedSuburb).map((city) => (
+                                                    <div
+                                                        key={city.value}
+                                                        onClick={() => handleLocationSelect(city.value)}
+                                                        style={{
+                                                            padding: '16px',
+                                                            cursor: 'pointer',
+                                                            backgroundColor: selectedLocation === city.value ? '#e5e7eb' : 'transparent',
+                                                            borderBottom: '1px solid #f3f4f6',
+                                                            transition: 'background-color 0.2s ease',
+                                                            fontSize: '16px',
+                                                            minHeight: '56px',
+                                                            display: 'flex',
+                                                            alignItems: 'center'
+                                                        }}
+                                                        onTouchStart={(e) => {
+                                                            e.currentTarget.style.backgroundColor = '#f3f4f6'
+                                                        }}
+                                                        onTouchEnd={(e) => {
+                                                            if (selectedLocation !== city.value) {
+                                                                e.currentTarget.style.backgroundColor = 'transparent'
+                                                            }
+                                                        }}
+                                                    >
+                                                        {city.label}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </>
                                 )}
                             </div>
                         )}
@@ -617,20 +892,35 @@ const SearchHeader = ({
                     <button
                         type="submit"
                         style={{
-                            padding: isMobile ? '16px 24px' : '14px 32px',
-                            backgroundColor: '#3b82f6',
+                            padding: isMobile ? '16px 24px' : '16px ',
+                            backgroundColor: '#64CAF3',
                             color: 'white',
                             border: 'none',
                             borderRadius: '10px',
-                            fontSize: isMobile ? '16px' : '16px',
-                            fontWeight: '600',
+                            fontSize: '18px',
+                            fontWeight: '400',
                             cursor: 'pointer',
                             boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
                             transition: 'all 0.3s ease',
-                            textTransform: 'uppercase',
+                        
                             letterSpacing: '0.5px',
-                            width: isMobile ? '100%' : 'auto',
-                            minHeight: isMobile ? '52px' : 'auto'
+                            width: isMobile ? '100%' : '122px',
+                            minHeight: isMobile ? '52px' : 'auto',
+                            textAlign: 'center' // Add this line
+                        }}
+                        onMouseOver={(e) => {
+                            if (!isMobile) {
+                                e.currentTarget.style.backgroundColor = '#64CAF3'
+                                e.currentTarget.style.boxShadow = '0 6px 20px rgba(59, 130, 246, 0.6)'
+                                e.currentTarget.style.transform = 'translateY(-2px)'
+                            }
+                        }}
+                        onMouseOut={(e) => {
+                            if (!isMobile) {
+                                e.currentTarget.style.backgroundColor = '#64CAF3'
+                                e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.4)'
+                                e.currentTarget.style.transform = 'translateY(0)'
+                            }
                         }}
                         onTouchStart={(e) => {
                             if (isMobile) {

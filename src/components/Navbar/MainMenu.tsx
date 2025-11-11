@@ -11,7 +11,7 @@ export default function Menu() {
   return (
     <>
      
-      <div className="hidden lg:block bg-white  py-2   text-sm text-gray-700">
+      <div className="hidden lg:block bg-white  py-2 border-b-2 border-gray-100  text-sm text-gray-700">
         <div className="px-4 py-2 mx-auto max-w-screen-2xl   flex justify-center">
           <div className="flex space-x-4 divide-x divide-gray-300">
             <Link href="/support" className="hover:underline pr-4">
@@ -40,7 +40,7 @@ export default function Menu() {
       </div>
 
 
-      <header className="bg-white shadow sticky top-0 z-50">
+      <header className="bg-white  sticky top-0 z-50">
         <div className="px-4 py-3 mx-auto max-w-screen-2xl md:px-8 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" aria-label="Medfuture" className="inline-flex items-center">

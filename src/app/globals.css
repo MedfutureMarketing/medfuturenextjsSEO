@@ -2,25 +2,74 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  /* white background */
+  --foreground: #ffffff;
+  /* black text */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #f1f5f9;
   }
 }
+
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+
+  width: 100%;
+  max-width: 1400px;
+  /* default desktop width */
+  margin: 0 auto;
+  /* center horizontally */
+  padding: 1rem;
+  /* small padding for mobile */
+  box-sizing: border-box;
+}
+
+
+.custom-scrollbar {
+  --scrollbar-width: 4px;
+  --scrollbar-track-color: #f1f1f1;
+  --scrollbar-thumb-color: #e4e3e3;
+  --scrollbar-thumb-hover: #e4e3e3;
+  --scrollbar-min-height: 30px;
+  --scrollbar-border-radius: 10px;
+  --scrollbar-track-margin: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-width);
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: var(--scrollbar-border-radius);
+  margin: var(--scrollbar-track-margin) 0;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: var(--scrollbar-border-radius);
+  min-height: var(--scrollbar-min-height);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* For horizontal scrollbar specific adjustments */
+.custom-scrollbar::-webkit-scrollbar-track:horizontal {
+  margin: 0 var(--scrollbar-track-margin);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:horizontal {
+  min-width: var(--scrollbar-min-height);
 }
