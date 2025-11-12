@@ -1,6 +1,8 @@
 // components/RegistrationForm.tsx
 "use client"
 import { useState } from 'react';
+import Link from "next/link";
+import PhoneNumber from '@/components/Forms/FormsComponent/PhoneNumber';
 
 interface RegistrationFormProps {
   onClose: () => void;
@@ -13,15 +15,13 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
     email: '',
     phone: '',
     ahpraNumber: '',
-    currentPosition: '',
-    experience: '',
+    profession: '',
+    specialty: '',
     coverLetter: '',
     resume: null as File | null,
-    fullTime: false,
-    partTime: false,
-    immediately: false,
-    fourWeeksNotice: false,
-    agreeToTerms: false
+    jobSource: '',
+    agreeToTerms: false,
+    subscribeToAlerts: false
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -50,21 +50,21 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
     console.log('Form submitted:', formData);
-    // You can add API call here
   };
 
+  const inputClasses = "w-full px-3 py-3 border border-[#66768F29] text-[#333333] rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent placeholder:text-[#666666] text-sm sm:text-base";
+  
   return (
-    <div className="mt-8 p-6 bg-white rounded-lg shadow-[0_6px_6px_rgba(0,0,0,0.05)] border border-gray-200">
-      <h3 className="text-2xl font-bold text-gray-900 mb-6">Application Form</h3>
-      
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Personal Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="mt-4 sm:mt-8 p-4 sm:p-6 bg-white rounded-lg shadow-[0_6px_6px_rgba(0,0,0,0.05)] border-gray-200">
+      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
+
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 text-black">
+        {/* Personal Information - 2 columns on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              First Name *
+              {/* First Name * */}
             </label>
             <input
               type="text"
@@ -72,14 +72,14 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               value={formData.firstName}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
+              className={inputClasses}
               placeholder="Enter your first name"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Last Name *
+              {/* Last Name * */}
             </label>
             <input
               type="text"
@@ -87,16 +87,24 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               value={formData.lastName}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
+              className={inputClasses}
               placeholder="Enter your last name"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Contact Information - 2 columns on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <PhoneNumber
+            value={formData.phone}
+            onChange={handleInputChange}
+            required={true}
+            inputClasses={inputClasses}
+          />
+          
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Email Address *
+              {/* Email Address * */}
             </label>
             <input
               type="email"
@@ -104,31 +112,56 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
+              className={inputClasses}
               placeholder="Enter your email address"
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Phone Number *
-            </label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
-              placeholder="Enter your phone number"
             />
           </div>
         </div>
 
-        {/* Professional Information */}
-        <div>
+        {/* Professional Information - 2 columns on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              {/* Profession * */}
+            </label>
+            <select
+              name="profession"
+              value={formData.profession}
+              onChange={handleInputChange}
+              required
+              className={inputClasses}
+            >
+              <option value="">Select Profession</option>
+              <option value="medical-practitioner">Medical Practitioner</option>
+              <option value="non-vr-gp">Non-VR GP</option>
+              <option value="vr-gp">VR GP</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              {/* Specialty * */}
+            </label>
+            <select
+              name="specialty"
+              value={formData.specialty}
+              onChange={handleInputChange}
+              required
+              className={inputClasses}
+            >
+              <option value="">Select Specialty</option>
+              <option value="gp-registrar">GP Registrar</option>
+              <option value="general-practice">General Practice</option>
+              <option value="emergency-medicine">Emergency Medicine</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        {/* AHPRA Number - Full width */}
+        {/* <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            AHPRA Registration Number *
+            AHPRA Number *
           </label>
           <input
             type="text"
@@ -136,154 +169,115 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
             value={formData.ahpraNumber}
             onChange={handleInputChange}
             required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
+            className={inputClasses}
             placeholder="Enter your AHPRA registration number"
           />
-        </div>
+        </div> */}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* File Upload and Job Source - 2 columns on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Current Position
+              Resume/CV *
             </label>
-            <select 
-              name="currentPosition"
-              value={formData.currentPosition}
+            <div className="relative">
+              <input
+                type="file"
+                name="resume"
+                onChange={handleFileChange}
+                accept=".pdf,.doc,.docx"
+                required
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent opacity-0 absolute z-10 cursor-pointer h-12 sm:h-10"
+                id="resume-upload"
+              />
+              <label
+                htmlFor="resume-upload"
+                className={`${inputClasses} bg-white cursor-pointer text-gray-500 block h-12 sm:h-10 flex items-center text-sm`}
+              >
+                Choose file...
+              </label>
+            </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Where did you hear about this job? *
+            </label>
+            <select
+              name="jobSource"
+              value={formData.jobSource}
               onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
+              required
+              className={inputClasses}
             >
-              <option value="">Select your position</option>
-              <option value="gp-registrar">GP Registrar</option>
-              <option value="non-vr-gp">Non-VR GP</option>
-              <option value="vr-gp">VR GP</option>
+              <option value="">Select an option</option>
+              <option value="google">Google</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="indeed">Indeed</option>
+              <option value="company-website">Company Website</option>
+              <option value="referral">Employee Referral</option>
+              <option value="social-media">Social Media</option>
               <option value="other">Other</option>
             </select>
           </div>
-          
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Years of Experience
-            </label>
-            <select 
-              name="experience"
-              value={formData.experience}
-              onChange={handleInputChange}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
-            >
-              <option value="">Select years</option>
-              <option value="0-2">0-2 years</option>
-              <option value="3-5">3-5 years</option>
-              <option value="6-10">6-10 years</option>
-              <option value="10+">10+ years</option>
-            </select>
-          </div>
         </div>
 
-        {/* Availability */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Availability
-          </label>
-          <div className="flex flex-wrap gap-4">
-            <label className="inline-flex items-center">
-              <input 
-                type="checkbox" 
-                name="fullTime"
-                checked={formData.fullTime}
-                onChange={handleInputChange}
-                className="rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3]" 
-              />
-              <span className="ml-2">Full Time</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input 
-                type="checkbox" 
-                name="partTime"
-                checked={formData.partTime}
-                onChange={handleInputChange}
-                className="rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3]" 
-              />
-              <span className="ml-2">Part Time</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input 
-                type="checkbox" 
-                name="immediately"
-                checked={formData.immediately}
-                onChange={handleInputChange}
-                className="rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3]" 
-              />
-              <span className="ml-2">Immediately</span>
-            </label>
-            <label className="inline-flex items-center">
-              <input 
-                type="checkbox" 
-                name="fourWeeksNotice"
-                checked={formData.fourWeeksNotice}
-                onChange={handleInputChange}
-                className="rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3]" 
-              />
-              <span className="ml-2">4 Weeks Notice</span>
-            </label>
-          </div>
-        </div>
-
-        {/* Cover Letter & Resume */}
-        <div>
+        {/* Cover Letter - Full width */}
+        {/* <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Cover Letter
           </label>
           <textarea
-            rows={4}
             name="coverLetter"
             value={formData.coverLetter}
             onChange={handleInputChange}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
-            placeholder="Tell us why you're interested in this position..."
-          ></textarea>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Upload Resume/CV *
-          </label>
-          <input
-            type="file"
-            name="resume"
-            onChange={handleFileChange}
-            accept=".pdf,.doc,.docx"
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent"
+            rows={4}
+            className={inputClasses}
+            placeholder="Enter your cover letter (optional)"
           />
-          <p className="text-sm text-gray-500 mt-1">Accepted formats: PDF, DOC, DOCX (Max: 5MB)</p>
-        </div>
+        </div> */}
 
         {/* Terms and Submit */}
-        <div className="flex items-center">
-          <input
-            type="checkbox"
-            name="agreeToTerms"
-            checked={formData.agreeToTerms}
-            onChange={handleInputChange}
-            required
-            className="rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3]"
-          />
-          <label className="ml-2 text-sm text-gray-700">
-            I agree to the terms and conditions and privacy policy
-          </label>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="flex items-start">
+            <input
+              type="checkbox"
+              name="agreeToTerms"
+              checked={formData.agreeToTerms}
+              onChange={handleInputChange}
+              required
+              className="w-4 h-4 rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
+            />
+            <label className="ml-2 text-sm text-gray-700 leading-tight">
+              I confirm that I have read and agree to the <Link href="/terms" className="hover:underline text-[#64CAF3]">Terms of Use</Link> and <Link href="/privacy" className="hover:underline text-[#64CAF3]">Privacy Policy.</Link>
+            </label>
+          </div>
+
+          <div className="flex items-start">
+            <input
+              type="checkbox"
+              name="subscribeToAlerts"
+              checked={formData.subscribeToAlerts}
+              onChange={handleInputChange}
+              className="w-4 h-4 rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
+            />
+            <label className="ml-2 text-sm text-gray-700 leading-tight">
+              Subscribe for Job Alerts.
+            </label>
+          </div>
         </div>
 
-        <div className="flex gap-4">
+        {/* Buttons - Side by side on desktop, stacked on mobile */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <button
             type="submit"
-            className="bg-[#64CAF3] text-white px-8 py-3 rounded-lg hover:bg-[#55b8e0] transition-colors font-medium"
+            className="bg-[#64CAF3] text-white px-6 sm:px-8 py-3 rounded-lg hover:bg-[#55b8e0] transition-colors font-medium order-2 sm:order-1"
           >
             Submit Application
           </button>
           <button
             type="button"
             onClick={onClose}
-            className="bg-gray-300 text-gray-700 px-8 py-3 rounded-lg hover:bg-gray-400 transition-colors font-medium"
+            className="bg-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:bg-gray-400 transition-colors font-medium order-1 sm:order-2"
           >
             Cancel
           </button>

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import NavigationMenu from "@/components/Navbar/MainMenu"; // Import menu
+import Breadcrumb from "@/components/Breadcrumb"; // Import breadcrumb
+import Preloader from "@/components/Preloader"; // Import preloader
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,6 +30,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Preloader - shows first for 2-3 seconds */}
+        <Preloader />
+        
+        {/* Navigation Menu at the top */}
+        <NavigationMenu />
+        
+        {/* Breadcrumb under the menu */}
+        <Breadcrumb />
+        
+        {/* Your main content */}
         {children}
       </body>
     </html>

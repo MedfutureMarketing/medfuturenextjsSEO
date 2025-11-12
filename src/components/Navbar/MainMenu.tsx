@@ -41,7 +41,7 @@ export default function Menu() {
 
 
       <header className="bg-white  sticky top-0 z-50">
-        <div className="px-4 py-3 mx-auto max-w-screen-2xl md:px-8 flex items-center justify-between">
+        <div className="px-2 py-3 mx-auto max-w-screen-2xl md:px-0 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" aria-label="Medfuture" className="inline-flex items-center">
             <Image src={Medfuturelogo} alt="Medfuture logo" width={180} height={40} priority />
@@ -107,12 +107,12 @@ export default function Menu() {
         <>
 
           <div
-            className="fixed inset-0 bg-black bg-opacity-40 z-40 "
+            className="fixed inset-0  bg-opacity-0 z-40 "
             onClick={() => setIsMenuOpen(false)}
           />
 
           <div
-            className={`fixed top-0 left-0 z-50 w-72 h-full bg-white shadow-lg overflow-y-scroll transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            className={`fixed top-0 left-0 z-50 w-[70%] h-full bg-white shadow-lg custom-scrollbar transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
               }`}
           >
             <div className="flex items-center justify-between p-4 border-b">

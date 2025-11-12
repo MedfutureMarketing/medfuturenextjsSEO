@@ -317,7 +317,7 @@ const SearchHeader = ({
             padding: isMobile ? '0px px' : '0px ',
             borderBottom: '2px solid #ffffffff',
             backgroundColor: '#ffffffff'
-        }} className='mt-16'>
+        }} className='mt-6'>
             <div style={{
                 display: 'flex',
                 flexDirection: isMobile ? 'column' : 'row',

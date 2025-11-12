@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import "./globals.css";
+// import "./globals.css";
 
 import { getPageMetadata } from "@/lib/getPageMetadata";
+import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
+
 
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata("permanent"); // Fetch metadata by key
@@ -16,8 +18,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased font-sans">
+           
+        
         {/* Header */}
-      
+      <JobDescription/>
 
         {/* Main Content */}
        
