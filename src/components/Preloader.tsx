@@ -1,9 +1,10 @@
 // components/Preloader.tsx
 "use client"
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-export default function Preloader() {
+// Inner component that uses useSearchParams
+function PreloaderContent() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -15,27 +16,31 @@ export default function Preloader() {
     // Hide loader after 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
 
     return () => clearTimeout(timer);
-  }, [pathname, searchParams]); // Trigger on route and query parameter changes
+  }, [pathname, searchParams]);
 
   if (!isLoading) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-sm">
       <div className="text-center">
-        {/* Spinner */}
         <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        
-        {/* Loading Text */}
         <p className="text-gray-600 font-medium">Loading page...</p>
-        
-        {/* Optional: Current Page Info */}
         <div className="mt-2 text-gray-400 text-sm">
           {pathname?.split('/').pop() || 'Loading...'}
         </div>
       </div>
     </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function Preloader() {
+  return (
+    <Suspense fallback={null}>
+      <PreloaderContent />
+    </Suspense>
   );
 }
