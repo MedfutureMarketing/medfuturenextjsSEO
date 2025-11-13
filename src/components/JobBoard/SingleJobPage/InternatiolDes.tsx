@@ -1,5 +1,8 @@
 // components/JobDescription.tsx
+import { useState } from 'react';
+
 import RegistrationForm from '@/components/Forms/QuickApply';
+ const [isFormOpen, setFormOpen] = useState(true);
 
 
 export default function JobDescription() {
@@ -66,8 +69,11 @@ export default function JobDescription() {
       {/* Contact Information */}
       {/* Contact Information */}
       <div className="grid lg:grid-cols-2">
-        <div><RegistrationForm /></div>
-        <div className="mb-3 p-4 sm:p-6 gap-4 mt-24">
+  <div>
+      {isFormOpen && (
+        <RegistrationForm onClose={() => setFormOpen(false)} />
+      )}
+    </div>        <div className="mb-3 p-4 sm:p-6 gap-4 mt-24">
           <h3 className="text-black text-[18px] mb-6">Contact Us</h3>
           <div className="flex flex-wrap items-center gap-1 mb-4">
             <span className="flex-shrink-0">
