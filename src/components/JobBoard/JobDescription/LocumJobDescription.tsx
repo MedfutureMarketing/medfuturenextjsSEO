@@ -1,28 +1,21 @@
-
 "use client"
 import { useState, useRef } from 'react';
 import RegistrationForm from '@/components/Forms/QuickApply';
 import Link from "next/link";
 import React from "react";
-
-
-const jobDetails = {
-  Profession: "Medical Practitioner",
-  Specialty: "General Practitioner",
-  Seniority: "Surgery",
-  Location: "Guildford, New South Wales",
-  StartDate: "Flexible",
-  EndDate: "Flexible",
-  LocumPeriod: "Ongoing",
-  LocumRateOnOffer: "AUD 200 per hour",
-  EngagementType: "Full-Time or Part-Time",
-  EngagementMode: "Onsite",
-  PaymentCycle: "Fortnightly",
-  AdditionalInformation:
-    "Full-time nursing support provided | Consultation fees: Standard – AUD 80 | Long – AUD 140 | Negotiable offers for the ideal candidate | On-site pathology services | AGPAL-accredited practice | Opening hours – Monday to Friday 7:00 am to 9:00 pm and Saturday and Sunday 8:00 am to 6:00 pm",
-};
-
-
+import ProfessionIcon from '@/assets/icons/profession.png';
+import SpecialtyIcon from '@/assets/icons/specialty.png';
+import SeniorityIcon from '@/assets/icons/seniority.png';
+import LocationIcon from '@/assets/icons/location.png';
+import StartDateIcon from '@/assets/icons/startdate.png';
+import EndDateIcon from '@/assets/icons/enddate.png';
+import LocumPeriodIcon from '@/assets/icons/locumperiod.png';
+import LocumRateIcon from '@/assets/icons/locumrateonoffer.png';
+import EngagementTypeIcon from '@/assets/icons/engagementtype.png';
+import EngagementModeIcon from '@/assets/icons/engagementmode.png';
+import PaymentCycleIcon from '@/assets/icons/paymentcycle.png';
+import AdditionalInfoIcon from '@/assets/icons/additionalinformation.png';
+import Image from 'next/image';
 
 export default function LocumJobDescription() {
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
@@ -32,7 +25,6 @@ export default function LocumJobDescription() {
     const wasClosed = !showRegistrationForm;
     setShowRegistrationForm(!showRegistrationForm);
 
-
     if (wasClosed) {
       setTimeout(() => {
         if (formRef.current) {
@@ -41,13 +33,13 @@ export default function LocumJobDescription() {
             block: 'start'
           });
         }
-      }, 100); // Small delay to ensure form is rendered
+      }, 100);
     }
   };
 
   return (
     <div className="hidden lg:block">
-
+      {/* Header */}
       <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-6 rounded-none bg-white">
         <h1 className="text-2xl font-bold text-gray-900 pr-4 flex-1">
           Locum GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
@@ -56,69 +48,197 @@ export default function LocumJobDescription() {
           onClick={handleApplyNow}
           className="bg-[#64CAF3] text-white px-6 py-3 rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap ml-4 flex-shrink-0"
         >
-          {showRegistrationForm ? 'Close From' : 'Apply Now'}
+          {showRegistrationForm ? 'Close Form' : 'Apply Now'}
         </button>
       </div>
 
+      {/* External Link Icon */}
+      <div className="relative px-5">
+        <div className="absolute top-0 right-0 px-5">
+          <Link href="/permanent/job" className="hover:underline">
+            <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clipPath="url(#clip0_21001_3721)">
+                <path d="M14.2193 17.379H2.63335C2.354 17.379 2.0861 17.268 1.88857 17.0705C1.69105 16.873 1.58008 16.6051 1.58008 16.3257V4.73979C1.58008 4.46045 1.69105 4.19254 1.88857 3.99502C2.0861 3.79749 2.354 3.68652 2.63335 3.68652H7.89969V4.73979H2.63335V16.3257H14.2193V11.0594H15.2726V16.3257C15.2726 16.6051 15.1616 16.873 14.9641 17.0705C14.7665 17.268 14.4986 17.379 14.2193 17.379Z" fill="#0C3262" />
+                <path d="M9.47974 1.5791C9.34007 1.5791 9.20612 1.63459 9.10736 1.73335C9.00859 1.83211 8.95311 1.96606 8.95311 2.10574C8.95311 2.24541 9.00859 2.37936 9.10736 2.47812C9.20612 2.57689 9.34007 2.63237 9.47974 2.63237H15.5834L8.28955 9.92625C8.23442 9.97346 8.18965 10.0316 8.15804 10.0969C8.12643 10.1622 8.10866 10.2334 8.10586 10.3059C8.10306 10.3785 8.11528 10.4508 8.14176 10.5184C8.16823 10.5859 8.20839 10.6473 8.25972 10.6986C8.31104 10.75 8.37242 10.7901 8.44 10.8166C8.50758 10.8431 8.5799 10.8553 8.65243 10.8525C8.72496 10.8497 8.79612 10.8319 8.86146 10.8003C8.9268 10.7687 8.98489 10.7239 9.0321 10.6688L16.326 3.37492V9.47861C16.326 9.61829 16.3815 9.75224 16.4802 9.851C16.579 9.94977 16.7129 10.0052 16.8526 10.0052C16.9923 10.0052 17.1262 9.94977 17.225 9.851C17.3238 9.75224 17.3793 9.61829 17.3793 9.47861V1.5791H9.47974Z" fill="#0C3262" />
+              </g>
+              <defs>
+                <clipPath id="clip0_21001_3721">
+                  <rect width="18.9588" height="18.9588" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </Link>
+        </div>
+      </div>
 
-
+      {/* Hardcoded Job Details Section */}
       <div className="flex items-center justify-center">
         <div className="w-full bg-white p-6">
-          <div className="grid grid-cols-[0.4fr_1.6fr] gap-y-3 border-gray-200">
-            {Object.entries(jobDetails).map(([label, value]) => (
-              <React.Fragment key={label}>
-                <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
-                  <img
-                    src={`/icons/${label
-                      .replace(/([A-Z])/g, ' $1')
-                      .trim()
-                      .toLowerCase()
-                      .replace(/\s+/g, '-')}.png`}
-                    alt={`${label} icon`}
-                    className="w-4 h-4 object-contain opacity-80"
-                  />
-                  <span>{label.replace(/([A-Z])/g, " $1").trim()}</span>
-                </div>
-                <div className="text-sm text-gray-800">{value}</div>
-              </React.Fragment>
-            ))}
+          <div className="grid grid-cols-2 gap-y-4 border-gray-200">
+            {/* Profession */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={ProfessionIcon}
+                alt="Profession icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Profession</span>
+            </div>
+            <div className="text-sm text-gray-800">Medical Practitioner</div>
+
+            {/* Specialty */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={SpecialtyIcon}
+                alt="Specialty icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Specialty</span>
+            </div>
+            <div className="text-sm text-gray-800">General Practitioner</div>
+
+            {/* Seniority */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={SeniorityIcon}
+                alt="Seniority icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Seniority</span>
+            </div>
+            <div className="text-sm text-gray-800">Surgery</div>
+
+            {/* Location */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={LocationIcon}
+                alt="Location icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Location</span>
+            </div>
+            <div className="text-sm text-gray-800">Guildford, New South Wales</div>
+
+            {/* Start Date */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={StartDateIcon}
+                alt="Start date icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Start Date</span>
+            </div>
+            <div className="text-sm text-gray-800">Flexible</div>
+
+            {/* End Date */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={EndDateIcon}
+                alt="End date icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>End Date</span>
+            </div>
+            <div className="text-sm text-gray-800">Flexible</div>
+
+            {/* Locum Period */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={LocumPeriodIcon}
+                alt="Locum period icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Locum Period</span>
+            </div>
+            <div className="text-sm text-gray-800">Ongoing</div>
+
+            {/* Locum Rate On Offer */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={LocumRateIcon}
+                alt="Locum rate icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Locum Rate On Offer</span>
+            </div>
+            <div className="text-sm text-gray-800">AUD 200 per hour</div>
+
+            {/* Engagement Type */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={EngagementTypeIcon}
+                alt="Engagement type icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Engagement Type</span>
+            </div>
+            <div className="text-sm text-gray-800">Full-Time or Part-Time</div>
+
+            {/* Engagement Mode */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={EngagementModeIcon}
+                alt="Engagement mode icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Engagement Mode</span>
+            </div>
+            <div className="text-sm text-gray-800">Onsite</div>
+
+            {/* Payment Cycle */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={PaymentCycleIcon}
+                alt="Payment cycle icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Payment Cycle</span>
+            </div>
+            <div className="text-sm text-gray-800">Fortnightly</div>
+
+            {/* Additional Information */}
+            <div className="pl-4 text-sm font-medium text-gray-600 flex items-center gap-2">
+              <Image
+                src={AdditionalInfoIcon}
+                alt="Additional information icon"
+                width={16}
+                height={16}
+                className="object-contain opacity-80"
+              />
+              <span>Additional Information</span>
+            </div>
+            <div className="text-sm text-gray-800">
+              Full-time nursing support provided | Consultation fees: Standard – AUD 80 | Long – AUD 140 | 
+              Negotiable offers for the ideal candidate | On-site pathology services | AGPAL-accredited practice | 
+              Opening hours – Monday to Friday 7:00 am to 9:00 pm and Saturday and Sunday 8:00 am to 6:00 pm
+            </div>
           </div>
-
         </div>
       </div>
-      <div className="relative px-5">
-        {/* Your existing content */}
 
-        {/* SVG icon positioned on top right corner */}
-        <div className="absolute top-0 right-0 px-5">
-          <Link href="/permanent/job" className="hover:underline ">  <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_21001_3721)">
-              <path d="M14.2193 17.379H2.63335C2.354 17.379 2.0861 17.268 1.88857 17.0705C1.69105 16.873 1.58008 16.6051 1.58008 16.3257V4.73979C1.58008 4.46045 1.69105 4.19254 1.88857 3.99502C2.0861 3.79749 2.354 3.68652 2.63335 3.68652H7.89969V4.73979H2.63335V16.3257H14.2193V11.0594H15.2726V16.3257C15.2726 16.6051 15.1616 16.873 14.9641 17.0705C14.7665 17.268 14.4986 17.379 14.2193 17.379Z" fill="#0C3262" />
-              <path d="M9.47974 1.5791C9.34007 1.5791 9.20612 1.63459 9.10736 1.73335C9.00859 1.83211 8.95311 1.96606 8.95311 2.10574C8.95311 2.24541 9.00859 2.37936 9.10736 2.47812C9.20612 2.57689 9.34007 2.63237 9.47974 2.63237H15.5834L8.28955 9.92625C8.23442 9.97346 8.18965 10.0316 8.15804 10.0969C8.12643 10.1622 8.10866 10.2334 8.10586 10.3059C8.10306 10.3785 8.11528 10.4508 8.14176 10.5184C8.16823 10.5859 8.20839 10.6473 8.25972 10.6986C8.31104 10.75 8.37242 10.7901 8.44 10.8166C8.50758 10.8431 8.5799 10.8553 8.65243 10.8525C8.72496 10.8497 8.79612 10.8319 8.86146 10.8003C8.9268 10.7687 8.98489 10.7239 9.0321 10.6688L16.326 3.37492V9.47861C16.326 9.61829 16.3815 9.75224 16.4802 9.851C16.579 9.94977 16.7129 10.0052 16.8526 10.0052C16.9923 10.0052 17.1262 9.94977 17.225 9.851C17.3238 9.75224 17.3793 9.61829 17.3793 9.47861V1.5791H9.47974Z" fill="#0C3262" />
-            </g>
-            <defs>
-              <clipPath id="clip0_21001_3721">
-                <rect width="18.9588" height="18.9588" fill="white" />
-              </clipPath>
-            </defs>
-          </svg></Link>
-        </div>
-      </div>
-      <div className="flex items-center gap-4 mt-5 mb-[16px] p-3">
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
-          Permanent
-        </span>
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
-          Medical Practitioner
-        </span>
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
-          AUD 160/Hour
-        </span>
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
-          Full Time Or Part Time
-        </span>
-      </div>
-
+      {/* Rest of your existing content remains the same */}
       <div className="prose max-w-none p-6">
         <div>
           <p className="text-gray-700 mb-4">
@@ -146,7 +266,6 @@ export default function LocumJobDescription() {
         </div>
       </div>
 
-
       <div className="grid grid-cols-1 md:grid-cols-1 gap-[7px] mb-6 p-6">
         <div className="flex flex-wrap gap-[13px]">
           <h3 className="font-semi-bold text-gray-900 mb-2">Recruitment Consultant :</h3>
@@ -166,13 +285,12 @@ export default function LocumJobDescription() {
         </div>
       </div>
 
-
       {showRegistrationForm && (
         <div ref={formRef}>
           <RegistrationForm onClose={() => setShowRegistrationForm(false)} />
         </div>
       )}
       <div ref={formRef}></div>
-    </div >
+    </div>
   );
 }
