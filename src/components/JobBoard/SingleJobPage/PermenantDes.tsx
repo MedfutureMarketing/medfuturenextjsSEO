@@ -2,11 +2,12 @@
 import { useState } from 'react';
 
 import RegistrationForm from '@/components/Forms/QuickApply';
- const [isFormOpen, setFormOpen] = useState(true);
 
 
 
 export default function JobDescription() {
+   const [isFormOpen, setFormOpen] = useState(true);
+
   return (
     <div className="mt-4 border-2">
       {/* Header Section */}
