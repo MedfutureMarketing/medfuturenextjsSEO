@@ -25,8 +25,8 @@ export const metaDataList: Record<string, Metadata> = {
             type: "website",
             locale: "en_US",
             url: "https://example.com/",
-            siteName: "My App",
-            title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+            siteName: "Medfuture",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
                 "Experience a fast, mobile-first web layout built with Next.js and Tailwind CSS. Optimized for SEO, speed, and accessibility.",
             images: [
@@ -34,7 +34,7 @@ export const metaDataList: Record<string, Metadata> = {
                     url: "https://example.com/og-image.jpg",
                     width: 1200,
                     height: 630,
-                    alt: "My App – Responsive Layout Preview",
+                    alt: "Medfuture – Responsive Layout Preview",
                 },
             ],
         },
@@ -43,7 +43,7 @@ export const metaDataList: Record<string, Metadata> = {
             card: "summary_large_image",
             site: "@yourtwitter",
             creator: "@yourtwitter",
-            title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
                 "A fast, SEO-friendly layout built with Next.js and Tailwind CSS. Fully responsive and optimized for modern web performance.",
             images: ["https://example.com/twitter-image.jpg"],
@@ -60,14 +60,14 @@ export const metaDataList: Record<string, Metadata> = {
 
         
         metadataBase: new URL("https://example.com"),
-        applicationName: "My App",
+        applicationName: "Medfuture",
         generator: "Next.js",
         authors: [{ name: "Your Name", url: "https://example.com" }],
         creator: "Your Name",
         publisher: "Your Company",
     },
     permanent: {
-        title: "Medfuture | Medical & Healthcare Recruitment in Australia",
+        title: "Permanent | Medical & Healthcare Recruitment in Australia",
         description:
             "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
         keywords: [
@@ -90,8 +90,8 @@ export const metaDataList: Record<string, Metadata> = {
             type: "website",
             locale: "en_US",
             url: "https://example.com/",
-            siteName: "My App",
-            title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+            siteName: "Medfuture",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
                 "Experience a fast, mobile-first web layout built with Next.js and Tailwind CSS. Optimized for SEO, speed, and accessibility.",
             images: [
@@ -99,7 +99,7 @@ export const metaDataList: Record<string, Metadata> = {
                     url: "https://example.com/og-image.jpg",
                     width: 1200,
                     height: 630,
-                    alt: "My App – Responsive Layout Preview",
+                    alt: "Medfuture – Responsive Layout Preview",
                 },
             ],
         },
@@ -108,7 +108,7 @@ export const metaDataList: Record<string, Metadata> = {
             card: "summary_large_image",
             site: "@yourtwitter",
             creator: "@yourtwitter",
-            title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
                 "A fast, SEO-friendly layout built with Next.js and Tailwind CSS. Fully responsive and optimized for modern web performance.",
             images: ["https://example.com/twitter-image.jpg"],
@@ -125,7 +125,7 @@ export const metaDataList: Record<string, Metadata> = {
 
     
         metadataBase: new URL("https://example.com"),
-        applicationName: "My App",
+        applicationName: "Medfuture",
         generator: "Next.js",
         authors: [{ name: "Your Name", url: "https://example.com" }],
         creator: "Your Name",
@@ -133,7 +133,7 @@ export const metaDataList: Record<string, Metadata> = {
     },
 
     about: {
-        title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+        title: "Medfuture – Medical & Healthcare Recruitment in Australia",
         description:
             "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
         keywords: [
@@ -155,8 +155,8 @@ export const metaDataList: Record<string, Metadata> = {
             type: "website",
             locale: "en_US",
             url: "https://example.com/",
-            siteName: "My App",
-            title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+            siteName: "Medfuture",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
                 "Experience a fast, mobile-first web layout built with Next.js and Tailwind CSS. Optimized for SEO, speed, and accessibility.",
             images: [
@@ -164,7 +164,7 @@ export const metaDataList: Record<string, Metadata> = {
                     url: "https://example.com/og-image.jpg",
                     width: 1200,
                     height: 630,
-                    alt: "My App – Responsive Layout Preview",
+                    alt: "Medfuture – Responsive Layout Preview",
                 },
             ],
         },
@@ -173,7 +173,7 @@ export const metaDataList: Record<string, Metadata> = {
             card: "summary_large_image",
             site: "@yourtwitter",
             creator: "@yourtwitter",
-            title: "My App – Responsive Full-Width Layout Built with Next.js & Tailwind CSS",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
                 "A fast, SEO-friendly layout built with Next.js and Tailwind CSS. Fully responsive and optimized for modern web performance.",
             images: ["https://example.com/twitter-image.jpg"],

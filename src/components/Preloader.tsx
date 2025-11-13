@@ -16,7 +16,7 @@ function PreloaderContent() {
     // Hide loader after 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, [pathname, searchParams]);
@@ -24,11 +24,11 @@ function PreloaderContent() {
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-sm">
+    <div className="fixed inset-0 z-100 flex items-center justify-center bg-white/95 backdrop-blur-sm">
       <div className="text-center">
         <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
         <p className="text-gray-600 font-medium">Loading page...</p>
-        <div className="mt-2 text-gray-400 text-sm">
+        <div className="mt-2 text-gray-400 hidden text-sm">
           {pathname?.split('/').pop() || 'Loading...'}
         </div>
       </div>

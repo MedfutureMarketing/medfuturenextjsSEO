@@ -142,7 +142,7 @@ export default function Menu() {
               <div className="pt-3">
                 <p className="text-sm text-gray-500 mb-2 font-semibold">Navigation</p>
                 <div className="flex flex-col space-y-2 text-gray-700">
-                  <Link href="/permanent-jobs" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">Permanent Jobs</Link>
+                  <Link href="/permanent" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">Permanent Jobs</Link>
                   <Link href="/locum-jobs" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">Locum Jobs</Link>
                   <Link href="/international" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">International</Link>
                   <Link href="/candidates" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">For Candidates</Link>
