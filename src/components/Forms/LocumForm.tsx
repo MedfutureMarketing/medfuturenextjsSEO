@@ -4,11 +4,8 @@ import { useState } from 'react';
 import Link from "next/link";
 import PhoneNumber from '@/components/Forms/FormsComponent/PhoneNumber';
 
-interface RegistrationFormProps {
-  onClose: () => void;
-}
-
-export default function RegistrationForm({ onClose }: RegistrationFormProps) {
+// Remove the onClose prop since we don't need toggle functionality
+export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -53,17 +50,17 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
     console.log('Form submitted:', formData);
   };
 
-  const inputClasses = "w-full px-[10px] text-[18px] py-3 border border-[#66768F]/16 text-[#333333] rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent placeholder:text-[#666666] text-sm sm:text-base";
+  const inputClasses = "w-full px-3 py-3 border border-[#66768F29]  text-[#333333] rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent placeholder:text-[#666666] text-sm sm:text-base";
   
   return (
-    <div className="mt-4 sm:mt-8 p-4 sm:p-6 bg-white rounded-lg shadow-[0_6px_6px_rgba(0,0,0,0.05)] border-[#66768F]/16">
-      <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
+    <div className="mt-0 sm:mt-0 p-4 sm:p-6 bg-white rounded-lg border-2 border-gray-50 shadow-xl shadow-[0_6px_6px_rgba(0,0,0,0.05)] border-gray-200">
+      <h3 className="text-xl sm:text-2xl font-bold text-[#FFD791] mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
 
-      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y- text-black">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-2 text-black">
         {/* Personal Information - 2 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-2">
           <div>
-            <label className="block text-[18px] font-medium text-gray-700  ">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               {/* First Name * */}
             </label>
             <input
@@ -73,12 +70,12 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               onChange={handleInputChange}
               required
               className={inputClasses}
-              placeholder="First Name"
+              placeholder="Enter your first name"
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               {/* Last Name * */}
             </label>
             <input
@@ -88,13 +85,13 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               onChange={handleInputChange}
               required
               className={inputClasses}
-              placeholder=" Last Name"
+              placeholder="Enter your last name"
             />
           </div>
         </div>
 
         {/* Contact Information - 2 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
+        <div className="grid grid-cols-1 assetsmd:grid-cols-1 gap-4 sm:gap-2">
           <PhoneNumber
             value={formData.phone}
             onChange={handleInputChange}
@@ -103,7 +100,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           />
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               {/* Email Address * */}
             </label>
             <input
@@ -113,15 +110,15 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               onChange={handleInputChange}
               required
               className={inputClasses}
-              placeholder="Email Address"
+              placeholder="Enter your email address"
             />
           </div>
         </div>
 
         {/* Professional Information - 2 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
+        <div className="grid grid-cols-1 assetsmd:grid-cols-1 gap-4 sm:gap-2">
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               {/* Profession * */}
             </label>
             <select
@@ -139,7 +136,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               {/* Specialty * */}
             </label>
             <select
@@ -158,27 +155,11 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* AHPRA Number - Full width */}
-        {/* <div>
-          <label className="block text-sm font-medium text-gray-700 ">
-            AHPRA Number *
-          </label>
-          <input
-            type="text"
-            name="ahpraNumber"
-            value={formData.ahpraNumber}
-            onChange={handleInputChange}
-            required
-            className={inputClasses}
-            placeholder="Enter your AHPRA registration number"
-          />
-        </div> */}
-
         {/* File Upload and Job Source - 2 columns on desktop */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
+        <div className="grid grid-cols-1 assetsmd:grid-cols-1 gap-4 sm:gap-2">
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">
-          
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+             
             </label>
             <div className="relative">
               <input
@@ -187,20 +168,20 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
                 onChange={handleFileChange}
                 accept=".pdf,.doc,.docx"
                 required
-                className="w-full px-3 py-2 border border-[#66768F]/16 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent opacity-0 absolute z-10 cursor-pointer h-12 sm:h-10"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent opacity-0 absolute z-10 cursor-pointer h-12 sm:h-10"
                 id="resume-upload"
               />
               <label
                 htmlFor="resume-upload"
                 className={`${inputClasses} bg-white cursor-pointer text-gray-500 block h-12 sm:h-10 flex items-center text-sm`}
               >
-                   Resume/CV *
+                Resume/CV *
               </label>
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 ">
-           
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+             
             </label>
             <select
               name="jobSource"
@@ -221,21 +202,6 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* Cover Letter - Full width */}
-        {/* <div>
-          <label className="block text-sm font-medium text-gray-700 ">
-            Cover Letter
-          </label>
-          <textarea
-            name="coverLetter"
-            value={formData.coverLetter}
-            onChange={handleInputChange}
-            rows={4}
-            className={inputClasses}
-            placeholder="Enter your cover letter (optional)"
-          />
-        </div> */}
-
         {/* Terms and Submit */}
         <div className="space-y-3 sm:space-y-4">
           <div className="flex items-start">
@@ -245,9 +211,9 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               checked={formData.agreeToTerms}
               onChange={handleInputChange}
               required
-              className="w-4 h-4 rounded border-[#66768F]/16 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
+              className="w-4 h-4 rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
             />
-            <label className="ml-2 text-[15px] text-gray-700 leading-tight">
+            <label className="ml-2 text-sm text-gray-700 leading-tight">
               I confirm that I have read and agree to the <Link href="/terms" className="hover:underline text-[#64CAF3]">Terms of Use</Link> and <Link href="/privacy" className="hover:underline text-[#64CAF3]">Privacy Policy.</Link>
             </label>
           </div>
@@ -258,28 +224,21 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               name="subscribeToAlerts"
               checked={formData.subscribeToAlerts}
               onChange={handleInputChange}
-              className="w-4 h-4 rounded border-[#66768F]/16 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
+              className="w-4 h-4 rounded border-gray-300 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
             />
-            <label className="ml-2 text-[15px] text-gray-700 leading-tight">
+            <label className="ml-2 text-sm text-gray-700 leading-tight">
               Subscribe for Job Alerts.
             </label>
           </div>
         </div>
 
-        {/* Buttons - Side by side on desktop, stacked on mobile */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        {/* Submit Button Only - No Cancel button */}
+        <div className="flex justify-center sm:justify-start">
           <button
             type="submit"
-            className="bg-[#64CAF3] text-white px-6 sm:px-8 py-3 rounded-lg hover:bg-[#55b8e0] transition-colors font-medium order-2 sm:order-1"
+            className="bg-gradient-to-r from-[#141E65] to-[#151C50] text-[#FFD791]  w-full text-white px-8 sm:px-12 py-3 rounded-lg hover:bg-[#55b8e0] transition-colors font-medium text-sm sm:text-base"
           >
             Submit Application
-          </button>
-          <button
-            type="button"
-            onClick={onClose}
-            className="bg-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg hover:bg-gray-400 transition-colors font-medium order-1 sm:order-2"
-          >
-            Cancel
           </button>
         </div>
       </form>

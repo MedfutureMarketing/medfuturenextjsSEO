@@ -2,34 +2,34 @@
 export default function JobCard() {
     return (
         <div>
-            <div className="bg-white border border-gray-200 rounded-lg p-4 max-w-full shadow-">
+            <div className="bg-white border border-[#E6EDF7] rounded-lg p-4 max-w-full shadow-">
                 {/* Title and Salary */}
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-semibold text-[#0E2851]">
+                    <h3 className="text-[18px] font-semibold text-[#0E2851]">
                         GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
                     </h3>
-                    <span className="text-[#66666699] font-medium text-sm  px-2 py-1 rounded">
+                    <span className="text-[#666666]/60 font-medium text-sm  px-2 py-1 rounded">
                         GP20738
                     </span>
                 </div>
 
                 <div className="flex flex-wrap gap-2 text-sm text-gray-600 mb-2">
-                    <span className="bg-[#66768F1A] text-[#66768F] px-2 py-1 rounded">
+                    <span className="bg-[#66768F]/10 text-[#66768F] px-2 py-1 rounded">
                         Medical Practitioner
                     </span>
-                    <span className="bg-[#66768F1A] text-[#66768F] px-2 py-1 rounded">
+                    <span className="bg-[#66768F]/10 text-[#66768F] px-2 py-1 rounded">
                         Condobolin, New South Wales
                     </span>
-                    <span className="bg-[#66768F1A] text-[#66768F] px-2 py-1 rounded">
+                    <span className="bg-[#66768F]/10 text-[#66768F] px-2 py-1 rounded">
                         Full / Part Time
                     </span>
-                    <span className="bg-[#66768F1A] text-[#66768F] px-2 py-1 rounded">
+                    <span className="bg-[#66768F]/10 text-[#66768F] px-2 py-1 rounded">
                         Medical Practitioner
                     </span>
                 </div>
 
         {/* Time */}
-                <div className="flex justify-between items-center text-xs text-gray-500">
+                <div className="flex justify-between items-center text-xs text-[#666666]/80">
                     <div>36 min ago</div>
                     <div>
                         <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
