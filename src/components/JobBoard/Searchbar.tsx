@@ -24,12 +24,15 @@ const DATA: Record<string, string[]> = {
   "Western Australia": ["Perth Metro", "South West WA"],
 };
 
+type State = keyof typeof DATA;
+type Region = string;
+
 export default function SearchBarWithLocation() {
-  const [query, setQuery] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [selectedState, setSelectedState] = useState("");
-  const [selectedRegion, setSelectedRegion] = useState("");
+  const [query, setQuery] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [mobileOpen, setMobileOpen] = useState<boolean>(false);
+  const [selectedState, setSelectedState] = useState<State | "">("");
+  const [selectedRegion, setSelectedRegion] = useState<Region | "">("");
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -44,7 +47,7 @@ export default function SearchBarWithLocation() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log({
       query,
@@ -53,12 +56,19 @@ export default function SearchBarWithLocation() {
     });
   };
 
-  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+  const [isMobile, setIsMobile] = useState<boolean>(
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
       <div className="w-full max-w-full mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        
         {/* LEFT TITLE */}
         <div>
           <h2 className="text-5xl font-bold text-gray-800">Browse</h2>
@@ -68,7 +78,7 @@ export default function SearchBarWithLocation() {
         {/* SEARCH + LOCATION */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col md:flex-row items-center gap-3 bg-white p-4  w-full md:w-auto"
+          className="flex flex-col md:flex-row items-center gap-3 bg-white p-4 w-full md:w-auto"
         >
           {/* SEARCH INPUT */}
           <input
@@ -83,7 +93,9 @@ export default function SearchBarWithLocation() {
           <div className="relative w-full md:w-[350px] text-black" ref={ref}>
             <button
               type="button"
-              onClick={() => (isMobile ? setMobileOpen(true) : setIsOpen(!isOpen))}
+              onClick={() =>
+                isMobile ? setMobileOpen(true) : setIsOpen(!isOpen)
+              }
               className="w-full border border-gray-300 px-4 lg:py-4 py-3 rounded-lg flex items-center justify-between bg-white"
             >
               <span className="text-gray-700">
@@ -112,7 +124,7 @@ export default function SearchBarWithLocation() {
                           name="state"
                           checked={selectedState === state}
                           onChange={() => {
-                            setSelectedState(state);
+                            setSelectedState(state as State);
                             setSelectedRegion("");
                           }}
                         />
@@ -159,6 +171,7 @@ export default function SearchBarWithLocation() {
           </button>
         </form>
       </div>
+
       {/* MOBILE FULL-SCREEN MODAL */}
       {mobileOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col animate-slideUp text-black">
@@ -181,7 +194,7 @@ export default function SearchBarWithLocation() {
                   <div
                     key={state}
                     className="p-3 border rounded-lg mb-2 bg-gray-50 active:bg-gray-100 cursor-pointer"
-                    onClick={() => setSelectedState(state)}
+                    onClick={() => setSelectedState(state as State)}
                   >
                     {state}
                   </div>
@@ -214,6 +227,7 @@ export default function SearchBarWithLocation() {
           </div>
         </div>
       )}
+
       {/* MOBILE ANIMATION */}
       <style jsx>{`
         .animate-slideUp {
