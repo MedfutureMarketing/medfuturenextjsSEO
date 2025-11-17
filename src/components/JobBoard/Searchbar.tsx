@@ -47,15 +47,7 @@ export default function SearchBarWithLocation() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log({
-      query,
-      selectedState,
-      selectedRegion,
-    });
-  };
-
+  // Track mobile/desktop view
   const [isMobile, setIsMobile] = useState<boolean>(
     typeof window !== "undefined" ? window.innerWidth < 768 : false
   );
@@ -65,6 +57,15 @@ export default function SearchBarWithLocation() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log({
+      query,
+      selectedState,
+      selectedRegion,
+    });
+  };
 
   return (
     <>
@@ -93,9 +94,7 @@ export default function SearchBarWithLocation() {
           <div className="relative w-full md:w-[350px] text-black" ref={ref}>
             <button
               type="button"
-              onClick={() =>
-                isMobile ? setMobileOpen(true) : setIsOpen(!isOpen)
-              }
+              onClick={() => (isMobile ? setMobileOpen(true) : setIsOpen(!isOpen))}
               className="w-full border border-gray-300 px-4 lg:py-4 py-3 rounded-lg flex items-center justify-between bg-white"
             >
               <span className="text-gray-700">
@@ -185,6 +184,7 @@ export default function SearchBarWithLocation() {
               Done
             </button>
           </div>
+
           {/* BODY */}
           <div className="flex-1 overflow-y-auto p-4">
             {!selectedState ? (
