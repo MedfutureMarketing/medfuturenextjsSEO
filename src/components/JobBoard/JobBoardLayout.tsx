@@ -22,6 +22,14 @@ export default function JobBoardLayout() {
                                 <PermanentCard />
                                 <PermanentCard />
                                 <PermanentCard />
+                                <PermanentCard />
+                                <PermanentCard />
+                                 <PermanentCard />
+                                <PermanentCard />
+                                <PermanentCard />
+                                <PermanentCard />
+                                <PermanentCard />
+                                
                                 
                                 
                                 {/* show only 10 cards  */}

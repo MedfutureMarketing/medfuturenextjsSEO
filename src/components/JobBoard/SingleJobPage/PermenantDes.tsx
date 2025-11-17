@@ -24,7 +24,7 @@ export default function JobDescription() {
   };
 
   return (
-    <div className="">
+    <div className="border-2">
       {/* Mobile Apply Button - Fixed at bottom */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 z-50 border-t">
         <button
