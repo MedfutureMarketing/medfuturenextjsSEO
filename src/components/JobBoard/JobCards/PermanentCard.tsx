@@ -2,7 +2,7 @@
 export default function JobCard() {
     return (
         <div>
-            <div className="bg-white border border-[#E6EDF7] rounded-lg p-4 max-w-full shadow-">
+            <div className="bg-white border cursor-pointer border-[#E6EDF7] rounded-lg p-4 max-w-full shadow-">
                 {/* Title and Salary */}
                 <div className="flex justify-between items-start mb-2">
                     <h3 className="lg:text-[18px] font-semibold text-[#0E2851]">

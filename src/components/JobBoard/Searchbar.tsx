@@ -103,7 +103,7 @@ export default function SearchBarWithLocation() {
           </div>
 
           {/* LOCATION WRAPPER */}
-          <div className="relative w-full md:w-[300px] lg:w-[350px] cursor-point text-black" ref={ref}>
+          <div className="relative w-full md:w-[300px] lg:w-[350px] cursor-pointer text-black" ref={ref}>
             <button
               type="button"
               onClick={() => {
@@ -114,7 +114,7 @@ export default function SearchBarWithLocation() {
                   setIsOpen(!isOpen);
                 }
               }}
-              className="w-full border border-gray-300 px-4 lg:py-4 py-3 rounded-lg flex items-center justify-between bg-white"
+              className="w-full border border-gray-300 cursor-pointer px-4 lg:py-4 py-3 rounded-lg flex items-center justify-between bg-white"
             >
               <span className="text-gray-700">
                 {selectedRegion || selectedState || "Location"}
@@ -127,10 +127,10 @@ export default function SearchBarWithLocation() {
 
             {/* DESKTOP DROPDOWN */}
             {!isMobile && isOpen && (
-              <div className="absolute top-[110%] right-0 bg-white shadow-xl border border-gray-200 rounded-lg p-4 z-50 w-[580px] transition-all duration-200">
-                <div className="grid grid-cols-2 gap-4">
+              <div className="absolute top-[110%] right-0 bg-white cursor-pointer shadow-xl border border-gray-200 rounded-lg p-4 z-50 w-[580px] transition-all duration-200">
+                <div className="grid grid-cols-2 gap-4 ">
                   {/* STATES */}
-                  <div className="border-0 pr-4 space-y-2">
+                  <div className="border-0 pr-4 space-y-2 cursor-pointer">
                     {Object.keys(DATA).map((state) => (
                       <label
                         key={state}
