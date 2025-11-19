@@ -1,14 +1,10 @@
 @import "tailwindcss";
 
+/* Root Colors */
 :root {
   --background: #ffffff;
-  /* white background */
   --foreground: #ffffff;
-  /* black text */
 }
-
-
-
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -17,7 +13,7 @@
   }
 }
 
-
+/* Default page container */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -25,15 +21,36 @@ body {
 
   width: 100%;
   max-width: 1400px;
-  /* default desktop width */
   margin: 0 auto;
-  /* center horizontally */
-  padding: 1rem;
-  /* small padding for mobile */
+  padding: 0;            /* ❗ FIX: remove padding (important!) */
   box-sizing: border-box;
 }
 
+/* Optional reusable inner container */
+.inner-width-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
 
+/* Full width breakout (works inside constrained layout) */
+.full-width-section {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw !important;
+  margin-right: -50vw !important;
+  
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Scrollbar Styling */
 .custom-scrollbar {
   --scrollbar-width: 4px;
   --scrollbar-track-color: #f1f1f1;
@@ -65,7 +82,6 @@ body {
   background: var(--scrollbar-thumb-hover);
 }
 
-/* For horizontal scrollbar specific adjustments */
 .custom-scrollbar::-webkit-scrollbar-track:horizontal {
   margin: 0 var(--scrollbar-track-margin);
 }

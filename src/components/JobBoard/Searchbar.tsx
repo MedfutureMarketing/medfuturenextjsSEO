@@ -65,7 +65,7 @@ export default function SearchBarWithLocation() {
 
   return (
     <>
-<div className="w-full max-w-full mx-auto flex flex-col md:flex-row items-start md:items-start lg:items-left lg:justify-between md:justify-left gap-6 ">
+<div className="w-full lg:px-2 px-4 max-w-full mx-auto flex flex-col md:flex-row items-start md:items-start lg:items-left lg:justify-between md:justify-left gap-6 ">
         {/* LEFT TITLE */}
         <div>
           <h2 className="text-5xl font-bold text-gray-800">Browse</h2>

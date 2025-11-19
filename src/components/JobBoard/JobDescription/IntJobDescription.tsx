@@ -27,7 +27,7 @@ export default function JobDescription() {
   };
 
   return (
-    <div className="hidden lg:block">
+    <div className="hidden lg:block md:block broder-2">
 
       <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] pl-[43px] pr-[23px] py-[25px] rounded-none bg-white">
         <h1 className="text-[24px] font-bold text-[#0E2851] pr-[43px] flex-1">
