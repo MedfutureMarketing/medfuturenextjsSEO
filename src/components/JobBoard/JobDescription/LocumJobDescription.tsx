@@ -38,7 +38,7 @@ export default function LocumJobDescription() {
   };
 
   return (
-    <div className="hidden lg:block border-2">
+    <div className="hidden lg:block md:block border-2">
       {/* Header */}
       <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-6 rounded-none bg-white">
         <h1 className="text-2xl font-bold text-[#141E65] pr-4 flex-1">

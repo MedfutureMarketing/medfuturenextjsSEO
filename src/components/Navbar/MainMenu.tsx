@@ -40,69 +40,76 @@ export default function Menu() {
       </div>
 
 
-      <header className="bg-white  sticky top-0 z-50">
-        <div className="px-2 py-3 mx-auto max-w-screen-2xl md:px-0 flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" aria-label="Medfuture" className="inline-flex items-center">
-            <Image src={Medfuturelogo} alt="Medfuture logo" width={180} height={40} priority />
-          </Link>
-          <ul className="hidden lg:flex items-center space-x-8">
-            <li>
-              <Link href="/permanent" className="font-medium text-gray-700 hover:text-blue-600">
-                Permanent Jobs
-              </Link>
-            </li>
-            <li>
-              <Link href="/locum-jobs" className="font-medium text-gray-700 hover:text-blue-600">
-                Locum Jobs
-              </Link>
-            </li>
-            <li>
-              <Link href="/international" className="font-medium text-gray-700 hover:text-blue-600">
-                International
-              </Link>
-            </li>
-            <li>
-              <Link href="/candidates" className="font-medium text-gray-700 hover:text-blue-600">
-                For Candidates
-              </Link>
-            </li>
-            <li>
-              <Link href="/employers" className="font-medium text-gray-700 hover:text-blue-600">
-                For Employers
-              </Link>
-            </li>
-            <li>
-              <Link href="/explore" className="font-medium text-gray-700 hover:text-blue-600">
-                Explore
-              </Link>
-            </li>
-          </ul>
-          <div className="hidden lg:block">
-            <Link
-              href="/signup"
-              className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
-            >
-              Sign Up
-            </Link>
-          </div>
-          <button
-            aria-label="Open Menu"
-            title="Open Menu"
-            onClick={() => setIsMenuOpen(true)}
-            className="p-2 text-gray-700 rounded-md hover:bg-gray-100 lg:hidden"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </header>
+      <header className="bg-white sticky top-0 z-50 w-full">
+  <div className="px-4 py-3 w-full flex items-center justify-between">
+    {/* Logo */}
+    <Link href="/" aria-label="Medfuture" className="inline-flex items-center">
+      <Image src={Medfuturelogo} alt="Medfuture logo" width={180} height={40} priority />
+    </Link>
+
+    {/* Navigation */}
+    <ul className="hidden lg:flex items-center space-x-8">
+      <li>
+        <Link href="/permanent" className="font-medium text-gray-700 hover:text-blue-600">
+          Permanent Jobs
+        </Link>
+      </li>
+      <li>
+        <Link href="/locum" className="font-medium text-gray-700 hover:text-blue-600">
+          Locum Jobs
+        </Link>
+      </li>
+      <li>
+        <Link href="/international" className="font-medium text-gray-700 hover:text-blue-600">
+          International
+        </Link>
+      </li>
+      <li>
+        <Link href="/candidates" className="font-medium text-gray-700 hover:text-blue-600">
+          For Candidates
+        </Link>
+      </li>
+      <li>
+        <Link href="/employers" className="font-medium text-gray-700 hover:text-blue-600">
+          For Employers
+        </Link>
+      </li>
+      <li>
+        <Link href="/explore" className="font-medium text-gray-700 hover:text-blue-600">
+          Explore
+        </Link>
+      </li>
+    </ul>
+
+    {/* Sign Up */}
+    <div className="hidden lg:block">
+      <Link
+        href="/signup"
+        className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
+      >
+        Sign Up
+      </Link>
+    </div>
+
+    {/* Mobile Menu Button */}
+    <button
+      aria-label="Open Menu"
+      title="Open Menu"
+      onClick={() => setIsMenuOpen(true)}
+      className="p-2 text-gray-700 rounded-md hover:bg-gray-100 lg:hidden"
+    >
+      <svg
+        className="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+</header>
+
       {isMenuOpen && (
         <>
 
@@ -143,7 +150,7 @@ export default function Menu() {
                 <p className="text-sm text-gray-500 mb-2 font-semibold">Navigation</p>
                 <div className="flex flex-col space-y-2 text-gray-700">
                   <Link href="/permanent" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">Permanent Jobs</Link>
-                  <Link href="/locum-jobs" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">Locum Jobs</Link>
+                  <Link href="/locum" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">Locum Jobs</Link>
                   <Link href="/international" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">International</Link>
                   <Link href="/candidates" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">For Candidates</Link>
                   <Link href="/employers" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">For Employers</Link>

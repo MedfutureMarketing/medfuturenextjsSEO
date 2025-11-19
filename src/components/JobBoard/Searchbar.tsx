@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 
-
 const DATA: Record<string, string[]> = {
   "Australian Capital Territory": ["Canberra Region"],
   "New South Wales": [
@@ -61,16 +60,12 @@ export default function SearchBarWithLocation() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({
-      query,
-      selectedState,
-      selectedRegion,
-    });
+    console.log({ query, selectedState, selectedRegion });
   };
 
   return (
     <>
-      <div className="w-full max-w-full mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+<div className="w-full max-w-full mx-auto flex flex-col md:flex-row items-start md:items-start lg:items-left lg:justify-between md:justify-left gap-6 ">
         {/* LEFT TITLE */}
         <div>
           <h2 className="text-5xl font-bold text-gray-800">Browse</h2>
@@ -80,10 +75,10 @@ export default function SearchBarWithLocation() {
         {/* SEARCH + LOCATION */}
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col md:flex-row items-center gap-3 bg-white p-4 w-full md:w-auto"
+          className="flex flex-col md:flex-row items-center gap-3 bg-white lg:p-4 w-full md:w-auto"
         >
           {/* SEARCH INPUT */}
-          <div className="relative w-full md:w-[350px]">
+          <div className="relative w-full md:w-[300px] lg:w-[350px]">
             <input
               type="text"
               placeholder="Search Jobs"
@@ -107,39 +102,45 @@ export default function SearchBarWithLocation() {
             </svg>
           </div>
 
-
           {/* LOCATION WRAPPER */}
-          <div className="relative w-full md:w-[350px] text-black" ref={ref}>
+          <div className="relative w-full md:w-[300px] lg:w-[350px] cursor-point text-black" ref={ref}>
             <button
               type="button"
-              onClick={() => (isMobile ? setMobileOpen(true) : setIsOpen(!isOpen))}
+              onClick={() => {
+                if (isMobile) {
+                  setMobileOpen(true);
+                  setSelectedRegion(""); // reset region when opening mobile
+                } else {
+                  setIsOpen(!isOpen);
+                }
+              }}
               className="w-full border border-gray-300 px-4 lg:py-4 py-3 rounded-lg flex items-center justify-between bg-white"
             >
               <span className="text-gray-700">
                 {selectedRegion || selectedState || "Location"}
               </span>
-              <span className="text-gray-500">⌄</span>
+              <span className="text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
+              </svg>
+              </span>
             </button>
 
             {/* DESKTOP DROPDOWN */}
             {!isMobile && isOpen && (
-              <div
-                className={`absolute top-[110%] left-0 bg-white shadow-xl border border-gray-200 rounded-lg p-4 z-50 w-[500px] transition-all duration-200
-                  ${selectedState ? "-translate-x-36" : "translate-x-0"}
-                `}
-              >
+              <div className="absolute top-[110%] right-0 bg-white shadow-xl border border-gray-200 rounded-lg p-4 z-50 w-[580px] transition-all duration-200">
                 <div className="grid grid-cols-2 gap-4">
                   {/* STATES */}
-                  <div className="border-r pr-4">
+                  <div className="border-0 pr-4 space-y-2">
                     {Object.keys(DATA).map((state) => (
                       <label
                         key={state}
-                        className="flex items-center gap-2 py-2 cursor-pointer"
+                        className={`flex items-center gap-2 py-2 px-3 rounded-lg cursor-pointer transition hover:bg-blue-50 ${selectedState === state ? "bg-blue-100 font-semibold" : ""
+                          }`}
                       >
                         <input
                           type="radio"
                           name="state"
-                          checked={selectedState === state}
+ className="accent-blue-600 cursor-pointer"                          checked={selectedState === state}
                           onChange={() => {
                             setSelectedState(state as State);
                             setSelectedRegion("");
@@ -151,23 +152,22 @@ export default function SearchBarWithLocation() {
                   </div>
 
                   {/* REGIONS */}
-                  <div className="pl-4">
+                  <div className="pl-4 space-y-2">
                     {!selectedState ? (
                       <p className="text-gray-400 text-sm">Select a state</p>
                     ) : (
                       DATA[selectedState].map((region) => (
                         <label
                           key={region}
-                          className="flex items-center gap-2 py-2 cursor-pointer"
+                          className={`flex items-center gap-2 py-2 px-3 rounded-lg cursor-pointer transition hover:bg-blue-50 ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
+                            }`}
                         >
                           <input
                             type="radio"
                             name="region"
+                             className="accent-blue-600 cursor-pointer"
                             checked={selectedRegion === region}
-                            onChange={() => {
-                              setSelectedRegion(region);
-                              setIsOpen(false);
-                            }}
+                            onChange={() => setSelectedRegion(region)}
                           />
                           <span>{region}</span>
                         </label>
@@ -182,7 +182,7 @@ export default function SearchBarWithLocation() {
           {/* SUBMIT BUTTON */}
           <button
             type="submit"
-            className="w-full md:w-auto bg-[#64CAF3] text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            className="w-full md:w-auto bg-[#64CAF3] text-white px-6 py-4 rounded-lg hover:bg-blue-[#64CAd3] cursor-pointer  transition"
           >
             Search
           </button>
@@ -197,51 +197,57 @@ export default function SearchBarWithLocation() {
             <h3 className="text-lg font-semibold">Select Location</h3>
             <button
               onClick={() => setMobileOpen(false)}
-              className="text-blue-600 text-sm"
+              className="text-black-600 bg-[#64CAF3] py-2 px-4 rounded-lg shadow-xl text-white text-lg font-medium"
             >
               Done
             </button>
           </div>
 
           {/* BODY */}
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {!selectedState ? (
               <>
-                <h4 className="text-gray-800 font-medium mb-3">States</h4>
-                {Object.keys(DATA).map((state) => (
-                  <div
-                    key={state}
-                    className="p-3 border rounded-lg mb-2 bg-gray-50 active:bg-gray-100 cursor-pointer"
-                    onClick={() => setSelectedState(state as State)}
-                  >
-                    {state}
-                  </div>
-                ))}
+                <h4 className="text-gray-900 font-semi-bold text-md">States</h4>
+                <div className="grid gap-1">
+                  {Object.keys(DATA).map((state) => (
+                    <div
+                      key={state}
+                      className={`p-3 rounded-xl border border-gray-200 bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedState === state ? "bg-blue-100 font-semibold" : ""
+                        }`}
+                      onClick={() => setSelectedState(state as State)}
+                    >
+                      {state}
+                    </div>
+                  ))}
+                </div>
               </>
-            ) : !selectedRegion ? (
+            ) : (
               <>
                 <button
-                  className="text-blue-600 mb-4"
+                  className="text-blue-600 mb-4 font-medium"
                   onClick={() => setSelectedState("")}
                 >
-                  ← Back to States
+                  ← Back
                 </button>
 
-                <h4 className="text-gray-800 font-medium mb-3">Regions</h4>
-                {DATA[selectedState].map((region) => (
-                  <div
-                    key={region}
-                    className="p-3 border rounded-lg mb-2 bg-gray-50 active:bg-gray-100 cursor-pointer"
-                    onClick={() => {
-                      setSelectedRegion(region);
-                      setMobileOpen(false);
-                    }}
-                  >
-                    {region}
-                  </div>
-                ))}
+                <h4 className="text-gray-900 font-semibold text-md mb-2">Regions</h4>
+                <div className="grid gap-2">
+                  {DATA[selectedState].map((region) => (
+                    <div
+                      key={region}
+                      className={`p-2 rounded-xl border border-gray-200  cursor-pointer hover:bg-blue-50 transition  ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
+                        }`}
+                      onClick={() => {
+                        setSelectedRegion(region);
+                        setMobileOpen(false);
+                      }}
+                    >
+                      {region}
+                    </div>
+                  ))}
+                </div>
               </>
-            ) : null}
+            )}
           </div>
         </div>
       )}

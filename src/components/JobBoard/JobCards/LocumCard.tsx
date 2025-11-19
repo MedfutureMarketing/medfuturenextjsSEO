@@ -5,7 +5,7 @@ export default function LocumJobCard() {
             <div className="bg-[#66768F1A] border border-gray-200 rounded-lg p-4 max-w-full shadow-">
                 {/* Title and Salary */}
                 <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-[18px] font-semibold text-[#141E65]">
+                    <h3 className="lg:text-[18px] font-semibold text-[#141E65]">
                        Locum GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
                     </h3>
                     <span className="text-[#666666]/80 font-medium text-[15px]  px-2 py-1 rounded">
