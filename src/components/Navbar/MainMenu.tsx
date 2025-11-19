@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import MedfutureLogoLight from "@/assets/logo/medfuture-white.png";
@@ -37,14 +37,14 @@ export default function Menu() {
   const headerColors = headerColorMap[pathname] || defaultHeaderColors;
 
   // ⭐ PAGE-BASED LOGO
-  const logoMap: Record<string, any> = {
-    "/permanent": MedfutureLogoDark,
-    "/locum": MedfutureLogoLight,
-    "/international": MedfutureLogoLight,
-    "/candidates": MedfutureLogoLight,
-    "/employers": MedfutureLogoLight,
-    "/explore": MedfutureLogoLight,
-  };
+  const logoMap: Record<string, StaticImageData> = {
+  "/permanent": MedfutureLogoDark,
+  "/locum": MedfutureLogoLight,
+  "/international": MedfutureLogoLight,
+  "/candidates": MedfutureLogoLight,
+  "/employers": MedfutureLogoLight,
+  "/explore": MedfutureLogoLight,
+};
   const activeLogo = logoMap[pathname] || MedfutureLogoDark;
 
   return (
