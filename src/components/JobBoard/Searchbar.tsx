@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 
+
 const DATA: Record<string, string[]> = {
   "Australian Capital Territory": ["Canberra Region"],
   "New South Wales": [
@@ -82,13 +83,30 @@ export default function SearchBarWithLocation() {
           className="flex flex-col md:flex-row items-center gap-3 bg-white p-4 w-full md:w-auto"
         >
           {/* SEARCH INPUT */}
-          <input
-            type="text"
-            placeholder="Search services..."
-            className="w-full md:w-[350px] border border-gray-300 px-4 lg:py-4 py-3 rounded-lg focus:ring focus:ring-blue-300 outline-none"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
+          <div className="relative w-full md:w-[350px]">
+            <input
+              type="text"
+              placeholder="Search Jobs"
+              className="w-full border text-black border-gray-300 px-10 lg:py-4 py-3 rounded-lg focus:ring focus:ring-blue-300 outline-none"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+            />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+              />
+            </svg>
+          </div>
+
 
           {/* LOCATION WRAPPER */}
           <div className="relative w-full md:w-[350px] text-black" ref={ref}>
