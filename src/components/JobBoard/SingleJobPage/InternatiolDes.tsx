@@ -70,16 +70,16 @@ export default function JobDescription() {
 
       {/* Job Tags */}
       <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[44px]">
-        <span className="text-[#0E2851] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+        <span className="text-[#0E2851] text-[14px] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
           Permanent
         </span>
-        <span className="text-[#0E2851] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+        <span className="text-[#0E2851] text-[14px] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
           Medical Practitioner
         </span>
-        <span className="text-[#0E2851] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+        <span className="text-[#0E2851] text-[14px] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
           AUD 160/Hour
         </span>
-        <span className="text-[#0E2851] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+        <span className="text-[#0E2851] text-[14px] text-[14px] lg:text-[18px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
           Full Time Or Part Time
         </span>
       </div>
@@ -87,11 +87,11 @@ export default function JobDescription() {
       {/* Job Description */}
       <div className="prose max-w-none px-4 lg:px-[44px]">
         <div>
-          <p className="text-[#666666] text-sm lg:text-base leading-relaxed">
+          <p className="text-[#666666] text-[14px] lg:text-[18px] leading-relaxed">
             We are seeking a committed GP Registrar to work in Condobolin, NSW. In this role, you will provide comprehensive aged care services to the local community. Enjoy appealing benefits, including competitive pay, support with travel and accommodation, and opportunities for career development. Apply today to work in a welcoming and fulfilling environment.
           </p>
           <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base lg:text-lg">Offer Details:</h4>
-          <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-sm lg:text-base">
+          <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-[14px] lg:text-[18px]">
             <li>Permanent position</li>
             <li>Full-time or part-time engagement</li>
             <li>80% of billings or AUD 200 per hour for the first 3 months</li>
@@ -100,11 +100,11 @@ export default function JobDescription() {
         </div>
         <div>
           <h3 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base lg:text-lg">Medical Practice Details</h3>
-          <p className="text-[#666666] mt-2 lg:mt-[10px] text-sm lg:text-base leading-relaxed">
+          <p className="text-[#666666] mt-2 lg:mt-[10px] text-[14px] lg:text-[18px] leading-relaxed">
             Located in New South Wales, this facility offers a wide range of healthcare services to support the local community. Services include GP care for aged care residents, drug and alcohol programs, pre-employment and diving medicals, along with specialised health assessments for aviation, asbestos exposure, and the mining industry. Condobolin has amenities such as parks, recreational areas, and a variety of dining and shopping options, making it a great place to live and work.
           </p>
           <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base lg:text-lg">Eligibility Requirements</h4>
-          <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-sm lg:text-base">
+          <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-[14px] lg:text-[18px]">
             <li>Should hold General registration with AHPRA</li>
             <li>GP Registrar or Non VR GP with General Registration</li>
             <li>Unlimited working rights in Australia</li>
@@ -117,20 +117,20 @@ export default function JobDescription() {
         <h3 className="font-semibold text-[#66768F] text-base lg:text-lg">Contact Us</h3>
         
         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-          <span className="font-semibold text-[#66768F] text-sm lg:text-base">Recruitment Consultant:</span>
-          <span className="text-[#66768F] text-sm lg:text-base">Gaya</span>
+          <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Recruitment Consultant:</span>
+          <span className="text-[#66768F] text-[14px] lg:text-[18px]">Gaya</span>
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-          <span className="font-semibold text-[#66768F] text-sm lg:text-base">Contact Number:</span>
-          <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-sm lg:text-base">0452 468 515</a>
+          <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Contact Number:</span>
+          <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px]">0452 468 515</a>
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-          <span className="font-semibold text-[#66768F] text-sm lg:text-base">Email:</span>
-          <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#66768F] hover:text-[#64CAF3] text-sm lg:text-base break-all">gprecruitment@medfuture.com.au</a>
+          <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Email:</span>
+          <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px] break-all">gprecruitment@medfuture.com.au</a>
         </div>
         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-          <span className="font-semibold text-[#66768F] text-sm lg:text-base">General Enquiries:</span>
-          <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-sm lg:text-base">0452 468 515</a>
+          <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">General Enquiries:</span>
+          <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px]">0452 468 515</a>
         </div>
       </div>
 

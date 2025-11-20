@@ -79,9 +79,9 @@ export default function LocumJobDescription() {
                     {/* Hardcoded Job Details Section */}
                     <div className="flex items-center justify-center">
                         <div className="w-full bg-white p-4 lg:p-6 ">
-                            <div className="grid grid-cols-1  lg:grid-cols-[auto_2fr] gap-y-3 lg:gap-y-4 gap-x-0 lg:gap-x-5 border-gray-200">
+                            <div className="grid grid-cols-2  lg:grid-cols-[auto_2fr] lg:gap-y-3 lg:gap-y-4 gap-x-0 lg:gap-x-5 border-gray-200">
                                 {/* Profession */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={ProfessionIcon}
                                         alt="Profession icon"
@@ -91,12 +91,13 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Profession</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
                                     Medical Practitioner
                                 </div>
 
                                 {/* Specialty */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={SpecialtyIcon}
                                         alt="Specialty icon"
@@ -106,12 +107,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Specialty</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     General Practitioner
                                 </div>
 
                                 {/* Seniority */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={SeniorityIcon}
                                         alt="Seniority icon"
@@ -121,12 +124,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Seniority</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Surgery
                                 </div>
 
                                 {/* Location */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={LocationIcon}
                                         alt="Location icon"
@@ -136,12 +141,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Location</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Guildford, New South Wales
                                 </div>
 
                                 {/* Start Date */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={StartDateIcon}
                                         alt="Start date icon"
@@ -151,12 +158,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Start Date</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Flexible
                                 </div>
 
                                 {/* End Date */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={EndDateIcon}
                                         alt="End date icon"
@@ -166,12 +175,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>End Date</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Flexible
                                 </div>
 
                                 {/* Locum Period */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={LocumPeriodIcon}
                                         alt="Locum period icon"
@@ -181,12 +192,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Locum Period</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Ongoing
                                 </div>
 
                                 {/* Locum Rate On Offer */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={LocumRateIcon}
                                         alt="Locum rate icon"
@@ -196,12 +209,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Locum Rate On Offer</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     AUD 200 per hour
                                 </div>
 
                                 {/* Engagement Type */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={EngagementTypeIcon}
                                         alt="Engagement type icon"
@@ -211,12 +226,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Engagement Type</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Full-Time or Part-Time
                                 </div>
 
                                 {/* Engagement Mode */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={EngagementModeIcon}
                                         alt="Engagement mode icon"
@@ -226,12 +243,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Engagement Mode</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Onsite
                                 </div>
 
                                 {/* Payment Cycle */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={PaymentCycleIcon}
                                         alt="Payment cycle icon"
@@ -241,12 +260,14 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Payment Cycle</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Fortnightly
                                 </div>
 
                                 {/* Additional Information */}
-                                <div className="pl-2 lg:pl-4 text-[18px] font-medium text-[#666666] flex items-center gap-2">
+                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
                                     <Image
                                         src={AdditionalInfoIcon}
                                         alt="Additional information icon"
@@ -256,7 +277,9 @@ export default function LocumJobDescription() {
                                     />
                                     <span>Additional Information</span>
                                 </div>
-                                <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
+
+
                                     Full-time nursing support provided | Consultation fees: Standard – AUD 80 | Long – AUD 140 |
                                     Negotiable offers for the ideal candidate | On-site pathology services | AGPAL-accredited practice |
                                     Opening hours – Monday to Friday 7:00 am to 9:00 pm and Saturday and Sunday 8:00 am to 6:00 pm
@@ -268,11 +291,11 @@ export default function LocumJobDescription() {
                     {/* Job Description Content */}
                     <div className="prose max-w-none p-4 lg:p-6">
                         <div className='mt-[38px]'>
-                            <p className="text-gray-700 mb-4 text-[18px] lg:text-base">
+                            <p className="text-gray-700 mb-4 lg:text-[18px] text-[13px] lg:text-base">
                                 We are seeking a committed GP Registrar to work in Condobolin, NSW. In this role, you will provide comprehensive aged care services to the local community. Enjoy appealing benefits, including competitive pay, support with travel and accommodation, and opportunities for career development. Apply today to work in a welcoming and fulfilling environment.
                             </p>
-                            <h4 className="font-semibold text-[#66768F] mb-2 text-base lg:text-lg mt-[38px]">Offer Details:</h4>
-                            <ul className="list-disc list-inside text-gray-700 space-y-1 mb-4 text-[18px] lg:text-base">
+                            <h4 className="font-semibold text-[#66768F] mb-2 text-base lg:text-[18px] text-[13px] mt-[38px]">Offer Details:</h4>
+                            <ul className="list-disc list-inside text-gray-700 space-y-1 mb-4 lg:text-[18px] text-[13px] lg:text-base">
                                 <li>Permanent position</li>
                                 <li>Full-time or part-time engagement</li>
                                 <li>80% of billings or AUD 200 per hour for the first 3 months</li>
@@ -280,12 +303,12 @@ export default function LocumJobDescription() {
                             </ul>
                         </div>
                         <div className='mt-[38px]'>
-                            <h3 className="font-semibold text-[#66768F] mb-3 text-base lg:text-lg">Medical Practice Details</h3>
-                            <p className="text-gray-700 mb-4 text-[18px] lg:text-base">
+                            <h3 className="font-semibold text-[#66768F] mb-3 text-base lg:text-[18px] text-[13px]">Medical Practice Details</h3>
+                            <p className="text-gray-700 mb-4 lg:text-[18px] text-[13px] lg:text-base">
                                 Located in New South Wales, this facility offers a wide range of healthcare services to support the local community. Services include GP care for aged care residents, drug and alcohol programs, pre-employment and diving medicals, along with specialised health assessments for aviation, asbestos exposure, and the mining industry. Condobolin has amenities such as parks, recreational areas, and a variety of dining and shopping options, making it a great place to live and work.
                             </p>
-                            <h4 className="font-semibold text-[#66768F] mb-2 text-base lg:text-lg mt-[38px]">Eligibility Requirements</h4>
-                            <ul className="list-disc list-inside text-gray-700 space-y-1 text-[18px] lg:text-base">
+                            <h4 className="font-semibold text-[#66768F] mb-2 text-base lg:text-[18px] text-[13px] mt-[38px]">Eligibility Requirements</h4>
+                            <ul className="list-disc list-inside text-gray-700 space-y-1 lg:text-[18px] text-[13px] lg:text-base">
                                 <li>Should hold General registration with AHPRA</li>
                                 <li>GP Registrar or Non VR GP with General Registration</li>
                                 <li>Unlimited working rights in Australia</li>
@@ -296,20 +319,20 @@ export default function LocumJobDescription() {
                     {/* Contact Information */}
                     <div className="grid grid-cols-1 gap-4 lg:gap-[7px] mb-6 p-4 lg:p-6 ">
                         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-                            <h3 className="font-semibold text-[#66768F] text-[18px] lg:text-base ">Recruitment Consultant:</h3>
-                            <span className="text-gray-700 text-[18px] lg:text-base">Gaya</span>
+                            <h3 className="font-semibold text-[#66768F] lg:text-[18px] text-[13px] lg:text-base ">Recruitment Consultant:</h3>
+                            <span className="text-gray-700 lg:text-[18px] text-[13px] lg:text-base">Gaya</span>
                         </div>
                         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-                            <h3 className="font-semibold text-[#66768F] text-[18px] lg:text-base">Contact Number:</h3>
-                            <a href="tel:0452468515" className="text-[#64CAF3] hover:underline text-[18px] lg:text-base">0452 468 515</a>
+                            <h3 className="font-semibold text-[#66768F] lg:text-[18px] text-[13px] lg:text-base">Contact Number:</h3>
+                            <a href="tel:0452468515" className="text-[#64CAF3] hover:underline lg:text-[18px] text-[13px] lg:text-base">0452 468 515</a>
                         </div>
                         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-                            <h3 className="font-semibold text-[#66768F] text-[18px] lg:text-base">Email:</h3>
-                            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#64CAF3] hover:underline text-[18px] lg:text-base break-all">gprecruitment@medfuture.com.au</a>
+                            <h3 className="font-semibold text-[#66768F] lg:text-[18px] text-[13px] lg:text-base">Email:</h3>
+                            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#64CAF3] hover:underline lg:text-[18px] text-[13px] lg:text-base break-all">gprecruitment@medfuture.com.au</a>
                         </div>
                         <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-                            <h3 className="font-semibold text-[#66768F] text-[18px] lg:text-base">General Enquiries:</h3>
-                            <a href="tel:0452468515" className="text-[#64CAF3] hover:underline text-[18px] lg:text-base">0452 468 515</a>
+                            <h3 className="font-semibold text-[#66768F] lg:text-[18px] text-[13px] lg:text-base">General Enquiries:</h3>
+                            <a href="tel:0452468515" className="text-[#64CAF3] hover:underline lg:text-[18px] text-[13px] lg:text-base">0452 468 515</a>
                         </div>
                     </div>
                 </div>
