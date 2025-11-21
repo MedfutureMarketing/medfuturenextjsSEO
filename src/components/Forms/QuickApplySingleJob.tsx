@@ -195,7 +195,7 @@ export default function RegistrationForm() {
               checked={formData.agreeToTerms}
               onChange={handleInputChange}
               required
-              className="w-4 h-4 rounded border-[#66768F]/16 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
+              className="w-4 h-4 rounded border-[#66768F]/16 text-[#64CAF3] accent-blue-500 focus:ring-[#64CAF3] mt-1 flex-shrink-0"
             />
             <label className="ml-2 text-[15px] text-gray-700 leading-tight">
               I confirm that I have read and agree to the{" "}
@@ -210,7 +210,7 @@ export default function RegistrationForm() {
               name="subscribeToAlerts"
               checked={formData.subscribeToAlerts}
               onChange={handleInputChange}
-              className="w-4 h-4 rounded border-[#66768F]/16 text-[#64CAF3] focus:ring-[#64CAF3] mt-1 flex-shrink-0"
+              className="w-4 h-4 rounded border-[#66768F]/16 text-[#64CAF3] accent-blue-500 focus:ring-[#64CAF3] mt-1 flex-shrink-0"
             />
             <label className="ml-2 text-[15px] text-gray-700 leading-tight">
               Subscribe for Job Alerts.
