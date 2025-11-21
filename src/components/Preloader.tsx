@@ -16,7 +16,7 @@ function PreloaderContent() {
     // Hide loader after 2 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, [pathname, searchParams]);

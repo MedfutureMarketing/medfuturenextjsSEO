@@ -55,7 +55,7 @@ export default function Breadcrumb() {
   console.log('✅ Showing breadcrumbs:', breadcrumbs); // Debug log
 
   return (
-    <nav className="flex py-5 px-1  border-gray-200">
+    <nav className="flex py-5 lg:px-1 px-4  border-gray-200">
       <ol className="flex items-center space-x-2 text-sm">
         {breadcrumbs.map((breadcrumb, index) => (
           <li key={index} className="flex items-center">

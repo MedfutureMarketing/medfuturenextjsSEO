@@ -2,13 +2,13 @@
 export default function JobCard() {
     return (
         <div>
-            <div className="bg-white border cursor-pointer border-[#E6EDF7] rounded-lg p-4 max-w-full shadow-">
+            <div className="bg-white border cursor-pointer border-[#E6EDF7] rounded-lg p-4 max-w-full shadow-md ">
                 {/* Title and Salary */}
                 <div className="flex justify-between items-start mb-2">
                     <h3 className="lg:text-[18px] font-semibold text-[#0E2851]">
                         GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
                     </h3>
-                    <span className="text-[#666666]/60 font-medium text-sm hidden lg:block  px-2 py-1 rounded">
+                    <span className="text-[#666666]/60 font-medium lg:text-[15px] text-xs  px-2 py-1 rounded">
                         GP20738
                     </span>
                 </div>
@@ -30,9 +30,7 @@ export default function JobCard() {
 
                 {/* Time */}
                 <div className="flex justify-between items-center text-xs text-[#666666]/80">
-                    <div className="grid grid-cols-1"><div>36 min ago</div><span className="text-[#666666]/60 font-medium lg:text-sm text-[11px] lg:hidden   rounded">
-                        GP20738
-                    </span> </div>
+                    <div className="grid grid-cols-1"><div>36 min ago</div></div>
 
                     <div>
                         <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">

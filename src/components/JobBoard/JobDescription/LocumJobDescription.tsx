@@ -41,7 +41,7 @@ export default function LocumJobDescription() {
     <div className="hidden lg:block md:block border-2">
       {/* Header */}
       <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-6 rounded-none bg-white">
-        <h1 className="text-2xl font-bold text-[#141E65] pr-4 flex-1">
+        <h1 className="lg:text-[24px] text-[20px] font-bold text-[#141E65] pr-4 flex-1">
           Locum GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
         </h1>
         <button
@@ -75,7 +75,7 @@ export default function LocumJobDescription() {
         <div className="w-full bg-white p-6">
           <div className="grid grid-cols-[auto_2fr] gap-y-4 gap-x-5 border-gray-200">
             {/* Profession */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={ProfessionIcon}
                 alt="Profession icon"
@@ -85,11 +85,11 @@ export default function LocumJobDescription() {
               />
               <span>Profession</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Medical Practitioner</div>
 
             {/* Specialty */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={SpecialtyIcon}
                 alt="Specialty icon"
@@ -100,11 +100,11 @@ export default function LocumJobDescription() {
               />
               <span>Specialty</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               General Practitioner</div>
 
             {/* Seniority */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={SeniorityIcon}
                 alt="Seniority icon"
@@ -115,11 +115,11 @@ export default function LocumJobDescription() {
               />
               <span>Seniority</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Surgery</div>
 
             {/* Location */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={LocationIcon}
                 alt="Location icon"
@@ -130,11 +130,11 @@ export default function LocumJobDescription() {
               />
               <span>Location</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Guildford, New South Wales</div>
 
             {/* Start Date */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={StartDateIcon}
                 alt="Start date icon"
@@ -145,11 +145,11 @@ export default function LocumJobDescription() {
               />
               <span>Start Date</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Flexible</div>
 
             {/* End Date */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={EndDateIcon}
                 alt="End date icon"
@@ -160,11 +160,11 @@ export default function LocumJobDescription() {
               />
               <span>End Date</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Flexible</div>
 
             {/* Locum Period */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={LocumPeriodIcon}
                 alt="Locum period icon"
@@ -175,11 +175,11 @@ export default function LocumJobDescription() {
               />
               <span>Locum Period</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Ongoing</div>
 
             {/* Locum Rate On Offer */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={LocumRateIcon}
                 alt="Locum rate icon"
@@ -190,11 +190,11 @@ export default function LocumJobDescription() {
               />
               <span>Locum Rate On Offer</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               AUD 200 per hour</div>
 
             {/* Engagement Type */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={EngagementTypeIcon}
                 alt="Engagement type icon"
@@ -205,11 +205,11 @@ export default function LocumJobDescription() {
               />
               <span>Engagement Type</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Full-Time or Part-Time</div>
 
             {/* Engagement Mode */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={EngagementModeIcon}
                 alt="Engagement mode icon"
@@ -220,11 +220,11 @@ export default function LocumJobDescription() {
               />
               <span>Engagement Mode</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Onsite</div>
 
             {/* Payment Cycle */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={PaymentCycleIcon}
                 alt="Payment cycle icon"
@@ -235,11 +235,11 @@ export default function LocumJobDescription() {
               />
               <span>Payment Cycle</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Fortnightly</div>
 
             {/* Additional Information */}
-            <div className="pl-4 text-[18px] font-medium text-gray-600 flex items-center gap-2">
+            <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
               <Image
                 src={AdditionalInfoIcon}
                 alt="Additional information icon"
@@ -250,7 +250,7 @@ export default function LocumJobDescription() {
               />
               <span>Additional Information</span>
             </div>
-            <div className="text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+            <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
               Full-time nursing support provided | Consultation fees: Standard – AUD 80 | Long – AUD 140 |
               Negotiable offers for the ideal candidate | On-site pathology services | AGPAL-accredited practice |
               Opening hours – Monday to Friday 7:00 am to 9:00 pm and Saturday and Sunday 8:00 am to 6:00 pm
@@ -260,9 +260,9 @@ export default function LocumJobDescription() {
       </div>
 
       {/* Rest of your existing content remains the same */}
-      <div className="prose max-w-none p-6 text-[18px]">
+      <div className="prose max-w-none p-6 lg:text-[18px]">
         <div className=' mt-[38px] mb-[38px]'>
-          <p className="text-gray-700 text-[18px]  mb-4">
+          <p className="text-gray-700 lg:text-[18px]  mb-4">
             We are seeking a committed GP Registrar to work in Condobolin, NSW. In this role, you will provide comprehensive aged care services to the local community. Enjoy appealing benefits, including competitive pay, support with travel and accommodation, and opportunities for career development. Apply today to work in a welcoming and fulfilling environment.
           </p>
           <h4 className="font-semibold text-[#66768F] mt-[38px] mb-[16px]">Offer Details:</h4>

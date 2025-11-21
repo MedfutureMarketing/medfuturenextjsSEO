@@ -78,7 +78,7 @@ export default function SearchBarWithLocation() {
           className="flex flex-col md:flex-row items-center gap-3 bg-white lg:p-4 w-full md:w-auto"
         >
           {/* SEARCH INPUT */}
-          <div className="relative w-full md:w-[300px] lg:w-[350px]">
+          <div className="relative w-full lg:w md:w-100% lg:w-[350px]">
             <input
               type="text"
               placeholder="Search Jobs"
@@ -193,8 +193,8 @@ export default function SearchBarWithLocation() {
       {mobileOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col animate-slideUp text-black">
           {/* HEADER */}
-          <div className="p-4 border-b flex justify-between items-center sticky top-0 bg-white">
-            <h3 className="text-lg font-semibold">Select Location</h3>
+          <div className="p-4 border-b-1 border-gray-100 shadow-xl flex justify-between items-center sticky top-0 bg-white">
+            <h3 className="text-lg font-semi-bold">Select Location</h3>
             <button
               onClick={() => setMobileOpen(false)}
               className="text-black-600 bg-[#64CAF3] py-2 px-4 rounded-lg shadow-xl text-white text-lg font-medium"
@@ -207,12 +207,12 @@ export default function SearchBarWithLocation() {
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {!selectedState ? (
               <>
-                <h4 className="text-gray-900 font-semi-bold text-md">States</h4>
-                <div className="grid gap-1">
+                <h4 className="text-gray-900 font-semi-bold text-md text-center">States</h4>
+                <div className="grid gap-3">
                   {Object.keys(DATA).map((state) => (
                     <div
                       key={state}
-                      className={`p-3 rounded-xl border border-gray-200 bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedState === state ? "bg-blue-100 font-semibold" : ""
+                      className={`p-3 rounded-xl  shadow-md border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedState === state ? "bg-blue-200 font-semibold" : ""
                         }`}
                       onClick={() => setSelectedState(state as State)}
                     >
@@ -230,12 +230,12 @@ export default function SearchBarWithLocation() {
                   ← Back
                 </button>
 
-                <h4 className="text-gray-900 font-semibold text-md mb-2">Regions</h4>
+                <h4 className="text-gray-900 font-semi-bold text-center text-md mb-2">Regions</h4>
                 <div className="grid gap-2">
                   {DATA[selectedState].map((region) => (
                     <div
                       key={region}
-                      className={`p-2 rounded-xl border border-gray-200  cursor-pointer hover:bg-blue-50 transition  ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
+                      className={`p-3 rounded-xl  shadow-md border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
                         }`}
                       onClick={() => {
                         setSelectedRegion(region);

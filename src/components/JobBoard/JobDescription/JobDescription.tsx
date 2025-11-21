@@ -30,12 +30,12 @@ export default function JobDescription() {
     <div className="hidden lg:block md:block broder-2">
 
       <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] lg:pl-[43px] pr-[23px] py-[25px] px-4 rounded-none bg-white">
-        <h1 className="text-[24px] font-bold text-[#0E2851] pr-[43px] flex-1">
+        <h1 className="lg:text-[24px] text-[20px] font-bold text-[#0E2851] pr-[43px] flex-1">
           GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
         </h1>
         <button
           onClick={handleApplyNow}
-          className="bg-[#64CAF3] text-white px-6 py-3 w-[160px] h-[56px] rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap ml-4 flex-shrink-0"
+          className="bg-[#64CAF3] text-white px-6 py-3 lg:w-[160px] h-[56px] rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap ml-4 flex-shrink-0"
         >
           {showRegistrationForm ? 'Close From' : 'Apply Now'}
         </button>
@@ -58,22 +58,22 @@ export default function JobDescription() {
           </svg></Link>
         </div>
       </div>
-      <div className="flex items-center gap-3 mt-[24px] mb-[20px] px-[44px]">
-        <span className="text-[#0E2851] text-[18px]  py-0 rounded flex flex-wrap gap-2">
+      <div className="flex items-center gap-3 mt-[24px] mb-[20px] lg:px-[44px] px-[25px]">
+        <span className="text-[#0E2851] lg:text-[18px]  py-0 rounded flex flex-wrap gap-2">
           Permanent
         </span>
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
+        <span className="text-[#0E2851] lg:text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
           Medical Practitioner
         </span>
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
+        <span className="text-[#0E2851] lg:text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
           AUD 160/Hour
         </span>
-        <span className="text-[#0E2851] text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
+        <span className="text-[#0E2851] lg:text-[18px] px-3 py-0 rounded flex flex-wrap gap-2">
           Full Time Or Part Time
         </span>
       </div>
 
-      <div className="prose max-w-none px-[44px] ">
+      <div className="prose max-w-none lg:px-[44px] px-[25px] ">
         <div>
           <p className="text-[#666666] ">
             We are seeking a committed GP Registrar to work in Condobolin, NSW. In this role, you will provide comprehensive aged care services to the local community. Enjoy appealing benefits, including competitive pay, support with travel and accommodation, and opportunities for career development. Apply today to work in a welcoming and fulfilling environment.
