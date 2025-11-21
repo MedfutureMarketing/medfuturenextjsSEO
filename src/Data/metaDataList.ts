@@ -118,7 +118,7 @@ export const metaDataList: Record<string, Metadata> = {
             shortcut: "/favicon-32x32.png",
             apple: "/apple-touch-icon.png",
         },
-        manifest: "/site.webmanifest",
+        // manifest: "/site.webmanifest",
 
         category: "Technology",
 
@@ -183,7 +183,7 @@ export const metaDataList: Record<string, Metadata> = {
             shortcut: "/favicon-32x32.png",
             apple: "/apple-touch-icon.png",
         },
-        manifest: "/site.webmanifest",
+        // manifest: "/site.webmanifest",
 
         //  Robots — SEO crawler directives
         // robots: {
