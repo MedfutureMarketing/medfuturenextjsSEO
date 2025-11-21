@@ -53,8 +53,8 @@ export default function RegistrationForm() {
   const inputClasses = "w-full px-3 py-3 border border-[#66768F29]  text-[#333333] rounded-md focus:outline-none focus:ring-2 focus:ring-[#64CAF3] focus:border-transparent placeholder:text-[#666666] text-sm sm:text-base";
   
   return (
-    <div className="mt-0 sm:mt-0 p-4 sm:p-6 bg-white rounded-lg border-2 border-gray-50 shadow-xl shadow-[0_6px_6px_rgba(0,0,0,0.05)] border-gray-200">
-      <h3 className="text-xl sm:text-2xl font-bold text-[#FFD791] mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
+    <div className="mt-0 sm:mt-0 p-4 sm:p-6 bg-white rounded-lg lg:border-2 border-gray-50 shadow-xl shadow-[0_6px_6px_rgba(0,0,0,0.05)] border-gray-200">
+      <h3 className="text-3xl sm:text-2xl font-bold text-[#FFD791] mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
 
       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-2 text-black">
         {/* Personal Information - 2 columns on desktop */}

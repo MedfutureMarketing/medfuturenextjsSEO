@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation"; 
+import MedfutureLogoDark  from "@/assets/logo/medfuture-logo.png";
 import MedfutureLogoLight from "@/assets/logo/medfuture-white.png";
-import MedfutureLogoDark from "@/assets/logo/medfuture-white.png";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,14 +39,14 @@ export default function Menu() {
 
   // ⭐ PAGE-BASED LOGO
   const logoMap: Record<string, StaticImageData> = {
-  "/permanent": MedfutureLogoDark,
+  "/permanent": MedfutureLogoLight,
   "/locum": MedfutureLogoLight,
   "/international": MedfutureLogoLight,
   "/candidates": MedfutureLogoLight,
   "/employers": MedfutureLogoLight,
   "/explore": MedfutureLogoLight,
 };
-  const activeLogo = logoMap[pathname] || MedfutureLogoDark;
+  const activeLogo = logoMap[pathname] || MedfutureLogoLight;
 
   return (
     <>
@@ -161,7 +161,7 @@ export default function Menu() {
             }`}
           >
             <div className="flex items-center justify-between p-4 border-b">
-              <Image src={activeLogo} alt="Medfuture logo" width={140} height={32} />
+              <Image src={MedfutureLogoDark} alt="Medfuture logo" width={140} height={32} />
               <button
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close Menu"

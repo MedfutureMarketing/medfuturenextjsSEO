@@ -88,7 +88,7 @@ export default function JobDescription() {
         </div>
 
         {/* Contact Information */}
-        <div className="grid grid-cols-1 gap-4 lg:gap-[7px] mt-6 lg:py-36">
+        <div className="grid grid-cols-1 gap-4 lg:gap-[7px] mt-6 lg:py-36 px-10">
           <h3 className="font-semibold text-[#66768F] text-base text-[14px] lg:text-[18px]">Contact Us</h3>
           <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
             <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Recruitment Consultant:</span>

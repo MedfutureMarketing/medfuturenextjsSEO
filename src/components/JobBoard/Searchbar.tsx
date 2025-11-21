@@ -212,7 +212,7 @@ export default function SearchBarWithLocation() {
                   {Object.keys(DATA).map((state) => (
                     <div
                       key={state}
-                      className={`p-3 rounded-xl  shadow-md border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedState === state ? "bg-blue-200 font-semibold" : ""
+                      className={`p-3 rounded-xl  shadow-none border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedState === state ? "bg-blue-200 font-semibold" : ""
                         }`}
                       onClick={() => setSelectedState(state as State)}
                     >
@@ -235,7 +235,7 @@ export default function SearchBarWithLocation() {
                   {DATA[selectedState].map((region) => (
                     <div
                       key={region}
-                      className={`p-3 rounded-xl  shadow-md border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
+                      className={`p-3 rounded-xl  shadow-none border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
                         }`}
                       onClick={() => {
                         setSelectedRegion(region);
