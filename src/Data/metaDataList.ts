@@ -7,14 +7,13 @@ export const metaDataList: Record<string, Metadata> = {
         description:
             "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
         keywords: [
-            "Next.js",
-            "Tailwind CSS",
+            "Medfuture",
+            "Australia",
             "Responsive Layout",
-            "SEO Optimization",
-            "Web Design",
-            "Frontend Development",
-            "Web Performance",
-            "Accessibility",
+            "Medical & Healthcare Recruitment in Australia",
+            "Medical",
+            "Healthcare",
+           
         ],
 
         alternates: {
@@ -28,7 +27,7 @@ export const metaDataList: Record<string, Metadata> = {
             siteName: "Medfuture",
             title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
-                "Experience a fast, mobile-first web layout built with Next.js and Tailwind CSS. Optimized for SEO, speed, and accessibility.",
+                "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing ",
             images: [
                 {
                     url: "https://medfuture.com.au/assets/pathwayBanner-ANKLHITn.png",
