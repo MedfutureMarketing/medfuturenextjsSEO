@@ -45,7 +45,7 @@ export const metaDataList: Record<string, Metadata> = {
             creator: "@yourtwitter",
             title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
-                "A fast, SEO-friendly layout built with Next.js and Tailwind CSS. Fully responsive and optimized for modern web performance.",
+                "Explore top medical & healthcare jobs in Australia with Medfuture. Find the best GP, AHP & Nursing opportunities nationwide. Apply now & advance your",
             images: ["https://example.com/twitter-image.jpg"],
         },
     
