@@ -5,12 +5,12 @@ export function getSchema(page: string) {
       return {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "My App Home",
-        "url": "https://www.myapp.com/",
-        "description": "Welcome to My App, the best place for XYZ.",
+        "name": "Medfuture | Medical & Healthcare Recruitment in Australia",
+        "url": "https://www.medfuture.com.au/",
+        "description": "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
         "publisher": {
           "@type": "Organization",
-          "name": "My App",
+          "name": "Medfuture",
           "logo": {
             "@type": "ImageObject",
             "url": "https://www.myapp.com/logo.png",
