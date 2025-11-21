@@ -56,25 +56,25 @@ export default function Menu() {
         <div className={`hidden lg:block py-2 full-width-section border-b-2 ${topBarColors}`}>
           <div className="px-0 py-2 mx-auto max-w-screen-2xl flex justify-center full-width-section">
             <div className="flex space-x-4 divide-x divide-gray-300">
-              <Link href="/support" className="hover:underline pr-4">
+              <Link href="/" className="hover:underline pr-4">
                 Medical
               </Link>
-              <Link href="/contact" className="hover:underline px-4">
+              <Link href="/" className="hover:underline px-4">
                 GP
               </Link>
-              <Link href="/faq" className="hover:underline px-4">
+              <Link href="/" className="hover:underline px-4">
                 AHP
               </Link>
-              <Link href="/faq" className="hover:underline px-4">
+              <Link href="/" className="hover:underline px-4">
                 Dental & Oral
               </Link>
-              <Link href="/faq" className="hover:underline px-4">
+              <Link href="/" className="hover:underline px-4">
                 Mental Health
               </Link>
-              <Link href="/faq" className="hover:underline px-4">
+              <Link href="/" className="hover:underline px-4">
                 Nursing & Care Workers
               </Link>
-              <Link href="/faq" className="hover:underline pl-4">
+              <Link href="/" className="hover:underline pl-4">
                 Healthcare Executive
               </Link>
             </div>
@@ -108,17 +108,17 @@ export default function Menu() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/candidates" className="font-medium hover:text-blue-600">
+                  <Link href="/" className="font-medium hover:text-blue-600">
                     For Candidates
                   </Link>
                 </li>
                 <li>
-                  <Link href="/employers" className="font-medium hover:text-blue-600">
+                  <Link href="/" className="font-medium hover:text-blue-600">
                     For Employers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/explore" className="font-medium hover:text-blue-600">
+                  <Link href="/" className="font-medium hover:text-blue-600">
                     Explore
                   </Link>
                 </li>
@@ -127,7 +127,7 @@ export default function Menu() {
               {/* Signup Button */}
               <div className="hidden lg:block">
                 <Link
-                  href="/signup"
+                  href="/"
                   className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-md hover:bg-blue-700"
                 >
                   Sign Up
@@ -175,25 +175,25 @@ export default function Menu() {
               <div className="border-b pb-3">
                 <p className="text-sm text-gray-500 mb-2 font-semibold">Categories</p>
                 <div className="flex flex-col space-y-2 text-gray-700">
-                  <Link href="/support" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Medical
                   </Link>
-                  <Link href="/contact" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     GP
                   </Link>
-                  <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     AHP
                   </Link>
-                  <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Dental & Oral
                   </Link>
-                  <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Mental Health
                   </Link>
-                  <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Nursing & Care Workers
                   </Link>
-                  <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Healthcare Executive
                   </Link>
                 </div>
@@ -211,13 +211,13 @@ export default function Menu() {
                   <Link href="/international" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     International
                   </Link>
-                  <Link href="/candidates" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     For Candidates
                   </Link>
-                  <Link href="/employers" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     For Employers
                   </Link>
-                  <Link href="/explore" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Explore
                   </Link>
                 </div>
@@ -225,7 +225,7 @@ export default function Menu() {
 
               <div className="pt-6">
                 <Link
-                  href="/signup"
+                  href="/"
                   onClick={() => setIsMenuOpen(false)}
                   className="inline-flex items-center justify-center px-4 py-2 font-medium text-white bg-blue-600 rounded hover:bg-blue-700 w-full text-center"
                 >
