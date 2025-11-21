@@ -31,7 +31,7 @@ export const metaDataList: Record<string, Metadata> = {
                 "Experience a fast, mobile-first web layout built with Next.js and Tailwind CSS. Optimized for SEO, speed, and accessibility.",
             images: [
                 {
-                    url: "https://example.com/og-image.jpg",
+                    url: "https://medfuture.com.au/assets/pathwayBanner-ANKLHITn.png",
                     width: 1200,
                     height: 630,
                     alt: "Medfuture – Responsive Layout Preview",
