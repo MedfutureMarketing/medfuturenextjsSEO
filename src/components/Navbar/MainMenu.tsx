@@ -189,11 +189,11 @@ export default function Menu() {
           <div className="fixed inset-0 bg-opacity-0 z-40" onClick={() => setIsMenuOpen(false)} />
 
           <div
-            className={`fixed top-0 left-0 z-50 w-[70%] h-full bg-white shadow-lg custom-scrollbar transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+            className={`fixed top-0 left-0 z-50 w-[80%] h-full bg-white shadow-lg custom-scrollbar transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
               }`}
           >
             <div className="flex items-center justify-between p-4 border-b">
-              <Image src={MedfutureLogoDark} alt="Medfuture logo" width={140} height={32} />
+              <Image src={MedfutureLogoDark} alt="Medfuture logo" width={230} height={32} />
               <button
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close Menu"
@@ -205,8 +205,8 @@ export default function Menu() {
 
             <nav className="flex flex-col p-4 space-y-4 overflow-y-auto h-full">
               <div className="border-b pb-3">
-                <p className="text-sm text-gray-500 mb-2 font-semibold">Categories</p>
-                <div className="flex flex-col space-y-2 text-gray-700">
+                <p className="text-2xl text-gray-500 mb-2 font-bold">Profession</p>
+                <div className="flex flex-col space-y-2 font-sans text-gray-700">
                   <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Medical
                   </Link>
@@ -232,8 +232,8 @@ export default function Menu() {
               </div>
 
               <div className="pt-3">
-                <p className="text-sm text-gray-500 mb-2 font-semibold">Navigation</p>
-                <div className="flex flex-col space-y-2 text-gray-700">
+                <p className="text-2xl text-gray-500 mb-2 font-semibold">Quick Links</p>
+                <div className="flex flex-col space-y-2 font-sans text-gray-700">
                   <Link href="/permanent" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Permanent Jobs
                   </Link>
@@ -259,9 +259,9 @@ export default function Menu() {
                 <Link
                   href="/signup"
                   onClick={() => setIsMenuOpen(false)}
-                  className="inline-flex items-center justify-center px-4 py-2 font-medium text-white bg-blue-600 rounded hover:bg-blue-700 w-full text-center"
+                  className="inline-flex items-center w-56 justify-center px-4 py-2 font-medium text-white bg-blue-900 rounded hover:bg-blue-700 text-center"
                 >
-                  Sign Up
+                 Create an Account
                 </Link>
               </div>
             </nav>
