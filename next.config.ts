@@ -1,12 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
-module.exports = {
-  experimental: {
-    optimizeCss: true
-  }
+   experimental: {
+    optimizeCss: true, // inlines critical CSS to remove render-blocking
+  },
 };
 
 
