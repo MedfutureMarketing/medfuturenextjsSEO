@@ -4,9 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; 
-import MedfutureLogoDark  from "@/assets/logo/medfuture-logo.png";
+import { usePathname } from "next/navigation";
+import MedfutureLogoDark from "@/assets/logo/medfuture-logo.png";
 import MedfutureLogoLight from "@/assets/logo/medfuture-white.png";
+import MegaMenu from "@/components/Navbar/MegaMenu";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Menu() {
 
   // ⭐ TOP CATEGORY BAR COLORS
   const topBarColorMap: Record<string, string> = {
-    
+
     "/permanent": "bg-white text-black border-blue-200",
     "/locum": "bg-white text-black border-blue-200",
     "/international": "bg-white text-black border-blue-200",
@@ -39,13 +40,13 @@ export default function Menu() {
 
   // ⭐ PAGE-BASED LOGO
   const logoMap: Record<string, StaticImageData> = {
-  "/permanent": MedfutureLogoLight,
-  "/locum": MedfutureLogoLight,
-  "/international": MedfutureLogoLight,
-  "/candidates": MedfutureLogoLight,
-  "/employers": MedfutureLogoLight,
-  "/explore": MedfutureLogoLight,
-};
+    "/permanent": MedfutureLogoLight,
+    "/locum": MedfutureLogoLight,
+    "/international": MedfutureLogoLight,
+    "/candidates": MedfutureLogoLight,
+    "/employers": MedfutureLogoLight,
+    "/explore": MedfutureLogoLight,
+  };
   const activeLogo = logoMap[pathname] || MedfutureLogoLight;
 
   return (
@@ -53,8 +54,14 @@ export default function Menu() {
       {/* STICKY WRAPPER */}
       <div className="sticky top-0 z-50">
         {/* TOP CATEGORY BAR */}
-        <div className={`hidden lg:block py-2 full-width-section border-b-2 ${topBarColors}`}>
-          <div className="px-0 py-2 mx-auto max-w-screen-2xl flex justify-center full-width-section">
+        <div className={`hidden lg:block py-2 full-width-section  ${topBarColors}`}
+         style={{
+          borderBottomWidth: "2px",
+          borderImageSlice: 1,
+          width: "50%",
+          borderImageSource: "linear-gradient(to right, #ffffffff, #b5b5b5ff, #ffffffff)", // blue → purple → pink
+        }}>
+          <div className="px-0 py-2 mx-auto max-w-screen-2xl  flex justify-center inner-width-section">
             <div className="flex space-x-4 divide-x divide-gray-300">
               <Link href="/" className="hover:underline pr-4">
                 Medical
@@ -107,11 +114,37 @@ export default function Menu() {
                     International
                   </Link>
                 </li>
-                <li>
-                  <Link href="/" className="font-medium hover:text-blue-600">
-                    For Candidates
-                  </Link>
+                <li className="relative cursor-pointer">
+                  <MegaMenu
+                    title="For Candidates"
+                    columns={[
+                      {
+                        heading: "Job Search",
+                        links: [
+                          { label: "Permanent Jobs", href: "/permanent" },
+                          { label: "Locum Jobs", href: "/locum" },
+                          { label: "International Jobs", href: "/international" },
+                        ],
+                      },
+                      {
+                        heading: "Resources",
+                        links: [
+                          { label: "Resume Tips", href: "/resources/resume" },
+                          { label: "Interview Preparation", href: "/resources/interview" },
+                          { label: "Salary Guide", href: "/resources/salary-guide" },
+                        ],
+                      },
+                      {
+                        heading: "Support",
+                        links: [
+                          { label: "FAQ", href: "/faq" },
+                          { label: "Candidate Support", href: "/support/candidates" },
+                        ],
+                      },
+                    ]}
+                  />
                 </li>
+
                 <li>
                   <Link href="/" className="font-medium hover:text-blue-600">
                     For Employers
@@ -156,9 +189,8 @@ export default function Menu() {
           <div className="fixed inset-0 bg-opacity-0 z-40" onClick={() => setIsMenuOpen(false)} />
 
           <div
-            className={`fixed top-0 left-0 z-50 w-[70%] h-full bg-white shadow-lg custom-scrollbar transform transition-transform duration-300 ${
-              isMenuOpen ? "translate-x-0" : "-translate-x-full"
-            }`}
+            className={`fixed top-0 left-0 z-50 w-[70%] h-full bg-white shadow-lg custom-scrollbar transform transition-transform duration-300 ${isMenuOpen ? "translate-x-0" : "-translate-x-full"
+              }`}
           >
             <div className="flex items-center justify-between p-4 border-b">
               <Image src={MedfutureLogoDark} alt="Medfuture logo" width={140} height={32} />
@@ -225,7 +257,7 @@ export default function Menu() {
 
               <div className="pt-6">
                 <Link
-                  href="/"
+                  href="/signup"
                   onClick={() => setIsMenuOpen(false)}
                   className="inline-flex items-center justify-center px-4 py-2 font-medium text-white bg-blue-600 rounded hover:bg-blue-700 w-full text-center"
                 >
