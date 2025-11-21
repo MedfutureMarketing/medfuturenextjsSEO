@@ -1,9 +1,10 @@
+import { getSchema } from "@/lib/getSchema";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavigationMenu from "@/components/Navbar/MainMenu"; // Import menu
-import Breadcrumb from "@/components/Breadcrumb"; // Import breadcrumb
-import Preloader from "@/components/Preloader"; // Import preloader
+import NavigationMenu from "@/components/Navbar/MainMenu";
+import Breadcrumb from "@/components/Breadcrumb";
+import Preloader from "@/components/Preloader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,24 +23,28 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
+  const schema = getSchema("home"); // dynamically change per page if needed
+
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* Preloader - shows first for 2-3 seconds */}
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* Preloader */}
         <Preloader />
-        
-        {/* Navigation Menu at the top */}
+
+        {/* Navigation Menu */}
         <NavigationMenu />
-        
-        {/* Breadcrumb under the menu */}
+
+        {/* Breadcrumb */}
         <Breadcrumb />
-        
-        {/* Your main content */}
+
+        {/* Main content */}
         {children}
       </body>
     </html>

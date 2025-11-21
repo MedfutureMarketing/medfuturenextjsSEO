@@ -18,7 +18,7 @@ export const metaDataList: Record<string, Metadata> = {
         ],
 
         alternates: {
-            canonical: "https://example.com/",
+            canonical: "https://medfuture.com.au",
         },
       
         openGraph: {
