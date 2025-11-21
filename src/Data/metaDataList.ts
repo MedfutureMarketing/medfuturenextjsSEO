@@ -55,15 +55,15 @@ export const metaDataList: Record<string, Metadata> = {
         },
         manifest: "/site.webmanifest",
 
-        category: "Technology",
+        category: "Medical & Healthcare Recruitment ",
 
         
-        metadataBase: new URL("https://example.com"),
+        metadataBase: new URL("https://medfuture.com.au"),
         applicationName: "Medfuture",
         generator: "Next.js",
-        authors: [{ name: "Your Name", url: "https://example.com" }],
-        creator: "Your Name",
-        publisher: "Your Company",
+        authors: [{ name: "Medfuture", url: "https://medfuture.com.au" }],
+        creator: "Medfuture",
+        publisher: "Medfuture",
     },
     permanent: {
         title: "Permanent | Medical & Healthcare Recruitment in Australia",

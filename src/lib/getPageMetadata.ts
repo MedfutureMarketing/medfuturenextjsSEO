@@ -7,9 +7,9 @@ export async function getPageMetadata(pageKey: string): Promise<Metadata> {
   const pageMeta = metaDataList[pageKey];
 
   const defaultMeta: Metadata = {
-    title: "My App – Responsive Layout",
+    title: "medfuture | Medical & Healthcare Recruitment in Australia",
     description:
-      "A Next.js and Tailwind CSS app optimized for SEO and performance.",
+      "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing",
   };
 
   if (!pageMeta) return defaultMeta;
