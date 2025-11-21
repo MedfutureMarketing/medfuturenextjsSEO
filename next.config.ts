@@ -1,10 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-   experimental: {
-    optimizeCss: true, // inlines critical CSS to remove render-blocking
-  },
+  /* config options here */
 };
-
 
 export default nextConfig;
