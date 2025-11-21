@@ -1,10 +1,17 @@
-// data/schemaList.ts
+// src/data/schemaList.ts
+
 export interface SchemaData {
-  type: string; // e.g., "Organization", "WebPage", "JobPosting"
-  jsonLd: Record<string, any>; // JSON-LD object
+  /** Type of the schema, e.g., "WebSite", "WebPage", "JobPosting" */
+  type: string;
+
+  /** JSON-LD object representing the structured data */
+  jsonLd: Record<string, unknown>;
 }
 
-// Centralized schema definitions
+/**
+ * Centralized schema definitions for all pages.
+ * Key = page identifier (same as metaDataList keys)
+ */
 export const schemaList: Record<string, SchemaData> = {
   home: {
     type: "WebSite",
@@ -44,7 +51,7 @@ export const schemaList: Record<string, SchemaData> = {
     },
   },
 
-  jobPosting: {
+  permanentJob: {
     type: "JobPosting",
     jsonLd: {
       "@context": "https://schema.org",
@@ -64,6 +71,35 @@ export const schemaList: Record<string, SchemaData> = {
         address: {
           "@type": "PostalAddress",
           streetAddress: "123 Main Street",
+          addressLocality: "Sydney",
+          addressRegion: "NSW",
+          postalCode: "2000",
+          addressCountry: "AU",
+        },
+      },
+    },
+  },
+
+  locumJob: {
+    type: "JobPosting",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      title: "Locum Doctor – Contract",
+      description: "Looking for a Locum Doctor for short-term contract work in Sydney.",
+      datePosted: "2025-01-01",
+      validThrough: "2025-12-31",
+      employmentType: "CONTRACTOR",
+      hiringOrganization: {
+        "@type": "Organization",
+        name: "Medfuture",
+        sameAs: "https://example.com",
+      },
+      jobLocation: {
+        "@type": "Place",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "456 Medical Street",
           addressLocality: "Sydney",
           addressRegion: "NSW",
           postalCode: "2000",
