@@ -17,7 +17,7 @@ export default function JobDescription() {
 
   return (
     <div className="border-2 rounded-8px relative">
-
+      {/* Mobile Apply Button - Floating bottom */}
      
 
       {/* Header */}
@@ -80,9 +80,9 @@ export default function JobDescription() {
         </div>
       </div>
 
-  
+      {/* Registration Form and Contact Info */}
       <div className='grid lg:grid-cols-2 mt-6 lg:mt-0 px-4 lg:px-[44px]'>
-     
+        {/* Always-open Registration Form */}
         <div ref={formRef} className='mt-6 lg:mt-0'>
           <RegistrationForm />
         </div>
@@ -109,7 +109,7 @@ export default function JobDescription() {
         </div>
       </div>
 
-      
+      {/* Add padding at bottom for mobile spacing */}
       <div className="lg:hidden h-20"></div>
     </div>
   );
