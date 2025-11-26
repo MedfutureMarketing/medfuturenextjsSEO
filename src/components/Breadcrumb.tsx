@@ -24,13 +24,13 @@ export default function Breadcrumb() {
       isCurrent: pathSegments.length === 0
     });
 
-    // Build the rest of the breadcrumbs
+  
     let currentPath = '';
     pathSegments.forEach((segment, index) => {
       currentPath += `/${segment}`;
       const isCurrent = index === pathSegments.length - 1;
       
-      // Format the label (convert "my-page" to "My Page")
+      
       const label = segment
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -46,7 +46,7 @@ export default function Breadcrumb() {
     setBreadcrumbs(newBreadcrumbs);
   }, [pathname]);
 
-  // Don't show breadcrumb if we're only on home page
+ 
   if (breadcrumbs.length <= 1) {
     console.log('🚫 Not showing breadcrumb - on home page or only one segment');
     return null;

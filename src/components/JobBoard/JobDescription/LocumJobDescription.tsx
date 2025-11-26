@@ -70,7 +70,7 @@ export default function LocumJobDescription() {
         </div>
       </div>
 
-      {/* Hardcoded Job Details Section */}
+    
       <div className="flex items-center justify-center">
         <div className="w-full bg-white p-6">
           <div className="grid grid-cols-[auto_2fr] gap-y-4 gap-x-5 border-gray-200">
@@ -259,7 +259,7 @@ export default function LocumJobDescription() {
         </div>
       </div>
 
-      {/* Rest of your existing content remains the same */}
+      
       <div className="prose max-w-none p-6 lg:text-[18px]">
         <div className=' mt-[38px] mb-[38px]'>
           <p className="text-gray-700 lg:text-[18px]  mb-4">

@@ -36,7 +36,7 @@ export default function LocumJobDescription() {
 
     return (
         <div className="">
-            {/* Mobile Apply Button - Only show on small screens */}
+           
             <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 z-50 border-t">
                 <button
                     onClick={handleApplyNow}
@@ -46,9 +46,9 @@ export default function LocumJobDescription() {
                 </button>
             </div>
 
-            {/* Two Column Layout */}
+          
             <div className='grid lg:grid-cols-3 gap-6'>
-                {/* Left Column - Job Details (2/3 width on desktop, full width on mobile) */}
+                
                 <div className='lg:col-span-2 border-2'>
                     {/* Header */}
                     <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-4 lg:p-6 rounded-none bg-white">
@@ -76,7 +76,7 @@ export default function LocumJobDescription() {
                         </div>
                     </div>
 
-                    {/* Hardcoded Job Details Section */}
+                
                     <div className="flex items-center justify-center">
                         <div className="w-full bg-white p-4 lg:p-6 ">
                             <div className="grid grid-cols-2  lg:grid-cols-[auto_2fr] lg:gap-y-3 lg:gap-y-4 gap-x-0 lg:gap-x-5 border-gray-200">
@@ -337,7 +337,6 @@ export default function LocumJobDescription() {
                     </div>
                 </div>
 
-                {/* Right Column - Registration Form (1/3 width on desktop, conditional on mobile) */}
                 <div className={`lg:col-span-1 ${showRegistrationForm ? 'block' : 'hidden lg:block'}`}>
                     <div ref={formRef}>
                         <RegistrationForm />

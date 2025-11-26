@@ -144,7 +144,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        {/* File Upload + Job Source */}
+     
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
           <div>
             <div className="relative">

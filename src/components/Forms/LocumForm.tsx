@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from "next/link";
 import PhoneNumber from '@/components/Forms/FormsComponent/PhoneNumber';
 
-// Remove the onClose prop since we don't need toggle functionality
+
 export default function RegistrationForm() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -57,7 +57,7 @@ export default function RegistrationForm() {
       <h3 className="text-3xl sm:text-2xl font-bold text-[#FFD791] mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
 
       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-2 text-black">
-        {/* Personal Information - 2 columns on desktop */}
+       
         <div className="grid grid-cols-1 md:grid-cols-1 gap-4 sm:gap-2">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -90,7 +90,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        {/* Contact Information - 2 columns on desktop */}
+      
         <div className="grid grid-cols-1 assetsmd:grid-cols-1 gap-4 sm:gap-2">
           <PhoneNumber
             value={formData.phone}
@@ -115,7 +115,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        {/* Professional Information - 2 columns on desktop */}
+     
         <div className="grid grid-cols-1 assetsmd:grid-cols-1 gap-4 sm:gap-2">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -155,7 +155,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        {/* File Upload and Job Source - 2 columns on desktop */}
+       
         <div className="grid grid-cols-1 assetsmd:grid-cols-1 gap-4 sm:gap-2">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -232,7 +232,7 @@ export default function RegistrationForm() {
           </div>
         </div>
 
-        {/* Submit Button Only - No Cancel button */}
+       
         <div className="flex justify-center sm:justify-start">
           <button
             type="submit"

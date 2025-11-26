@@ -25,7 +25,7 @@ export default function JobDescription() {
 
   return (
     <div className="border-2">
-      {/* Mobile Apply Button - Fixed at bottom */}
+   
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 z-50 border-t">
         <button
           onClick={handleApplyNow}
@@ -40,7 +40,7 @@ export default function JobDescription() {
         <h1 className="text-[18px] lg:text-[24px] font-bold text-[#0E2851] lg:pr-[43px] flex-1 mb-4 lg:mb-0">
           GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
         </h1>
-        {/* Desktop Apply Button */}
+     
         <button
           onClick={handleApplyNow}
           className="hidden lg:block bg-[#64CAF3] text-white px-6 py-3 w-[160px] h-[56px] rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap lg:ml-4 flex-shrink-0"
@@ -49,7 +49,7 @@ export default function JobDescription() {
         </button>
       </div>
 
-      {/* External Link Icon */}
+   
       <div className="relative px-4 lg:px-5">
         <div className="absolute top-0 right-0 px-4 lg:px-5">
           <Link href="/permanent/job" className="hover:underline">
@@ -141,7 +141,7 @@ export default function JobDescription() {
         </div>
       )}
       
-      {/* Add padding at bottom for mobile to account for fixed button */}
+     
       <div className="lg:hidden h-20"></div>
     </div>
   );

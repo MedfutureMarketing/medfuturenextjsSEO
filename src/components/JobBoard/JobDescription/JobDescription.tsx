@@ -22,7 +22,7 @@ export default function JobDescription() {
             block: 'start'
           });
         }
-      }, 100); // Small delay to ensure form is rendered
+      }, 100); 
     }
   };
 
@@ -41,9 +41,9 @@ export default function JobDescription() {
         </button>
       </div>
       <div className="relative px-5">
-        {/* Your existing content */}
+       
 
-        {/* SVG icon positioned on top right corner */}
+       
         <div className="absolute top-0 right-0 px-5">
          <Link href="/permanent/job" className="hover:underline ">  <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_21001_3721)">

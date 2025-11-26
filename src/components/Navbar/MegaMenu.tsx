@@ -41,7 +41,7 @@ export default function MegaMenu({ title, columns }: MegaMenuProps) {
         {title}
       </button>
 
-      {/* Portaled Full-Width Dropdown */}
+     
       {mounted &&
         createPortal(
           <div

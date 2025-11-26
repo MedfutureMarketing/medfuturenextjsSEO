@@ -43,7 +43,7 @@ export default function PhoneNumber({
     const newValue = e.target.value;
     setPhoneNumber(newValue);
     
-    // Create a synthetic event with the full phone number including country code
+    
     const syntheticEvent = {
       ...e,
       target: {

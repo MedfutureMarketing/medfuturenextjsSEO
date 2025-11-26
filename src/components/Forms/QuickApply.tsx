@@ -60,7 +60,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 text-center sm:text-left">Quick Apply</h3>
 
       <form onSubmit={handleSubmit} className="space-y-4 sm:space-y- text-black">
-        {/* Personal Information - 2 columns on desktop */}
+      
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
           <div>
             <label className="block text-[18px] font-medium text-gray-700  ">
@@ -93,7 +93,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* Contact Information - 2 columns on desktop */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
           <PhoneNumber
             value={formData.phone}
@@ -118,7 +118,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* Professional Information - 2 columns on desktop */}
+  
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
           <div>
             <label className="block text-sm font-medium text-gray-700 ">
@@ -158,7 +158,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* AHPRA Number - Full width */}
+       
         {/* <div>
           <label className="block text-sm font-medium text-gray-700 ">
             AHPRA Number *
@@ -174,7 +174,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           />
         </div> */}
 
-        {/* File Upload and Job Source - 2 columns on desktop */}
+    
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-[13px]">
           <div>
             <label className="block text-sm font-medium text-gray-700 ">
@@ -221,7 +221,6 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* Cover Letter - Full width */}
         {/* <div>
           <label className="block text-sm font-medium text-gray-700 ">
             Cover Letter
@@ -266,7 +265,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           </div>
         </div>
 
-        {/* Buttons - Side by side on desktop, stacked on mobile */}
+    
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <button
             type="submit"

@@ -36,7 +36,7 @@ export default function SearchBarWithLocation() {
 
   const ref = useRef<HTMLDivElement>(null);
 
-  // Close desktop dropdown when clicking outside
+  
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -47,7 +47,7 @@ export default function SearchBarWithLocation() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  // Track mobile/desktop view
+  
   const [isMobile, setIsMobile] = useState<boolean>(
     typeof window !== "undefined" ? window.innerWidth < 768 : false
   );

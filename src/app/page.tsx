@@ -4,7 +4,7 @@ import "./globals.css";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("home"); // Fetch metadata by key
+  return getPageMetadata("home"); // SEO META DATA
 }
 
 
