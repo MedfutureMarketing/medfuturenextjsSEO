@@ -1,46 +1,29 @@
+// layout.tsx
 import type { Metadata } from "next";
-import "./globals.css";
-
-import { getPageMetadata } from "@/lib/getPageMetadata";
 import { schemaList } from "@/Data/schemaList";
 
-export function getSchema(page: string) {
+export const metadata: Metadata = {
+  title: "Medfuture",
+  description: "Medfuture is a leading medical and healthcare recruitment brand in Australia & NZ",
+};
+
+function getSchema(page: string) {
   return schemaList[page]?.jsonLd || null;
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("home"); // SEO META DATA
-}
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-
-  const schema = getSchema("home"); // <-- FIX: define schema here!
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const schema = getSchema("home"); // static global schema
 
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased font-sans">
-
-        {/* JSON-LD Structured Data */}
+      <body>
         {schema && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         )}
-
-        {/* Main Content */}
         {children}
-
-        {/* Footer */}
-        <footer className="bg-gray-200">
-          <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-center text-sm">
-            © {new Date().getFullYear()} My App. All rights reserved.
-          </div>
-        </footer>
       </body>
     </html>
   );
