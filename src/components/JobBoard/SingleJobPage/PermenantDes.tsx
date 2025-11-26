@@ -17,7 +17,8 @@ export default function JobDescription() {
 
   return (
     <div className="border-2 rounded-8px relative">
-   
+
+     
 
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-4 lg:pl-[43px] lg:pr-[23px] lg:py-[25px] rounded-none bg-white">
@@ -25,7 +26,7 @@ export default function JobDescription() {
           GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
         </h1>
 
-       
+        {/* Desktop Apply Button */}
         <button
           onClick={handleApplyNow}
           className=" bg-[#64CAF3] text-white px-6 py-3 lg:w-[160px] lg:h-[56px] rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap lg:ml-4 flex-shrink-0"
@@ -38,7 +39,7 @@ export default function JobDescription() {
       <div className="relative px-4 lg:px-5">
         <div className="absolute top-0 right-0 px-4 lg:px-5">
           <Link href="/permanent/job" className="hover:underline">
-           
+            {/* SVG icon omitted for brevity */}
           </Link>
         </div>
       </div>
@@ -79,9 +80,9 @@ export default function JobDescription() {
         </div>
       </div>
 
-   
+  
       <div className='grid lg:grid-cols-2 mt-6 lg:mt-0 px-4 lg:px-[44px]'>
-        {/* Always-open Registration Form */}
+     
         <div ref={formRef} className='mt-6 lg:mt-0'>
           <RegistrationForm />
         </div>
@@ -108,7 +109,7 @@ export default function JobDescription() {
         </div>
       </div>
 
-    
+      
       <div className="lg:hidden h-20"></div>
     </div>
   );
