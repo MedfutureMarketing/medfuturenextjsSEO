@@ -27,7 +27,7 @@ export const metaDataList: Record<string, Metadata> = {
             siteName: "Medfuture",
             title: "Medfuture – Medical & Healthcare Recruitment in Australia",
             description:
-                "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing ",
+                "TEST Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing ",
             images: [
                 {
                     url: "https://medfuture.com.au/assets/pathwayBanner-ANKLHITn.png",
