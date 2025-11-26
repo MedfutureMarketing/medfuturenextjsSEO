@@ -13,7 +13,7 @@ export function getSchema(page: string) {
           "name": "Medfuture",
           "logo": {
             "@type": "ImageObject",
-            "url": "https://www.myapp.com/logo.png",
+            "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLvJgDi77k0vM9rYUpYApNtu7IuCSUYuSCoA&s",
           },
         },
       };

@@ -51,7 +51,7 @@ export const schemaList: Record<string, SchemaData> = {
     },
   },
 
-  permanentJob: {
+  permanent: {
     type: "JobPosting",
     jsonLd: {
       "@context": "https://schema.org",
