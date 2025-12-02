@@ -23,7 +23,7 @@ export default function Menu() {
     "/employers": "bg-red-50 text-red-700 border-red-200",
     "/explore": "bg-teal-50 text-teal-700 border-teal-200",
   };
-  const defaultTopBarColors = "bg-[#040D48] text-white border-blue-200";
+  const defaultTopBarColors = "bg-[#0D1A3E] text-white border-blue-200";
   const topBarColors = topBarColorMap[pathname] || defaultTopBarColors;
 
   // ⭐ MAIN HEADER COLORS
@@ -35,7 +35,7 @@ export default function Menu() {
     "/employers": "bg-red-100 text-red-800 border-red-300",
     "/explore": "bg-teal-100 text-teal-800 border-teal-300",
   };
-  const defaultHeaderColors = "bg-[#040D48] text-white border-blue-200";
+  const defaultHeaderColors = "bg-[#0D1A3E] text-white border-blue-200";
   const headerColors = headerColorMap[pathname] || defaultHeaderColors;
 
   // ⭐ PAGE-BASED LOGO
@@ -89,7 +89,7 @@ export default function Menu() {
         </div>
 
         {/* MAIN HEADER */}
-        <div className={`${headerColors} full-width-section border-b`}>
+        <div className={`${headerColors} full-width-section `}>
           <header>
             <div className="px-0 py-3 w-full inner-width-section flex items-center justify-between">
               {/* Logo */}

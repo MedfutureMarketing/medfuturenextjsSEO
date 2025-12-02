@@ -1,10 +1,15 @@
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import { schemaList } from "@/Data/schemaList";
+import { Metadata } from "next";
+import Hero from "@/components/Home/Hero";
 
 export function getSchema(page: string) {
   return schemaList[page]?.jsonLd || null;
 }
 
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("home");
+}
 export default function RootLayout({
   children,
 }: {
@@ -24,7 +29,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased font-sans">
         {children}
-
+<Hero />
         <footer className="bg-gray-200">
           <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-center text-sm">
             © {new Date().getFullYear()} My App. All rights reserved.
