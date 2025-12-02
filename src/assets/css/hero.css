@@ -12,7 +12,7 @@
   grid-template-columns: 1fr;
   gap: 32px;
   padding-top: 8px;
-  padding-bottom: 8px;
+  padding-bottom: 0px;
 }
 
 @media (min-width: 1024px) {
