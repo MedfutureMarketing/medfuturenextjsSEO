@@ -19,7 +19,7 @@ export default function Hero() {
             Medfuture Australia – Elevate Your Medical Career
           </h1>
           <p className="hero-subtitle">
-            Connecting healthcare professionals with trusted employers across Australia. Whether you’re seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.
+        Connecting healthcare professionals with trusted employers across Australia. Whether you’re seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.Connecting healthcare professionals with trusted employers across Australia. Whether you’re seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.Connecting healthcare professionals with trusted employers across Australia. Whether you’re seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.Connecting healthcare professionals with trusted employers across Australia. Whether you’re seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.    Connecting healthcare professionals with trusted employers across Australia. Whether you’re seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ export default function Hero() {
       </div>
 
       <div className="stats-row inner-width-section">
-        <div className="stats-grid">
+        <div className="stats-grid">s
           {stats.map((stat, index) => (
             <div key={index} className="stat-card">
               <div className="stat-value">{stat.value}</div>

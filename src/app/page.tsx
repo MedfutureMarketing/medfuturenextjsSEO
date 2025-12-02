@@ -27,14 +27,14 @@ export default function RootLayout({
           />
         )}
       </head>
-      <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased font-sans">
+      <body className="">
         {children}
 <Hero />
-        <footer className="bg-gray-200">
+        {/* <footer className="bg-gray-200">
           <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-center text-sm">
             © {new Date().getFullYear()} My App. All rights reserved.
           </div>
-        </footer>
+        </footer> */}
       </body>
     </html>
   );
