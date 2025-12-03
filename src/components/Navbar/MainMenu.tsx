@@ -8,7 +8,6 @@ import { usePathname } from "next/navigation";
 import MedfutureLogoDark from "@/assets/logo/medfuture-logo.png";
 import MedfutureLogoLight from "@/assets/logo/medfuture-white.png";
 import MegaMenu from "@/components/Navbar/MegaMenu";
-import styles from "./mainmenu.module.css";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,7 +54,7 @@ export default function Menu() {
       {/* STICKY WRAPPER */}
       <div className="sticky top-0 z-50">
         {/* TOP CATEGORY BAR */}
-        <div className={`hidden lg:block full-width-section  ${topBarColors} ${styles.topBar}`}
+        <div className={`hidden lg:block py-2 full-width-section  ${topBarColors}`}
          style={{
           borderBottomWidth: "2px",
           borderImageSlice: 1,
@@ -63,26 +62,26 @@ export default function Menu() {
           borderImageSource: "linear-gradient(to right, #ffffffff, #b5b5b5ff, #ffffffff)", // blue → purple → pink
         }}>
           <div className="px-0 py-2 mx-auto max-w-screen-2xl  flex justify-center inner-width-section">
-            <div className={`flex space-x-4 divide-x divide-gray-300 ${styles.topBarLinks}`}>
-              <Link href="/" className={`${styles.topBarLink} pr-4`}>
+            <div className="flex space-x-4 divide-x divide-gray-300">
+              <Link href="/" className="hover:underline pr-4">
                 Medical
               </Link>
-              <Link href="/" className={`${styles.topBarLink} px-4`}>
+              <Link href="/" className="hover:underline px-4">
                 GP
               </Link>
-              <Link href="/" className={`${styles.topBarLink} px-4`}>
+              <Link href="/" className="hover:underline px-4">
                 AHP
               </Link>
-              <Link href="/" className={`${styles.topBarLink} px-4`}>
+              <Link href="/" className="hover:underline px-4">
                 Dental & Oral
               </Link>
-              <Link href="/" className={`${styles.topBarLink} px-4`}>
+              <Link href="/" className="hover:underline px-4">
                 Mental Health
               </Link>
-              <Link href="/" className={`${styles.topBarLink} px-4`}>
+              <Link href="/" className="hover:underline px-4">
                 Nursing & Care Workers
               </Link>
-              <Link href="/" className={`${styles.topBarLink} pl-4`}>
+              <Link href="/" className="hover:underline pl-4">
                 Healthcare Executive
               </Link>
             </div>
@@ -101,17 +100,17 @@ export default function Menu() {
               {/* Desktop Navigation */}
               <ul className="hidden lg:flex items-center space-x-8">
                 <li>
-                  <Link href="/permanent" className={styles.navListLink}>
+                  <Link href="/permanent" className="font-medium hover:text-blue-600">
                     Permanent Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/locum" className={styles.navListLink}>
+                  <Link href="/locum" className="font-medium hover:text-blue-600">
                     Locum Jobs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/international" className={styles.navListLink}>
+                  <Link href="/international" className="font-medium hover:text-blue-600">
                     International
                   </Link>
                 </li>
@@ -160,7 +159,10 @@ export default function Menu() {
 
               {/* Signup Button */}
               <div className="hidden lg:block">
-                <Link href="/" className={styles.signupBtn}>
+                <Link
+                  href="/"
+                  className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-md hover:bg-blue-700"
+                >
                   Sign Up
                 </Link>
               </div>
@@ -170,7 +172,7 @@ export default function Menu() {
                 aria-label="Open Menu"
                 title="Open Menu"
                 onClick={() => setIsMenuOpen(true)}
-                className={`${styles.mobileMenuBtn} lg:hidden`}
+                className="p-2 text-gray-700 rounded-md hover:bg-gray-100 lg:hidden"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -195,7 +197,7 @@ export default function Menu() {
               <button
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Close Menu"
-                className={styles.mobileMenuBtn}
+                className="text-gray-600 hover:text-blue-600"
               >
                 ✕
               </button>
@@ -203,59 +205,63 @@ export default function Menu() {
 
             <nav className="flex flex-col p-4 space-y-4 overflow-y-auto h-full">
               <div className="border-b pb-3">
-                <p className={styles.mobileHeading}>Profession</p>
-                <div className="flex flex-col space-y-2 font-sans">
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                <p className="text-2xl text-gray-500 mb-2 font-bold">Profession</p>
+                <div className="flex flex-col space-y-2 font-sans text-gray-700">
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Medical
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     GP
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     AHP
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Dental & Oral
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Mental Health
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Nursing & Care Workers
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Healthcare Executive
                   </Link>
                 </div>
               </div>
 
-              <div className="">
-                <p className={styles.mobileHeading}>Quick Links</p>
-                <div className="flex flex-col space-y-2 font-sans">
-                  <Link href="/permanent" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+              <div className="pt-3">
+                <p className="text-2xl text-gray-500 mb-2 font-semibold">Quick Links</p>
+                <div className="flex flex-col space-y-2 font-sans text-gray-700">
+                  <Link href="/permanent" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Permanent Jobs
                   </Link>
-                  <Link href="/locum" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/locum" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Locum Jobs
                   </Link>
-                  <Link href="/international" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/international" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     International
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     For Candidates
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     For Employers
                   </Link>
-                  <Link href="/" onClick={() => setIsMenuOpen(false)} className={styles.mobileLink}>
+                  <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
                     Explore
                   </Link>
                 </div>
               </div>
 
               <div className="pt-6">
-                <Link href="/signup" onClick={() => setIsMenuOpen(false)} className={styles.mobileCreateAccount}>
-                  Create an Account
+                <Link
+                  href="/signup"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="inline-flex items-center w-56 justify-center px-4 py-2 font-medium text-white bg-blue-900 rounded hover:bg-blue-700 text-center"
+                >
+                 Create an Account
                 </Link>
               </div>
             </nav>
