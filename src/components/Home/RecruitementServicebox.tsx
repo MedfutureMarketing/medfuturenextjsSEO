@@ -4,12 +4,12 @@ import MedfutureIcon from "@/assets/icons/Medfuture.png";
 
 export default function ExclusiveRecruitmentServices() {
   return (
-    <section className="w-full py-16 px-4 lg:px-0">
+    <section className="w-full py-[140px] px-4 lg:px-0">
       <div className="max-w-screen-2xl mx-auto">
 
-        <div className="w-full bg-white border shadow-md rounded-xl flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 p-8 lg:p-12 hover:shadow-lg transition-shadow">
+        <div className="w-full bg-white border shadow-md rounded-sm flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-12 p-8 lg:p-12 hover:shadow-lg transition-shadow">
           {/* Left: Icon + Text */}
-          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-6">
+          <div className="flex flex-col lg:flex-row items-center lg:items-start gap-6 lg:gap-[60px]">
             <Image
               src={MedfutureIcon}
               width={93}
@@ -32,7 +32,7 @@ export default function ExclusiveRecruitmentServices() {
           {/* Right: Button */}
           <Link
             href="/contact"
-            className=" lg:mt-0 bg-[#074CA4] w-[209px] h-[56px] text-center  text-white text-[16px] lg:text-base px-6 lg:px-8  py-[16px] rounded-lg hover:bg-[#093055] transition-all whitespace-nowrap"
+            className=" lg:mt-0 bg-[#074CA4] w-[209px] h-[56px] text-center  text-white text-[16px] lg:text-base px-6 lg:px-8  py-[16px] rounded-sm hover:bg-[#093055] transition-all whitespace-nowrap"
           >
             Reach Us
           </Link>

@@ -4,7 +4,7 @@
 import Link from "next/link";
 export default function FlexibleHiringSolution() {
     return (
-        <section className="w-full bg-gray-50 py-16 px-4 lg:px-0 full-width-section">
+        <section className="w-full bg-gray-50 py-[106px] px-4 lg:px-0 full-width-section">
             <div className="inner-width-section">
                 <div className="max-w-screen-2xl mx-auto text-left mb-12 ">
                     <h2 className="text-3xl lg:text-[40px] font-Inter  text-gray-800 mb-4">

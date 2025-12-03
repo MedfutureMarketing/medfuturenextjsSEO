@@ -20,7 +20,7 @@ export default function BrowseJobs() {
   ];
 
   return (
-    <section className="w-full bg-white py-16 px-4 lg:px-0">
+    <section className="w-full bg-white py-[106px] px-4 lg:px-0">
       <div className=" mx-auto">
 
         {/* Wrapper: Text Left + Tabs Right */}
