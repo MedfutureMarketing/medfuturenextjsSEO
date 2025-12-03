@@ -7,8 +7,8 @@ export default function FlexibleHiringSolution() {
         <section className="w-full bg-gray-50 py-16 px-4 lg:px-0 full-width-section">
             <div className="inner-width-section">
                 <div className="max-w-screen-2xl mx-auto text-left mb-12 ">
-                    <h2 className="text-3xl lg:text-[40px] font-Inter font-bold text-gray-800 mb-4">
-                        Flexible <span className="text-[#074CA4]"> Hiring Solutions</span>
+                    <h2 className="text-3xl lg:text-[40px] font-Inter  text-gray-800 mb-4">
+                        Flexible <span className="text-[#074CA4] font-bold"> Hiring Solutions</span>
                     </h2>
                     <p className="text-gray-600 text-lg lg:text-[16px]  max-w-2xl ">
                         Every employer is different — and so is our approach. Choose the engagement model that fits your goals, budget and timeframes.  </p>
@@ -59,8 +59,8 @@ export default function FlexibleHiringSolution() {
                     </div>
                 </div>
                 {/* Bottom Grid: 2 Cards */}
-                <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col  text-left lg:h-[308px]">
+                <div className=" mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col  text-left ">
                         <h3 className="text-xl font-semibold text-[#0A2E5C] mt-4 mb-2">Permanent Recruitment Solutions</h3>
                         <p className="text-gray-600">Connect with skilled healthcare professionals for long-term roles, ensuring team stability.</p>
                         <ul className="list-disc pl-5 text-[#171717B2]">
@@ -74,7 +74,7 @@ export default function FlexibleHiringSolution() {
                             <Link href="/" className="hover:underline text-[#0A2E5C] text-[14px]    py-[9.5px]  rounded-[4px] bg-white border-2 border-[#0A2E5C]  py-[9.5px] text-center">Submit a Vacancy</Link>
                         </div>
                     </div>
-                    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col  text-left lg:h-[308px]">
+                    <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col  text-left ">
                         <h3 className="text-xl font-semibold text-[#0A2E5C] mt-4 mb-2">Permanent Recruitment Solutions</h3>
                         <p className="text-gray-600">Connect with skilled healthcare professionals for long-term roles, ensuring team stability.</p>
                         <ul className="list-disc pl-5 text-[#171717B2]">

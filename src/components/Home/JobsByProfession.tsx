@@ -4,11 +4,11 @@
 import Link from "next/link";
 export default function JobsbyProfession() {
     return (
-        <section className="w-full bg-gray-50 py-16 px-4 lg:px-0 full-width-section">
+        <section className="w-full  py-16 px-4 lg:px-0 full-width-section">
             <div className="inner-width-section">
                 <div className="max-w-screen-2xl mx-auto text-left mb-12 ">
-                    <h2 className="text-3xl lg:text-[40px] font-Inter font-bold text-gray-800 mb-4">
-                        Find Jobs by <span className="text-[#074CA4]"> Professions</span>
+                    <h2 className="text-3xl lg:text-[40px] font-Inter  text-gray-800 mb-4">
+                        Find Jobs by <span className="text-[#074CA4] font-bold"> Professions</span>
                     </h2>
                     <p className="text-gray-600 text-lg lg:text-[16px]  max-w-2xl ">
                         Discover healthcare roles for your profession. Browse opportunities for doctors, allied health, dental experts, and more. Find positions matching your skills and career goals across Australia. </p>

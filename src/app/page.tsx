@@ -5,6 +5,8 @@ import Hero from "@/components/Home/Hero";
 import JobSeekerHubSearch from "@/components/Home/JobSeekerHub";
 import FlexibleHiringSolution from "@/components/Home/HiringSolution";
 import JobsbyProfession from "@/components/Home/JobsByProfession";
+import BrowseJobs from "@/components/Home/BrowseJobNav";
+import RecruitementServicebox from "@/components/Home/RecruitementServicebox";
 
 export function getSchema(page: string) {
   return schemaList[page]?.jsonLd || null;
@@ -35,7 +37,9 @@ export default function RootLayout({
 <Hero />
 <JobSeekerHubSearch/>
 <JobsbyProfession />
+<BrowseJobs/>
 <FlexibleHiringSolution />
+<RecruitementServicebox />
         {/* <footer className="bg-gray-200">
           <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-center text-sm">
             © {new Date().getFullYear()} My App. All rights reserved.
