@@ -1,4 +1,8 @@
 "use client";
+import avatar from "@/assets/homeico/aboutusimg.png";
+
+import Image from "next/image";
+
 
 const cards = [
   { text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad”", author: "Dr. Peter Parker", role: "General Practitioner" },
@@ -14,7 +18,7 @@ const cards = [
 export default function TestimonialPuzzle() {
   return (
     <section className="w-full py-20 px-4 lg:px-0">
-      <h2 className="text-3xl font-bold text-center text-[#074CA4] mb-12">
+      <h2 className="text-[36px] font-bold text-center text-[#074CA4] mb-12">
         Testimonials
       </h2>
 
@@ -24,26 +28,36 @@ export default function TestimonialPuzzle() {
           const items = cards.slice(start, start + 2);
 
           const isTall = col % 2 === 1;
-          const offset = col % 2 === 0 ? "mt-6" : "mt-0";
+          const offset = col % 2 === 0 ? "mt-16" : "mt-2";
 
           return (
             <div key={col} className={`${offset} grid gap-6`}>
               {items.map((item, i) => (
                 <div
                   key={i}
-                  className={`bg-white border border-gray-200 shadow-sm rounded-xl p-5 flex flex-col justify-between hover:shadow-md transition
-                    ${isTall ? "h-[280px]" : "h-[200px]"}
+                  className={`bg-[#F8F8F8] border border-gray-50 shadow-sm rounded-[8px] p-5 flex flex-col justify-between hover:shadow-md transition
+                    ${isTall ? "h-[280px]" : "h-250px"}
                   `}
                 >
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
                     {item.text}
                   </p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-semibold text-[#074CA4]">{item.author}</p>
-                      <p className="text-xs text-gray-500">{item.role}</p>
+                  <div className="flex justify-end">
+                    <div className="flex items-center gap-3">
+                      <div className="text-right">
+                        <p className="text-[14px] font-semibold text-[#074CA4]">{item.author}</p>
+                        <p className="text-[14px] text-gray-500">{item.role}</p>
+                      </div>
+                      <Image
+                        src={avatar} // or src={avatarUrl}
+                        alt={item.author}
+                        
+                        className="rounded-full object-fill h-[43px] w-[43px] "
+                      />
                     </div>
                   </div>
+
+
                 </div>
               ))}
             </div>
