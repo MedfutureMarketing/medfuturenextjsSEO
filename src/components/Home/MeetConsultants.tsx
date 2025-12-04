@@ -38,15 +38,15 @@ export default function MeetOurConsultants() {
         <section className="w-full py-16 px-4 lg:px-0 overflow-visible">
             <div className="mx-auto max-w-screen-2xl text-left relative">
                 {/* Title */}
-                <h2 className="text-3xl sm:text-4xl lg:text-[36px] font-bold text-[#040D48] mb-4 text-center lg:text-left">
+                <h2 className="text-3xl sm:text-4xl lg:text-[36px] font-bold text-[#040D48] mb-4 text-center lg:text-center">
                     Meet Our <span className="text-[#074CA4]">Consultants</span>
                 </h2>
-                <p className="text-gray-600 mb-12 max-w-2xl mx-auto lg:mx-0 text-sm sm:text-base text-center lg:text-left">
+                <p className="text-gray-600 mb-12 lg:max-w-full mx-auto lg:mx-0 text-sm sm:text-base text-center lg:text-center">
                     Connect with our dedicated recruitment consultants who guide, support, and understand your career goals. With industry expertise and personalised care, they help you navigate opportunities and find the role that truly fits you.
                 </p>
 
                 {/* Tabs */}
-                <div className="flex gap-3 sm:gap-4 mb-12 flex-wrap justify-center lg:justify-start">
+                <div className="flex gap-3 sm:gap-4 mb-12 flex-wrap justify-center lg:justify-center">
                     {tabs.map((tab) => (
                         <button
                             key={tab}
