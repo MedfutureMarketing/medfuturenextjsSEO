@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 // import avatar from "@/assets/avatar.png"; // replace with your avatar
 
 const cards = [
