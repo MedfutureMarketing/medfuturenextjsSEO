@@ -36,7 +36,7 @@ export default function AboutUs() {
 
           {/* Grid 3 - Horizontal Image Breakout (Centered) */}
           <div className="relative z-10 flex justify-center lg:-mt-[50px]">
-            <div className="overflow-hidden rounded-none shadow-md border-2 border-gray-300">
+            <div className="overflow-hidden rounded-none shadow-md  border-gray-300">
               <Image
                 src={aboutusimg}
                 alt="About Us"
