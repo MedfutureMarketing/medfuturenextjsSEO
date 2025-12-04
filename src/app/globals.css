@@ -24,7 +24,7 @@ body {
   font-family: 'Inter', Arial, Helvetica, sans-serif;
 
   width: 100%;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0;           
   box-sizing: border-box;
@@ -33,7 +33,7 @@ body {
 /* Optional reusable inner container */
 .inner-width-section {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 1rem;
   box-sizing: border-box;

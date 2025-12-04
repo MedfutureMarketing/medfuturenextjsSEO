@@ -9,6 +9,7 @@ import BrowseJobs from "@/components/Home/BrowseJobNav";
 import RecruitementServicebox from "@/components/Home/RecruitementServicebox";
 import HomeAboutus from "@/components/Home/HomeAboutus";
 import Testimonials from "@/components/Home/Testimonials";
+import MeetOurConsultants from "@/components/Home/MeetConsultants";
 
 export function getSchema(page: string) {
   return schemaList[page]?.jsonLd || null;
@@ -44,6 +45,7 @@ export default function RootLayout({
 <RecruitementServicebox />
 <HomeAboutus />
 <Testimonials/>
+<MeetOurConsultants/>
         {/* <footer className="bg-gray-200">
           <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-center text-sm">
             © {new Date().getFullYear()} My App. All rights reserved.
