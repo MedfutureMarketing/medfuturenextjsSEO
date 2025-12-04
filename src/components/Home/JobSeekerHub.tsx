@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function JobSeekerHub({ query = "" }: { query?: string }) {
   return (
-    <div className="w-full bg-[#F8F8F8] py-6 px-4 lg:px-0 full-width-section">
-      <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center gap-4 inner-width-section lg:gap-0">
+    <section className="w-full full-width-section bg-[#F8F8F8] py-6 px-4 lg:px-0">
+      <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row items-center gap-4 lg:gap-0 inner-width-section">
         {/* Left: Search form */}
         <form
-          action="/job-search" // Replace with your actual search results page
+          action="/job-search"
           method="GET"
           className="w-full lg:w-[500px] flex gap-2"
         >
@@ -19,12 +19,13 @@ export default function JobSeekerHub({ query = "" }: { query?: string }) {
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-[#040D48] text-white  rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
+            className="px-6 py-3 bg-[#040D48] text-white font-medium rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap"
           >
             Find
           </button>
         </form>
-        {/* Right: Buttons */}
+
+        {/* Right: Hub Links */}
         <div className="w-full lg:flex-1 flex lg:justify-end justify-center gap-3 lg:gap-4">
           <Link
             href="/job-seeker-hub"
@@ -39,8 +40,7 @@ export default function JobSeekerHub({ query = "" }: { query?: string }) {
             Employer Hub
           </Link>
         </div>
-
       </div>
-    </div>
+    </section>
   );
 }

@@ -52,7 +52,7 @@ export default function TestimonialPuzzle() {
                         src={avatar}
                         alt={item.author}
                         width={43}
-                        height={43}
+                        height={35}
                         className="rounded-full object-cover"
                         priority
                       />
