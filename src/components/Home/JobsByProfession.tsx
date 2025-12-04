@@ -47,49 +47,65 @@ export default function JobsbyProfession() {
           </p>
         </div>
 
-        {/* Grid of Profession Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-3 gap-6">
           {professions.map((prof, idx) => (
-            <div key={idx} className="bg-white rounded-lg border shadow-lg flex flex-col text-left px-7 py-6">
-              {/* Header */}
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl font-semibold text-[#0A2E5C]">{prof.title}</h3>
-                <Link
-                  href={prof.exploreLink}
-                  className="bg-white text-[#0F172A] shadow-lg border border-gray-100 text-sm px-4 py-2 rounded hover:bg-blue-700"
-                >
-                  Explore
-                </Link>
-              </div>
+            <ProfessionCard key={idx} prof={prof} />
+          ))}
+        </div>
 
-              <p className="text-gray-600 mt-2 text-sm">Latest Jobs</p>
-
-              {/* Job Listings */}
-              <div className="grid grid-cols-1 gap-3 mt-4">
-                {prof.jobs.map((job, jidx) => (
-                  <div key={jidx} className="bg-white rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
-                    <div>
-                      <h4 className="text-lg font-semibold text-[#0A2E5C]">{job.title}</h4>
-                      <p className="text-gray-600 text-sm mt-1">{job.location}</p>
-                    </div>
-                    <Link href={job.link} className="text-[#074CA4] text-sm px-4 py-2 rounded">
-                      View
-                    </Link>
-                  </div>
-                ))}
-
-                {/* View All Button */}
-                <Link
-                  href={prof.viewAllLink}
-                  className="hover:underline text-[14px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
-                >
-                  {prof.viewAllText}
-                </Link>
-              </div>
+        {/* Mobile Slider */}
+        <div className="flex md:hidden overflow-x-auto gap-4 snap-x snap-mandatory -mx-4 px-4">
+          {professions.map((prof, idx) => (
+            <div key={idx} className="snap-start min-w-[260px] flex-shrink-0">
+              <ProfessionCard prof={prof} />
             </div>
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+// Separate card component
+function ProfessionCard({ prof }: { prof: typeof professions[0] }) {
+  return (
+    <div className="bg-white rounded-lg border shadow-lg flex flex-col text-left px-7 py-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-semibold text-[#0A2E5C]">{prof.title}</h3>
+        <Link
+          href={prof.exploreLink}
+          className="bg-white text-[#0F172A] shadow-lg border border-gray-100 text-sm px-4 py-2 rounded hover:bg-blue-700"
+        >
+          Explore
+        </Link>
+      </div>
+
+      <p className="text-gray-600 mt-2 text-sm">Latest Jobs</p>
+
+      {/* Job Listings */}
+      <div className="grid grid-cols-1 gap-3 mt-4">
+        {prof.jobs.map((job, jidx) => (
+          <div key={jidx} className="bg-white rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
+            <div>
+              <h4 className="text-lg font-semibold text-[#0A2E5C]">{job.title}</h4>
+              <p className="text-gray-600 text-sm mt-1">{job.location}</p>
+            </div>
+            <Link href={job.link} className="text-[#074CA4] text-sm px-4 py-2 rounded">
+              View
+            </Link>
+          </div>
+        ))}
+
+        {/* View All Button */}
+        <Link
+          href={prof.viewAllLink}
+          className="hover:underline text-[14px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
+        >
+          {prof.viewAllText}
+        </Link>
+      </div>
+    </div>
   );
 }
