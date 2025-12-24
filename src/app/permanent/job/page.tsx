@@ -10,18 +10,21 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ jobId: string }>;
 }) {
+  const resolvedParams = await params;
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-gray-50 text-gray-900 antialiased font-sans">
            
         
         {/* Header */}
-      <JobDescription/>
+      <JobDescription params={Promise.resolve(resolvedParams)}/>
 
         {/* Main Content */}
        
