@@ -1,6 +1,9 @@
 import Link from "next/link";
+<<<<<<< HEAD
 import Image from "next/image";
 import loctionico from "@/assets/homeico/loctionico.png";
+=======
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
 
 const professions = [
   {
@@ -14,22 +17,35 @@ const professions = [
     viewAllLink: "/jobs/medical-practitioner",
   },
   {
+<<<<<<< HEAD
     title: "Psychology",
+=======
+    title: "Allied Health",
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
     exploreLink: "/jobs/allied-health",
     jobs: [
       { title: "Physiotherapist", location: "Los Angeles, CA", link: "/jobs/physiotherapist" },
       { title: "Occupational Therapist", location: "Chicago, IL", link: "/jobs/occupational-therapist" },
     ],
+<<<<<<< HEAD
     viewAllText: "View All Mental Psychology Jobs",
     viewAllLink: "/jobs/allied-health",
   },
   {
     title: "Nursing",
+=======
+    viewAllText: "View All Allied Health Jobs",
+    viewAllLink: "/jobs/allied-health",
+  },
+  {
+    title: "Dental Professionals",
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
     exploreLink: "/jobs/dental-professionals",
     jobs: [
       { title: "Dentist", location: "Miami, FL", link: "/jobs/dentist" },
       { title: "Dental Assistant", location: "Boston, MA", link: "/jobs/dental-assistant" },
     ],
+<<<<<<< HEAD
     viewAllText: "View All Nusing Jobs",
     viewAllLink: "/jobs/dental-professionals",
   },
@@ -61,12 +77,16 @@ const professions = [
       { title: "Dental Assistant", location: "Boston, MA", link: "/jobs/dental-assistant" },
     ],
     viewAllText: "View All Physiotherapy Jobs",
+=======
+    viewAllText: "View All Dental Jobs",
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
     viewAllLink: "/jobs/dental-professionals",
   },
 ];
 
 export default function JobsbyProfession() {
   return (
+<<<<<<< HEAD
     <section className="w-full lg:py-[106px] py-10 px-4 lg:px-0">
       <div className="max-w-screen-2xl mx-auto">
    
@@ -92,14 +112,35 @@ export default function JobsbyProfession() {
         </div>
 
 
+=======
+    <section className="w-full py-[106px] px-4 lg:px-0">
+      <div className="max-w-screen-2xl mx-auto">
+        {/* Title */}
+        <div className="text-left mb-12">
+          <h2 className="text-3xl lg:text-[40px] font-Inter text-gray-800 mb-4">
+            Find Jobs by <span className="text-[#074CA4] font-bold">Professions</span>
+          </h2>
+          <p className="text-gray-600 text-lg lg:text-[16px] max-w-2xl">
+            Discover healthcare roles for your profession. Browse opportunities for doctors, allied health, dental experts, and more. Find positions matching your skills and career goals across Australia.
+          </p>
+        </div>
+
+        {/* Desktop Grid */}
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
         <div className="hidden md:grid md:grid-cols-3 gap-6">
           {professions.map((prof, idx) => (
             <ProfessionCard key={idx} prof={prof} />
           ))}
+<<<<<<< HEAD
           
         </div>
 
 
+=======
+        </div>
+
+        {/* Mobile Slider */}
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
         <div className="flex md:hidden overflow-x-auto gap-4 snap-x snap-mandatory -mx-4 px-4">
           {professions.map((prof, idx) => (
             <div key={idx} className="snap-start min-w-[260px] flex-shrink-0">
@@ -112,6 +153,7 @@ export default function JobsbyProfession() {
   );
 }
 
+<<<<<<< HEAD
 
 function ProfessionCard({ prof }: { prof: typeof professions[0] }) {
   return (
@@ -122,31 +164,63 @@ function ProfessionCard({ prof }: { prof: typeof professions[0] }) {
         <Link
           href={prof.exploreLink}
           className="bg-white text-[#0F172A] lg:shadow-lg shadow-sm border border-gray-100 lg:text-[14px] text-sm px-4 py-2 rounded hover:bg-blue-700"
+=======
+// Separate card component
+function ProfessionCard({ prof }: { prof: typeof professions[0] }) {
+  return (
+    <div className="bg-white rounded-lg border shadow-lg flex flex-col text-left px-7 py-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-semibold text-[#0A2E5C]">{prof.title}</h3>
+        <Link
+          href={prof.exploreLink}
+          className="bg-white text-[#0F172A] shadow-lg border border-gray-100 text-sm px-4 py-2 rounded hover:bg-blue-700"
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
         >
           Explore
         </Link>
       </div>
 
+<<<<<<< HEAD
       <p className="text-gray-600 mt-2 lg:text-[14px] text-xs">Latest Jobs</p>
 
 
+=======
+      <p className="text-gray-600 mt-2 text-sm">Latest Jobs</p>
+
+      {/* Job Listings */}
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
       <div className="grid grid-cols-1 gap-3 mt-4">
         {prof.jobs.map((job, jidx) => (
           <div key={jidx} className="bg-white rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
             <div>
+<<<<<<< HEAD
               <h4 className="lg:text-[14px] text-sm font-semibold text-[#0A2E5C]">{job.title}</h4>
               <p className="text-gray-600 lg:text-[12px] text-[10px] flex flex-wrap gap-2 w-full  mt-1"><Image src={loctionico} className="" alt="Locationico" />{job.location}</p>
             </div>
             <Link href={job.link} className="text-[#074CA4] text-[12px] px-4 py-2 rounded">
+=======
+              <h4 className="text-lg font-semibold text-[#0A2E5C]">{job.title}</h4>
+              <p className="text-gray-600 text-sm mt-1">{job.location}</p>
+            </div>
+            <Link href={job.link} className="text-[#074CA4] text-sm px-4 py-2 rounded">
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
               View
             </Link>
           </div>
         ))}
 
+<<<<<<< HEAD
 
         <Link
           href={prof.viewAllLink}
           className="hover:underline lg:text-[14px] text-[10px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
+=======
+        {/* View All Button */}
+        <Link
+          href={prof.viewAllLink}
+          className="hover:underline text-[14px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
+>>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
         >
           {prof.viewAllText}
         </Link>
