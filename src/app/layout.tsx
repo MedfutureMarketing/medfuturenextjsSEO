@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-<<<<<<< HEAD
 import NavigationMenu from "@/components/Navbar/MainMenu";
 import Breadcrumb from "@/components/Breadcrumb"; 
 import Preloader from "@/components/Preloader"; 
 import { Inter } from 'next/font/google';
 import Footer from "@/components/Footer";
-=======
-import NavigationMenu from "@/components/Navbar/MainMenu"; // Import menu
-import Breadcrumb from "@/components/Breadcrumb"; // Import breadcrumb
-import Preloader from "@/components/Preloader"; // Import preloader
-import { Inter } from 'next/font/google';
->>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
 
 
 const geistSans = Geist({
@@ -40,13 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<<<<<<< HEAD
     // <html lang="en" className={inter.className}>
         <html lang="en"  >
 
-=======
-    <html lang="en" className={inter.className}>
->>>>>>> 0624cd8599da62fbfb6e101042b25e3d0aa75471
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
