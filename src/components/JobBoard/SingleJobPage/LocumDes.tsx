@@ -1,5 +1,5 @@
 "use client"
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import RegistrationForm from '@/components/Forms/LocumForm';
 import Link from "next/link";
 import React from "react";
@@ -16,12 +16,57 @@ import EngagementModeIcon from '@/assets/icons/engagementmode.png';
 import PaymentCycleIcon from '@/assets/icons/paymentcycle.png';
 import AdditionalInfoIcon from '@/assets/icons/additionalinformation.png';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
+import { apiGet } from '@/lib/api';
+
+type JobHighlight = {
+  jobhighlights_id: number;
+  name: string;
+  label: string;
+};
+
+type Job = {
+  job_id: number;
+  job_title: string;
+  status: number;
+  commencement_date: string | null;
+  profession: { name: string } | null;
+  country: { name: string } | null;
+  state: { name: string } | null;
+  engagement_type: { name: string } | null;
+  job_brief: string | null;
+  medical_practise_details: string | null;
+  required_qualification_exp: string | null;
+  offer_details: string | null;
+  highlights: JobHighlight[];
+  speciality: { name: string } | null;
+  seniority: { name: string } | null;
+  location: { name: string } | null;
+  region: { name: string } | null;
+  engagement_mode: { name: string } | null;
+};
 
 export default function LocumJobDescription() {
-    const formRef = useRef<HTMLDivElement>(null);
-    const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+    const { jobId } = useParams<{ jobId: string }>();
+      const formRef = useRef<HTMLDivElement>(null);
+      const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+    
+      const [job, setJob] = useState<Job | null>(null);
+    
+      useEffect(() => {
+        async function fetchJob() {
+          try {
+            const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+            setJob(res.data);
+          } catch {
+            setJob(null);
+          }
+        }
+    
+        fetchJob();
+      }, [jobId]);
 
-    const handleApplyNow = () => {
+      const handleApplyNow = () => {
         setShowRegistrationForm(!showRegistrationForm);
         
         if (!showRegistrationForm && formRef.current) {
@@ -53,7 +98,7 @@ export default function LocumJobDescription() {
                     {/* Header */}
                     <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-4 lg:p-6 rounded-none bg-white">
                         <h1 className="text-lg lg:text-[32px] font-bold text-[#0E2851] pr-4 flex-1">
-                            Locum GP Registrar – Aged Care | AUD 160 per hour | DPA MMM6 | Condobolin
+                            {job?.job_title}
                         </h1>
                     </div>
 
@@ -80,210 +125,23 @@ export default function LocumJobDescription() {
                     <div className="flex items-center justify-center">
                         <div className="w-full bg-white p-4 lg:p-6 ">
                             <div className="grid grid-cols-2  lg:grid-cols-[auto_2fr] lg:gap-y-3 lg:gap-y-4 gap-x-0 lg:gap-x-5 border-gray-200">
-                                {/* Profession */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={ProfessionIcon}
-                                        alt="Profession icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Profession</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-                                    Medical Practitioner
-                                </div>
-
-                                {/* Specialty */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={SpecialtyIcon}
-                                        alt="Specialty icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Specialty</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    General Practitioner
-                                </div>
-
-                                {/* Seniority */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={SeniorityIcon}
-                                        alt="Seniority icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Seniority</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Surgery
-                                </div>
-
-                                {/* Location */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={LocationIcon}
-                                        alt="Location icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Location</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Guildford, New South Wales
-                                </div>
-
-                                {/* Start Date */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={StartDateIcon}
-                                        alt="Start date icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Start Date</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Flexible
-                                </div>
-
-                                {/* End Date */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={EndDateIcon}
-                                        alt="End date icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>End Date</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Flexible
-                                </div>
-
-                                {/* Locum Period */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={LocumPeriodIcon}
-                                        alt="Locum period icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Locum Period</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Ongoing
-                                </div>
-
-                                {/* Locum Rate On Offer */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={LocumRateIcon}
-                                        alt="Locum rate icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Locum Rate On Offer</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    AUD 200 per hour
-                                </div>
-
-                                {/* Engagement Type */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={EngagementTypeIcon}
-                                        alt="Engagement type icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Engagement Type</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Full-Time or Part-Time
-                                </div>
-
-                                {/* Engagement Mode */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={EngagementModeIcon}
-                                        alt="Engagement mode icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Engagement Mode</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Onsite
-                                </div>
-
-                                {/* Payment Cycle */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={PaymentCycleIcon}
-                                        alt="Payment cycle icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Payment Cycle</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Fortnightly
-                                </div>
-
-                                {/* Additional Information */}
-                                <div className="pl-2 lg:pl-4 lg:text-[18px] text-[13px] font-medium text-[#666666] flex items-center gap-2">
-                                    <Image
-                                        src={AdditionalInfoIcon}
-                                        alt="Additional information icon"
-                                        width={20}
-                                        height={20}
-                                        className="object-contain opacity-80"
-                                    />
-                                    <span>Additional Information</span>
-                                </div>
-                               <div className="lg:text-[18px] text-[13px] text-[#66768F] bg-[#66768F]/5 py-2 lg:py-3 px-2 rounded-[4px] mb-2 lg:mb-0">
-
-
-                                    Full-time nursing support provided | Consultation fees: Standard – AUD 80 | Long – AUD 140 |
-                                    Negotiable offers for the ideal candidate | On-site pathology services | AGPAL-accredited practice |
-                                    Opening hours – Monday to Friday 7:00 am to 9:00 pm and Saturday and Sunday 8:00 am to 6:00 pm
-                                </div>
+                                 {job?.highlights.map((highlight, idx) => (
+                                    <React.Fragment key={idx}>
+                                        <div className="pl-4 lg:text-[18px] font-medium text-gray-600 flex items-center gap-2">
+                                        <Image
+                                            src={ProfessionIcon}
+                                            alt="Profession icon"
+                                            width={20}
+                                            height={20}
+                                            className="object-contain opacity-80"
+                                        />
+                                        <span>{highlight.label}</span>
+                                        </div>
+                                        <div className="lg:text-[18px] text-[#66768F] bg-[#66768F]/5 py-3 px-2 rounded-[4px]">
+                                        {highlight.name}
+                                        </div>
+                                    </React.Fragment>
+                                    ))}
                             </div>
                         </div>
                     </div>
@@ -292,26 +150,19 @@ export default function LocumJobDescription() {
                     <div className="prose max-w-none p-4 lg:p-6">
                         <div className='mt-[38px]'>
                             <p className="text-gray-700 mb-4 lg:text-[18px] text-[13px] lg:text-base">
-                                We are seeking a committed GP Registrar to work in Condobolin, NSW. In this role, you will provide comprehensive aged care services to the local community. Enjoy appealing benefits, including competitive pay, support with travel and accommodation, and opportunities for career development. Apply today to work in a welcoming and fulfilling environment.
+                                {job?.job_brief}
                             </p>
-                            <h4 className="font-semibold text-[#66768F] mb-2 text-base lg:text-[18px] text-[13px] mt-[38px]">Offer Details:</h4>
-                            <ul className="list-disc list-inside text-gray-700 space-y-1 mb-4 lg:text-[18px] text-[13px] lg:text-base">
-                                <li>Permanent position</li>
-                                <li>Full-time or part-time engagement</li>
-                                <li>80% of billings or AUD 200 per hour for the first 3 months</li>
-                                <li>Sign-on bonus potential</li>
-                            </ul>
                         </div>
                         <div className='mt-[38px]'>
                             <h3 className="font-semibold text-[#66768F] mb-3 text-base lg:text-[18px] text-[13px]">Medical Practice Details</h3>
                             <p className="text-gray-700 mb-4 lg:text-[18px] text-[13px] lg:text-base">
-                                Located in New South Wales, this facility offers a wide range of healthcare services to support the local community. Services include GP care for aged care residents, drug and alcohol programs, pre-employment and diving medicals, along with specialised health assessments for aviation, asbestos exposure, and the mining industry. Condobolin has amenities such as parks, recreational areas, and a variety of dining and shopping options, making it a great place to live and work.
+                                {job?.medical_practise_details}
                             </p>
                             <h4 className="font-semibold text-[#66768F] mb-2 text-base lg:text-[18px] text-[13px] mt-[38px]">Eligibility Requirements</h4>
-                            <ul className="list-disc list-inside text-gray-700 space-y-1 lg:text-[18px] text-[13px] lg:text-base">
-                                <li>Should hold General registration with AHPRA</li>
-                                <li>GP Registrar or Non VR GP with General Registration</li>
-                                <li>Unlimited working rights in Australia</li>
+                            <ul className="list-disc list-inside text-[#666] mt-[10px] space-y-1">
+                                {(job?.required_qualification_exp?.split(/\r?\n/) ?? []).map((item, i) => (
+                                <li key={i}>{item}</li>
+                                ))}
                             </ul>
                         </div>
                     </div>

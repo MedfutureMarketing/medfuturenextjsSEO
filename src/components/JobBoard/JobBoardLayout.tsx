@@ -13,26 +13,6 @@ export default function JobBoardLayout() {
                         <div className="rounded-lg">
                             <div className="space-y-4">
                                 <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                 <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                 <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                <PermanentCard />
-                                
-                                
-                                
-                                {/* show only 10 cards  */}
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import NavigationMenu from "@/components/Navbar/MainMenu"; // Import menu
-import Breadcrumb from "@/components/Breadcrumb"; // Import breadcrumb
-import Preloader from "@/components/Preloader"; // Import preloader
+import NavigationMenu from "@/components/Navbar/MainMenu";
+import Breadcrumb from "@/components/Breadcrumb"; 
+import Preloader from "@/components/Preloader"; 
+import { Inter } from 'next/font/google';
+import Footer from "@/components/Footer";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,6 +16,10 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter', // optional if you want to use CSS variable
 });
 
 export const metadata: Metadata = {
@@ -26,7 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    // <html lang="en" className={inter.className}>
+        <html lang="en"  >
+
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -41,7 +50,10 @@ export default function RootLayout({
         
         {/* Your main content */}
         {children}
+        <Footer/>
+
       </body>
+
     </html>
   );
 }

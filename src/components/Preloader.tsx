@@ -1,42 +1,60 @@
 // components/Preloader.tsx
-"use client"
-import { useEffect, useState, Suspense } from 'react';
-import { usePathname, useSearchParams } from 'next/navigation';
+"use client";
 
-// Inner component that uses useSearchParams
+import { useEffect, useState, Suspense } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import Image from "next/image";
+
+// 🔁 Add your loader image here
+import LoaderImage from "@/assets/icons/Medfuture.webp"; // change path if needed
+
+// Pages where preloader is allowed
+const allowedRoutes = ["/permanent", "/locum"];
+
 function PreloaderContent() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const isAllowed = allowedRoutes.some((route) =>
+    pathname?.startsWith(route)
+  );
+
   useEffect(() => {
-    // Show loader when route changes
+    if (!isAllowed) return;
+
     setIsLoading(true);
-    
-    // Hide loader after 2 seconds
+
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 0);
+    }, 3000);
 
     return () => clearTimeout(timer);
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, isAllowed]);
 
-  if (!isLoading) return null;
+  if (!isAllowed || !isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-100 flex items-center justify-center bg-white/95 backdrop-blur-sm">
-      <div className="text-center">
-        <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p className="text-gray-600 font-medium">Loading page...</p>
-        <div className="mt-2 text-gray-400 hidden text-sm">
-          {pathname?.split('/').pop() || 'Loading...'}
+    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-white/5 backdrop-blur-sm">
+      <div className="flex flex-col items-center gap-4">
+        
+        {/* 🔄 Spinning Image */}
+        <div className="animate-spin">
+          <Image
+            src={LoaderImage}
+            alt="Loading"
+            width={30}
+            height={30}
+            priority
+          />
         </div>
+
+        <p className="text-gray-600 font-medium"></p>
       </div>
     </div>
   );
 }
 
-// Main component with Suspense boundary
 export default function Preloader() {
   return (
     <Suspense fallback={null}>

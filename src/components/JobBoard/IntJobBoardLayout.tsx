@@ -13,18 +13,6 @@ export default function JobBoardLayout() {
                         <div className="rounded-lg">
                             <div className="space-y-4">
                                 <InternationalCard />
-                                <InternationalCard />
-                                <InternationalCard />
-                                <InternationalCard />
-                                <InternationalCard />
-                                 <InternationalCard />
-                                <InternationalCard />
-                                <InternationalCard />
-                                <InternationalCard />
-                                <InternationalCard />
-                                
-                                
-                                {/* show only 10 cards  */}
                             </div>
                         </div>
                     </div>

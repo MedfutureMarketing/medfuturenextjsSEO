@@ -5,8 +5,8 @@ import Image from "next/image";
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import MedfutureLogoDark from "@/assets/logo/medfuture-logo.png";
-import MedfutureLogoLight from "@/assets/logo/medfuture-white.png";
+import MedfutureLogoDark from "@/assets/logo/medfuture-logo.webp";
+import MedfutureLogoLight from "@/assets/logo/medfuture-white.webp";
 import MegaMenu from "@/components/Navbar/MegaMenu";
 
 export default function Menu() {
@@ -19,11 +19,18 @@ export default function Menu() {
     "/permanent": "bg-white text-black border-blue-200",
     "/locum": "bg-white text-black border-blue-200",
     "/international": "bg-white text-black border-blue-200",
-    "/candidates": "bg-yellow-50 text-yellow-700 border-yellow-200",
-    "/employers": "bg-red-50 text-red-700 border-red-200",
-    "/explore": "bg-teal-50 text-teal-700 border-teal-200",
+    "/job-seeker-hub": "bg-white text-[#040D48] border-yellow-200",
+    "/": "",
+    "/employer-hub": "bg-white text-[#040D48] border-yellow-200",
+    "/contact-us": "bg-white text-[#040D48] border-yellow-200",
+    "/fracgp-facrrm": "bg-white text-[#040D48] border-yellow-200",
+    "/job-seeker-hub/medical-division": "bg-white text-[#040D48] border-yellow-200",
+    "/about-us": "bg-white text-[#040D48] border-yellow-200",
+
+
+
   };
-  const defaultTopBarColors = "bg-[#0D1A3E] text-white border-blue-200";
+  const defaultTopBarColors = "bg-[#0D1A3E] text-white   linear-gradient(to right, #e2e4e9ff, #0D1A3E, #0D1A3E) ";
   const topBarColors = topBarColorMap[pathname] || defaultTopBarColors;
 
   // ⭐ MAIN HEADER COLORS
@@ -31,11 +38,17 @@ export default function Menu() {
     "/permanent": "bg-[#040D48] text-white border-blue-200",
     "/locum": "bg-[#040D48] text-white border-blue-200",
     "/international": "bg-[#040D48] text-white border-blue-200",
-    "/candidates": "bg-yellow-100 text-yellow-800 border-yellow-300",
-    "/employers": "bg-red-100 text-red-800 border-red-300",
-    "/explore": "bg-teal-100 text-teal-800 border-teal-300",
+    "/job-seeker-hub": "bg-white text-[#040D48] border-yellow-200",
+    "/": "bg-[#0D1A3E] text-white border-blue-200",
+    "/employer-hub": "bg-white text-[#040D48] border-yellow-200",
+    "/contact-us": "bg-white text-[#040D48] border-yellow-200",
+    "/fracgp-facrrm": "bg-white text-[#040D48] border-yellow-200",
+    "/job-seeker-hub/medical-division": "bg-white text-[#040D48] border-yellow-200",
+    "/about-us": "bg-white text-[#040D48] border-yellow-200",
+
+
   };
-  const defaultHeaderColors = "bg-[#0D1A3E] text-white border-blue-200";
+  const defaultHeaderColors = "bg-[#0D1A3E] text-white";
   const headerColors = headerColorMap[pathname] || defaultHeaderColors;
 
   // ⭐ PAGE-BASED LOGO
@@ -43,8 +56,13 @@ export default function Menu() {
     "/permanent": MedfutureLogoLight,
     "/locum": MedfutureLogoLight,
     "/international": MedfutureLogoLight,
-    "/candidates": MedfutureLogoLight,
-    "/employers": MedfutureLogoLight,
+    "/job-seeker-hub": MedfutureLogoDark,
+    "/employer-hub": MedfutureLogoDark,
+    "/contact-us": MedfutureLogoDark,
+    "/fracgp-facrrm": MedfutureLogoDark,
+    "/job-seeker-hub/medical-division": MedfutureLogoDark,
+    "/about-us": MedfutureLogoDark,
+
     "/explore": MedfutureLogoLight,
   };
   const activeLogo = logoMap[pathname] || MedfutureLogoLight;
@@ -55,15 +73,15 @@ export default function Menu() {
       <div className="sticky top-0 z-50">
         {/* TOP CATEGORY BAR */}
         <div className={`hidden lg:block py-2 full-width-section  ${topBarColors}`}
-         style={{
-          borderBottomWidth: "2px",
-          borderImageSlice: 1,
-          width: "50%",
-          borderImageSource: "linear-gradient(to right, #ffffffff, #b5b5b5ff, #ffffffff)", // blue → purple → pink
-        }}>
+          style={{
+            borderBottomWidth: "1px",
+            borderImageSlice: 1,
+            width: "50%",
+            borderImageSource: "linear-gradient(to right, #ffffffff, #b5b5b5ff, #ffffffff)", // blue → purple → pink
+          }}>
           <div className="px-0 py-2 mx-auto max-w-screen-2xl  flex justify-center inner-width-section">
-            <div className="flex space-x-4 divide-x divide-gray-300">
-              <Link href="/" className="hover:underline pr-4">
+            <div className="flex space-x-4 divide-x text-[16px] divide-gray-300">
+              <Link href="/job-seeker-hub/medical-division" className="hover:underline pr-4">
                 Medical
               </Link>
               <Link href="/" className="hover:underline px-4">
@@ -98,7 +116,7 @@ export default function Menu() {
               </Link>
 
               {/* Desktop Navigation */}
-              <ul className="hidden lg:flex items-center space-x-8">
+              <ul className="hidden lg:flex items-center text-[16px] font-[700] space-x-8">
                 <li>
                   <Link href="/permanent" className="font-medium hover:text-blue-600">
                     Permanent Jobs
@@ -174,7 +192,7 @@ export default function Menu() {
                 onClick={() => setIsMenuOpen(true)}
                 className="p-2 text-gray-700 rounded-md hover:bg-gray-100 lg:hidden"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="gray" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
@@ -204,7 +222,7 @@ export default function Menu() {
             </div>
 
             <nav className="flex flex-col p-4 space-y-4 overflow-y-auto h-full">
-              <div className="border-b pb-3">
+              <div className="pb-3">
                 <p className="text-2xl text-gray-500 mb-2 font-bold">Profession</p>
                 <div className="flex flex-col space-y-2 font-sans text-gray-700">
                   <Link href="/" onClick={() => setIsMenuOpen(false)} className="hover:text-blue-600">
@@ -261,7 +279,7 @@ export default function Menu() {
                   onClick={() => setIsMenuOpen(false)}
                   className="inline-flex items-center w-56 justify-center px-4 py-2 font-medium text-white bg-blue-900 rounded hover:bg-blue-700 text-center"
                 >
-                 Create an Account
+                  Create an Account
                 </Link>
               </div>
             </nav>

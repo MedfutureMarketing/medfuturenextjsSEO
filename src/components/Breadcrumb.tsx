@@ -1,76 +1,88 @@
-// components/Breadcrumb.tsx
-"use client"
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+type BreadcrumbItem = {
+  href: string;
+  label: string;
+  isCurrent: boolean;
+};
 
 export default function Breadcrumb() {
   const pathname = usePathname();
-  const [breadcrumbs, setBreadcrumbs] = useState<Array<{ href: string; label: string; isCurrent: boolean }>>([]);
+  const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
+
+  // 🔹 Background color logic
+  const getBgColor = () => {
+    if (!pathname) return "bg-white";
+
+    if (pathname.startsWith("/jobs")) return "bg-blue-50";
+    if (pathname.startsWith("/job-seeker-hub")) return "bg-[#040D48] text-white";
+    if (pathname.startsWith("/employer-hub")) return "bg-[#0A2E5C]";
+    if (pathname.startsWith("/contact-us")) return "bg-[#0D1A3E]";
+    if (pathname.startsWith("/fracgp-facrrm")) return "bg-[#040D48]";
+    if (pathname.startsWith("/medical-division")) return "bg-[#040D48]";
+        if (pathname.startsWith("/about-us")) return "bg-[#0D1A3E]";
+
+    
+    return "bg-white";
+  };
 
   useEffect(() => {
     if (!pathname) return;
 
-    console.log('🔄 Breadcrumb pathname:', pathname); // Debug log
+    const pathSegments = pathname.split("/").filter(Boolean);
+    const newBreadcrumbs: BreadcrumbItem[] = [];
 
-    const pathSegments = pathname.split('/').filter(segment => segment !== '');
-    
-    const newBreadcrumbs = [];
-    
-    // Always add Home as the first item
+    // Home
     newBreadcrumbs.push({
-      href: '/',
-      label: 'Home',
-      isCurrent: pathSegments.length === 0
+      href: "/",
+      label: "Home",
+      isCurrent: pathSegments.length === 0,
     });
 
-  
-    let currentPath = '';
+    let currentPath = "";
     pathSegments.forEach((segment, index) => {
       currentPath += `/${segment}`;
-      const isCurrent = index === pathSegments.length - 1;
-      
-      
-      const label = segment
-        .split('-')
-        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(' ');
 
       newBreadcrumbs.push({
         href: currentPath,
-        label: label,
-        isCurrent: isCurrent
+        label: segment
+          .split("-")
+          .map(
+            (word) => word.charAt(0).toUpperCase() + word.slice(1)
+          )
+          .join(" "),
+        isCurrent: index === pathSegments.length - 1,
       });
     });
 
     setBreadcrumbs(newBreadcrumbs);
   }, [pathname]);
 
- 
-  if (breadcrumbs.length <= 1) {
-    console.log('🚫 Not showing breadcrumb - on home page or only one segment');
-    return null;
-  }
-
-  console.log('✅ Showing breadcrumbs:', breadcrumbs); // Debug log
+  if (breadcrumbs.length <= 1) return null;
 
   return (
-    <nav className="flex py-5 lg:px-1 px-4  border-gray-200">
-      <ol className="flex items-center space-x-2 text-sm">
+    <nav
+      className={`flex lg:py-[13px] py-4 lg:px-1 px-4  full-width-section ${getBgColor()}`}
+    >
+      <ol className="flex items-center space-x-2 text-sm inner-width-section">
         {breadcrumbs.map((breadcrumb, index) => (
           <li key={index} className="flex items-center">
             {index > 0 && (
-              <span className="mx-2 text-gray-400">/</span>
+              <span className="mx-2 ">/</span>
             )}
-            
+
             {breadcrumb.isCurrent ? (
-              <span className="text-gray-600 font-medium">
+              <span className="text-gray-400 font-medium">
                 {breadcrumb.label}
               </span>
             ) : (
-              <Link 
+              <Link
                 href={breadcrumb.href}
-                className="text-gray-500 hover:text-blue-800 transition-colors"
+                className=" hover:text-blue-700  text-gray-400 transition-colors"
               >
                 {breadcrumb.label}
               </Link>

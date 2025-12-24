@@ -1,42 +1,214 @@
 "use client";
 
+import { apiGet } from "@/lib/api";
 import { useState, useRef, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { buildJobSearchUrl, parseJobSearchUrl } from "@/lib/seoJobUrl";
 
-const DATA: Record<string, string[]> = {
-  "Australian Capital Territory": ["Canberra Region"],
-  "New South Wales": [
-    "Central and Eastern Sydney",
-    "Hunter New England and Central Coast",
-    "Murrumbidgee",
-    "Nepean Blue Mountains",
-    "North Coast",
-    "North Sydney",
-    "South Eastern NSW",
-    "South Western Sydney",
-    "Western NSW",
-    "Western Sydney",
-  ],
-  "Northern Territory": ["Top End", "Central NT"],
-  "Queensland": ["Brisbane Region", "Gold Coast", "Townsville"],
-  "South Australia": ["Adelaide Metro", "South Coast"],
-  "Tasmania": ["Hobart Region", "North West Tasmania"],
-  "Victoria": ["Melbourne Metro", "Geelong Region"],
-  "Western Australia": ["Perth Metro", "South West WA"],
+type ApiSuburb = {
+  suberbs_id: number;
+  name: string;
 };
 
-type State = keyof typeof DATA;
+type ApiRegion = {
+  regions_id: number;
+  name: string;
+  suburb?: ApiSuburb[];
+};
+
+type ApiState = {
+  state_id: number;
+  name: string;
+  regions: ApiRegion[];
+};
+
+type LocationsApiResponse = {
+  states: ApiState[];
+};
+
+type ApiSpeciality = {
+  specialities_id: number;
+  name: string;
+};
+
+type ApiProfession = {
+  profession_id: number;
+  name: string;
+  specialities?: ApiSpeciality[];
+};
+
+type ApiDivision = {
+  divisions_id: number;
+  name: string;
+  professions?: ApiProfession[];
+};
+
+type ApiSeniority = {
+  seniority_id: number;
+  name: string;
+};
+
+type KeyDetailsApiResponse = {
+  divisions: ApiDivision[];
+  seniorities: ApiSeniority[];
+  specialities: ApiSpeciality[];
+};
+
+type LocationMap = Record<
+  string,
+  {
+    regions: Record<string, string[]>;
+  }
+>;
+
+type State = string;
 type Region = string;
 
 export default function SearchBarWithLocation() {
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  // Parse URL on mount to get initial values
+  const urlFilters = parseJobSearchUrl(pathname);
+
   const [query, setQuery] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [mobileOpen, setMobileOpen] = useState<boolean>(false);
   const [selectedState, setSelectedState] = useState<State | "">("");
   const [selectedRegion, setSelectedRegion] = useState<Region | "">("");
+  const [selectedSuburb, setSelectedSuburb] = useState<string>("");
+  const [locationData, setLocationData] = useState<LocationMap>({});
+  const [loadingLocations, setLoadingLocations] = useState(true);
+  const [keywords, setKeywords] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
-  
+  // Fetch locations and set initial values from URL
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const res = await apiGet<LocationsApiResponse>(
+          "web/jobdetails/locations"
+        );
+
+        const map: LocationMap = {};
+
+        res.states.forEach((state) => {
+          map[state.name] = { regions: {} };
+
+          state.regions?.forEach((region) => {
+            map[state.name].regions[region.name] = [];
+
+            region.suburb?.forEach((suburb) => {
+              map[state.name].regions[region.name].push(suburb.name);
+            });
+
+            map[state.name].regions[region.name].sort();
+          });
+        });
+
+        setLocationData(map);
+
+        // After loading location data, detect and set the location from URL
+        const location = urlFilters.suburb || urlFilters.region || urlFilters.state || urlFilters.country;
+        if (location) {
+          detectAndSetLocation(location, map);
+        }
+      } catch (error) {
+        console.error("Failed to load locations", error);
+      } finally {
+        setLoadingLocations(false);
+      }
+    };
+
+    fetchLocations();
+  }, []);
+
+  // Set keyword from URL
+  useEffect(() => {
+    if (urlFilters.keyword) {
+      setQuery(urlFilters.keyword);
+    }
+  }, [urlFilters.keyword]);
+
+  // Function to detect location type and set appropriate state
+  const detectAndSetLocation = (locationName: string, map: LocationMap) => {
+    // Check if it's a state
+    if (map[locationName]) {
+      setSelectedState(locationName);
+      return;
+    }
+
+    // Check if it's a region or suburb
+    for (const state of Object.keys(map)) {
+      const regions = map[state].regions;
+
+      // Check regions
+      if (regions[locationName]) {
+        setSelectedState(state);
+        setSelectedRegion(locationName);
+        return;
+      }
+
+      // Check suburbs
+      for (const region of Object.keys(regions)) {
+        const suburbs = regions[region];
+        if (suburbs.includes(locationName)) {
+          setSelectedState(state);
+          setSelectedRegion(region);
+          setSelectedSuburb(locationName);
+          return;
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const fetchKeyDetails = async () => {
+      try {
+        const res = await apiGet<KeyDetailsApiResponse>(
+          "web/jobdetails/key-details"
+        );
+
+        const keywordSet = new Set<string>();
+
+        // Divisions → Professions → Specialities
+        res.divisions.forEach((division) => {
+          keywordSet.add(division.name);
+
+          division.professions?.forEach((profession) => {
+            keywordSet.add(profession.name);
+
+            profession.specialities?.forEach((spec) => {
+              keywordSet.add(spec.name);
+            });
+          });
+        });
+
+        // Seniorities
+        res.seniorities.forEach((seniority) => {
+          keywordSet.add(seniority.name);
+        });
+
+        // Flat specialities
+        res.specialities.forEach((spec) => {
+          keywordSet.add(spec.name);
+        });
+
+        setKeywords(Array.from(keywordSet).sort());
+      } catch (error) {
+        console.error("Failed to load key details", error);
+      }
+    };
+
+    fetchKeyDetails();
+  }, []);
+
+  const filteredKeywords = keywords.filter((keyword) =>
+    keyword.toLowerCase().includes(query.toLowerCase())
+  );
+
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -47,7 +219,6 @@ export default function SearchBarWithLocation() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  
   const [isMobile, setIsMobile] = useState<boolean>(
     typeof window !== "undefined" ? window.innerWidth < 768 : false
   );
@@ -60,12 +231,29 @@ export default function SearchBarWithLocation() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ query, selectedState, selectedRegion });
+
+    const seoUrl = buildJobSearchUrl({
+      keyword: query || undefined,
+      state: selectedState || undefined,
+      region: selectedRegion || undefined,
+      suburb: selectedSuburb || undefined,
+      country: "Australia",
+    });
+
+    router.push(seoUrl);
+  };
+
+  // Get display text for location button
+  const getLocationDisplayText = () => {
+    if (selectedSuburb) return selectedSuburb;
+    if (selectedRegion) return selectedRegion;
+    if (selectedState) return selectedState;
+    return "Location";
   };
 
   return (
     <>
-<div className="w-full lg:px-2 px-4 max-w-full mx-auto flex flex-col md:flex-row items-start md:items-start lg:items-left lg:justify-between md:justify-left gap-6 ">
+      <div className="w-full lg:px-2 px-4 max-w-full mx-auto flex flex-col md:flex-row items-start md:items-start lg:items-left lg:justify-between md:justify-left gap-6 ">
         {/* LEFT TITLE */}
         <div>
           <h2 className="text-5xl font-bold text-gray-800">Browse</h2>
@@ -78,28 +266,36 @@ export default function SearchBarWithLocation() {
           className="flex flex-col md:flex-row items-center gap-3 bg-white lg:p-4 w-full md:w-auto"
         >
           {/* SEARCH INPUT */}
-          <div className="relative w-full lg:w md:w-100% lg:w-[350px]">
+          <div className="relative w-full lg:w-[350px]">
             <input
               type="text"
               placeholder="Search Jobs"
-              className="w-full border text-black border-gray-300 px-10 lg:py-4 py-3 rounded-lg focus:ring focus:ring-blue-300 outline-none"
+              className="w-full border text-black border-gray-300 px-4 lg:py-4 py-3 rounded-lg focus:ring focus:ring-blue-300 outline-none"
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setShowSuggestions(true);
+              }}
+              onFocus={() => setShowSuggestions(true)}
+              onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
             />
-            {/* <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-              />
-            </svg> */}
+
+            {showSuggestions && query && filteredKeywords.length > 0 && (
+              <div className="absolute top-full mt-1 w-full bg-white text-black border border-gray-200 rounded-lg shadow-lg z-50 max-h-60 overflow-y-auto">
+                {filteredKeywords.map((keyword) => (
+                  <div
+                    key={keyword}
+                    className="px-4 py-2 cursor-pointer hover:bg-blue-50"
+                    onClick={() => {
+                      setQuery(keyword);
+                      setShowSuggestions(false);
+                    }}
+                  >
+                    {keyword}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* LOCATION WRAPPER */}
@@ -109,7 +305,6 @@ export default function SearchBarWithLocation() {
               onClick={() => {
                 if (isMobile) {
                   setMobileOpen(true);
-                  setSelectedRegion(""); // reset region when opening mobile
                 } else {
                   setIsOpen(!isOpen);
                 }
@@ -117,59 +312,66 @@ export default function SearchBarWithLocation() {
               className="w-full border border-gray-300 cursor-pointer px-4 lg:py-4 py-3 rounded-lg flex items-center justify-between bg-white"
             >
               <span className="text-gray-700">
-                {selectedRegion || selectedState || "Location"}
-              </span>
-              <span className="text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
-              </svg>
+                {getLocationDisplayText()}
               </span>
             </button>
 
             {/* DESKTOP DROPDOWN */}
             {!isMobile && isOpen && (
               <div className="absolute top-[110%] right-0 bg-white cursor-pointer shadow-xl border border-gray-200 rounded-lg p-4 z-50 w-[580px] transition-all duration-200">
-                <div className="grid grid-cols-2 gap-4 ">
+                <div className="grid grid-cols-3 gap-4">
                   {/* STATES */}
-                  <div className="border-0 pr-4 space-y-2 cursor-pointer">
-                    {Object.keys(DATA).map((state) => (
-                      <label
-                        key={state}
-                        className={`flex items-center gap-2 py-2 px-3 rounded-lg cursor-pointer transition hover:bg-blue-50 ${selectedState === state ? "bg-blue-100 font-semibold" : ""
-                          }`}
-                      >
+                  <div className="space-y-2">
+                    {Object.keys(locationData).map((state) => (
+                      <label key={state} className="flex gap-2 items-center cursor-pointer">
                         <input
                           type="radio"
-                          name="state"
- className="accent-blue-600 cursor-pointer"                          checked={selectedState === state}
+                          checked={selectedState === state}
                           onChange={() => {
-                            setSelectedState(state as State);
+                            setSelectedState(state);
                             setSelectedRegion("");
+                            setSelectedSuburb("");
                           }}
                         />
-                        <span>{state}</span>
+                        {state}
                       </label>
                     ))}
                   </div>
 
                   {/* REGIONS */}
-                  <div className="pl-4 space-y-2">
+                  <div className="space-y-2">
                     {!selectedState ? (
-                      <p className="text-gray-400 text-sm">Select a state</p>
+                      <p className="text-gray-400">Select a state</p>
                     ) : (
-                      DATA[selectedState].map((region) => (
-                        <label
-                          key={region}
-                          className={`flex items-center gap-2 py-2 px-3 rounded-lg cursor-pointer transition hover:bg-blue-50 ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
-                            }`}
-                        >
+                      Object.keys(locationData[selectedState].regions).map((region) => (
+                        <label key={region} className="flex gap-2 items-center cursor-pointer">
                           <input
                             type="radio"
-                            name="region"
-                             className="accent-blue-600 cursor-pointer"
                             checked={selectedRegion === region}
-                            onChange={() => setSelectedRegion(region)}
+                            onChange={() => {
+                              setSelectedRegion(region);
+                              setSelectedSuburb("");
+                            }}
                           />
-                          <span>{region}</span>
+                          {region}
+                        </label>
+                      ))
+                    )}
+                  </div>
+
+                  {/* SUBURBS */}
+                  <div className="space-y-2">
+                    {!selectedRegion ? (
+                      <p className="text-gray-400">Select a region</p>
+                    ) : (
+                      locationData[selectedState].regions[selectedRegion].map((suburb) => (
+                        <label key={suburb} className="flex gap-2 items-center cursor-pointer">
+                          <input
+                            type="radio"
+                            checked={selectedSuburb === suburb}
+                            onChange={() => setSelectedSuburb(suburb)}
+                          />
+                          {suburb}
                         </label>
                       ))
                     )}
@@ -182,7 +384,7 @@ export default function SearchBarWithLocation() {
           {/* SUBMIT BUTTON */}
           <button
             type="submit"
-            className="w-full md:w-auto bg-[#64CAF3] text-white px-6 py-4 rounded-lg hover:bg-blue-[#64CAd3] cursor-pointer  transition"
+            className="w-full md:w-auto bg-[#64CAF3] text-white px-6 py-4 rounded-lg hover:bg-[#64CAd3] cursor-pointer transition"
           >
             Search
           </button>
@@ -209,14 +411,44 @@ export default function SearchBarWithLocation() {
               <>
                 <h4 className="text-gray-900 font-semi-bold text-md text-center">States</h4>
                 <div className="grid gap-3">
-                  {Object.keys(DATA).map((state) => (
+                  {Object.keys(locationData).map((state) => (
                     <div
                       key={state}
-                      className={`p-3 rounded-xl  shadow-none border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedState === state ? "bg-blue-200 font-semibold" : ""
-                        }`}
+                      className={`p-3 rounded-xl shadow-none border-b-2 border-r-1 border-l-1 border-t-1 border-gray-300 text-center bg-white cursor-pointer hover:bg-blue-50 transition ${
+                        selectedState === state ? "bg-blue-200 font-semibold" : ""
+                      }`}
                       onClick={() => setSelectedState(state as State)}
                     >
                       {state}
+                    </div>
+                  ))}
+                </div>
+              </>
+            ) : !selectedRegion ? (
+              <>
+                <button
+                  className="text-blue-600 mb-4 font-medium"
+                  onClick={() => {
+                    setSelectedState("");
+                    setSelectedRegion("");
+                  }}
+                >
+                  ← Back to States
+                </button>
+
+                <h4 className="text-gray-900 font-semi-bold text-center text-md mb-2">
+                  Regions in {selectedState}
+                </h4>
+                <div className="grid gap-3">
+                  {Object.keys(locationData[selectedState].regions).map((region) => (
+                    <div
+                      key={region}
+                      className={`p-3 rounded-xl shadow-none border-b-2 border-r-1 border-l-1 border-t-1 border-gray-300 text-center bg-white cursor-pointer hover:bg-blue-50 transition ${
+                        selectedRegion === region ? "bg-blue-200 font-semibold" : ""
+                      }`}
+                      onClick={() => setSelectedRegion(region)}
+                    >
+                      {region}
                     </div>
                   ))}
                 </div>
@@ -225,24 +457,27 @@ export default function SearchBarWithLocation() {
               <>
                 <button
                   className="text-blue-600 mb-4 font-medium"
-                  onClick={() => setSelectedState("")}
+                  onClick={() => setSelectedRegion("")}
                 >
-                  ← Back
+                  ← Back to Regions
                 </button>
 
-                <h4 className="text-gray-900 font-semi-bold text-center text-md mb-2">Regions</h4>
-                <div className="grid gap-2">
-                  {DATA[selectedState].map((region) => (
+                <h4 className="text-gray-900 font-semi-bold text-center text-md mb-2">
+                  Suburbs in {selectedRegion}
+                </h4>
+                <div className="grid gap-3">
+                  {locationData[selectedState].regions[selectedRegion].map((suburb) => (
                     <div
-                      key={region}
-                      className={`p-3 rounded-xl  shadow-none border-b-2 border-r-1 border-l-1  border-t-1 border-gray-300  text-center  bg-white cursor-pointer hover:bg-blue-50 transition  ${selectedRegion === region ? "bg-blue-100 font-semibold" : ""
-                        }`}
+                      key={suburb}
+                      className={`p-3 rounded-xl shadow-none border-b-2 border-r-1 border-l-1 border-t-1 border-gray-300 text-center bg-white cursor-pointer hover:bg-blue-50 transition ${
+                        selectedSuburb === suburb ? "bg-blue-200 font-semibold" : ""
+                      }`}
                       onClick={() => {
-                        setSelectedRegion(region);
+                        setSelectedSuburb(suburb);
                         setMobileOpen(false);
                       }}
                     >
-                      {region}
+                      {suburb}
                     </div>
                   ))}
                 </div>
