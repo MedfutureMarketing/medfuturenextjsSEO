@@ -27,7 +27,7 @@ export default function LocumPLGP() {
                                 Locum Tenure
                             </label>
                             <select className="input h-10 lg:h-[56px] text-xs lg:text-[14px] px-4 border border-gray-200 rounded-[4px] text-gray-500 cursor-pointer">
-                                <option value="" disabled selected>Select Tenure</option>
+                                {/* <option value="" disabled selected>Select Tenure</option> */}
                                 <option value="short">Short-term</option>
                                 <option value="long">Long-term</option>
                             </select>
@@ -39,7 +39,7 @@ export default function LocumPLGP() {
                                 Engagement Term
                             </label>
                             <select className="input h-10 lg:h-[56px] text-xs lg:text-[14px] px-4 border border-gray-200 rounded-[4px] text-gray-500 cursor-pointer">
-                                <option value="" disabled selected>Select Term</option>
+                                {/* <option value="" disabled selected>Select Term</option> */}
                                 <option>Full-time</option>
                                 <option>Part-time</option>
                             </select>

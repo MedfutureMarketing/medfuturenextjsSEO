@@ -31,7 +31,7 @@ export default function ExclusiveRecruitmentServices() {
           </div>
         
           <Link
-            href="/contact"
+            href="/contact-us"
             className=" lg:mt-0 bg-[#074CA4] lg:w-[209px] lg:h-[56px] text-center  text-white  lg:text-[16px] text-sm px-6 lg:px-8  lg:py-[16px] py-3 rounded-[4px] hover:bg-[#093055]"
           >
             Reach Us

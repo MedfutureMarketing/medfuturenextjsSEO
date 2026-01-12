@@ -6,24 +6,24 @@ export default function BrowseJobs() {
   const tabs = [
     {
       title: "Permanent Jobs",
-      link: "/jobs/permanent",
+      link: "/permanent",
       color: "bg-[#074CA4]", 
     },
     {
       title: "Locum Jobs",
-      link: "/jobs/locum",
+      link: "/locum",
       color: "bg-[#040D48]", 
     },
     {
       title: "Jobs for International Candidates",
-      link: "/jobs/international",
+      link: "/international",
       color: "bg-[#575D84]",
     },
   ];
 
   return (
     <section className="w-full bg-white lg:py-[106px]  px-4 lg:px-0">
-      <div className=" mx-auto">
+      <div className=" mx-auto inner-width-section">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 

@@ -1,20 +1,20 @@
 
 
-import MedicalHero from "@/components/MedicalDivision/MedicalHero";
-import ContactSection from "@/components/MedicalDivision/ContentSection";
-import MedicalJobs from "@/components/MedicalDivision/MedicalJobs";
-import ProfessionExplore from "@/components/MedicalDivision/ProfessionExplore";
-import MeetOurConsultants from "@/components/Home/MeetConsultants";
+import MedicalHero from "@/components/Division/MedicalDivision/MedicalHero";
+import ContactSection from "@/components/Division/MedicalDivision/ContentSection";
+import MedicalJobs from "@/components/Division/MedicalDivision/MedicalJobs";
+import ProfessionExplore from "@/components/Division/MedicalDivision/ProfessionExplore";
+import MeetOurConsultants from "@/components/Division/MedicalDivision/MeetConsultants";
 import JobbyState from "@/components/JobseekerLandingpage/MedFutureStates";
-import Ourprocess from "@/components/MedicalDivision/OurProcess";
-import DivisionCta from "@/components/MedicalDivision/DivisonCta";
+import Ourprocess from "@/components/Division/MedicalDivision/OurProcess";
+import DivisionCta from "@/components/Division/MedicalDivision/DivisonCta";
 import FAQ from "@/components/FAQ/Faq";
 import BlogSection from "@/components/Blog/Blog";
 import TestimonialPuzzle from "@/components/JobseekerLandingpage/JobSeekerTesti";
 import CTAJobseeker from "@/components/JobseekerLandingpage/CTAJobseeker";
 
 
-export default function DemoPage() {
+export default function MedicalDivision() {
   return (
     <main className="w-full ">
       <MedicalHero/>

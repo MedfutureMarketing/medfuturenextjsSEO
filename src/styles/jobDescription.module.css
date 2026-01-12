@@ -5,6 +5,35 @@
   border: 2px solid;
 }
 
+/* Add this to your global CSS file or component styles */
+
+.asterisk_input::after {
+  content: "*";
+  color: red;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.asterisk_input_checkbox::before {
+  content: "*";
+  color: red;
+  margin-right: 4px;
+  font-size: 16px;
+}
+
+/* Adjust for PhoneInput component */
+.relative:has(.react-international-phone-input-container) .asterisk_input::after {
+  right: 10px;
+  z-index: 1;
+}
+
+/* Make sure react-international-phone styles are imported */
+@import 'react-international-phone/style.css';
+
 /* Fixed bottom Apply button for mobile */
 .fixedApplyButton {
   position: fixed;

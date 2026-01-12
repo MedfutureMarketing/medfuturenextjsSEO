@@ -9,7 +9,7 @@ export default function AboutHero() {
 
     return (
         <section className="">
-            <div className="full-width-section bg-[#0D1A3E] ">
+            <div className="full-width-section bg-[#0D1A3E]  ">
                 <div className="grid items-center inner-width-section gap-12 lg:grid-cols-[1fr_359px]">
                     {/* LEFT CONTENT */}
                     <div>
@@ -20,17 +20,17 @@ export default function AboutHero() {
                             At the heart of our mission is a commitment to elevating healthcare through meaningful connections. Every placement we make contributes to better patient care. With integrity and dedication, we continue to strengthen Australia’s healthcare workforce—one professional, one employer, and one opportunity at a time
                         </p>
                         {/* SEARCH BAR */}
-                        <div className=" text-[16px] font-[700] mt-[36px]">
+                        <div className=" text-[16px] font-[700] mb-10 mt-[36px]">
                             <h3>Mr. Niraj Chenthoran</h3>
                             <h4 className="font-[400]">CEO & Founder</h4>
                         </div>
                     </div>
                     {/* RIGHT IMAGE */}
-                    <div className="hidden lg:flex justify-center -mt-[46px]">
+                    <div className="hidden lg:flex justify-center w-[440px] h-[440px] -mt-[46px]">
                         <Image
                             src={HeroImage}
                             alt="Job search illustration"
-                            width={359}
+
                             priority
                         />
                     </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import JobSeekerForm from "@/components/Forms/JobSeekerandEmployerform/JobSeekerFrom";
 import EmployerForm from "@/components/Forms/JobSeekerandEmployerform/EmployerForm";
+import Link from "next/link";
 
 export default function CTA() {
     const [activeTab, setActiveTab] = useState<"job" | "employer">("job");
@@ -22,8 +23,9 @@ export default function CTA() {
                     </p>
 
                     <div className="flex gap-4">
-                        <button className="px-6 py-3 cursor-pointer bg-white text-[#074CA4] rounded-lg lg:text-[16px] text-xs font-medium">
-                            Talk to a Consultant            </button>
+                        <Link href="/contact-us" className="px-6 py-3 cursor-pointer bg-white text-[#074CA4] rounded-lg lg:text-[16px] text-xs font-medium">
+                            Talk to a Consultant            
+                        </Link>
 
                         <button className="px-6 py-3 cursor-pointer bg-white text-[#074CA4] rounded-lg lg:text-[16px] text-xs font-medium">
                             Refer a Friend            </button>

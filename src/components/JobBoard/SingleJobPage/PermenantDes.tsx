@@ -1,7 +1,19 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "next/navigation";
 import RegistrationForm from '@/components/Forms/QuickApplySingleJob';
 import Link from "next/link";
 import { apiGet } from "@/lib/api";
-import ApplyNowButton from './ApplyNowButton';
+import Permenentico from "@/assets/jobboardico/Permanentico.png"
+import Doctorico from "@/assets/jobboardico/Doctorico.png"
+import Moneyico from "@/assets/jobboardico/Moneyico.png"
+import Timeico from "@/assets/jobboardico/Timeico.png"
+
+
+import Jobboard1 from "@/assets/homeico/jobboard1.png"
+import Jobbaord2 from "@/assets/homeico/jobboard2.png"
+import Image from "next/image";
 
 /* ================= TYPES ================= */
 
@@ -25,150 +37,174 @@ type Job = {
 
 /* ================= COMPONENT ================= */
 
-export default async function JobDescription({ 
-  params 
-}: { 
-  params: Promise<{ jobId: string }>
-}) {
-  const { jobId } = await params;
-  let job: Job | null = null;
+export default function JobDescription() {
+  const { jobId } = useParams<{ jobId: string }>();
+  const formRef = useRef<HTMLDivElement>(null);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
 
-  // Fetch job data on the server
-  try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    job = res.data;
-  } catch {
-    job = null;
-  }
+  const [job, setJob] = useState<Job | null>(null);
 
-  if (!job) {
-    return (
-      <div className="border-2 rounded-8px p-8 text-center">
-        <h1 className="text-2xl font-bold text-[#0E2851]">Job Not Found</h1>
-        <p className="text-[#666666] mt-4">The job you are looking for does not exist or has been removed.</p>
-      </div>
-    );
-  }
+  useEffect(() => {
+    async function fetchJob() {
+      try {
+        const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+        setJob(res.data);
+      } catch {
+        setJob(null);
+      }
+    }
+
+    fetchJob();
+  }, [jobId]);
+
+  const handleApplyNow = () => {
+    const wasClosed = !showRegistrationForm;
+    setShowRegistrationForm(!showRegistrationForm);
+
+    if (wasClosed) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    }
+  };
+
+  if (!job) return null;
 
   return (
-    <div className="border-2 rounded-8px relative">
+    <div className="rounded-8px relative">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-4 lg:pl-[43px] lg:pr-[23px] lg:py-[25px] rounded-none bg-white">
-        <h1 className="text-[18px] lg:text-[24px] font-bold text-[#0E2851] lg:pr-[43px] flex-1 mb-4 lg:mb-0">
-          {job.job_title}
-        </h1>
+      <div className="full-width-section bg-[#0A2E5C] lg:h-[113px]">
+        <div className="absolute left-0 z-0  lg:block hidden bottom-0 w-[182px] h-[182px] md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
+          <Image
+            src={Jobboard1}
+            alt="Decorative left corner"
+            fill
+            className="object-contain object-bottom-left"
+            priority
+          />
+        </div>
 
-        {/* Apply Now Button - Client component for interactivity */}
-        <ApplyNowButton />
-      </div>
+        {/* Right Corner Image */}
+        <div className="absolute lg:block hidden z-0 right-0 bottom-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
+          <Image
+            src={Jobbaord2}
+            alt="Decorative right corner"
+            fill
+            className="object-contain object-bottom-right"
+            priority
+          />
+        </div>
+        <div className="flex flex-col inner-width-section lg:flex-row lg:justify-between py-[16px] lg:items-start mb-6  p-0 lg:pl-[43px]   rounded-none">
+          <h1 className="text-[18px] lg:text-[24px] z-50 font-bold text-white lg:pr-[43px] flex-1 mb- lg:mb-0">
+            {job.job_title}
+          </h1>
+        </div>
 
-      {/* External Link Icon */}
-      <div className="relative px-4 lg:px-5">
-        <div className="absolute top-0 right-0 px-4 lg:px-5">
-          <Link href="/permanent/job" className="hover:underline">
-            {/* SVG icon here */}
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </Link>
+        {/* External Link Icon */}
+        <div className="relative px-4 lg:px-5">
+          <div className="absolute top-0 right-0 px-4 lg:px-5">
+            <Link href="/permanent/job" className="hover:underline">
+              {/* SVG or Icon here */}
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* Job Tags */}
-      <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[44px]">
-        <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          Permanent
-        </span>
-        <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          {job.profession?.name || "Not specified"}
-        </span>
-        <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          {job.engagement_type?.name || "Not specified"}
-        </span>
-        <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          {job.state?.name || "Location not specified"}, {job.country?.name || ""}
-        </span>
-      </div>
+      <div className="inner-width-section">
+        <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[0]">
+          <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-0 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+            <Image src={Permenentico} alt="Permanent" className=" mr-0 inline-block" />       Permanent
+          </span>
+          <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+            <Image src={Doctorico} alt="Doctor" className=" mr-0 inline-block" />    {job.profession?.name}
+          </span>
+          <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+            <Image src={Moneyico} alt="Money" className=" mr-0 inline-block" />   {job.engagement_type?.name}
+          </span>
+          <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
+            <Image src={Timeico} alt="Time" className=" mr-0 inline-block" />    {job.state?.name}, {job.country?.name}
+          </span>
+        </div>
 
-      {/* Job Description */}
-      <div className="prose max-w-none px-4 lg:px-[44px]">
-        <p className="text-[#666666] text-[14px] lg:text-[18px] leading-relaxed">
-          {job.job_brief || "No job description available."}
-        </p>
+        {/* Job Description */}
+        <div className="prose max-w-none px-4 lg:px-0">
+          <p className="text-[#666666] text-[14px] lg:text-[18px] leading-relaxed">
+            {job.job_brief}
+          </p>
 
-        {job.highlights && job.highlights.length > 0 && (
-          <>
-            <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
-              Offer Details:
-            </h4>
+          <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
+            Offer Details:
+          </h4>
+          <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-[14px] lg:text-[18px]">
+            {job.highlights?.map(h => (
+              <li key={h.jobhighlights_id}>{h.name}</li>
+            ))}
+          </ul>
 
-            <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-[14px] lg:text-[18px]">
-              {job.highlights.map(h => (
-                <li key={h.jobhighlights_id}>{h.name}</li>
+          <h3 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
+            Medical Practice Details
+          </h3>
+          <p className="text-[#666666] mt-2 lg:mt-[10px] text-[14px] lg:text-[18px] leading-relaxed">
+            {job.medical_practise_details}
+          </p>
+
+          <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
+            Eligibility Requirements
+          </h4>
+          <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-[14px] lg:text-[18px]">
+            {(job.required_qualification_exp ?? "")
+              .split(/\r?\n/)
+              .map((item, i) => (
+                <li key={i}>{item}</li>
               ))}
-            </ul>
-          </>
-        )}
-
-        {job.medical_practise_details && (
-          <>
-            <h3 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
-              Medical Practice Details
-            </h3>
-
-            <p className="text-[#666666] mt-2 lg:mt-[10px] text-[14px] lg:text-[18px] leading-relaxed">
-              {job.medical_practise_details}
-            </p>
-          </>
-        )}
-
-        {job.required_qualification_exp && (
-          <>
-            <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
-              Eligibility Requirements
-            </h4>
-
-            <ul className="list-disc list-inside text-[#666666] space-y-1 mt-2 lg:mt-[10px] text-[14px] lg:text-[18px]">
-              {job.required_qualification_exp
-                .split(/\r?\n/)
-                .filter(item => item.trim() !== '')
-                .map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-            </ul>
-          </>
-        )}
-      </div>
-
-      {/* Registration Form and Contact Info */}
-      <div className='grid lg:grid-cols-2 mt-6 lg:mt-0 px-4 lg:px-[44px]'>
-        <div id="registration-form" className='mt-6 lg:mt-0'>
-          <RegistrationForm />
+          </ul>
         </div>
-
         {/* Contact Information */}
-        <div className="grid grid-cols-1 gap-4 lg:gap-[7px] mt-6 lg:py-36 px-10">
-          <h3 className="font-semibold text-[#66768F] text-base text-[14px] lg:text-[18px]">Contact Us</h3>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Recruitment Consultant:</span>
-            <span className="text-[#66768F] text-[14px] lg:text-[18px]">Gaya</span>
+        <div className='grid lg:grid-cols-2 grid-cols-1 lg:items-end'>
+          <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 px-4">
+            <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
+              Contact Us
+            </h4>
+            <div className="grid grid-cols-[1fr_2fr] gap-0 lg:gap-[1px]">
+              <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant</h3>
+              <span className="text-[#4A5565] lg:text-[16px] text-[13px]">: Gaya</span>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr] ">
+              <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number</h3>
+              <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: 0452 468 515</a>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr]">
+              <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
+              <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">: gprecruitment@medfuture.com.au</a>
+            </div>
+            <div className="grid grid-cols-[1fr_2fr] ">
+              <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries</h3>
+              <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: 0452 468 515</a>
+            </div>
           </div>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Contact Number:</span>
-            <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px]">0452 468 515</a>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Email:</span>
-            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px] break-all">gprecruitment@medfuture.com.au</a>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">General Enquiries:</span>
-            <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px]">0452 468 515</a>
+
+          <div className="flex lg:justify-end px-4 lg:px-0 pb-6 mb-6 lg:pb-0">
+            {/* Quick Apply Button */}
+            {!showRegistrationForm && (
+              <button
+                onClick={handleApplyNow}
+                className="bg-[#074CA4] text-white w-[194px] px-6 py-3 cursor-pointer rounded-[4px] hover:bg-[#55b8e0] transition-colors font-medium"
+              >
+                Apply Now
+              </button>
+            )}
           </div>
         </div>
-      </div>
 
-      <div className="lg:hidden h-20"></div>
+        {/* Registration Form */}
+        {showRegistrationForm && (
+          <div ref={formRef} className="mt-6 lg:mt-0 lg:shadow-[0_0_12px_rgba(0,0,0,0.1)] border-[#66768F]/16 mb-36">
+            <RegistrationForm onClose={() => setShowRegistrationForm(false)} />
+          </div>
+        )}
+
+        <div className="lg:hidden h-20"></div></div>
     </div>
   );
 }

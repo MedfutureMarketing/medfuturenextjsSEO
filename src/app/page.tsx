@@ -27,33 +27,33 @@ export default function RootLayout({
   const schema = getSchema("home");
 
   return (
-    <html lang="en">
-      <head>
+    <section >
+      {/* <head>
         {schema && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         )}
-      </head>
-      <body className="">
+      </head> */}
+      <div >
         {children}
-<Hero />
-<JobSeekerHubSearch/>
-<JobsbyProfession />
-<BrowseJobs/>
-<FlexibleHiringSolution />
-<RecruitementServicebox />
-<HomeAboutus />
-<Testimonials/>
-<MeetOurConsultants/>
-<CTA/>
+        <Hero />
+        <JobSeekerHubSearch />
+        <JobsbyProfession />
+        <BrowseJobs />
+        <FlexibleHiringSolution />
+        <RecruitementServicebox />
+        <HomeAboutus />
+        <Testimonials />
+        <MeetOurConsultants />
+        <CTA />
         {/* <footer className="bg-gray-200">
           <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-center text-sm">
             © {new Date().getFullYear()} My App. All rights reserved.
           </div>
         </footer> */}
-      </body>
-    </html>
+      </div>
+    </section>
   );
 }

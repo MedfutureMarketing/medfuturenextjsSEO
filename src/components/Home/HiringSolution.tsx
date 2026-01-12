@@ -64,10 +64,10 @@ export default function FlexibleHiringSolution() {
                 ))}
             </ul>
             <div className="grid grid-cols-2 gap-2 mt-[42px]">
-                <Link href="/" className="bg-[#0A2E5C] text-white text-sm py-2 rounded text-center hover:underline">
+                <Link href="/contact-us" className="bg-[#0A2E5C] text-white text-sm py-2 rounded text-center hover:underline">
                     Talk to Us
                 </Link>
-                <Link href="/" className="border-2 border-[#0A2E5C] text-[#0A2E5C] text-sm py-2 rounded text-center hover:underline">
+                <Link href="/sign-up" className="border-2 border-[#0A2E5C] text-[#0A2E5C] text-sm py-2 rounded text-center hover:underline">
                     Submit a Vacancy
                 </Link>
             </div>
@@ -76,7 +76,7 @@ export default function FlexibleHiringSolution() {
 
     return (
         <section className="w-full bg-gray-50 lg:py-[106px] px-4 lg:px-0 py-10 full-width-section ">
-            <div className="max-w-screen-2xl mx-auto inner-width-section">
+            <div className=" mx-auto inner-width-section">
                 <div className="text-left mb-12">
 
                     <h2 className="text-3xl lg:text-[40px]  text-gray-800 mb-4 text-center lg:text-left">

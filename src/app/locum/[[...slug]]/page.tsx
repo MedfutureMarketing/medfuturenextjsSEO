@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata("permanent");
 }
 
-export default function Locum() {
+export default function AboutPage() {
   return (
     <main className="bg-white">
    

@@ -3,7 +3,7 @@
 import Image from "next/image"
 import Coverimage from "@/assets/employer/doctor.gif"
 
-export default function StepByStep() {
+export default function FracgpStepByStep() {
     return (
         <section className="max-w-7xl bg-[#FCFCFC] mx-auto px-6 py-20">
             <h2 className="lg:text-[36px] text-2xl font-[700] uppercase text-[#074CA4] font-semibold mb-12">
@@ -13,7 +13,7 @@ export default function StepByStep() {
                 {/* ---------------- Left: How It Works ---------------- */}
                 <div>
                     <div className="relative space-y-12">
-                        {/* Vertical dotted line */}
+                      
                         <div className="absolute left-5 top-0 bottom-0 border-l-2 border-dotted border-black" />
 
                         {[

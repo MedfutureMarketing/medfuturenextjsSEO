@@ -45,7 +45,7 @@ export default function MeetOurConsultants() {
                 </h2>
                 <p className="text-[#4A5565] lg:mb-[65px] mb-4  lg:max-w-full mx-auto lg:mx-0 text-xs  lg:text-[16px] text-center lg:text-center">
                     Connect with our dedicated recruitment consultants who guide, support, and understand your career goals. With industry expertise and personalised care, they help you navigate opportunities and find the role that truly fits you.
-                </p>lg:
+                </p>
 
           
                 <div className="flex gap-3 sm:gap-4 mb-12 flex-wrap justify-center lg:justify-center">

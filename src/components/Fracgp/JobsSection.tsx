@@ -68,19 +68,18 @@ const professions: Profession[] = [
 ];
 
 
-export default function JobsByProfession() {
+export default function FracgpJobsByProfession() {
   return (
     <section className="full-width-section lg:py-[106px] py-10 px-4 lg:px-0">
       <div className="inner-width-section mx-auto space-y-10">
         {/* Header */}
         <div className="text-center">
           <h2 className="text-2xl lg:text-[40px] font-bold text-gray-800 mb-4">
-            Find Jobs by <span className="text-[#074CA4]">Professions</span>
+            Featured <span className="text-[#074CA4]">Specialist GP Roles</span>
           </h2>
 
-          <p className="text-gray-600 text-xs lg:text-[16px]">
-            Explore featured FRACGP and FACRRM roles across Australia.  
-            Find rewarding opportunities with professional growth and trusted employers.
+          <p className="text-gray-600 text-xs text-center mx-auto lg:w-[792px] lg:text-[16px]">
+            Specialist General Practitioners access diverse career pathways across permanent and locum roles. Opportunities support clinical autonomy, advanced practice, and meaningful community impact throughout Australia.
           </p>
         </div>
 

@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import HeroImage from "@/assets/homeico/jobseekerhub.png";
 import uploadCVIcon from "@/assets/icons/upload.png";
@@ -10,12 +10,41 @@ import registerIcon from "@/assets/icons/register.png";
 import CallIcon from "@/assets/icons/Call.png";
 import ReferIcon from "@/assets/icons/Reffer.png";
 import Link from "next/link";
+import { apiGet } from "@/lib/api";
 
-export default function Hero() {
+type Profession = {
+  profession_id: number;
+  name: string;
+};
+
+type Location = {
+  state_id: number;
+  name: string;
+};
+
+type JobSeekerHub = {
+  professions: Profession[];
+  locations: Location[];
+};
+
+
+export default function JobseekersearchHero() {
     const router = useRouter();
 
     const [profession, setProfession] = useState<string>("");
     const [location, setLocation] = useState<string>("");
+    const [JobSeekerHub, setJobSeekerHub] = useState<JobSeekerHub | null>(null);
+    
+        useEffect(() => {
+            async function fetchJobSeekerHub() {
+                try {
+                const res = await apiGet< JobSeekerHub >(`web/job-seeker-hub-page/get-all`);
+                setJobSeekerHub(res);
+                } catch {
+                }
+            }
+            fetchJobSeekerHub();
+        }, []);
 
     const slugify = (value: string) =>
         value.toLowerCase().trim().replace(/\s+/g, "-");
@@ -23,7 +52,7 @@ export default function Hero() {
     const handleSearch = () => {
         const professionSlug = profession
             ? `${slugify(profession)}-jobs`
-            : "healthcare-jobs";
+            : "";
 
         const locationSlug = location
             ? `in-${slugify(location)}?page=1`
@@ -55,12 +84,14 @@ export default function Hero() {
                                 value={profession}
                                 onChange={(e) => setProfession(e.target.value)}
                                 className="w-full sm:w-[240px] px-4 py-3 bg-white text-sm text-gray-700 rounded cursor-pointer"
-                            >
+                                >
                                 <option value="">Select Profession</option>
-                                <option>General Practitioner</option>
-                                <option>Psychologist</option>
-                                <option>Dentist</option>
-                                <option>Allied Health</option>
+
+                                {JobSeekerHub?.professions.map((item) => (
+                                    <option key={item.profession_id} value={item.name}>
+                                    {item.name}
+                                    </option>
+                                ))}
                             </select>
 
                             {/* Location */}
@@ -68,12 +99,14 @@ export default function Hero() {
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 className="w-full sm:w-[240px] px-4 py-3 bg-white text-sm text-gray-700 rounded cursor-pointer"
-                            >
+                                >
                                 <option value="">Select Location</option>
-                                <option>New South Wales</option>
-                                <option>Victoria</option>
-                                <option>Queensland</option>
-                                <option>Western Australia</option>
+
+                                {JobSeekerHub?.locations.map((item) => (
+                                    <option key={item.state_id} value={item.name}>
+                                    {item.name}
+                                    </option>
+                                ))}
                             </select>
 
                             {/* Search Button */}
@@ -88,11 +121,11 @@ export default function Hero() {
 
                         {/* CTA BUTTONS */}
                         <div className="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start">
-                            <Link href="/permanent/general-practitioner-jobs/australia" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > GP Locum Jobs </Link>
-                            <Link href="/permanent/general-practitioner-jobs/australia" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Allied Health Jobs </Link>
-                            <Link href="/permanent/general-practitioner-jobs/australia" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Psychologist Jobs </Link>
-                            <Link href="/permanent/general-practitioner-jobs/australia" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Dentist Jobs </Link>
-   
+                            <Link href="/permanent/general-practitioner-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > GP Locum Jobs </Link>
+                            <Link href="/permanent/allied-health-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Allied Health Jobs </Link>
+                            <Link href="/permanent/psychology-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Psychologist Jobs </Link>
+                            <Link href="/permanent/dentists-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Dentist Jobs </Link>
+
 
 
                         </div>

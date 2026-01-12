@@ -1,61 +1,68 @@
-import React from "react";
+import Image, { StaticImageData } from "next/image";
+import NationwideIcon from "@/assets/icons/globeico.png";
+import ShortlistIcon from "@/assets/icons/Passport.png";
+import AhpraIcon from "@/assets/icons/verified.png";
+import PayIcon from "@/assets/icons/Certificate.png";
 
 type Feature = {
-  title: string;
-  description: string;
+    title: string;
+    description: string;
+    icon: StaticImageData;
 };
 
 const featuresLeft: Feature[] = [
-  { title: "Nationwide roles: metro,", description: "regional & remote" },
-  { title: "Visa & relocation friendly", description: "clinics (where eligible)" },
+    { title: "Nationwide coverage:", description: "metro, regional & remote", icon: NationwideIcon },
+    { title: "Visa & relocation friendly", description: " clinics (where eligible)", icon: ShortlistIcon },
 ];
 
 const featuresRight: Feature[] = [
-  { title: "AHPRA-registered &", description: "RACGP/RRMA-aware employers" },
-  { title: "Referral rewards for", description: "successful placements" },
+    { title: "AHPRA-registered &", description: "credentialing support", icon: AhpraIcon },
+    { title: "Referral rewards for ", description: "successful placements,", icon: PayIcon },
 ];
 
-export default function Hero() {
-  return (
-    <section className="bg-[#040D48] text-white py-10 lg:py-[26px] full-width-section">
-      <div className="inner-width-section mx-auto px-6 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 items-start">
-        {/* LEFT COLUMN */}
-        <div className="space-y-6 lg:space-y-[31px]">
-          {/* Main Title */}
-          <h1 className="text-2xl lg:text-[36px] font-bold leading-tight">
-            FRACGP & FACRRM Jobs in Australia – Build Your Career with Medfuture
-          </h1>
+export default function FracgpHeroSection() {
+    return (
+        <section className="bg-[#040D48] full-width-section text-white py-[26px] px-4 lg:px-20">
+            <div className="inner-width-section mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+                {/* Left Column */}
+                <div className="lg:col-span-2 space-y-[32px]">
+                    <h1 className="text-2xl lg:text-[36px] font-bold">
+                        Medical Practitioner Career Opportunities Across Australia
+                    </h1>
+                    <p className="text-xs lg:text-[16px] text-white/80 max-w-lg">
+                        Medfuture supports General Practitioners at every career stage by connecting them with compliant medical roles across Australia that align with professional goals and lifestyle needs.
+                    </p>
 
-          {/* Paragraph */}
-          <p className="text-[14px] lg:text-[16px] text-white/70 max-w-full lg:max-w-2xl">
-            Australia continues to experience strong demand for qualified General Practitioners across metropolitan, regional, and remote communities. Whether you are FRACGP or FACRRM, your skills are vital to primary care access.
-          </p>
+                    <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 border-l-0 mt-[62px] border-r-0 border-dashed border-white/30">
+                        {/* Left Features */}
+                        <div className="space-y-4 sm:space-y-6 sm:pr-6 sm:border-r sm:border-dashed sm:border-white/30">
+                            {featuresLeft.map((feature, idx) => (
+                                <div key={idx} className="flex items-start gap-3">
+                                    <Image src={feature.icon} alt={feature.title} width={24} height={24} />
+                                    <div>
+                                        <h3 className="font-[400] lg:text-[16px] text-xs">
+                                            {feature.title} <br /> {feature.description}
+                                        </h3>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
 
-          {/* Features Two-column Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-2 gap-6 border-l-0 border-r-0 border-dashed border-white/30">
-            {/* Left Features */}
-            <div className="space-y-4 sm:space-y-6 sm:pr-6 sm:border-r sm:border-dashed sm:border-white/30">
-              {featuresLeft.map((feature, idx) => (
-                <div key={idx}>
-                  <h3 className="font-[400] lg:text-[16px] text-xs">
-                    {feature.title} <br /> {feature.description}
-                  </h3>
+                        {/* Right Features */}
+                        <div className="space-y-4 sm:space-y-6 sm:pl-6">
+                            {featuresRight.map((feature, idx) => (
+                                <div key={idx} className="flex items-start gap-3">
+                                    <Image src={feature.icon} alt={feature.title} width={24} height={24} />
+                                    <div>
+                                        <h3 className="font-[400] lg:text-[16px] text-xs">
+                                            {feature.title} <br /> {feature.description}
+                                        </h3>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Right Features */}
-            <div className="space-y-4 sm:space-y-6 sm:pl-6">
-              {featuresRight.map((feature, idx) => (
-                <div key={idx}>
-                  <h3 className="font-[400] lg:text-[16px] text-xs">
-                    {feature.title} <br /> {feature.description}
-                  </h3>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* RIGHT COLUMN - Counters */}
         <div className="grid grid-cols-2 lg:grid-cols-1  gap-4 lg:gap-[17px] mt-6 lg:mt-0">

@@ -5,6 +5,14 @@ import { useParams } from "next/navigation";
 import RegistrationForm from '@/components/Forms/QuickApplySingleJob';
 import Link from "next/link";
 import { apiGet } from "@/lib/api";
+import Image from "next/image";
+import Jobboard5 from "@/assets/homeico/jobboard5.png"
+import Jobbaord6 from "@/assets/homeico/jobboard6.png"
+import Permenentico from "@/assets/jobboardico/Permanentico.png"
+import Doctorico from "@/assets/jobboardico/Doctorico.png"
+import Moneyico from "@/assets/jobboardico/Moneyico.png"
+import Timeico from "@/assets/jobboardico/Timeico.png"
+
 
 /* ================= TYPES ================= */
 
@@ -31,8 +39,11 @@ type Job = {
 export default function JobDescription() {
   const { jobId } = useParams<{ jobId: string }>();
   const formRef = useRef<HTMLDivElement>(null);
+  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
 
   const [job, setJob] = useState<Job | null>(null);
+  const [showForm, setShowForm] = useState(false); // <-- Toggle form visibility
+
 
   useEffect(() => {
     async function fetchJob() {
@@ -47,31 +58,65 @@ export default function JobDescription() {
     fetchJob();
   }, [jobId]);
 
-  const handleApplyNow = () => {
+
+
+  const handleQuickApply = () => {
+    setShowForm(true);
     if (formRef.current) {
       formRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
     }
+
+
+
+    // const handleApplyNow = () => {
+    //   if (formRef.current) {
+    //     formRef.current.scrollIntoView({
+    //       behavior: 'smooth',
+    //       block: 'start',
+    //     });
+    //   }
+
   };
+
 
   if (!job) return null;
 
   return (
-    <div className="border-2 rounded-8px relative">
+    <div className=" rounded-8px relative">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] p-4 lg:pl-[43px] lg:pr-[23px] lg:py-[25px] rounded-none bg-white">
-        <h1 className="text-[18px] lg:text-[24px] font-bold text-[#0E2851] lg:pr-[43px] flex-1 mb-4 lg:mb-0">
-          {job.job_title}
-        </h1>
+      <div className="bg-[#575D84] lg:h-[123px] full-width-section mb-[30px]">
+        <div className="flex flex-col inner-width-section  lg:flex-row lg:justify-between lg:items-start mb-6  p-4 lg:pl-[43px] lg:pr-[23px] lg:py-[25px] rounded-none ">
+          <h1 className="text-[18px] lg:text-[24px] font-bold text-white lg:pr-[43px] flex-1 mb-4 lg:mb-0">
+            {job.job_title}
+          </h1>
 
-        <button
-          onClick={handleApplyNow}
-          className=" bg-[#64CAF3] text-white px-6 py-3 lg:w-[160px] lg:h-[56px] rounded-lg hover:bg-[#55b8e0] transition-colors font-medium whitespace-nowrap lg:ml-4 flex-shrink-0"
-        >
-          Apply Now
-        </button>
+
+        </div>
+
+        <div className="absolute left-0 z-0  lg:block hidden bottom-0 w-[182px] h-[182px] md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
+          <Image
+            src={Jobbaord6}
+            alt="Decorative left corner"
+            fill
+            className="object-contain object-bottom-left"
+            priority
+          />
+        </div>
+
+        {/* Right Corner Image */}
+        <div className="absolute lg:block hidden z-0 right-0 bottom-0 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
+          <Image
+            src={Jobboard5}
+            alt="Decorative right corner"
+            fill
+            className="object-contain object-bottom-right"
+            priority
+          />
+        </div>
+
       </div>
 
       {/* External Link Icon */}
@@ -84,23 +129,23 @@ export default function JobDescription() {
       </div>
 
       {/* Job Tags */}
-      <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[44px]">
+      <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[0px]">
         <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          Permanent
+          <Image src={Permenentico} alt="Permanent" className=" mr-0 inline-block" />     Permanent
         </span>
         <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          {job.profession?.name}
+          <Image src={Doctorico} alt="Doctor" className=" mr-0 inline-block" />    {job.profession?.name}
         </span>
         <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          {job.engagement_type?.name}
+          <Image src={Moneyico} alt="Money" className=" mr-0 inline-block" />   {job.engagement_type?.name}
         </span>
         <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-          {job.state?.name}, {job.country?.name}
+          <Image src={Timeico} alt="Time" className=" mr-0 inline-block" />   {job.state?.name}, {job.country?.name}
         </span>
       </div>
 
       {/* Job Description */}
-      <div className="prose max-w-none px-4 lg:px-[44px]">
+      <div className="prose max-w-none px-4 px-4">
         <p className="text-[#666666] text-[14px] lg:text-[18px] leading-relaxed">
           {job.job_brief}
         </p>
@@ -136,33 +181,54 @@ export default function JobDescription() {
         </ul>
       </div>
 
+
       {/* Registration Form and Contact Info */}
-      <div className='grid lg:grid-cols-2 mt-6 lg:mt-0 px-4 lg:px-[44px]'>
-        <div ref={formRef} className='mt-6 lg:mt-0'>
-          <RegistrationForm />
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-6 mt-4 mb-10 lg:mt-0 lg:items-end'>
+        {/* Contact Information */}
+        <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 px-4">
+          <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
+            Contact Us
+          </h4>
+          <div className="grid grid-cols-[1fr_2fr] gap-0 lg:gap-[1px]">
+            <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant:</h3>
+            <span className="text-[#4A5565] lg:text-[16px] text-[13px]">: Gaya</span>
+          </div>
+          <div className="grid grid-cols-[1fr_2fr] ">
+            <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number</h3>
+            <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: 0452 468 515</a>
+          </div>
+          <div className="grid grid-cols-[1fr_2fr]">
+            <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
+            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">: gprecruitment@medfuture.com.au</a>
+          </div>
+          <div className="grid grid-cols-[1fr_2fr] ">
+            <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries</h3>
+            <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: 0452 468 515</a>
+          </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="grid grid-cols-1 gap-4 lg:gap-[7px] mt-6 lg:py-36 px-10">
-          <h3 className="font-semibold text-[#66768F] text-base text-[14px] lg:text-[18px]">Contact Us</h3>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Recruitment Consultant:</span>
-            <span className="text-[#66768F] text-[14px] lg:text-[18px]">Gaya</span>
+        {/* Apply Button */}
+        {!showForm && (
+          <div className="flex justify-center lg:justify-end px-10 pb-6 lg:pb-0">
+            <button
+              onClick={handleQuickApply}
+              className="bg-[#074CA4] text-white w-[194px] px-6 py-3 cursor-pointer rounded-[4px] hover:bg-[#55b8e0] transition-colors font-medium"
+            >
+              Apply Now
+            </button>
           </div>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Contact Number:</span>
-            <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px]">0452 468 515</a>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">Email:</span>
-            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px] break-all">gprecruitment@medfuture.com.au</a>
-          </div>
-          <div className="flex flex-col lg:flex-row lg:flex-wrap gap-2 lg:gap-[13px]">
-            <span className="font-semibold text-[#66768F] text-[14px] lg:text-[18px]">General Enquiries:</span>
-            <a href="tel:0452468515" className="text-[#66768F] hover:text-[#64CAF3] text-[14px] lg:text-[18px]">0452 468 515</a>
-          </div>
-        </div>
+        )}
       </div>
+
+
+      {/* Registration Form */}
+      {showForm && (
+        <div ref={formRef} className="mt-4 lg:mt-0 lg:shadow-[0_0_12px_rgba(0,0,0,0.1)] border-[#66768F]/16 mb-36">
+          <RegistrationForm onClose={function (): void {
+            throw new Error("Function not implemented.");
+          }} />
+        </div>
+      )}
 
       <div className="lg:hidden h-20"></div>
     </div>

@@ -24,9 +24,18 @@ export default function Breadcrumb() {
     if (pathname.startsWith("/contact-us")) return "bg-[#0D1A3E]";
     if (pathname.startsWith("/fracgp-facrrm")) return "bg-[#040D48]";
     if (pathname.startsWith("/medical-division")) return "bg-[#040D48]";
-        if (pathname.startsWith("/about-us")) return "bg-[#0D1A3E]";
+    if (pathname.startsWith("/about-us")) return "bg-[#0D1A3E]";
+    if (pathname.startsWith("/general-practitioner-registrar")) return "bg-[#040D48]";
+    if (pathname.startsWith("/permanent/")) return "bg-[#0A2E5C]";
+    if (pathname.startsWith("/permanent")) return "bg-[#0A2E5C]";
+    if (pathname.startsWith("/locum/")) return "bg-[#040D48]";
+    if (pathname.startsWith("/locum")) return "bg-[#040D48]";
+    if (pathname.startsWith("/international")) return "bg-[#575D84]";
+        if (pathname.startsWith("/international/")) return "bg-[#575D84]";
+
 
     
+
     return "bg-white";
   };
 
@@ -66,9 +75,9 @@ export default function Breadcrumb() {
 
   return (
     <nav
-      className={`flex lg:py-[13px] py-4 lg:px-1 px-4  full-width-section ${getBgColor()}`}
+      className={`flex lg:py-[18px] py-4 lg:px-1 px-4   full-width-section ${getBgColor()}`}
     >
-      <ol className="flex items-center space-x-2 text-sm inner-width-section">
+      <ol className="flex items-center space-x-2 text-sm z-50 inner-width-section">
         {breadcrumbs.map((breadcrumb, index) => (
           <li key={index} className="flex items-center">
             {index > 0 && (
@@ -76,13 +85,13 @@ export default function Breadcrumb() {
             )}
 
             {breadcrumb.isCurrent ? (
-              <span className="text-gray-400 font-medium">
+              <span className="text-gray-400 lg:text-sm text-[8px] font-medium">
                 {breadcrumb.label}
               </span>
             ) : (
               <Link
                 href={breadcrumb.href}
-                className=" hover:text-blue-700  text-gray-400 transition-colors"
+                className=" hover:text-blue-700 lg:text-sm text-[8px]  text-gray-400 transition-colors"
               >
                 {breadcrumb.label}
               </Link>
