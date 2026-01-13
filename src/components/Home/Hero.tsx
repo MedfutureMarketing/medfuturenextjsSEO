@@ -106,7 +106,7 @@ export default function Hero() {
                         Medfuture Australia – Elevate Your Medical Career
                     </h1>
                     <p className="text-xs lg:text-[16px] lg:w-[676px] w-full text-[#FFFFFFB2] leading-relaxed">
-                        Connecting healthcare professionals with trusted employers across Australia. Whether you're seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.
+                        Connecting healthcare professionals with trusted employers across Australia. Whether you are seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.
                     </p>
                 </div>
 
