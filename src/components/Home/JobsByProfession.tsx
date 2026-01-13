@@ -177,7 +177,7 @@ export default function JobsbyProfession() {
 
 function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
   return (
-    <div className="bg-white rounded-lg border shadow-lg flex flex-col text-left px-4 py-6">
+    <div className="bg-white rounded-lg border shadow-lg flex flex-col text-left px-4 py-6 h-full">
       <div className="flex items-center justify-between">
         <h3 className="lg:text-[16px] text-md font-semibold text-[#0A2E5C]">{prof.title}</h3>
         <Link
@@ -190,43 +190,46 @@ function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
 
       <p className="text-gray-600 mt-2 lg:text-[14px] text-xs">Latest Jobs</p>
 
-      <div className="grid grid-cols-1 gap-3 mt-4">
-        {prof.jobs.length > 0 ? (
-          <>
-            {prof.jobs.map((job, jidx) => (
-              <div key={jidx} className="bg-white rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
-                <div>
-                  <h4 className="lg:text-[14px] text-sm font-semibold text-[#0A2E5C]">
-                    {job.title.length > 40 ? `${job.title.slice(0, 60)}...` : job.title}
-                  </h4>                 <p className="text-gray-600 lg:text-[12px] text-[10px] flex flex-wrap gap-1 w-full mt-[5px]">
-                    <Image src={loctionico} className="w-[10px] h-[13px]" alt="Locationico" />
-                    {job.location.length > 30 ? `${job.location.slice(0, 40)}...` : job.location}
-                  </p>
+      <div className="flex flex-col flex-grow">
+        <div className="grid grid-cols-1 gap-3 mt-4">
+          {prof.jobs.length > 0 ? (
+            <>
+              {prof.jobs.map((job, jidx) => (
+                <div key={jidx} className="bg-white rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
+                  <div>
+                    <h4 className="lg:text-[14px] text-sm font-semibold text-[#0A2E5C]">
+                      {job.title.length > 40 ? `${job.title.slice(0, 60)}...` : job.title}
+                    </h4>
+                    <p className="text-gray-600 lg:text-[12px] text-[10px] flex flex-wrap gap-1 w-full mt-[5px]">
+                      <Image src={loctionico} className="w-[10px] h-[13px]" alt="Locationico" />
+                      {job.location.length > 30 ? `${job.location.slice(0, 40)}...` : job.location}
+                    </p>
+                  </div>
+                  <Link href={job.link} className="text-[#074CA4] text-[12px] px-4 py-2 rounded">
+                    View
+                  </Link>
                 </div>
-                <Link href={job.link} className="text-[#074CA4] text-[12px] px-4 py-2 rounded">
-                  View
-                </Link>
-              </div>
-            ))}
-
-            <Link
-              href={prof.viewAllLink}
-              className="hover:underline lg:text-[14px] text-[10px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
-            >
-              {prof.viewAllText}
-            </Link>
-          </>
-        ) : (
-          <div className="bg-gray-50 rounded-lg border border-dashed border-gray-300 py-8 px-4 text-center">
-            <p className="text-gray-500 lg:text-[14px] text-sm font-medium">
-              No jobs available at the moment
-            </p>
-            <p className="text-gray-400 lg:text-[12px] text-xs mt-2">
-             Please Come back later for new opportunities
-            </p>
-          </div>
-        )}
+              ))}
+            </>
+          ) : (
+            <div className="bg-gray-50 rounded-lg border border-dashed border-gray-300 py-8 px-4 text-center">
+              <p className="text-gray-500 lg:text-[14px] text-sm font-medium">
+                No jobs available at the moment
+              </p>
+              <p className="text-gray-400 lg:text-[12px] text-xs mt-2">
+               Please Come back later for new opportunities
+              </p>
+            </div>
+          )}
+        </div>
       </div>
+
+      <Link
+        href={prof.viewAllLink}
+        className="hover:underline lg:text-[14px] text-[10px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
+      >
+        {prof.viewAllText}
+      </Link>
     </div>
   );
 }
