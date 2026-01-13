@@ -16,7 +16,7 @@ type HomeData = {
 
 export default function TestimonialPuzzle() {
   const [homeData, setHomeData] = useState<HomeData | null>(null);
-  
+
   useEffect(() => {
     async function fetchHomeData() {
       try {
@@ -33,7 +33,7 @@ export default function TestimonialPuzzle() {
       <h2 className="lg:text-[36px] text-2xl font-bold text-center text-[#074CA4] ">
         Testimonials
       </h2>
-      
+
       <div className="hidden sm:grid max-w-screen-2xl mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
         {[0, 1, 2, 3].map((col) => {
           const start = col * 2;
@@ -50,8 +50,11 @@ export default function TestimonialPuzzle() {
                     ${isTall ? "h-[280px]" : "h-[250px]"}
                   `}
                 >
-                  <p className="text-[16px] text-gray-600 leading-relaxed mb-4">{item.comment}</p>
-                  <div className="flex justify-end">
+                  <p className="text-[16px] text-gray-600 leading-relaxed mb-4">
+                    {item.comment.length > 150
+                      ? `${item.comment.substring(0, 150)}...`
+                      : item.comment}
+                  </p>                  <div className="flex justify-end">
                     <div className="flex items-center gap-3">
                       <div className="text-right">
                         <p className="text-[14px] font-semibold text-[#074CA4]">{item.user_name}</p>
