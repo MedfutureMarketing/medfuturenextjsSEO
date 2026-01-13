@@ -4,6 +4,9 @@ import Image from "next/image";
 import loctionico from "@/assets/homeico/loctionico.png";
 import { useEffect, useState } from "react";
 import { apiGet } from "@/lib/api";
+import { useMemo } from "react";
+
+
 
 type HomeData = {
   clientCount: number;
@@ -69,7 +72,10 @@ export default function JobsbyProfession() {
   }, []);
 
   // Sort professions by priority, then by whether they have jobs
-  const sortedProfessions = homeData?.professions
+  const sortedProfessions = useMemo(() => {
+  if (!homeData?.professions) return [];
+
+  return homeData.professions
     .map((profession) => ({
       title: profession.name,
       exploreLink: `/permanent/${profession.name.toLowerCase().replace(/\s+/g, "-")}-jobs/in-australia`,
@@ -81,18 +87,16 @@ export default function JobsbyProfession() {
       viewAllText: `View All ${profession.name} Jobs`,
       viewAllLink: `/permanent/${profession.name.toLowerCase().replace(/\s+/g, "-")}-jobs/in-australia`,
       hasJobs: profession.jobDetails.length > 0,
-      priority: professionPriorities[profession.name] || 999, // Default to low priority if not in list
+      priority: professionPriorities[profession.name] || 999,
     }))
     .sort((a, b) => {
-      // First sort by priority (1-6 come first)
-      if (a.priority !== b.priority) {
-        return a.priority - b.priority;
-      }
-      // Within same priority, sort by hasJobs: true comes before false
+      if (a.priority !== b.priority) return a.priority - b.priority;
       if (a.hasJobs && !b.hasJobs) return -1;
       if (!a.hasJobs && b.hasJobs) return 1;
       return 0;
-    }) || [];
+    });
+}, [homeData]);
+
 
   // Get only first 6 cards for initial display
   const visibleProfessions = showAll ? sortedProfessions : sortedProfessions.slice(0, 6);
