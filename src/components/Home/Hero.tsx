@@ -14,9 +14,11 @@ type HomeData = {
 // Counter animation hook - animates once on mount, then updates smoothly to new values
 function useCounterAnimation(targetValue: number, duration: number = 2000) {
     const [count, setCount] = useState(0);
-    const [isFirstAnimation, setIsFirstAnimation] = useState(true);
+    const [prevTarget, setPrevTarget] = useState(0);
 
     useEffect(() => {
+        if (targetValue === prevTarget) return;
+        
         let startTime: number | null = null;
         let animationFrame: number;
         const startValue = count;
@@ -36,7 +38,7 @@ function useCounterAnimation(targetValue: number, duration: number = 2000) {
             if (progress < 1) {
                 animationFrame = requestAnimationFrame(animate);
             } else {
-                setIsFirstAnimation(false);
+                setPrevTarget(targetValue);
             }
         };
 
@@ -47,7 +49,7 @@ function useCounterAnimation(targetValue: number, duration: number = 2000) {
                 cancelAnimationFrame(animationFrame);
             }
         };
-    }, [targetValue]);
+    }, [targetValue, duration]);
 
     return count;
 }
@@ -57,17 +59,17 @@ export default function Hero() {
     const [isLoading, setIsLoading] = useState(true);
 
     // Demo values to show while loading
-    const demoClientCount = 1550;
-    const demoCandidateCount = 500;
+    const demoClientCount = 9465;
+    const demoCandidateCount = 1000;
 
     // Animated counters
     const animatedClientCount = useCounterAnimation(
         homeData ? homeData.clientCount : demoClientCount,
-        4000
+        10000
     );
     const animatedCandidateCount = useCounterAnimation(
         homeData ? homeData.candidateCount : demoCandidateCount,
-        4000
+        2000
     );
 
     useEffect(() => {
@@ -106,7 +108,7 @@ export default function Hero() {
                         Medfuture Australia – Elevate Your Medical Career
                     </h1>
                     <p className="text-xs lg:text-[16px] lg:w-[676px] w-full text-[#FFFFFFB2] leading-relaxed">
-                        Connecting healthcare professionals with trusted employers across Australia. Whether you are seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.
+                        Connecting healthcare professionals with trusted employers across Australia. Whether you're seeking your next career opportunity or hiring top talent, we provide expert guidance, reliable placements, and tailored solutions that strengthen teams and advance careers.
                     </p>
                 </div>
 
