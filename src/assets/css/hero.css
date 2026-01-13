@@ -1,0 +1,107 @@
+/* Hero.css */
+
+
+
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  padding-top: 8px;
+  padding-bottom: 0px;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 32px;
+    padding-top: 56px;
+    padding-bottom: 0px;
+  }
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 31px;
+}
+
+.hero-title {
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 1;
+  color: #ffffff;
+  margin-top: 62px;
+  margin-bottom: 22px;
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 46px;
+  }
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.hero-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.hero-images img {
+  height: 174px;
+}
+
+.stats-row {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 17px;
+  margin-bottom: 32px;
+}
+
+@media (min-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 80px;
+  }
+}
+
+.stat-card {
+  background-color: rgba(255, 255, 255, 0.07);
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 1024px) {
+  .stat-value {
+    font-size: 30px;
+  }
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+

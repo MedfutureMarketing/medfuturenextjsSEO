@@ -1,0 +1,237 @@
+/* jobDescription.css */
+
+/* Container */
+.container {
+  border: 2px solid;
+}
+
+/* Add this to your global CSS file or component styles */
+
+.asterisk_input::after {
+  content: "*";
+  color: red;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.asterisk_input_checkbox::before {
+  content: "*";
+  color: red;
+  margin-right: 4px;
+  font-size: 16px;
+}
+
+/* Adjust for PhoneInput component */
+.relative:has(.react-international-phone-input-container) .asterisk_input::after {
+  right: 10px;
+  z-index: 1;
+}
+
+/* Make sure react-international-phone styles are imported */
+@import 'react-international-phone/style.css';
+
+/* Fixed bottom Apply button for mobile */
+.fixedApplyButton {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.05); /* use plain CSS for shadow */
+  padding: 1rem;
+  z-index: 50;
+  border-top: 1px solid #e5e5e5;
+}
+
+.fixedApplyButton button {
+  width: 100%;
+  background-color: #64CAF3;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.fixedApplyButton button:hover {
+  background-color: #55b8e0;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: white;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.05);
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0E2851;
+  margin-bottom: 1rem;
+}
+
+.headerButton {
+  display: none;
+  background-color: #64CAF3;
+  color: white;
+  width: 160px;
+  height: 56px;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+/* Job Tags */
+.jobTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.jobTag {
+  color: #0E2851;
+  font-size: 14px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: #f3f3f3;
+}
+
+/* Job Description */
+.jobDescription {
+  max-width: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.jobDescription p {
+  color: #666666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.jobDescription h3,
+.jobDescription h4 {
+  font-weight: 600;
+  color: #66768F;
+  margin-top: 1.5rem;
+}
+
+/* Lists */
+.jobDescription ul {
+  list-style: disc inside;
+  color: #666666;
+  margin-top: 0.5rem;
+}
+
+/* Contact Information */
+.contactInfo {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1.5rem;
+}
+
+.contactRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contactRow a {
+  color: #66768F;
+  text-decoration: none;
+}
+
+.contactRow a:hover {
+  color: #64CAF3;
+}
+
+/* Registration Form */
+.registrationForm {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Spacer for mobile bottom */
+.mobileSpacer {
+  height: 5rem;
+}
+
+/* Responsive overrides */
+@media(min-width: 1024px) {
+  .header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-left: 2.6875rem; /* ~43px */
+    padding-right: 1.4375rem; /* ~23px */
+    padding-top: 1.5625rem;  /* ~25px */
+    padding-bottom: 1.5625rem;
+  }
+
+  .headerTitle {
+    font-size: 24px;
+    padding-right: 2.6875rem;
+    margin-bottom: 0;
+  }
+
+  .headerButton {
+    display: block;
+    margin-left: 1rem;
+  }
+
+  .jobTags {
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+  }
+
+  .jobTag {
+    font-size: 18px;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: transparent;
+  }
+
+  .jobDescription {
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+  }
+
+  .contactInfo {
+    gap: 0.4375rem; /* ~7px */
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+  }
+
+  .contactRow {
+    flex-wrap: wrap;
+    gap: 0.8125rem; /* ~13px */
+  }
+
+  .mobileSpacer {
+    display: none;
+  }
+}

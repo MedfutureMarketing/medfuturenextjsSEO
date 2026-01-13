@@ -1,0 +1,26 @@
+{
+  "name": "Medfuture",
+  "short_name": "Medfuture",
+  "description": "Leading medical & healthcare recruitment in Australia and New Zealand",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d4ed8",
+  "icons": [
+    {
+      "src": "",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}
