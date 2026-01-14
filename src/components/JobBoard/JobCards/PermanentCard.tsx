@@ -1,17 +1,18 @@
 "use client";
 
 import { apiGet } from "@/lib/api";
-import { useCallback, useEffect, useMemo, useState, memo } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { parseJobSearchUrl } from "@/lib/seoJobUrl";
 import Image from "next/image";
-import Pointico from "@/assets/icons/listicon.png";
+import Pointico from "@/assets/icons/listicon.png"
 
 /* ===================== TYPES ===================== */
 
 type Job = {
   job_id: number;
   job_title: string;
+  status: number;
   commencement_date: string;
   profession: { name: string };
   country: { name: string };
@@ -21,13 +22,21 @@ type Job = {
 
 type JobApiResponse = {
   data: Job[];
-  pagination: { count: number; totalPages: number };
+  pagination: {
+    count: number;
+    page: number;
+    recordsPerPage: number;
+    totalPages: number;
+  };
 };
 
 type Suburb = { name: string };
-type Region = { name; suburb?: Suburb[] };
+type Region = { name: string; suburb?: Suburb[] };
 type StateLocation = { name: string; regions?: Region[] };
-type LocationApiResponse = { states: StateLocation[] };
+
+type LocationApiResponse = {
+  states: StateLocation[];
+};
 
 type LocationMap = Record<string, { regions: Record<string, string[]> }>;
 
@@ -35,40 +44,50 @@ type LocationMap = Record<string, { regions: Record<string, string[]> }>;
 
 export default function JobCard() {
   const router = useRouter();
-  const pathname = usePathname();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
 
-  /* ===================== MEMOIZED FILTERS ===================== */
-  const filters = useMemo(() => parseJobSearchUrl(pathname), [pathname]);
-  const pageFromUrl = useMemo(() => Number(searchParams.get("page")) || 1, [searchParams]);
   const selectedJobId = searchParams.get("jobId");
+  const filters = parseJobSearchUrl(pathname);
 
-  /* ===================== STATE ===================== */
+  const pageFromUrl = Number(searchParams.get("page")) || 1;
+
   const [currentPage, setCurrentPage] = useState(pageFromUrl);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [totalJobs, setTotalJobs] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [locationData, setLocationData] = useState<LocationMap>({});
   const [isLoading, setIsLoading] = useState(true);
+  const [showNoJobsModal, setShowNoJobsModal] = useState(false);
 
   /* ===================== LOAD LOCATIONS ===================== */
+
   useEffect(() => {
     async function fetchLocations() {
       try {
-        const res = await apiGet<LocationApiResponse>("web/jobdetails/locations");
+        const res = await apiGet<LocationApiResponse>(
+          "web/jobdetails/locations"
+        );
+
         const map: LocationMap = {};
 
         res.states.forEach((state) => {
           map[state.name] = { regions: {} };
+
           state.regions?.forEach((region) => {
-            map[state.name].regions[region.name] =
-              region.suburb?.map((s) => s.name).sort() || [];
+            map[state.name].regions[region.name] = [];
+
+            region.suburb?.forEach((suburb) => {
+              map[state.name].regions[region.name].push(suburb.name);
+            });
+
+            map[state.name].regions[region.name].sort();
           });
         });
 
         setLocationData(map);
-      } catch (err) {
-        console.error("Location load failed", err);
+      } catch (error) {
+        console.error("Failed to load locations", error);
       }
     }
 
@@ -76,20 +95,31 @@ export default function JobCard() {
   }, []);
 
   /* ===================== LOCATION DETECTOR ===================== */
+
   const detectLocation = useCallback(
-    (locationName: string) => {
+    (locationName: string): {
+      country?: string;
+      state?: string;
+      region?: string;
+      suburb?: string;
+    } => {
       if (!locationName) return {};
 
-      if (locationData[locationName]) return { state: locationName };
+      if (locationData[locationName]) {
+        return { state: locationName };
+      }
 
-      for (const state in locationData) {
+      for (const state of Object.keys(locationData)) {
         const regions = locationData[state].regions;
 
-        if (regions[locationName]) return { state, region: locationName };
+        if (regions[locationName]) {
+          return { state, region: locationName };
+        }
 
-        for (const region in regions) {
-          if (regions[region].includes(locationName))
+        for (const region of Object.keys(regions)) {
+          if (regions[region].includes(locationName)) {
             return { state, region, suburb: locationName };
+          }
         }
       }
 
@@ -98,8 +128,18 @@ export default function JobCard() {
     [locationData]
   );
 
+  /* ===================== SYNC PAGE IN URL ===================== */
+
+  useEffect(() => {
+    router.replace(`${pathname}?page=${currentPage}`, { scroll: false });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage, pathname, router]);
+
   /* ===================== RESET PAGE ON FILTER CHANGE ===================== */
-  useEffect(() => setCurrentPage(1), [
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [
     filters.keyword,
     filters.country,
     filters.state,
@@ -107,28 +147,29 @@ export default function JobCard() {
     filters.suburb,
   ]);
 
-  /* ===================== SYNC PAGE TO URL ===================== */
-  useEffect(() => {
-    if (currentPage !== pageFromUrl) {
-      router.replace(`${pathname}?page=${currentPage}`, { scroll: false });
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [currentPage, pathname, router, pageFromUrl]);
-
   /* ===================== FETCH JOBS ===================== */
+
   useEffect(() => {
-    if (!Object.keys(locationData).length) return;
+    if (Object.keys(locationData).length === 0) return;
 
     async function fetchJobs() {
       setIsLoading(true);
-
       const params = new URLSearchParams();
-      if (filters.keyword) params.set("keyword", filters.keyword);
 
-      const location = filters.suburb || filters.region || filters.state || filters.country;
+      if (filters.keyword) {
+        params.set("keyword", filters.keyword);
+      }
+
+      const location =
+        filters.suburb || filters.region || filters.state || filters.country;
+
       if (location) {
         const detected = detectLocation(location);
-        Object.entries(detected).forEach(([k, v]) => v && params.set(k, v));
+
+        if (detected.suburb) params.set("suburb", detected.suburb);
+        if (detected.region) params.set("region", detected.region);
+        if (detected.state) params.set("state", detected.state);
+        if (detected.country) params.set("country", detected.country);
       }
 
       params.set("page", String(currentPage));
@@ -139,138 +180,298 @@ export default function JobCard() {
         );
 
         setJobs(res.data);
-        setTotalJobs(res.pagination.count);
         setTotalPages(res.pagination.totalPages);
-      } catch (err) {
-        console.error("Job fetch failed", err);
+        setTotalJobs(res.pagination.count);
+
+        // Show modal if no jobs found after search
+        if (res.data.length === 0 && res.pagination.count === 0) {
+          setShowNoJobsModal(true);
+        }
+      } catch (error) {
+        console.error("Failed to fetch jobs", error);
       } finally {
         setIsLoading(false);
       }
     }
 
     fetchJobs();
-  }, [currentPage, filters, detectLocation, locationData]);
+  }, [
+    currentPage,
+    locationData,
+    detectLocation,
+    filters.keyword,
+    filters.state,
+    filters.region,
+    filters.suburb,
+    filters.country,
+  ]);
 
-  /* ===================== PAGINATION MEMO ===================== */
-  const pages = useMemo(() => {
-    if (totalPages <= 1) return [];
-    const p: (number | string)[] = [];
-    p.push(1);
-    if (currentPage > 3) p.push("...");
-    for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++)
-      p.push(i);
-    if (currentPage < totalPages - 2) p.push("...");
-    p.push(totalPages);
-    return p;
-  }, [currentPage, totalPages]);
+  /* ===================== TIME FORMATTER ===================== */
 
-  /* ===================== TIME FORMAT MEMO ===================== */
-  const timeFromNow = useCallback((d: string) => {
-    const [day, month, year] = d.split("-");
+  function timeFromNow(dateString: string) {
+    const [day, month, year] = dateString.split("-");
     const date = new Date(`${year}-${month}-${day}`);
-    const diff = date.getTime() - Date.now();
-    const mins = Math.round(Math.abs(diff) / 60000);
-    const hrs = Math.round(mins / 60);
-    const days = Math.round(hrs / 24);
+    const diffMs = date.getTime() - Date.now();
 
-    if (diff < 0)
-      return mins < 60
-        ? `${mins} min ago`
-        : hrs < 24
-        ? `${hrs} hrs ago`
-        : `${days} days ago`;
+    const absMin = Math.round(Math.abs(diffMs) / 60000);
+    const absHours = Math.round(absMin / 60);
+    const absDays = Math.round(absHours / 24);
 
-    return mins < 60
-      ? `in ${mins} min`
-      : hrs < 24
-      ? `in ${hrs} hrs`
-      : `in ${days} days`;
-  }, []);
+    if (diffMs < 0) {
+      if (absMin < 60) return `${absMin} min ago`;
+      if (absHours < 24) return `${absHours} hours ago`;
+      return `${absDays} days ago`;
+    }
 
-  /* ===================== LOADING SKELETON ===================== */
+    if (absMin < 60) return `in ${absMin} min`;
+    if (absHours < 24) return `in ${absHours} hours`;
+    return `in ${absDays} days`;
+  }
+
+  /* ===================== LOADING STATE ===================== */
+
   if (isLoading) {
     return (
-      <div className="space-y-4">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-32 bg-gray-100 border rounded-lg animate-pulse" />
-        ))}
+      <div className="flex justify-center items-center h-64">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#0A2E5C] border-dotted rounded-full border-t-transparent animate-spin"></div>
+          <p className="text-gray-500 text-sm font-medium">
+            Loading jobs, please wait...
+          </p>
+        </div>
       </div>
     );
   }
 
+  /* ===================== NO JOBS MODAL ===================== */
+
+  if (showNoJobsModal) {
+    return (
+      <>
+        {/* Modal Backdrop */}
+        <div className="fixed inset-0 bg-white/60  flex items-center justify-center z-50 p-4">
+          {/* Modal Content */}
+          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6">
+            <div className="text-center">
+              <div className="mb-4">
+                <svg className="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+
+              <h3 className="text-xl font-semibold text-[#0E2851] mb-2">
+                No Jobs Available
+              </h3>
+
+              <p className="text-[#4A5565] mb-6">
+                We couldnt find any jobs matching your search criteria. Would you like to register for job alerts or browse more opportunities?
+              </p>
+
+              <div className="flex flex-col gap-3">
+                <button
+                  onClick={() => router.push("/sign-up")}
+                  className="w-full px-4 py-3 bg-[#0A2E5C] cursor-pointer text-white rounded-lg font-medium hover:bg-[#0d3870] transition-colors"
+                >
+                  Register Now
+                </button>
+
+                <button
+                  onClick={() => {
+                    setShowNoJobsModal(false);
+                    router.push("/permanent");
+                  }}
+                  className="w-full px-4 py-3 border cursor-pointer border-[#0A2E5C] text-[#0A2E5C] rounded-lg font-medium hover:bg-gray-50 transition-colors"
+                >
+                  Browse More Jobs
+                </button>
+
+                <button
+                  onClick={() => setShowNoJobsModal(false)}
+                  className="text-gray-500 text-sm cursor-pointer hover:text-gray-700 mt-2"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   /* ===================== UI ===================== */
+
   return (
     <div>
-      <div className="text-right text-sm text-gray-500 mb-2">{totalJobs} Jobs Available</div>
+      {/* ===================== JOB COUNT ===================== */}
+      <div className="flex justify-end">
+        <span className="text-right text-[#4A5565] text-[14px] mb-2">
+          {totalJobs} Jobs Available
+        </span>
+      </div>
 
-      <div className="space-y-4">
+      {/* ===================== DESKTOP JOB LIST ===================== */}
+      <div className="space-y-4 hidden lg:block">
         {jobs.map((job) => (
-          <JobItem
+          <div
             key={job.job_id}
-            job={job}
-            selected={selectedJobId === String(job.job_id)}
-            onClick={() => router.push(`?jobId=${job.job_id}&page=${currentPage}`)}
-            timeFromNow={timeFromNow}
-          />
+            onClick={() =>
+              router.push(`?jobId=${job.job_id}&page=${currentPage}`)
+            }
+            className={`border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all
+              ${selectedJobId === String(job.job_id) ? "bg-gray-200 text-white shadow-none border-0" : ""}`}
+          >
+            <div className="flex justify-between items-center">
+              <span className="text-xs text-gray-500">
+                {job.job_id}
+              </span>
+
+              <span className="text-xs text-gray-500">
+                {timeFromNow(job.commencement_date)}
+              </span>
+            </div>
+
+            <div className="flex justify-between mb-2">
+              <h3 className="font-semibold text-[#0E2851]">
+                {job.job_title}
+              </h3>
+            </div>
+
+            <div>
+              <h4 className="text-[#4A5565] text-[12px]">
+                {job.state?.name}, {job.country?.name}
+              </h4>
+            </div>
+
+            <div className="grid grid-cols-1 mt-[15px] gap-2 text-sm text-gray-600">
+              <span className="flex items-center gap-2 text-[14px]">
+                <Image src={Pointico} alt="Location Icon" />
+                {job.profession?.name}
+              </span>
+
+              <span className="flex items-center gap-2 text-[14px]">
+                <Image src={Pointico} alt="Location Icon" />
+                {job.engagement_type?.name}
+              </span>
+              <span className="flex items-center gap-2 text-[14px]">
+                <Image src={Pointico} alt="Engagement Icon" />
+                Flixible Session
+              </span>
+            </div>
+          </div>
         ))}
       </div>
 
-      {pages.length > 0 && (
-        <div className="flex justify-center gap-2 mt-8">
-          {pages.map((p, i) =>
-            p === "..." ? (
-              <span key={i}>...</span>
-            ) : (
-              <button
-                key={p}
-                onClick={() => setCurrentPage(p as number)}
-                className={`px-3 py-1 rounded ${currentPage === p ? "bg-blue-900 text-white" : "border"}`}
-              >
-                {p}
-              </button>
-            )
-          )}
+      {/* ===================== MOBILE JOB LIST ===================== */}
+      <div className="space-y-4 block lg:hidden">
+        {jobs.map((job) => (
+          <div
+            key={job.job_id}
+            onClick={() => router.push(`/permanent/job/${job.job_id}`)}
+            className="border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all active:bg-gray-100"
+          >
+            <div className="flex justify-between items-center">
+              <span className="text-xs text-gray-500">
+                {job.job_id}
+              </span>
+
+              <span className="text-xs text-gray-500">
+                {timeFromNow(job.commencement_date)}
+              </span>
+            </div>
+
+            <div className="flex justify-between mb-2 mt-2">
+              <h3 className="font-semibold text-[#0E2851]">
+                {job.job_title}
+              </h3>
+            </div>
+
+            <div>
+              <h4 className="text-[#4A5565] text-[12px]">
+                {job.state?.name}, {job.country?.name}
+              </h4>
+            </div>
+
+            <div className="grid grid-cols-1 mt-[15px] gap-2 text-sm text-gray-600">
+              <span className="flex items-center gap-2 text-[14px]">
+                <Image src={Pointico} alt="Profession Icon" />
+                {job.profession?.name}
+              </span>
+
+              <span className="flex items-center gap-2 text-[14px]">
+                <Image src={Pointico} alt="Engagement Icon" />
+                {job.engagement_type?.name}
+              </span>
+              <span className="flex items-center gap-2 text-[14px]">
+                <Image src={Pointico} alt="Engagement Icon" />
+                Flixible Session
+              </span>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+      {/* ===================== PAGINATION ===================== */}
+      {totalPages > 1 && (
+        <div className="flex flex-wrap justify-center gap-2 mt-8 mb-10">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+            className="px-3 py-1 border border-black cursor-pointer text-black rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Prev
+          </button>
+
+          {(() => {
+            const pages: (number | string)[] = [];
+            const showLeftDots = currentPage > 3;
+            const showRightDots = currentPage < totalPages - 2;
+
+            pages.push(1);
+
+            if (showLeftDots) pages.push("...");
+
+            const start = Math.max(2, currentPage - 1);
+            const end = Math.min(totalPages - 1, currentPage + 1);
+
+            for (let i = start; i <= end; i++) {
+              pages.push(i);
+            }
+
+            if (showRightDots) pages.push("...");
+
+            if (totalPages > 1) pages.push(totalPages);
+
+            return pages.map((page, index) =>
+              page === "..." ? (
+                <span key={`dots-${index}`} className="px-2 text-gray-500">
+                  ...
+                </span>
+              ) : (
+                <button
+                  key={page}
+                  onClick={() => setCurrentPage(page as number)}
+                  className={`px-3 py-1 border-none cursor-pointer rounded ${currentPage === page
+                    ? "bg-blue-900 text-white "
+                    : "border-border-black text-black"
+                    }`}
+                >
+                  {page}
+                </button>
+              )
+            );
+          })()}
+
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+            className="px-3 py-1 border border-black cursor-pointer text-black rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            Next
+          </button>
         </div>
       )}
     </div>
   );
 }
-
-/* ===================== MEMOIZED JOB ITEM ===================== */
-const JobItem = memo(function JobItem({
-  job,
-  selected,
-  onClick,
-  timeFromNow,
-}: {
-  job: Job;
-  selected: boolean;
-  onClick: () => void;
-  timeFromNow: (d: string) => string;
-}) {
-  return (
-    <div onClick={onClick} className={`border rounded-lg p-4 cursor-pointer shadow-md ${selected ? "bg-gray-200" : ""}`}>
-      <div className="flex justify-between text-xs text-gray-500">
-        <span>{job.job_id}</span>
-        <span>{timeFromNow(job.commencement_date)}</span>
-      </div>
-
-      <h3 className="font-semibold text-[#0E2851] mt-2">{job.job_title}</h3>
-
-      <p className="text-xs text-gray-600">
-        {job.state?.name}, {job.country?.name}
-      </p>
-
-      <div className="mt-3 space-y-2 text-sm text-gray-600">
-        <span className="flex gap-2">
-          <Image src={Pointico} alt="" />
-          {job.profession?.name}
-        </span>
-        <span className="flex gap-2">
-          <Image src={Pointico} alt="" />
-          {job.engagement_type?.name}
-        </span>
-      </div>
-    </div>
-  );
-});
