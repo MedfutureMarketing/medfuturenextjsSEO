@@ -1,7 +1,15 @@
+interface EmployerFormData {
+  companyName: string;
+  companyEmail: string;
+  companyPhone: string;
+  officeLocation: string;
+  agreeToTermsEmployer: boolean;
+}
+
 interface Props {
-  formData: any;
-  handleInputChange: (e: any) => void;
-  handleSubmit: (e: any) => void;
+  formData: EmployerFormData;
+  handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export default function EmployerForm({
@@ -9,7 +17,6 @@ export default function EmployerForm({
   handleInputChange,
   handleSubmit,
 }: Props) {
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
