@@ -4,9 +4,6 @@ import Image from "next/image";
 import loctionico from "@/assets/homeico/loctionico.png";
 import { useEffect, useState } from "react";
 import { apiGet } from "@/lib/api";
-import { useMemo } from "react";
-
-
 
 type HomeData = {
   clientCount: number;
@@ -72,10 +69,7 @@ export default function JobsbyProfession() {
   }, []);
 
   // Sort professions by priority, then by whether they have jobs
-  const sortedProfessions = useMemo(() => {
-  if (!homeData?.professions) return [];
-
-  return homeData.professions
+  const sortedProfessions = homeData?.professions
     .map((profession) => ({
       title: profession.name,
       exploreLink: `/permanent/${profession.name.toLowerCase().replace(/\s+/g, "-")}-jobs/in-australia`,
@@ -87,16 +81,18 @@ export default function JobsbyProfession() {
       viewAllText: `View All ${profession.name} Jobs`,
       viewAllLink: `/permanent/${profession.name.toLowerCase().replace(/\s+/g, "-")}-jobs/in-australia`,
       hasJobs: profession.jobDetails.length > 0,
-      priority: professionPriorities[profession.name] || 999,
+      priority: professionPriorities[profession.name] || 999, // Default to low priority if not in list
     }))
     .sort((a, b) => {
-      if (a.priority !== b.priority) return a.priority - b.priority;
+      // First sort by priority (1-6 come first)
+      if (a.priority !== b.priority) {
+        return a.priority - b.priority;
+      }
+      // Within same priority, sort by hasJobs: true comes before false
       if (a.hasJobs && !b.hasJobs) return -1;
       if (!a.hasJobs && b.hasJobs) return 1;
       return 0;
-    });
-}, [homeData]);
-
+    }) || [];
 
   // Get only first 6 cards for initial display
   const visibleProfessions = showAll ? sortedProfessions : sortedProfessions.slice(0, 6);
@@ -167,7 +163,7 @@ export default function JobsbyProfession() {
             {/* Mobile Horizontal Scroll */}
             <div className="flex md:hidden overflow-x-auto gap-4 snap-x snap-mandatory -mx-4 px-4">
               {sortedProfessions.map((prof, idx) => (
-                <div key={idx} className="snap-start min-w-[260px] flex-shrink-0">
+                <div key={idx} className="snap-start min-w-[200px] flex-shrink-0">
                   <ProfessionCard prof={prof} />
                 </div>
               ))}
@@ -195,7 +191,7 @@ function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
       <p className="text-gray-600 mt-2 lg:text-[14px] text-xs">Latest Jobs</p>
 
       <div className="flex flex-col flex-grow">
-        <div className="grid grid-cols-1 gap-3 mt-4">
+        <div className="grid grid-cols-1 lg:w-full w-[320px] gap-3 mt-4">
           {prof.jobs.length > 0 ? (
             <>
               {prof.jobs.map((job, jidx) => (
@@ -221,7 +217,7 @@ function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
                 No jobs available at the moment
               </p>
               <p className="text-gray-400 lg:text-[12px] text-xs mt-2">
-               Please Come back later for new opportunities
+                Please Come back later for new opportunities
               </p>
             </div>
           )}

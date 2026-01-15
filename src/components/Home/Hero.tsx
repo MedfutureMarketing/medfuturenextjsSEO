@@ -65,7 +65,7 @@ export default function Hero() {
     // Animated counters
     const animatedClientCount = useCounterAnimation(
         homeData ? homeData.clientCount : demoClientCount,
-        10000
+        2000
     );
     const animatedCandidateCount = useCounterAnimation(
         homeData ? homeData.candidateCount : demoCandidateCount,
@@ -134,16 +134,26 @@ export default function Hero() {
                         <div className="flex items-center justify-center">
                             <Image
                                 src={icon1}
-                                alt="Partner Logo 1"
-                                className="lg:h-[174px] h-36 object-contain"
+                                alt="2024 Australia Achiever Award"
+                                // Solution 1: Let image display at natural size
+                                className="h-auto w-auto max-w-[174px]"
+                                // Or Solution 2: Use explicit dimensions
+                                // width={174}
+                                // height={174}
+                                priority
                             />
                         </div>
 
                         <div className="flex items-center justify-center">
                             <Image
                                 src={apackinsider}
-                                alt="Partner Logo 2"
-                                className="lg:h-[174px] h-36 object-contain"
+                                alt="Apack Insider Recognition"
+                                // Solution 1: Let image display at natural size
+                                className="h-auto w-auto max-w-[174px]"
+                                // Or Solution 2: Use explicit dimensions
+                                // width={174}
+                                // height={174}
+                                priority
                             />
                         </div>
                     </div>
@@ -151,7 +161,7 @@ export default function Hero() {
             </div>
 
             <div className="w-full border-gray-200 inner-width-section">
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-[17px] px-4 py-4 lg:px-0 lg:mt-[40px] pb-[80px]">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-[17px] px-4 py-4 lg:px-0 lg:mt-[21px] pb-[80px]">
                     {stats.map((stat, index) => (
                         <div 
                             key={index} 

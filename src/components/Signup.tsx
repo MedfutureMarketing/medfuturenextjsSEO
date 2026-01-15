@@ -51,22 +51,23 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="min-h-screen  py-12 px-4">
+      <h1 className="text-center text-[#0F172A] lg:text-[48px] mb-[69px]">Registration</h1>
+      <div className="lg:w-[930px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
 
         {/* Tabs */}
-        <div className="flex">
+        <div className="flex" >
           <button
             onClick={() => { setActiveTab("candidate"); setShowEmailForm(false); }}
-            className={`flex-1 py-4 ${activeTab === "candidate" ? "bg-[#575D84] text-white" : "bg-gray-100"}`}
+            className={`flex-1 py-4 ${activeTab === "candidate" ? "bg-[#575D84] text-white text-[18px]" : "bg-gray-100"}`}
           >
             Candidate
           </button>
 
-          <button   disabled
-
+          <button   
+disabled
             onClick={() => { setActiveTab("employer"); setShowEmailForm(true); }}
-            className={`flex-1 py-4 ${activeTab === "employer" ? "bg-[#0A2E5C] text-white" : "bg-gray-100"}`}
+            className={`flex-1 py-4 ${activeTab === "employer" ? "bg-[#0A2E5C]    text-white" : "bg-gray-100 text-black font-[500] text-[18px] cursor-not-allowed"}`}
           >
             Employer
           </button>
