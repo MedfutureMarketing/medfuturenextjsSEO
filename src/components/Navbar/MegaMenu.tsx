@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-type MenuKey = "permanent" | "candidates" | "locum" ;
+type MenuKey = "permanent" | "candidates" | "locum" | "medical" | "allied" | "mental" | "oral";
 
 interface MenuLink {
   label: string;
@@ -194,57 +194,235 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     },
   },
 
-  // international: {
-  //   title: "international Candidates",
-  //   titleHref: "/international",
-  //   columns: [
-  //     {
-  //       heading: "",
-  //       links: [
-  //         {
-  //           label: "Specialist General Practitioner (FRACGP & FRCRRM)",
-  //           href: "/permanent",
-  //           icon: "",
-  //           description: "Chart your course to success in the Australian healthcare",
-  //         },
-  //         {
-  //           label: "International Family Medicine (Specialised Pathway Recruitment)",
-  //           href: "/international",
-  //           icon: "",
-  //           description: "Chart your course to success in the Australian healthcare",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       heading: "",
-  //       links: [
-  //         {
-  //           label: "General Practitioner (Registrars)",
-  //           href: "/permanent",
-  //           icon: "⚕️",
-  //           description: "Chart your course to success in the Australian healthcare",
-  //         },
-  //         {
-  //           label: "Locum GP (Short Term or Ongoing Cover)",
-  //           href: "/locum",
-  //           icon: "",
-  //           description: "Chart your course to success in the Australian healthcare",
-  //         },
-  //       ],
-  //     },
-  //   ],
-  //   explore: {
-  //     heading: "Explore More",
-  //     links: [
-  //       { label: "GP Jobs in Victoria", href: "/" },
-  //       { label: "Permanent Roles in Perth", href: "/" },
-  //       { label: "Locum Jobs in NSW", href: "/" },
-  //       { label: "Psychology Jobs in Tasmania", href: "/" },
-  //       { label: "Locum Physiotherapy Jobs", href: "/" },
-  //       { label: "International OT Jobs", href: "/" },
-  //     ],
-  //   },
-  // },
+  medical: {
+    title: "Medical",
+    titleHref: "/",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+            href: "/permanent",
+            icon: "",
+            description: "Explore exciting opportunities for Specialist General Practitioners (FRACGP & FACRRM).",
+          },
+          {
+            label: "General Practitioner (Registrars)",
+            href: "/international",
+            icon: "",
+            description: "Explore GP Registrar positions today.",
+          },
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          {
+            label: "International Family Medicine (Specialist Pathway Recruitment)",
+            href: "/permanent",
+            icon: "",
+            description: "Explore International Family Medicine specialist pathway opportunities.",
+          },
+          {
+            label: "Locum GP (Short Term or Ongoing Cover)",
+            href: "/locum",
+            icon: "",
+            description: "Locum GPs wanted for short-term and ongoing cover.",
+          },
+        ],
+      },
+    ],
+    explore: {
+      heading: "Explore More",
+      links: [
+       { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
+      ],
+    },
+  },
+  allied: {
+    title: "Allied Health",
+    titleHref: "/",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "Speech Pathologist",
+            href: "/permanent",
+            icon: "",
+            description: "Explore rewarding Speech Pathologist opportunities, providing care across paediatrics, adults, and clinical settings while advancing your career."
+          },
+          {
+            label: "Physiotherapy",
+            href: "/international",
+            icon: "",
+            description: "Looking for a Physiotherapy role? Discover opportunities to deliver patient-centred care in hospitals, clinics, or community settings."
+          },
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          {
+            label: "Occupational Therapist",
+            href: "/permanent",
+            icon: "",
+            description: "Explore Occupational Therapist roles offering diverse experiences across health, NDIS, and rehabilitation services, supporting meaningful patient outcomes."
+          },
+          {
+            label: "Podiatrist",
+            href: "/locum",
+            icon: "",
+            description: "Discover Podiatrist opportunities to work in clinical or community settings, helping patients with foot health, mobility, and long-term care."
+          },
+        ],
+      },
+
+    ],
+    explore: {
+      heading: "Explore More",
+      links: [
+      { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
+      ],
+    },
+  },
+  mental: {
+    title: "Mental Health",
+    titleHref: "/",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "Psychology",
+            href: "/permanent",
+            icon: "",
+            description: "Explore Psychology opportunities to provide mental health support, counselling, and evidence-based care across clinical, community, and organisational settings.",
+          },
+          // {
+          //   label: "International Family Medicine (Specialised Pathway Recruitment)",
+          //   href: "/international",
+          //   icon: "",
+          //   description: "Chart your course to success in the Australian healthcare",
+          // },
+        ],
+      },
+      // {
+      //   heading: "",
+      //   links: [
+      //     {
+      //       label: "General Practitioner (Registrars)",
+      //       href: "/permanent",
+      //       icon: "⚕️",
+      //       description: "Chart your course to success in the Australian healthcare",
+      //     },
+      //     {
+      //       label: "Locum GP (Short Term or Ongoing Cover)",
+      //       href: "/locum",
+      //       icon: "",
+      //       description: "Chart your course to success in the Australian healthcare",
+      //     },
+      //   ],
+      // },
+    ],
+    explore: {
+      heading: "Explore More",
+      links: [
+       { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
+      ],
+    },
+  },
+  oral: {
+    title: "Oral Health",
+    titleHref: "/",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "Dentist",
+            href: "/permanent",
+            icon: "",
+            description: "Explore Dentist opportunities to provide high-quality oral healthcare, preventive treatments, and patient-focused care in clinical and community settings.",
+          },
+          {
+            label: "Dental Specialist",
+            href: "/international",
+            icon: "",
+            description: "Explore Dental Specialist opportunities to provide expert care in areas such as orthodontics, endodontics, periodontics, and oral surgery, delivering advanced, patient-focused treatments.",
+          },
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          {
+            label: "General Dentist",
+            href: "/permanent",
+            icon: "",
+            description: "Explore General Dentist opportunities to provide comprehensive dental care, including preventive, restorative, and patient-focused treatments in clinical settings.",
+          },
+          {
+            label: "Oral Hygienist",
+            href: "/locum",
+            icon: "",
+            description: "Explore Oral Hygienist opportunities to provide preventive dental care and promote oral health in clinical settings.",
+          },
+        ],
+      },
+    ],
+    explore: {
+      heading: "Explore More",
+      links: [
+      { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
+      ],
+    },
+  },
   candidates: {
     title: "Candidates",
     titleHref: "/",
@@ -254,7 +432,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         links: [
           {
             label: "Medical Professionals",
-            href: "/permanent",
+            href: "/",
             icon: "",
             description: "Chart your course to success in the Australian healthcare",
           },
@@ -265,7 +443,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             description: "Chart your course to success in the Australian healthcare",
           },
           {
-            label: "Allied Health Professionals",
+            label: "Mental health Professionals",
             href: "/international",
             icon: "",
             description: "Chart your course to success in the Australian healthcare",
@@ -277,19 +455,25 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         heading: "",
         links: [
           {
-            label: "General Practitioner (Registrars)",
+            label: "Dentistry & Oral Health Professionals",
             href: "/permanent",
-            icon: "⚕️",
+            icon: "",
             description: "Chart your course to success in the Australian healthcare",
           },
           {
-            label: "Locum GP (Short Term or Ongoing Cover)",
+            label: "Refer and Earn",
             href: "/locum",
             icon: "",
             description: "Chart your course to success in the Australian healthcare",
           },
           {
-            label: "Allied Health Professionals",
+            label: "Locum Shift Calendar",
+            href: "/international",
+            icon: "",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+          {
+            label: "Candidate Resources",
             href: "/international",
             icon: "",
             description: "Chart your course to success in the Australian healthcare",
@@ -301,12 +485,18 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     explore: {
       heading: "Explore More",
       links: [
-        { label: "GP Jobs in Victoria", href: "/" },
-        { label: "Permanent Roles in Perth", href: "/" },
-        { label: "Locum Jobs in NSW", href: "/" },
-        { label: "Psychology Jobs in Tasmania", href: "/" },
-        { label: "Locum Physiotherapy Jobs", href: "/" },
-        { label: "International OT Jobs", href: "/" },
+       { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
       ],
     },
   },

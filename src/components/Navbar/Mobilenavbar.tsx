@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
-type MenuKey = "permanent" | "locum" | "international" | "candidates";
+type MenuKey = "permanent" | "locum" | "international" | "candidates" |"medical" |"allied"|"mental" |"oral";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -15,7 +15,13 @@ const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey }[] = [
   { label: "Locum Jobs", href: "/locum", submenu: "locum" },
   { label: "International Candidates", href: "/international", submenu: "international" },
   { label: "For Candidates", href: "#", submenu: "candidates" },
-  { label: "Employers", href: "/employer-hub" },
+    { label: "Medical Division", href: "#", submenu: "medical" },
+      { label: "Allied Health Division", href: "#", submenu: "allied" },
+           { label: "Mental Health Division", href: "#", submenu: "mental" },
+                      { label: "Oral Health Division", href: "#", submenu: "oral" },
+
+      
+//   { label: "Employers", href: "/employer-hub" },
 ];
 
 const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
@@ -53,14 +59,40 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Resume Tips", href: "/resources/resume" },
     { label: "Interview Prep", href: "/resources/interview" },
   ],
+   medical: [
+    { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/permanent" },
+    { label: "General Practitioner (Registrars)", href: "/locum" },
+    { label: "International Family Medicine (Specialist Pathway Recruitment)", href: "/international" },
+    { label: "Locum GP (Short Term or Ongoing Cover)", href: "/resources/resume" },
+  
+  ],
+   allied: [
+    { label: "Speech Pathologist ", href: "/permanent" },
+    { label: "Physiotherapy", href: "/locum" },
+    { label: "International Jobs", href: "/international" },
+    { label: "Occupational Therapist ", href: "/resources/resume" },
+    { label: "Podiatrist", href: "/resources/interview" },
+  ],
+   mental: [
+    { label: "Psychology", href: "/permanent" },
+  
+  ],
+   oral: [
+    { label: "Dentist", href: "/permanent" },
+    { label: "General Dentist", href: "/locum" },
+    { label: "Dental Specialist", href: "/international" },
+    { label: "Oral Hygienist", href: "/resources/resume" },
+
+  ],
+  
 };
 
-const DIVISIONS = [
-  { label: "Medical", href: "/job-seeker-hub/medical-division" },
-  { label: "Allied Health", href: "/job-seeker-hub/allied-health-division" },
-  { label: "Mental Health", href: "/job-seeker-hub/mental-health-division" },
-  { label: "Oral Health", href: "/job-seeker-hub/oral-health-division" },
-];
+// const DIVISIONS = [
+//   { label: "Medical Division", href: "/job-seeker-hub/medical-division" },
+//   { label: "Allied Health Division", href: "/job-seeker-hub/allied-health-division" },
+//   { label: "Mental Health Division", href: "/job-seeker-hub/mental-health-division" },
+//   { label: "Oral Health Division", href: "/job-seeker-hub/oral-health-division" },
+// ];
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const [expandedMenu, setExpandedMenu] = useState<MenuKey | null>(null);
@@ -100,13 +132,13 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed top-0 left-0 h-screen w-80 bg-white shadow-2xl z-50 transition-transform duration-300 overflow-y-auto lg:hidden ${
+        className={`fixed top-0 left-0 h-screen w-80 bg-white shadow-2xl z-101 transition-transform duration-300 overflow-y-auto lg:hidden ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Header with Close Button */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white">
-          <h3 className="font-bold text-lg text-gray-900">Menu</h3>
+          <h3 className="font-bold text-lg text-gray-900">Medfuture </h3>
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600"
@@ -166,13 +198,13 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         </nav>
 
         {/* Divider */}
-        <div className="border-t border-gray-200" />
+        <div className="" />
 
         {/* Browse Divisions Section */}
         <div className="p-4">
-          <h4 className="font-semibold text-sm text-gray-900 mb-3">Browse Divisions</h4>
+          {/* <h4 className="font-semibold text-sm text-gray-900 mb-3">Browse Divisions</h4> */}
           <div className="space-y-2">
-            {DIVISIONS.map((div) => (
+            {/* {DIVISIONS.map((div) => (
               <Link
                 key={div.label}
                 href={div.href}
@@ -181,12 +213,12 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
               >
                 {div.label}
               </Link>
-            ))}
+            ))} */}
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-gray-200" />
+        <div className="" />
 
         {/* Sign Up Button */}
         <div className="p-4">

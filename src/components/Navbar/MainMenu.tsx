@@ -100,7 +100,7 @@ export default function Menu() {
 
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
                 <Link   href="/employer-hub"
-                  className="text-[16px] font-[700] hover:text-blue-600"
+                  className="text-[16px] font-[500] hover:text-blue-600"
                 > International Candidates</Link>
                 </li>
               </ul>
@@ -108,13 +108,19 @@ export default function Menu() {
 
             {/* RIGHT SECTION: EMPLOYERS + SIGN UP */}
             <div className="hidden lg:flex items-center space-x-6">
-              <li className="list-none relative font-medium hover:text-blue-600">
+              {/* <li className="list-none relative font-medium hover:text-blue-600">
                 <MegaMenu menuKey="candidates" />
-              </li>
+              </li> */}
+               <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                <Link   href="/employer-hub"
+                  className="text-[16px] font-[500] hover:text-blue-600"
+                >  Candidates</Link>
+                </li>
+              
               <li className="list-none">
                 <Link
                   href="/employer-hub"
-                  className="text-[16px] font-[700] hover:text-blue-600"
+                  className="text-[16px] font-[500] hover:text-blue-600"
                 >
                   Employers
                 </Link>
@@ -156,19 +162,19 @@ export default function Menu() {
               : {}
           }
         >
-          <div className="inner-width-section flex space-x-4 py-2 divide-x">
-            <Link href="/job-seeker-hub/medical-division" className="pr-4">
-              Medical
-            </Link>
-            <Link href="/job-seeker-hub/allied-health-division" className="px-4">
-              Allied Health
-            </Link>
-            <Link href="/job-seeker-hub/mental-health-division" className="px-4">
-              Mental Health
-            </Link>
-            <Link href="/job-seeker-hub/oral-health-division" className="px-4">
-              Oral Health
-            </Link>
+          <div className="inner-width-section flex space-x-4 py-2 gap-10 ">
+             <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                  <MegaMenu menuKey="medical" />
+                </li>
+             <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                  <MegaMenu menuKey="allied" />
+                </li>
+              <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                  <MegaMenu menuKey="mental" />
+                </li>
+             <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                  <MegaMenu menuKey="oral" />
+                </li>
           </div>
         </div>
       </div>
