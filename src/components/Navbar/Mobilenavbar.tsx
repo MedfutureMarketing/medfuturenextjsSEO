@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
 type MenuKey = "permanent" | "locum" | "international" | "candidates";
@@ -13,29 +13,38 @@ interface MobileNavProps {
 const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey }[] = [
   { label: "Permanent Jobs", href: "/permanent", submenu: "permanent" },
   { label: "Locum Jobs", href: "/locum", submenu: "locum" },
-  { label: "International Jobs", href: "/international", submenu: "international" },
+  { label: "International Candidates", href: "/international", submenu: "international" },
   { label: "For Candidates", href: "#", submenu: "candidates" },
   { label: "Employers", href: "/employer-hub" },
 ];
 
 const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
   permanent: [
-    { label: "Specialist GP (FRACGP & FRCRRM)", href: "/permanent" },
-    { label: "International Family Medicine", href: "/international" },
-    { label: "GP Registrars", href: "/permanent" },
-    { label: "Locum GP", href: "/locum" },
+    { label: "Jobs in New South Wales (NSW)", href: "/permanent" },
+    { label: "Jobs in Australian Capital Territory (ACT)", href: "/international" },
+    { label: "Jobs in South Australia (SA) ", href: "/permanent" },
+    { label: "Jobs in Northern Territory (NT)", href: "/locum" },
+     { label: "Jobs in Queensland (QLD)", href: "/international" },
+    { label: "Jobs in Western Australia (WA)", href: "/permanent" },
+    { label: "Jobs in Victoria (VIC)", href: "/locum" },
+     { label: "Jobs in Tasmania (TAS)", href: "/international" },
+ 
   ],
   locum: [
-    { label: "Specialist GP (FRACGP & FRCRRM)", href: "/permanent" },
-    { label: "International Family Medicine", href: "/international" },
-    { label: "GP Registrars", href: "/permanent" },
-    { label: "Locum GP", href: "/locum" },
+    { label: "Jobs in New South Wales (NSW)", href: "/permanent" },
+    { label: "Jobs in Australian Capital Territory (ACT)", href: "/international" },
+    { label: "Jobs in South Australia (SA) ", href: "/permanent" },
+    { label: "Jobs in Northern Territory (NT)", href: "/locum" },
+     { label: "Jobs in Queensland (QLD)", href: "/international" },
+    { label: "Jobs in Western Australia (WA)", href: "/permanent" },
+    { label: "Jobs in Victoria (VIC)", href: "/locum" },
+     { label: "Jobs in Tasmania (TAS)", href: "/international" },
+ 
   ],
   international: [
-    { label: "Specialist GP (FRACGP & FRCRRM)", href: "/permanent" },
-    { label: "International Family Medicine", href: "/international" },
-    { label: "GP Registrars", href: "/permanent" },
-    { label: "Locum GP", href: "/locum" },
+    
+    { label: "Jobs for international Candidates", href: "/international" },
+   
   ],
   candidates: [
     { label: "Permanent Jobs", href: "/permanent" },
@@ -56,12 +65,25 @@ const DIVISIONS = [
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const [expandedMenu, setExpandedMenu] = useState<MenuKey | null>(null);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   const toggleSubmenu = (menuKey: MenuKey) => {
     setExpandedMenu(expandedMenu === menuKey ? null : menuKey);
   };
 
   const handleLinkClick = () => {
     setExpandedMenu(null);
+    document.body.style.overflow = "";
     onClose();
   };
 
@@ -102,7 +124,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 <>
                   <button
                     onClick={() => toggleSubmenu(item.submenu as MenuKey)}
-                    className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition font-medium text-gray-900"
+                    className="w-full text-sm flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition font-medium text-gray-900"
                   >
                     {item.label}
                     <span
@@ -122,7 +144,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                           key={subitem.label}
                           href={subitem.href}
                           onClick={handleLinkClick}
-                          className="block p-2 text-sm text-gray-700 hover:text-blue-600 hover:bg-white rounded transition"
+                          className="block p-2 text-xs text-gray-700 hover:text-blue-600 hover:bg-white rounded transition"
                         >
                           {subitem.label}
                         </Link>

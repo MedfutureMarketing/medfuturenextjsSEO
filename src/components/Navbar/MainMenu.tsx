@@ -99,7 +99,9 @@ export default function Menu() {
                 </li>
 
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
-                  <MegaMenu menuKey="international" />
+                <Link   href="/employer-hub"
+                  className="text-[16px] font-[700] hover:text-blue-600"
+                > International Candidates</Link>
                 </li>
               </ul>
             </div>

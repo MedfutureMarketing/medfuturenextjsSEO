@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-type MenuKey = "permanent" | "candidates" |"locum" | "international";
+type MenuKey = "permanent" | "candidates" | "locum" ;
 
 interface MenuLink {
   label: string;
@@ -35,16 +35,28 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         heading: "",
         links: [
           {
-            label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+            label: "New South Wales (NSW)",
             href: "/permanent",
-            icon: "👨‍⚕️",
-            description: "Chart your course to success in the Australian healthcare",
+            icon: "",
+            description: "Explore Permanent Job Openings in New South Wales (NSW)",
           },
           {
-            label: "International Family Medicine (Specialised Pathway Recruitment)",
+            label: "Australian Capital Territory (ACT)",
             href: "/international",
-            icon: "🌍",
-            description: "Chart your course to success in the Australian healthcare",
+            icon: "",
+            description: "Explore Permanent Job Openings in Australian Capital Territory (ACT)",
+          },
+          {
+            label: "South Australia (SA)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in South Australia (SA)",
+          },
+          {
+            label: "Northern Territory (NT)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Northern Territory (NT)",
           },
         ],
       },
@@ -52,29 +64,49 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         heading: "",
         links: [
           {
-            label: "General Practitioner (Registrars)",
-            href: "/permanent",
-            icon: "⚕️",
-            description: "Chart your course to success in the Australian healthcare",
+            label: "Queensland (QLD)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Queensland (QLD)",
           },
           {
-            label: "Locum GP (Short Term or Ongoing Cover)",
-            href: "/locum",
-            icon: "📅",
-            description: "Chart your course to success in the Australian healthcare",
+            label: "Western Australia (WA)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Western Australia (WA)",
+          },
+          {
+            label: "Victoria (VIC)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Victoria (VIC)",
+          },
+          {
+            label: "Tasmania (TAS)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Tasmania (TAS)",
           },
         ],
       },
     ],
     explore: {
-      heading: "Explore More",
+      heading: "Browse Jobs by Key Cities",
       links: [
-        { label: "GP Jobs in Victoria", href: "/" },
-        { label: "Permanent Roles in Perth", href: "/" },
-        { label: "Locum Jobs in NSW", href: "/" },
-        { label: "Psychology Jobs in Tasmania", href: "/" },
-        { label: "Locum Physiotherapy Jobs", href: "/" },
-        { label: "International OT Jobs", href: "/" },
+        { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
+
+
       ],
     },
   },
@@ -86,16 +118,28 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         heading: "",
         links: [
           {
-            label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+            label: "New South Wales (NSW)",
             href: "/permanent",
-            icon: "👨‍⚕️",
-            description: "Chart your course to success in the Australian healthcare",
+            icon: "",
+            description: "Explore Permanent Job Openings in New South Wales (NSW)",
           },
           {
-            label: "International Family Medicine (Specialised Pathway Recruitment)",
+            label: "Australian Capital Territory (ACT)",
             href: "/international",
-            icon: "🌍",
-            description: "Chart your course to success in the Australian healthcare",
+            icon: "",
+            description: "Explore Permanent Job Openings in Australian Capital Territory (ACT)",
+          },
+          {
+            label: "South Australia (SA)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in South Australia (SA)",
+          },
+          {
+            label: "Northern Territory (NT)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Northern Territory (NT)",
           },
         ],
       },
@@ -103,52 +147,130 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         heading: "",
         links: [
           {
-            label: "General Practitioner (Registrars)",
-            href: "/permanent",
-            icon: "⚕️",
-            description: "Chart your course to success in the Australian healthcare",
+            label: "Queensland (QLD)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Queensland (QLD)",
           },
           {
-            label: "Locum GP (Short Term or Ongoing Cover)",
-            href: "/locum",
-            icon: "📅",
-            description: "Chart your course to success in the Australian healthcare",
+            label: "Western Australia (WA)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Western Australia (WA)",
+          },
+          {
+            label: "Victoria (VIC)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Victoria (VIC)",
+          },
+          {
+            label: "Tasmania (TAS)",
+            href: "/international",
+            icon: "",
+            description: "Explore Permanent Job Openings in Tasmania (TAS)",
           },
         ],
       },
     ],
     explore: {
-      heading: "Explore More",
+      heading: "Browse Jobs by Key Cities",
       links: [
-        { label: "GP Jobs in Victoria", href: "/" },
-        { label: "Permanent Roles in Perth", href: "/" },
-        { label: "Locum Jobs in NSW", href: "/" },
-        { label: "Psychology Jobs in Tasmania", href: "/" },
-        { label: "Locum Physiotherapy Jobs", href: "/" },
-        { label: "International OT Jobs", href: "/" },
+        { label: "Sydney, New South Wales", href: "/" },
+        { label: "Melbourne, Victoria", href: "/" },
+        { label: "Brisbane, Queensland", href: "/" },
+        { label: "Perth, Western Australia", href: "/" },
+        { label: "Adelaide, South Australia", href: "/" },
+        { label: "Gold Coast, Queensland", href: "/" },
+        { label: "Canberra, Australian Capital Territory", href: "/" },
+        { label: "Hobart, Tasmania", href: "/" },
+
+        { label: "Wollongong, New South Wales", href: "/" },
+
+        { label: "Geelong, Victoria", href: "/" },
+
+
       ],
     },
   },
 
-  international: {
-    title: "international Jobs",
-    titleHref: "/international",
+  // international: {
+  //   title: "international Candidates",
+  //   titleHref: "/international",
+  //   columns: [
+  //     {
+  //       heading: "",
+  //       links: [
+  //         {
+  //           label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+  //           href: "/permanent",
+  //           icon: "",
+  //           description: "Chart your course to success in the Australian healthcare",
+  //         },
+  //         {
+  //           label: "International Family Medicine (Specialised Pathway Recruitment)",
+  //           href: "/international",
+  //           icon: "",
+  //           description: "Chart your course to success in the Australian healthcare",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       heading: "",
+  //       links: [
+  //         {
+  //           label: "General Practitioner (Registrars)",
+  //           href: "/permanent",
+  //           icon: "⚕️",
+  //           description: "Chart your course to success in the Australian healthcare",
+  //         },
+  //         {
+  //           label: "Locum GP (Short Term or Ongoing Cover)",
+  //           href: "/locum",
+  //           icon: "",
+  //           description: "Chart your course to success in the Australian healthcare",
+  //         },
+  //       ],
+  //     },
+  //   ],
+  //   explore: {
+  //     heading: "Explore More",
+  //     links: [
+  //       { label: "GP Jobs in Victoria", href: "/" },
+  //       { label: "Permanent Roles in Perth", href: "/" },
+  //       { label: "Locum Jobs in NSW", href: "/" },
+  //       { label: "Psychology Jobs in Tasmania", href: "/" },
+  //       { label: "Locum Physiotherapy Jobs", href: "/" },
+  //       { label: "International OT Jobs", href: "/" },
+  //     ],
+  //   },
+  // },
+  candidates: {
+    title: "Candidates",
+    titleHref: "/",
     columns: [
       {
         heading: "",
         links: [
           {
-            label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+            label: "Medical Professionals",
             href: "/permanent",
-            icon: "👨‍⚕️",
+            icon: "",
             description: "Chart your course to success in the Australian healthcare",
           },
           {
-            label: "International Family Medicine (Specialised Pathway Recruitment)",
+            label: "Allied Health Professionals",
             href: "/international",
-            icon: "🌍",
+            icon: "",
             description: "Chart your course to success in the Australian healthcare",
           },
+          {
+            label: "Allied Health Professionals",
+            href: "/international",
+            icon: "",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+
         ],
       },
       {
@@ -163,49 +285,16 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
           {
             label: "Locum GP (Short Term or Ongoing Cover)",
             href: "/locum",
-            icon: "📅",
+            icon: "",
             description: "Chart your course to success in the Australian healthcare",
           },
-        ],
-      },
-    ],
-    explore: {
-      heading: "Explore More",
-      links: [
-        { label: "GP Jobs in Victoria", href: "/" },
-        { label: "Permanent Roles in Perth", href: "/" },
-        { label: "Locum Jobs in NSW", href: "/" },
-        { label: "Psychology Jobs in Tasmania", href: "/" },
-        { label: "Locum Physiotherapy Jobs", href: "/" },
-        { label: "International OT Jobs", href: "/" },
-      ],
-    },
-  },
-  candidates: {
-    title: "For Candidates",
-    titleHref: "/candidates",
-    columns: [
-      {
-        heading: "Job Search",
-        links: [
-          { label: "Permanent Jobs", href: "/permanent" },
-          { label: "Locum Jobs", href: "/locum" },
-          { label: "International Jobs", href: "/international" },
-        ],
-      },
-      {
-        heading: "Resources",
-        links: [
-          { label: "Resume Tips", href: "/resources/resume" },
-          { label: "Interview Preparation", href: "/resources/interview" },
-          { label: "Salary Guide", href: "/resources/salary-guide" },
-        ],
-      },
-      {
-        heading: "Support",
-        links: [
-          { label: "FAQ", href: "/faq" },
-          { label: "Candidate Support", href: "/support/candidates" },
+          {
+            label: "Allied Health Professionals",
+            href: "/international",
+            icon: "",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+
         ],
       },
     ],
@@ -258,9 +347,8 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
           <div
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
-            className={`fixed z-100 transition-all duration-150 w-full left-0 ${
-              open ? "opacity-100 visible" : "opacity-0 invisible"
-            }`}
+            className={`fixed z-100 transition-all duration-150 w-full left-0 ${open ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
             style={{ top }}
           >
             <div className="inner-width-section bg-white shadow-lg border-t-4 border-[#074CA4] p-8">
@@ -284,11 +372,11 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                               )}
                               {/* Title & Description */}
                               <div className="flex-1">
-                                <h5 className="font-semibold cursor-pointer text-gray-800 group-hover:text-blue-600 transition mb-1">
+                                <h5 className="text-[14px] cursor-pointer font-[600] text-[#040D48] group-hover:text-blue-600 transition mb-1">
                                   {link.label}
                                 </h5>
                                 {link.description && (
-                                  <p className="text-sm text-gray-600">
+                                  <p className="text-[11px] text-[#0F172A]">
                                     {link.description}
                                   </p>
                                 )}
@@ -306,12 +394,12 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                         <h4 className="font-bold text-gray-900 mb-4">
                           {menu.explore.heading}
                         </h4>
-                        <ul className="grid grid-cols-1 gap-3">
+                        <ul className="grid grid-cols-1 gap-1">
                           {menu.explore.links.map((link, i) => (
                             <li key={i}>
                               <Link
                                 href={link.href}
-                                className="text-blue-600 hover:text-blue-700 text-sm font-medium hover:underline"
+                                className="text-[#074CA4] hover:text-blue-700 text-[14px] font-semi-bold hover:underline"
                               >
                                 {link.label}
                               </Link>
