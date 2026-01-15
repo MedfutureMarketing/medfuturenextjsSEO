@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-type MenuKey = "permanent" | "candidates";
+type MenuKey = "permanent" | "candidates" |"locum" | "international";
 
 interface MenuLink {
   label: string;
@@ -15,6 +15,7 @@ interface MenuLink {
 
 interface MenuConfig {
   title: string;
+  titleHref?: string;
   columns: {
     heading: string;
     links: MenuLink[];
@@ -28,6 +29,58 @@ interface MenuConfig {
 const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
   permanent: {
     title: "Permanent Jobs",
+    titleHref: "/permanent",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+            href: "/permanent",
+            icon: "👨‍⚕️",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+          {
+            label: "International Family Medicine (Specialised Pathway Recruitment)",
+            href: "/international",
+            icon: "🌍",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          {
+            label: "General Practitioner (Registrars)",
+            href: "/permanent",
+            icon: "⚕️",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+          {
+            label: "Locum GP (Short Term or Ongoing Cover)",
+            href: "/locum",
+            icon: "📅",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+        ],
+      },
+    ],
+    explore: {
+      heading: "Explore More",
+      links: [
+        { label: "GP Jobs in Victoria", href: "/" },
+        { label: "Permanent Roles in Perth", href: "/" },
+        { label: "Locum Jobs in NSW", href: "/" },
+        { label: "Psychology Jobs in Tasmania", href: "/" },
+        { label: "Locum Physiotherapy Jobs", href: "/" },
+        { label: "International OT Jobs", href: "/" },
+      ],
+    },
+  },
+  locum: {
+    title: "Locum Jobs",
+    titleHref: "/locum",
     columns: [
       {
         heading: "",
@@ -77,8 +130,60 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     },
   },
 
+  international: {
+    title: "international Jobs",
+    titleHref: "/international",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "Specialist General Practitioner (FRACGP & FRCRRM)",
+            href: "/permanent",
+            icon: "👨‍⚕️",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+          {
+            label: "International Family Medicine (Specialised Pathway Recruitment)",
+            href: "/international",
+            icon: "🌍",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          {
+            label: "General Practitioner (Registrars)",
+            href: "/permanent",
+            icon: "⚕️",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+          {
+            label: "Locum GP (Short Term or Ongoing Cover)",
+            href: "/locum",
+            icon: "📅",
+            description: "Chart your course to success in the Australian healthcare",
+          },
+        ],
+      },
+    ],
+    explore: {
+      heading: "Explore More",
+      links: [
+        { label: "GP Jobs in Victoria", href: "/" },
+        { label: "Permanent Roles in Perth", href: "/" },
+        { label: "Locum Jobs in NSW", href: "/" },
+        { label: "Psychology Jobs in Tasmania", href: "/" },
+        { label: "Locum Physiotherapy Jobs", href: "/" },
+        { label: "International OT Jobs", href: "/" },
+      ],
+    },
+  },
   candidates: {
     title: "For Candidates",
+    titleHref: "/candidates",
     columns: [
       {
         heading: "Job Search",
@@ -138,13 +243,15 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
   return (
     <>
       {/* Trigger */}
-      <button
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={() => setOpen(false)}
-        className="font-medium hover:text-blue-600"
-      >
-        {menu.title}
-      </button>
+      <Link href={menu.titleHref || "#"}>
+        <button
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={() => setOpen(false)}
+          className=" hover:text-blue-600"
+        >
+          {menu.title}
+        </button>
+      </Link>
 
       {mounted &&
         createPortal(
@@ -168,7 +275,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                             href={link.href}
                             className="block group"
                           >
-                            <div className="flex items-start gap-4">
+                            <div className="flex   items-start gap-4">
                               {/* Icon */}
                               {link.icon && (
                                 <span className="text-3xl flex-shrink-0">
@@ -177,7 +284,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                               )}
                               {/* Title & Description */}
                               <div className="flex-1">
-                                <h5 className="font-semibold text-gray-800 group-hover:text-blue-600 transition mb-1">
+                                <h5 className="font-semibold cursor-pointer text-gray-800 group-hover:text-blue-600 transition mb-1">
                                   {link.label}
                                 </h5>
                                 {link.description && (
@@ -191,31 +298,30 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                         ))}
                       </div>
                     </div>
-                  ))} {/* Explore More Section */}
-                {menu.explore && (
-                  <div className="">
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                      <h4 className="font-bold text-gray-900 mb-4">
-                        {menu.explore.heading}
-                      </h4>
-                      <ul className="grid grid-cols-1 gap-3">
-                        {menu.explore.links.map((link, i) => (
-                          <li key={i}>
-                            <Link
-                              href={link.href}
-                              className="text-blue-600 hover:text-blue-700 text-sm font-medium hover:underline"
-                            >
-                              {link.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
+                  ))}
+                  {/* Explore More Section */}
+                  {menu.explore && (
+                    <div>
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                        <h4 className="font-bold text-gray-900 mb-4">
+                          {menu.explore.heading}
+                        </h4>
+                        <ul className="grid grid-cols-1 gap-3">
+                          {menu.explore.links.map((link, i) => (
+                            <li key={i}>
+                              <Link
+                                href={link.href}
+                                className="text-blue-600 hover:text-blue-700 text-sm font-medium hover:underline"
+                              >
+                                {link.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
                 </div>
-
-               
               </div>
             </div>
           </div>,

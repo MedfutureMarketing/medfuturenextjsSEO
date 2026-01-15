@@ -45,8 +45,8 @@ export default function CTA() {
                             Job Seeker
                         </button>
 
-                        <button
-                            className={`pb-0 px-2 font-medium lg:text-lg  text-sm cursor-pointer bg-blue-500 rounded-t-lg h-[53px] w-[225px] ${activeTab === "employer" ? "text-[#074CA4] bg-white " : "text-gray-50"
+                        <button disabled
+                            className={`pb-0 px-2 font-medium lg:text-lg  cursor-not-allowed  text-sm cursor-pointer bg-blue-500 rounded-t-lg h-[53px] w-[225px] ${activeTab === "employer" ? "text-[#074CA4] bg-white " : "text-gray-50"
                                 }`}
                             onClick={() => setActiveTab("employer")}
                         >

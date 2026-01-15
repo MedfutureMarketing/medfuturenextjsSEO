@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import MedfutureLogoDark from "@/assets/logo/medfuture-logo.webp";
 import MedfutureLogoLight from "@/assets/logo/medfuture-white.webp";
 import MegaMenu from "@/components/Navbar/MegaMenu";
+import MobileNav from "@/components/Navbar/Mobilenavbar";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -72,7 +73,7 @@ export default function Menu() {
   return (
     <>
       {/* STICKY HEADER */}
-      <div className="sticky top-0 z-100">
+      <div className="sticky top-0 z-50">
         <div className={`${headerColors} full-width-section`}>
           <header className="inner-width-section py-3 flex items-center justify-between">
             {/* LEFT SECTION: LOGO + PERMANENT/LOCUM/INTERNATIONAL */}
@@ -90,29 +91,24 @@ export default function Menu() {
 
               {/* DESKTOP NAV - LEFT SIDE */}
               <ul className="hidden lg:flex items-center space-x-6 text-[16px] font-[700]">
-                <li className="relative font-medium hover:text-blue-600">
+                <li className="relative font-medium cursor-pointer hover:text-blue-600">
                   <MegaMenu menuKey="permanent" />
                 </li>
-
-                <li>
-                  <Link href="/locum" className="hover:text-blue-600">
-                    Locum Jobs
-                  </Link>
+                <li className="relative font-medium cursor-pointer hover:text-blue-600">
+                  <MegaMenu menuKey="locum" />
                 </li>
 
-                <li>
-                  <Link href="/international" className="hover:text-blue-600">
-                    International Applicants
-                  </Link>
+                <li className="relative font-medium cursor-pointer hover:text-blue-600">
+                  <MegaMenu menuKey="international" />
                 </li>
               </ul>
             </div>
 
             {/* RIGHT SECTION: EMPLOYERS + SIGN UP */}
             <div className="hidden lg:flex items-center space-x-6">
-              <li className="   list-none list-nonerelative font-medium hover:text-blue-600">
-                  <MegaMenu menuKey="candidates" />
-                </li>
+              <li className="list-none relative font-medium hover:text-blue-600">
+                <MegaMenu menuKey="candidates" />
+              </li>
               <li className="list-none">
                 <Link
                   href="/employer-hub"
@@ -133,10 +129,14 @@ export default function Menu() {
             {/* MOBILE BUTTON */}
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="lg:hidden p-2"
+              className="lg:hidden p-2 text-inherit text-2xl"
+              aria-label="Open menu"
             >
               ☰
             </button>
+
+            {/* MOBILE NAVIGATION */}
+            <MobileNav isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
           </header>
         </div>
 
@@ -154,7 +154,7 @@ export default function Menu() {
               : {}
           }
         >
-          <div className="inner-width-section flex space-x-4  py-2 divide-x">
+          <div className="inner-width-section flex space-x-4 py-2 divide-x">
             <Link href="/job-seeker-hub/medical-division" className="pr-4">
               Medical
             </Link>
