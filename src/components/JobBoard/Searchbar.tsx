@@ -539,7 +539,7 @@ const getTitleText = (pathname: string) => {
               </div>
 
               {/* More Options */}
-              <div className="relative flex justify-end">
+              {/* <div className="relative flex justify-end">
                 <button
                   type="button"
                   onClick={() => setShowMoreOptions(!showMoreOptions)}
@@ -548,7 +548,7 @@ const getTitleText = (pathname: string) => {
                   More options
                   <Image src={filterico} alt="Arrow" />
                 </button>
-              </div>
+              </div> */}
 
               {showMoreOptions && (
                 <div className="mt-4 flex flex-wrap  justify-end gap-3">

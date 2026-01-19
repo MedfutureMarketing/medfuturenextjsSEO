@@ -41,11 +41,12 @@ type ProfessionCardData = {
 // Define profession priorities (1-6, lower number = higher priority)
 const professionPriorities: Record<string, number> = {
   "Doctor": 1,
-  "Nurse": 2,
+  
   "Allied Health": 3,
   "Dental": 4,
   "Pharmacy": 5,
   "Mental Health": 6,
+  "Nurse": 7,
   // Add more professions as needed
 };
 

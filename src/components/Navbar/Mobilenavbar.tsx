@@ -26,25 +26,25 @@ const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey }[] = [
 
 const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
   permanent: [
-    { label: "Jobs in New South Wales (NSW)", href: "/permanent" },
-    { label: "Jobs in Australian Capital Territory (ACT)", href: "/international" },
-    { label: "Jobs in South Australia (SA) ", href: "/permanent" },
-    { label: "Jobs in Northern Territory (NT)", href: "/locum" },
-     { label: "Jobs in Queensland (QLD)", href: "/international" },
-    { label: "Jobs in Western Australia (WA)", href: "/permanent" },
-    { label: "Jobs in Victoria (VIC)", href: "/locum" },
-     { label: "Jobs in Tasmania (TAS)", href: "/international" },
+    { label: "Jobs in New South Wales (NSW)", href: "/permanent/jobs/in-new-south-wales?page=1" },
+    { label: "Jobs in Australian Capital Territory (ACT)", href: "/permanent/jobs/in-australian-capital-territory?page=1" },
+    { label: "Jobs in South Australia (SA) ", href: "/permanent/jobs/in-south-australia?page=1" },
+    { label: "Jobs in Northern Territory (NT)", href: "/permanent/jobs/in-northern-territory?page=1" },
+     { label: "Jobs in Queensland (QLD)", href: "/permanent/jobs/in-queensland?page=1" },
+    { label: "Jobs in Western Australia (WA)", href: "/permanent/jobs/in-western-australia?page=1" },
+    { label: "Jobs in Victoria (VIC)", href: "/permanent/jobs/in-victoria?page=1" },
+     { label: "Jobs in Tasmania (TAS)", href: "/permanent/jobs/in-tasmania?page=1" },
  
   ],
   locum: [
-    { label: "Jobs in New South Wales (NSW)", href: "/permanent" },
-    { label: "Jobs in Australian Capital Territory (ACT)", href: "/international" },
-    { label: "Jobs in South Australia (SA) ", href: "/permanent" },
-    { label: "Jobs in Northern Territory (NT)", href: "/locum" },
-     { label: "Jobs in Queensland (QLD)", href: "/international" },
-    { label: "Jobs in Western Australia (WA)", href: "/permanent" },
-    { label: "Jobs in Victoria (VIC)", href: "/locum" },
-     { label: "Jobs in Tasmania (TAS)", href: "/international" },
+    { label: "Jobs in New South Wales (NSW)", href: "/locum/jobs/in-new-south-wales?page=1" },
+    { label: "Jobs in Australian Capital Territory (ACT)", href: "/locum/jobs/in-australian-capital-territory?page=1" },
+    { label: "Jobs in South Australia (SA) ", href: "/locum/jobs/in-south-australia?page=11" },
+    { label: "Jobs in Northern Territory (NT)", href: "/locum/jobs/in-northern-territory?page=1" },
+     { label: "Jobs in Queensland (QLD)", href: "/locum/jobs/in-queensland?page=1" },
+    { label: "Jobs in Western Australia (WA)", href: "/locum/jobs/in-western-australia?page=1" },
+    { label: "Jobs in Victoria (VIC)", href: "/locum/jobs/in-victoria?page=1" },
+     { label: "Jobs in Tasmania (TAS)", href: "/locum/jobs/in-tasmania?page=1" },
  
   ],
   international: [
@@ -60,29 +60,27 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Interview Prep", href: "/resources/interview" },
   ],
    medical: [
-    { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/permanent" },
-    { label: "General Practitioner (Registrars)", href: "/locum" },
-    { label: "International Family Medicine (Specialist Pathway Recruitment)", href: "/international" },
-    { label: "Locum GP (Short Term or Ongoing Cover)", href: "/resources/resume" },
+    { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/permanent/gp-specialist-jobs/in-australia?page=1" },
+    { label: "General Practitioner (Registrars)", href: "/permanent/general-practitioner-jobs/in-australia?page=1" },
+    { label: "International Family Medicine (Specialist Pathway Recruitment)", href: "/international/family-medicine-jobs/in-australia?page=1" },
+    { label: "Locum GP (Short Term or Ongoing Cover)", href: "/international/general-practitioner-jobs/in-australia?page=1" },
   
   ],
    allied: [
-    { label: "Speech Pathologist ", href: "/permanent" },
-    { label: "Physiotherapy", href: "/locum" },
-    { label: "International Jobs", href: "/international" },
-    { label: "Occupational Therapist ", href: "/resources/resume" },
-    { label: "Podiatrist", href: "/resources/interview" },
+    { label: "Speech Pathologist ", href: "/permanent/speech-pathology-jobs/in-australia?page=1" },
+    { label: "Physiotherapy", href: "/permanent/physiotherapy-jobs/in-australia?page=1" },
+    { label: "Occupational Therapist ", href: "/permanent/occupational-therapists-jobs/in-australia?page=1" },
+    { label: "Podiatrist", href: "/permanent/podiatrist-jobs/in-australia?page=1" },
   ],
    mental: [
-    { label: "Psychology", href: "/permanent" },
+    { label: "Psychology", href: "/permanent/psychology-jobs/in-australia?page=1" },
   
   ],
    oral: [
-    { label: "Dentist", href: "/permanent" },
-    { label: "General Dentist", href: "/locum" },
-    { label: "Dental Specialist", href: "/international" },
-    { label: "Oral Hygienist", href: "/resources/resume" },
-
+    { label: "Dentist", href: "/permanent/dentists-jobs/in-australia?page=1" },
+    { label: "General Dentist", href: "/permanent/dental-jobs/in-australia?page=1" },
+    { label: "Dental Specialist", href: "/permanent/general-dentist-jobs/in-australia?page=1" },
+    { label: "Oral Hygienist", href: "/permanent/oral-hygienist-jobs/in-australia?page=1" },
   ],
   
 };

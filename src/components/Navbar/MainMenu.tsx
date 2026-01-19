@@ -38,7 +38,7 @@ export default function Menu() {
 
   // ⭐ HEADER COLORS
   const headerColorMap: Record<string, string> = {
-    "/": "bg-[#040D48] text-white",
+    "/": "bg-white text-black",
     "/permanent": "bg-white text-[#040D48]",
     "/locum": "bg-white text-[#040D48]",
     "/international": "bg-white text-[#040D48]",
@@ -53,7 +53,7 @@ export default function Menu() {
 
   // ⭐ LOGO MAP (UNCHANGED)
   const logoMap: Record<string, StaticImageData> = {
-    "/": MedfutureLogoLight,
+    "/": MedfutureLogoDark,
     "/explore": MedfutureLogoLight,
     "/permanent": MedfutureLogoDark,
     "/locum": MedfutureLogoDark,
@@ -99,7 +99,7 @@ export default function Menu() {
                 </li>
 
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
-                <Link   href="/employer-hub"
+                <Link   href="/international?page=1"
                   className="text-[16px] font-[500] hover:text-blue-600"
                 > International Candidates</Link>
                 </li>
