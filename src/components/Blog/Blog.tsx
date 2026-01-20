@@ -131,17 +131,17 @@ export default function BlogSection() {
                   />
 
                   <div className="absolute -bottom-36 left-1/3 transform -translate-x-1/2 bg-white p-6 rounded-[4px] w-[80%]">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">
                       {details.blog_title}
                     </h3>
 
-                    <p className="text-gray-700 mb-4">
+                    <p className="text-gray-700 text-xs mb-4">
                       {truncate(
                         sanitizeText(details.blog_description || "")
                       )}
                     </p>
 
-                    <p className="text-gray-400 text-sm">
+                    <p className="text-gray-400 text-xs">
                       {blog.published_date} • {minutes} min read
                     </p>
                   </div>

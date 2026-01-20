@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image, { StaticImageData } from "next/image";
 import gpImg from "@/assets/homeico/IMGFORCONSULTANT.webp";
 import medicalImg from "@/assets/homeico/IMGFORCONSULTANT.webp";
@@ -38,26 +38,31 @@ const allConsultants: Consultant[] = [
     { name: "Tasha Riverly", role: "Recruitment Business Consultant", location: "", stat: "", img: gpImg, phone: "+61 489 078 761", email: "tasha@medfuture.com.au", category: "Medical" },
     { name: "Tia Collins", role: "Recruitment Business Consultant", location: "WA and New Zealand", stat: "", img: gpImg, phone: "+61 489 085 779", email: "tia@medfuture.com.au", category: "General Practitioner" },
 ];
-
-
 const tabs = ["All", "General Practitioner", "Medical", "Allied Health"];
 
 export default function MeetOurConsultants() {
-    const [activeTab, setActiveTab] = useState<string>("All");
+    const [activeTab, setActiveTab] = useState("All");
     const [showAll, setShowAll] = useState(false);
 
-    const filteredConsultants = activeTab === "All"
-        ? allConsultants
-        : allConsultants.filter((c) => c.category === activeTab);
+    const isAllTab = activeTab === "All";
 
-    const displayedConsultants = activeTab === "All" && !showAll
-        ? filteredConsultants.slice(0, 6)
-        : filteredConsultants;
+    const filteredConsultants = useMemo(() => 
+        isAllTab ? allConsultants : allConsultants.filter(c => c.category === activeTab),
+    [activeTab, isAllTab]);
+
+    const displayedConsultants = useMemo(() =>
+        isAllTab && !showAll ? filteredConsultants.slice(0, 6) : filteredConsultants,
+    [filteredConsultants, isAllTab, showAll]);
+
+    const handleTabClick = (tab: string) => {
+        setActiveTab(tab);
+        setShowAll(false);
+    };
 
     return (
         <section className="w-full py-16 px-4 lg:px-0 overflow-visible lg:block hidden">
             <div className="mx-auto max-w-screen-2xl text-left relative">
-                <h2 className="text-2xl sm:text-4xl lg:text-[36px]  text-[#040D48] mb-4 text-center">
+                <h2 className="text-2xl sm:text-4xl lg:text-[36px] text-[#040D48] mb-4 text-center">
                     Meet Our <span className="text-[#074CA4] font-bold">Consultants</span>
                 </h2>
                 <p className="text-[#4A5565] lg:mb-[65px] mb-4 text-xs lg:text-[16px] text-center">
@@ -65,10 +70,10 @@ export default function MeetOurConsultants() {
                 </p>
 
                 <div className="flex gap-3 sm:gap-4 mb-12 flex-wrap justify-center">
-                    {tabs.map((tab) => (
+                    {tabs.map(tab => (
                         <button
                             key={tab}
-                            onClick={() => { setActiveTab(tab); setShowAll(false); }}
+                            onClick={() => handleTabClick(tab)}
                             className={`px-4 sm:px-6 py-2 sm:py-3 lg:w-[219px] rounded-md cursor-pointer font-medium text-sm sm:text-base transition ${
                                 activeTab === tab
                                     ? "bg-[#074CA4] text-white"
@@ -87,6 +92,9 @@ export default function MeetOurConsultants() {
                                 <Image
                                     src={c.img}
                                     alt={c.name}
+                                    width={209}
+                                    height={224}
+                                    loading="lazy"
                                     className="object-cover w-full h-full rounded-[4px] group-hover:scale-105 transition-transform duration-300"
                                 />
                                 <div className="absolute -bottom-10 text-[#C0C0C0] left-0 px-3 py-1 text-[36px] sm:text-[36px] font-semibold rounded z-20">
@@ -107,8 +115,7 @@ export default function MeetOurConsultants() {
                     ))}
                 </div>
 
-                {/* View More button for "All" tab */}
-                {activeTab === "All" && filteredConsultants.length > 4 && !showAll && (
+                {isAllTab && filteredConsultants.length > 4 && !showAll && (
                     <div className="flex justify-center mt-6">
                         <button
                             onClick={() => setShowAll(true)}
