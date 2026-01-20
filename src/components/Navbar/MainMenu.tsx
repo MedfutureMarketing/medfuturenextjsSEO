@@ -73,7 +73,7 @@ export default function Menu() {
   return (
     <>
       {/* STICKY HEADER */}
-      <div className="sticky top-0 z-50">
+      <div className="sticky top-0 z-99">
         <div className={`${headerColors} full-width-section`}>
           <header className="inner-width-section py-3 flex items-center justify-between">
             {/* LEFT SECTION: LOGO + PERMANENT/LOCUM/INTERNATIONAL */}
@@ -162,7 +162,7 @@ export default function Menu() {
               : {}
           }
         >
-          <div className="inner-width-section flex py-2 gap-4">
+          <div className="inner-width-section flex py-2 gap-10">
             {/* Left menu */}
             <li className="list-none font-medium cursor-pointer hover:text-blue-600">
               <MegaMenu menuKey="medical" />
@@ -183,7 +183,7 @@ export default function Menu() {
              <Link href="/contact-us">  Contact Us</Link>  
               </li>
               <li className="list-none font-medium cursor-pointer hover:text-blue-600">
-                Explore
+            <MegaMenu menuKey="Explore" />
               </li>
             </div>
           </div>

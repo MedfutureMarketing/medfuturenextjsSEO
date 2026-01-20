@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-type MenuKey = "permanent" | "candidates" | "locum" | "medical" | "allied" | "mental" | "oral";
+type MenuKey = "permanent" | "candidates" | "locum" | "medical" | "allied" | "mental" | "oral" | "Explore";
 
 interface MenuLink {
   label: string;
@@ -27,6 +27,84 @@ interface MenuConfig {
 }
 
 const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
+  Explore: {
+    title: "Explore",
+    titleHref: "/permanent",
+    columns: [
+      {
+        heading: "",
+        links: [
+          {
+            label: "About us",
+            href: "/about-us",
+            icon: "",
+            description: "Discover who we are and what drives us. Medfuture Global is committed to empowering healthcare professionals and providing innovative global solutions",
+          },
+        
+          {
+            label: "Medfuture Global",
+            href: "https://themedfuture.com/blog",
+            icon: "",
+            description: "Explore Permanent Job Openings in South Australia (SA)",
+          },
+         
+        ],
+      },
+       {
+        heading: "",
+        links: [
+          {
+            label: "Visa & Immigration Services",
+            href: "https://intuit7.com/",
+            icon: "",
+            description: "Get expert guidance on visa applications, immigration processes, and residency options. We simplify complex procedures to help you move with confidence",
+          },
+          {
+            label: "Blogs",
+            href: "https://themedfuture.com/blog",
+            icon: "",
+            description: "Stay updated with our latest insights, news, and expert articles. Discover tips, trends, and stories that help you stay informed",
+          },
+         
+         
+        ],
+      },
+        {
+        heading: "",
+        links: [
+        
+          {
+            label: "Medfuture New Zealand",
+            href: "https://medfuture.co.nz/",
+            icon: "",
+            description: "edfuture New Zealand connects healthcare professionals with opportunities across New Zealand, offering guidance, recruitment, and career support for international and local talent.",
+          },
+         
+        ],
+      },
+     
+    ],
+    
+    // explore: {
+    //   heading: "Browse Jobs by Key Cities",
+    //   links: [
+    //     { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
+    //     { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
+    //     { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
+    //     { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
+    //     { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
+    //     { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+    //     { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
+    //     { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
+
+    //     { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
+
+    //     { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
+
+
+    //   ],
+    // },
+  },
   permanent: {
     title: "Permanent Jobs",
     titleHref: "/permanent",
@@ -110,6 +188,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
       ],
     },
   },
+   
   locum: {
     title: "Locum Jobs",
     titleHref: "/locum",
