@@ -99,9 +99,9 @@ export default function Menu() {
                 </li>
 
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
-                <Link   href="/international?page=1"
-                  className="text-[16px] font-[500] hover:text-blue-600"
-                > International Candidates</Link>
+                  <Link href="/international?page=1"
+                    className="text-[16px] font-[500] hover:text-blue-600"
+                  > International Candidates</Link>
                 </li>
               </ul>
             </div>
@@ -111,12 +111,12 @@ export default function Menu() {
               {/* <li className="list-none relative font-medium hover:text-blue-600">
                 <MegaMenu menuKey="candidates" />
               </li> */}
-               <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
-                <Link   href="/employer-hub"
+              <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                <Link href="/employer-hub"
                   className="text-[16px] font-[500] hover:text-blue-600"
                 >  Candidates</Link>
-                </li>
-              
+              </li>
+
               <li className="list-none">
                 <Link
                   href="/employer-hub"
@@ -154,28 +154,41 @@ export default function Menu() {
           style={
             !isHomePage
               ? {
-                  borderTopWidth: "1px",
-                  borderImageSlice: 1,
-                  borderImageSource:
-                    "linear-gradient(to right, #fff, #b5b5b5, #fff)",
-                }
+                borderTopWidth: "1px",
+                borderImageSlice: 1,
+                borderImageSource:
+                  "linear-gradient(to right, #fff, #b5b5b5, #fff)",
+              }
               : {}
           }
         >
-          <div className="inner-width-section flex space-x-4 py-2 gap-10 ">
-             <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
-                  <MegaMenu menuKey="medical" />
-                </li>
-             <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
-                  <MegaMenu menuKey="allied" />
-                </li>
-              <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
-                  <MegaMenu menuKey="mental" />
-                </li>
-             <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
-                  <MegaMenu menuKey="oral" />
-                </li>
+          <div className="inner-width-section flex py-2 gap-4">
+            {/* Left menu */}
+            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+              <MegaMenu menuKey="medical" />
+            </li>
+            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+              <MegaMenu menuKey="allied" />
+            </li>
+            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+              <MegaMenu menuKey="mental" />
+            </li>
+            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+              <MegaMenu menuKey="oral" />
+            </li>
+
+            {/* Right menu */}
+            <div className="ml-auto flex gap-8">
+              <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+             <Link href="/contact-us">  Contact Us</Link>  
+              </li>
+              <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+                Explore
+              </li>
+            </div>
           </div>
+
+
         </div>
       </div>
     </>

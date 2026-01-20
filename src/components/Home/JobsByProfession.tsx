@@ -40,13 +40,17 @@ type ProfessionCardData = {
 
 // Define profession priorities (1-6, lower number = higher priority)
 const professionPriorities: Record<string, number> = {
-  "Doctor": 1,
-  
-  "Allied Health": 3,
-  "Dental": 4,
-  "Pharmacy": 5,
+  "Medical Practitioner": 1,
+
+  "Speech Pathologist": 3,
+  "Occupational Therapists": 4,
+  "Physiotherapist": 5,
   "Mental Health": 6,
-  "Nurse": 7,
+  "Podiatrist": 7,
+  "Exercise Physiologist": 8,
+  "Psychology": 9,
+  "Behavioural Therapist": 10,
+
   // Add more professions as needed
 };
 
@@ -142,7 +146,7 @@ export default function JobsbyProfession() {
               <div className="hidden md:flex  justify-center mt-8">
                 <button
                   onClick={() => setShowAll(true)}
-                  className="px-8 py-3 bg-[#074CA4]  text-white cursor-pointer font-semibold rounded-[4px] hover:bg-[#063a7a] transition-colors"
+                  className="px-8 py-3 bg-[#]  text-[#074CA4] cursor-pointer font-semi-bold hover:text-white rounded-[4px] hover:bg-[#063a7a] transition-colors"
                 >
                   View More Professions
                 </button>

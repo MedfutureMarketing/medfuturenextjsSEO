@@ -27,8 +27,8 @@ export default function CTA() {
                             Talk to a Consultant            
                         </Link>
 
-                        <button className="px-6 py-3 cursor-pointer bg-white text-[#074CA4] rounded-lg lg:text-[16px] text-xs font-medium">
-                            Refer a Friend            </button>
+                        {/* <button className="px-6 py-3 cursor-pointer bg-white text-[#074CA4] rounded-lg lg:text-[16px] text-xs font-medium">
+                            Refer a Friend            </button> */}
                     </div>
                 </div>
 
@@ -45,18 +45,20 @@ export default function CTA() {
                             Job Seeker
                         </button>
 
-                        <button disabled
-                            className={`pb-0 px-2 font-medium lg:text-lg  cursor-not-allowed  text-sm cursor-pointer bg-blue-500 rounded-t-lg h-[53px] w-[225px] ${activeTab === "employer" ? "text-[#074CA4] bg-white " : "text-gray-50"
+                        {/* <button 
+                            className={`pb-0 px-2 font-medium lg:text-lg   cursor-not-allowed  text-sm cursor-pointer bg-blue-500 rounded-t-lg h-[53px] w-[225px] ${activeTab === "employer" ? "text-[#074CA4] bg-white " : "text-gray-50"
                                 }`}
                             onClick={() => setActiveTab("employer")}
                         >
                             Employer
-                        </button>
+                        </button> */}
                     </div>
 
                  
                     <div className=" px-[30px] py-[25px] bg-white">
                         {activeTab === "job" ? <JobSeekerForm /> : <EmployerForm />}
+                                                {/* {activeTab === "job" ? <JobSeekerForm /> : <EmployerForm />} */}
+
                     </div>
                 </div>
             </div>

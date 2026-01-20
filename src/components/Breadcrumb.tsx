@@ -77,7 +77,7 @@ export default function Breadcrumb() {
     <nav
       className={`flex lg:py-[18px] py-4 lg:px-1 px-4   full-width-section ${getBgColor()}`}
     >
-      <ol className="flex items-center space-x-2 text-sm z-50 inner-width-section">
+      <ol className="flex items-center space-x-2 text-sm z-49 inner-width-section">
         {breadcrumbs.map((breadcrumb, index) => (
           <li key={index} className="flex items-center">
             {index > 0 && (

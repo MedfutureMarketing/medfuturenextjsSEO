@@ -124,8 +124,8 @@ export default function JobSeekerHub({ query = "" }: { query?: string }) {
             Job Seeker Hub
           </Link>
           <Link
-            href="/employer-hub"
-            className="px-4 lg:px-6 py-3 lg:block hidden bg-[#0D1A3E] text-white font-[16px] rounded-[4px] hover:bg-gray-700 transition-colors whitespace-nowrap text-center"
+            href="/"
+            className="px-4 lg:px-6 py-3 cursor-not-allowed disabled  lg:block hidden bg-[#0D1A3E] text-white font-[16px] rounded-[4px] hover:bg-gray-700 transition-colors whitespace-nowrap text-center"
           >
             Employer Hub
           </Link>

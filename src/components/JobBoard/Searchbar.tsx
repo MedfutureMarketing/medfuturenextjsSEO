@@ -381,7 +381,7 @@ const getTitleText = (pathname: string) => {
             <div className="lg:min-w-[300px]">
               <p></p>
 
-              <h1 className="text-white lg:text-[16px] text-md lg:mt-1 mt-3  mb-1"> <span  className="text-white font-bold lg:text-[36px] text-5xl">{getTitleText(pathname)}</span> <br /> {getH2Text()}</h1>
+              <h1 className="text-white lg:text-[16px] text-md lg:mt-1 mt-3  mb-1"> <span  className="text-white font-bold lg:text-[36px] text-3xl">{getTitleText(pathname)}</span> <br /> {getH2Text()}</h1>
             </div>
             {/* Search Form */}
             <form onSubmit={handleSubmit} className="flex-1 w-full">
@@ -391,7 +391,7 @@ const getTitleText = (pathname: string) => {
                   <input
                     type="text"
                     placeholder="Job Title or Key Words"
-                    className="w-full md:w-80 bg-white h-14 px-5 rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full md:w-80 bg-white lg:h-14 h-12 px-5 rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={query}
                     onChange={(e) => {
                       setQuery(e.target.value);
@@ -438,7 +438,7 @@ const getTitleText = (pathname: string) => {
                 </div>
 
                 {/* Location Dropdown */}
-                <div className="relative md:w-80" ref={ref}>
+                <div className="relative md:w-80 " ref={ref}>
                   <button
                     type="button"
                     onClick={() => {
@@ -448,7 +448,7 @@ const getTitleText = (pathname: string) => {
                         setIsOpen(!isOpen);
                       }
                     }}
-                    className="w-full h-14 px-5 cursor-pointer rounded-lg bg-gray-50 text-gray-800 flex items-center justify-between hover:bg-gray-100 transition"
+                    className="w-full lg:h-14 h-12 px-5 cursor-pointer rounded-lg bg-gray-50 text-gray-800 flex items-center justify-between hover:bg-gray-100 transition"
                   >
                     <span>{getLocationDisplayText()}</span>
                     <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -532,13 +532,14 @@ const getTitleText = (pathname: string) => {
                 </button> */}
                 <button
                   type="submit"
-                  className={`h-14 px-10 text-white cursor-pointer font-semibold rounded-[8px] transition shadow-lg ${getButtonColor(pathname)}`}
+                  className={`h-14 lg:px-10 text-white  cursor-pointer font-semi-bold rounded-[8px] transition shadow-lg ${getButtonColor(pathname)}`}
                 >
                   Search
                 </button>
               </div>
 
               {/* More Options */}
+              
               {/* <div className="relative flex justify-end">
                 <button
                   type="button"

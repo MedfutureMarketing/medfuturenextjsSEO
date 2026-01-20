@@ -541,7 +541,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
           <div
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
-            className={`fixed z-100 transition-all duration-150 w-full left-0 ${open ? "opacity-100 visible" : "opacity-0 invisible"
+            className={`fixed z-99 transition-all duration-150 w-full left-0 ${open ? "opacity-100 visible" : "opacity-0 invisible"
               }`}
             style={{ top }}
           >
