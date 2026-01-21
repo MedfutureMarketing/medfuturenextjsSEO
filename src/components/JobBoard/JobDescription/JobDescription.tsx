@@ -31,6 +31,10 @@ type Job = {
   required_qualification_exp: string | null;
   offer_details: string | null;
   highlights: JobHighlight[];
+  first_contact_person_name: string;
+  first_contact_number: string;
+  email: string;
+  hourly_fee: string
 };
 
 export default function JobDescription() {
@@ -140,7 +144,7 @@ export default function JobDescription() {
       <div className="flex items-center gap-6 mt-[24px] mb-[20px] lg:px-[44px] px-[25px]">
         <span className="text-[#0E2851] lg:text-[16px]"><Image src={Permenentico} alt="Permanent" className=" mr-0 inline-block" /> Permanent</span>
         <span className="text-[#0E2851] lg:text-[16px]"><Image src={Doctorico} alt="Permanent" className=" mr-0 inline-block" />{job.profession?.name}</span>
-        <span className="text-[#0E2851] lg:text-[16px]"><Image src={Moneyico} alt="Permanent" className=" mr-0 inline-block" />{job.engagement_type?.name}</span>
+        <span className="text-[#0E2851] lg:text-[16px]"><Image src={Moneyico} alt="Permanent" className=" mr-0 inline-block" />{job?.hourly_fee}</span>
         <span className="text-[#0E2851] lg:text-[16px]"><Image src={Timeico} alt="Permanent" className=" mr-0 inline-block" />{job.engagement_type?.name}</span>
       </div>
 
@@ -175,15 +179,15 @@ export default function JobDescription() {
         </h4>
         <div className="grid grid-cols-[1fr_2fr] gap-0 lg:gap-[1px]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant:</h3>
-          <span className="text-[#4A5565] lg:text-[16px] text-[13px]">Gaya</span>
+          <span className="text-[#4A5565] lg:text-[16px] text-[13px]">{job.first_contact_person_name}</span>
         </div>
         <div className="grid grid-cols-[1fr_2fr]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number:</h3>
-          <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">0452 468 515</a>
+          <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">{job.first_contact_number}</a>
         </div>
         <div className="grid grid-cols-[1fr_2fr]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
-          <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">gprecruitment@medfuture.com.au</a>
+          <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">{job.email}</a>
         </div>
         <div className="grid grid-cols-[1fr_2fr]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries:</h3>

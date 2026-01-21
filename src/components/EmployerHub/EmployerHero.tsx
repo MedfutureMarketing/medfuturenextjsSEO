@@ -1,5 +1,6 @@
 "use client";
 
+import { apiGet } from "@/lib/api";
 import React, { useEffect, useState } from "react";
 
 export default function EmployerHero() {

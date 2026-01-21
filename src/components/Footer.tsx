@@ -89,9 +89,10 @@ export default function Footer() {
 
                 {/* Bottom Row: Copyright + Social Media */}
                 <div className="border-t  inner-width-section border-gray-700  mt-5 py-4  flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-gray-400 text-sm  md:mb-0">
-                        &copy; {new Date().getFullYear()} Medfuture. All rights reserved.
+                    <p className="text-gray-400 text-sm  md:mb-0 ">
+                        &copy; {new Date().getFullYear()} Medfuture. All rights reserved. <Link href="/privacy-policy" className="hover:text-[#074CA4] px-2">Privacy Policy</Link><Link href="/terms-and-conditions" className="hover:text-[#074CA4] px-2">Terms And Conditions</Link>
                     </p>
+
                     <div className="flex gap-4">
                         <Link href="https://www.facebook.com/medfutureaustralia/" className="text-gray-400 hover:text-[#074CA4]" target="_blank"
                             rel="noopener noreferrer">

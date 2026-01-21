@@ -373,7 +373,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
         {/* Row 1 - Name Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Full Name
             </label>
             <input
@@ -391,7 +391,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           </div>
 
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Last Name
             </label>
             <input
@@ -412,7 +412,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
         {/* Row 1.5 - Email and Phone */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Email Address
             </label>
             <input
@@ -431,7 +431,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           </div>
 
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Phone Number
             </label>
             <input
@@ -453,7 +453,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
         {/* Row 2 - Profession and Specialty */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Profession
             </label>
             <select
@@ -478,7 +478,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           </div>
 
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Specialty
             </label>
             <select
@@ -528,7 +528,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           </div>
 
           <div>
-            <label className="block lg:text-[16px] text-sm font-medium text-gray-700 mb-2">
+            <label className="block lg:text-[16px] text-sm text-gray-700 mb-2">
               Where did you hear about us?
             </label>
             <select
@@ -561,7 +561,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
         {/* Row 5 - Checkboxes and Submit */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="space-y-3">
-            <label className="flex items-start gap-2 text-xs text-gray-700">
+            <label className="flex items-start gap-2 text-sm text-gray-700">
               <input
                 ref={agreeCheckboxRef}
                 type="checkbox"

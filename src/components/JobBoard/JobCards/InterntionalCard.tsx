@@ -18,6 +18,7 @@ type Job = {
   country: { name: string };
   state: { name: string };
   engagement_type: { name: string };
+  hourly_fee: string;
 };
 
 type JobApiResponse = {
@@ -350,7 +351,7 @@ export default function JobCard() {
               </span>
               <span className="flex items-center gap-2 text-[14px]">
                 <Image src={Pointico} alt="Engagement Icon" />
-               Flixible Session
+               {job?.hourly_fee}
               </span>
             </div>
           </div>

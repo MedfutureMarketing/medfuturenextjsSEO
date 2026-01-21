@@ -4,18 +4,20 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 // Example images (replace with your actual images)
-import Med2 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Med3 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Med4 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Med5 from "@/assets/homeico/IMGFORCONSULTANT.webp";
+import FRACGP from "@/assets/Divisionimages/FRACGP.png";
+import Registrars from "@/assets/Divisionimages/General-Practitioner-Registrars.png";
+import Family from "@/assets/Divisionimages/International-Family-Medicine.png";
+import Locum from "@/assets/Divisionimages/Locum-gp.png";
 import ico from "@/assets/jobseeker/Navigation.png";
-import Med1 from "@/assets/jobseeker/coverimg.png";
+import sp from "@/assets/Divisionimages/Speech-Pathologist.png";
 
-import Nurse1 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Nurse2 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Nurse3 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Nurse4 from "@/assets/homeico/IMGFORCONSULTANT.webp";
-import Nurse5 from "@/assets/homeico/IMGFORCONSULTANT.webp";
+import Physiotherapist from "@/assets/Divisionimages/Physiotherapist.png";
+import Occupational from "@/assets/Divisionimages/Occupational-Therapist.png";
+import Podiatrist from "@/assets/Divisionimages/Podiatrist.png";
+import Psychologist from "@/assets/Divisionimages/Psychologist.png";
+import Dentals from "@/assets/Divisionimages/Dental-Specialist.png";
+import Hygienist from "@/assets/Divisionimages/Oral-Hygienist.png";
+import Dentist from "@/assets/Divisionimages/General-Dentist.png";
 
 interface BlogCard {
     title: string;
@@ -33,55 +35,76 @@ interface Division {
 // Example data
 const divisions: Division[] = [
     {
-        label: "Medical",
-        icon: Med1,
+        label: "General Practitioner",
+        icon: FRACGP,
         blogs: [
             {
-                title: "SPEECH PATHOLOGIST",
+                title: "Specialist General Practitioner (FRACGP & FRCRRM)",
                 description:
-                    "Find rewarding roles supporting communication and swallowing needs with employers who value your expertise and professional growth.",
-                image: Med1,
+                    "Find rewarding roles supporting communication and swal",
+                image: FRACGP,
                 link: "/medical/speech-pathologist",
             },
             {
-                title: "PHYSIOTHERAPIST",
+                title: "General Practitioner (Registrars)",
                 description:
-                    "Explore physiotherapy positions focused on rehabilitation, mobility, and patient recovery with supportive employers offering genuine career development.",
-                image: Med2,
+                    "Explore physiotherapy positions focused on rehabilitation, mobility, and patien",
+                image: Registrars,
                 link: "/medical/physiotherapist",
             },
             {
-                title: "OCCUPATIONAL",
+                title: "International Family Medicine (Specialist Pathwa Recruitment)",
                 description:
-                    "Discover OT opportunities helping clients achieve independence, supported by organisations committed to quality care and your growth.",
-                image: Med3,
+                    "Discover OT opportunities helping clients achiev.",
+                image: Family,
                 link: "/medical/occupational",
             },
             {
-                title: "PSYCHOLOGIST",
+                title: "Locum GP (Short Term or Ongoing Cover)",
                 description:
-                    "Access meaningful psychology roles delivering mental health support with employers who prioritise evidence-based care and development.",
-                image: Med4,
+                    "Explore physiotherapy positions focused on rehabilitation, mobility, and patien ",
+                image: Locum,
                 link: "/medical/psychologist",
             },
-            {
-                title: "SPEECH PATHOLOGIST",
-                description:
-                    "Advance your speech therapy career with roles suited to your skills and teams dedicated to improving patient outcomes.",
-                image: Med5,
-                link: "/medical/speech-pathologist-2",
-            },
+            // {
+            //     title: "SPEECH PATHOLOGIST",
+            //     description:
+            //         "Advance your speech therapy career with roles suited to your skills and teams dedicated to improving patient outcomes.",
+            //     image: Med5,
+            //     link: "/medical/speech-pathologist-2",
+            // },
         ],
     },
     {
         label: "Allied Health",
-        icon: Med2,
+        icon: sp,
         blogs: [
             {
-                title: "SPEECH PATHOLOGIST",
+                title: "Speech Pathologist",
                 description:
-                    "Find rewarding roles supporting communication and swallowing needs with employers who value your expertise and professional growth.",
-                image: Med2,
+                    "Explore roles supporting communication and swallowing care across diverse clinical and community healthcare settings.",
+                image: sp,
+                link: "/medical/speech-pathologist",
+            },
+             {
+                title: "Physiotherapist",
+                description:
+                    "Discover opportunities focused on rehabilitation, movement, and patient recovery across private and public healthcare environments.",
+                image: Physiotherapist,
+                link: "/medical/speech-pathologist",
+            },
+             {
+                title: "Occupational Therapist",
+                description:
+                    "Find roles helping individuals build independence and improve daily living through meaningful, goal-oriented care.",
+                image: Occupational,
+                link: "/medical/speech-pathologist",
+            },
+             {
+                title: "Podiatrist",
+                description:
+                    "Browse positions delivering specialised foot and lower-limb care across clinics, hospitals, and community services.",
+                image: Podiatrist,
                 link: "/medical/speech-pathologist",
             },
 
@@ -89,13 +112,13 @@ const divisions: Division[] = [
     },
     {
         label: "Mental Health",
-        icon: Med2,
+        icon: Locum,
         blogs: [
             {
-                title: "SPEECH PATHOLOGIST",
+                title: "Psychologist",
                 description:
-                    "Find rewarding roles supporting communication and swallowing needs with employers who value your expertise and professional growth.",
-                image: Med2,
+                    "Explore opportunities delivering evidence-based mental health support across clinical, community, and organisational settings.",
+                image: Psychologist,
                 link: "/medical/speech-pathologist",
             },
 
@@ -116,14 +139,12 @@ const divisions: Division[] = [
     //     ],
     // },
     {
-        label: "Dentistry & Oral Health",
-        icon: Nurse1,
+        label: "Oral Health",
+        icon: Physiotherapist,
         blogs: [
-            { title: "Nursing Career 1", description: "Description for blog 1", image: Nurse1, link: "/nursing/career-1" },
-            { title: "Nursing Career 2", description: "Description for blog 2", image: Nurse2, link: "/nursing/career-2" },
-            { title: "Nursing Career 3", description: "Description for blog 3", image: Nurse3, link: "/nursing/career-3" },
-            { title: "Nursing Career 4", description: "Description for blog 4", image: Nurse4, link: "/nursing/career-4" },
-            { title: "Nursing Career 5", description: "Description for blog 5", image: Nurse5, link: "/nursing/career-5" },
+            { title: "General Dentist", description: "Discover rewarding roles providing comprehensive dental care across public and private practice settings nationwide.", image: Dentist, link: "/nursing/career-1" },
+            { title: "Dental Specialist", description: "Access advanced career opportunities in specialised dental fields with leading healthcare organisations across Australia.", image: Dentals, link: "/nursing/career-2" },
+            { title: "Oral Hygienist", description: "Explore roles focused on preventive oral care and patient education within modern dental practices and clinics.", image: Hygienist, link: "/nursing/career-3" },
         ],
     },
     // {
@@ -167,18 +188,18 @@ export default function RecruitmentDivisionsTabs() {
 
                 {/* Blog Cards desktop */}
                 <div className="lg:block hidden ">
-                    <div className="flex flex-wrap justify-center  gap-4">
+<div className="flex flex-wrap justify-center gap-4">
                         {activeDivision.blogs.map((blog, index) => (
                             <div
                                 key={index}
-                                className="flex flex-col bg-white  lg:w-[416px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.12)]
+                                className="flex flex-col bg-white  lg:w-[280px] rounded-lg shadow-[0_8px_15px_rgba(0,0,0,0.12)]
                                             hover:shadow-lg transition p-4 text-left w-full"
                             >
-                                <div className="relative  h-36 mb-4">
-                                    <Image src={blog.image} alt={blog.title} fill className="object-cover rounded" />
+                                <div className="relative  h-[149px] w-[246px] mb-4">
+                                    <Image src={blog.image} alt={blog.title} fill className="object-cover rounded-[6.99px]" />
                                 </div>
-                                <h3 className="lg:text-[20px] font-[600] text-[#074CA4] mb-2">{blog.title}</h3>
-                                <p className="text-gray-600 text-sm lg:text-[16px] mb-4">{blog.description}</p>
+                                <h3 className="lg:text-[18px] font-[600] text-[#074CA4] mb-2">{blog.title}</h3>
+                                <p className="text-gray-600 text-sm lg:text-[14px] mb-4">{blog.description}</p>
                                 <Link
                                     href={blog.link}
                                     className="mt-auto inline-block text-left  text-[14px] font-[500] text-[#074CA4] px-4 py-2 rounded  transition"
@@ -187,7 +208,8 @@ export default function RecruitmentDivisionsTabs() {
                                 </Link>
                             </div>
                         ))}
-                    </div></div>
+                    </div>
+                </div>
 
                 <div className="lg:hidden">
                     {/* Blog Cards */}

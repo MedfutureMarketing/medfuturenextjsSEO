@@ -32,6 +32,9 @@ type Job = {
   medical_practise_details?: string;
   required_qualification_exp?: string;
   highlights?: JobHighlight[];
+  first_contact_person_name: string;
+  first_contact_number: string;
+  email: string;
 };
 
 /* ================= COMPONENT ================= */
@@ -191,15 +194,15 @@ export default function JobDescription() {
           </h4>
           <div className="grid grid-cols-[1fr_2fr] gap-0 lg:gap-[1px]">
             <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant:</h3>
-            <span className="text-[#4A5565] lg:text-[16px] text-[13px]">: Gaya</span>
+            <span className="text-[#4A5565] lg:text-[16px] text-[13px]">: {job.first_contact_person_name}</span>
           </div>
           <div className="grid grid-cols-[1fr_2fr] ">
             <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number</h3>
-            <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: 0452 468 515</a>
+            <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: {job.first_contact_number}</a>
           </div>
           <div className="grid grid-cols-[1fr_2fr]">
             <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
-            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">: gprecruitment@medfuture.com.au</a>
+            <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">: {job.email}</a>
           </div>
           <div className="grid grid-cols-[1fr_2fr] ">
             <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries</h3>

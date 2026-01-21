@@ -179,9 +179,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
         { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
         { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
-
         { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
-
         { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
 
 
@@ -303,6 +301,13 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore International Family Medicine specialist pathway opportunities.",
           },
+         
+        ],
+      },
+       {
+        heading: "",
+        links: [
+         
           {
             label: "Locum GP (Short Term or Ongoing Cover)",
             href: "/international/general-practitioner-jobs/in-australia?page=1",
@@ -312,24 +317,24 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         ],
       },
     ],
-    explore: {
-      heading: "Explore More",
-      links: [
-        { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
-        { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
-        { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
-        { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
-        { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
-        { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
-        { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
-        { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
+    // explore: {
+    //   heading: "Explore More",
+    //   links: [
+    //     { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
+    //     { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
+    //     { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
+    //     { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
+    //     { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
+    //     { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+    //     { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
+    //     { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
 
-        { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
+    //     { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
 
-        { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
+    //     { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
 
-      ],
-    },
+    //   ],
+    // },
   },
   allied: {
     title: "Allied Health",
@@ -361,6 +366,13 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore Occupational Therapist roles offering diverse experiences across health, NDIS, and rehabilitation services, supporting meaningful patient outcomes."
           },
+        
+        ],
+      },
+       {
+        heading: "",
+        links: [
+         
           {
             label: "Podiatrist",
             href: "/permanent/podiatrist-jobs/in-australia?page=1",
@@ -369,26 +381,28 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
           },
         ],
       },
+      
+      
 
     ],
-    explore: {
-      heading: "Explore More",
-      links: [
-       { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
-        { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
-        { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
-        { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
-        { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
-        { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
-        { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
-        { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
+    // explore: {
+    //   heading: "Explore More",
+    //   links: [
+    //    { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
+    //     { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
+    //     { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
+    //     { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
+    //     { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
+    //     { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+    //     { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
+    //     { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
 
-        { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
+    //     { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
 
-        { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
+    //     { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
 
-      ],
-    },
+    //   ],
+    // },
   },
   mental: {
     title: "Mental Health",
@@ -429,24 +443,24 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
       //   ],
       // },
     ],
-    explore: {
-      heading: "Explore More",
-      links: [
-        { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
-        { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
-        { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
-        { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
-        { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
-        { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
-        { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
-        { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
+    // explore: {
+    //   heading: "Explore More",
+    //   links: [
+    //     { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
+    //     { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
+    //     { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
+    //     { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
+    //     { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
+    //     { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+    //     { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
+    //     { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
 
-        { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
+    //     { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
 
-        { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
+    //     { label: "Geelong, Victoria", href: "/permanent/jobs/in-geelong?page=1" },
 
-      ],
-    },
+    //   ],
+    // },
   },
   oral: {
     title: "Oral Health",
@@ -478,6 +492,13 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore General Dentist opportunities to provide comprehensive dental care, including preventive, restorative, and patient-focused treatments in clinical settings.",
           },
+        
+        ],
+      },
+        {
+        heading: "",
+        links: [
+         
           {
             label: "Oral Hygienist",
             href: "/permanent/oral-hygienist-jobs/in-australia?page=1",
@@ -487,23 +508,23 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         ],
       },
     ],
-    explore: {
-      heading: "Explore More",
-      links: [
-      { label: "Sydney, New South Wales", href: "/" },
-        { label: "Melbourne, Victoria", href: "/" },
-        { label: "Brisbane, Queensland", href: "/" },
-        { label: "Perth, Western Australia", href: "/" },
-        { label: "Adelaide, South Australia", href: "/" },
-        { label: "Gold Coast, Queensland", href: "/" },
-        { label: "Canberra, Australian Capital Territory", href: "/" },
-        { label: "Hobart, Tasmania", href: "/" },
+    // explore: {
+    //   heading: "Explore More",
+    //   links: [
+    //   { label: "Sydney, New South Wales", href: "/" },
+    //     { label: "Melbourne, Victoria", href: "/" },
+    //     { label: "Brisbane, Queensland", href: "/" },
+    //     { label: "Perth, Western Australia", href: "/" },
+    //     { label: "Adelaide, South Australia", href: "/" },
+    //     { label: "Gold Coast, Queensland", href: "/" },
+    //     { label: "Canberra, Australian Capital Territory", href: "/" },
+    //     { label: "Hobart, Tasmania", href: "/" },
 
-        { label: "Wollongong, New South Wales", href: "/" },
+    //     { label: "Wollongong, New South Wales", href: "/" },
 
-        { label: "Geelong, Victoria", href: "/" },
-      ],
-    },
+    //     { label: "Geelong, Victoria", href: "/" },
+    //   ],
+    // },
   },
   candidates: {
     title: "Candidates",

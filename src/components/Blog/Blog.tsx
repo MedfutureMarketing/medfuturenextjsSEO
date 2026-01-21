@@ -74,25 +74,36 @@ export default function BlogSection() {
   return (
     <section className="py-16 mb-[180px]">
       <div className="inner-width-section max-w-7xl mx-auto space-y-16">
+        
+        {/* Section Header */}
+        <div>
+          <p className="text-[#074CA4] text-[14px] font-semibold mb-[5px]">Blogs</p>
+          <h2 className="text-4xl font-bold text-[#0F172A] mb-[30px]">
+            Insights for Your Healthcare Career
+          </h2>
+          <p className="text-[#4A5565] text-[16px] max-w-2xl">
+            Expert articles, industry updates, and practical guidance to support informed career and hiring decisions.
+          </p>
+        </div>
 
         {mainDetails && (
           <div
-            className="relative w-full h-[385px] cursor-pointer"
+            className="relative w-full h-[385px]  cursor-pointer"
             onClick={() => handleNavigateToBlog(mainBlog.id)}
           >
             <Image
               src={mainDetails.featured_image || "/placeholder.png"}
               alt={mainDetails.blog_title || "Blog"}
               fill
-              className="object-cover rounded-[4px]"
+              className="object-cover rounded-[8px]"
             />
 
-            <div className="absolute top-8 left-8 bg-white p-6 rounded-[4px] max-w-lg shadow-lg">
+            <div className="absolute top-8 left-8 bg-white p-6 mt-7 rounded-[4px] max-w-lg shadow-lg">
               <h3 className="text-[20px] font-bold text-[#000000] mb-[24px]">
                 {mainDetails.blog_title}
               </h3>
 
-              <p className="text-[#4A5565] text-[16px] mb-4">
+              <p className="text-[#4A5565] text-[16px] mb-[30px]">
                 {truncate(
                   sanitizeText(mainDetails.blog_description || ""),
                   30
@@ -120,31 +131,23 @@ export default function BlogSection() {
               return (
                 <div
                   key={blog.id}
-                  className="relative h-[184px] cursor-pointer"
+                  className="bg-white p-6 rounded-[4px] cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
                   onClick={() => handleNavigateToBlog(blog.id)}
+                  style={{boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"}}
                 >
-                  <Image
-                    src={details.featured_image || "/placeholder.png"}
-                    alt={details.blog_title || "Blog"}
-                    fill
-                    className="object-cover rounded-[4px]"
-                  />
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {details.blog_title}
+                  </h3>
 
-                  <div className="absolute -bottom-36 left-1/3 transform -translate-x-1/2 bg-white p-6 rounded-[4px] w-[80%]">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      {details.blog_title}
-                    </h3>
+                  <p className="text-gray-700 text-sm mb-4">
+                    {truncate(
+                      sanitizeText(details.blog_description || "")
+                    )}
+                  </p>
 
-                    <p className="text-gray-700 text-xs mb-4">
-                      {truncate(
-                        sanitizeText(details.blog_description || "")
-                      )}
-                    </p>
-
-                    <p className="text-gray-400 text-xs">
-                      {blog.published_date} • {minutes} min read
-                    </p>
-                  </div>
+                  <p className="text-gray-400 text-xs">
+                    {blog.published_date} • {minutes} min read
+                  </p>
                 </div>
               );
             })}
@@ -160,31 +163,23 @@ export default function BlogSection() {
               return (
                 <div
                   key={blog.id}
-                  className="relative flex-shrink-0 w-[280px] h-[250px] cursor-pointer"
+                  className="flex-shrink-0 w-[280px] bg-white p-4 rounded-[4px] cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
                   onClick={() => handleNavigateToBlog(blog.id)}
+                  style={{boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"}}
                 >
-                  <Image
-                    src={details.featured_image || "/placeholder.png"}
-                    alt={details.blog_title || "Blog"}
-                    fill
-                    className="object-cover rounded-[4px]"
-                  />
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">
+                    {details.blog_title}
+                  </h3>
 
-                  <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-[4px] shadow-lg w-[90%]">
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                      {details.blog_title}
-                    </h3>
+                  <p className="text-gray-700 text-sm mb-2">
+                    {truncate(
+                      sanitizeText(details.blog_description || "")
+                    )}
+                  </p>
 
-                    <p className="text-gray-700 text-sm mb-2">
-                      {truncate(
-                        sanitizeText(details.blog_description || "")
-                      )}
-                    </p>
-
-                    <p className="text-gray-400 text-xs">
-                      {blog.published_date} • {minutes} min read
-                    </p>
-                  </div>
+                  <p className="text-gray-400 text-xs">
+                    {blog.published_date} • {minutes} min read
+                  </p>
                 </div>
               );
             })}

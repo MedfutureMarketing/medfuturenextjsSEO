@@ -46,6 +46,9 @@ type Job = {
     location: { name: string } | null;
     region: { name: string } | null;
     engagement_mode: { name: string } | null;
+    first_contact_person_name: string;
+    first_contact_number: string;
+    email: string;
 };
 
 // Map highlight labels to icons
@@ -207,15 +210,15 @@ export default function LocumJobDescription() {
                             </h4>
                             <div className="grid grid-cols-2 gap-0 lg:gap-[1px]">
                                 <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant:</h3>
-                                <span className="text-[#4A5565] lg:text-[16px] text-[13px]">Gaya</span>
+                                <span className="text-[#4A5565] lg:text-[16px] text-[13px]">{job?.first_contact_person_name}</span>
                             </div>
                             <div className="grid grid-cols-2 ">
                                 <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number:</h3>
-                                <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">0452 468 515 or 02 6188 5739</a>
+                                <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">{job?.first_contact_number}</a>
                             </div>
                             <div className="grid grid-cols-2">
                                 <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
-                                <a href="mailto:locum@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">locum@medfuture.com.au</a>
+                                <a href="mailto:locum@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">{job?.email}</a>
                             </div>
                             <div className="grid grid-cols-2 ">
                                 <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries:</h3>

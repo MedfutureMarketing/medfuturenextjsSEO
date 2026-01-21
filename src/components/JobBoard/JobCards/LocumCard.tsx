@@ -13,6 +13,7 @@ type Job = {
   job_id: number;
   job_title: string;
   commencement_date: string;
+  region: { name: string } | null;
 };
 
 type JobApiResponse = {
@@ -112,7 +113,6 @@ export default function LocumJobList() {
 
   useEffect(() => {
     router.replace(`${pathname}?page=${currentPage}`, { scroll: false });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentPage, pathname, router]);
 
   /* ===================== RESET PAGE ===================== */
@@ -289,66 +289,70 @@ export default function LocumJobList() {
       </div>
 
       {/* ===================== DESKTOP JOB LIST ===================== */}
-      <div className="space-y-4 hidden  lg:block">
-        {jobs.map((job) => (
-          <div
-            key={job.job_id}
-            onClick={() =>
-              router.push(`?jobId=${job.job_id}&page=${currentPage}`)
-            }
-            className={`border-1-2 cursor-pointer  rounded-lg p-4  h-[135px] transition-all
-              ${selectedJobId === String(job.job_id) ? "bg-[#040D48] text-white shadow-none border-none " : " bg-[#F5F7FB]  text-[#0F172A] border border-[#E6EDF7]"}`}
-          >
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xs text-[#4A5565] ">
-                {job.job_id}
-              </span>
+      <div className="hidden lg:block max-h-screen overflow-y-auto scrollbar-hide">
+        <div className="space-y-4 pr-2">
+          {jobs.map((job) => (
+            <div
+              key={job.job_id}
+              onClick={() =>
+                router.push(`?jobId=${job.job_id}&page=${currentPage}`)
+              }
+              className={`border-1-2 cursor-pointer rounded-lg p-4  transition-all flex-shrink-0
+                ${selectedJobId === String(job.job_id) ? "border-2 text-[#0F172A] border-gray-200" : " bg-[#F5F7FB]  text-[#0F172A] border border-[#E6EDF7]"}`}
+            >
+              <div className="flex justify-between items-center mb-[4px]">
+                <span className="text-xs text-[#4A5565] ">
+                  {job.job_id}
+                </span>
 
-              <span className="text-xs ">
-                {timeFromNow(job.commencement_date)}
-              </span>
-            </div>
+                <span className="text-xs ">
+                  {timeFromNow(job.commencement_date)}
+                </span>
+              </div>
 
-            <div className="flex justify-between mb-4">
-              <h3 className="font-semibold text-[16px] ">
-                {job.job_title}
-              </h3>
-            </div>
+              <div className="flex justify-between mb-[24px]">
+                <h3 className="font-semibold text-[16px] ">
+                  {job.job_title}
+                </h3>
+              </div>
 
-            <div className="flex justify-between mb-2">
-              <span className="text-xs text-[#4A5565]">
-                Location
-              </span>
+              <div className="flex justify-between mb-2">
+                <span className="text-xs text-[#4A5565]">
+                  {job.region?.name}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* ===================== MOBILE JOB LIST ===================== */}
-      <div className="space-y-4 block lg:hidden">
-        {jobs.map((job) => (
-          <div
-            key={job.job_id}
-            onClick={() => router.push(`/locum/job/${job.job_id}`)}
-            className="border-1-2 cursor-pointer bg-[#F5F7FB] border-[#E6EDF7] rounded-lg p-4 shadow-sm h-[135px] transition-all active:bg-gray-100"
-          >
-            <div className="flex justify-between items-center mb-4">
-              <span className="text-xs text-gray-500">
-                {job.job_id}
-              </span>
+      <div className="block lg:hidden max-h-[500px] overflow-y-auto scrollbar-hide">
+        <div className="space-y-4 pr-2">
+          {jobs.map((job) => (
+            <div
+              key={job.job_id}
+              onClick={() => router.push(`/locum/job/${job.job_id}`)}
+              className="border-1-2 cursor-pointer bg-[#F5F7FB] border-[#E6EDF7] rounded-lg p-4 shadow-sm h-[135px] transition-all active:bg-gray-100 flex-shrink-0"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-xs text-gray-500">
+                  {job.job_id}
+                </span>
 
-              <span className="text-xs text-gray-500">
-                {timeFromNow(job.commencement_date)}
-              </span>
-            </div>
+                <span className="text-xs text-gray-500">
+                  {timeFromNow(job.commencement_date)}
+                </span>
+              </div>
 
-            <div className="flex justify-between mb-2">
-              <h3 className="font-semibold text-[#0E2851]">
-                {job.job_title}
-              </h3>
+              <div className="flex justify-between mb-2">
+                <h3 className="font-semibold text-[#0E2851]">
+                  {job.job_title}
+                </h3>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {/* ===================== PAGINATION ===================== */}
@@ -411,6 +415,16 @@ export default function LocumJobList() {
           </button>
         </div>
       )}
+
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </div>
   );
 }

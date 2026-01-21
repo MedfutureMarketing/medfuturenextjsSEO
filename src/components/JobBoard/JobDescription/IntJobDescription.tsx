@@ -31,6 +31,10 @@ type Job = {
   required_qualification_exp: string | null;
   offer_details: string | null;
   highlights: JobHighlight[];
+  first_contact_person_name: string;
+  first_contact_number: string;
+  email: string;
+  hourly_fee: string
 };
 
 export default function JobDescription() {
@@ -70,11 +74,32 @@ export default function JobDescription() {
     return (
       <div className="hidden md:flex h-full items-center justify-center p-8">
         <div className="text-center max-w-md">
+          <div className="mb-6 relative inline-block">
+            <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center">
+              <svg
+                className="w-12 h-12 text-blue-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+            </div>
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
+            <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+          </div>
+
           <h3 className="text-2xl font-bold text-gray-800 mb-3">
             Select a Job to View Details
           </h3>
+
           <p className="text-gray-500 mb-6 leading-relaxed">
-            Browse through the available positions on the left and click on any job card to see the full details.
+            Browse through the available positions on the left and click on any job card to see the full details, requirements, and application information.
           </p>
         </div>
       </div>
@@ -122,7 +147,7 @@ export default function JobDescription() {
       <div className="flex items-center gap-3 mt-[24px] mb-[20px] lg:px-[44px] px-[25px]">
         <span className="text-[#0F172A] lg:text-[16px]"><Image src={Permenentico} alt="Permanent" className=" mr-0 inline-block" /> International</span>
         <span className="text-[#0F172A] lg:text-[16px]"><Image src={Doctorico} alt="Permanent" className=" mr-0 inline-block" />{job.profession?.name}</span>
-        <span className="text-[#0F172A] lg:text-[16px]"><Image src={Moneyico} alt="Permanent" className=" mr-0 inline-block" />{job.engagement_type?.name}</span>
+        <span className="text-[#0F172A] lg:text-[16px]"><Image src={Moneyico} alt="Permanent" className=" mr-0 inline-block" />{job?.hourly_fee}</span>
         <span className="text-[#0F172A] lg:text-[16px]"><Image src={Timeico} alt="Permanent" className=" mr-0 inline-block" />
           {/* {job.state?.name}, {job.country?.name} */}
           {job.engagement_type?.name}
@@ -160,15 +185,15 @@ export default function JobDescription() {
         </h4>
         <div className="grid grid-cols-[1fr_2fr] gap-0 lg:gap-[1px]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant:</h3>
-          <span className="text-[#4A5565] lg:text-[16px] text-[13px]">Gaya</span>
+          <span className="text-[#4A5565] lg:text-[16px] text-[13px]">{job.first_contact_person_name}</span>
         </div>
         <div className="grid grid-cols-[1fr_2fr]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number:</h3>
-          <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">0452 468 515</a>
+          <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">{job.first_contact_number}</a>
         </div>
         <div className="grid grid-cols-[1fr_2fr]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
-          <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">gprecruitment@medfuture.com.au</a>
+          <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">{job.email}</a>
         </div>
         <div className="grid grid-cols-[1fr_2fr]">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries:</h3>
