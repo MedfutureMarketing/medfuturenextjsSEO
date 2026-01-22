@@ -34,23 +34,43 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
       {
         heading: "",
         links: [
+
           {
-            label: "About us",
-            href: "/about-us",
+            label: "Medical Job is New Zealand",
+            href: "https://medfuture.co.nz/",
             icon: "",
-            description: "Discover who we are and what drives us. Medfuture Global is committed to empowering healthcare professionals and providing innovative global solutions",
+            description: "Medfuture New Zealand connects healthcare professionals with opportunities across New Zealand, offering guidance, recruitment, and career support for international and local talent.",
           },
-        
+          {
+            label: "Blogs",
+            href: "https://themedfuture.com/blog",
+            icon: "",
+            description: "Stay updated with our latest insights, news, and expert articles. Discover tips, trends, and stories that help you stay informed",
+          },
+
+        ],
+      },
+      {
+        heading: "",
+        links: [
+          // {
+          //   label: "About us",
+          //   href: "/about-us",
+          //   icon: "",
+          //   description: "Discover who we are and what drives us. Medfuture Global is committed to empowering healthcare professionals and providing innovative global solutions",
+          // },
+
           {
             label: "Medfuture Global",
             href: "https://themedfuture.com/blog",
             icon: "",
             description: "Explore Permanent Job Openings in South Australia (SA)",
           },
-         
+           
+
         ],
       },
-       {
+      {
         heading: "",
         links: [
           {
@@ -59,32 +79,15 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Get expert guidance on visa applications, immigration processes, and residency options. We simplify complex procedures to help you move with confidence",
           },
-          {
-            label: "Blogs",
-            href: "https://themedfuture.com/blog",
-            icon: "",
-            description: "Stay updated with our latest insights, news, and expert articles. Discover tips, trends, and stories that help you stay informed",
-          },
          
-         
+
+
         ],
       },
-        {
-        heading: "",
-        links: [
-        
-          {
-            label: "Medfuture New Zealand",
-            href: "https://medfuture.co.nz/",
-            icon: "",
-            description: "edfuture New Zealand connects healthcare professionals with opportunities across New Zealand, offering guidance, recruitment, and career support for international and local talent.",
-          },
-         
-        ],
-      },
-     
+
+
     ],
-    
+
     // explore: {
     //   heading: "Browse Jobs by Key Cities",
     //   links: [
@@ -176,7 +179,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
         { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
         { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
-        { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+        { label: "Gold Coast, Queensland", href: "/permanent/jobs/in-gold-coast?page=1" },
         { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
         { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
         { label: "Wollongong, New South Wales", href: "/permanent/jobs/in-south-western-sydney?page=1" },
@@ -186,7 +189,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
       ],
     },
   },
-   
+
   locum: {
     title: "Locum Jobs",
     titleHref: "/locum",
@@ -253,12 +256,12 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     explore: {
       heading: "Browse Jobs by Key Cities",
       links: [
-       { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
+        { label: "Sydney, New South Wales", href: "/permanent/jobs/in-western-sydney?page=1" },
         { label: "Melbourne, Victoria", href: "/permanent/jobs/in-south-eastern-melbourne?page=1" },
         { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
         { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
         { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
-        { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+        { label: "Gold Coast, Queensland", href: "/permanent/jobs/in-gold-coast?page=1" },
         { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
         { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
 
@@ -280,7 +283,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         links: [
           {
             label: "Specialist General Practitioner (FRACGP & FRCRRM)",
-            href: "/permanent/gp-specialist-jobs/in-australia?page=1",
+            href: "/permanent/general-practitioner-jobs/in-australia?page=1",
             icon: "",
             description: "Explore exciting opportunities for Specialist General Practitioners (FRACGP & FACRRM).",
           },
@@ -301,13 +304,13 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore International Family Medicine specialist pathway opportunities.",
           },
-         
+
         ],
       },
-       {
+      {
         heading: "",
         links: [
-         
+
           {
             label: "Locum GP (Short Term or Ongoing Cover)",
             href: "/international/general-practitioner-jobs/in-australia?page=1",
@@ -366,13 +369,13 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore Occupational Therapist roles offering diverse experiences across health, NDIS, and rehabilitation services, supporting meaningful patient outcomes."
           },
-        
+
         ],
       },
-       {
+      {
         heading: "",
         links: [
-         
+
           {
             label: "Podiatrist",
             href: "/permanent/podiatrist-jobs/in-australia?page=1",
@@ -381,8 +384,8 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
           },
         ],
       },
-      
-      
+
+
 
     ],
     // explore: {
@@ -492,13 +495,13 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore General Dentist opportunities to provide comprehensive dental care, including preventive, restorative, and patient-focused treatments in clinical settings.",
           },
-        
+
         ],
       },
-        {
+      {
         heading: "",
         links: [
-         
+
           {
             label: "Oral Hygienist",
             href: "/permanent/oral-hygienist-jobs/in-australia?page=1",
@@ -593,7 +596,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         { label: "Brisbane, Queensland", href: "/permanent/jobs/in-brisbane-south?page=1" },
         { label: "Perth, Western Australia", href: "/permanent/jobs/in-south-perth?page=1" },
         { label: "Adelaide, South Australia", href: "/permanent/jobs/in-adelaide?page=1" },
-        { label: "Gold Coast, Queensland", href:"/permanent/jobs/in-gold-coast?page=1" },
+        { label: "Gold Coast, Queensland", href: "/permanent/jobs/in-gold-coast?page=1" },
         { label: "Canberra, Australian Capital Territory", href: "/permanent/jobs/in-canberra?page=1" },
         { label: "Hobart, Tasmania", href: "/permanent/jobs/in-hobart?page=1" },
 

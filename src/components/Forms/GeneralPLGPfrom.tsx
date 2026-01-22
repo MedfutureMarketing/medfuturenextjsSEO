@@ -84,10 +84,10 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
 
   const [touched, setTouched] = useState(false);
 
-    const [professions, setProfessions] = useState<Profession[]>([]);
-    const [specialties, setSpecialties] = useState<Specialty[]>([]);
-    const [states, setStates] = useState<State[]>([]);
-    const [regions, setRegions] = useState<Region[]>([]);
+  const [professions, setProfessions] = useState<Profession[]>([]);
+  const [specialties, setSpecialties] = useState<Specialty[]>([]);
+  const [states, setStates] = useState<State[]>([]);
+  const [regions, setRegions] = useState<Region[]>([]);
 
 
   useEffect(() => {
@@ -113,7 +113,7 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
       .then((res) => {
         const specs =
           res?.data?.[0]?.specilities ||
-          res?.data?.specilities || 
+          res?.data?.specilities ||
           [];
 
         setSpecialties(specs);
@@ -126,20 +126,20 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
 
 
   useEffect(() => {
-  if (formData.state) {
-    fetch(`${API_BASE_URL}/web/states/${formData.state}/regions`)
-      .then((res) => res.json())
-      .then((data: { data?: { regions?: Region[] } }) =>
-            setRegions(data.data?.regions || [])
+    if (formData.state) {
+      fetch(`${API_BASE_URL}/web/states/${formData.state}/regions`)
+        .then((res) => res.json())
+        .then((data: { data?: { regions?: Region[] } }) =>
+          setRegions(data.data?.regions || [])
         )
-      .catch((err) => {
-        console.error("Error fetching regions:", err);
-        setRegions([]);
-      });
-  } else {
-    setRegions([]);
-  }
-}, [formData.state]);
+        .catch((err) => {
+          console.error("Error fetching regions:", err);
+          setRegions([]);
+        });
+    } else {
+      setRegions([]);
+    }
+  }, [formData.state]);
 
 
   const handleChange = (
@@ -205,15 +205,15 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
       email: !formData.email
         ? "Please enter your email address"
         : !verifyEmailFormat(formData.email)
-        ? "Please enter a valid email address"
-        : "",
+          ? "Please enter a valid email address"
+          : "",
       mobile: !formData.mobile ? "Please enter your phone number" : "",
       profession: !formData.profession ? "Please select your profession" : "",
       cv: !uploadedFile ? "Please upload your CV" : "",
       endDate:
         formData.startDate &&
-        formData.endDate &&
-        new Date(formData.endDate) < new Date(formData.startDate)
+          formData.endDate &&
+          new Date(formData.endDate) < new Date(formData.startDate)
           ? "End date must be after start date"
           : "",
     };
@@ -411,11 +411,10 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
 
         {notification.show && (
           <div
-            className={`mb-4 p-4 rounded-lg ${
-              notification.type === "success"
+            className={`mb-4 p-4 rounded-lg ${notification.type === "success"
                 ? "bg-green-100 text-green-700"
                 : "bg-red-100 text-red-700"
-            }`}
+              }`}
           >
             <h4 className="font-semibold">{notification.title}</h4>
             <p>{notification.message}</p>
@@ -532,9 +531,9 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
               >
                 <option value="">Select State</option>
                 {states.map((state: State) => (
-                    <option key={state.state_id} value={state.state_id}>
-                        {state.name}
-                    </option>
+                  <option key={state.state_id} value={state.state_id}>
+                    {state.name}
+                  </option>
                 ))}
               </select>
             </div>
@@ -695,27 +694,64 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
               </select>
             </div>
 
-            <div className="flex flex-col">
-              <label className="text-xs lg:text-[14px] font-[500] text-gray-700 mb-1">
+            <div className="flex flex-col gap-1">
+              <label className="text-xs lg:text-sm font-medium text-gray-700">
                 Upload CV <span className="text-red-500">*</span>
               </label>
-              <input
-                type="file"
-                onChange={handleFileChange}
-                accept=".pdf,.doc,.docx"
-                className="input h-10 lg:h-[56px] px-4 border text-xs lg:text-[14px] border-gray-200 rounded-[4px] text-gray-500"
-              />
+
+              {/* Upload Box */}
+              <div className="relative">
+                <input
+                  type="file"
+                  onChange={handleFileChange}
+                  accept=".pdf,.doc,.docx"
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+
+                <div className="flex items-center justify-between h-10 lg:h-[56px] px-4
+                        border border-dashed border-gray-300 rounded-md
+                        bg-gray-50 hover:bg-gray-100 transition">
+                  <span className="text-xs lg:text-sm text-gray-500">
+                    {uploadedFile ? uploadedFile.name : "Click to upload your CV"}
+                  </span>
+
+                  {/* Upload Icon */}
+                  <svg
+                    className="w-4 h-4 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M12 12V4m0 0l-4 4m4-4l4 4"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              {/* Success Message */}
               {uploadedFile && (
-                <span className="text-green-600 text-xs mt-1">
-                  {uploadedFile.name}
+                <span className="text-green-600 text-xs flex items-center gap-1 mt-1">
+                  ✅ {uploadedFile.name}
                 </span>
               )}
+
+              {/* Error Message */}
               {formErrors.cv && touched && (
                 <span className="text-red-500 text-xs mt-1">
                   {formErrors.cv}
                 </span>
               )}
+
+              {/* Helper Text */}
+              <span className="text-[11px] text-gray-400">
+                Accepted formats: PDF, DOC, DOCX
+              </span>
             </div>
+
 
             <div className="flex flex-col">
               <label className="text-xs lg:text-[14px] font-[500] text-gray-700 mb-1">
@@ -746,11 +782,11 @@ export default function LocumPLGP({ onSuccess }: AvailabilityAndPreference) {
               />
               <label className="text-xs lg:text-sm text-gray-600">
                 I agree to the{" "}
-                <a href="#" className="text-blue-600 underline">
+                <a href="/terms-and-conditions" className="text-blue-600 underline">
                   Terms & Conditions
                 </a>{" "}
                 and{" "}
-                <a href="#" className="text-blue-600 underline">
+                <a href="/privacy-policy" className="text-blue-600 underline">
                   Privacy Policy
                 </a>
               </label>

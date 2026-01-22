@@ -1,6 +1,7 @@
 "use client";
 
 import JobSeekerForm from "@/components/Forms/JobSeekerandEmployerform/JobSeekerFrom";
+import Link from "next/link";
 
 export default function CTAJobseeker() {
   return (
@@ -19,17 +20,17 @@ export default function CTAJobseeker() {
           </p>
 
           <div className="grid grid-cols-2 gap-4">
-            <button className="px-6 py-3 bg-white text-[#074CA4] rounded-lg font-medium cursor-pointer">
+            <Link href="/contact-us" className="px-6 py-3 bg-white text-[#074CA4] rounded-lg font-medium text-center cursor-pointer">
               Talk to a Consultant
-            </button>
+            </Link>
 
-            <button className="px-6 py-3 bg-white text-[#074CA4] rounded-lg font-medium cursor-pointer">
+            {/* <button className="px-6 py-3 bg-white text-[#074CA4] rounded-lg font-medium cursor-pointer">
               Upload a CV
-            </button>
+            </button> */}
 
-            <button className="px-6 py-3 bg-white text-[#074CA4] rounded-lg font-medium cursor-pointer col-span-2">
+            {/* <button className="px-6 py-3 bg-white text-[#074CA4] rounded-lg font-medium cursor-pointer col-span-2">
               Refer a Friend
-            </button>
+            </button> */}
           </div>
         </div>
 

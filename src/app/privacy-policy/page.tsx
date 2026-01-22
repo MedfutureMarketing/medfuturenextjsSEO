@@ -8,8 +8,8 @@ export default function Privay() {
      
 
       {/* Main Content */}
-      <main className="inner-width-section mx-auto px-6 py-16">
-        <div className="bg-white rounded-2xl p-10 shadow-sm border border-slate-100">
+      <main className="inner-width-section mx-auto  py-4">
+        <div className="bg-white rounded-2xl p-10 ">
           <h1 className="text-4xl font-bold text-slate-900 mb-6">Your privacy is important to Medfuture</h1>
           <div className="space-y-6 text-slate-700 leading-relaxed">
             <p>Your privacy is important to us. This statement outlines Medfuture policy on how we collect personal information and how we maintain, use, store and disclose the personal information we hold and reflects our commitment to you. It applies to all operations within Medfuture Medical & Healthcare Recruitment (Australia) Pty Limited ("Medfuture") in Australia, including visitors to our website.</p>
@@ -126,9 +126,7 @@ export default function Privay() {
           </div>
         </div>
       </main>
-
       {/* Footer */}
-    
     </div>
   );
 }

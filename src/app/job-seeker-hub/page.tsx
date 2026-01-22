@@ -11,6 +11,12 @@ import MeetOurConsultants from "@/components/Home/MeetConsultants";
 import CTAJobseeker from "@/components/JobseekerLandingpage/CTAJobseeker";
 import BlogSection from "@/components/Blog/Blog";
 
+import { getPageMetadata } from "@/lib/getPageMetadata";
+
+import { Metadata } from "next";
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("jobseeker");
+}
 export default function JobSeeker() {
   return (
     <main className=" bg-white">
@@ -25,7 +31,7 @@ export default function JobSeeker() {
       <FAQ />
       <JobSeekertesti />
       <MeetOurConsultants />
-      <CTAJobseeker />
+    <section id="upload-cv"><CTAJobseeker /></section>  
       <BlogSection />
     </main>
   );

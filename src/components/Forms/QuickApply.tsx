@@ -530,7 +530,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               required
               disabled={lockedProfessionId !== null}
               className={`${inputClasses} ${formErrors.profession ? 'border-red-300' : ''
-                } ${lockedProfessionId !== null ? 'bg-gray-100 cursor-not-allowed' : ''}`}
+                } ${lockedProfessionId !== null ? 'bg-gray-100 cursor-not-allowed appearance-none' : ''}`}
             >
               <option value="">Select Profession</option>
               {professions.map(p => (
@@ -539,6 +539,21 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
                 </option>
               ))}
             </select>
+            {/* Custom arrow */}
+            <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+              <svg
+                className="h-7 w-7 text-gray-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
             <span className="asterisk_input"> </span>
             {formErrors.profession && (
               <div className="mt-1 text-xs px-2 text-red-600">{formErrors.profession}</div>
@@ -551,7 +566,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               value={formData.specialty}
               onChange={handleInputChange}
               required
-              className={`${inputClasses} ${formErrors.specialty ? 'border-red-300' : ''}`}
+              className={`${inputClasses} ${formErrors.specialty ? 'border-red-300 ' : 'appearance-none'}`}
               disabled={!formData.profession}
             >
               <option value="">Select Specialty</option>
@@ -560,7 +575,21 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
                   {s.name}
                 </option>
               ))}
-            </select>
+            </select>{/* Custom arrow */}
+            <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+              <svg
+                className="h-7 w-7 text-gray-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
             <span className="asterisk_input"> </span>
             {formErrors.specialty && (
               <div className="mt-1 text-xs px-2 text-red-600">{formErrors.specialty}</div>
@@ -600,7 +629,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               value={formData.jobSource}
               onChange={handleInputChange}
               required
-              className={`${inputClasses} ${formErrors.jobSource ? 'border-red-300' : ''}`}
+              className={`${inputClasses} ${formErrors.jobSource ? 'border-red-300' : 'appearance-none'}`}
             >
               <option value="">How did you hear about us?</option>
               <option value="google">Google</option>
@@ -611,7 +640,21 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               <option value="referral">Employee Referral</option>
               <option value="social-media">Social Media</option>
               <option value="other">Other</option>
-            </select>
+            </select>{/* Custom arrow */}
+            <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+              <svg
+                className="h-7 w-7 text-gray-500"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </div>
             <span className="asterisk_input"> </span>
             {formErrors.jobSource && (
               <div className="mt-1 text-xs px-2 text-red-600">{formErrors.jobSource}</div>

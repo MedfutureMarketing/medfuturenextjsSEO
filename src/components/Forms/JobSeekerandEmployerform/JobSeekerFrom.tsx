@@ -572,11 +572,11 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
               />
               <span>
                 I agree to the{" "}
-                <a href="/terms" className="underline text-[#040D48]">
+                <a href="/terms-and-conditions" className="underline text-[#040D48]">
                   Terms & Conditions
                 </a>{" "}
                 and{" "}
-                <a href="/privacy" className="underline text-[#040D48]">
+                <a href="/privacy-policy" className="underline text-[#040D48]">
                   Privacy Policy
                 </a>
               </span>
@@ -606,7 +606,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
 
       {/* Notification Popup */}
       {notification.show && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-white/20 flex items-center shadow-xl border-2 justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-md mx-4">
             <h3
               className={`text-xl font-bold mb-2 ${

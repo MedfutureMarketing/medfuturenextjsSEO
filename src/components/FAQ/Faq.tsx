@@ -12,14 +12,28 @@ interface FAQData {
 }
 
 const faqData: FAQData = {
-  "/job-seeker-hub": [
-    { question: "How do I apply for a job through Medfuture?", answer: "Register on our website and our team will match you to opportunities based on your skills and preferences." },
-    { question: "How do I apply for a job through Medfuture?", answer: "Register on our website and our team will match you to opportunities based on your skills and preferences." },
-      { question: "How do I apply for a job through Medfuture?", answer: "Register on our website and our team will match you to opportunities based on your skills and preferences." },
-    { question: "How do I apply for a job through Medfuture?", answer: "Register on our website and our team will match you to opportunities based on your skills and preferences." },
-    { question: "How do I apply for a job through Medfuture?", answer: "Register on our website and our team will match you to opportunities based on your skills and preferences." },
-
-  ],
+ "/job-seeker-hub": [
+  {
+    "question": "What types of healthcare professionals does Medfuture recruit?",
+    "answer": "Medfuture recruits across a broad range of medical and healthcare disciplines, including General Practitioners, Allied Health Professionals, Dentists, Psychologists, Nurses, and Health Executives. We support both primary care and specialist healthcare settings across Australia and New Zealand."
+  },
+  {
+    "question": "Does Medfuture offer both permanent and locum recruitment solutions?",
+    "answer": "Yes. Medfuture provides permanent placements, short-term and long-term locum staffing, and tailored workforce solutions. This flexibility allows employers to manage staffing shortages, planned leave, service expansion, or long-term growth with confidence."
+  },
+  {
+    "question": "How does Medfuture ensure the quality of candidates?",
+    "answer": "All candidates undergo a comprehensive screening process, including qualification verification, AHPRA registration checks (where applicable), experience assessment, and suitability for the specific role and location. Our consultants specialise in healthcare recruitment, ensuring only well-matched candidates are presented."
+  },
+  {
+    "question": "What makes Medfuture different from other medical recruitment agencies?",
+    "answer": "Medfuture combines deep healthcare industry knowledge, an extensive national talent network, and a consultative approach. Since 2014, we have successfully placed over 1,000 GPs across Australia, earning a strong reputation for reliability, compliance, and long-term employer satisfaction."
+  },
+  {
+    "question": "Can Medfuture help with hard-to-fill or regional roles?",
+    "answer": "Absolutely. Medfuture has extensive experience recruiting for regional, rural, and hard-to-fill positions across Australia. We actively source both local and internationally trained healthcare professionals and support them through the recruitment and onboarding process."
+  }
+],
   "/jobs/locum": [
     { question: "What is a locum position?", answer: "Locum positions are temporary jobs covering short-term staffing needs, often with flexible hours." },
     { question: "Are locum jobs full-time?", answer: "No, they are usually temporary or part-time, but can sometimes be full-time." },

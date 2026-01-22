@@ -1,3 +1,4 @@
+import Link from "next/dist/client/link";
 import React from "react";
 
 type Location = {
@@ -46,13 +47,13 @@ export default function LocationMap() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <button className="rounded-md bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-slate-700 transition">
+                               <Link href="/sign-up"> <button className="rounded-md cursor-pointer bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-slate-700 transition">
                                     Register as a Job Seeker
-                                </button>
+                                </button></Link>
 
-                                <button className="rounded-md bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-slate-700 transition">
+                                 <Link href="/sign-up">  <button className="rounded-md bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-slate-700 transition">
                                     Register as an Employer
-                                </button>
+                                </button></Link>
                             </div>
                         </div>
                     </div>

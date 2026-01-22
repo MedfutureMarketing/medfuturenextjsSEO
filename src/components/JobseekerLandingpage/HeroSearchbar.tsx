@@ -13,18 +13,18 @@ import Link from "next/link";
 import { apiGet } from "@/lib/api";
 
 type Profession = {
-  profession_id: number;
-  name: string;
+    profession_id: number;
+    name: string;
 };
 
 type Location = {
-  state_id: number;
-  name: string;
+    state_id: number;
+    name: string;
 };
 
 type JobSeekerHub = {
-  professions: Profession[];
-  locations: Location[];
+    professions: Profession[];
+    locations: Location[];
 };
 
 
@@ -34,17 +34,17 @@ export default function JobseekersearchHero() {
     const [profession, setProfession] = useState<string>("");
     const [location, setLocation] = useState<string>("");
     const [JobSeekerHub, setJobSeekerHub] = useState<JobSeekerHub | null>(null);
-    
-        useEffect(() => {
-            async function fetchJobSeekerHub() {
-                try {
-                const res = await apiGet< JobSeekerHub >(`web/job-seeker-hub-page/get-all`);
+
+    useEffect(() => {
+        async function fetchJobSeekerHub() {
+            try {
+                const res = await apiGet<JobSeekerHub>(`web/job-seeker-hub-page/get-all`);
                 setJobSeekerHub(res);
-                } catch {
-                }
+            } catch {
             }
-            fetchJobSeekerHub();
-        }, []);
+        }
+        fetchJobSeekerHub();
+    }, []);
 
     const slugify = (value: string) =>
         value.toLowerCase().trim().replace(/\s+/g, "-");
@@ -80,34 +80,103 @@ export default function JobseekersearchHero() {
                         {/* SEARCH BAR */}
                         <div className="mt-6 flex flex-col sm:flex-row gap-4">
                             {/* Profession */}
-                            <select
+                            {/* <select
                                 value={profession}
                                 onChange={(e) => setProfession(e.target.value)}
                                 className="w-full sm:w-[240px] px-4 py-3 bg-white text-sm text-gray-700 rounded cursor-pointer"
-                                >
+                            >
                                 <option value="">Select Profession</option>
 
                                 {JobSeekerHub?.professions.map((item) => (
                                     <option key={item.profession_id} value={item.name}>
-                                    {item.name}
+                                        {item.name}
                                     </option>
                                 ))}
-                            </select>
+                            </select> */}
+                            <div className="relative w-full sm:w-[240px]">
+    <select
+        value={profession}
+        onChange={(e) => setProfession(e.target.value)}
+        className="w-full px-4 py-3 pr-10 bg-white text-sm text-gray-700 rounded cursor-pointer
+                   appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+        <option value="">Select Profession</option>
+
+        {JobSeekerHub?.professions.map((item) => (
+            <option key={item.profession_id} value={item.name}>
+                {item.name}
+            </option>
+        ))}
+    </select>
+
+    {/* Dropdown Icon */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+        <svg
+            className="w-4 h-4 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+            />
+        </svg>
+    </div>
+</div>
+
 
                             {/* Location */}
-                            <select
+                            {/* <select
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
                                 className="w-full sm:w-[240px] px-4 py-3 bg-white text-sm text-gray-700 rounded cursor-pointer"
-                                >
+                            >
                                 <option value="">Select Location</option>
 
                                 {JobSeekerHub?.locations.map((item) => (
                                     <option key={item.state_id} value={item.name}>
-                                    {item.name}
+                                        {item.name}
                                     </option>
                                 ))}
-                            </select>
+                            </select> */}
+                            <div className="relative w-full sm:w-[240px]">
+    <select
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        className="w-full px-4 py-3 pr-10 bg-white text-sm text-gray-700 rounded cursor-pointer
+                   appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+        <option value="">Select Location</option>
+
+        {JobSeekerHub?.locations.map((item) => (
+            <option key={item.state_id} value={item.name}>
+                {item.name}
+            </option>
+        ))}
+    </select>
+
+    {/* Dropdown Arrow */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+        <svg
+            className="w-4 h-4 text-gray-500"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+        >
+            <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+            />
+        </svg>
+    </div>
+</div>
+
 
                             {/* Search Button */}
                             <button
@@ -121,19 +190,25 @@ export default function JobseekersearchHero() {
 
                         {/* CTA BUTTONS */}
                         <div className="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start">
-                            <Link href="/permanent/general-practitioner-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > GP Locum Jobs </Link>
+                            <Link href="/permanent/general-practitioner-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > GP Jobs </Link>
                             <Link href="/permanent/allied-health-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Allied Health Jobs </Link>
                             <Link href="/permanent/psychology-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Psychologist Jobs </Link>
                             <Link href="/permanent/dentists-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Dentist Jobs </Link>
-
-
-
                         </div>
                         <div className="mt-9 mb-4 flex flex-wrap gap-3">
-                            <CTAButton icon={uploadCVIcon} text="Upload CV" />
-                            <CTAButton icon={registerIcon} text="Register as a Candidate" />
-                            <CTAButton icon={CallIcon} text="Talk to a Consultant" />
-                            <CTAButton icon={ReferIcon} text="Refer a Friend" />
+                            <CTAButton
+                                icon={uploadCVIcon}
+                                text="Upload CV"
+                                onClick={() => {
+                                    document
+                                        .getElementById("upload-cv")
+                                        ?.scrollIntoView({ behavior: "smooth" });
+                                }}
+                            />
+
+                            <Link href="/sign-up"> <CTAButton icon={registerIcon} text="Register as a Candidate" /></Link>
+                            <Link href="/contact-us"><CTAButton icon={CallIcon} text="Talk to a Consultant" /></Link>
+                            {/* <CTAButton icon={ReferIcon} text="Refer a Friend" /> */}
                         </div>
                     </div>
 
@@ -154,17 +229,24 @@ export default function JobseekersearchHero() {
 }
 
 /* CTA BUTTON COMPONENT */
+/* CTA BUTTON COMPONENT */
 function CTAButton({
     icon,
     text,
+    onClick,
 }: {
     icon: StaticImageData;
     text: string;
+    onClick?: () => void;
 }) {
     return (
-        <button className="flex items-center gap-2 bg-white/30 text-white px-4 py-3 rounded-lg hover:bg-blue-900 transition text-xs lg:text-[16px]">
+        <button
+            onClick={onClick}
+            className="flex items-center gap-2 cursor-pointer bg-white/30 text-white px-4 py-3 rounded-lg hover:bg-blue-900 transition text-xs lg:text-[16px]"
+        >
             <Image src={icon} alt={text} width={18} height={18} />
             {text}
         </button>
     );
 }
+
