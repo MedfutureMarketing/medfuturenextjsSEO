@@ -191,7 +191,7 @@ export default function JobseekersearchHero() {
                         {/* CTA BUTTONS */}
                         <div className="mt-6 flex flex-wrap gap-3 justify-center lg:justify-start">
                             <Link href="/permanent/general-practitioner-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > GP Jobs </Link>
-                            <Link href="/permanent/allied-health-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Allied Health Jobs </Link>
+                            <Link href="/permanent/ahp-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Allied Health Jobs </Link>
                             <Link href="/permanent/psychology-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Psychologist Jobs </Link>
                             <Link href="/permanent/dentists-jobs/australia?page=1" className="px-4 py-1 text-sm cursor-pointer bg-white/90 text-gray-700 lg:text-[16px] text-xs rounded-full" > Dentist Jobs </Link>
                         </div>

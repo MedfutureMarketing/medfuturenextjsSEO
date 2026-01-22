@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import MedfutureLogoDark from "@/assets/logo/medfuture-logo.webp";
 
 type MenuKey = "permanent" | "locum" | "international" | "candidates" |"medical" |"allied"|"mental" |"oral";
 
@@ -136,7 +138,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
       >
         {/* Header with Close Button */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white">
-          <h3 className="font-bold text-lg text-gray-900">Medfuture </h3>
+         <Image src={MedfutureLogoDark} alt="Medfuture logo" width={120} height={30} />
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600"

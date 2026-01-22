@@ -60,7 +60,7 @@ export default function UserJourneyBreadcrumb() {
         // Remove leading "In" from location if it exists (e.g., "in-australian-capital-territory")
         location = location?.replace(/^In\s+/, "").trim();
         
-        return `${profession} Jobs in ${location}`;
+        return `${profession} in ${location}`;
       }
       
       // Format: /[type]/[profession]

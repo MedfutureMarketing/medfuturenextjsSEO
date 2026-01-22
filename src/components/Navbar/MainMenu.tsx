@@ -164,16 +164,16 @@ export default function Menu() {
         >
           <div className="inner-width-section flex py-2 gap-10">
             {/* Left menu */}
-            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+            <li className="list-none font-medium cursor-pointer ">
               <MegaMenu menuKey="medical" />
             </li>
-            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+            <li className="list-none font-medium cursor-pointer ">
               <MegaMenu menuKey="allied" />
             </li>
-            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+            <li className="list-none font-medium cursor-pointer">
               <MegaMenu menuKey="mental" />
             </li>
-            <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+            <li className="list-none font-medium cursor-pointer ">
               <MegaMenu menuKey="oral" />
             </li>
 
