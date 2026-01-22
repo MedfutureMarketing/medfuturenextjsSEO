@@ -304,6 +304,16 @@ export default function JobCard() {
 
   return (
     <div>
+      <style>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+
       {/* ===================== JOB COUNT ===================== */}
       <div className="flex justify-end">
         <span className="text-right text-[#4A5565] text-[14px] mb-2">
@@ -312,7 +322,7 @@ export default function JobCard() {
       </div>
 
       {/* ===================== DESKTOP JOB LIST ===================== */}
-      <div className="space-y-4 hidden lg:block ">
+      <div className="space-y-4 hidden lg:block max-h-[1050px] overflow-y-auto hide-scrollbar">
         {jobs.map((job) => (
           <div
             key={job.job_id}
@@ -364,7 +374,7 @@ export default function JobCard() {
       </div>
 
       {/* ===================== MOBILE JOB LIST ===================== */}
-      <div className="space-y-4 block lg:hidden">
+      <div className="space-y-4 block lg:hidden max-h-[600px] overflow-y-auto hide-scrollbar">
         {jobs.map((job) => (
           <div
             key={job.job_id}

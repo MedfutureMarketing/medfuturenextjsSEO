@@ -390,7 +390,7 @@ const getTitleText = (pathname: string) => {
                 <div className="relative ">
                   <input
                     type="text"
-                    placeholder="Job Title or Key Words"
+                    placeholder="Job Title or Keywords"
                     className="w-full md:w-80 bg-white lg:h-14 h-12 px-5 rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={query}
                     onChange={(e) => {

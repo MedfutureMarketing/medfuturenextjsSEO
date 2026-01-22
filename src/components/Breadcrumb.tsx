@@ -220,10 +220,10 @@ export default function UserJourneyBreadcrumb() {
       />
 
       {/* Breadcrumb Navigation */}
-      <nav className={`flex lg:py-[13px] py-4 lg:px-1 px-4 full-width-section ${bgColor} transition-colors`}>
+      <nav className={`flex lg:py-[13px] py-4 lg:px-1  px-4 full-width-section ${bgColor} transition-colors`}>
         <ol className="flex items-center space-x-2 text-sm z-49 inner-width-section flex-wrap gap-2">
           {displayJourney.map((step, index) => (
-            <li key={`${step.href}-${step.timestamp}`} className="flex items-center">
+            <li key={`${step.href}-${step.timestamp}`} className="flex items-center lg:block hidden">
               {index > 0 && (
                 <span className={`mx-2 ${isWhiteBg ? "text-gray-400" : "text-white/40"}`}>
                   →
