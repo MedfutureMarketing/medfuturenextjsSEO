@@ -85,7 +85,8 @@ export default function Menu() {
                   alt="Medfuture logo"
                   width={180}
                   height={40}
-                  priority
+                  priority={false}
+                  loading="lazy"
                 />
               </Link>
 
@@ -128,7 +129,7 @@ export default function Menu() {
 
               <Link
                 href="/sign-up"
-                className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-md hover:bg-blue-700"
+                className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-[4px] hover:bg-blue-700"
               >
                 Sign Up
               </Link>
@@ -180,10 +181,10 @@ export default function Menu() {
             {/* Right menu */}
             <div className="ml-auto flex gap-8">
               <li className="list-none font-medium cursor-pointer hover:text-blue-600">
-             <Link href="/contact-us">  Contact Us</Link>  
+                <Link href="/contact-us">  Contact Us</Link>
               </li>
               <li className="list-none font-medium cursor-pointer hover:text-blue-600">
-            <MegaMenu menuKey="Explore" />
+                <MegaMenu menuKey="Explore" />
               </li>
             </div>
           </div>

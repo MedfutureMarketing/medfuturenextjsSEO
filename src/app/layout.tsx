@@ -6,6 +6,8 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Preloader from "@/components/Preloader"; 
 import { Inter } from 'next/font/google';
 import Footer from "@/components/Footer";
+import CookieConsentBanner from '@/components/CookieConsentBanner';
+
 
 
 const geistSans = Geist({
@@ -34,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     // <html lang="en" className={inter.className}>
-        <html lang="en"  >
+        <html lang="en-AU"  >
 
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -47,6 +49,7 @@ export default function RootLayout({
         
         {/* Breadcrumb under the menu */}
         <Breadcrumb />
+        <CookieConsentBanner />
         
         {/* Your main content */}
         {children}

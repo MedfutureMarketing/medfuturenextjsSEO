@@ -7,7 +7,7 @@ import JobBoardLayout from "@/components/JobBoard/IntJobBoardLayout";
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("permanent");
+  return getPageMetadata("international");
 }
 
 export default function AboutPage() {

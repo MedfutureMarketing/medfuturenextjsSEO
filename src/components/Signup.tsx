@@ -76,11 +76,6 @@ disabled
         <div className="p-8">
           {activeTab === "candidate" ? (
             <CandidateForm
-              formData={formData}
-              setShowEmailForm={setShowEmailForm}
-              showEmailForm={showEmailForm}
-              handleInputChange={handleInputChange}
-              handleSubmit={handleSubmit}
             />
           ) : (
             <EmployerForm

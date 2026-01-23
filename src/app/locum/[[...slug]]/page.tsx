@@ -7,7 +7,7 @@ import LocumJobBoardLayout from "@/components/JobBoard/LocumJobBoardLayout";
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("permanent");
+  return getPageMetadata("locum");
 }
 
 export default function AboutPage() {

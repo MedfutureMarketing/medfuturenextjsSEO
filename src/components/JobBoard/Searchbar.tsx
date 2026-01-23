@@ -351,13 +351,15 @@ const getTitleText = (pathname: string) => {
     <>
       <div className={`${getBackgroundColor(pathname)} full-width-section relative `}>
         {/* Left Corner Image */}
+        {/* Left Corner Image */}
         <div className="absolute left-0 z-0  lg:block hidden bottom-0 w-[182px] h-[182px] md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
           <Image
             src={cornerImages.left}
             alt="Decorative left corner"
             fill
             className="object-contain object-bottom-left"
-            priority
+            priority={false}
+            loading="lazy"
           />
         </div>
 
@@ -368,7 +370,8 @@ const getTitleText = (pathname: string) => {
             alt="Decorative right corner"
             fill
             className="object-contain object-bottom-right"
-            priority
+            priority={false}
+            loading="lazy"
           />
         </div>
 
