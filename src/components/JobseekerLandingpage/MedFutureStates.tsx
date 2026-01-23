@@ -26,7 +26,7 @@ export default function MedFutureStates() {
     <section className=" bg-[#F5F7FB] full-width-section py-10 bg-[#F5F7FB] mt-[154px] mb-[150px] lg:py-[78px] px-4 lg:px-20">
       <div className="inner-width-section">
         <h2 className="text-2xl lg:text-[36px] font-[500]  text-gray-900 mb-8 text-left">
-          MedFuture Across<span className="lg:text-[40px] text-2xl text-[#074CA4] font-[700]">  Australia</span>
+          Medfuture Across<span className="lg:text-[40px] text-2xl text-[#074CA4] font-[700]">  Australia</span>
         </h2>
 
         <div
