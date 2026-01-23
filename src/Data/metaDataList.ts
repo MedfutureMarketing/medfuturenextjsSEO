@@ -118,7 +118,7 @@ export const dynamicOverrides: Record<string, MetadataConfig> = {
         openGraph: {
             type: "website",
             locale: "en_US",
-            url: `${BASE_URL}/permanent/general-dentist-jobs/in-australian-capital-territory`,
+            url: `${BASE_URL}/permanent/general-dentist-jobs/in-australian-capital-territory/?page=1`,
             siteName: "Medfuture",
             title: "Special GP Job – Medfuture",
             description: "Apply for this exclusive GP role in Sydney with Medfuture.",
