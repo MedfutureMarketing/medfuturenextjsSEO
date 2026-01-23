@@ -23,8 +23,8 @@ export default function Footer() {
                         <ul className="space-y-2 text-gray-300 text-sm">
                             <li><Link href="/" className="hover:text-[#074CA4]">Talent Acquisition Solutions</Link></li>
                             <li><Link href="/about" className="hover:text-[#074CA4]">Submit a Vacancy</Link></li>
-                            <li><Link href="/jobs" className="hover:text-[#074CA4]">Employer Recourses</Link></li>
-                            <li><Link href="/contact" className="hover:text-[#074CA4]">Locum Candidate Calender</Link></li>
+                            <li><Link href="/jobs" className="hover:text-[#074CA4]">Employer Resources</Link></li>
+                            <li><Link href="/contact" className="hover:text-[#074CA4]">Locum Candidate Calendar </Link></li>
                         </ul>
                     </div>
 

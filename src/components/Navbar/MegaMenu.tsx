@@ -275,7 +275,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
   },
 
   medical: {
-    title: "Medical",
+    title: "General Practice",
     titleHref: "/",
     columns: [
       {
@@ -633,7 +633,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
         <button
           onMouseEnter={handleMouseEnter}
           onMouseLeave={() => setOpen(false)}
-          className=" hover:text-blue-600"
+          className=" hover:text-gray-400 cursor-pointer"
         >
           {menu.title}
         </button>

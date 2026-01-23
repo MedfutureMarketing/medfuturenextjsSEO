@@ -146,9 +146,9 @@ export default function JobsbyProfession() {
               <div className="hidden md:flex  justify-center mt-8">
                 <button
                   onClick={() => setShowAll(true)}
-                  className="px-8 py-3 bg-[#]  text-[#074CA4] cursor-pointer font-semi-bold hover:text-white rounded-[4px] hover:bg-[#063a7a] transition-colors"
+                  className="px-8 py-3 bg-[#]  text-[#074CA4] cursor-pointer font-semi-bold hover:text-gray-200 rounded-[4px]  transition-colors"
                 >
-                  View More Professions
+                  View More
                 </button>
               </div>
             )}
@@ -158,7 +158,7 @@ export default function JobsbyProfession() {
               <div className="hidden md:flex justify-center mt-8">
                 <button
                   onClick={() => setShowAll(false)}
-                  className="px-8 py-3 bg-gray-600 text-white font-semibold rounded-[4px] hover:bg-gray-700 transition-colors"
+                  className="px-8 py-3 bg-gray-50 text-gray-500 font-semibold cursor-pointer rounded-[4px] hover:bg-gray-100 transition-colors"
                 >
                   Show Less
                 </button>
@@ -187,7 +187,7 @@ function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
         <h3 className="lg:text-[16px] text-md font-semibold text-[#0A2E5C]">{prof.title}</h3>
         <Link
           href={prof.exploreLink}
-          className="bg-white text-[#0F172A] lg:shadow-lg shadow-sm border border-gray-100 lg:text-[14px] text-sm px-4 py-2 rounded hover:bg-blue-700"
+          className="bg-white text-[#0F172A] lg:shadow-lg shadow-sm border border-gray-100 lg:text-[14px] text-sm px-4 py-2 rounded hover:bg-[#040D48] hover:text-white transition-colors"
         >
           Explore
         </Link>
@@ -200,7 +200,7 @@ function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
           {prof.jobs.length > 0 ? (
             <>
               {prof.jobs.map((job, jidx) => (
-                <div key={jidx} className="bg-white rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
+                <div key={jidx} className="bg-white hover:bg-gray-100 rounded-lg border shadow-sm py-3 px-4 flex items-center justify-between">
                   <div>
                     <h4 className="lg:text-[14px] text-sm font-semibold text-[#0A2E5C]">
                       {job.title.length > 40 ? `${job.title.slice(0, 60)}...` : job.title}
@@ -231,7 +231,7 @@ function ProfessionCard({ prof }: { prof: ProfessionCardData }) {
 
       <Link
         href={prof.viewAllLink}
-        className="hover:underline lg:text-[14px] text-[10px] rounded-[8px] bg-[#040D48] text-white py-[9.5px] mt-4 block text-center"
+        className="hover:underline lg:text-[14px] text-[10px] rounded-[8px] bg-[#040D48] hover:bg-gray-400 text-white py-[9.5px] mt-4 block text-center"
       >
         {prof.viewAllText}
       </Link>

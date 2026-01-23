@@ -141,7 +141,7 @@ export default function Breadcrumb() {
       >
         <ol className="flex items-center space-x-2 text-sm inner-width-section">
           {breadcrumbs.map((breadcrumb, index) => (
-            <li key={breadcrumb.href} className="flex items-center">
+            <li key={breadcrumb.href} className="flex items-center lg:block hidden ">
               {index > 0 && (
                 <span className="mx-2 opacity-50" aria-hidden="true">
                   /

@@ -101,7 +101,7 @@ export default function Menu() {
 
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
                   <Link href="/international?page=1"
-                    className="text-[16px] font-[500] hover:text-blue-600"
+                    className="text-[16px] font-[500] hover:text-gray-400 "
                   > International Candidates</Link>
                 </li>
               </ul>
@@ -112,16 +112,16 @@ export default function Menu() {
               {/* <li className="list-none relative font-medium hover:text-blue-600">
                 <MegaMenu menuKey="candidates" />
               </li> */}
-              <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+              <li className="relative list-none  font-medium cursor-pointer hover:text-blue-600">
                 <Link href="/employer-hub"
-                  className="text-[16px] font-[500] hover:text-blue-600"
+                  className="text-[16px] font-[500] hover:text-gray-400 "
                 >  Candidates</Link>
               </li>
 
               <li className="list-none">
                 <Link
                   href="/employer-hub"
-                  className="text-[16px] font-[500] hover:text-blue-600"
+                  className="text-[16px] font-[500] hover:text-gray-400 "
                 >
                   Employers
                 </Link>
@@ -129,7 +129,7 @@ export default function Menu() {
 
               <Link
                 href="/sign-up"
-                className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-[4px] hover:bg-blue-700"
+                className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-[4px] hover:bg-gray-400"
               >
                 Sign Up
               </Link>
@@ -180,10 +180,10 @@ export default function Menu() {
 
             {/* Right menu */}
             <div className="ml-auto flex gap-8">
-              <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+              <li className="list-none font-medium cursor-pointer hover:text-gray-400 ">
                 <Link href="/contact-us">  Contact Us</Link>
               </li>
-              <li className="list-none font-medium cursor-pointer hover:text-blue-600">
+              <li className="list-none font-medium cursor-pointer hover:text-gray-400 ">
                 <MegaMenu menuKey="Explore" />
               </li>
             </div>
