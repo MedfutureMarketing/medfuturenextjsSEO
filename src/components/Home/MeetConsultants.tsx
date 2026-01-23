@@ -94,7 +94,8 @@ export default function MeetOurConsultants() {
                                     alt={c.name}
                                     width={209}
                                     height={224}
-                                    loading="lazy"
+                                   priority={false}
+            loading="lazy"
                                     className="object-cover w-full h-full rounded-[4px] group-hover:scale-105 transition-transform duration-300"
                                 />
                                 <div className="absolute -bottom-10 text-[#C0C0C0] left-0 px-3 py-1 text-[36px] sm:text-[36px] font-semibold rounded z-20">
@@ -105,10 +106,12 @@ export default function MeetOurConsultants() {
                                 <h4 className="font-semibold text-sm sm:text-[20px] text-[#074CA4]">{c.name}</h4>
                                 <p className="text-xs sm:text-sm text-[#040D48]">{c.role}</p>
                                 <p className="text-xs sm:text-sm text-[#4A5565] flex gap-1 items-center">
-                                    <Image src={Callico} alt="" /> {c.phone}
+                                    <Image src={Callico} alt=""   priority={false}
+            loading="lazy" /> {c.phone}
                                 </p>
                                 <p className="text-xs sm:text-sm text-[#4A5565] flex gap-1 items-center">
-                                    <Image src={Emailico} alt="" /> {c.email}
+                                    <Image src={Emailico} alt=""   priority={false}
+            loading="lazy" /> {c.email}
                                 </p>
                             </div>
                         </div>

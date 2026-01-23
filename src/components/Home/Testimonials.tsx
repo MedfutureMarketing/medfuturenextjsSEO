@@ -84,6 +84,8 @@ export default function TestimonialPuzzle() {
                           src={avatar}
                           alt={item.user_name}
                           className="rounded-full object-cover h-[43px] w-[43px]"
+                            priority={false}
+            loading="lazy"
                         />
                       </div>
                     </div>

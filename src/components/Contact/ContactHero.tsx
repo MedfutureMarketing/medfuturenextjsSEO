@@ -32,7 +32,8 @@ export default function Hero() {
                             src={HeroImage}
                             alt="Job search illustration"
                             width={359}
-                            priority
+                                priority={false}
+            loading="lazy"
                         />
                     </div>
 

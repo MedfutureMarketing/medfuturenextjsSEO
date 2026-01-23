@@ -94,39 +94,39 @@ export default function JobseekersearchHero() {
                                 ))}
                             </select> */}
                             <div className="relative w-full sm:w-[240px]">
-    <select
-        value={profession}
-        onChange={(e) => setProfession(e.target.value)}
-        className="w-full px-4 py-3 pr-10 bg-white text-sm text-gray-700 rounded cursor-pointer
+                                <select
+                                    value={profession}
+                                    onChange={(e) => setProfession(e.target.value)}
+                                    className="w-full px-4 py-3 pr-10 bg-white text-sm text-gray-700 rounded cursor-pointer
                    appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-    >
-        <option value="">Select Profession</option>
+                                >
+                                    <option value="">Select Profession</option>
 
-        {JobSeekerHub?.professions.map((item) => (
-            <option key={item.profession_id} value={item.name}>
-                {item.name}
-            </option>
-        ))}
-    </select>
+                                    {JobSeekerHub?.professions.map((item) => (
+                                        <option key={item.profession_id} value={item.name}>
+                                            {item.name}
+                                        </option>
+                                    ))}
+                                </select>
 
-    {/* Dropdown Icon */}
-    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-        <svg
-            className="w-4 h-4 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-            />
-        </svg>
-    </div>
-</div>
+                                {/* Dropdown Icon */}
+                                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                                    <svg
+                                        className="w-4 h-4 text-gray-500"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M19 9l-7 7-7-7"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
 
 
                             {/* Location */}
@@ -144,38 +144,38 @@ export default function JobseekersearchHero() {
                                 ))}
                             </select> */}
                             <div className="relative w-full sm:w-[240px]">
-    <select
-        value={location}
-        onChange={(e) => setLocation(e.target.value)}
-        className="w-full px-4 py-3 pr-10 bg-white text-sm text-gray-700 rounded cursor-pointer
+                                <select
+                                    value={location}
+                                    onChange={(e) => setLocation(e.target.value)}
+                                    className="w-full px-4 py-3 pr-10 bg-white text-sm text-gray-700 rounded cursor-pointer
                    appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-    >
-        <option value="">Select Location</option>
+                                >
+                                    <option value="">Select Location</option>
 
-        {JobSeekerHub?.locations.map((item) => (
-            <option key={item.state_id} value={item.name}>
-                {item.name}
-            </option>
-        ))}
-    </select>
+                                    {JobSeekerHub?.locations.map((item) => (
+                                        <option key={item.state_id} value={item.name}>
+                                            {item.name}
+                                        </option>
+                                    ))}
+                                </select>
 
-    {/* Dropdown Arrow */}
-    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-        <svg
-            className="w-4 h-4 text-gray-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-        >
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-            />
-        </svg>
-    </div>
-</div>
+                                {/* Dropdown Arrow */}
+                                <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
+                                    <svg
+                                        className="w-4 h-4 text-gray-500"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            strokeWidth={2}
+                                            d="M19 9l-7 7-7-7"
+                                        />
+                                    </svg>
+                                </div>
+                            </div>
 
 
                             {/* Search Button */}
@@ -218,7 +218,8 @@ export default function JobseekersearchHero() {
                             src={HeroImage}
                             alt="Job search illustration"
                             width={359}
-                            priority
+                            priority={false}
+                            loading="lazy"
                         />
                     </div>
 

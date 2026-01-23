@@ -35,7 +35,7 @@ function PreloaderContent() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, [pathname, searchParams, isAllowed]);
@@ -55,7 +55,8 @@ function PreloaderContent() {
                 alt="Loading"
                 width={200}
                 height={100}
-                priority
+                   priority={false}
+            loading="lazy"
               />
             </div>
           </div>

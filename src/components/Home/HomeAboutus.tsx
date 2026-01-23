@@ -50,7 +50,8 @@ export default function AboutUs() {
                 width={240}
                 height={397}
                 className="object-cover rounded-none"
-                priority
+                  priority={false}
+            loading="lazy"
               />
             </div>
           </div>

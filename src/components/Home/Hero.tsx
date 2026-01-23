@@ -146,7 +146,8 @@ export default function Hero() {
           width={180}
           height={240}
           className="object-contain"
-          priority
+            priority={false}
+            loading="lazy"
         />
         <Image
           src={apackinsider}
@@ -154,7 +155,8 @@ export default function Hero() {
           width={180}
           height={240}
           className="object-contain"
-          priority
+            priority={false}
+            loading="lazy"
         />
       </div>
     </div>
