@@ -79,11 +79,15 @@ export default function Footer() {
                     {/* Column 4: Contact Info */}
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-                        <p className="text-gray-300 text-sm mb-2">+61 1300 633 388</p>
-                        <p className="text-gray-300 text-sm mb-2">+61 452 668 811</p>
+                        {/* <p className="text-gray-300 text-sm mb-2">+61 1300 633 388</p> */}
+                        {/* <p className="text-gray-300 text-sm mb-2">+61 452 668 811</p> */}
+                        <p className="text-gray-300 text-sm">
+                            Phone: <a href="tel:+61133006333388" className="hover:text-white transition-colors">+61 1300 633 388</a>
+                        </p>
+                        <p className="text-gray-300 text-sm mb-2">
+                            Email: <a href="mailto:helpdesk@themedfuture.com" className="hover:text-white transition-colors">helpdesk@themedfuture.com</a>
+                        </p>
 
-                        <p className="text-gray-300 text-sm mb-2">Email:notify@themedfuture.com</p>
-                        <p className="text-gray-300 text-sm">Phone:+61 1300 633 388</p>
                     </div>
                 </div>
 

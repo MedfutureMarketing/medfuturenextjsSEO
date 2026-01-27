@@ -313,7 +313,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
 
           {
             label: "Locum GP (Short Term or Ongoing Cover)",
-            href: "/international/general-practitioner-jobs/in-australia?page=1",
+            href: "/locum/general-practitioner-jobs/in-australia?page=1",
             icon: "",
             description: "Locum GPs wanted for short-term and ongoing cover.",
           },

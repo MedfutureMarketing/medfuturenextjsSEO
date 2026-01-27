@@ -597,7 +597,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           <button
             type="submit"
             disabled={isSubmitting}
-            className="md:w-auto w-full bg-[#074CA4] text-white px-8 py-3 rounded-lg font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="md:w-auto w-full bg-[#074CA4] text-white px-8 py-3 rounded-[4px] font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
@@ -606,19 +606,19 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
 
       {/* Notification Popup */}
       {notification.show && (
-        <div className="fixed inset-0 bg-white/20 flex items-center shadow-xl border-2 justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-4">
+        <div className="fixed inset-0 bg-white/60  flex items-center  shadow-xl border-2 justify-center z-50">
+          <div className="bg-blue-900 rounded-lg p-6 max-w-md mx-4">
             <h3
-              className={`text-xl font-bold mb-2 ${
+              className={`text-xl font-bold mb-2 text-white ${
                 notification.type === "success" ? "text-green-600" : "text-red-600"
               }`}
             >
               {notification.title}
             </h3>
-            <p className="text-gray-700 mb-4">{notification.message}</p>
+            <p className="text-gray-50 mb-4">{notification.message}</p>
             <button
               onClick={() => setNotification({ ...notification, show: false })}
-              className="bg-[#074CA4] text-white px-4 py-2 rounded hover:bg-[#055a8a] transition-colors"
+              className="bg-white text-blue-900 px-4 py-2 rounded hover:bg-[#055a8a] transition-colors"
             >
               Close
             </button>

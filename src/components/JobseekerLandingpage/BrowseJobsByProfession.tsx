@@ -140,7 +140,7 @@ export default function BrowseJobsByProfession() {
                   w-full lg:w-[307px] h-[44px] lg:h-[47px]
                   rounded font-medium text-sm lg:text-[16px]
                   text-white transition
-                  ${isActive ? tab.color + " ring-2 ring-offset-2 ring-blue-500" : "bg-gray-400 opacity-60 hover:opacity-75"}
+                  ${isActive ? tab.color + " ring-2 ring-offset-2 ring-blue-500" : "bg-gray-400 cursor-pointer opacity-60 hover:opacity-75"}
                 `}
               >
                 {tab.label}
