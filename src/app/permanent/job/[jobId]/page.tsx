@@ -1,10 +1,10 @@
+// src/app/permanent/job/[jobId]/page.tsx
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 import { apiGet } from "@/lib/api";
 
 /* ================= TYPES ================= */
-
 type JobHighlight = {
   jobhighlights_id: number;
   name: string;
@@ -23,10 +23,12 @@ type Job = {
   highlights?: JobHighlight[];
 };
 
+/* ================= METADATA ================= */
 export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata("permanent");
 }
 
+/* ================= PAGE ================= */
 export default async function PermanentSingleJob({
   params,
 }: {
@@ -35,25 +37,31 @@ export default async function PermanentSingleJob({
   let job: Job | null = null;
 
   try {
+    // Use absolute URL for SSR on Vercel
     const res = await apiGet<{ data: Job }>(
-      `web/jobdetails/${params.jobId}`
+      `${process.env.NEXT_PUBLIC_API_URL}/web/jobdetails/${params.jobId}`
     );
+
+    if (!res?.data) {
+      return (
+        <div className="min-h-screen flex items-center justify-center">
+          <p>Job not found.</p>
+        </div>
+      );
+    }
+
     job = res.data;
   } catch (error) {
-    console.error("Failed to fetch job", error);
-  }
-
-  if (!job) {
+    console.error("SSR fetch failed:", error);
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p>Job not found</p>
+        <p>Failed to fetch job details.</p>
       </div>
     );
   }
 
   return (
     <section className="min-h-screen flex flex-col">
-      {/* ✅ PASS JOB PROP */}
       <JobDescription job={job} />
     </section>
   );
