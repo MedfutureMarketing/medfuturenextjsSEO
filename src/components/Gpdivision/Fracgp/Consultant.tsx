@@ -139,52 +139,52 @@ export default async function ConsultantsPage() {
     const rightConsultants = data.consultants.slice(Math.ceil(data.consultants.length / 2));
 
     return (
-        <div className="full-width-section bg-white lg:mt-[214px] mt-5">
+        <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] mt-5">
             {/* Header */}
-            <div className="px-6 inner-width-section lg:px-12 mb-10 lg:mb-[52px]">
-                <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
+            <div className="px-2 inner-width-section lg:px-0 lg:py-[83px]  mb-10 lg:mb-[52px]">
+                <p className="text-xs lg:text-[14px] text-[#074CA4]  font-medium mb-2">
                     Meet Our Consultants
                 </p>
                 <h1 className="text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-[52px]">
                     Your Dedicated Specialist GP Recruitment Experts
                 </h1>
-            </div>
 
-            {/* Main Content */}
-            <div className="px-6 inner-width-section py-0">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-18">
 
-                    {/* Left Column */}
-                    <div className="space-y-8">
-                        {leftConsultants.map((consultant) => (
-                            <ConsultantCard key={consultant.id} consultant={consultant} />
-                        ))}
-                    </div>
+                {/* Main Content */}
+                <div className="px-6 inner-width-section py-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-18">
 
-                    {/* Center Images */}
-                    <div className="flex items-center justify-center h-full lg:block hidden">
-                        <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
-                            {data.centerImages.map((image, idx) => (
-                                <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
-                                    <Image
-                                        src={image}
-                                        alt={`Professional image ${idx + 1}`}
-                                        className="w-full h-full object-cover"
-                                        placeholder="blur"
-                                    />
-                                </div>
+                        {/* Left Column */}
+                        <div className="space-y-8">
+                            {leftConsultants.map((consultant) => (
+                                <ConsultantCard key={consultant.id} consultant={consultant} />
                             ))}
                         </div>
-                    </div>
 
-                    {/* Right Column */}
-                    <div className="space-y-8 lg:ml-24">
-                        {rightConsultants.map((consultant) => (
-                            <ConsultantCard key={consultant.id} consultant={consultant} />
-                        ))}
-                    </div>
+                        {/* Center Images */}
+                        <div className="flex items-center justify-center h-full lg:block hidden">
+                            <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
+                                {data.centerImages.map((image, idx) => (
+                                    <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
+                                        <Image
+                                            src={image}
+                                            alt={`Professional image ${idx + 1}`}
+                                            className="w-full h-full object-cover"
+                                            placeholder="blur"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
 
-                </div>
+                        {/* Right Column */}
+                        <div className="space-y-8 lg:ml-24">
+                            {rightConsultants.map((consultant) => (
+                                <ConsultantCard key={consultant.id} consultant={consultant} />
+                            ))}
+                        </div>
+
+                    </div> </div>
             </div>
         </div>
     );

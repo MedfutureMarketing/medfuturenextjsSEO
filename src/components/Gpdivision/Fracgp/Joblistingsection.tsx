@@ -125,7 +125,7 @@ function JobCard({ job, index }: JobCardProps) {
                         <svg width="10" height="13" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                             <path fillRule="evenodd" clipRule="evenodd" d="M5.498 12.646C6.26474 11.9503 6.97436 11.194 7.62 10.3847C8.98 8.676 9.80733 6.99133 9.86333 5.49333C9.88549 4.88453 9.78472 4.2775 9.56703 3.70852C9.34934 3.13954 9.0192 2.62026 8.59633 2.18173C8.17346 1.74319 7.66654 1.39438 7.10585 1.15613C6.54516 0.917892 5.94221 0.795103 5.333 0.795103C4.72379 0.795103 4.12084 0.917892 3.56015 1.15613C2.99946 1.39438 2.49254 1.74319 2.06967 2.18173C1.6468 2.62026 1.31666 3.13954 1.09897 3.70852C0.881283 4.2775 0.780507 4.88453 0.802667 5.49333C0.859333 6.99133 1.68733 8.676 3.04667 10.3847C3.69231 11.194 4.40192 11.9503 5.16867 12.646C5.24244 12.7127 5.29733 12.7611 5.33333 12.7913L5.498 12.646ZM4.84133 13.4227C4.84133 13.4227 0 9.34533 0 5.33333C0 3.91885 0.561903 2.56229 1.5621 1.5621C2.56229 0.561903 3.91885 0 5.33333 0C6.74782 0 8.10438 0.561903 9.10457 1.5621C10.1048 2.56229 10.6667 3.91885 10.6667 5.33333C10.6667 9.34533 5.82533 13.4227 5.82533 13.4227C5.556 13.6707 5.11267 13.668 4.84133 13.4227ZM5.33333 7.2C5.8284 7.2 6.3032 7.00333 6.65327 6.65327C7.00333 6.3032 7.2 5.8284 7.2 5.33333C7.2 4.83826 7.00333 4.36347 6.65327 4.0134C6.3032 3.66333 5.8284 3.46667 5.33333 3.46667C4.83826 3.46667 4.36347 3.66333 4.0134 4.0134C3.66333 4.36347 3.46667 4.83826 3.46667 5.33333C3.46667 5.8284 3.66333 6.3032 4.0134 6.65327C4.36347 7.00333 4.83826 7.2 5.33333 7.2ZM5.33333 8C4.62609 8 3.94781 7.71905 3.44772 7.21895C2.94762 6.71885 2.66667 6.04058 2.66667 5.33333C2.66667 4.62609 2.94762 3.94781 3.44772 3.44772C3.94781 2.94762 4.62609 2.66667 5.33333 2.66667C6.04058 2.66667 6.71885 2.94762 7.21895 3.44772C7.71905 3.94781 8 4.62609 8 5.33333C8 6.04058 7.71905 6.71885 7.21895 7.21895C6.71885 7.71905 6.04058 8 5.33333 8Z" fill="#0A2E5C" />
                         </svg>
-                        <span className="text-[11px] xs:text-xs sm:text-sm lg:text-sm font-medium text-[#4A5565]">
+                        <span className="text-[11px] xs:text-xs sm:text-sm lg:text-sm  text-[#4A5565]">
                             {job.location}
                         </span>
                     </div>
@@ -158,7 +158,7 @@ function JobCard({ job, index }: JobCardProps) {
                                         </linearGradient>
                                     </defs>
                                 </svg>
-                                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A] font-medium">Established patient base</p>
+                                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A] ">Established patient base</p>
                             </div>
                         )}
 
@@ -174,7 +174,7 @@ function JobCard({ job, index }: JobCardProps) {
                                         </linearGradient>
                                     </defs>
                                 </svg>
-                                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A] font-medium">Flexible sessions</p>
+                                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A] ">Flexible sessions</p>
                             </div>
                         )}
                     </div>
@@ -221,7 +221,7 @@ export default function JobListingSection() {
 
                     {/* Title */}
                     <div className="mb-4 xs:mb-5 sm:mb-6 md:mb-[22px]">
-                        <h2 className="text-lg xs:text-xl sm:text-2xl md:text-[26px] lg:text-[30px] font-bold text-slate-900 mb-2 xs:mb-3 sm:mb-4 leading-tight">
+                        <h2 className="text-2lg   md:text-[26px] lg:text-[30px] font-bold text-slate-900 mb-2 xs:mb-3 sm:mb-4 leading-tight">
                             Browse FRACGP/FACRRM Jobs by state, billing model, DPA/MMM
                         </h2>
                         <p className="text-[11px] xs:text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-[#4A5565] max-w-2xl leading-relaxed">
@@ -279,7 +279,7 @@ export default function JobListingSection() {
 
                 {/* View All Button */}
                 <div className="flex justify-center">
-                    <Link href="/permanent/gp-specialist-jobs/in-australia?page=1" className="px-6 xs:px-7 sm:px-8 py-2.5 xs:py-3 bg-[#074CA4] hover:bg-blue-700 text-white font-bold rounded-[4px] transition-all duration-300 hover:shadow-lg hover:scale-105 text-sm xs:text-base active:scale-95">
+                    <Link href="/permanent/gp-specialist-jobs/in-australia?page=1" className="px-6 xs:px-7 sm:px-8 py-2.5 xs:py-3 bg-[#074CA4] hover:bg-blue-700 text-white  rounded-[4px] transition-all duration-300 hover:shadow-lg hover:scale-105 text-sm xs:text-base active:scale-95">
                         View All Jobs
                     </Link>
                 </div>

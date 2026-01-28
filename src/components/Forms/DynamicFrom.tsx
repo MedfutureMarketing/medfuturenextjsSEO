@@ -86,22 +86,26 @@ const FormComponent = () => {
 
 
             {/* Terms */}
-            <label className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-gray-600">
-                <div className="flex items-center gap-2">
-                    <input type="checkbox" name="agreeTerms" className="w-5 h-5 accent-blue-600" />
+            <label className="flex flex-wrap items-start gap-2 text-xs text-gray-600">
+               
+                    <input
+                        type="checkbox"
+                        name="agreeTerms"
+                        className="w-4 h-4 accent-blue-600 cursor-pointer flex-shrink-0 mt-0.5"
+                    />
                     <span>I agree to the</span>
-                </div>
+          
 
-                <div className="flex flex-wrap gap-1 sm:gap-2">
+             
                     <Link
                         href="/terms-and-conditions"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:underline"
                     >
-                        Terms
+                        Term and Conditions
                     </Link>
-                    <span>and</span>
+                    <span className="whitespace-nowrap">and</span>
                     <Link
                         href="/privacy-policy"
                         target="_blank"
@@ -110,8 +114,8 @@ const FormComponent = () => {
                     >
                         Privacy Policy
                     </Link>
-                    <span>at Medfuture</span>
-                </div>
+                 
+        
             </label>
 
 
