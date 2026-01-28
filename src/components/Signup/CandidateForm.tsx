@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-const API_BASE_URL = "https://stage.medfuture.com.au/medadminapi/public/api";
-// export const API_BASE_URL = "http://127.0.0.1:8000/api";
+import { API_BASE_URL } from "../../lib/api";
 
 type Profession = {
   profession_id: number;
@@ -397,15 +396,21 @@ export default function CandidateForm() {
     }
   };
 
+  const handleGoogleLogin = () => {
+    window.location.href = `${API_BASE_URL}/web/auth/google/redirect`;
+  };
+
+
   return (
     <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[131px] px-4">
       <div className="flex justify-center gap-3 mb-8">
         <button
-          type="button"
-          className="flex-1 cursor-not-allowed py-2 courser-pointer-diabled bg-red-500 lg:w-[212px] h-[48px] text-white rounded-[4dpx] flex items-center justify-center gap-2 hover:bg-red-600"
-        >
-          <span className="text-[16px] font-bold">G</span>
-          <span className="hidden sm:inline">Google</span>
+            type="button"
+            onClick={handleGoogleLogin}
+            className="flex-1 py-2 bg-red-500 lg:w-[212px] h-[48px] text-white rounded flex items-center justify-center gap-2 hover:bg-red-600"
+          >
+            <span className="text-[16px] font-bold">G</span>
+            <span className="hidden sm:inline">Google</span>
         </button>
         <button
           type="button"

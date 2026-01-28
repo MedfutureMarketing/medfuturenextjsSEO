@@ -23,6 +23,8 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/employer-hub", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "Employer Hub" },
   { pattern: "/contact-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "Contact Us" },
   { pattern: "/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Frac GP / FACRRM" },
+    { pattern: "/general-practice-division/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Frac GP / FACRRM" },
+
   { pattern: "/medical-division", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Medical Division" },
   { pattern: "/about-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "About Us" },
   { pattern: "/permanent", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "" },

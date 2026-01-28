@@ -283,7 +283,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         links: [
           {
             label: "Specialist General Practitioner (FRACGP & FRCRRM)",
-            href: "/permanent/general-practitioner-jobs/in-australia?page=1",
+            href: "/general-practice-division/fracgp-facrrm",
             icon: "",
             description: "Explore exciting opportunities for Specialist General Practitioners (FRACGP & FACRRM).",
           },
