@@ -37,13 +37,21 @@ export default function CTA() {
 
             
                     <div className="flex gap-1  pb-1">
-                        <button
+                        {/* <button
                             className={`pb-0 px-2 font-medium cursor-pointer lg:text-lg  text-sm bg-blue-500 rounded-t-lg h-[53px] w-[225px] ${activeTab === "job" ? "text-[#074CA4] bg-white  " : ""
                                 }`}
                             onClick={() => setActiveTab("job")}
                         >
                             Job Seeker
+                        </button> */}
+                         <button
+                            className={` ${activeTab === "job" ? " " : ""
+                                }`}
+                            onClick={() => setActiveTab("job")}
+                        >
+                            {/* Job Seeker */}
                         </button>
+
 
                         {/* <button 
                             className={`pb-0 px-2 font-medium lg:text-lg   cursor-not-allowed  text-sm cursor-pointer bg-blue-500 rounded-t-lg h-[53px] w-[225px] ${activeTab === "employer" ? "text-[#074CA4] bg-white " : "text-gray-50"
