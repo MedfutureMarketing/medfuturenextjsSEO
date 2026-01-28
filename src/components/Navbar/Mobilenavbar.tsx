@@ -62,10 +62,10 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Interview Prep", href: "/resources/interview" },
   ],
    medical: [
-    { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/permanent/gp-specialist-jobs/in-australia?page=1" },
+    { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/general-practice-division/fracgp-facrrm" },
     { label: "General Practitioner (Registrars)", href: "/permanent/general-practitioner-jobs/in-australia?page=1" },
     { label: "International Family Medicine (Specialist Pathway Recruitment)", href: "/international/family-medicine-jobs/in-australia?page=1" },
-    { label: "Locum GP (Short Term or Ongoing Cover)", href: "/international/general-practitioner-jobs/in-australia?page=1" },
+    { label: "Locum GP (Short Term or Ongoing Cover)", href: "/general-practice-division/locum-gp" },
   
   ],
    allied: [

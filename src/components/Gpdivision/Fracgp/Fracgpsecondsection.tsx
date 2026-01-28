@@ -46,6 +46,8 @@ export default function Fracgpsecondsection() {
                                     alt="Female doctor consulting"
                                     fill
                                     className="object-cover"
+                                       priority={false}
+            loading="lazy"
                                 />
                             </div>
                         </div>
@@ -58,6 +60,8 @@ export default function Fracgpsecondsection() {
                                     alt="Female doctor with stethoscope"
                                     fill
                                     className="object-cover"
+                                       priority={false}
+            loading="lazy"
                                 />
                             </div>
                         </div>
@@ -70,6 +74,8 @@ export default function Fracgpsecondsection() {
                                     alt="Male and female doctors in discussion"
                                     fill
                                     className="object-cover"
+                                       priority={false}
+            loading="lazy"
                                 />
                             </div>
                         </div>
