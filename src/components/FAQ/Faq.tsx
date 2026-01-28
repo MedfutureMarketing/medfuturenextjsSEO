@@ -42,13 +42,13 @@ const faqData: FAQData = {
     { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
   ],
   "/general-practice-division/fracgp-facrrm": [
-    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
-    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
+    { question: "What types of GP roles does Medfuture offer for FRACGP & FACRRM Fellows?", answer: "We offer permanent, locum, DPA, MMM, and private or mixed billing GP positions across metro, regional, and rural Australia. Each role is curated to ensure clinical autonomy, supportive culture, and transparent earnings." },
+    { question: " Can I choose a specific location or region?", answer: "Yes. Whether you prefer metro, regional, or rural practice, we match you with roles in your preferred locations while considering lifestyle, commute, and career goals." },
 
-    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
+    { question: "Does Medfuture assist with private billing or mixed billing practices?", answer: "Absolutely. We guide you through private, mixed, and fully bulk-billing practices, providing earnings clarity so you can make informed career decisions." },
 
-    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
-    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
+    { question: "How quickly can I expect job matches after registration?", answer: "Once you provide your preferences, we typically send a curated shortlist within 48 hours. We focus on quality matches rather than overwhelming you with multiple options." },
+    { question: " Can I discuss my career confidentially with a consultant?", answer: "Yes. Our specialist GP consultants offer confidential consultations, helping you explore opportunities, negotiate contracts, and protect income without obligation." },
   ],
 };
 
@@ -77,14 +77,15 @@ export default function FAQ() {
   };
 
   return (
-    <section className=" mt-[150px] mb-[140px]">
+    <section className=" mt-[150px] full-width-section mb-[140px]">
       {/* Inject JSON-LD directly */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="inner-width-section  mx-auto">  <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
+      <div className="inner-width-section  ">  
+        <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
                  FAQ
                 </p>
         <h2 className="lg:text-[36px] text-2xl font-[500] text-gray-900 mb-8 text-left">
@@ -97,7 +98,7 @@ export default function FAQ() {
               {/* Question */}
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-4 text-left flex cursor-pointer justify-between items-center lg:text-[16px] text-sm font-[600] text-gray-900  transition"
+                className="w-full px-0 py-4 text-left flex cursor-pointer justify-between items-center lg:text-[16px] text-sm font-[600] text-gray-900  transition"
               >
                 {faq.question}
                 <span className="text-blue-600 font-bold">{openIndex === index ? "-" : "+"}</span>
@@ -105,7 +106,7 @@ export default function FAQ() {
 
               {/* Answer */}
               <div
-                className={`px-6 pb-0 mb-4 text-gray-700 lg:text-[16px] text-xs transition-all duration-300 ${openIndex === index ? "max-h-96 opacity-100 pt-2" : "max-h-0 opacity-0 overflow-hidden"
+                className={`px-0 pb-0 mb-4 text-gray-700 lg:text-[16px] text-xs transition-all duration-300 ${openIndex === index ? "max-h-96 opacity-100 pt-2" : "max-h-0 opacity-0 overflow-hidden"
                   }`}
               >
                 {faq.answer}

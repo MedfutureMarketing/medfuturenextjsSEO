@@ -3,6 +3,8 @@
 import Image from "next/image";
 import FFFRAC from "@/assets/Divisionimages/FFFRAC.png";
 import CounterSection from "@/components/Gpdivision/Fracgp/FracgpCounter";
+import divisionimg2 from "@/assets/Divisionimages/divisionimg2.png";
+import divisionimage2 from "@/assets/Divisionimages/divisionimage2.png";
 
 export default function Fracgpsecondsection() {
     return (
@@ -38,7 +40,7 @@ export default function Fracgpsecondsection() {
                     <div className="hidden lg:grid grid-cols-2 gap-4 h-fit">
                         {/* Top Left - Large image */}
                         <div className="col-span-1 row-span-2">
-                            <div className="relative h-[162px]  rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                            <div className="relative h-[162px]  rounded-[8px]  overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                                 <Image
                                     src={FFFRAC}
                                     alt="Female doctor consulting"
@@ -50,9 +52,9 @@ export default function Fracgpsecondsection() {
 
                         {/* Top Right - Small image */}
                         <div className="col-span-1">
-                            <div className="relative h-[162px] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div className="relative h-[162px] rounded-[8px]  overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                                 <Image
-                                    src={FFFRAC}
+                                    src={divisionimg2}
                                     alt="Female doctor with stethoscope"
                                     fill
                                     className="object-cover"
@@ -62,9 +64,9 @@ export default function Fracgpsecondsection() {
 
                         {/* Bottom Right - Small image */}
                         <div className="col-span-1">
-                            <div className="relative h-[162px] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+                            <div className="relative h-[162px] rounded-[8px] overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
                                 <Image
-                                    src={FFFRAC}
+                                    src={divisionimage2}
                                     alt="Male and female doctors in discussion"
                                     fill
                                     className="object-cover"

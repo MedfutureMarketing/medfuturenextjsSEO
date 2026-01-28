@@ -119,7 +119,7 @@ const FormComponent = () => {
             {/* Submit */}
             <button
                 type="button"
-                className="w-full h-[50px] bg-[#074CA4] hover:bg-blue-700 text-white py-[13px] rounded-[4px] transition"
+                className="w-full cursor-pointer h-[50px] bg-[#074CA4] hover:bg-blue-700 text-white py-[13px] rounded-[4px] transition"
             >
                 Submit
             </button>
