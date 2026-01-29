@@ -170,6 +170,18 @@ const faqData: FAQData = {
     { question: "How quickly can I expect job matches after registration?", answer: "Once you provide your preferences, we typically send a curated shortlist within 48 hours. We focus on quality matches rather than overwhelming you with multiple options." },
     { question: " Can I discuss my career confidentially with a consultant?", answer: "Yes. Our specialist GP consultants offer confidential consultations, helping you explore opportunities, negotiate contracts, and protect income without obligation." },
   ],
+  "/general-practice-division/locum-gp": [
+    { question: "Who is eligible to work as a locum GP in Australia?", answer: "Most locum GP roles require doctors to be FRACGP or FACRRM, with current AHPRA registration. Some rural, remote or ED/VMO roles may also require recent emergency or hospital experience, ALS certification, and Medicare provider eligibility. Medfuture matches roles strictly to your scope and credentials." },
+    { question: "  How much do locum GPs earn in Australia?", answer: "Locum GP rates vary based on location, urgency, scope, and setting. Rural and remote roles generally offer higher daily rates, often with travel, accommodation and vehicle included. ED/VMO and urgent care shifts may pay premium rates depending on demand. Your consultant will clearly outline remuneration and inclusions before placement." },
+
+    { question: " Can I choose where and when I work as a locum GP?", answer: "Absolutely. Locum work is designed around flexibility. You can choose locations (metro, rural or remote), duration (short stints or block rosters), clinical scope, and availability. Medfuture’s advisor-first model ensures roles align with your lifestyle, income goals and professional boundaries." },
+
+    { question: "Why choose Medfuture for locum GP jobs in Australia?", answer: "Medfuture specialises in fellowship-qualified locum GP placements across Australia. We focus on control, continuity and respect offering clear role briefs, repeat placements, and a single named consultant who understands your preferences. Our approach reduces admin, avoids last-minute surprises, and supports long-term locum careers." },
+    { question: "What is Medfuture’s one-profile credentialing approach?", answer: "With Medfuture, you credential once and reuse your profile nationally. We manage documentation, compliance and renewals, significantly reducing paperwork and speeding up placements. This allows you to move between roles smoothly without re-credentialing for every new site." },
+  ],
+  "/general-practice-division/gp-registrars": [
+    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
+  ],
 };
 
 
@@ -204,12 +216,12 @@ export default function FAQ() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="inner-width-section  ">  
+      <div className="inner-width-section  ">
         <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
-                 FAQ
-                </p>
+          FAQ
+        </p>
         <h2 className="lg:text-[36px] text-2xl font-[500] text-gray-900 mb-8 text-left">
-        Quick answers 
+          Quick answers
         </h2>
 
         <div className="space-y-4">

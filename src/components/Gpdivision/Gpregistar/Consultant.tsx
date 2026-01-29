@@ -137,14 +137,14 @@ export default async function ConsultantsPage() {
     const rightConsultants = data.consultants.slice(Math.ceil(data.consultants.length / 2));
 
     return (
-        <div className="w-full bg-[#F7F7F782] lg:mt-[130px] mt-5">
+        <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] mt-5">
             {/* Header */}
-            <div className="px-4 sm:px-6 w-full lg:px-0 lg:py-[83px] py-8 mb-8 lg:mb-[52px]">
-                <div className="max-w-7xl mx-auto">
+            <div className="px-4 sm:px-6 w-full lg:px-0 lg:py-[83px] py-8 ">
+                <div className="inner-width-section mx-auto">
                     <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
                         Meet Our Consultants
                     </p>
-                    <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-8 lg:mb-[52px]">
+                    <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] ">
                         Your Dedicated Specialist GP Recruitment Experts
                     </h2>
                 </div>

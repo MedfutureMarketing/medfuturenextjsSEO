@@ -30,6 +30,9 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/permanent", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "" },
   { pattern: "/locum", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
   { pattern: "/international", bgColor: "bg-[#575D84]", textColor: "text-white", breadcrumbLabel: "" },
+    { pattern: "/general-practice-division/locum-gp", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
+    { pattern: "/general-practice-division/gp-registrars", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
+
 ];
 
 // 🔹 Helper functions

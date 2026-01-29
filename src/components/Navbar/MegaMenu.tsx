@@ -289,7 +289,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
           },
           {
             label: "General Practitioner (Registrars)",
-            href: "/permanent/general-practitioner-jobs/in-australia?page=1",
+            href: "/general-practice-division/gp-registrars",
             icon: "",
             description: "Explore GP Registrar positions today.",
           },

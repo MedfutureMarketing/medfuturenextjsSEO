@@ -84,28 +84,27 @@ export default function MedfuturePage() {
             {/* Header Section */}
             <div className="inner-width-section mx-auto ">
                 <div className="mb-2">
-                    <span className="text-[14px] font-semibold text-[#074CA4] uppercase tracking-wide">
+                    <span className="lg:text-[14px] text-xs font-semibold text-[#074CA4] uppercase tracking-wide">
                         Why Medfuture
                     </span>
                 </div>
-                <h2 className="text-2xl md:text-[30px] font-bold text-[#0F172A] mb-6 leading-tight">
+                <h2 className="text-xl md:text-[30px] font-bold text-[#0F172A] mb-6 leading-tight">
                     Why Medfuture becomes your always-go-to locum agency
                 </h2>
-                <p className="text-[16px]  text-[#4A5565] max-w-2xl leading-relaxed">
+                <p className="lg:text-[16px] text-sm  text-[#4A5565] max-w-2xl leading-relaxed">
                     Senior GPs choose agencies for control, continuity and respect. We operationalise all three—
                     so your locum life stays simple.
                 </p>
             </div>
-
             {/* Features Grid with Images */}
-            <div className="px-8 md:px-12 lg:px-0 inner-width-section mx-auto  mt-[51px]">
+            <div className="px-8 md:px-12 lg:px-0 inner-width-section mx-auto  lg:mt-[51px]">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
                     {/* Left Column - Features 1, 2, 3 */}
                     <div className="space-y-8">
                         {features.slice(0, 3).map((feature) => {
                             const iconSrc = iconMap[feature.icon as keyof typeof iconMap];
                             return (
-                                <div key={feature.id} className="flex gap-4">
+                                <div key={feature.id} className="flex gap-4 lg:mt-0 mt-12">
                                     <div className="flex-shrink-0 pt-1">
                                         <div className="flex items-center justify-center h-10 w-10 rounded-full bg-blue-50">
                                             <Image
@@ -118,10 +117,10 @@ export default function MedfuturePage() {
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="text-[16px] font-bold text-[#0A2E5C] mb-2">
+                                        <h3 className="lg:text-[16px] text-sm font-bold text-[#0A2E5C] mb-2">
                                             {feature.title}
                                         </h3>
-                                        <p className="text-[#4A5565] text-[16px] leading-relaxed">
+                                        <p className="text-[#4A5565] lg:text-[16px] text-sm leading-relaxed">
                                             {feature.description}
                                         </p>
                                     </div>
@@ -129,7 +128,6 @@ export default function MedfuturePage() {
                             );
                         })}
                     </div>
-
                     {/* Center Column - Images */}
                     <div className="hidden lg:grid grid-cols-2 gap-4 h-fit">
                         {/* Top Left - Large image */}
@@ -140,12 +138,11 @@ export default function MedfuturePage() {
                                     alt="Female doctor consulting"
                                     fill
                                     className="object-cover"
-                                       priority={false}
-            loading="lazy"
+                                    priority={false}
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
-
                         {/* Top Right - Small image */}
                         <div className="col-span-1">
                             <div className="relative h-[162px] rounded-[8px]  overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -154,8 +151,8 @@ export default function MedfuturePage() {
                                     alt="Female doctor with stethoscope"
                                     fill
                                     className="object-cover"
-                                       priority={false}
-            loading="lazy"
+                                    priority={false}
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
@@ -168,8 +165,8 @@ export default function MedfuturePage() {
                                     alt="Male and female doctors in discussion"
                                     fill
                                     className="object-cover"
-                                       priority={false}
-            loading="lazy"
+                                    priority={false}
+                                    loading="lazy"
                                 />
                             </div>
                         </div>
@@ -193,10 +190,10 @@ export default function MedfuturePage() {
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="text-[16px] font-bold text-[#0A2E5C] mb-2">
+                                        <h3 className="lg:text-[16px] text-sm font-bold text-[#0A2E5C] mb-2">
                                             {feature.title}
                                         </h3>
-                                        <p className="text-[#4A5565] text-[16px] leading-relaxed">
+                                        <p className="text-[#4A5565] lg:text-[16px] text-sm leading-relaxed">
                                             {feature.description}
                                         </p>
                                     </div>
@@ -207,8 +204,8 @@ export default function MedfuturePage() {
                 </div>
             </div>
 
-  
-            
+
+
         </div>
     );
 }
