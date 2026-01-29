@@ -100,26 +100,23 @@ function JobCard({ job, index }: JobCardProps) {
                     className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-100/0 transition-all duration-300 pointer-events-none ${isHovered ? "from-blue-50/40 to-slate-100/20" : ""
                         }`}
                 />
-
                 {/* Shine effect */}
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-300" />
-
                 <div className="relative z-10 flex-1 flex flex-col">
                     {/* Header */}
                     <div className="flex items-start justify-between gap-2 mb-3 xs:mb-4">
                         <div className="flex-1 min-w-0">
-                            <p className="text-[10px] xs:text-xs lg:text-[12px] font-semibold text-[#4A5565] uppercase tracking-wider mb-1 truncate">
+                            <p className="text-[10px] xs:text-xs lg:text-[12px]  text-[#4A5565] uppercase tracking-wider mb-1 truncate">
                                 {job.id}
                             </p>
                             <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg font-bold text-slate-900 transition-colors duration-300 leading-tight break-words line-clamp-2">
                                 {job.title}
                             </h3>
                         </div>
-                        <p className="text-[9px] xs:text-[10px] lg:text-[12px] font-semibold text-[#4A5565] font-medium whitespace-nowrap flex-shrink-0 text-right">
+                        <p className="text-[9px] xs:text-[10px] lg:text-[12px]  text-[#4A5565] font-medium whitespace-nowrap flex-shrink-0 text-right">
                             {job.postedTime}
                         </p>
                     </div>
-
                     {/* Location */}
                     <div className="flex items-center gap-1.5 xs:gap-2 mb-4 xs:mb-5 text-[#0F172A]">
                         <svg width="10" height="13" viewBox="0 0 11 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
@@ -129,7 +126,6 @@ function JobCard({ job, index }: JobCardProps) {
                             {job.location}
                         </span>
                     </div>
-
                     {/* Features */}
                     <div className="space-y-2 xs:space-y-2.5 sm:space-y-3 flex-1">
                         {/* Billing Model */}
@@ -145,7 +141,6 @@ function JobCard({ job, index }: JobCardProps) {
                             </svg>
                             <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A] font-[400]">{job.billingModel}</p>
                         </div>
-
                         {/* Established Patient Base */}
                         {job.patientBase && (
                             <div className="flex items-center gap-2 xs:gap-3">
@@ -205,9 +200,9 @@ export default function JobListingSection() {
     };
 
     return (
-        <section className="full-width-section lg:mt-[150px] lg:py-0 py-6 xs:py-8 sm:py-10 md:py-12">
+        <section className="full-width-section lg:mt-[150px] lg:py-0 mt-5 mb-24  ">
             {/* Background decorations */}
-          
+
 
             <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10">
                 {/* Header Section */}
@@ -215,16 +210,16 @@ export default function JobListingSection() {
                     {/* Breadcrumb */}
                     <div className="mb-3 xs:mb-4">
                         <a href="#" className="text-[11px] xs:text-xs sm:text-[13px] lg:text-[14px] font-semibold text-[#074CA4] hover:text-blue-700 transition-colors">
-                          Live GP Registrar opportunities
+                            Live GP Registrar opportunities
                         </a>
                     </div>
 
                     {/* Title */}
                     <div className="mb-4 xs:mb-5 sm:mb-6 md:mb-[22px]">
                         <h2 className="text-2lg   md:text-[26px] lg:text-[30px] font-bold text-slate-900 mb-2 xs:mb-3 sm:mb-4 leading-tight">
-Browse GP Registrar Jobs by state, billing model, DPA/MMM                        </h2>
+                            Browse GP Registrar Jobs by state, billing model, DPA/MMM                        </h2>
                         <p className="text-[11px] xs:text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-[#4A5565] max-w-2xl leading-relaxed">
-This is a preview dataset. Swap in your real roles from your ATS/CRM and auto-generate Job Posting schema per listing.                        </p>
+                            This is a preview dataset. Swap in your real roles from your ATS/CRM and auto-generate Job Posting schema per listing.                        </p>
                     </div>
                 </div>
 
@@ -265,11 +260,10 @@ This is a preview dataset. Swap in your real roles from your ATS/CRM and auto-ge
                         {jobListings.map((_, index) => (
                             <div
                                 key={index}
-                                className={`h-1.5 xs:h-2 rounded-full transition-all duration-300 ${
-                                    currentSlide === index
-                                        ? 'w-5 xs:w-6 bg-[#074CA4]'
-                                        : 'w-1.5 xs:w-2 bg-slate-300'
-                                }`}
+                                className={`h-1.5 xs:h-2 rounded-full transition-all duration-300 ${currentSlide === index
+                                    ? 'w-5 xs:w-6 bg-[#074CA4]'
+                                    : 'w-1.5 xs:w-2 bg-slate-300'
+                                    }`}
                             />
                         ))}
                     </div>

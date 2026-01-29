@@ -12,7 +12,7 @@ export default function LocumGPPage() {
         <main className="">
             <Locumhero />
             <Locumcounter />
-            <WhyLocumMedfuture/>
+            <WhyLocumMedfuture />
 
             {/* here comes locum card */}
             <LocumGpCards />

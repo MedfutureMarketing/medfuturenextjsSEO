@@ -93,7 +93,7 @@ function CounterDisplay({ item }: CounterDisplayProps) {
 export default function CounterSection() {
   return (
     <section className="py-6 xs:py-8 sm:py-10 md:py-12 lg:py-0">
-      <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-8">
+      <div className="inner-width-section mx-auto px-0  lg:px-8">
         {/* Counters Grid */}
         <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8">
           {counterData.map((item, index) => (

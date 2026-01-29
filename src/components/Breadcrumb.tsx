@@ -144,9 +144,9 @@ export default function Breadcrumb() {
         aria-label="Breadcrumb"
         className={`flex lg:py-[13px] py-4 lg:px-1  px-4 full-width-section ${themeColors.bgColor} ${themeColors.textColor}`}
       >
-        <ol className="flex items-center space-x-2 z-98 text-sm inner-width-section">
+        <ol className="flex items-center space-x-2 z-98 lg:text-sm text-[9px] inner-width-section">
           {breadcrumbs.map((breadcrumb, index) => (
-            <li key={breadcrumb.href} className="flex items-center lg:block hidden ">
+            <li key={breadcrumb.href} className="flex items-center ">
               {index > 0 && (
                 <span className="mx-2 opacity-50" aria-hidden="true">
                   /

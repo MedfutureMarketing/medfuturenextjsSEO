@@ -86,42 +86,44 @@ async function getConsultantData(): Promise<ConsultantGroup> {
 function ConsultantCard({ consultant }: { consultant: Consultant }) {
     return (
         <div>
-            <h3 className="text-sms lg:text-[16px] font-bold text-gray-900 mb-0">
+            <h3 className="text-[16px] font-bold text-gray-900 mb-0">
                 {consultant.name}
             </h3>
-            <p className="text-sm lg:text-[14px] text-[#040D48] mb-2">
+            <p className="text-[14px] text-[#040D48] mb-2">
                 {consultant.title}
             </p>
 
             <div className="space-y-2 mb-6">
                 {/* Email */}
                 <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                    <div className="w-5 h-5 flex items-center justify-center">
                         <Image src={emailico} alt="Email icon" className="object-contain w-full h-full" />
                     </div>
-                    <a href={`mailto:${consultant.email}`} className="text-xs lg:text-[14px] text-[#4A5565] hover:text-blue-600 break-all">
+                    <a href={`mailto:${consultant.email}`} className="text-[14px] text-[#4A5565] hover:text-blue-600">
                         {consultant.email}
                     </a>
                 </div>
 
                 {/* Phone */}
                 <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                    <div className="w-5 h-5 flex items-center justify-center">
                         <Image src={callico} alt="Phone icon" className="object-contain w-full h-full" />
                     </div>
-                    <a href={`tel:${consultant.phone}`} className="text-xs lg:text-[14px] text-[#4A5565] hover:text-blue-600">
+                    <a href={`tel:${consultant.phone}`} className="text-[14px] text-[#4A5565] hover:text-blue-600">
                         {consultant.phone}
                     </a>
                 </div>
 
                 {/* Location */}
                 <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
+                    <div className="w-5 h-5 flex items-center justify-center">
                         <Image src={Locationicos} alt="Location icon" className="object-contain w-full h-full" />
                     </div>
-                    <span className="text-xs lg:text-[14px] text-[#4A5565]">{consultant.location}</span>
+                    <span className="text-[14px] text-[#4A5565]">{consultant.location}</span>
                 </div>
             </div>
+
+
 
             <div className="border-b border-gray-300 mb-8 border-dashed"></div>
         </div>
@@ -129,59 +131,29 @@ function ConsultantCard({ consultant }: { consultant: Consultant }) {
 }
 
 // SSR Page Component
-export default async function ConsultantsPage() {
+export default async function locumConsultant() {
     const data = await getConsultantData();
 
-    // Split consultants into left and right columns (desktop only)
+    // Split consultants into left and right columns
     const leftConsultants = data.consultants.slice(0, Math.ceil(data.consultants.length / 2));
     const rightConsultants = data.consultants.slice(Math.ceil(data.consultants.length / 2));
 
     return (
-        <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] mt-5">
+        <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] lg:py-0 py-12">
             {/* Header */}
-            <div className="px-4 sm:px-6 inner-width-section lg:px-0 lg:py-[83px]  ">
-                <div className="max-w-7xl mx-auto">
-                    <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
-                        Meet Our Consultants
-                    </p>
-                    <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-8 lg:mb-[52px]">
-                        Your Dedicated Specialist GP Recruitment Experts
-                    </h2>
-                </div>
-            
+            <div className="px-2 inner-width-section lg:px-0 lg:py-[83px]  mb-10 lg:mb-[52px]">
+                <p className="text-xs lg:text-[14px] text-[#074CA4]  font-medium mb-2 mt-2">
+                    Meet Our Consultants
+                </p>
+                <h2 className="text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-[52px]">
+                    Your Dedicated Specialist GP Recruitment Experts
+                </h2>
 
-            {/* Main Content */}
-            <div className="px-4 sm:px-6 w-full lg:px-0 ">
-                <div className="inner-width-section mx-auto">
-                    {/* Mobile Layout - Single Column */}
-                    <div className="lg:hidden">
-                        <div className="space-y-6">
-                            {data.consultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
-                        </div>
 
-                        {/* Mobile Images - 2x2 Grid below consultants */}
-                        {/* <div className=" pt-6 border-t border-gray-300">
-                            <div className="grid grid-cols-2 gap-3">
-                                {data.centerImages.map((image, idx) => (
-                                    <div key={idx} className="rounded-lg overflow-hidden shadow-md">
-                                        <Image
-                                            src={image}
-                                            alt={`Professional image ${idx + 1}`}
-                                            className="w-full h-auto object-cover aspect-square"
-                                            placeholder="blur"
-                                            priority={false}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div> */}
-                    </div>
+                {/* Main Content */}
+                <div className="px-6 inner-width-section py-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-18">
 
-                    {/* Desktop Layout - Three Columns (unchanged) */}
-                    <div className="hidden lg:grid grid-cols-3 gap-8 lg:gap-18">
                         {/* Left Column */}
                         <div className="space-y-8">
                             {leftConsultants.map((consultant) => (
@@ -190,7 +162,7 @@ export default async function ConsultantsPage() {
                         </div>
 
                         {/* Center Images */}
-                        <div className="flex items-center justify-center h-full">
+                        <div className="flex items-center justify-center h-full lg:block hidden">
                             <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
                                 {data.centerImages.map((image, idx) => (
                                     <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
@@ -199,8 +171,8 @@ export default async function ConsultantsPage() {
                                             alt={`Professional image ${idx + 1}`}
                                             className="w-full h-full object-cover"
                                             placeholder="blur"
-                                            priority={false}
-                                            loading="lazy"
+                                               priority={false}
+            loading="lazy"
                                         />
                                     </div>
                                 ))}
@@ -213,9 +185,9 @@ export default async function ConsultantsPage() {
                                 <ConsultantCard key={consultant.id} consultant={consultant} />
                             ))}
                         </div>
-                    </div>
-                </div>
-            </div></div>
+
+                    </div> </div>
+            </div>
         </div>
     );
 }

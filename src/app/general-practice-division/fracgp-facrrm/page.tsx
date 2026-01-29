@@ -15,7 +15,7 @@ export default function Fracgp() {
             <JobListingSection />
             <ConsultantsPage />
             <FAQ />
-<CTA />
+            <CTA />
         </main>
     );
 }

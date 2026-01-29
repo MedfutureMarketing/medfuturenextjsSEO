@@ -80,9 +80,9 @@ export default function MedfuturePage() {
     ];
 
     return (
-        <div className="bg-white py-[106px] ">
+        <div className="bg-white pb-[160px] lg:mt-[160px] mt-24">
             {/* Header Section */}
-            <div className="inner-width-section mx-auto ">
+            <div className="inner-width-section mx-auto  ">
                 <div className="mb-2">
                     <span className="lg:text-[14px] text-xs font-semibold text-[#074CA4] uppercase tracking-wide">
                         Why Medfuture
@@ -91,13 +91,13 @@ export default function MedfuturePage() {
                 <h2 className="text-xl md:text-[30px] font-bold text-[#0F172A] mb-6 leading-tight">
                     Why Medfuture becomes your always-go-to locum agency
                 </h2>
-                <p className="lg:text-[16px] text-sm  text-[#4A5565] max-w-2xl leading-relaxed">
+                <p className="lg:text-[16px] text-sm  text-[#4A5565] max-w-2xl lg:mb-[51px] leading-relaxed">
                     Senior GPs choose agencies for control, continuity and respect. We operationalise all three—
                     so your locum life stays simple.
                 </p>
             </div>
             {/* Features Grid with Images */}
-            <div className="px-8 md:px-12 lg:px-0 inner-width-section mx-auto  lg:mt-[51px]">
+            <div className="px-8 md:px-0 lg:px-0 inner-width-section mx-auto  ">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
                     {/* Left Column - Features 1, 2, 3 */}
                     <div className="space-y-8">

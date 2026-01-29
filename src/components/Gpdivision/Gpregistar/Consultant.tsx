@@ -139,7 +139,7 @@ export default async function ConsultantsPage() {
     return (
         <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] mt-5">
             {/* Header */}
-            <div className="px-4 sm:px-6 w-full lg:px-0 lg:py-[83px] py-8 ">
+            <div className="px-0 sm:px-0 w-full lg:px-0 lg:py-[83px] py-8 ">
                 <div className="inner-width-section mx-auto">
                     <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
                         Meet Our Consultants
@@ -152,7 +152,7 @@ export default async function ConsultantsPage() {
 
             {/* Main Content */}
             <div className="px-4 sm:px-6 w-full lg:px-0 pb-12">
-                <div className="max-w-7xl mx-auto">
+                <div className="inner-width-section mx-auto">
                     {/* Mobile Layout - Single Column */}
                     <div className="lg:hidden">
                         <div className="space-y-6">
@@ -162,22 +162,7 @@ export default async function ConsultantsPage() {
                         </div>
 
                         {/* Mobile Images - 2x2 Grid below consultants */}
-                        <div className="mt-10 pt-6 border-t border-gray-300">
-                            <div className="grid grid-cols-2 gap-3">
-                                {data.centerImages.map((image, idx) => (
-                                    <div key={idx} className="rounded-lg overflow-hidden shadow-md">
-                                        <Image
-                                            src={image}
-                                            alt={`Professional image ${idx + 1}`}
-                                            className="w-full h-auto object-cover aspect-square"
-                                            placeholder="blur"
-                                            priority={false}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        
                     </div>
 
                     {/* Desktop Layout - Three Columns (unchanged) */}
@@ -191,7 +176,7 @@ export default async function ConsultantsPage() {
 
                         {/* Center Images */}
                         <div className="flex items-center justify-center h-full">
-                            <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
+                            <div className="grid grid-cols-2 gap-4 py-6 w-full h-full ">
                                 {data.centerImages.map((image, idx) => (
                                     <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
                                         <Image

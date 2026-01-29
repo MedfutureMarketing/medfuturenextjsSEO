@@ -140,8 +140,8 @@ function JobCarousel() {
 
 export default function LocumGPJobs() {
     return (
-        <div className="w-full p-4 sm:p-8">
-            <div className="max-w-7xl mx-auto">
+        <div className="w-full p-0 lg:mt-[140px] pb-[130px] ">
+            <div className="inner-width-section mx-auto">
                 {/* Header */}
                 <div className="mb-8">
                     <p className="text-xs lg:text-[14px] font-[500] text-[#074CA4] font-medium mb-2">

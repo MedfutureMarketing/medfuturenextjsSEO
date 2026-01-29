@@ -205,7 +205,7 @@ export default function JobListingSection() {
     };
 
     return (
-        <section className="full-width-section lg:mt-[150px] lg:py-0 py-6 xs:py-8 sm:py-10 md:py-12">
+        <section className="full-width-section lg:mt-[150px] lg:py-0 py-6 xs:py-8 sm:py-10 lg:py-12 mb-16">
             {/* Background decorations */}
           
 
