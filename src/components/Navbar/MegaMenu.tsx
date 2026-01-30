@@ -365,7 +365,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         links: [
           {
             label: "Occupational Therapist",
-            href: "/permanent/occupational-therapists-jobs/in-australia?page=1",
+            href: "/ahp-division/occupational-therapist",
             icon: "",
             description: "Explore Occupational Therapist roles offering diverse experiences across health, NDIS, and rehabilitation services, supporting meaningful patient outcomes."
           },

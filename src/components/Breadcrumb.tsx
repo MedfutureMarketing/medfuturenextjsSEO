@@ -33,8 +33,9 @@ const ROUTE_CONFIGS: RouteConfig[] = [
     { pattern: "/general-practice-division/locum-gp", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
     { pattern: "/general-practice-division/gp-registrars", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
     { pattern: "/ahp-division/speech-pathology", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Speech Pathology" },
-];
+  { pattern: "/ahp-division/occupational-therapist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Speech Pathology" },
 
+]; 
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {
   return segment
