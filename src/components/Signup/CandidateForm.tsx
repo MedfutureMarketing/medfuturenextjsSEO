@@ -400,6 +400,13 @@ export default function CandidateForm() {
     window.location.href = `${API_BASE_URL}/web/auth/google/redirect`;
   };
 
+  const handleLinkedInLogin = () => {
+    window.location.href = `${API_BASE_URL}/web/auth/linkedin/redirect`;
+  };
+
+  const handleFacebookLogin = () => {
+    window.location.href = `${API_BASE_URL}/web/auth/facebook/redirect`;
+  };
 
   return (
     <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[131px] px-4">
@@ -414,7 +421,8 @@ export default function CandidateForm() {
         </button>
         <button
           type="button"
-          className="flex-1 cursor-not-allowed py-0 bg-[#0A66C2] lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-700"
+          onClick={handleLinkedInLogin}
+          className="flex-1 py-2 bg-[#0A66C2] lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-700"
         >
           <span className="h-[18px] w-[18px] font-bold bg-white text-[#0A66C2] rounded-[2px] flex items-center justify-center">
             in
@@ -423,7 +431,8 @@ export default function CandidateForm() {
         </button>
         <button
           type="button"
-          className="flex-1 py-2 cursor-not-allowed bg-[#3A589B] lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-800"
+          onClick={handleFacebookLogin}
+          className="flex-1 py-2 bg-[#3A589B] lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-800"
         >
           <span className="text-[18px] font-bold">f</span>
           <span className="hidden sm:inline">Facebook</span>

@@ -341,14 +341,14 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
   },
   allied: {
     title: "Allied Health",
-    titleHref: "/",
+    titleHref: "/ahp-division",
     columns: [
       {
         heading: "",
         links: [
           {
             label: "Speech Pathologist",
-            href: "/permanent/speech-pathology-jobs/in-australia?page=1",
+            href: "/ahp-division/speech-pathology",
             icon: "",
             description: "Explore rewarding Speech Pathologist opportunities, providing care across paediatrics, adults, and clinical settings while advancing your career."
           },

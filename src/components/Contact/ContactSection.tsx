@@ -93,10 +93,12 @@ export default function ContactSection() {
   };
 
   /* 🔹 ADDED: validation logic */
- const validateForm = useCallback(() => {
+const validateForm = useCallback(() => {
   const errors = {
     name: !formData.name ? "Please enter your name" : "",
-    email: !formData.email ? "Please enter your email address" : "",
+    email: !formData.email || !verifyEmailFormat(formData.email)
+      ? "Please enter a valid email address"
+      : "",
     mobile: !formData.mobile ? "Please enter your phone number" : "",
     message: !formData.message ? "Please submit your enquiry" : "",
   };
@@ -104,6 +106,10 @@ export default function ContactSection() {
   setFormErrors(errors);
   return errors;
 }, [formData]);
+
+const verifyEmailFormat = (email: string) => {
+  return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
+}
 
 
   /* 🔹 ADDED: revalidate on change after submit click */

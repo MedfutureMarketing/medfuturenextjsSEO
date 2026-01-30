@@ -32,6 +32,8 @@ export default function Menu() {
     "/job-seeker-hub/allied-health-division": "bg-white text-[#040D48]",
     "/job-seeker-hub/oral-health-division": "bg-white text-[#040D48]",
     "/job-seeker-hub/mental-health-division": "bg-white text-[#040D48]",
+            "/ahp-division/speech-pathology": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
+
   };
   const topBarColors =
     topBarColorMap[pathname] || "bg-white text-[#040D48]";
@@ -46,7 +48,9 @@ export default function Menu() {
     "/employer-hub": "bg-white text-[#040D48]",
     "/contact-us": "bg-white text-[#040D48]",
     "/about-us": "bg-white text-[#040D48]",
-    "/general-practitioner-registrar": "bg-white text-[#040D48]",
+    "/general-practitioner-registrar": "bg-white text-[#040D48] ",
+        "/ahp-division/speech-pathology": "bg-white text-[#040D48] ", 
+
   };
   const headerColors =
     headerColorMap[pathname] || "bg-white text-[#040D48]";
@@ -73,9 +77,9 @@ export default function Menu() {
   return (
     <>
       {/* STICKY HEADER */}
-      <div className="sticky top-0 z-99">
-        <div className={`${headerColors} full-width-section`}>
-          <header className="inner-width-section py-3 flex items-center justify-between">
+      <div className="sticky top-0 z-99 ">
+        <div className={`${headerColors} full-width-section `}>
+          <header className="inner-width-section py-3 flex items-center  justify-between">
             {/* LEFT SECTION: LOGO + PERMANENT/LOCUM/INTERNATIONAL */}
             <div className="flex items-center space-x-8">
               {/* LOGO */}
