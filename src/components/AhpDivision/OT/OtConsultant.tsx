@@ -137,7 +137,7 @@ export default async function ConsultantsPage() {
     const rightConsultants = data.consultants.slice(Math.ceil(data.consultants.length / 2));
 
     return (
-        <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] mt-5">
+        <div className="full-width-section  lg:mt-[130px] mt-5">
             {/* Header */}
             <div className="px-4 sm:px-6 inner-width-section lg:px-0 lg:py-[83px]  ">
                 <div className="max-w-7xl mx-auto">
@@ -148,21 +148,21 @@ export default async function ConsultantsPage() {
                         Your Dedicated Specialist GP Recruitment Experts
                     </h2>
                 </div>
-            
 
-            {/* Main Content */}
-            <div className="px-4 sm:px-6 w-full lg:px-0 ">
-                <div className="inner-width-section mx-auto">
-                    {/* Mobile Layout - Single Column */}
-                    <div className="lg:hidden">
-                        <div className="space-y-6">
-                            {data.consultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
-                        </div>
 
-                        {/* Mobile Images - 2x2 Grid below consultants */}
-                        {/* <div className=" pt-6 border-t border-gray-300">
+                {/* Main Content */}
+                <div className="px-4 sm:px-6 w-full lg:px-0 ">
+                    <div className="inner-width-section mx-auto">
+                        {/* Mobile Layout - Single Column */}
+                        <div className="lg:hidden">
+                            <div className="space-y-6">
+                                {data.consultants.map((consultant) => (
+                                    <ConsultantCard key={consultant.id} consultant={consultant} />
+                                ))}
+                            </div>
+
+                            {/* Mobile Images - 2x2 Grid below consultants */}
+                            {/* <div className=" pt-6 border-t border-gray-300">
                             <div className="grid grid-cols-2 gap-3">
                                 {data.centerImages.map((image, idx) => (
                                     <div key={idx} className="rounded-lg overflow-hidden shadow-md">
@@ -178,44 +178,44 @@ export default async function ConsultantsPage() {
                                 ))}
                             </div>
                         </div> */}
-                    </div>
-
-                    {/* Desktop Layout - Three Columns (unchanged) */}
-                    <div className="hidden lg:grid grid-cols-3 gap-8 lg:gap-18">
-                        {/* Left Column */}
-                        <div className="space-y-8">
-                            {leftConsultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
                         </div>
 
-                        {/* Center Images */}
-                        <div className="flex items-center justify-center h-full">
-                            <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
-                                {data.centerImages.map((image, idx) => (
-                                    <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
-                                        <Image
-                                            src={image}
-                                            alt={`Professional image ${idx + 1}`}
-                                            className="w-full h-full object-cover"
-                                            placeholder="blur"
-                                            priority={false}
-                                            loading="lazy"
-                                        />
-                                    </div>
+                        {/* Desktop Layout - Three Columns (unchanged) */}
+                        <div className="hidden lg:grid grid-cols-3 gap-8 lg:gap-18">
+                            {/* Left Column */}
+                            <div className="space-y-8">
+                                {leftConsultants.map((consultant) => (
+                                    <ConsultantCard key={consultant.id} consultant={consultant} />
+                                ))}
+                            </div>
+
+                            {/* Center Images */}
+                            <div className="flex items-center justify-center h-full">
+                                <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
+                                    {data.centerImages.map((image, idx) => (
+                                        <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
+                                            <Image
+                                                src={image}
+                                                alt={`Professional image ${idx + 1}`}
+                                                className="w-full h-full object-cover"
+                                                placeholder="blur"
+                                                priority={false}
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Right Column */}
+                            <div className="space-y-8 lg:ml-24">
+                                {rightConsultants.map((consultant) => (
+                                    <ConsultantCard key={consultant.id} consultant={consultant} />
                                 ))}
                             </div>
                         </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-8 lg:ml-24">
-                            {rightConsultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
-                        </div>
                     </div>
-                </div>
-            </div></div>
+                </div></div>
         </div>
     );
 }

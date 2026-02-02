@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MedfutureLogoDark from "@/assets/logo/medfuture-logo.webp";
 
-type MenuKey = "permanent" | "locum" | "international" | "candidates" |"medical" |"allied"|"mental" |"oral";
+type MenuKey = "permanent" | "locum" | "international" | "candidates" | "medical" | "allied" | "mental" | "oral";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -17,13 +17,13 @@ const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey }[] = [
   { label: "Locum Jobs", href: "/locum", submenu: "locum" },
   { label: "International Candidates", href: "/international", submenu: "international" },
   { label: "For Candidates", href: "#", submenu: "candidates" },
-    { label: "Medical Division", href: "#", submenu: "medical" },
-      { label: "Allied Health Division", href: "#", submenu: "allied" },
-           { label: "Mental Health Division", href: "#", submenu: "mental" },
-                      { label: "Oral Health Division", href: "#", submenu: "oral" },
+  { label: "Medical Division", href: "#", submenu: "medical" },
+  { label: "Allied Health Division", href: "#", submenu: "allied" },
+  { label: "Mental Health Division", href: "#", submenu: "mental" },
+  { label: "Oral Health Division", href: "#", submenu: "oral" },
 
-      
-//   { label: "Employers", href: "/employer-hub" },
+
+  //   { label: "Employers", href: "/employer-hub" },
 ];
 
 const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
@@ -32,27 +32,27 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Jobs in Australian Capital Territory (ACT)", href: "/permanent/jobs/in-australian-capital-territory?page=1" },
     { label: "Jobs in South Australia (SA) ", href: "/permanent/jobs/in-south-australia?page=1" },
     { label: "Jobs in Northern Territory (NT)", href: "/permanent/jobs/in-northern-territory?page=1" },
-     { label: "Jobs in Queensland (QLD)", href: "/permanent/jobs/in-queensland?page=1" },
+    { label: "Jobs in Queensland (QLD)", href: "/permanent/jobs/in-queensland?page=1" },
     { label: "Jobs in Western Australia (WA)", href: "/permanent/jobs/in-western-australia?page=1" },
     { label: "Jobs in Victoria (VIC)", href: "/permanent/jobs/in-victoria?page=1" },
-     { label: "Jobs in Tasmania (TAS)", href: "/permanent/jobs/in-tasmania?page=1" },
- 
+    { label: "Jobs in Tasmania (TAS)", href: "/permanent/jobs/in-tasmania?page=1" },
+
   ],
   locum: [
     { label: "Jobs in New South Wales (NSW)", href: "/locum/jobs/in-new-south-wales?page=1" },
     { label: "Jobs in Australian Capital Territory (ACT)", href: "/locum/jobs/in-australian-capital-territory?page=1" },
     { label: "Jobs in South Australia (SA) ", href: "/locum/jobs/in-south-australia?page=11" },
     { label: "Jobs in Northern Territory (NT)", href: "/locum/jobs/in-northern-territory?page=1" },
-     { label: "Jobs in Queensland (QLD)", href: "/locum/jobs/in-queensland?page=1" },
+    { label: "Jobs in Queensland (QLD)", href: "/locum/jobs/in-queensland?page=1" },
     { label: "Jobs in Western Australia (WA)", href: "/locum/jobs/in-western-australia?page=1" },
     { label: "Jobs in Victoria (VIC)", href: "/locum/jobs/in-victoria?page=1" },
-     { label: "Jobs in Tasmania (TAS)", href: "/locum/jobs/in-tasmania?page=1" },
- 
+    { label: "Jobs in Tasmania (TAS)", href: "/locum/jobs/in-tasmania?page=1" },
+
   ],
   international: [
-    
+
     { label: "Jobs for international Candidates", href: "/international" },
-   
+
   ],
   candidates: [
     { label: "Permanent Jobs", href: "/permanent" },
@@ -61,30 +61,30 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Resume Tips", href: "/resources/resume" },
     { label: "Interview Prep", href: "/resources/interview" },
   ],
-   medical: [
+  medical: [
     { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/general-practice-division/fracgp-facrrm" },
     { label: "General Practitioner (Registrars)", href: "/general-practice-division/gp-registrars" },
     { label: "International Family Medicine (Specialist Pathway Recruitment)", href: "/international/family-medicine-jobs/in-australia?page=1" },
     { label: "Locum GP (Short Term or Ongoing Cover)", href: "/general-practice-division/locum-gp" },
-  
+
   ],
-   allied: [
-    { label: "Speech Pathologist ", href: "/permanent/speech-pathology-jobs/in-australia?page=1" },
+  allied: [
+    { label: "Speech Pathologist ", href: "/ahp-division/speech-pathology" },
     { label: "Physiotherapy", href: "/permanent/physiotherapy-jobs/in-australia?page=1" },
-    { label: "Occupational Therapist ", href: "/permanent/occupational-therapists-jobs/in-australia?page=1" },
+    { label: "Occupational Therapist ", href: "/ahp-division/occupational-therapist" },
     { label: "Podiatrist", href: "/permanent/podiatrist-jobs/in-australia?page=1" },
   ],
-   mental: [
+  mental: [
     { label: "Psychology", href: "/permanent/psychology-jobs/in-australia?page=1" },
-  
+
   ],
-   oral: [
+  oral: [
     { label: "Dentist", href: "/permanent/dentists-jobs/in-australia?page=1" },
     { label: "General Dentist", href: "/permanent/dental-jobs/in-australia?page=1" },
     { label: "Dental Specialist", href: "/permanent/general-dentist-jobs/in-australia?page=1" },
     { label: "Oral Hygienist", href: "/permanent/oral-hygienist-jobs/in-australia?page=1" },
   ],
-  
+
 };
 
 // const DIVISIONS = [
@@ -132,13 +132,12 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
       {/* Mobile Menu Drawer */}
       <div
-        className={`fixed top-0 left-0 h-screen w-80 bg-white shadow-2xl z-101 transition-transform duration-300 overflow-y-auto lg:hidden ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 h-screen w-80 bg-white shadow-2xl z-101 transition-transform duration-300 overflow-y-auto lg:hidden ${isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         {/* Header with Close Button */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 sticky top-0 bg-white">
-         <Image src={MedfutureLogoDark} alt="Medfuture logo" width={120} height={30} />
+          <Image src={MedfutureLogoDark} alt="Medfuture logo" width={120} height={30} />
           <button
             onClick={onClose}
             className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600"
@@ -160,9 +159,8 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   >
                     {item.label}
                     <span
-                      className={`transition-transform text-gray-600 text-lg ${
-                        expandedMenu === item.submenu ? "rotate-180" : ""
-                      }`}
+                      className={`transition-transform text-gray-600 text-lg ${expandedMenu === item.submenu ? "rotate-180" : ""
+                        }`}
                     >
                       ▼
                     </span>
