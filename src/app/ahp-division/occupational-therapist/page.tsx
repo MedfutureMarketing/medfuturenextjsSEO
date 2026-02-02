@@ -1,5 +1,5 @@
 import Othero from "@/components/AhpDivision/OT/Othero"
-import ContentSection from "@/components/AhpDivision/OT/LOTContentSection";
+import ContentSection from "@/components/AhpDivision/OT/OtContentSection";
 import Otcounter from "@/components/AhpDivision/OT/OtCounter"
 import JoblistingOt from "@/components/AhpDivision/OT/OtJoblisting";
 import WorkSettingContent from "@/components/AhpDivision/OT/OTWorkSettingcontent";

@@ -66,7 +66,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Explore Permanent Job Openings in South Australia (SA)",
           },
-           
+
 
         ],
       },
@@ -79,7 +79,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
             icon: "",
             description: "Get expert guidance on visa applications, immigration processes, and residency options. We simplify complex procedures to help you move with confidence",
           },
-         
+
 
 
         ],
@@ -354,7 +354,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
           },
           {
             label: "Physiotherapy",
-            href: "/permanent/physiotherapy-jobs/in-australia?page=1",
+            href: "/ahp-division/physiotherapy",
             icon: "",
             description: "Looking for a Physiotherapy role? Discover opportunities to deliver patient-centred care in hospitals, clinics, or community settings."
           },
@@ -378,7 +378,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
 
           {
             label: "Podiatrist",
-            href: "/permanent/podiatrist-jobs/in-australia?page=1",
+            href: "/ahp-division/podiatrist",
             icon: "",
             description: "Discover Podiatrist opportunities to work in clinical or community settings, helping patients with foot health, mobility, and long-term care."
           },

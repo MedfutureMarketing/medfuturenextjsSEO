@@ -70,9 +70,9 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
   ],
   allied: [
     { label: "Speech Pathologist ", href: "/ahp-division/speech-pathology" },
-    { label: "Physiotherapy", href: "/permanent/physiotherapy-jobs/in-australia?page=1" },
+    { label: "Physiotherapy", href: "/ahp-division/physiotherapy" },
     { label: "Occupational Therapist ", href: "/ahp-division/occupational-therapist" },
-    { label: "Podiatrist", href: "/permanent/podiatrist-jobs/in-australia?page=1" },
+    { label: "Podiatrist", href: "/ahp-division/podiatrist" },
   ],
   mental: [
     { label: "Psychology", href: "/permanent/psychology-jobs/in-australia?page=1" },
