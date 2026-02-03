@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Image from "next/image";
 import Spimage from "@/assets/ahp/spimage.png"
 
