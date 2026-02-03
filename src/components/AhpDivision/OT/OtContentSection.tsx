@@ -18,7 +18,7 @@ const ContentSection = () => {
                 <div className="col-span-1 text-left">
                     <h1 className="lg:text-[24px]  text-lg font-bold text-[#000000] mb-4">Ethical. Transparent. OT-Led Career Matching.</h1>
                     <p className="lg:text-[16px] text-xs text-[#4A5565]">
-                        If you are an AHPRA-registered Occupational Therapist in Australia, your next role should support your clinical reasoning, wellbeing, and long-term career growth — not compromise them.
+                        If you are an AHPRA-registered Occupational Therapists in Australia, your next role should support your clinical reasoning, wellbeing, and long-term career growth — not compromise them.
                     </p>
 
                     <p className="lg:text-[16px] text-xs text-[#4A5565] mt-5">
