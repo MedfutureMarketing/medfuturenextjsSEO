@@ -1,25 +1,27 @@
+/* eslint-disable react/no-unescaped-entities */
+
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 interface JobCardProps {
-  iconSrc: string;
-  iconAlt: string;
+  // iconSrc: string;
+  // iconAlt: string;
   title: string;
   subtitle: string;
-  description: string;
+  // description: string;
   highlights: string[];
   buttonText: string;
   buttonSubtext: string;
 }
 
 const JobCard: React.FC<JobCardProps> = ({
-  iconSrc,
-  iconAlt,
+  // iconSrc,
+  // iconAlt,
   title,
   subtitle,
-  description,
+  // description,
   highlights,
   buttonText,
   buttonSubtext,
@@ -61,11 +63,11 @@ const JobCard: React.FC<JobCardProps> = ({
 export default function PhysiotherapistJobs() {
   const jobCards: JobCardProps[] = [
     {
-      iconSrc: '/icons/document.png',
-      iconAlt: 'Document Icon',
+      // iconSrc: '/icons/document.png',
+      // iconAlt: 'Document Icon',
       title: 'Private Practice Physiotherapist Jobs',
       subtitle: '',
-      description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
+      // description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
       highlights: [
         'MSK-focused caseloads',
         'KPI-driven environment',
@@ -76,11 +78,11 @@ export default function PhysiotherapistJobs() {
       buttonSubtext: '',
     },
     {
-      iconSrc: '/icons/briefcase.png',
-      iconAlt: 'Briefcase Icon',
+      // iconSrc: '/icons/briefcase.png',
+      // iconAlt: 'Briefcase Icon',
       title: 'Hospital & Health Service Physiotherapist Jobs',
       subtitle: '',
-      description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
+      // description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
       highlights: [
         'Acute, sub-acute & rehab settings',
         'Structured teams',
@@ -91,11 +93,11 @@ export default function PhysiotherapistJobs() {
       buttonSubtext: '',
     },
     {
-      iconSrc: '/icons/document.png',
-      iconAlt: 'Document Icon',
+      // iconSrc: '/icons/document.png',
+      // iconAlt: 'Document Icon',
       title: 'Community & NDIS Physiotherapist Jobs',
       subtitle: '',
-      description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
+      // description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
       highlights: [
         'Home & community visits',
         'Functional, long-term patient relationships',
@@ -106,11 +108,11 @@ export default function PhysiotherapistJobs() {
       buttonSubtext: '',
     },
     {
-      iconSrc: '/icons/briefcase.png',
-      iconAlt: 'Briefcase Icon',
+      // iconSrc: '/icons/briefcase.png',
+      // iconAlt: 'Briefcase Icon',
       title: 'Sports Physiotherapist Jobs',
       subtitle: '',
-      description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
+      // description: 'Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.',
       highlights: [
         'Elite, semi-elite, or community sport',
         'High complexity',
