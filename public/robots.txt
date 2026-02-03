@@ -1,0 +1,40 @@
+# robots.txt file for medfuture.com.au 
+
+# Search engines (FULL access) 
+User-agent: Googlebot
+User-agent: Google-Extended
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Bingbot
+User-agent: Slurp
+User-agent: DuckDuckBot
+User-agent: YahooJP
+Disallow: *jobId=
+
+# Unrestricted access- Google ads bots
+User-agent: Mediapartners-Google
+User-agent: AdIdxBot
+Disallow: *jobId=
+
+# Social media bots
+User-agent: facebookexternalhit
+User-agent: WhatsApp
+User-agent: snapchat
+User-agent: TelegramBot
+User-agent: Twitterbot
+User-agent: Baiduspider
+User-agent: PetalBot
+User-agent: LinkedInBot
+Allow: /
+Disallow: *jobId=
+
+User-agent: anthropic-ai
+User-agent: Bytespider
+User-agent: CCBot
+User-agent: Diffbot
+User-agent: GPTBot
+User-agent: omgili
+Disallow: *jobId=
+
+User-agent: *
+Disallow: *jobId=
