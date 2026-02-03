@@ -62,10 +62,10 @@ export default function PodiatristJobsSection() {
           <p className="text-[#074CA4] text-[14px] font-medium tracking-wide uppercase mb-3">
             Professional Roles
           </p>
-          <h2 className="text-3xl lg:text-[30px] font-bold text-[#0F172A] mb-6">
+          <h2 className="text-xl lg:text-[30px] font-bold text-[#0F172A] mb-6">
             Podiatrist Jobs Across Australia – All Practice Settings
           </h2>
-          <p className="text-[#4A5565] text-[16px]">
+          <p className="text-[#4A5565] lg:text-[16px] text-xs">
             We recruit for verified podiatrist roles across:
           </p>
         </div>
@@ -77,7 +77,7 @@ export default function PodiatristJobsSection() {
               key={category.title}
               className="bg-white rounded-[8px]  border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200"
             >
-            <h3 className="text-[24px] font-semibold text-[#0A2E5C] mb-4">
+            <h3 className="lg:text-[16px] text-md font-semibold text-[#0A2E5C] mb-4">
                 {category.title}
               </h3>
               <ul className="space-y-1">
@@ -102,10 +102,10 @@ export default function PodiatristJobsSection() {
               key={category.title}
               className="bg-white rounded-[8px]  shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200"
             >
-            <h3 className="text-[24px] font-semibold text-[#0A2E5C] mb-4">
+            <h3 className="lg:text-[16px] text-md font-semibold text-[#0A2E5C] mb-4">
                 {category.title}
               </h3>
-              <ul className="space-y-1">
+              <ul className="space-y-1 text-xs">
                 {category.items.map((item, index) => (
                   <li
                     key={`${category.title}-${index}`}

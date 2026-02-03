@@ -416,7 +416,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
         links: [
           {
             label: "Psychology",
-            href: "/permanent/psychology-jobs/in-australia?page=1",
+            href: "/ahp-division/psychology",
             icon: "",
             description: "Explore Psychology opportunities to provide mental health support, counselling, and evidence-based care across clinical, community, and organisational settings.",
           },

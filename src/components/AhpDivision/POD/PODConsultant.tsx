@@ -145,8 +145,7 @@ export default async function ConsultantsPage() {
                         Meet Our Consultants
                     </p>
                     <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-8 lg:mb-[52px]">
-                        Your Dedicated Specialist GP Recruitment Experts
-                    </h2>
+Your Dedicated Podiatrist Recruitment Experts                    </h2>
                 </div>
 
 

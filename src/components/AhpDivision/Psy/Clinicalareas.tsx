@@ -20,8 +20,8 @@ export default function ClinicalAreas() {
                         </p>
                     </div>
                     <div className="col-span-1 bg-gradient-to-b from-[#074CA4] to-white-400 rounded-lg p-8 text-white">
-                        <h2 className="lg:text-[18px] text-sm font-bold mb-6">Paediatric & Developmental</h2>
-                        <ul className="space-y-1 lg:text-[16px] text-xs">
+                        <h2 className="lg:text-[18px] font-bold mb-6">Paediatric & Developmental</h2>
+                        <ul className="space-y-1">
                             <li className="flex items-start">
                                 <span className="mr-3 mt-1">•</span>
                                 <span>Early language development</span>
@@ -51,9 +51,9 @@ export default function ClinicalAreas() {
 
                     {/* Service Delivery Models */}
                     <div className="col-span-1 bg-gradient-to-b from-[#074CA4] to-white-400 rounded-lg p-8 text-white">
-                        <h2 className="lg:text-[18px] text-sm font-bold mb-6">Service Delivery Models</h2>
-                        <ul className="space-y-1 lg:text-[16px] text-xs">
-                            <li className="flex items-start ">
+                        <h2 className="text-xl font-bold mb-6">Service Delivery Models</h2>
+                        <ul className="space-y-1">
+                            <li className="flex items-start">
                                 <span className="mr-3 mt-1">•</span>
                                 <span>Clinic-based</span>
                             </li>
@@ -74,8 +74,8 @@ export default function ClinicalAreas() {
 
                     {/* Adult & Neuro */}
                     <div className="col-span-1 bg-gradient-to-b from-[#074CA4] to-white-400 rounded-lg p-8 text-white">
-                        <h2 className="lg:text-[18px] text-sm font-bold mb-6">Adult & Neuro</h2>
-                        <ul className="space-y-1 lg:text-[16px] text-xs">
+                        <h2 className="text-xl font-bold mb-6">Adult & Neuro</h2>
+                        <ul className="space-y-1">
                             <li className="flex items-start">
                                 <span className="mr-3 mt-1">•</span>
                                 <span>Dysphagia (acute, rehab, aged care)</span>

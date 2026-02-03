@@ -36,8 +36,8 @@ const JobCard: React.FC<JobCardProps> = ({
         </svg>
 
       </div>
-      <h3 className="text-[18px] font-semibold text-[#074CA4]">{title}</h3>
-      <p className="text-sm text-gray-500 mb-6">{subtitle}</p>
+      <h3 className="lg:text-[18px] text-md font-semibold text-[#074CA4]">{title}</h3>
+      <p className="lg:text-[16px] text-xs text-gray-500 mb-6">{subtitle}</p>
 
       {/* <p className="text-sm text-gray-600 mb-4">{description}</p> */}
 
@@ -130,10 +130,10 @@ export default function PhysiotherapistJobs() {
           <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
             Professional Roles
           </p>
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="lg:text-[30px] text-xl font-bold text-gray-900 mb-4">
             Physiotherapist jobs by setting (Australia)
           </h1>
-          <p className="text-gray-600 max-w-3xl">
+          <p className="text-gray-600 lg:text-[16px] text-xs max-w-3xl">
             Setting changes everything: patient mix, consult length, documentation, support structure and long-term progression. Choose roles aligned to how you want to practice.
           </p>
         </div>

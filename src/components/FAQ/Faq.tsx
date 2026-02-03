@@ -182,6 +182,34 @@ const faqData: FAQData = {
   "/general-practice-division/gp-registrars": [
     { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
   ],
+  "/ahp-division/speech-pathology": [
+    { question: "Do you recruit Speech Pathologist / Speech Therapist jobs across Australia?", answer: "Yes. Medfuture recruits Speech Pathology roles Australia-wide across private practice, NDIS, schools, health services, community organisations and telehealth providers." },
+    { question: "Do I need to be an SPA member to apply?", answer: "Many employers prefer SPA membership or SPA-eligible qualifications. If you’re unsure about eligibility, we’ll guide you and match you to suitable employers." },
+
+    { question: "How do you make sure caseload details are transparent?", answer: "We request role-specific caseload disclosure before interviews: client age mix, diagnostic profile, sessions/day, reporting expectations, billable vs non-billable allocation, travel radius, supervision model and PD support." },
+    { question: "Can new graduates apply through Medfuture?", answer: "Absolutely. We prioritise structured supervision, gradual caseload ramp-up, mentoring and realistic KPIs for new graduate and early-career clinicians." },
+
+    { question: "Do you charge candidates any fees?", answer: "No. Medfuture does not charge candidates recruitment or placement fees." },
+
+    { question: "Are telehealth Speech Pathology roles available?", answer: "Yes. We work with providers offering telehealth and hybrid models and we clarify tech expectations, session flow and KPI differences up front." },
+
+    { question: "", answer: "Y" },
+
+
+  ],
+
+
+  "/ahp-division/occupational-therapist": [
+    { question: "What is the average caseload for an Occupational Therapist in Australia?", answer: "Caseloads vary by setting. Community/NDIS roles commonly sit around 25–45 active clients depending on complexity, travel and reporting. A safe caseload includes protected admin and report time—not just face-to-face hours." },
+    { question: "How many billable hours should an OT be expected to work?", answer: "Many roles target roughly 22–30 billable hours per week. Higher expectations should come with strong admin support, reduced complexity, protected documentation time, and/or higher remuneration." },
+    { question: "Are Occupational Therapists in demand in Australia?", answer: "Demand remains strong across NDIS/community, paediatrics, mental health and hospital settings, with particularly high demand in growth corridors and regional areas." },
+    { question: "What should OTs check before accepting an NDIS role?", answer: "Report time allocation, cancellation policy, complexity mix, supervision access, admin support, travel expectations, and ethical practice culture around funding recommendations." },
+    { question: "Do recruitment agencies help Occupational Therapists?", answer: "A specialist OT recruiter can reduce career risk by verifying role realities, protecting confidentiality, and supporting negotiation—if they prioritise OT wellbeing over placement volume." },
+    { question: "How does Medfuture reduce burnout risk for OTs?", answer: "By pre-verifying caseload/KPIs, checking supervision and admin time, limiting role shortlists to 2–3 best-fit options, and staying connected after placement with structured check-ins." },
+    { question: "Will Medfuture send my CV without consent?", answer: "No. Your profile should only be submitted role-by-role with your explicit consent." },
+    { question: "What OT settings does Medfuture recruit for?", answer: "NDIS & community, paediatrics, hospitals/rehab, mental health, aged care, and senior/leadership OT roles across Australia." },
+
+  ],
 };
 
 

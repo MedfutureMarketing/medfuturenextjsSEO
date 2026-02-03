@@ -23,19 +23,25 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/employer-hub", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "Employer Hub" },
   { pattern: "/contact-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "Contact Us" },
   { pattern: "/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Fracgp - FACRRM" },
-    { pattern: "/general-practice-division/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Frac GP / FACRRM" },
+  { pattern: "/general-practice-division/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Frac GP / FACRRM" },
 
   { pattern: "/medical-division", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Medical Division" },
   { pattern: "/about-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "About Us" },
   { pattern: "/permanent", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "" },
   { pattern: "/locum", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
   { pattern: "/international", bgColor: "bg-[#575D84]", textColor: "text-white", breadcrumbLabel: "" },
-    { pattern: "/general-practice-division/locum-gp", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
-    { pattern: "/general-practice-division/gp-registrars", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
-    { pattern: "/ahp-division/speech-pathology", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Speech Pathology" },
-  { pattern: "/ahp-division/occupational-therapist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Speech Pathology" },
+  { pattern: "/general-practice-division/locum-gp", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
+  { pattern: "/general-practice-division/gp-registrars", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "" },
+  { pattern: "/ahp-division/speech-pathology", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Speech Pathology" },
+  { pattern: "/ahp-division/occupational-therapist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Occupational Therapist" },
+  { pattern: "/ahp-division/podiatrist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Podiatrist" },
+  { pattern: "/ahp-division/physiotherapy", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Physiotherapy" },
 
-]; 
+  { pattern: "/ahp-division/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
+  { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
+
+
+];
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {
   return segment
@@ -161,11 +167,10 @@ export default function Breadcrumb() {
               ) : (
                 <Link
                   href={breadcrumb.href}
-                  className={`transition-colors ${
-                    themeColors.textColor
+                  className={`transition-colors ${themeColors.textColor
                       ? "hover:opacity-70"
                       : "text-gray-600 hover:text-blue-700"
-                  }`}
+                    }`}
                   onClick={(e) => {
                     // If it's "Job Listings" breadcrumb, go back to previous page
                     if (breadcrumb.label === "Job Listings" && previousPage) {

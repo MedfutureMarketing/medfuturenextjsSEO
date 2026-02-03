@@ -74,10 +74,10 @@ export default function OccupationalTherapistJobs() {
           <p className="text-[#074CA4] text-[14px] font-[500] mb-2">
             Professional Roles
           </p>
-          <h1 className="text-4xl md:text-[30px] font-bold text-[#0F172A] mb-6">
+          <h1 className="text-xl md:text-[30px] font-bold text-[#0F172A] mb-6">
             Occupational Therapist jobs across every core practice setting
           </h1>
-          <p className="text-slate-600 text-base lg:w-2xl" >
+          <p className="text-slate-600 lg:text-[16px] text-xs lg:w-2xl" >
           From new graduates to senior leaders—aligned to your clinical identity, supervision needs, and sustainable workload.
           </p>
         </div>
@@ -115,8 +115,8 @@ export default function OccupationalTherapistJobs() {
 
 function JobCard({ category }: { category: JobCategory }) {
   return (
-    <div className="p-10">
-      <h2 className="text-[18px] font-bold text-[#0A2E5C] mb-6">
+    <div className="lg:p-10 px-4 p-5">
+      <h2 className="lg:text-[18px] text-lg font-bold text-[#0A2E5C] mb-6">
         {category.title}
       </h2>
       <ul className="space-y-[8px] mt-[24px]">
@@ -125,7 +125,7 @@ function JobCard({ category }: { category: JobCategory }) {
             <span className="text-teal-600 mt-0.5">
               <CheckIcon />
             </span>
-            <span className="text-[#000000] text-[14px] leading-relaxed">
+            <span className="text-[#000000] lg:text-[14px] text-xs leading-relaxed">
               {item}
             </span>
           </li>
