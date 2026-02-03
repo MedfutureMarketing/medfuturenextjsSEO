@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Spimage from "@/assets/ahp/spimage.png"
 
-const ContentSection = () => {
+const OTContentSection = () => {
     return (
         <div className="full-width-section bg-[#C0C0C017] my-[110px] ">
             <div className="grid lg:grid-cols-2 gap-1 p-0 inner-width-section py-[49px]">
@@ -33,4 +33,4 @@ const ContentSection = () => {
     );
 };
 
-export default ContentSection;
+export default OTContentSection;
