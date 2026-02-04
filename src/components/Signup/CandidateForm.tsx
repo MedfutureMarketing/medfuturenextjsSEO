@@ -409,33 +409,33 @@ export default function CandidateForm() {
   };
 
   return (
-    <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[131px] px-4">
-      <div className="flex justify-center gap-3 mb-8">
+    <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[131px] ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-16 gap-4 mb-4">
         <button
             type="button"
             onClick={handleGoogleLogin}
-            className="flex-1 py-2 bg-red-500 lg:w-[212px] h-[48px] text-white rounded flex items-center justify-center gap-2 hover:bg-red-600"
+            className="flex-1 py-2 bg-red-500 cursor-pointer lg:w-[212px] h-[48px] text-white rounded flex items-center justify-center gap-2 hover:bg-red-600"
           >
             <span className="text-[16px] font-bold">G</span>
-            <span className="hidden sm:inline">Google</span>
+            <span className="">Google</span>
         </button>
         <button
           type="button"
           onClick={handleLinkedInLogin}
-          className="flex-1 py-2 bg-[#0A66C2] lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-700"
+          className="flex-1 py-2 bg-[#0A66C2] cursor-pointer lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-700"
         >
           <span className="h-[18px] w-[18px] font-bold bg-white text-[#0A66C2] rounded-[2px] flex items-center justify-center">
             in
           </span>
-          <span className="hidden sm:inline">LinkedIn</span>
+          <span className="">LinkedIn</span>
         </button>
         <button
           type="button"
           onClick={handleFacebookLogin}
-          className="flex-1 py-2 bg-[#3A589B] lg:w-[212px] text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-800"
+          className="flex-1 py-2 bg-[#3A589B] lg:w-[212px] cursor-pointer text-white rounded-[4px] flex items-center justify-center gap-2 hover:bg-blue-800"
         >
           <span className="text-[18px] font-bold">f</span>
-          <span className="hidden sm:inline">Facebook</span>
+          <span className=" ">Facebook</span>
         </button>
       </div>
 
@@ -443,7 +443,7 @@ export default function CandidateForm() {
         <div className="flex justify-center">
           <button
             onClick={() => setShowEmailForm(true)}
-            className="w-[212px] py-3 bg-gray-400 cursor-pointer text-white rounded-[4px] font-medium hover:bg-gray-500 transition"
+            className="lg:w-[212px] w-full py-3 bg-gray-400 cursor-pointer text-white rounded-[4px] font-medium hover:bg-gray-500 transition"
           >
             Register via Email
           </button>

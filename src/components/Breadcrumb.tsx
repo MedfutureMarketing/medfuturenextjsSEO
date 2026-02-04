@@ -39,6 +39,7 @@ const ROUTE_CONFIGS: RouteConfig[] = [
 
   { pattern: "/ahp-division/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
   { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
+  { pattern: "/sign-up", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
 
 
 ];

@@ -23,7 +23,7 @@ export default function MedFutureStates() {
   ];
 
   return (
-    <section className=" full-width-section py-10 mt-[154px] mb-[150px] lg:py-[78px] px-4 lg:px-20">
+    <section className=" full-width-section py-10 lg:mt-[154px] py-36 lg:mb-[150px] lg:py-[78px] px-4 lg:px-20">
       <div className="inner-width-section">
         <h2 className="text-2xl lg:text-[36px] font-[500]  text-gray-900 mb-8 text-left">
           Medfuture Across<span className="lg:text-[40px] text-2xl text-[#074CA4] font-[700]">  Australia</span>- State & City Coverage

@@ -52,7 +52,7 @@ export default function RegistrationForm() {
 
   return (
     <div className="min-h-screen  py-12 px-4">
-      <h1 className="text-center text-[#0F172A] lg:text-[48px] mb-[69px]">Registration</h1>
+      <h1 className="text-center text-[#0F172A] lg:text-[48px] text-2xl lg:mb-[69px] mb-5">Registration</h1>
       <div className="lg:w-[930px] mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
 
         {/* Tabs */}

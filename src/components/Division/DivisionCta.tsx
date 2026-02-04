@@ -52,7 +52,7 @@ export default function CTA() {
 
                     </div>
                 </div>
-                <div className="space-y-6 w-md">
+                <div className="space-y-6 lg:w-md">
                     <h2 className="text-2xl text-white lg:text-[32px] font-bold text-[#040D48]">
                         Ready to Take the Next Step in Your Healthcare Career?
                     </h2>

@@ -78,10 +78,10 @@ export default function BlogSection() {
         {/* Section Header */}
         <div>
           <p className="text-[#074CA4] text-[14px] font-semibold mb-[5px]">Blogs</p>
-          <h2 className="text-4xl font-bold text-[#0F172A] mb-[30px]">
+          <h2 className="text-xl lg:text-[30px] font-bold text-[#0F172A] mb-[30px]">
             Insights for Your Healthcare Career
           </h2>
-          <p className="text-[#4A5565] text-[16px] max-w-2xl">
+          <p className="text-[#4A5565] lg:text-[16px] text-xs max-w-2xl">
             Expert articles, industry updates, and practical guidance to support informed career and hiring decisions.
           </p>
         </div>
