@@ -596,7 +596,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           <button
             type="submit"
             disabled={isSubmitting}
-            className="md:w-auto w-full bg-[#074CA4] text-white px-8 py-3 rounded-[4px] font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
+            className="md:w-auto w-full bg-[#074CA4] cursor-pointer text-white px-8 py-3 rounded-[4px] font-medium disabled:bg-gray-400 disabled:cursor-not-allowed"
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
