@@ -14,7 +14,8 @@ const HeroComponent: React.FC = () => {
                     fill
                     className="object-cover"
                     quality={90}
-                    priority
+                    priority={false}
+                    loading="lazy"
                 />
             </div>
 
