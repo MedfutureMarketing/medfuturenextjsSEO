@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/logo/medfuture-white.webp"; // replace with your logo path
@@ -5,89 +7,123 @@ import logo from "@/assets/logo/medfuture-white.webp"; // replace with your logo
 
 export default function Footer() {
     return (
-        <footer className="w-full full-width-section bg-[#0D1A3E] text-white px-4 lg:px-0 ">
+        <footer className="w-full full-width-section bg-[#040D48] text-white px-4 lg:px-0 ">
             <div className="inner-width-section">
-                <div className="  mx-auto grid grid-cols-1  py-[88px] mb-[70px] md:grid-cols-4 gap-10 ">
+                <div className=" ">
+                    {/* Top Section - Logo and Email Signup */}
+                    <div className="py-16">
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+                            {/* Logo and Description */}
+                            <div className="max-w-md">
+                                <Image src={logo} alt="medfuture logo" width={224} height={50} />
+                                <p className="text-[#E2E8F0] lg:text-[14px] mt-[32px] leading-relaxed">
+                                    Australia's trusted medical recruitment partner connecting healthcare professionals with rewarding roles across the globe.
+                                </p>
+                            </div>
 
-                    {/* Column 1: Logo + Description */}
-                    <div>
-                        <Image src={logo} alt="Logo" width={150} height={50} className="mb-4" />
-                        <p className="text-gray-300 text-sm">
-                            Australia’s trusted medical recruitment partner connecting healthcare professionals with rewarding roles across the globe.
-                        </p>
+                            {/* Email Signup */}
+                            <div className="flex gap-2 md:min-w-[500px]">
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    className="flex-1 px-4 py-3 rounded bg-white text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                />
+                                <button className="bg-[#074CA4] hover:bg-blue-700 px-8 py-3 rounded font-medium transition-colors">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    {/* Column 2: Quick Links */}
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">For Employers</h4>
-                        <ul className="space-y-2 text-gray-300 text-sm">
-                            <li><Link href="/" className="hover:text-[#074CA4]">Talent Acquisition Solutions</Link></li>
-                            <li><Link href="/about" className="hover:text-[#074CA4]">Submit a Vacancy</Link></li>
-                            <li><Link href="/jobs" className="hover:text-[#074CA4]">Employer Resources</Link></li>
-                            <li><Link href="/contact" className="hover:text-[#074CA4]">Locum Candidate Calendar </Link></li>
-                        </ul>
-                    </div>
+                    {/* Bottom Section - Navigation Links */}
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 pt-8 pb-[54px] ">
+                        {/* Jobs by Professions */}
+                        <div>
+                            <h3 className="font-semibold mb-4">Jobs by Professions</h3>
+                            <ul className="space-y-2 text-sm lg:text-[14px] text-sm text-[#E2E8F0]">
+                                <li><Link href="/permanent/general-practitioner-jobs/?page=1" className="hover:text-white transition-colors">General Practitioner</Link></li>
+                                <li><Link href="/permanent/occupational-therapist-jobs/?page=1" className="hover:text-white transition-colors">Occupational Therapist</Link></li>
+                                <li><Link href="/permanent/psychologist-jobs/?page=1" className="hover:text-white transition-colors">Psychologist</Link></li>
+                                <li><Link href="/permanent/physiotherapist-jobs/?page=1" className="hover:text-white transition-colors">Physiotherapist</Link></li>
+                                <li><Link href="/permanent/speech-pathologist-jobs/?page=1" className="hover:text-white transition-colors">Speech Pathologist</Link></li>
+                                <li><Link href="/permanent/dentist-jobs/?page=1" className="hover:text-white transition-colors">Dentist</Link></li>
+                            </ul>
+                        </div>
 
-                    {/* Column 3: Services */}
-                    <div className="">
-                        <h4 className="text-lg font-semibold mb-4">Explore</h4>
-                        <ul className="space-y-2 text-gray-300 text-sm">
-                            <li><Link href="/about-us" className="hover:text-[#074CA4]">About us</Link></li>
-                            <li>
-                                <a
-                                    href="https://themedfuture.com/blog"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#074CA4]"
-                                >
-                                    Blogs
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://intuit7.com/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#074CA4]"
-                                >
-                                    Visa & Migration Services
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://themedfuture.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#074CA4]"
-                                >
-                                    Medfuture Global
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://medfuture.co.nz/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="hover:text-[#074CA4]"
-                                >
-                                    Medfuture New Zealand
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        {/* Jobs by Divisions */}
+                        <div>
+                            <h3 className="font-semibold mb-4">Jobs by Divisions</h3>
+                            <ul className="space-y-2 text-sm lg:text-[14px] text-sm text-[#E2E8F0]">
+                                <li><Link href="/permanent/medical-jobs/in-australia?page=1" className="hover:text-white transition-colors">Medical</Link></li>
+                                <li><Link href="/permanent/gp-jobs/in-australia?page=1" className="hover:text-white transition-colors">GP</Link></li>
+                                <li><Link href="/permanent/ahp-jobs/in-australia?page=1" className="hover:text-white transition-colors">AHP</Link></li>
+                                <li><Link href="/permanent/dental-jobs/in-australia?page=1" className="hover:text-white transition-colors">Dental & Oral</Link></li>
+                                <li><Link href="/permanent/mental-health-jobs/in-australia?page=1" className="hover:text-white transition-colors">Mental Health</Link></li>
+                                <li><Link href="/permanent/nursing-care-workers-jobs/in-australia?page=1   " className="hover:text-white transition-colors">Nursing & Care Workers</Link></li>
+                                <li><Link href="/permanent/healthcare-executive-jobs/in-australia?page=1" className="hover:text-white transition-colors">Healthcare Executive</Link></li>
+                            </ul>
+                        </div>
 
-                    {/* Column 4: Contact Info */}
-                    <div>
-                        <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-                        {/* <p className="text-gray-300 text-sm mb-2">+61 1300 633 388</p> */}
-                        {/* <p className="text-gray-300 text-sm mb-2">+61 452 668 811</p> */}
-                        <p className="text-gray-300 text-sm">
-                            Phone: <a href="tel:+61133006333388" className="hover:text-white transition-colors">+61 1300 633 388</a>
-                        </p>
-                        <p className="text-gray-300 text-sm mb-2">
-                            Email: <a href="mailto:helpdesk@themedfuture.com" className="hover:text-white transition-colors">helpdesk@themedfuture.com</a>
-                        </p>
+                        {/* Jobs by Location */}
+                        <div>
+                            <h3 className="font-semibold mb-4">Jobs by Location</h3>
+                            <ul className="space-y-2 text-sm lg:text-[14px] text-sm text-[#E2E8F0]">
+                                <li><Link href="/permanent/jobs/in-new-south-wales?page=1" className="hover:text-white transition-colors">New South Wales</Link></li>
+                                <li><Link href="/permanent/jobs/in-victoria?page=1" className="hover:text-white transition-colors">Victoria</Link></li>
+                                <li><Link href="/permanent/jobs/in-queensland?page=1" className="hover:text-white transition-colors">Queensland</Link></li>
+                                <li><Link href="/permanent/jobs/in-south-australia?page=1" className="hover:text-white transition-colors">South Australia</Link></li>
+                                <li><Link href="/permanent/jobs/in-northern-australia?page=1" className="hover:text-white transition-colors">Northern Australia</Link></li>
+                                <li><Link href="/permanent/jobs/in-western-australia?page=1" className="hover:text-white transition-colors">Western Australia</Link></li>
+                                <li><Link href="/permanent/jobs/in-tasmania?page=1" className="hover:text-white transition-colors">Tasmania</Link></li>
+                            </ul>
+                        </div>
 
+                        {/* Explore */}
+                        <div>
+                            <h3 className="font-semibold mb-4">Explore</h3>
+                            <ul className="space-y-2 text-sm lg:text-[14px] text-sm text-[#E2E8F0]">
+                                <li><Link href="/about-us" className="hover:text-white transition-colors">About us</Link></li>
+                                <li><Link href="https://themedfuture.com/blog"  target="_blank" className="hover:text-white transition-colors">Blogs</Link></li>
+                                <li><Link href="#" className="hover:text-white transition-colors">Refer & Earn</Link></li>
+                                <li><Link href="https://intuit7.com/"  target="_blank" className="hover:text-white transition-colors">Visa & Migration Services</Link></li>
+                                <li><Link href="https://themedfuture.com/"  target="_blank" className="hover:text-white transition-colors">Medfuture Global</Link></li>
+                                <li><Link href="https://medfuture.co.nz/"  target="_blank" className="hover:text-white transition-colors">Medfuture New Zealand</Link></li>
+                            </ul>
+                        </div>
+
+                        {/* Contact Us */}
+                        <div>
+                            <h3 className="font-semibold mb-4">Contact Us</h3>
+                            <ul className="space-y-3 text-sm lg:text-[14px] text-sm text-[#E2E8F0]">
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                    </svg>
+                                    <span>1300 633 388</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                                    </svg>
+                                    <span>1300 633 388</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                    </svg>
+                                    <a href="mailto:notify@themedfuture.com" className="hover:text-white transition-colors">
+                                        notify@themedfuture.com
+                                    </a>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
+                                    </svg>
+                                    <span>+61 1300 633 388</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 

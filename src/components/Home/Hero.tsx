@@ -110,14 +110,10 @@ export default function Hero() {
       {/* TEXT CONTENT */}
       <div className="w-full lg:w-2/3 text-center lg:text-left">
         <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-white leading-tight mb-4">
-          Medfuture Australia – Elevate Your Medical Career
-        </h1>
+Trusted Medical Recruitment Agency in Australia Offering 1,000+ Jobs from 9,579+ Employers        </h1>
 
         <p className="text-sm sm:text-base text-[#FFFFFFB2] leading-relaxed max-w-xl mx-auto lg:mx-0">
-          Connecting healthcare professionals with trusted employers across Australia.
-          Whether you are seeking your next career opportunity or hiring top talent,
-          we provide expert guidance, reliable placements, and tailored solutions that
-          strengthen teams and advance careers.
+        Australia’s leading medical recruitment agency delivers results fast. Our average time to hire is 3–7 days, and satisfaction ratings are 4.9/5. Register now and let us match you with top healthcare opportunities.
         </p>
 
         {/* BUTTONS */}

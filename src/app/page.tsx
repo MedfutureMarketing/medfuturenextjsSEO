@@ -28,14 +28,14 @@ export default function RootLayout({
 
   return (
     <section >
-      {/* <head>
+      <section>
         {schema && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
           />
         )}
-      </head> */}
+      </section>
       <div >
         {children}
         <Hero />
