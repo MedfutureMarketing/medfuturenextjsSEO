@@ -23,11 +23,12 @@ export default function MedFutureStates() {
   ];
 
   return (
-    <section className=" bg-[#F5F7FB] full-width-section py-10 bg-[#F5F7FB] mt-[154px] mb-[150px] lg:py-[78px] px-4 lg:px-20">
+    <section className=" full-width-section py-10 mt-[154px] mb-[150px] lg:py-[78px] px-4 lg:px-20">
       <div className="inner-width-section">
         <h2 className="text-2xl lg:text-[36px] font-[500]  text-gray-900 mb-8 text-left">
-          Medfuture Across<span className="lg:text-[40px] text-2xl text-[#074CA4] font-[700]">  Australia</span>
+          Medfuture Across<span className="lg:text-[40px] text-2xl text-[#074CA4] font-[700]">  Australia</span>- State & City Coverage
         </h2>
+        <p className="text-[#4A5565] lg:w-2xl mb-[54px] lg:text-[16px]">We recruit across all states and territories, including high-demand metro markets and critical regional corridors. Many opportunities include relocation support, regional incentives, and flexible work models (including telehealth).</p>
 
         <div
           className="
