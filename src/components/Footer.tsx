@@ -22,7 +22,7 @@ export default function Footer() {
                             </div>
 
                             {/* Email Signup */}
-                            <div className="flex gap-2 md:min-w-[500px]">
+                            <div className="flex gap-2 flex-wrap">
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
