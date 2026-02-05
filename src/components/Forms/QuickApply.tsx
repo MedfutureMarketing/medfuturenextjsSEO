@@ -650,13 +650,16 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               className={`${inputClasses} ${formErrors.jobSource ? 'border-red-300' : 'appearance-none'}`}
             >
               <option value="">How did you hear about us?</option>
+              <option value="company-website">Company Website</option>
+
+              <option value="bing">Bing</option>
               <option value="google">Google</option>
-              <option value="linkedin">LinkedIn</option>
               <option value="indeed">Indeed</option>
               <option value="seek">Seek</option>
-              <option value="company-website">Company Website</option>
               <option value="referral">Employee Referral</option>
-              <option value="social-media">Social Media</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="social-media">Facebook</option>
+              <option value="social-media">Instagram</option>
               <option value="other">Other</option>
             </select>{/* Custom arrow */}
             <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">

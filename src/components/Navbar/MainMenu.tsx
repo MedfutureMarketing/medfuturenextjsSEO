@@ -32,10 +32,10 @@ export default function Menu() {
     "/job-seeker-hub/allied-health-division": "bg-white text-[#040D48]",
     "/job-seeker-hub/oral-health-division": "bg-white text-[#040D48]",
     "/job-seeker-hub/mental-health-division": "bg-white text-[#040D48]",
-    "/ahp-division/speech-pathology": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
-    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
-    "/ahp-division/podiatrist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
-    "/ahp-division/physiotherapy": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/ahp-division/speech-pathology": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
+    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
+    "/ahp-division/podiatrist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
+    "/ahp-division/physiotherapy": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
 
   };
   const topBarColors =
@@ -52,9 +52,9 @@ export default function Menu() {
     "/contact-us": "bg-white text-[#040D48]",
     "/about-us": "bg-white text-[#040D48]",
     "/general-practitioner-registrar": "bg-white text-[#040D48] ",
-    "/ahp-division/speech-pathology": "bg-white text-[#040D48] ",
-    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] ",
-
+        "/ahp-division/speech-pathology": "bg-white text-[#040D48] ",
+                "/ahp-division/occupational-therapist": "bg-white text-[#040D48] ", 
+ 
 
   };
   const headerColors =
