@@ -374,12 +374,12 @@ export default function JobCard() {
       </div>
 
       {/* ===================== MOBILE JOB LIST ===================== */}
-      <div className="space-y-2 block lg:hidden  overflow-y-auto hide-scrollbar">
+      <div className="grid grid-cols-1 gap-2 block lg:hidden px-4 overflow-y-auto hide-scrollbar ">
         {jobs.map((job) => (
           <div
             key={job.job_id}
             onClick={() => router.push(`/permanent/job/${job.job_id}`)}
-            className="border cursor-pointer border-[#E6EDF7] rounded-lg p-6 shadow-md transition-all active:bg-gray-100"
+            className="border cursor-pointer border-[#E6EDF7] rounded-lg border-2 border-gray-100 p-6 shadow-md transition-all active:bg-gray-100"
           >
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-500">

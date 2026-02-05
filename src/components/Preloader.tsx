@@ -35,7 +35,7 @@ function PreloaderContent() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 800);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [pathname, searchParams, isAllowed]);

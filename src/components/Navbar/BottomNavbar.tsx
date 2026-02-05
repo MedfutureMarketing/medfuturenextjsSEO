@@ -100,15 +100,15 @@ export default function BottomNav() {
                   style={{
                     width: 'calc(12vw)',
                     height: 'calc(12vw)',
-                    maxWidth: '48px',
-                    maxHeight: '48px',
-                    minWidth: '36px',
-                    minHeight: '36px',
+                    maxWidth: '30px',
+                    maxHeight: '30px',
+                    minWidth: '26px',
+                    minHeight: '26px',
                   }}
                 >
                   <span
                     className="w-full h-full flex items-center justify-center"
-                    style={{ fontSize: 'calc(4vw)', maxWidth: '24px', maxHeight: '24px', minWidth: '16px', minHeight: '16px' }}
+                    style={{ fontSize: 'calc(4vw)', maxWidth: '14px', maxHeight: '14px', minWidth: '16px', minHeight: '16px' }}
                   >
                     {item.icon}
                   </span>

@@ -401,7 +401,7 @@ export default function SearchBarWithLocation() {
 
         <div className="inner-width-section mx-auto py-1  px-0 relative z-10">
           {/* Title and Search Form - Same Row */}
-          <div className="flex flex-col lg:flex-row  mb-10 items-start lg:items-center lg:gap-6 gap-4">
+          <div className="flex flex-col lg:flex-row  mb-5 items-start lg:items-center lg:gap-6 gap-4">
             {/* Title Section */}
             <div className="lg:min-w-[300px]">
               <p></p>
