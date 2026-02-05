@@ -8,6 +8,7 @@ import Preloader from "@/components/Preloader";
 import { Inter } from 'next/font/google';
 import Footer from "@/components/Footer";
 import CookieConsentBanner from '@/components/CookieConsentBanner';
+import BottomNav from "@/components/Navbar/BottomNavbar";
 
 
 
@@ -52,7 +53,7 @@ export default function RootLayout({
         {/* Breadcrumb under the menu */}
         <Breadcrumb />
         <CookieConsentBanner />
-        
+        <BottomNav />
         {/* Your main content */}
         {children}
         <Footer/>
