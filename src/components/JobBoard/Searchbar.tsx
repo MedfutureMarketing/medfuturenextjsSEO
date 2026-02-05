@@ -399,14 +399,14 @@ export default function SearchBarWithLocation() {
           />
         </div>
 
-        <div className="inner-width-section mx-auto py-2 px-0 relative z-10">
+        <div className="inner-width-section mx-auto py-1  px-0 relative z-10">
           {/* Title and Search Form - Same Row */}
-          <div className="flex flex-col lg:flex-row  mb-10 items-start lg:items-center gap-6">
+          <div className="flex flex-col lg:flex-row  mb-10 items-start lg:items-center lg:gap-6 gap-4">
             {/* Title Section */}
             <div className="lg:min-w-[300px]">
               <p></p>
 
-              <h1 className="text-white lg:text-[16px] text-md lg:mt-1 mt-3  mb-1"> <span  className="text-white font-bold lg:text-[36px] text-3xl">{getTitleText(pathname)}</span> <br /> {getH2Text()}</h1>
+              <h1 className="text-white lg:text-[16px] text-xs lg:mt-1 mt-0  mb-1"> <span  className="text-white font-bold lg:text-[36px] text-xl">{getTitleText(pathname)}</span> <br /> {getH2Text()}</h1>
             </div>
             {/* Search Form */}
             <form onSubmit={handleSubmit} className="flex-1 w-full">
@@ -416,7 +416,7 @@ export default function SearchBarWithLocation() {
                   <input
                     type="text"
                     placeholder="Job Title or Keywords"
-                    className="w-full md:w-80 bg-white lg:h-14 h-12 px-5 pr-10 rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full md:w-80 bg-white lg:h-14 h-10 px-5 pr-10 lg:text-lg text-xs rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={query}
                     onChange={(e) => {
                       setQuery(e.target.value);
@@ -470,7 +470,7 @@ export default function SearchBarWithLocation() {
                         setIsOpen(!isOpen);
                       }
                     }}
-                    className="w-full lg:h-14 h-12 px-5 cursor-pointer rounded-lg bg-gray-50 text-gray-800 flex items-center justify-between hover:bg-gray-100 transition"
+                    className="w-full lg:h-14 h-10 px-5 cursor-pointer lg:text-lg text-xs rounded-lg bg-gray-50 text-gray-800 flex items-center justify-between hover:bg-gray-100 transition"
                   >
                     <span>{getLocationDisplayText()}</span>
                     <div className="flex items-center gap-2">
@@ -564,7 +564,7 @@ export default function SearchBarWithLocation() {
                 {/* Search Button */}
                 <button
                   type="submit"
-                  className={`h-14 lg:px-10 text-white  cursor-pointer font-semi-bold rounded-[8px] transition shadow-lg ${getButtonColor(pathname)}`}
+                  className={`lg:h-14 h-12 lg:px-10 text-white  cursor-pointer font-semi-bold rounded-[8px] transition shadow-lg ${getButtonColor(pathname)}`}
                 >
                   Search
                 </button>
