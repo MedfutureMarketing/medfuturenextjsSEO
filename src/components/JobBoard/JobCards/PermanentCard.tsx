@@ -260,7 +260,7 @@ export default function JobCard() {
                 </svg>
               </div>
 
-              <h3 className="text-xl font-semibold text-[#0E2851] mb-2">
+              <h3 className="lg:text-xl font-semibold text-[#0E2851] mb-2">
                 No Jobs Available
               </h3>
 
@@ -316,7 +316,7 @@ export default function JobCard() {
 
       {/* ===================== JOB COUNT ===================== */}
       <div className="flex justify-end">
-        <span className="text-right text-[#4A5565] text-[14px] mb-2">
+        <span className="text-right text-[#4A5565] lg:text-[14px] text-xs mb-2">
           {totalJobs} Jobs Available
         </span>
       </div>
@@ -374,12 +374,12 @@ export default function JobCard() {
       </div>
 
       {/* ===================== MOBILE JOB LIST ===================== */}
-      <div className="space-y-4 block lg:hidden max-h-[600px] overflow-y-auto hide-scrollbar">
+      <div className="space-y-2 block lg:hidden  overflow-y-auto hide-scrollbar">
         {jobs.map((job) => (
           <div
             key={job.job_id}
             onClick={() => router.push(`/permanent/job/${job.job_id}`)}
-            className="border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all active:bg-gray-100"
+            className="border cursor-pointer border-[#E6EDF7] rounded-lg p-6 shadow-md transition-all active:bg-gray-100"
           >
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-500">
@@ -392,28 +392,28 @@ export default function JobCard() {
             </div>
 
             <div className="flex justify-between mb-2 mt-2">
-              <h3 className="font-semibold text-[#0E2851]">
+              <h3 className="font-semibold text-sm text-[#0E2851]">
                 {job.job_title}
               </h3>
             </div>
 
             <div>
-              <h4 className="text-[#4A5565] text-[12px]">
+              <h4 className="text-[#4A5565] text-[10px]">
                 {job.state?.name}, {job.country?.name}
               </h4>
             </div>
 
             <div className="grid grid-cols-1 mt-[15px] gap-2 text-sm text-gray-600">
-              <span className="flex items-center gap-2 text-[14px]">
+              <span className="flex items-center gap-2 text-[12px]">
                 <Image src={Pointico} alt="Profession Icon" />
                 {job.profession?.name}
               </span>
 
-              <span className="flex items-center gap-2 text-[14px]">
+              <span className="flex items-center gap-2 text-[12px]">
                 <Image src={Pointico} alt="Engagement Icon" />
                 {job.engagement_type?.name}
               </span>
-              <span className="flex items-center gap-2 text-[14px]">
+              <span className="flex items-center gap-2 text-[12px]">
                 <Image src={Pointico} alt="Engagement Icon" />
                 Flixible Session
               </span>
