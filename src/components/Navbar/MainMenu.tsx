@@ -32,10 +32,10 @@ export default function Menu() {
     "/job-seeker-hub/allied-health-division": "bg-white text-[#040D48]",
     "/job-seeker-hub/oral-health-division": "bg-white text-[#040D48]",
     "/job-seeker-hub/mental-health-division": "bg-white text-[#040D48]",
-    "/ahp-division/speech-pathology": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
-    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
-    "/ahp-division/podiatrist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
-    "/ahp-division/physiotherapy": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]", 
+    "/ahp-division/speech-pathology": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/ahp-division/podiatrist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/ahp-division/physiotherapy": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
 
   };
   const topBarColors =
@@ -52,9 +52,9 @@ export default function Menu() {
     "/contact-us": "bg-white text-[#040D48]",
     "/about-us": "bg-white text-[#040D48]",
     "/general-practitioner-registrar": "bg-white text-[#040D48] ",
-        "/ahp-division/speech-pathology": "bg-white text-[#040D48] ",
-                "/ahp-division/occupational-therapist": "bg-white text-[#040D48] ", 
- 
+    "/ahp-division/speech-pathology": "bg-white text-[#040D48] ",
+    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] ",
+
 
   };
   const headerColors =
@@ -84,7 +84,7 @@ export default function Menu() {
       {/* STICKY HEADER */}
       <div className="sticky top-0 z-99 ">
         <div className={`${headerColors} full-width-section `}>
-          <header className="inner-width-section py-3 flex items-center  justify-between">
+          <header className="inner-width-section lg:py-3 py-1.5 flex items-center  justify-between">
             {/* LEFT SECTION: LOGO + PERMANENT/LOCUM/INTERNATIONAL */}
             <div className="flex items-center space-x-8">
               {/* LOGO */}
@@ -92,8 +92,13 @@ export default function Menu() {
                 <Image
                   src={activeLogo}
                   alt="Medfuture logo"
-                  width={180}
-                  height={40}
+                  width={180} // can keep fixed or adjust
+                  height={40} // base height
+                  style={{
+                    height: "clamp(30px, 5vw, 50px)", // min 30px, max 40px, scales with viewport
+                    width: "auto", // maintain aspect ratio
+                    display: "block",
+                  }}
                   priority={false}
                   loading="lazy"
                 />
@@ -147,7 +152,7 @@ export default function Menu() {
             {/* MOBILE BUTTON */}
             <button
               onClick={() => setIsMenuOpen(true)}
-              className="lg:hidden p-2 text-inherit text-2xl"
+              className="lg:hidden p-2 text-inherit text-lg"
               aria-label="Open menu"
             >
               ☰
