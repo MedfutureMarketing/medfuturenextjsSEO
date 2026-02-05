@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { apiGet } from "@/lib/api";
@@ -242,6 +240,33 @@ export default function SearchBarWithLocation() {
     router.push(seoUrl);
   };
 
+  // Clear function for keyword search
+  const handleClearKeyword = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setQuery("");
+    setShowSuggestions(false);
+  };
+
+  // Clear function for location
+  const handleClearLocation = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedState("");
+    setSelectedRegion("");
+    setSelectedSuburb("");
+    setIsOpen(false);
+  };
+
+  // Clear all filters
+  const handleClearAllFilters = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setQuery("");
+    setSelectedState("");
+    setSelectedRegion("");
+    setSelectedSuburb("");
+    setShowSuggestions(false);
+  };
 
   const getLocationDisplayText = () => {
     if (selectedSuburb) return selectedSuburb;
@@ -315,6 +340,7 @@ export default function SearchBarWithLocation() {
       ? parts.join(" ")
       : "Healthcare Jobs in Australia";
   };
+
   const getButtonColor = (pathname: string) => {
     if (pathname.startsWith("/permanent")) {
       return "bg-[#074CA4] hover:bg-[#50B8E0]";
@@ -330,20 +356,19 @@ export default function SearchBarWithLocation() {
 
     return "bg-[#64CAF3] hover:bg-[#50B8E0]"; // default
   };
-  // Add this function inside your component
-const getTitleText = (pathname: string) => {
-  if (pathname.startsWith("/permanent")) {
-    return "Permanent";
-  }
-  if (pathname.startsWith("/locum")) {
-    return "Locum";
-  }
-  if (pathname.startsWith("/international")) {
-    return "International ";
-  }
-  return "Browse"; // default
-};
 
+  const getTitleText = (pathname: string) => {
+    if (pathname.startsWith("/permanent")) {
+      return "Permanent";
+    }
+    if (pathname.startsWith("/locum")) {
+      return "Locum";
+    }
+    if (pathname.startsWith("/international")) {
+      return "International ";
+    }
+    return "Browse"; // default
+  };
 
   const cornerImages = getCornerImages(pathname);
 
@@ -369,14 +394,12 @@ const getTitleText = (pathname: string) => {
             alt="Decorative right corner"
             fill
             className="object-contain object-bottom-right"
-              priority={false}
+            priority={false}
             loading="lazy"
           />
         </div>
 
         <div className="inner-width-section mx-auto py-2 px-0 relative z-10">
-          {/* Breadcrumb */}
-
           {/* Title and Search Form - Same Row */}
           <div className="flex flex-col lg:flex-row  mb-10 items-start lg:items-center gap-6">
             {/* Title Section */}
@@ -393,7 +416,7 @@ const getTitleText = (pathname: string) => {
                   <input
                     type="text"
                     placeholder="Job Title or Keywords"
-                    className="w-full md:w-80 bg-white lg:h-14 h-12 px-5 rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full md:w-80 bg-white lg:h-14 h-12 px-5 pr-10 rounded-[8px] text-gray-800 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
                     value={query}
                     onChange={(e) => {
                       setQuery(e.target.value);
@@ -403,22 +426,20 @@ const getTitleText = (pathname: string) => {
                     onBlur={() => setTimeout(() => setShowSuggestions(false), 150)}
                   />
 
-                  {/* {showSuggestions && query && filteredKeywords.length > 0 && (
-                    <div className="absolute top-full mt-2 w-full bg-white text-black border border-gray-200 rounded-lg shadow-xl z-50 max-h-90 overflow-y-auto">
-                      {filteredKeywords.map((keyword) => (
-                        <div
-                          key={keyword}
-                          className="px-4 py-3 cursor-pointer hover:bg-blue-50 text-black   last:border-b-0"
-                          onClick={() => {
-                            setQuery(keyword);
-                            setShowSuggestions(false);
-                          }}
-                        >
-                          {keyword}
-                        </div>
-                      ))}
-                    </div>
-                  )} */}
+                  {/* Clear button for keyword input */}
+                  {query && (
+                    <button
+                      type="button"
+                      onClick={handleClearKeyword}
+                      className="absolute right-3 cursor-pointer top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 z-10"
+                      aria-label="Clear search"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
+                    </button>
+                  )}
 
                   {showSuggestions && query && filteredKeywords.length > 0 && (
                     <div className="absolute top-full mt-2 w-full bg-white text-black border border-gray-200 rounded-lg shadow-xl z-50 max-h-90 overflow-y-auto">
@@ -427,7 +448,7 @@ const getTitleText = (pathname: string) => {
                           key={keyword}
                           className="px-4 py-3 cursor-pointer hover:bg-blue-50 text-black last:border-b-0"
                           onMouseDown={(e) => {
-                            e.preventDefault(); // Prevents the blur event
+                            e.preventDefault();
                             setQuery(keyword);
                             setShowSuggestions(false);
                           }}
@@ -441,8 +462,7 @@ const getTitleText = (pathname: string) => {
 
                 {/* Location Dropdown */}
                 <div className="relative md:w-80 " ref={ref}>
-                  <button
-                    type="button"
+                  <div
                     onClick={() => {
                       if (isMobile) {
                         setMobileOpen(true);
@@ -453,10 +473,26 @@ const getTitleText = (pathname: string) => {
                     className="w-full lg:h-14 h-12 px-5 cursor-pointer rounded-lg bg-gray-50 text-gray-800 flex items-center justify-between hover:bg-gray-100 transition"
                   >
                     <span>{getLocationDisplayText()}</span>
-                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
+                    <div className="flex items-center gap-2">
+                      {/* Clear button for location */}
+                      {(selectedState || selectedRegion || selectedSuburb) && (
+                        <button
+                          type="button"
+                          onClick={handleClearLocation}
+                          className="text-gray-400 cursor-pointer hover:text-gray-600 z-10"
+                          aria-label="Clear location"
+                        >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                          </svg>
+                        </button>
+                      )}
+                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </div>
 
                   {!isMobile && isOpen && (
                     <div className="absolute top-[110%] right-0 bg-white text-black shadow-2xl border border-gray-200 rounded-xl p-6 z-50 w-[780px]">
@@ -526,12 +562,6 @@ const getTitleText = (pathname: string) => {
                 </div>
 
                 {/* Search Button */}
-                {/* <button
-                  type="submit"
-                  className="h-14 px-10 bg-[#64CAF3] text-white cursor-pointer font-semibold rounded-lg hover:bg-[#50B8E0] transition shadow-lg"
-                >
-                  Search
-                </button> */}
                 <button
                   type="submit"
                   className={`h-14 lg:px-10 text-white  cursor-pointer font-semi-bold rounded-[8px] transition shadow-lg ${getButtonColor(pathname)}`}
@@ -540,18 +570,22 @@ const getTitleText = (pathname: string) => {
                 </button>
               </div>
 
-              {/* More Options */}
-              
-              {/* <div className="relative flex justify-end">
-                <button
-                  type="button"
-                  onClick={() => setShowMoreOptions(!showMoreOptions)}
-                  className="text-blue-100 text-sm mt-5 cursor-pointer flex items-center gap-2 hover:text-white transition"
-                >
-                  More options
-                  <Image src={filterico} alt="Arrow" />
-                </button>
-              </div> */}
+              {/* Clear All Filters Button */}
+              {(query || selectedState || selectedRegion || selectedSuburb) && (
+                <div className="relative flex justify-end mt-3">
+                  <button
+                    type="button"
+                    onClick={handleClearAllFilters}
+                    className="text-blue-100 text-sm cursor-pointer flex items-center gap-2 hover:text-white transition"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    Clear all filters
+                  </button>
+                </div>
+              )}
 
               {showMoreOptions && (
                 <div className="mt-4 flex flex-wrap  justify-end gap-3">
@@ -615,12 +649,28 @@ const getTitleText = (pathname: string) => {
         <div className="fixed inset-0 bg-white z-100 flex flex-col animate-slideUp">
           <div className="p-4 border-b flex justify-between items-center bg-white shadow-sm">
             <h3 className="text-lg font-semibold text-gray-800">Select Location</h3>
-            <button
-              onClick={() => setMobileOpen(false)}
-              className="bg-[#64CAF3] text-white py-2 px-6 rounded-lg font-medium"
-            >
-              Done
-            </button>
+            <div className="flex gap-2">
+              {(selectedState || selectedRegion || selectedSuburb) && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedState("");
+                    setSelectedRegion("");
+                    setSelectedSuburb("");
+                  }}
+                  className="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-medium"
+                >
+                  Clear
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                className="bg-[#64CAF3] text-white py-2 px-6 rounded-lg font-medium"
+              >
+                Done
+              </button>
+            </div>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4">
@@ -640,6 +690,7 @@ const getTitleText = (pathname: string) => {
             ) : !selectedRegion ? (
               <div className="space-y-3">
                 <button
+                  type="button"
                   className="text-blue-600 mb-4 text-sm font-medium flex items-center gap-2"
                   onClick={() => {
                     setSelectedState("");
@@ -662,6 +713,7 @@ const getTitleText = (pathname: string) => {
             ) : (
               <div className="space-y-3">
                 <button
+                  type="button"
                   className="text-blue-600 mb-4 font-medium flex items-center gap-2"
                   onClick={() => setSelectedRegion("")}
                 >
@@ -683,8 +735,6 @@ const getTitleText = (pathname: string) => {
               </div>
             )}
           </div>
-
-
         </div>
       )}
 

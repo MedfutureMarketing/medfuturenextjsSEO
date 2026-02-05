@@ -92,7 +92,7 @@ export default function CandidateForm() {
     const selectedProfession = professions.find(
       (p) => p.profession_id.toString() === formData.profession
     );
-    
+
     if (!selectedProfession) {
       return {
         label: "Registered Type",
@@ -227,21 +227,21 @@ export default function CandidateForm() {
       email: !formData.email
         ? 'Please enter your email address'
         : !verifyEmailFormat(formData.email)
-        ? 'Please enter a valid email address'
-        : '',
+          ? 'Please enter a valid email address'
+          : '',
       phoneNumber: !formData.phoneNumber ? 'Please enter your phone number' : '',
       profession: !formData.profession ? 'Please select a profession' : '',
       specialty: !formData.specialty ? 'Please select a specialty' : '',
       password: !formData.password
         ? 'Please enter a password'
         : formData.password.length < 6
-        ? 'Password must be at least 6 characters'
-        : '',
+          ? 'Password must be at least 6 characters'
+          : '',
       confirmPassword: !formData.confirmPassword
         ? 'Please confirm your password'
         : formData.password !== formData.confirmPassword
-        ? 'Passwords do not match'
-        : '',
+          ? 'Passwords do not match'
+          : '',
       whereDidYouHear: !formData.whereDidYouHear
         ? 'Please select where you heard about us'
         : '',
@@ -409,15 +409,15 @@ export default function CandidateForm() {
   };
 
   return (
-    <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[131px] ">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-16 gap-4 mb-4">
+    <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[90px] ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-4 gap-4 mb-4">
         <button
-            type="button"
-            onClick={handleGoogleLogin}
-            className="flex-1 py-2 bg-red-500 cursor-pointer lg:w-[212px] h-[48px] text-white rounded flex items-center justify-center gap-2 hover:bg-red-600"
-          >
-            <span className="text-[16px] font-bold">G</span>
-            <span className="">Google</span>
+          type="button"
+          onClick={handleGoogleLogin}
+          className="flex-1 py-2 bg-red-500 cursor-pointer lg:w-[212px] h-[48px] text-white rounded flex items-center justify-center gap-2 hover:bg-red-600"
+        >
+          <span className="text-[16px] font-bold">G</span>
+          <span className="">Google</span>
         </button>
         <button
           type="button"
@@ -443,7 +443,7 @@ export default function CandidateForm() {
         <div className="flex justify-center">
           <button
             onClick={() => setShowEmailForm(true)}
-            className="lg:w-[212px] w-full py-3 bg-gray-400 cursor-pointer text-white rounded-[4px] font-medium hover:bg-gray-500 transition"
+            className="lg:w-[222px] w-full py-3 bg-gray-400 cursor-pointer text-white rounded-[4px] font-medium hover:bg-gray-500 transition"
           >
             Register via Email
           </button>
@@ -471,9 +471,8 @@ export default function CandidateForm() {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 placeholder="Enter your first name"
-                className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  formErrors.firstName ? 'border-red-500' : 'border-[#E2E8F0]'
-                }`}
+                className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 ${formErrors.firstName ? 'border-red-500' : 'border-[#E2E8F0]'
+                  }`}
               />
               {formErrors.firstName && (
                 <div className="mt-1 text-xs text-red-600">{formErrors.firstName}</div>
@@ -488,9 +487,8 @@ export default function CandidateForm() {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 placeholder="Enter your last name"
-                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  formErrors.lastName ? 'border-red-500' : 'border-[#E2E8F0]'
-                }`}
+                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${formErrors.lastName ? 'border-red-500' : 'border-[#E2E8F0]'
+                  }`}
               />
               {formErrors.lastName && (
                 <div className="mt-1 text-xs text-red-600">{formErrors.lastName}</div>
@@ -508,9 +506,8 @@ export default function CandidateForm() {
                 name="profession"
                 value={formData.profession}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${
-                  formErrors.profession ? 'border-red-500' : 'border-[#E2E8F0]'
-                }`}
+                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${formErrors.profession ? 'border-red-500' : 'border-[#E2E8F0]'
+                  }`}
               >
                 <option value="">Select your profession</option>
                 {professions.map((p) => (
@@ -531,7 +528,7 @@ export default function CandidateForm() {
                 name="specialty"
                 value={formData.specialty}
                 onChange={handleInputChange}
-                className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white`}
+                className={`w-full px-4 py-2 border border-gray-300 lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white`}
               >
                 <option value="">Select your specialty</option>
                 {specialities.map((s) => (
@@ -561,7 +558,7 @@ export default function CandidateForm() {
               </select>
             </div>
             <div>
-               <label className="block text-[14px] text-xs font-medium text-[#0F172A] mb-2">
+              <label className="block text-[14px] text-xs font-medium text-[#0F172A] mb-2">
                 {registrationConfig.label}
               </label>
               <select
@@ -593,9 +590,8 @@ export default function CandidateForm() {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Enter your email"
-                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  formErrors.email ? 'border-red-500' : 'border-[#E2E8F0]'
-                }`}
+                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${formErrors.email ? 'border-red-500' : 'border-[#E2E8F0]'
+                  }`}
               />
               {formErrors.email && (
                 <div className="mt-1 text-xs text-red-600">{formErrors.email}</div>
@@ -611,9 +607,8 @@ export default function CandidateForm() {
                 value={formData.phoneNumber}
                 onChange={handleInputChange}
                 placeholder="+61"
-                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
-                  formErrors.phoneNumber ? 'border-red-500' : 'border-[#E2E8F0]'
-                }`}
+                className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${formErrors.phoneNumber ? 'border-red-500' : 'border-[#E2E8F0]'
+                  }`}
               />
               {formErrors.phoneNumber && (
                 <div className="mt-1 text-xs text-red-600">{formErrors.phoneNumber}</div>
@@ -634,14 +629,13 @@ export default function CandidateForm() {
                   value={formData.password}
                   onChange={handleInputChange}
                   placeholder="Enter password"
-                  className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
-                    formErrors.password ? 'border-red-500' : 'border-[#E2E8F0]'
-                  }`}
+                  className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${formErrors.password ? 'border-red-500' : 'border-[#E2E8F0]'
+                    }`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 text-lg"
+                  className="absolute right-3 top-4 text-gray-400 hover:text-gray-600 cursor-pointer text-sm"
                 >
                   {showPassword ? 'Hide' : 'Show'}
                 </button>
@@ -661,14 +655,13 @@ export default function CandidateForm() {
                   value={formData.confirmPassword}
                   onChange={handleInputChange}
                   placeholder="Confirm password"
-                  className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${
-                    formErrors.confirmPassword ? 'border-red-500' : 'border-[#E2E8F0]'
-                  }`}
+                  className={`w-full px-4 py-2 border lg:h-[56px] lg:text-[14px] text-xs text-gray-500 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10 ${formErrors.confirmPassword ? 'border-red-500' : 'border-[#E2E8F0]'
+                    }`}
                 />
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600 text-sm"
+                  className="absolute right-3 top-4 text-gray-400 hover:text-gray-600 cursor-pointer text-sm"
                 >
                   {showConfirmPassword ? 'Hide' : 'Show'}
                 </button>
@@ -716,9 +709,8 @@ export default function CandidateForm() {
               name="whereDidYouHear"
               value={formData.whereDidYouHear}
               onChange={handleInputChange}
-              className={`w-full px-4 py-2 border lg:h-[56px] text-gray-600 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${
-                formErrors.whereDidYouHear ? 'border-red-500' : 'border-[#E2E8F0]'
-              }`}
+              className={`w-full px-4 py-2 border lg:h-[56px] text-gray-600 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${formErrors.whereDidYouHear ? 'border-red-500' : 'border-[#E2E8F0]'
+                }`}
             >
               <option value="">Select an option</option>
               <option value="google">Google</option>
@@ -736,25 +728,25 @@ export default function CandidateForm() {
           </div>
 
           {/* Subscribe Checkbox */}
-           <label className="flex items-start  mb-3 mt-16 gap-3 cursor-pointer">
-          <input
-            type="checkbox"
-            name="agreeToTerms"
-            checked={formData.agreeToTerms}
-            onChange={handleInputChange}
-            className="mt-1 w-4 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
-          />
-          <span className="text-sm text-gray-600 text-center">
-            By registration you agree to{' '}
-            <a href="/terms" className="text-blue-600 hover:underline">
-              Terms and Conditions
-            </a>{' '}
-            and{' '}
-            <a href="/privacy" className="text-blue-600 hover:underline">
-              Privacy Policy
-            </a>
-          </span>
-        </label>
+          <label className="flex items-start  mb-3 mt-16 gap-3 cursor-pointer">
+            <input
+              type="checkbox"
+              name="agreeToTerms"
+              checked={formData.agreeToTerms}
+              onChange={handleInputChange}
+              className="mt-1 w-4 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
+            />
+            <span className="text-sm text-gray-600 text-center">
+              By registration you agree to{' '}
+              <a href="/terms" className="text-blue-600 hover:underline">
+                Terms and Conditions
+              </a>{' '}
+              and{' '}
+              <a href="/privacy" className="text-blue-600 hover:underline">
+                Privacy Policy
+              </a>
+            </span>
+          </label>
           <div className="mb-5">
             <label className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
               <input
@@ -781,7 +773,7 @@ export default function CandidateForm() {
 
       {/* Checkboxes */}
       <div className="mb-6 text-center space-y-3 mt-[86px]">
-       
+
         <label className="flex items-center justify-center gap-3">
           <span className="text-sm text-gray-600 text-center">
             If you have an account,{' '}
@@ -797,9 +789,8 @@ export default function CandidateForm() {
         <div className="fixed inset-0 bg-white/20 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-md mx-4">
             <h3
-              className={`text-xl font-bold mb-2 ${
-                notification.type === 'success' ? 'text-green-600' : 'text-red-600'
-              }`}
+              className={`text-xl font-bold mb-2 ${notification.type === 'success' ? 'text-green-600' : 'text-red-600'
+                }`}
             >
               {notification.title}
             </h3>
