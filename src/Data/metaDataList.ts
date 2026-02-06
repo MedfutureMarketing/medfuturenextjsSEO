@@ -77,7 +77,7 @@ export const metaDataList: Record<
         title: `${params.title || "Job"} | Medfuture`,
         description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
         alternates: {
-            canonical: `${BASE_URL}/job/${params.id}`,
+            canonical: `${BASE_URL}/permanent/${params.id}?page=1`,
         },
         openGraph: {
             type: "website",
