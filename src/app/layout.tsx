@@ -1,30 +1,17 @@
-
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
 import NavigationMenu from "@/components/Navbar/MainMenu";
-import Breadcrumb from "@/components/Breadcrumb"; 
-import Preloader from "@/components/Preloader"; 
-import { Inter } from 'next/font/google';
+import Breadcrumb from "@/components/Breadcrumb";
+import Preloader from "@/components/Preloader";
 import Footer from "@/components/Footer";
-// import CookieConsentBanner from '@/components/CookieConsentBanner';
 import BottomNav from "@/components/Navbar/BottomNavbar";
 
-
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter', // optional if you want to use CSS variable
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -34,32 +21,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className={inter.className}>
-        {/* // <html lang="en-AU"  > */}
+      <body className="antialiased">
 
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {/* Preloader - shows first for 2-3 seconds */}
+        {/* Preloader */}
         <Preloader />
-        
-        {/* Navigation Menu at the top */}
+
         <NavigationMenu />
-        
-        {/* Breadcrumb under the menu */}
         <Breadcrumb />
-        {/* <CookieConsentBanner /> */}
-        <BottomNav />
-        {/* Your main content */}
+
         {children}
-        <Footer/>
+
+        <Footer />
+        <BottomNav />
 
       </body>
-
     </html>
   );
 }
