@@ -37,7 +37,7 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/ahp-division/podiatrist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Podiatrist" },
   { pattern: "/ahp-division/physiotherapy", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Physiotherapy" },
 
-  { pattern: "/ahp-division/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
+  { pattern: "/mental-health/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
   { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
   { pattern: "/sign-up", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
 

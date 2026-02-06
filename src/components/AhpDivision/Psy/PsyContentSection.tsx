@@ -4,7 +4,7 @@ import Spimage from "@/assets/ahp/POD/pod.png"
 const ContentSection = () => {
     return (
         <div className="full-width-section bg-[#C0C0C017] mt-[103px]  ">
-            <div className="grid lg:grid-cols-2 gap-1 p-0 intner-width-section lg:px-0 px-4 py-[49px]">
+            <div className="grid lg:grid-cols-2 gap-1 p-0 inner-width-section lg:px-0 px-4 py-[49px]">
                 {/* Left Side - Text Content */}
                 <div className="col-span-1 text-left">
                     <h2 className="lg:text-[24px]  text-lg font-bold text-[#000000] mb-4">Ethical, Career-Safe Roles Built Around You</h2>
