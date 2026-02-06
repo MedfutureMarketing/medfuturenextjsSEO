@@ -27,6 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="antialiased">
+        <link
+          rel="preload"
+          href="/_next/static/css/app.css"
+          as="style"
+        />
 
         {/* Preloader */}
         <Preloader />
