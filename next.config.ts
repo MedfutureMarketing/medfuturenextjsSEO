@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
   },
 
+  swcMinify: true,
+  compress: true,
+
   images: {
     remotePatterns: [
       {
