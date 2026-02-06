@@ -15,7 +15,8 @@ export default function Footer() {
                         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
                             {/* Logo and Description */}
                             <div className="max-w-md">
-                                <Image src={logo} alt="medfuture logo" width={224} height={50} />
+                                <Image src={logo} alt="medfuture logo" width={224} height={50} priority={false}
+                                    loading="lazy" />
                                 <p className="text-[#E2E8F0] lg:text-[14px] mt-[32px] leading-relaxed">
                                     Australia's trusted medical recruitment partner connecting healthcare professionals with rewarding roles across the globe.
                                 </p>
@@ -83,11 +84,11 @@ export default function Footer() {
                             <h3 className="font-semibold mb-4">Explore</h3>
                             <ul className="space-y-2 text-sm lg:text-[14px] text-sm text-[#E2E8F0]">
                                 <li><Link href="/about-us" className="hover:text-white transition-colors">About us</Link></li>
-                                <li><Link href="https://themedfuture.com/blog"  target="_blank" className="hover:text-white transition-colors">Blogs</Link></li>
+                                <li><Link href="https://themedfuture.com/blog" target="_blank" className="hover:text-white transition-colors">Blogs</Link></li>
                                 <li><Link href="#" className="hover:text-white transition-colors">Refer & Earn</Link></li>
-                                <li><Link href="https://intuit7.com/"  target="_blank" className="hover:text-white transition-colors">Visa & Migration Services</Link></li>
-                                <li><Link href="https://themedfuture.com/"  target="_blank" className="hover:text-white transition-colors">Medfuture Global</Link></li>
-                                <li><Link href="https://medfuture.co.nz/"  target="_blank" className="hover:text-white transition-colors">Medfuture New Zealand</Link></li>
+                                <li><Link href="https://intuit7.com/" target="_blank" className="hover:text-white transition-colors">Visa & Migration Services</Link></li>
+                                <li><Link href="https://themedfuture.com/" target="_blank" className="hover:text-white transition-colors">Medfuture Global</Link></li>
+                                <li><Link href="https://medfuture.co.nz/" target="_blank" className="hover:text-white transition-colors">Medfuture New Zealand</Link></li>
                             </ul>
                         </div>
 
