@@ -3,7 +3,6 @@
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState, useMemo,  } from "react";
-
 type BreadcrumbItem = {
   href: string;
   label: string;
@@ -24,7 +23,6 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/contact-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "Contact Us" },
   { pattern: "/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Fracgp - FACRRM" },
   { pattern: "/general-practice-division/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Frac GP / FACRRM" },
-
   { pattern: "/medical-division", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Medical Division" },
   { pattern: "/about-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "About Us" },
   { pattern: "/permanent", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "" },
@@ -36,14 +34,10 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/ahp-division/occupational-therapist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Occupational Therapist" },
   { pattern: "/ahp-division/podiatrist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Podiatrist" },
   { pattern: "/ahp-division/physiotherapy", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Physiotherapy" },
-
   { pattern: "/mental-health/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
   { pattern: "/general-practice-division", bgColor: "bg-white ", textColor: "text-[#040D48]", breadcrumbLabel: "General Practice Division" },
-    { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
-
+  { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
   { pattern: "/sign-up", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
-
-
 ];
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {
@@ -52,19 +46,15 @@ const formatSegmentLabel = (segment: string): string => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 };
-
 const getRouteConfig = (currentPath: string): RouteConfig | undefined => {
   return ROUTE_CONFIGS.find((route) => currentPath.startsWith(route.pattern));
 };
-
 const generateBreadcrumbs = (pathname: string): BreadcrumbItem[] => {
   if (!pathname) return [];
-
   const pathSegments = pathname.split("/").filter(Boolean);
   const breadcrumbs: BreadcrumbItem[] = [
     { href: "/", label: "Home", isCurrent: pathSegments.length === 0 },
   ];
-
   let currentPath = "";
   pathSegments.forEach((segment, index) => {
     currentPath += `/${segment}`;
@@ -83,13 +73,10 @@ const generateBreadcrumbs = (pathname: string): BreadcrumbItem[] => {
     } else {
       label = formatSegmentLabel(segment);
     }
-
     breadcrumbs.push({ href: currentPath, label, isCurrent });
   });
-
   return breadcrumbs;
 };
-
 // 🔹 JSON-LD Schema for SEO
 const generateBreadcrumbSchema = (breadcrumbs: BreadcrumbItem[]) => {
   return {

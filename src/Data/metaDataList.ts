@@ -30,6 +30,9 @@ export const metaDataList: Record<
         ],
         alternates: {
             canonical: `${BASE_URL}/`,
+            languages: {
+                "en-AU": `${BASE_URL}/`,
+            },
         },
         openGraph: {
             type: "website",

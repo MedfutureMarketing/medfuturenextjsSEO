@@ -118,7 +118,7 @@ Trusted Medical Recruitment Agency in Australia Offering 1,000+ Jobs from 9,579+
 
         {/* BUTTONS */}
         <div className="mt-6 flex flex-col sm:flex-row gap-3 lg:hidden block md:justify-center justify-center lg:justify-start">
-          <Link
+          <Link 
             href="/job-seeker-hub"
             className="px-6 py-3 bg-[#074CA4] text-white rounded-md text-sm font-medium hover:bg-blue-600 transition text-center"
           >

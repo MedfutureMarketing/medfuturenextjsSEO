@@ -258,11 +258,11 @@ export default function JobCard() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              
+
               <h3 className="text-xl font-semibold text-[#0E2851] mb-2">
                 No Jobs Available
               </h3>
-              
+
               <p className="text-[#4A5565] mb-6">
                 We couldnt find any international jobs matching your search criteria. Would you like to register for job alerts or browse more opportunities?
               </p>
@@ -274,7 +274,7 @@ export default function JobCard() {
                 >
                   Register Now
                 </button>
-                
+
                 <button
                   onClick={() => {
                     setShowNoJobsModal(false);
@@ -303,6 +303,16 @@ export default function JobCard() {
 
   return (
     <div>
+      <style>{`
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
+
       {/* ===================== JOB COUNT ===================== */}
       <div className="flex justify-end">
         <span className="text-right text-[#4A5565] mb-2 text-[14px]">
@@ -311,14 +321,14 @@ export default function JobCard() {
       </div>
 
       {/* ===================== DESKTOP JOB LIST ===================== */}
-      <div className="space-y-4 hidden lg:block">
+      <div className="space-y-4 hidden lg:block max-h-[1050px] overflow-y-auto hide-scrollbar">
         {jobs.map((job) => (
           <div
             key={job.job_id}
             onClick={() =>
               router.push(`?jobId=${job.job_id}&page=${currentPage}`)
             }
-            className={`border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all
+            className={`border cursor-pointer max-h-[1050px] border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all
               ${selectedJobId === String(job.job_id) ? "bg-gray-100 shadow-none border" : ""}`}
           >
             <div className="flex justify-between items-center">
@@ -351,7 +361,7 @@ export default function JobCard() {
               </span>
               <span className="flex items-center gap-2 text-[14px]">
                 <Image src={Pointico} alt="Engagement Icon" />
-               {job?.hourly_fee}
+                {job?.hourly_fee}
               </span>
             </div>
           </div>
@@ -396,7 +406,7 @@ export default function JobCard() {
               </span>
               <span className="flex items-center gap-2 text-[14px]">
                 <Image src={Pointico} alt="Engagement Icon" />
-               Flixible Session
+                Flixible Session
               </span>
             </div>
           </div>
@@ -443,11 +453,10 @@ export default function JobCard() {
                 <button
                   key={page}
                   onClick={() => setCurrentPage(page as number)}
-                  className={`px-3 py-1 border rounded ${
-                    currentPage === page
-                      ? "bg-black text-white border-black"
-                      : "border-black text-black"
-                  }`}
+                  className={`px-3 py-1 border rounded ${currentPage === page
+                    ? "bg-black text-white border-black"
+                    : "border-black text-black"
+                    }`}
                 >
                   {page}
                 </button>
