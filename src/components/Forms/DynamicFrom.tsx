@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 /* eslint-disable react/no-unescaped-entities */
 
-const FormComponent = () => {
+const DynamicComponent = () => {
     const pathname = usePathname();
 
     const isFACRRM = pathname === '/general-practice-division/fracgp-facrrm';
@@ -17,11 +17,6 @@ const FormComponent = () => {
     const ispodiatrist = pathname === '/ahp-division/podiatrist';
     const isphysiotherapy = pathname === '/ahp-division/physiotherapy';
     const ispsychology = pathname === '/mental-health/psychology';
-
-
-
-
-
 
     return (
         <form className="space-y-5 text-gray-500">
@@ -460,4 +455,4 @@ const FormComponent = () => {
     );
 };
 
-export default FormComponent;
+export default DynamicComponent;

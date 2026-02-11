@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React from 'react';
-import backgroundPattern from '@/assets/Divisionimages/backgroundimg.png';
+import backgroundPattern from '@/assets/Divisionimages/backgroundimg.webp';
 import Image from 'next/image';
 const HeroComponent: React.FC = () => {
     return (

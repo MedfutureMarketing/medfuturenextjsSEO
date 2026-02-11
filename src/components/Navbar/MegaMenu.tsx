@@ -276,7 +276,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
 
   medical: {
     title: "General Practice",
-    titleHref: "/",
+    titleHref: "/general-practice-division",
     columns: [
       {
         heading: "",

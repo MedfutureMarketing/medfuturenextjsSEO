@@ -31,7 +31,7 @@ const NAV_ITEMS = [
   {
     href: '/sign-up',
     label: 'Profile',
-    gradient: 'from-pink-500 to-rose-600',
+    gradient: 'from-blue-500 to-blue-600',
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
         <circle cx="12" cy="8" r="4" />
@@ -119,7 +119,7 @@ export default function BottomNav() {
                   className={`mt-1 font-medium transition-colors`}
                   style={{
                     fontSize: 'calc(2.5vw)',
-                    
+
                     color: isActive ? '#111' : '#6b7280',
                   }}
                 >

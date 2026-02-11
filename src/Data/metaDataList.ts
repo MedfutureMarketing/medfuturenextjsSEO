@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "https://medfuture.com.au";
 
 interface MetadataConfig extends Metadata {
     path?: string; // optional canonical path
