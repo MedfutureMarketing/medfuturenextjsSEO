@@ -37,7 +37,7 @@ export default function Footer() {
                     </div>
 
                     {/* Bottom Section - Navigation Links */}
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 pt-8 pb-[54px] ">
+                    <div className="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3 gap-8 pt-8 pb-[54px] ">
                         {/* Jobs by Professions */}
                         <div>
                             <h3 className="font-semibold mb-4">Jobs by Professions</h3>

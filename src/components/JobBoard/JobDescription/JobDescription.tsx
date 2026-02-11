@@ -70,7 +70,8 @@ export default function JobDescription() {
 
   if (!jobId) {
     return (
-      <div className="hidden md:flex h-full items-center justify-center p-8">
+      <div className="md:hidden lg:block  hidden">
+      <div className=" md:flex h-full items-center justify-center p-8">
         <div className="text-center max-w-md">
           <div className="mb-6 relative inline-block">
             <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center">
@@ -100,7 +101,7 @@ export default function JobDescription() {
             Browse through the available positions on the left and click on any job card to see the full details, requirements, and application information.
           </p>
         </div>
-      </div>
+      </div></div>
     );
   }
 
@@ -113,7 +114,7 @@ export default function JobDescription() {
   }
 
   return (
-    <div className="hidden lg:block border md:block mb-8" id="job-description-wrapper">
+    <div className="md:hidden lg:block  hidden border md:block mb-8" id="job-description-wrapper">
       {/* Header */}
       <div className="flex justify-between items-start mb-6 shadow-[0_6px_6px_rgba(0,0,0,0.05)] lg:pl-[43px] pr-[23px] py-[25px] px-4 bg-white">
         <h1 className="lg:text-[24px] text-[20px] font-bold text-[#0E2851] flex-1">

@@ -56,11 +56,11 @@ const HeroComponent: React.FC = () => {
                 </div>
 
                 <div className="relative mx-auto inner-width-section">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 ">
 
                         {/* Left Content */}
                         <div className="lg:col-span-7">
-                            <h1 className="text-lg sm:text-xl lg:text-[36px] font-bold mb-4 lg:mb-6 leading-snug lg:leading-tight">
+                            <h1 className="text-lg sm:text-xl lg:text-[36px]    font-bold mb-4 lg:mb-6 leading-snug lg:leading-tight">
                                 Medfuture GP Hub: GP Jobs in Australia for FRACGP, FACRRM, Registrars & Locums
 
                             </h1>

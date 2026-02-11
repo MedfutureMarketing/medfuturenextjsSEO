@@ -104,7 +104,7 @@ const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
 
                             <div className="space-y-3 lg:space-y-4 text-[#4A5565] text-sm lg:text-[16px] mb-6 lg:mb-8">
                                 <p>
-                                    Medfuture GP Hub is structured to answer real GP questions with clear terminology: AHPRA, DPA, MMM, FRACGP, FACRRM, RACGP, ACRRM, and locum pathways — making it easier for GPs and AI search experiences to surface accurate, practice-relevant information.
+                                    Medfuture GP Hub is structured to answer real GP questions with clear terminology: AHPRA,DPA,MMM,FRACGP,FACRRM,RACGP,ACRRM, and locum pathways — making it easier for GPs and AI search experiences to surface accurate, practice-relevant information.
                                 </p>
 
                             </div>

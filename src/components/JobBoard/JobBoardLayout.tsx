@@ -7,7 +7,7 @@ export default function JobBoardLayout() {
     return (
         <div className="min-h-screen mt-12 mb-16 ">
             <div className=" mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] lg:grid-cols-[360px_1fr]  gap-4">
+                <div className="grid grid-cols-1 lg:grid-cols-[360px_1fr]  gap-4">
                     {/* xl:grid-cols-[520px_1fr] */}
                     {/* Left Side - Different widths at different breakpoints */}
                     <div className='  lg:px-1 px-2'>

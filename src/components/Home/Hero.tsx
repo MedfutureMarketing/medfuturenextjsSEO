@@ -108,16 +108,16 @@ export default function Hero() {
     <div className="flex flex-col lg:flex-row items-center justify-between gap-10 py-10 lg:py-20">
 
       {/* TEXT CONTENT */}
-      <div className="w-full lg:w-2/3 text-center lg:text-left">
+      <div className="w-full lg:w-2/3 text-left">
         <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-white leading-tight mb-4">
 Trusted Medical Recruitment Agency in Australia Offering 1,000+ Jobs from 9,579+ Employers        </h1>
 
-        <p className="text-sm sm:text-base text-[#FFFFFFB2] leading-relaxed max-w-xl mx-auto lg:mx-0">
+        <p className="text-sm text-left sm:text-base text-[#FFFFFFB2] leading-relaxed lg:mx-0">
         Australia’s leading medical recruitment agency delivers results fast. Our average time to hire is 3–7 days, and satisfaction ratings are 4.9/5. Register now and let us match you with top healthcare opportunities.
         </p>
 
         {/* BUTTONS */}
-        <div className="mt-6 flex flex-col sm:flex-row gap-3 lg:hidden block justify-center lg:justify-start">
+        <div className="mt-6 flex flex-col sm:flex-row gap-3 lg:hidden block md:justify-center justify-center lg:justify-start">
           <Link
             href="/job-seeker-hub"
             className="px-6 py-3 bg-[#074CA4] text-white rounded-md text-sm font-medium hover:bg-blue-600 transition text-center"

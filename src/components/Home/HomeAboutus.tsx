@@ -26,7 +26,7 @@ export default function AboutUs() {
         </h2>
 
     
-        <div className="grid grid-cols-1 md:grid-cols-[1.2fr_1.2fr_auto_1.2fr] gap-0 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1.2fr_auto_1.2fr] gap-0 relative">
    
           <article className="bg-[#040D48] border-dashed shadow-sm text-center px-[47px] lg:py-16 flex flex-col justify-center lg:h-[313px] py-10 hover:shadow-md transition border-b md:border-b-0 md:border-r-2 border-gray-300">
             <h3 className="text-lg md:text-[20px] font-semibold text-white">{cards[0].title}</h3>

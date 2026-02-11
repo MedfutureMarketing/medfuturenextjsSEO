@@ -100,12 +100,12 @@ export default function FlexibleHiringSolution() {
 
 
           
-                <div className="hidden md:grid md:grid-cols-3 gap-6 mb-12">
+                <div className="hidden md:grid lg:grid-cols-3 gap-6 mb-12">
                     {allCards.slice(0, 3).map((card, i) => (
                         <Card key={i} {...card} />
                     ))}
                 </div>
-                <div className="hidden md:grid md:grid-cols-2 gap-6">
+                <div className="hidden md:grid lg:grid-cols-2 gap-6">
                     {allCards.slice(3).map((card, i) => (
                         <Card key={i} {...card} />
                     ))}
