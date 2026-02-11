@@ -7,6 +7,9 @@ import GpDivisiontesti from "@/components/Gpdivision/GpdivisionComponents/GpDivi
 import FAQ from "@/components/FAQ/Faq"
 import BlogSection from "@/components/Blog/Blog"
 import CTA from "@/components/Division/DivisionCta"
+import GeneralPracticeSector from "@/components/Gpdivision/GpdivisionComponents/Generalpracticesector "
+import Clinicianfirstrecruitmentmodel from "@/components/Gpdivision/GpdivisionComponents/Clinicianfirstrecruitmentmodel"
+
 
 const GpDivisionPage = () => {
     return (
@@ -14,7 +17,9 @@ const GpDivisionPage = () => {
             <Gpdivsionhero />
             <GpDivisionContentsection />
             <Professionsection />
+            <GeneralPracticeSector />
             <JobByState/>
+            <Clinicianfirstrecruitmentmodel/>
             <GpDivisiontesti/>
             <FAQ/>
             <BlogSection/>

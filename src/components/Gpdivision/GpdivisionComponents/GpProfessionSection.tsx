@@ -28,31 +28,31 @@ interface AlliedHealthProfessionsProps {
 const defaultProfessions: ProfessionCard[] = [
     {
         id: 'speech-pathologist',
-        title: 'Speech Pathologist Jobs Australia',
-        description: 'We recruit Speech Pathologists across paediatrics, NDIS, schools, community health, disability services and telehealth—supporting graduate to senior/ clinical lead pathways with structured supervision and manageable caseloads.',
+        title: 'Specialist GP (FRACGP / FACRRM)',
+        description: 'Explore FRACGP jobs and FACRRM rolesacross metro and MMM pathways, including income guarantees where offered, flexible rosters, and long-term fit.',
         icon: ahpico1,
         image: ahpdivision1img,
-        link: '/jobs/speech-pathologist'
+        link: '/general-practice-division/fracgp-facrrm'
     },
     {
         id: 'occupational-therapist',
-        title: 'Occupational Therapist Jobs Australia',
-        description: 'Our OT roles span NDIS, mental health, community care, aged care, rehabilitation and functional capacity assessments—matched to your preferred participant mix, travel profile and documentation load.',
+        title: 'GP Registrars ',
+        description: 'Find supervisor-verified, training-safe placements aligned to RACGP and ACRRM pathways, with structured support from registrar to fellowship.',
         icon: ahpico2,
         image: ahpdivision2img,
-        link: '/jobs/occupational-therapist'
+        link: '/general-practice-division/gp-registrars'
     },
     {
         id: 'physiotherapist',
-        title: 'Physiotherapist Jobs Australia',
-        description: 'From private practice and sports clinics to hospitals, rehab, aged care and NDIS—Medifuture supports Physiotherapists at every stage with transparent pay structures, realistic bookings and progression planning.',
+        title: 'Locum GP ',
+        description: 'Locum is a career choice for many AHPRA-registered GPs. Access transparent locum GP jobs across Australia with dedicated support, clear onboarding, and repeat-booking continuity.',
         icon: ahpico3,
         image: ahpdivision3img,
-        link: '/jobs/physiotherapist'
+        link: '/general-practice-division/locum-gp'
     },
     {
         id: 'podiatrist',
-        title: 'Podiatrist Jobs Australia',
+        title: 'International Family Medicine Specialist',
         description: 'We place Podiatrists across community health, aged care, NDIS, mobile services and high-risk foot pathways—especially in regional areas with strong mentoring structures and high demand.',
         icon: ahpico4,
         image: ahpdivision4img,
@@ -71,12 +71,9 @@ export default function AlliedHealthProfessions({
                 <div className="mb-12">
                     <p className="text-[#074CA4] text-sm lg:text-[14px] font-medium mb-2">Specialist recruitment</p>
                     <h2 className="text-xl lg:text-[30px] font-bold text-[#0F172A] mb-4">
-                        Allied Health Professions We Represent
-                    </h2>
+                        General Practitioner Professions We Represent                    </h2>
                     <p className="text-[#4A5565] text-xs lg:text-[16px] max-w-3xl">
-                        We represent a wide range of allied health professionals, connecting specialists with
-                        compliant, well-matched roles across diverse healthcare settings nationwide,
-                        supporting long-term career growth and stability.
+                        We represent a wide range of allied health professionals, connecting specialists with compliant, well-matched roles across diverse healthcare settings nationwide, supporting long-term career growth and stability.
                     </p>
                 </div>
 

@@ -3,9 +3,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import backgroundPattern from '@/assets/Divisionimages/backgroundimg.webp';
+import backgroundPattern from '@/assets/Divisionimages/gpdivision.webp';
 import Image from 'next/image';
-import DynamicComponent from '@/components/Forms/DynamicFrom'; // Adjust path as needed
+import DynamicForm from '@/components/Forms/DynamicFrom'; // Adjust path as needed
 
 const HeroComponent: React.FC = () => {
     const [selectedRole, setSelectedRole] = useState<string | null>(null);
@@ -61,17 +61,12 @@ const HeroComponent: React.FC = () => {
                         {/* Left Content */}
                         <div className="lg:col-span-7">
                             <h1 className="text-lg sm:text-xl lg:text-[36px] font-bold mb-4 lg:mb-6 leading-snug lg:leading-tight">
-                                Allied Health Jobs in Australia
-                                <span className="block mt-1">
-                                    Speech Pathologists • OTs • Physiotherapists • Podiatrists
-                                </span>
+                                Medfuture GP Hub: GP Jobs in Australia for FRACGP, FACRRM, Registrars & Locums
+
                             </h1>
 
                             <p className="text-sm sm:text-base md:text-lg mb-6 lg:mb-8 text-gray-200 max-w-2xl leading-relaxed">
-                                Welcome to Medfuture Allied Health Recruitment Hub—a career-first Allied Health
-                                recruitment destination designed for clinicians who want ethical workplaces,
-                                sustainable caseloads, transparent pay and long-term growth.
-                            </p>
+                                Welcome to Medfuture GP Hub — a GP-first career platform built for AHPRA-registered General Practitioners. Explore specialist GP jobs (FRACGP/FACRRM), GP registrar training placements (RACGP/ACRRM), and locum GP roles across NSW, VIC, QLD, WA, SA, TAS and NT, including DPA and MMM 1–7 locations. </p>
 
                             {/* Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -150,7 +145,7 @@ const HeroComponent: React.FC = () => {
                                                 </button>
                                             </div>
                                             <div className="max-h-[600px] overflow-y-auto">
-                                                <DynamicComponent />
+                                                <DynamicForm />
                                             </div>
                                         </div>
                                     </div>

@@ -80,17 +80,15 @@ const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
                             </p>
 
                             <h2 className="text-lg sm:text-xl lg:text-[30px] font-bold text-[#0F172A] mb-4 lg:mb-6 leading-snug">
-                                Allied Health Jobs in Australia – The Medfuture Allied Health Recruitment Hub
+                                General Practitioner Jobs in Australia – The Medfuture GP Recruitment Hub
                             </h2>
 
                             <div className="space-y-3 lg:space-y-4 text-[#4A5565] text-sm lg:text-[16px]">
                                 <p>
-                                    This hub is built exclusively for AHPRA-registered Allied Health Professionals who want
-                                    career clarity, ethical workplaces, sustainable caseloads, and long-term growth.
+                                    Whether you are seeking a General Practitioner job in a metro medical centre, a regional GP role with strong patient continuity, a rural GP position aligned to your lifestyle, or a locum GP assignment for flexibility, Medfuture GP Hub helps you navigate roles with clarity.
                                 </p>
                                 <p>
-                                    At Medfuture Healthcare, Allied Health recruitment is not transactional. It is profession-first,
-                                    evidence-based, and career-led—so you can move to your next role with confidence.
+                                    We partner with clinics across Australia’s primary care ecosystem — private practices, community health services, Aboriginal health services, urgent care, and corporate medical centres — focusing on sustainable rosters, ethical practice environments, and transparent conditions.
                                 </p>
                             </div>
                         </div>
@@ -107,14 +105,9 @@ const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
 
                             <div className="space-y-3 lg:space-y-4 text-[#4A5565] text-sm lg:text-[16px] mb-6 lg:mb-8">
                                 <p>
-                                    Across Australia, Allied Health Professionals are in high demand—yet many clinicians
-                                    face burnout from unsafe KPIs, caseloads misaligned with clinical interests, limited
-                                    supervision, and unclear career pathways.
+                                    Medfuture GP Hub is structured to answer real GP questions with clear terminology: AHPRA, DPA, MMM, FRACGP, FACRRM, RACGP, ACRRM, and locum pathways — making it easier for GPs and AI search experiences to surface accurate, practice-relevant information.
                                 </p>
-                                <p>
-                                    Medfuture bridges the gap by aligning AHPRA-registered clinicians with employers that
-                                    prioritise ethical practice standards, sustainable workloads, and long-term retention.
-                                </p>
+                                
                             </div>
 
                             {/* ---------- Feature Cards ---------- */}
