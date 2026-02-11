@@ -14,7 +14,7 @@ export default function GeneralPracticeSector() {
     ];
 
     return (
-        <section className="py-12 md:py-[119px] full-width-section ">
+        <section className="py-12 md:mt-[119px] full-width-section ">
             <div className="inner-width-section mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Sectors Label */}
                 <div className="mb-4">

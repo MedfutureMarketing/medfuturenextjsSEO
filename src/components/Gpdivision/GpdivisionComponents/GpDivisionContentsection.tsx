@@ -21,27 +21,26 @@ interface AlliedHealthHubProps {
 const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
     /* ---------- Default job links ---------- */
     const defaultJobLinks: JobLink[] = [
-        { title: 'Speech Pathologist Jobs Australia', url: '#' },
-        { title: 'Speech Pathologist Jobs Victoria', url: '#' },
-        { title: 'Speech Pathologist Jobs Victoria', url: '#' },
-        { title: 'Occupational Therapist Jobs Australia', url: '#' },
-        { title: 'Occupational Therapist Jobs NSW', url: '#' },
-        { title: 'Speech Pathologist Jobs Victoria', url: '#' },
-        { title: 'Speech Pathologist Jobs Victoria', url: '#' },
-        { title: 'Occupational Therapist Jobs Australia', url: '#' },
-        { title: 'Occupational Therapist Jobs NSW', url: '#' },
-        { title: 'Speech Pathologist Jobs Victoria', url: '#' },
-        { title: 'Speech Pathologist Jobs Victoria', url: '#' },
-        { title: 'Occupational Therapist Jobs Australia', url: '#' },
-        { title: 'Occupational Therapist Jobs NSW', url: '#' },
-        { title: 'Physiotherapist Jobs Australia', url: '#' },
-        { title: 'Physiotherapist Jobs Australia', url: '#' },
-        { title: 'Physiotherapist Jobs Australia', url: '#' },
-        { title: 'Occupational Therapist Jobs Australia', url: '#' },
-        { title: 'Occupational Therapist Jobs NSW', url: '#' },
-        { title: 'Physiotherapist Jobs Australia', url: '#' },
-        { title: 'Physiotherapist Jobs Australia', url: '#' },
-        { title: 'Physiotherapist Jobs Australia', url: '#' },
+        { title: 'GP Jobs Tasmania', url: '/permanent/general-practitioner-jobs/in-tasmania?page=1' },
+        { title: 'GP Registrar Victoria', url: '/permanent/gp-registrar-jobs/in-victoria?page=1' },
+
+  
+        { title: 'Specialist GP NSW', url: '/permanent/gp-specialist-jobs/in-new-south-wales?page=1' },
+        { title: 'Specialist GP Australia', url: '/permanent/gp-specialist-jobs/in-australia?page=1' },
+        { title: 'FRACGP Jobs Australia', url: '#' },
+        { title: 'GP Jobs NSW', url: '/permanent/general-practitioner-jobs/in-new-south-wales?page=1' },
+        { title: 'GP Registrar NSW', url: '/permanent/gp-registrar-jobs/in-new-south-wales?page=1' },
+        { title: 'GP Jobs QLD', url: '/permanent/general-practitioner-jobs/in-queensland?page=1' },
+        { title: 'GP Registrar QLD', url: '/permanent/gp-registrar-jobs/in-queensland?page=1' },
+        { title: 'Specialist GP QLD', url: '/permanent/gp-specialist-jobs/in-queensland?page=1' },
+        { title: 'FRACGP Jobs Australia', url: '#' },
+        { title: 'Specialist GP Victoria', url: '/permanent/gp-specialist-jobs/in-victoria?page=1' },
+        { title: 'Specialist GP SA', url: '/permanent/gp-specialist-jobs/in-south-australia?page=1' },
+        { title: 'Specialist GP WA', url: '/permanent/gp-specialist-jobs/in-western-australia?page=1' },
+        { title: 'Specialist GP NT', url: '/permanent/gp-specialist-jobs/in-northern-territory?page=1' },
+        { title: 'Specialist GP NSW', url: '/permanent/gp-specialist-jobs/in-new-south-wales?page=1' },
+        { title: 'Specialist GP Australia', url: '/permanent/gp-specialist-jobs/in-australia?page=1' },
+
     ];
 
     const links = jobLinks.length > 0 ? jobLinks : defaultJobLinks;
@@ -107,7 +106,7 @@ const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
                                 <p>
                                     Medfuture GP Hub is structured to answer real GP questions with clear terminology: AHPRA, DPA, MMM, FRACGP, FACRRM, RACGP, ACRRM, and locum pathways — making it easier for GPs and AI search experiences to surface accurate, practice-relevant information.
                                 </p>
-                                
+
                             </div>
 
                             {/* ---------- Feature Cards ---------- */}
