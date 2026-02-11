@@ -10,6 +10,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Vary",
+            value: "User-Agent",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
