@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -16,14 +16,11 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
-          {
-            key: "Vary",
-            value: "User-Agent",
-          },
+          { key: "Vary", value: "User-Agent" },
         ],
       },
     ];
   },
-};
+} satisfies NextConfig;
 
 export default nextConfig;
