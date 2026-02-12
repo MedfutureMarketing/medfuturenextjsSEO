@@ -409,7 +409,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
   },
   mental: {
     title: "Mental Health",
-    titleHref: "/",
+    titleHref: "/mental-health",
     columns: [
       {
         heading: "",

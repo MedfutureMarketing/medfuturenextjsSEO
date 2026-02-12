@@ -1,10 +1,10 @@
-import Psyhero from "@/components/AhpDivision/Psy/Psyhero"
-import PsyContentSection from "@/components/AhpDivision/Psy/PsyContentSection";
-import PsyOtcounter from "@/components/AhpDivision/Psy/PsyCounter"
-import PsyJoblistingOt from "@/components/AhpDivision/Psy/PsyJoblisting";
-import PsyWorkSettingContent from "@/components/AhpDivision/Psy/PsyWorkSettingcontent";
+import Psyhero from "@/components/MentalDivision/Psy/Psyhero"
+import PsyContentSection from "@/components/MentalDivision/Psy/PsyContentSection";
+import PsyOtcounter from "@/components/MentalDivision/Psy/PsyCounter"
+import PsyJoblistingOt from "@/components/MentalDivision/Psy/PsyJoblisting";
+import PsyWorkSettingContent from "@/components/MentalDivision/Psy/PsyWorkSettingcontent";
 // import ClinicalAreas from "@/components/AhpDivision/OT/Clinicalareas";
-import PsyConsultant from "@/components/AhpDivision/Psy/PsyConsultant";
+import PsyConsultant from "@/components/MentalDivision/Psy/PsyConsultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
 

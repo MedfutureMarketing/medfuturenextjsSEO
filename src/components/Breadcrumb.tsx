@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState, useMemo,  } from "react";
+import { useEffect, useState, useMemo, } from "react";
 type BreadcrumbItem = {
   href: string;
   label: string;
@@ -37,6 +37,7 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/mental-health/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
   { pattern: "/general-practice-division", bgColor: "bg-white ", textColor: "text-[#040D48]", breadcrumbLabel: "General Practice Division" },
   { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
+  { pattern: "/mental-health", bgColor: "bg-white ", textColor: "text-[#040D48] lg:text-white", breadcrumbLabel: "Allied Health Division" },
   { pattern: "/sign-up", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
 ];
 // 🔹 Helper functions
@@ -158,8 +159,8 @@ export default function Breadcrumb() {
                 <Link
                   href={breadcrumb.href}
                   className={`transition-colors ${themeColors.textColor
-                      ? "hover:opacity-70"
-                      : "text-gray-600 hover:text-blue-700"
+                    ? "hover:opacity-70"
+                    : "text-gray-600 hover:text-blue-700"
                     }`}
                   onClick={(e) => {
                     // If it's "Job Listings" breadcrumb, go back to previous page
