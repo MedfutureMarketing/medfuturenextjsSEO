@@ -1,17 +1,26 @@
-// app/permanent/[jobId]/page.tsx
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 
-export async function generateMetadata(): Promise<Metadata> {
+interface PageProps {
+  params: Promise<{
+    jobId: string;
+  }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { jobId } = await params;
+  // You might want to fetch job data here to generate dynamic metadata
   return getPageMetadata("permanent");
 }
 
-export default function PermanentSingleJob() {
+export default async function PermanentSingleJob({ params }: PageProps) {
+  const { jobId } = await params;
+  
   return (
     <div>
       <section className="min-h-screen flex flex-col">
-        <JobDescription />
+        <JobDescription params={{ jobId }} />
       </section>
     </div>
   );
