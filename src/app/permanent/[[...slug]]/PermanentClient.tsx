@@ -1,4 +1,4 @@
-"use client";
+
 import SearchHeader from "@/components/JobBoard/Searchbar";
 import JobBoardLayout from "@/components/JobBoard/JobBoardLayout";
 import { Suspense } from "react";
