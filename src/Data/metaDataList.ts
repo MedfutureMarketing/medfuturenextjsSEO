@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 
 async function getBASEURL(): Promise<string> {
-  const headersList = await headers();
-  const host = headersList.get("host") || "localhost:3000";
-  const protocol = headersList.get("x-forwarded-proto") || "http";
-  return `${protocol}://${host}`;
+    const headersList = await headers();
+    const host = headersList.get("host") || "localhost:3000";
+    const protocol = headersList.get("x-forwarded-proto") || "http";
+    return `${protocol}://${host}`;
 }
 
 interface MetadataConfig extends Metadata {
@@ -38,6 +38,7 @@ export const metaDataList: Record<string, MetadataResolver> = {
             alternates: {
                 canonical: `${BASE_URL}/`,
                 languages: {
+                    "en": `${BASE_URL}/`,
                     "en-AU": `${BASE_URL}/`,
                 },
             },
