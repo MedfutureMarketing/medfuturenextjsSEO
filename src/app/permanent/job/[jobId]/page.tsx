@@ -5,17 +5,20 @@ import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 interface PageProps {
   params: Promise<{
     jobId: string;
-  }>;
+  }> | {
+    jobId: string;
+  };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { jobId } = await params;
-  // You might want to fetch job data here to generate dynamic metadata
+  // Handle both Promise and direct object
+  const { jobId } = params instanceof Promise ? await params : params;
   return getPageMetadata("permanent");
 }
 
 export default async function PermanentSingleJob({ params }: PageProps) {
-  const { jobId } = await params;
+  // Handle both Promise and direct object
+  const { jobId } = params instanceof Promise ? await params : params;
   
   return (
     <div>
