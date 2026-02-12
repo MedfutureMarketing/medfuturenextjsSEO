@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import PermanentClient from "./PermanentClient";
-// import { schemaList } from "@/Data/schemaList";
+
+const BASE_URL = "https://medfuture.com.au";
 
 interface PermanentPageProps {
   params?: Promise<{ slug?: string[] }>;
 }
-
-// Helper to get JSON-LD schema
-// function getSchema(page: string) {
-//   return schemaList[page]?.jsonLd || null;
-// }
 
 // ✅ Helper function to format slug into readable title
 function formatTitle(slugArray: string[]): string {
@@ -18,10 +14,8 @@ function formatTitle(slugArray: string[]): string {
     return "Permanent Jobs";
   }
 
-  // Remove "in-" prefix and format properly
   const words = slugArray
     .map((slug) => {
-      // Remove "in-" from location names like "in-australia"
       if (slug.startsWith("in-")) {
         return slug.replace("/in-", "").replace(/-/g, " ");
       }
@@ -42,6 +36,9 @@ export async function generateMetadata(
 
   // Construct the full path for dynamicOverrides
   const path = `/permanent/${slugArray.join("/")}`;
+  
+  // ✅ NEW: Build the actual current URL (without query params for canonical)
+  const currentUrl = `${BASE_URL}${path}`;
 
   // Template parameters for dynamic metadata
   const formattedTitle = formatTitle(slugArray);
@@ -51,28 +48,21 @@ export async function generateMetadata(
     title: formattedTitle,
   };
 
-  // Get metadata (dynamic template or override)
-  const metadata = await getPageMetadata("permanent", templateParams, path);
-
-  // ✅ Server-side logging (will appear in terminal, not browser)
-  // console.log("Generated Metadata for path:", path, metadata);
+  // ✅ NEW: Pass currentUrl to getPageMetadata
+  const metadata = await getPageMetadata(
+    "permanent",
+    templateParams,
+    path,
+    currentUrl
+  );
 
   return metadata;
 }
 
 // Page component
 export default function PermanentPage() {
-  // const schema = getSchema("permanent");
-
   return (
     <main className="bg-white">
-      {/* Structured data JSON-LD */}
-      {/* {schema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      )} */}
       <PermanentClient />
     </main>
   );
