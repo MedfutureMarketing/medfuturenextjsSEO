@@ -18,7 +18,7 @@ function formatTitle(slugArray: string[]): string {
   const words = slugArray
     .map((slug) => {
       if (slug.startsWith("in-")) {
-        return slug.replace("/in-", "").replace(/-/g, " ");
+        return slug.replace("/", "").replace(/-/g, " ");
       }
       return slug.replace(/-/g, " ");
     })
