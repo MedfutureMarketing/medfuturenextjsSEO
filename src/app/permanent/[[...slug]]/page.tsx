@@ -35,7 +35,7 @@ export async function generateMetadata(
   const slugArray = params?.slug ?? [];
 
   // Construct the full path for dynamicOverrides
-  const path = `/permanent/${slugArray.join("/")}`;
+  const path = `/permanent/${slugArray.join("/")}?page=1`;
   
   // ✅ NEW: Build the actual current URL (without query params for canonical)
   const currentUrl = `${BASE_URL}${path}`;
