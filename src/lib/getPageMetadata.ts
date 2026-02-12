@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { metaDataList, dynamicOverrides } from "@/Data/metaDataList";
+import { metaDataList, getDynamicOverrides } from "@/Data/metaDataList";
 
 // Define the expected shape of params for dynamic pages
 export interface TemplateParams {
@@ -10,20 +10,23 @@ export interface TemplateParams {
 // Get metadata for a page (static or dynamic)
 export async function getPageMetadata(
   pageKey: string,
-  params?: TemplateParams, // <-- use TemplateParams instead of `any`
+  params?: TemplateParams,
   path?: string
 ): Promise<Metadata> {
   // 1️⃣ Check for dynamic override by full path
-  if (path && dynamicOverrides[path]) {
-    return dynamicOverrides[path];
+  if (path) {
+    const dynamicOverrides = await getDynamicOverrides();
+    if (dynamicOverrides[path]) {
+      return dynamicOverrides[path];
+    }
   }
 
   // 2️⃣ Get metadata from metaDataList
   const pageMeta = metaDataList[pageKey];
 
-  // 3️⃣ If dynamic template
+  // 3️⃣ If dynamic template (function - now async)
   if (typeof pageMeta === "function") {
-    return pageMeta(params || {});
+    return await pageMeta(params || {});
   }
 
   // 4️⃣ If static page
