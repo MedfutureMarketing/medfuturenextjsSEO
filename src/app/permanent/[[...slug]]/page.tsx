@@ -15,16 +15,35 @@ function formatTitle(slugArray: string[]): string {
     return "Permanent Jobs";
   }
 
-  const words = slugArray
-    .map((slug) => {
-      if (slug.startsWith("in-")) {
-        return slug.replace("/", "").replace(/-/g, " ");
-      }
-      return slug.replace(/-/g, " ");
-    })
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1));
+  // Find the index where location starts (has "in-" prefix)
+  const locationIndex = slugArray.findIndex((slug) => slug.startsWith("in-"));
 
-  return words.join(" in ");
+  if (locationIndex === -1) {
+    // No location found, just join with spaces and capitalize
+    return slugArray
+      .map((slug) => slug.replace(/-/g, " "))
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  }
+
+  // Split into job title and location
+  const jobParts = slugArray.slice(0, locationIndex);
+  const locationParts = slugArray.slice(locationIndex);
+
+  // Format job title
+  const jobTitle = jobParts
+    .map((slug) => slug.replace(/-/g, " "))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  // Format location (remove "in-" prefix)
+  const location = locationParts
+    .map((slug) => slug.replace(/^in-/, "").replace(/-/g, " "))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  // Return: "Job Title in Location"
+  return `${jobTitle} in ${location}`;
 }
 
 // ✅ Correct dynamic metadata generator for App Router
