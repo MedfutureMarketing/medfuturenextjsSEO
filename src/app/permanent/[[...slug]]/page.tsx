@@ -6,6 +6,7 @@ const BASE_URL = "https://medfuture.com.au";
 
 interface PermanentPageProps {
   params?: Promise<{ slug?: string[] }>;
+  searchParams?: Promise<Record<string, string | string[]>>;
 }
 
 // ✅ Helper function to format slug into readable title
@@ -32,13 +33,30 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // ✅ Await params first
   const params = await props.params;
+  const searchParams = await props.searchParams;
   const slugArray = params?.slug ?? [];
 
   // Construct the full path for dynamicOverrides
-  const path = `/permanent/${slugArray.join("/")}?page=1`;
+  const path = `/permanent/${slugArray.join("/")}`;
   
-  // ✅ NEW: Build the actual current URL (without query params for canonical)
-  const currentUrl = `${BASE_URL}${path}`;
+  // ✅ Build the actual current URL with query parameters
+  let currentUrl = `${BASE_URL}${path}`;
+  
+  // ✅ NEW: Add query parameters if they exist
+  if (searchParams && Object.keys(searchParams).length > 0) {
+    const queryString = new URLSearchParams();
+    Object.entries(searchParams).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach(v => queryString.append(key, v));
+      } else {
+        queryString.set(key, value);
+      }
+    });
+    const qs = queryString.toString();
+    if (qs) {
+      currentUrl += `?${qs}`;
+    }
+  }
 
   // Template parameters for dynamic metadata
   const formattedTitle = formatTitle(slugArray);
@@ -48,7 +66,7 @@ export async function generateMetadata(
     title: formattedTitle,
   };
 
-  // ✅ NEW: Pass currentUrl to getPageMetadata
+  // ✅ Pass currentUrl (with query params) to getPageMetadata
   const metadata = await getPageMetadata(
     "permanent",
     templateParams,
