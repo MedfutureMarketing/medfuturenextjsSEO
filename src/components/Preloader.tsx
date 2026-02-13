@@ -20,11 +20,8 @@ const disabledRoutes: any[] = [
   // Add routes here that should skip the preloader
   // "/about",
   // "/contact",
-  "/permanent/",
   "/permanent",
-  "/locum",
-  "/locum/",
-
+    "/permanent/",
 
 ];
 
@@ -42,7 +39,7 @@ function PreloaderContent() {
   );
 
   const loadingMessage = matchedRoute ? routeMessages[matchedRoute] : "Please wait...";
-
+  
   // Only allow preloader if route is in routeMessages AND not in disabledRoutes
   const isAllowed = !!matchedRoute && !isDisabled;
 
