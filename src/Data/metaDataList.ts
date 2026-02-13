@@ -39,7 +39,7 @@ export const metaDataList: Record<
         },
         openGraph: {
             type: "website",
-            locale: "en_US",
+            locale: "en_AU",
             url: `${BASE_URL}/`,
             siteName: "Medfuture",
             title: "Medfuture – Medical & Healthcare Recruitment in Australia",

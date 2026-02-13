@@ -738,7 +738,7 @@ export default function CandidateForm() {
             />
             <span className="text-sm text-gray-600 text-center">
               By registration you agree to{' '}
-              <a href="/terms" className="text-blue-600 hover:underline">
+              <a href="/terms-and-conditions" className="text-blue-600 hover:underline">
                 Terms and Conditions
               </a>{' '}
               and{' '}
