@@ -1,50 +1,54 @@
 // app/permanent/[jobId]/page.tsx
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
-import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 import { apiGet } from "@/lib/api";
+import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
+
+interface Props {
+  params: {
+    jobId: string;
+  };
+}
 
 type Job = {
   job_id: number;
   job_title: string;
   profession?: { name: string };
-  state?: { name: string };
+  engagement_type?: { name: string };
   country?: { name: string };
+  state?: { name: string };
+  job_brief?: string;
+  medical_practise_details?: string;
+  required_qualification_exp?: string;
+  highlights?: Array<{ jobhighlights_id: number; name: string }>;
 };
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { jobId: string };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { jobId } = params;
-
-    const res = await apiGet<{ data: Job }>(
-      `web/jobdetails/${jobId}`
-    );
-
+    // Fetch job data on the server for metadata
+    const res = await apiGet<{ data: Job }>(`web/jobdetails/${params.jobId}`);
     const job = res.data;
+
+    const path = `/permanent/job/${params.jobId}`;
+    const canonicalUrl = `https://medfuture.com.au${path}`;
 
     return getPageMetadata(
       "permanent",
       {
-        id: jobId,
+        id: params.jobId,
         title: job.job_title,
-        profession: job.profession?.name,
-        state: job.state?.name,
-        country: job.country?.name,
       },
-      `/permanent/${jobId}`,
-      `https://medfuturenextjs-seo.vercel.app/permanent/${jobId}`
+      path,
+      canonicalUrl
     );
-  } catch (error) {
-    console.error("Metadata error:", error);
-
-    return getPageMetadata("permanent", {
-      id: params.jobId,
-      title: "Job Opportunity",
-    });
+  } catch {
+    // Fallback if fetch fails
+    const path = `/permanent/job/${params.jobId}`;
+    return getPageMetadata(
+      "permanent",
+      { id: params.jobId, title: "Healthcare Job" },
+      path
+    );
   }
 }
 

@@ -1,15 +1,12 @@
 import type { Metadata } from "next";
 import { metaDataList, dynamicOverrides } from "@/Data/metaDataList";
 
-const BASE_URL = "https://medfuturenextjs-seo.vercel.app";
+const BASE_URL = "https://medfuture.com.au";
 
-// ✅ Updated: Add profession, state, country fields
+// Define the expected shape of params for dynamic pages
 export interface TemplateParams {
   id?: string;
   title?: string;
-  profession?: string;
-  state?: string;
-  country?: string;
 }
 
 // Get metadata for a page (static or dynamic)
