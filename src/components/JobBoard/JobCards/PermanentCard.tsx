@@ -330,7 +330,7 @@ export default function JobCard() {
               router.push(`?jobId=${job.job_id}&page=${currentPage}`)
             }
             className={`border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all
-              ${selectedJobId === String(job.job_id) ? "bg-gray-200 text-white shadow-none border-0" : ""}`}
+              ${selectedJobId === String(job.job_id) ? "bg-gray-100 text-white   shadow-none border-0" : ""}`}
           >
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-500">

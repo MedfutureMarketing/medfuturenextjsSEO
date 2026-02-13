@@ -125,11 +125,7 @@ export default function JobDescription() {
 
       {/* External Link */}
       <div className="relative px-5">
-        <div className="absolute top-0 right-0 px-5"><ShareButton
-          jobId={job.job_id}
-          jobTitle={job.job_title}
-          jobUrl={`/permanent/job/${job.job_id}`}
-        />
+        <div className="absolute top-0 right-0 px-5"><div className="flex flex-wrap gap-4">
           <Link href={`/permanent/job/${job.job_id}`} className="hover:underline">
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_21001_3721)">
@@ -142,7 +138,11 @@ export default function JobDescription() {
                 </clipPath>
               </defs>
             </svg>
-          </Link>
+          </Link><ShareButton
+            jobId={job.job_id}
+            jobTitle={job.job_title}
+            jobUrl={`/permanent/job/${job.job_id}`}
+          /></div>
         </div>
 
       </div>

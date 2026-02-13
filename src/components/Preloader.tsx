@@ -10,15 +10,31 @@ import LoaderImage from "@/assets/logo/medfuture-logo.webp";
 // Pages where preloader is allowed with custom messages
 const routeMessages: Record<string, string> = {
   "/": "Loading...",
-  
-  
-  // "/": "Welcome to Medfuture... ",
+  // Add more routes here that should show the preloader
+  // "/dashboard": "Loading dashboard...",
+  // "/patients": "Loading patients...",
 };
+
+// Routes where preloader is disabled (won't show loading screen)
+const disabledRoutes: any[] = [
+  // Add routes here that should skip the preloader
+  // "/about",
+  // "/contact",
+  "/permanent/",
+  "/permanent",
+  "/locum",
+  "/locum/",
+
+
+];
 
 function PreloaderContent() {
   const [isLoading, setIsLoading] = useState(false);
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  // Check if current route is in the disabled list
+  const isDisabled = disabledRoutes.some((route) => pathname?.startsWith(route));
 
   // Find matching route and get message
   const matchedRoute = Object.keys(routeMessages).find((route) =>
@@ -26,7 +42,9 @@ function PreloaderContent() {
   );
 
   const loadingMessage = matchedRoute ? routeMessages[matchedRoute] : "Please wait...";
-  const isAllowed = !!matchedRoute;
+
+  // Only allow preloader if route is in routeMessages AND not in disabledRoutes
+  const isAllowed = !!matchedRoute && !isDisabled;
 
   useEffect(() => {
     if (!isAllowed) return;
@@ -64,9 +82,18 @@ function PreloaderContent() {
 
         {/* Loading dots */}
         <div className="flex gap-2">
-          <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '0ms' }}></div>
-          <div className="w-2 h-2 rounded-full bg-cyan-500 animate-bounce" style={{ animationDelay: '150ms' }}></div>
-          <div className="w-2 h-2 rounded-full bg-blue-500 animate-bounce" style={{ animationDelay: '300ms' }}></div>
+          <div
+            className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
+            style={{ animationDelay: "0ms" }}
+          ></div>
+          <div
+            className="w-2 h-2 rounded-full bg-cyan-500 animate-bounce"
+            style={{ animationDelay: "150ms" }}
+          ></div>
+          <div
+            className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
+            style={{ animationDelay: "300ms" }}
+          ></div>
         </div>
 
         {/* Dynamic loading message based on route */}

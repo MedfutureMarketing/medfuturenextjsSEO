@@ -101,22 +101,14 @@ export default function ShareButton({ jobId, jobTitle, jobUrl }: ShareButtonProp
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center justify-center p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+        className="inline-flex items-center justify-center cursor-pointer p-0 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
         title="Share job"
       >
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8.684 13.342C9.578 14.234 10 15.415 10 16.605c0 .996-.237 1.945-.684 2.777M16 6h2m0 0h2m-2 0v2m0-2v-2m0 18c5.523 0 10-4.477 10-10S21.523 2 16 2 6 6.477 6 12s4.477 10 10 10zm0-18V4m0 4h.01M12 8h.01M8 12h.01M16 16h.01"
-          />
-        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+</svg>
+
+      
       </button>
 
       {isOpen && (
@@ -126,7 +118,7 @@ export default function ShareButton({ jobId, jobTitle, jobUrl }: ShareButtonProp
               <button
                 key={option.platform}
                 onClick={() => handleShare(option.platform)}
-                className="flex items-center gap-3 w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
+                className="flex items-center gap-3 cursor-pointer w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded transition-colors"
               >
                 <span className="text-gray-500">{option.icon}</span>
                 <span className="flex-1 text-left">{option.name}</span>
