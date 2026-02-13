@@ -32,7 +32,8 @@ export default function RootLayout({
         <Script
           id="microsoft-clarity"
           // strategy="afterInteractive"
-                strategy="lazyOnload"
+                      strategy="lazyOnload"
+
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){
@@ -53,9 +54,7 @@ export default function RootLayout({
 
         <Script
           id="google-analytics"
-          // strategy="afterInteractive"
-                          strategy="lazyOnload"
-
+            strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];

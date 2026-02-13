@@ -11,6 +11,7 @@ import Permenentico from "@/assets/jobboardico/Permanentico.png"
 import Doctorico from "@/assets/jobboardico/Doctorico.png"
 import Moneyico from "@/assets/jobboardico/Moneyico.png"
 import Timeico from "@/assets/jobboardico/Timeico.png"
+import ShareButton from "@/components/JobBoard/Sharebutton"
 
 type JobHighlight = {
   jobhighlights_id: number;
@@ -71,37 +72,37 @@ export default function JobDescription() {
   if (!jobId) {
     return (
       <div className="md:hidden lg:block  hidden">
-      <div className=" md:flex h-full items-center justify-center p-8">
-        <div className="text-center max-w-md">
-          <div className="mb-6 relative inline-block">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center">
-              <svg
-                className="w-12 h-12 text-blue-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
+        <div className=" md:flex h-full items-center justify-center p-8">
+          <div className="text-center max-w-md">
+            <div className="mb-6 relative inline-block">
+              <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-cyan-100 rounded-full flex items-center justify-center">
+                <svg
+                  className="w-12 h-12 text-blue-500"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
+              <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
             </div>
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-ping"></div>
-            <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+
+            <h3 className="text-2xl font-bold text-gray-800 mb-3">
+              Select a Job to View Details
+            </h3>
+
+            <p className="text-gray-500 mb-6 leading-relaxed">
+              Browse through the available positions on the left and click on any job card to see the full details, requirements, and application information.
+            </p>
           </div>
-
-          <h3 className="text-2xl font-bold text-gray-800 mb-3">
-            Select a Job to View Details
-          </h3>
-
-          <p className="text-gray-500 mb-6 leading-relaxed">
-            Browse through the available positions on the left and click on any job card to see the full details, requirements, and application information.
-          </p>
-        </div>
-      </div></div>
+        </div></div>
     );
   }
 
@@ -124,7 +125,11 @@ export default function JobDescription() {
 
       {/* External Link */}
       <div className="relative px-5">
-        <div className="absolute top-0 right-0 px-5">
+        <div className="absolute top-0 right-0 px-5"><ShareButton
+          jobId={job.job_id}
+          jobTitle={job.job_title}
+          jobUrl={`/permanent/job/${job.job_id}`}
+        />
           <Link href={`/permanent/job/${job.job_id}`} className="hover:underline">
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_21001_3721)">
@@ -139,6 +144,7 @@ export default function JobDescription() {
             </svg>
           </Link>
         </div>
+
       </div>
 
       {/* Tags */}
