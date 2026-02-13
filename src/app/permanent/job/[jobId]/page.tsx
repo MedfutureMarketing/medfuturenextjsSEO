@@ -16,15 +16,19 @@ type Job = {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ jobId: string }>;
+  params: { jobId: string };
 }): Promise<Metadata> {
   try {
-    const { jobId } = await params;
-    console.log("🔍 Fetching job:", jobId); // ✅ ADD HERE
+    const { jobId } = params; // ❌ no await
 
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    console.log("✅ Job data:", res.data); // ✅ ADD HERE
-    
+    console.log("🔍 Fetching job:", jobId);
+
+    const res = await apiGet<{ data: Job }>(
+      `web/jobdetails/${jobId}`
+    );
+
+    console.log("✅ Job data:", res.data);
+
     const job = res.data;
 
     return await getPageMetadata(
@@ -40,8 +44,10 @@ export async function generateMetadata({
       `https://medfuturenextjs-seo.vercel.app/permanent/job/${jobId}`
     );
   } catch (error) {
-    console.error("❌ Metadata error:", error); // ✅ ADD HERE
-    const { jobId } = await params;
+    console.error("❌ Metadata error:", error);
+
+    const { jobId } = params;
+
     return await getPageMetadata("permanent", {
       id: jobId,
       title: "Job Opportunity",
