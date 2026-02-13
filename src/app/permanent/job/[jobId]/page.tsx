@@ -1,23 +1,3 @@
-// // app/permanent/[jobId]/page.tsx
-// import type { Metadata } from "next";
-// import { getPageMetadata } from "@/lib/getPageMetadata";
-// import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
-
-// export async function generateMetadata(): Promise<Metadata> {
-//   return getPageMetadata("permanent");
-// }
-
-// export default function PermanentSingleJob() {
-//   return (
-//     <div>
-//       <section className="min-h-screen flex flex-col">
-//         <JobDescription />
-//       </section>
-//     </div>
-//   );
-// }
-
-
 // app/permanent/[jobId]/page.tsx
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
@@ -34,31 +14,38 @@ type Job = {
   job_brief?: string;
 };
 
-// Generate metadata for the specific job
+// ✅ FIX: Await params like your working example
 export async function generateMetadata({
   params,
 }: {
-  params: { jobId: string };
+  params: Promise<{ jobId: string }>;
 }): Promise<Metadata> {
   try {
+    // ✅ Await params first!
+    const { jobId } = await params;
+
     // Fetch job data
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${params.jobId}`);
+    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
     const job = res.data;
 
     // Get metadata with job-specific params
     return await getPageMetadata(
       "permanent",
       {
-        id: params.jobId,
+        id: jobId,
         title: job.job_title,
+        profession: job.profession?.name,
+        state: job.state?.name,
+        country: job.country?.name,
       },
-      `/permanent/jobs/${params.jobId}`, // Optional: for dynamic overrides
-      `https://medfuturenextjs-seo.vercel.app/permanent/jobs/${params.jobId}`
+      `/permanent/${jobId}`,
+      `https://medfuturenextjs-seo.vercel.app/permanent/${jobId}`
     );
   } catch (error) {
     // Fallback to generic metadata if fetch fails
+    const { jobId } = await params;
     return await getPageMetadata("permanent", {
-      id: params.jobId,
+      id: jobId,
       title: "Job Opportunity",
     });
   }

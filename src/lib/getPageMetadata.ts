@@ -3,10 +3,13 @@ import { metaDataList, dynamicOverrides } from "@/Data/metaDataList";
 
 const BASE_URL = "https://medfuturenextjs-seo.vercel.app";
 
-// Define the expected shape of params for dynamic pages
+// ✅ Updated: Add profession, state, country fields
 export interface TemplateParams {
   id?: string;
   title?: string;
+  profession?: string;
+  state?: string;
+  country?: string;
 }
 
 // Get metadata for a page (static or dynamic)
