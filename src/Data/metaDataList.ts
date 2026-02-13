@@ -76,8 +76,10 @@ export const metaDataList: Record<
     },
 
     // Dynamic template for single job pages
-    singlepage: (params: TemplateParams): MetadataConfig => ({
-        title: `${params.title || "Health Care Jobs"} | Medfuture`,
+   singlepage: (params: TemplateParams): MetadataConfig => ({
+    path: `/permanent/job/${params.id}`,  
+    title: `${params.title || "Health Care Jobs"} | Medfuture`,
+    
         description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
         keywords: [
             "Medfuture",
