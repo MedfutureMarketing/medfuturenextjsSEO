@@ -716,7 +716,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
               />
               <label className="ml-2 lg:text-[15px] text-xs text-gray-700 leading-tight">
                 I confirm that I have read and agree to the{' '}
-                <Link href="/terms" className="hover:underline text-[#64CAF3]">
+                <Link href="/terms-and-conditions" className="hover:underline text-[#64CAF3]">
                   Terms of Use
                 </Link>{' '}
                 and{' '}

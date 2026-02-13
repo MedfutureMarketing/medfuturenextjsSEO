@@ -697,7 +697,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
             <label className="ml-2 text-[15px] text-gray-700 leading-tight">
               <span className="asterisk_input_checkbox"> </span>
               I confirm that I have read and agree to the{' '}
-              <Link href="/terms" className="hover:underline text-[#64CAF3]">
+              <Link href="/terms-and-conditions" className="hover:underline text-[#64CAF3]">
                 Terms of Use
               </Link>{' '}
               and{' '}
