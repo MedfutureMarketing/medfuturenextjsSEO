@@ -1,10 +1,9 @@
-// app/permanent/[jobId]/page.tsx
+// app/permanent/job/[jobId]/page.tsx
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 import { apiGet } from "@/lib/api";
 
-// Define Job type
 type Job = {
   job_id: number;
   job_title: string;
@@ -14,21 +13,20 @@ type Job = {
   job_brief?: string;
 };
 
-// ✅ FIX: Await params like your working example
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ jobId: string }>;
 }): Promise<Metadata> {
   try {
-    // ✅ Await params first!
     const { jobId } = await params;
+    console.log("🔍 Fetching job:", jobId); // ✅ ADD HERE
 
-    // Fetch job data
     const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    console.log("✅ Job data:", res.data); // ✅ ADD HERE
+    
     const job = res.data;
 
-    // Get metadata with job-specific params
     return await getPageMetadata(
       "permanent",
       {
@@ -42,7 +40,7 @@ export async function generateMetadata({
       `https://medfuturenextjs-seo.vercel.app/permanent/job/${jobId}`
     );
   } catch (error) {
-    // Fallback to generic metadata if fetch fails
+    console.error("❌ Metadata error:", error); // ✅ ADD HERE
     const { jobId } = await params;
     return await getPageMetadata("permanent", {
       id: jobId,
