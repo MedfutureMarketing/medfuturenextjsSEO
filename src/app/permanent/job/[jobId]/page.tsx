@@ -53,7 +53,7 @@ export async function generateMetadata({
         title: job.job_title,
       },
       `/permanent/${params.jobId}`, // Optional: for dynamic overrides
-      `https://medfuture.com.au/permanent/${params.jobId}`
+      `https://medfuturenextjs-seo.vercel.app/permanent/${params.jobId}`
     );
   } catch (error) {
     // Fallback to generic metadata if fetch fails
