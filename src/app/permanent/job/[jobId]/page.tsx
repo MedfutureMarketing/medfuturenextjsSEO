@@ -1,4 +1,4 @@
-// app/permanent/job/[jobId]/page.tsx
+// app/permanent/[jobId]/page.tsx
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
@@ -10,7 +10,6 @@ type Job = {
   profession?: { name: string };
   state?: { name: string };
   country?: { name: string };
-  job_brief?: string;
 };
 
 export async function generateMetadata({
@@ -19,19 +18,15 @@ export async function generateMetadata({
   params: { jobId: string };
 }): Promise<Metadata> {
   try {
-    const { jobId } = params; // ❌ no await
-
-    console.log("🔍 Fetching job:", jobId);
+    const { jobId } = params;
 
     const res = await apiGet<{ data: Job }>(
       `web/jobdetails/${jobId}`
     );
 
-    console.log("✅ Job data:", res.data);
-
     const job = res.data;
 
-    return await getPageMetadata(
+    return getPageMetadata(
       "permanent",
       {
         id: jobId,
@@ -40,16 +35,14 @@ export async function generateMetadata({
         state: job.state?.name,
         country: job.country?.name,
       },
-      `/permanent/job/${jobId}`,
-      `https://medfuturenextjs-seo.vercel.app/permanent/job/${jobId}`
+      `/permanent/${jobId}`,
+      `https://medfuturenextjs-seo.vercel.app/permanent/${jobId}`
     );
   } catch (error) {
-    console.error("❌ Metadata error:", error);
+    console.error("Metadata error:", error);
 
-    const { jobId } = params;
-
-    return await getPageMetadata("permanent", {
-      id: jobId,
+    return getPageMetadata("permanent", {
+      id: params.jobId,
       title: "Job Opportunity",
     });
   }
