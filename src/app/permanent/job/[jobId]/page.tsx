@@ -38,8 +38,8 @@ export async function generateMetadata({
         state: job.state?.name,
         country: job.country?.name,
       },
-      `/permanent/${jobId}`,
-      `https://medfuturenextjs-seo.vercel.app/permanent/${jobId}`
+      `/permanent/job/${jobId}`,
+      `https://medfuturenextjs-seo.vercel.app/permanent/job/${jobId}`
     );
   } catch (error) {
     // Fallback to generic metadata if fetch fails
