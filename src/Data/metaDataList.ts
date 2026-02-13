@@ -74,38 +74,37 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-     singlepage: {
-        path: "/permanent/job/MP",
-        title: "General Practitioner Jobs| Medical & Healthcare Recruitment in Australia",
-        description:
-            "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
+
+    // Dynamic template for single job pages
+    singlepage: (params: TemplateParams): MetadataConfig => ({
+        title: `${params.title || "Health Care Jobs"} | Medfuture`,
+        description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
         keywords: [
             "Medfuture",
             "Australia",
             "Medical & Healthcare Recruitment",
-            "Medical",
+            params.title || "Job",
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/permanent/${params.id}`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/permanent/${params.id}`,
             },
         },
         openGraph: {
             type: "website",
-            locale: "en_US",
-            url: `${BASE_URL}/`,
+            locale: "en_AU",
+            url: `${BASE_URL}/permanent/${params.id}`,
             siteName: "Medfuture",
-            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
-            description:
-                "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
+            title: `${params.title || "Job"} – Medfuture`,
+            description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
             images: [
                 {
-                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
+                    url: `${BASE_URL}/assets/job-og-image.png`,
                     width: 1200,
                     height: 630,
-                    alt: "Medfuture – Responsive Layout Preview",
+                    alt: params.title || "Job at Medfuture",
                 },
             ],
         },
@@ -113,9 +112,8 @@ export const metaDataList: Record<
             card: "summary_large_image",
             site: "@yourtwitter",
             creator: "@yourtwitter",
-            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
-            description:
-                "Explore top medical & healthcare jobs in Australia with Medfuture.",
+            title: `${params.title || "Job"} – Medfuture`,
+            description: `Apply for ${params.title || "this job"} at Medfuture.`,
             images: [`${BASE_URL}/twitter-image.jpg`],
         },
         icons: {
@@ -131,7 +129,7 @@ export const metaDataList: Record<
         authors: [{ name: "Medfuture", url: BASE_URL }],
         creator: "Medfuture",
         publisher: "Medfuture",
-    },
+    }),
 
     // Dynamic template for permanent jobs
     permanent: (params: TemplateParams): MetadataConfig => ({
