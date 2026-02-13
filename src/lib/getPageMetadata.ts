@@ -9,6 +9,13 @@ export interface TemplateParams {
   title?: string;
 }
 
+// Define a type for metadata objects that might have custom fields
+type MetadataWithCustom = Metadata & {
+  path?: string;
+  customPath?: string;
+  [key: string]: unknown; // Allow other custom fields without using 'any'
+};
+
 export async function getPageMetadata(
   pageKey: string,
   params?: TemplateParams | undefined,
@@ -17,24 +24,26 @@ export async function getPageMetadata(
 ): Promise<Metadata> {
   const canonicalUrl = currentUrl || (path ? `${BASE_URL}${path}` : BASE_URL);
 
-  // CRITICAL: Strip ALL non-Metadata properties
-  function stripNonMetadata(obj: Record<string, any>): Metadata {
+  // Type-safe function to strip non-Metadata properties
+  function stripNonMetadata(obj: MetadataWithCustom): Metadata {
+    // Create a new object without the custom fields
     const {
-      path: _p,           // Remove custom path
-      customPath: _cp,    // Remove any other custom fields
-      ...validMetadata   // Keep ONLY what Next.js expects
+      path: _path,
+      customPath: _customPath,
+      ...validMetadata
     } = obj;
+    
     return validMetadata as Metadata;
   }
 
   try {
     // 1️⃣ Dynamic override
     if (path && dynamicOverrides[path]) {
-      const overrideMeta = dynamicOverrides[path];
+      const overrideMeta = dynamicOverrides[path] as MetadataWithCustom;
       const cleanMeta = stripNonMetadata(overrideMeta);
       return {
         ...cleanMeta,
-        metadataBase: new URL(BASE_URL), // MUST be URL object, not string
+        metadataBase: new URL(BASE_URL),
         alternates: {
           ...cleanMeta.alternates,
           canonical: canonicalUrl,
@@ -45,7 +54,7 @@ export async function getPageMetadata(
     // 2️⃣ Dynamic template
     const pageMeta = metaDataList[pageKey];
     if (typeof pageMeta === "function") {
-      const dynamicMeta = pageMeta(params || {});
+      const dynamicMeta = pageMeta(params || {}) as MetadataWithCustom;
       const cleanMeta = stripNonMetadata(dynamicMeta);
       return {
         ...cleanMeta,
@@ -59,7 +68,7 @@ export async function getPageMetadata(
 
     // 3️⃣ Static page
     if (pageMeta) {
-      const cleanMeta = stripNonMetadata(pageMeta);
+      const cleanMeta = stripNonMetadata(pageMeta as MetadataWithCustom);
       return {
         ...cleanMeta,
         metadataBase: new URL(BASE_URL),
