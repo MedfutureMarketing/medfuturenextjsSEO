@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://medfuturenextjs-seo.vercel.app/";
+const BASE_URL = "https://medfuture.com.au";
 
 interface MetadataConfig extends Metadata {
     path?: string; // optional canonical path
@@ -75,38 +75,36 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-    // Dynamic template for single job pages
-   singlepage: (params: TemplateParams): MetadataConfig => ({
-    path: `/permanent/job/${params.id}`,  
-    title: `${params.title || "Health Care Jobs"} | Medfuture`,
-    
-        description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
+    singlepage: (params: TemplateParams): MetadataConfig => ({
+        path: "/",
+        title: `${params.title || "Medical & Healthcare Recruitment"} | Medfuture`,
+        description: `Explore ${params.title || "medical & healthcare opportunities"} with Medfuture.`,
         keywords: [
             "Medfuture",
             "Australia",
             "Medical & Healthcare Recruitment",
-            params.title || "Job",
+            "Medical",
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/permanent/${params.id}`,
+            canonical: `${BASE_URL}/single/${params.id || ""}`,
             languages: {
-                "en-AU": `${BASE_URL}/permanent/${params.id}`,
+                "en-AU": `${BASE_URL}/single/${params.id || ""}`,
             },
         },
         openGraph: {
             type: "website",
-            locale: "en_AU",
-            url: `${BASE_URL}/permanent/${params.id}`,
+            locale: "en_US",
+            url: `${BASE_URL}/single/${params.id || ""}`,
             siteName: "Medfuture",
-            title: `${params.title || "Job"} – Medfuture`,
-            description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
+            title: `${params.title || "Medfuture"} – Medical & Healthcare Recruitment`,
+            description: `Explore ${params.title || "medical & healthcare opportunities"} with Medfuture.`,
             images: [
                 {
-                    url: `${BASE_URL}/assets/job-og-image.png`,
+                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
                     width: 1200,
                     height: 630,
-                    alt: params.title || "Job at Medfuture",
+                    alt: params.title || "Medfuture",
                 },
             ],
         },
@@ -114,8 +112,8 @@ export const metaDataList: Record<
             card: "summary_large_image",
             site: "@yourtwitter",
             creator: "@yourtwitter",
-            title: `${params.title || "Job"} – Medfuture`,
-            description: `Apply for ${params.title || "this job"} at Medfuture.`,
+            title: `${params.title || "Medfuture"} – Medical & Healthcare Recruitment`,
+            description: `Explore ${params.title || "medical & healthcare opportunities"} with Medfuture.`,
             images: [`${BASE_URL}/twitter-image.jpg`],
         },
         icons: {
@@ -123,15 +121,8 @@ export const metaDataList: Record<
             shortcut: "/favicon-32x32.png",
             apple: "/apple-touch-icon.png",
         },
-        manifest: "/site.webmanifest",
-        category: "Medical & Healthcare Recruitment",
-        metadataBase: new URL(BASE_URL),
-        applicationName: "Medfuture",
-        generator: "Next.js",
-        authors: [{ name: "Medfuture", url: BASE_URL }],
-        creator: "Medfuture",
-        publisher: "Medfuture",
     }),
+
 
     // Dynamic template for permanent jobs
     permanent: (params: TemplateParams): MetadataConfig => ({

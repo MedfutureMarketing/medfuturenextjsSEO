@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { metaDataList, dynamicOverrides } from "@/Data/metaDataList";
 
-const BASE_URL = "https://medfuturenextjs-seo.vercel.app/";
+const BASE_URL = "https://medfuture.com.au";
 
 // Define the expected shape of params for dynamic pages
 export interface TemplateParams {
