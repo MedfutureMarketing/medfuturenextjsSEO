@@ -74,6 +74,64 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+     singlepage: {
+        path: "/permanent/job/MP",
+        title: "General Practitioner Jobs| Medical & Healthcare Recruitment in Australia",
+        description:
+            "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
+        keywords: [
+            "Medfuture",
+            "Australia",
+            "Medical & Healthcare Recruitment",
+            "Medical",
+            "Healthcare",
+        ],
+        alternates: {
+            canonical: `${BASE_URL}/`,
+            languages: {
+                "en-AU": `${BASE_URL}/`,
+            },
+        },
+        openGraph: {
+            type: "website",
+            locale: "en_US",
+            url: `${BASE_URL}/`,
+            siteName: "Medfuture",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
+            description:
+                "Medfuture stands as a leading brand in Australia and New Zealand, specializing in comprehensive medical and healthcare staffing recruitment solutions.",
+            images: [
+                {
+                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: "Medfuture – Responsive Layout Preview",
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            site: "@yourtwitter",
+            creator: "@yourtwitter",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
+            description:
+                "Explore top medical & healthcare jobs in Australia with Medfuture.",
+            images: [`${BASE_URL}/twitter-image.jpg`],
+        },
+        icons: {
+            icon: "/favicon.ico",
+            shortcut: "/favicon-32x32.png",
+            apple: "/apple-touch-icon.png",
+        },
+        manifest: "/site.webmanifest",
+        category: "Medical & Healthcare Recruitment",
+        metadataBase: new URL(BASE_URL),
+        applicationName: "Medfuture",
+        generator: "Next.js",
+        authors: [{ name: "Medfuture", url: BASE_URL }],
+        creator: "Medfuture",
+        publisher: "Medfuture",
+    },
 
     // Dynamic template for permanent jobs
     permanent: (params: TemplateParams): MetadataConfig => ({
