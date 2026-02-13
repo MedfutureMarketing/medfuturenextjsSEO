@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const BASE_URL = "https://medfuture.com.au";
+const BASE_URL = "https://medfuturenextjs-seo.vercel.app/";
 
 interface MetadataConfig extends Metadata {
     path?: string; // optional canonical path
