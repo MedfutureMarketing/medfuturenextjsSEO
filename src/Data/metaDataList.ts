@@ -9,6 +9,9 @@ interface MetadataConfig extends Metadata {
 interface TemplateParams {
     id?: string;
     title?: string;
+    profession?: string;
+    state?: string;
+    country?: string;
 }
 
 // Static + dynamic metadata
@@ -76,76 +79,87 @@ export const metaDataList: Record<
     },
 
     // Dynamic template for permanent jobs
-    permanent: (params: TemplateParams): MetadataConfig => ({
-        title: `${params.title || "Job"} | Medfuture`,
-        description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
-        alternates: {
-            canonical: `${BASE_URL}/permanent/${params.id}?page=1`,
-        },
-        openGraph: {
-            type: "website",
-            locale: "en_US",
-            url: `${BASE_URL}/job/${params.id}`,
-            siteName: "Medfuture",
-            title: `${params.title || "Job"} – Medfuture`,
-            description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
-            images: [
-                {
-                    url: `${BASE_URL}/assets/job-og-image.png`,
-                    width: 1200,
-                    height: 630,
-                    alt: params.title || "Job at Medfuture",
-                },
+    permanent: (params: TemplateParams): MetadataConfig => {
+        const jobTitle = params.title || "Job Opportunity";
+        const locationInfo = params.state && params.country 
+            ? ` in ${params.state}, ${params.country}` 
+            : "";
+        const professionInfo = params.profession ? ` - ${params.profession}` : "";
+        
+        const fullTitle = `${jobTitle}${professionInfo} | Medfuture`;
+        const description = `Apply for ${jobTitle}${locationInfo} at Medfuture. Explore medical & healthcare opportunities across Australia. Join our leading recruitment team today.`;
+
+        return {
+            title: fullTitle,
+            description: description,
+            keywords: [
+                jobTitle,
+                "Medical Job",
+                "Healthcare Recruitment",
+                "Australia",
+                params.profession || "Medical Position",
+                params.state || "Australia",
             ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            site: "@yourtwitter",
-            creator: "@yourtwitter",
-            title: `${params.title || "Job"} – Medfuture`,
-            description: `Apply for ${params.title || "this job"} at Medfuture.`,
-            images: [`${BASE_URL}/twitter-image.jpg`],
-        },
-    }),
+            alternates: {
+                canonical: `${BASE_URL}/permanent/${params.id}`,
+            },
+            openGraph: {
+                type: "website",
+                locale: "en_AU",
+                url: `${BASE_URL}/permanent/${params.id}`,
+                siteName: "Medfuture",
+                title: fullTitle,
+                description: description,
+                images: [
+                    {
+                        url: `${BASE_URL}/assets/job-og-image.png`,
+                        width: 1200,
+                        height: 630,
+                        alt: jobTitle,
+                    },
+                ],
+            },
+            twitter: {
+                card: "summary_large_image",
+                site: "@medfuture_au",
+                creator: "@medfuture_au",
+                title: fullTitle,
+                description: description,
+                images: [`${BASE_URL}/assets/twitter-job-image.jpg`],
+            },
+        };
+    },
 };
 
-// Dynamic overrides for specific URLs
+// Dynamic overrides for specific URLs (optional - for special cases)
 export const dynamicOverrides: Record<string, MetadataConfig> = {
     "/permanent/general-dentist-jobs/in-australian-capital-territory": {
-        title: "Special GP Job – Medfuture",
-        description: "Apply for this exclusive GP role in Sydney with Medfuture.",
+        title: "General Dentist Jobs in ACT | Medfuture",
+        description: "Apply for General Dentist positions in Australian Capital Territory with Medfuture. Explore exclusive dental recruitment opportunities.",
         alternates: {
             canonical:
                 `${BASE_URL}/permanent/general-dentist-jobs/in-australian-capital-territory`,
         },
         openGraph: {
             type: "website",
-            locale: "en_US",
-            url: `${BASE_URL}/permanent/general-dentist-jobs/in-australian-capital-territory/?page=1`,
+            locale: "en_AU",
+            url: `${BASE_URL}/permanent/general-dentist-jobs/in-australian-capital-territory`,
             siteName: "Medfuture",
-            title: "Special GP Job – Medfuture",
-            description: "Apply for this exclusive GP role in Sydney with Medfuture.",
+            title: "General Dentist Jobs in ACT | Medfuture",
+            description: "Apply for General Dentist positions in Australian Capital Territory with Medfuture.",
             images: [
                 {
-                    url: `${BASE_URL}/assets/gp-job.png`,
+                    url: `${BASE_URL}/assets/dentist-job.png`,
                     width: 1200,
                     height: 630,
-                    alt: "Special GP Job",
+                    alt: "Dentist Job",
                 },
             ],
         },
-        twitter: {
-            card: "summary_large_image",
-            site: "@yourtwitter",
-            creator: "@yourtwitter",
-            title: "Special GP Job – Medfuture",
-            description: "Apply for this exclusive GP role in Sydney with Medfuture.",
-            images: [`${BASE_URL}/twitter-image.jpg`],
-        },
     },
     "/permanent/general-practitioner-jobs/in-australia": {
-        title: "Specialsss GP Job | Medfuture",
-        description: "Apply for this exclusive GP role in Sydney with Medfuture.",
+        title: "GP Jobs in Australia | Medical Recruitment | Medfuture",
+        description: "Apply for General Practitioner jobs across Australia with Medfuture. Find your next medical opportunity with Australia's leading recruitment agency.",
         alternates: {
             canonical:
                 `${BASE_URL}/permanent/general-practitioner-jobs/in-australia`,
@@ -155,24 +169,16 @@ export const dynamicOverrides: Record<string, MetadataConfig> = {
             locale: "en_AU",
             url: `${BASE_URL}/permanent/general-practitioner-jobs/in-australia`,
             siteName: "Medfuture",
-            title: "Special GP Job – Medfuture",
-            description: "Apply for this exclusive GP role in Sydney with Medfuture.",
+            title: "GP Jobs in Australia | Medfuture",
+            description: "Apply for General Practitioner jobs across Australia with Medfuture.",
             images: [
                 {
                     url: `${BASE_URL}/assets/gp-job.png`,
                     width: 1200,
                     height: 630,
-                    alt: "Special GP Job",
+                    alt: "GP Job",
                 },
             ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            site: "@yourtwitter",
-            creator: "@yourtwitter",
-            title: "Special GP Job – Medfuture",
-            description: "Apply for this exclusive GP role in Sydney with Medfuture.",
-            images: [`${BASE_URL}/twitter-image.jpg`],
         },
     },
 };
