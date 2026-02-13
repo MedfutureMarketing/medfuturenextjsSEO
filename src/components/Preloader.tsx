@@ -16,13 +16,13 @@ const routeMessages: Record<string, string> = {
 };
 
 // Routes where preloader is disabled (won't show loading screen)
-const disabledRoutes: any[] = [
+// Routes where preloader is disabled (won't show loading screen)
+const disabledRoutes: string[] = [
   // Add routes here that should skip the preloader
   // "/about",
   // "/contact",
   "/permanent",
-    "/permanent/",
-
+  "/permanent/",
 ];
 
 function PreloaderContent() {
