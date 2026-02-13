@@ -46,7 +46,8 @@ export default function RootLayout({
         {/* GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-GV3R8QX989"
-          strategy="afterInteractive"
+          // strategy="afterInteractive"
+            strategy="lazyOnload"
         />
 
         <Script
