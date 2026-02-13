@@ -52,8 +52,8 @@ export async function generateMetadata({
         id: params.jobId,
         title: job.job_title,
       },
-      `/permanent/${params.jobId}`, // Optional: for dynamic overrides
-      `https://medfuturenextjs-seo.vercel.app//permanent/${params.jobId}`
+      `/permanent/jobs/${params.jobId}`, // Optional: for dynamic overrides
+      `https://medfuturenextjs-seo.vercel.app/permanent/jobs/${params.jobId}`
     );
   } catch (error) {
     // Fallback to generic metadata if fetch fails
