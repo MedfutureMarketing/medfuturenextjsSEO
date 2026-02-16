@@ -1,83 +1,41 @@
 // lib/api.ts
 
-/**
- * API Base URL - exported for components that need it
- * Use the public API for production
- */
+// export const API_BASE_URL = "http://127.0.0.1:8000/api";
 export const API_BASE_URL = "https://stage.medfuture.com.au/medadminapi/public/api";
 
-/**
- * Get the API base URL
- * - Uses environment variables if available
- * - Falls back to hardcoded production URL
- * - Works for both SSR (server) and CSR (client)
- */
-const getBaseUrl = (): string => {
-  // Check if we're on server or client
-  const isServer = typeof window === 'undefined';
-
-  if (isServer) {
-    // Server-side (SSR): Use environment variable or hardcoded URL
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 
-                   process.env.NEXT_PRIVATE_API_URL ||
-                   API_BASE_URL;
-    
-    console.log('API Base URL (Server):', apiUrl);
-    return apiUrl;
-  }
-
-  // Client-side (CSR): Use environment variable or hardcoded URL
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || API_BASE_URL;
-  
-  console.log('API Base URL (Client):', apiUrl);
-  return apiUrl;
+const getBaseUrl = () => {
+  return API_BASE_URL || '';
 };
 
 export async function apiGet<T>(endpoint: string): Promise<T> {
   const baseUrl = getBaseUrl();
-  const url = `${baseUrl}/${endpoint}`;
-  
-  console.log('🔵 API GET:', url);
+  const response = await fetch(`${baseUrl}/${endpoint}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      accept: 'application/json',
+    },
+  });
 
-  try {
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        accept: 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      let errorMessage = 'API request failed';
-      try {
-        const errorResponse = await response.json();
-        errorMessage = errorResponse.message || errorMessage;
-      } catch (e) {
-        const textError = await response.text();
-        errorMessage = textError || `HTTP error! status: ${response.status}`;
-      }
-      console.error('❌ API Error:', errorMessage);
-      throw new Error(errorMessage);
+  if (!response.ok) {
+    let errorMessage = 'API request failed';
+    try {
+      const errorResponse = await response.json();
+      errorMessage = errorResponse.message || errorMessage;
+    } catch (e) {
+      const textError = await response.text();
+      errorMessage = textError || `HTTP error! status: ${response.status}`;
     }
+    throw new Error(errorMessage);
+  }
 
-    // Check if response is JSON
-    const contentType = response.headers.get('content-type');
-    if (contentType && contentType.includes('application/json')) {
-      const data = await response.json();
-      console.log('✅ API Success:', url);
-      return data;
-    } else {
-      const text = await response.text();
-      console.error('❌ Expected JSON but received:', text.substring(0, 100));
-      throw new Error(`Expected JSON but received: ${text.substring(0, 100)}`);
-    }
-  } catch (error) {
-    console.error('❌ API Call Failed:', {
-      url,
-      error: error instanceof Error ? error.message : String(error),
-    });
-    throw error;
+  // Check if response is JSON
+  const contentType = response.headers.get('content-type');
+  if (contentType && contentType.includes('application/json')) {
+    return response.json();
+  } else {
+    const text = await response.text();
+    throw new Error(`Expected JSON but received: ${text.substring(0, 100)}`);
   }
 }
 
@@ -89,52 +47,38 @@ export async function apiPost<
   data: TInput
 ): Promise<TResponse> {
   const baseUrl = getBaseUrl();
-  const url = `${baseUrl}/${endpoint}`;
 
-  console.log('🔵 API POST:', url);
+  const response = await fetch(`${baseUrl}/${endpoint}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+    },
+    body: JSON.stringify(data),
+  });
 
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        accept: "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+  if (!response.ok) {
+    let errorMessage = "API request failed";
 
-    if (!response.ok) {
-      let errorMessage = "API request failed";
-
-      try {
-        const errorResponse: { message?: string } = await response.json();
-        errorMessage = errorResponse.message ?? errorMessage;
-      } catch {
-        const text = await response.text();
-        errorMessage = text || errorMessage;
-      }
-
-      console.error('❌ API Error:', errorMessage);
-      throw new Error(errorMessage);
+    try {
+      const errorResponse: { message?: string } = await response.json();
+      errorMessage = errorResponse.message ?? errorMessage;
+    } catch {
+      const text = await response.text();
+      errorMessage = text || errorMessage;
     }
 
-    const contentType = response.headers.get("content-type");
-    if (contentType?.includes("application/json")) {
-      const data = await response.json();
-      console.log('✅ API Success:', url);
-      return data as Promise<TResponse>;
-    }
-
-    console.log('✅ API Success (no JSON response):', url);
-    return {} as TResponse;
-  } catch (error) {
-    console.error('❌ API Call Failed:', {
-      url,
-      error: error instanceof Error ? error.message : String(error),
-    });
-    throw error;
+    throw new Error(errorMessage);
   }
+
+  const contentType = response.headers.get("content-type");
+  if (contentType?.includes("application/json")) {
+    return response.json() as Promise<TResponse>;
+  }
+
+  return {} as TResponse;
 }
+
 
 // Specific function for quick apply
 export async function applyQuickApi(
@@ -169,7 +113,6 @@ export async function applyQuickApi(
       subscribe_to_alerts,
     };
 
-    console.log('Applying for job:', { job_id, email });
     return await apiPost('web/quick_apply/save', requestBody);
   } catch (error) {
     console.error('Error creating candidate profile:', error);
@@ -196,6 +139,7 @@ export async function checkAlreadyApplied(
     };
   }
 }
+
 
 // Check if candidate is registered
 export async function checkCandidateRegistered(email: string) {
