@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-import { API_BASE_URL } from "../../lib/api";
+import { API_BASE_URL } from "@/lib/api";
 
 type Profession = {
   profession_id: number;

@@ -1,6 +1,12 @@
 // lib/api.ts
 
 /**
+ * API Base URL - exported for components that need it
+ * Use the public API for production
+ */
+export const API_BASE_URL = "https://stage.medfuture.com.au/medadminapi/public/api";
+
+/**
  * Get the API base URL
  * - Uses environment variables if available
  * - Falls back to hardcoded production URL
@@ -14,15 +20,14 @@ const getBaseUrl = (): string => {
     // Server-side (SSR): Use environment variable or hardcoded URL
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 
                    process.env.NEXT_PRIVATE_API_URL ||
-                   'https://stage.medfuture.com.au/medadminapi/public/api';
+                   API_BASE_URL;
     
     console.log('API Base URL (Server):', apiUrl);
     return apiUrl;
   }
 
   // Client-side (CSR): Use environment variable or hardcoded URL
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 
-                 'https://stage.medfuture.com.au/medadminapi/public/api';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || API_BASE_URL;
   
   console.log('API Base URL (Client):', apiUrl);
   return apiUrl;
