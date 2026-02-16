@@ -12,6 +12,8 @@ import Doctorico from "@/assets/jobboardico/Doctorico.png"
 import Moneyico from "@/assets/jobboardico/Moneyico.png"
 import Timeico from "@/assets/jobboardico/Timeico.png"
 import ShareButton from "@/components/JobBoard/Sharebutton"
+import { createJobSlug } from "@/lib/urlUtils";
+
 
 type JobHighlight = {
   jobhighlights_id: number;
@@ -126,7 +128,11 @@ export default function JobDescription() {
       {/* External Link */}
       <div className="relative px-5">
         <div className="absolute top-0 right-0 px-5"><div className="flex flex-wrap gap-4">
-          <Link href={`/permanent/job/${job.job_id}`} className="hover:underline">
+          <Link href={`/permanent/job/${createJobSlug(
+            job.job_title,
+            job.state?.name || job.country?.name || 'unknown',
+            job.job_id
+          )}`} className="hover:underline">
             <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g clipPath="url(#clip0_21001_3721)">
                 <path d="M14.2193 17.379H2.63335C2.354 17.379 2.0861 17.268 1.88857 17.0705C1.69105 16.873 1.58008 16.6051 1.58008 16.3257V4.73979C1.58008 4.46045 1.69105 4.19254 1.88857 3.99502C2.0861 3.79749 2.354 3.68652 2.63335 3.68652H7.89969V4.73979H2.63335V16.3257H14.2193V11.0594H15.2726V16.3257C15.2726 16.6051 15.1616 16.873 14.9641 17.0705C14.7665 17.268 14.4986 17.379 14.2193 17.379Z" fill="#0C3262" />
@@ -138,11 +144,17 @@ export default function JobDescription() {
                 </clipPath>
               </defs>
             </svg>
-          </Link><ShareButton
+          </Link>
+          <ShareButton
             jobId={job.job_id}
             jobTitle={job.job_title}
-            jobUrl={`/permanent/job/${job.job_id}`}
-          /></div>
+            jobUrl={`/job/${createJobSlug(
+              job.job_title,
+              job.state?.name || job.country?.name || 'unknown',
+              job.job_id
+            )}`}
+          />
+        </div>
         </div>
 
       </div>

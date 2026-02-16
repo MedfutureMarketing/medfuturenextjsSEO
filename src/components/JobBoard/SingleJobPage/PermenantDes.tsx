@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "next/navigation";
 import RegistrationForm from '@/components/Forms/QuickApplySingleJob';
 import Link from "next/link";
 import { apiGet } from "@/lib/api";
@@ -9,8 +8,6 @@ import Permenentico from "@/assets/jobboardico/Permanentico.png"
 import Doctorico from "@/assets/jobboardico/Doctorico.png"
 import Moneyico from "@/assets/jobboardico/Moneyico.png"
 import Timeico from "@/assets/jobboardico/Timeico.png"
-
-
 import Jobboard1 from "@/assets/homeico/jobboard1.png"
 import Jobbaord2 from "@/assets/homeico/jobboard2.png"
 import Image from "next/image";
@@ -33,24 +30,39 @@ type Job = {
   medical_practise_details?: string;
   required_qualification_exp?: string;
   highlights?: JobHighlight[];
+  first_contact_person_name?: string;
+  first_contact_number?: string;
+  email?: string;
 };
+
+interface JobDescriptionProps {
+  jobId: string;
+}
 
 /* ================= COMPONENT ================= */
 
-export default function JobDescription() {
-  const { jobId } = useParams<{ jobId: string }>();
+export default function JobDescription({ jobId }: JobDescriptionProps) {
   const formRef = useRef<HTMLDivElement>(null);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
-
   const [job, setJob] = useState<Job | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchJob() {
+      if (!jobId) {
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
       try {
         const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
         setJob(res.data);
-      } catch {
+      } catch (error) {
+        console.error("Error fetching job:", error);
         setJob(null);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -68,13 +80,19 @@ export default function JobDescription() {
     }
   };
 
-  if (!job) return null;
+  if (loading) {
+    return <div className="p-6 text-center text-gray-500">Loading...</div>;
+  }
+
+  if (!job) {
+    return <div className="p-6 text-center text-gray-500">Job not found</div>;
+  }
 
   return (
     <div className="rounded-8px relative">
       {/* Header */}
       <div className="full-width-section bg-[#0A2E5C] lg:h-[113px]">
-        <div className="absolute left-0 z-0  lg:block hidden bottom-0 w-[182px] h-[182px] md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
+        <div className="absolute left-0 z-0 lg:block hidden bottom-0 w-[182px] h-[182px] md:w-48 md:h-48 lg:w-64 lg:h-64 pointer-events-none">
           <Image
             src={Jobboard1}
             alt="Decorative left corner"
@@ -103,7 +121,7 @@ export default function JobDescription() {
         {/* External Link Icon */}
         <div className="relative px-4 lg:px-5">
           <div className="absolute top-0 right-0 px-4 lg:px-5">
-            <Link href="/permanent/job" className="hover:underline">
+            <Link href="/job" className="hover:underline">
               {/* SVG or Icon here */}
             </Link>
           </div>
@@ -114,16 +132,16 @@ export default function JobDescription() {
       <div className="inner-width-section">
         <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[0]">
           <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-0 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-            <Image src={Permenentico} alt="Permanent" className=" mr-0 inline-block" />       Permanent
+            <Image src={Permenentico} alt="Permanent" className="mr-0 inline-block" />       Permanent
           </span>
           <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-            <Image src={Doctorico} alt="Doctor" className=" mr-0 inline-block" />    {job.profession?.name}
+            <Image src={Doctorico} alt="Doctor" className="mr-0 inline-block" />    {job.profession?.name}
           </span>
           <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-            <Image src={Moneyico} alt="Money" className=" mr-0 inline-block" />   {job.engagement_type?.name}
+            <Image src={Moneyico} alt="Money" className="mr-0 inline-block" />   {job.engagement_type?.name}
           </span>
           <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-3 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
-            <Image src={Timeico} alt="Time" className=" mr-0 inline-block" />    {job.state?.name}, {job.country?.name}
+            <Image src={Timeico} alt="Time" className="mr-0 inline-block" />    {job.state?.name}, {job.country?.name}
           </span>
         </div>
 
@@ -160,6 +178,7 @@ export default function JobDescription() {
               ))}
           </ul>
         </div>
+
         {/* Contact Information */}
         <div className='grid lg:grid-cols-2 grid-cols-1 lg:items-end'>
           <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 px-4">
@@ -168,15 +187,15 @@ export default function JobDescription() {
             </h4>
             <div className="grid grid-cols-[1fr_2fr] gap-0 lg:gap-[1px]">
               <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Recruitment Consultant</h3>
-              <span className="text-[#4A5565] lg:text-[16px] text-[13px]">: Gaya</span>
+              <span className="text-[#4A5565] lg:text-[16px] text-[13px]">: {job.first_contact_person_name}</span>
             </div>
             <div className="grid grid-cols-[1fr_2fr] ">
               <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Contact Number</h3>
-              <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: 0452 468 515</a>
+              <a href={`tel:${job.first_contact_number}`} className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">: {job.first_contact_number}</a>
             </div>
             <div className="grid grid-cols-[1fr_2fr]">
               <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
-              <a href="mailto:gprecruitment@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">: gprecruitment@medfuture.com.au</a>
+              <a href={`mailto:${job.email}`} className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">: {job.email}</a>
             </div>
             <div className="grid grid-cols-[1fr_2fr] ">
               <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries</h3>
@@ -204,7 +223,8 @@ export default function JobDescription() {
           </div>
         )}
 
-        <div className="lg:hidden h-20"></div></div>
+        <div className="lg:hidden h-20"></div>
+      </div>
     </div>
   );
 }
