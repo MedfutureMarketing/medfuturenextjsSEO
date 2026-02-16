@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Link from "next/link";
 import Permenentico from "@/assets/jobboardico/Permanentico.png"
 import Doctorico from "@/assets/jobboardico/Doctorico.png"

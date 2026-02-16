@@ -16,7 +16,7 @@ export default function ProfilePage() {
                         {/* Profile Image */}
                         <div className="flex justify-center mb-6">
                             <div className="w-32 h-32 bg-gradient-to-br from-teal-200 to-teal-300 rounded-full flex items-center justify-center">
-                                <div className="text-6xl">👨‍⚕️s</div>
+                                <div className="text-6xl">👨‍⚕️</div>
                             </div>
                         </div>
 
