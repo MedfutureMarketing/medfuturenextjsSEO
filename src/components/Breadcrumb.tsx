@@ -39,6 +39,8 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/ahp-division", bgColor: "bg-[#040D48] ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
   { pattern: "/mental-health", bgColor: "bg-white ", textColor: "text-[#040D48] lg:text-white", breadcrumbLabel: "Allied Health Division" },
   { pattern: "/sign-up", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
+    { pattern: "/my-account/candidate", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
+
 ];
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {
