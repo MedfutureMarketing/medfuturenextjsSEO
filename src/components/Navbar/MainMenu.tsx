@@ -78,11 +78,19 @@ export default function Menu() {
     "/job-seeker-hub/mental-health-division": MedfutureLogoDark,
   };
   const activeLogo = logoMap[pathname] || MedfutureLogoDark;
+  const headerVisibilityMap: Record<string, string> = {
+    "/my-account/": "hidden",
+    "/my-account/candidate": "hidden",
+    "/my-account/candidate/profile": "hidden",
+    "/my-account/candidate/appliedjobs": "hidden", // Add other pages as needed
+
+  };
+  const headerVisibility = headerVisibilityMap[pathname] || "";
 
   return (
     <>
       {/* STICKY HEADER */}
-      <div className="sticky top-0 z-99 ">
+      <div className={`sticky top-0 z-99 ${headerVisibility} `}>
         <div className={`${headerColors} full-width-section `}>
           <header className="inner-width-section lg:py-3 py-1.5 flex items-center  justify-between">
             {/* LEFT SECTION: LOGO + PERMANENT/LOCUM/INTERNATIONAL */}

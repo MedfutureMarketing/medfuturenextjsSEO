@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import Logo from '@/assets/logo/medfuture-white.webp'
 
 interface SidebarProps {
   isOpen: boolean;
@@ -9,11 +11,11 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   const menuItems = [
-    { label: 'Dashboard', href: '/', icon: '📊' },
-    { label: 'My Profile', href: '/my-account/candidate/profile', icon: '👤' },
-    { label: 'Applied Jobs', href: '/jobs', icon: '💼' },
-    { label: 'Compliance', href: '/compliance', icon: '📋' },
-    { label: 'Timesheets', href: '/timesheets', icon: '⏱️' },
+    { label: 'Dashboard', href: '/my-account/candidate/', icon: '' },
+    { label: 'My Profile', href: '/my-account/candidate/profile', icon: '' },
+    { label: 'Applied Jobs', href: '/my-account/candidate/appliedjobs', icon: '' },
+    { label: 'Compliance', href: '/compliance', icon: '' },
+    { label: 'Timesheets', href: '/timesheets', icon: '' },
   ];
 
   return (
@@ -25,7 +27,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
       <div className="h-full flex flex-col">
         {/* Logo/Brand */}
         <div className="p-6">
-          <h2 className="text-2xl font-bold whitespace-nowrap">medfuture</h2>
+   <Image src={Logo} alt=''></Image>
         </div>
 
         {/* Navigation Menu */}
