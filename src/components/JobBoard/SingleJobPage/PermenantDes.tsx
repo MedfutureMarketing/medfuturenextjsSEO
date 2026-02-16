@@ -1,9 +1,4 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
-import RegistrationForm from '@/components/Forms/QuickApplySingleJob';
 import Link from "next/link";
-import { apiGet } from "@/lib/api";
 import Permenentico from "@/assets/jobboardico/Permanentico.png"
 import Doctorico from "@/assets/jobboardico/Doctorico.png"
 import Moneyico from "@/assets/jobboardico/Moneyico.png"
@@ -11,6 +6,7 @@ import Timeico from "@/assets/jobboardico/Timeico.png"
 import Jobboard1 from "@/assets/homeico/jobboard1.png"
 import Jobbaord2 from "@/assets/homeico/jobboard2.png"
 import Image from "next/image";
+import QuickApplyWrapper from "@/components/JobBoard/SingleJobPage/Quickapplywrapper"; // We'll create this
 
 /* ================= TYPES ================= */
 
@@ -36,54 +32,12 @@ type Job = {
 };
 
 interface JobDescriptionProps {
-  jobId: string;
+  job: Job;
 }
 
 /* ================= COMPONENT ================= */
 
-export default function JobDescription({ jobId }: JobDescriptionProps) {
-  const formRef = useRef<HTMLDivElement>(null);
-  const [showRegistrationForm, setShowRegistrationForm] = useState(false);
-  const [job, setJob] = useState<Job | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchJob() {
-      if (!jobId) {
-        setLoading(false);
-        return;
-      }
-
-      setLoading(true);
-      try {
-        const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-        setJob(res.data);
-      } catch (error) {
-        console.error("Error fetching job:", error);
-        setJob(null);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchJob();
-  }, [jobId]);
-
-  const handleApplyNow = () => {
-    const wasClosed = !showRegistrationForm;
-    setShowRegistrationForm(!showRegistrationForm);
-
-    if (wasClosed) {
-      setTimeout(() => {
-        formRef.current?.scrollIntoView({ behavior: "smooth" });
-      }, 150);
-    }
-  };
-
-  if (loading) {
-    return <div className="p-6 text-center text-gray-500">Loading...</div>;
-  }
-
+export default function JobDescription({ job }: JobDescriptionProps) {
   if (!job) {
     return <div className="p-6 text-center text-gray-500">Job not found</div>;
   }
@@ -204,24 +158,13 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
           </div>
 
           <div className="flex lg:justify-end px-4 lg:px-0 pb-6 mb-6 lg:pb-0">
-            {/* Quick Apply Button */}
-            {!showRegistrationForm && (
-              <button
-                onClick={handleApplyNow}
-                className="bg-[#074CA4] text-white w-[194px] px-6 py-3 cursor-pointer rounded-[4px] hover:bg-[#55b8e0] transition-colors font-medium"
-              >
-                Apply Now
-              </button>
-            )}
+            {/* Quick Apply Button - Client Component */}
+            <QuickApplyWrapper />
           </div>
         </div>
 
-        {/* Registration Form */}
-        {showRegistrationForm && (
-          <div ref={formRef} className="mt-6 lg:mt-0 lg:shadow-[0_0_12px_rgba(0,0,0,0.1)] border-[#66768F]/16 mb-36">
-            <RegistrationForm onClose={() => setShowRegistrationForm(false)} />
-          </div>
-        )}
+        {/* Registration Form - Client Component Wrapper */}
+        {/* The form will be handled by the client component below */}
 
         <div className="lg:hidden h-20"></div>
       </div>
