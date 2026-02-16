@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import type { Metadata } from "next";
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
