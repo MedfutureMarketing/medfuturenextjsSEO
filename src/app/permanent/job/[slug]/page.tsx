@@ -21,7 +21,7 @@ export default async function JobPage(props: { params: Params }) {
   return (
     <div>
       <section className="min-h-screen flex flex-col">
-        <JobDescription jobId={jobId} />
+        <JobDescription jobId={jobId} job={null} />
       </section>
     </div>
   );
