@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
-import { 
-  getCompleteJobData,  // 👈 Using the rich data version
+import {
+  getJobDataWithApiEnrichment,
   extractJobIdFromSlug,
-  createSchemaScript 
+  createSchemaScript,
 } from "@/lib/urlUtils";
 
 type Params = Promise<{ slug: string | string[] }>;
@@ -12,14 +12,13 @@ type Params = Promise<{ slug: string | string[] }>;
 export async function generateMetadata(props: { params: Params }): Promise<Metadata> {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-  
-  // This NOW fetches rich data from API
-  const result = await getCompleteJobData(slugString);
-  
+
+  const result = await getJobDataWithApiEnrichment(slugString);
+
   if (!result.success || !result.metadata) {
     return {
-      title: 'Medical Job Not Found',
-      description: 'The requested medical position could not be found.'
+      title: "Job Not Found",
+      description: "The requested job could not be found.",
     };
   }
 
@@ -36,20 +35,12 @@ export async function generateMetadata(props: { params: Params }): Promise<Metad
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-  
-  // This fetches rich data AND generates rich schema
-  const result = await getCompleteJobData(slugString);
-  
-  let schemaJson = "";
 
+  const result = await getJobDataWithApiEnrichment(slugString);
+
+  let schemaJson = "";
   if (result.success && result.schema) {
     schemaJson = createSchemaScript(result.schema);
-    console.log("✅ Rich schema generated for:", result.job?.job_title);
-    console.log("✅ Includes:", {
-      highlights: result.job?.highlights?.length || 0,
-      contactPerson: result.job?.first_contact_person_name,
-      salary: result.job?.hourly_fee
-    });
   }
 
   const jobId = extractJobIdFromSlug(slugString);
@@ -65,7 +56,13 @@ export default async function JobPage(props: { params: Params }) {
 
       <div>
         <section className="min-h-screen flex flex-col">
-          <Suspense fallback={<div>Loading medical job details...</div>}>
+          <Suspense
+            fallback={
+              <div className="p-6 text-center text-gray-500">
+                Loading job details...
+              </div>
+            }
+          >
             <JobDescription jobId={jobId} />
           </Suspense>
         </section>

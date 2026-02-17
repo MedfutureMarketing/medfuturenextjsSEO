@@ -1,6 +1,7 @@
 /**
  * URL, Metadata, and Schema Utilities
- * All job data processing in one place - NO API FETCHING NEEDED!
+ * All job data processing in one place.
+ * Supports both URL-only (fast) and full API-enriched data generation.
  */
 
 export type Job = {
@@ -21,27 +22,19 @@ export type Job = {
 
 /* ================= URL & SLUG UTILITIES ================= */
 
-/**
- * Extract just the job title from a full title string
- */
 function extractJobTitleOnly(fullTitle: string): string {
-  let titlePart = fullTitle
-    .split(/\s*[-–—|]\s*/)[0]
-    .trim();
+  let titlePart = fullTitle.split(/\s*[-–—|]\s*/)[0].trim();
   titlePart = titlePart.replace(/\s*[-–—|]\s*$/, '').trim();
   return titlePart;
 }
 
-/**
- * Create a URL-friendly slug from job details
- */
 export function createJobSlug(
   jobTitle: string,
   location: string,
   jobId: string | number
 ): string {
   const mainTitle = extractJobTitleOnly(jobTitle);
-  
+
   const cleanTitle = mainTitle
     .toLowerCase()
     .trim()
@@ -61,17 +54,11 @@ export function createJobSlug(
   return `${cleanTitle}-job-${cleanLocation}-${jobId}`;
 }
 
-/**
- * Extract the job ID from a slug
- */
 export function extractJobIdFromSlug(slug: string): string {
   const parts = slug.split('-');
   return parts[parts.length - 1];
 }
 
-/**
- * Parse slug to extract job title and location
- */
 export function parseJobSlug(slug: string): { title: string; location: string; id: string } {
   const slugParts = slug.split('-job-');
   const jobTitle = slugParts[0]?.replace(/-/g, ' ') || 'Job';
@@ -79,20 +66,68 @@ export function parseJobSlug(slug: string): { title: string; location: string; i
   const locationParts = locationAndId.split('-');
   const id = locationParts[locationParts.length - 1];
   const location = locationParts.slice(0, -1).join(' ') || 'Location';
-  
+
   return { title: jobTitle, location, id };
 }
 
 /* ================= TEXT FORMATTING ================= */
 
-/**
- * Format text to title case
- */
 export function formatTitleCase(str: string): string {
   return str
     .split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(' ');
+}
+
+/* ================= API FETCHING ================= */
+
+// Exact same base URL used in lib/api.ts
+const API_BASE_URL = "https://stage.medfuture.com.au/medadminapi/public/api";
+
+/**
+ * Fetches real job data from the backend — identical to:
+ *   apiGet<{ data: Job }>(`web/jobdetails/${jobId}`)
+ *
+ * This runs SERVER-SIDE only (inside generateMetadata / page.tsx),
+ * so CORS restrictions do not apply here.
+ *
+ * Returns null on any failure so callers fall back to URL-only data gracefully.
+ */
+export async function fetchJobById(jobId: string): Promise<Job | null> {
+  try {
+    const url = `${API_BASE_URL}/web/jobdetails/${jobId}`;
+    console.log('🌐 Fetching job from backend:', url);
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        accept: 'application/json',
+      },
+      // Cache 1 hour server-side — revalidates automatically with ISR
+      next: { revalidate: 3600 },
+    });
+
+    if (!response.ok) {
+      console.warn(`⚠️ Backend returned ${response.status} for job ${jobId}`);
+      return null;
+    }
+
+    const contentType = response.headers.get('content-type');
+    if (!contentType?.includes('application/json')) {
+      console.warn('⚠️ Backend did not return JSON for job', jobId);
+      return null;
+    }
+
+    // Same shape as apiGet<{ data: Job }> — unwrap .data
+    const json: { data: Job } = await response.json();
+    console.log('✅ Job fetched from backend:', json.data?.job_title);
+    return json.data ?? null;
+
+  } catch (err) {
+    console.error('❌ fetchJobById failed:', err);
+    return null;
+  }
 }
 
 /* ================= METADATA GENERATION ================= */
@@ -103,9 +138,6 @@ export interface MetadataParams {
   jobBrief?: string;
 }
 
-/**
- * Generate metadata for job page
- */
 export function generateJobMetadata(params: MetadataParams) {
   const { jobTitle, location, jobBrief } = params;
   const formattedTitle = formatTitleCase(jobTitle);
@@ -113,13 +145,13 @@ export function generateJobMetadata(params: MetadataParams) {
 
   return {
     title: `${formattedTitle} Jobs in ${formattedLocation}`,
-    description: jobBrief 
-      ? jobBrief.substring(0, 160) 
+    description: jobBrief
+      ? jobBrief.substring(0, 160)
       : `${formattedTitle} position available in ${formattedLocation}. Apply now for this medical opportunity.`,
     openGraph: {
       title: `${formattedTitle} Jobs in ${formattedLocation}`,
-      description: jobBrief 
-        ? jobBrief.substring(0, 160) 
+      description: jobBrief
+        ? jobBrief.substring(0, 160)
         : `${formattedTitle} position available in ${formattedLocation}. Join our healthcare team.`,
       type: 'website' as const,
     },
@@ -129,241 +161,273 @@ export function generateJobMetadata(params: MetadataParams) {
 /* ================= JSON-LD SCHEMA GENERATION ================= */
 
 interface JobSchemaParams {
-  jobTitle: string;      // From URL
-  location: string;      // From URL
-  jobId: string;         // From URL
+  jobTitle: string;
+  location: string;
+  jobId: string;
   baseUrl: string;
   slug: string;
+  job?: Job | null;
 }
 
-/**
- * Generate JSON-LD schema for job posting DIRECTLY FROM URL PARAMETERS
- * No API call needed - uses only what's in the URL!
- */
-export function generateJobSchemaFromUrl(params: JobSchemaParams) {
-  const { jobTitle, location, jobId, baseUrl, slug } = params;
+export function generateJobSchema(params: JobSchemaParams) {
+  const { jobTitle, location, jobId, baseUrl, slug, job } = params;
 
   const formattedTitle = formatTitleCase(jobTitle);
   const formattedLocation = formatTitleCase(location);
 
-  // Create a comprehensive schema using ONLY URL data
+  // Use real job_brief when available, otherwise generate generic copy
+  const description =
+    job?.job_brief ||
+    `${formattedTitle} position available in ${formattedLocation}. ` +
+    `Join MedFuture and advance your medical career in a supportive healthcare environment.`;
+
+  // Split multiline qualifications string into an array, same as the component does
+  const qualifications =
+    job?.required_qualification_exp
+      ? job.required_qualification_exp.split(/\r?\n/).filter(Boolean)
+      : generateGenericQualifications(jobTitle);
+
   const schema = {
-    "@context": "https://schema.org",
-    "@type": "JobPosting",
-    
-    // Basic Information from URL
-    title: formattedTitle,
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+
+    title: job?.job_title
+      ? formatTitleCase(extractJobTitleOnly(job.job_title))
+      : formattedTitle,
+
     url: `${baseUrl}/permanent/job/${slug}`,
-    
-    // Job Location from URL
+
     jobLocation: {
-      "@type": "Place",
+      '@type': 'Place',
       address: {
-        "@type": "PostalAddress",
-        addressLocality: formattedLocation,
-        addressCountry: "Australia",
+        '@type': 'PostalAddress',
+        addressLocality: job?.state?.name
+          ? formatTitleCase(job.state.name)
+          : formattedLocation,
+        addressCountry: job?.country?.name || 'Australia',
       },
     },
-    
-    // Position Details
-    employmentType: "FULL_TIME",
-    occupationalCategory: getOccupationalCategoryFromTitle(jobTitle),
-    
-    // Organization (hiring company)
+
+    employmentType: mapEngagementType(job?.engagement_type?.name),
+
+    occupationalCategory:
+      job?.profession?.name || getOccupationalCategoryFromTitle(jobTitle),
+
     hiringOrganization: {
-      "@type": "Organization",
-      name: "MedFuture Medical Recruitment",
+      '@type': 'Organization',
+      name: 'MedFuture Medical Recruitment',
       sameAs: baseUrl,
     },
-    
-    // Description
-    description: `${formattedTitle} position available in ${formattedLocation}. ` +
-                 `Join MedFuture and advance your medical career in a supportive healthcare environment. ` +
-                 `Excellent remuneration and professional development opportunities available.`,
-    
-    // Posting Details
+
+    description,
+
     datePosted: new Date().toISOString().split('T')[0],
-    validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-    
-    // Job ID
+    validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+      .toISOString()
+      .split('T')[0],
+
     identifier: {
-      "@type": "PropertyValue",
-      name: "Job ID",
+      '@type': 'PropertyValue',
+      name: 'Job ID',
       value: jobId,
     },
-    
-    // Responsibilities
+
     responsibilities: generateGenericResponsibilities(jobTitle),
-    
-    // Qualifications
-    qualifications: generateGenericQualifications(jobTitle),
-    
-    // Application URL
+    qualifications,
+
+    // Real highlights from the API (e.g. salary, benefits)
+    ...(job?.highlights?.length
+      ? { jobBenefits: job.highlights.map(h => h.name).join(', ') }
+      : {}),
+
     applicationContact: {
-      "@type": "ContactPoint",
-      contactType: "Recruitment",
+      '@type': 'ContactPoint',
+      contactType: 'Recruitment',
+      ...(job?.email ? { email: job.email } : {}),
+      ...(job?.first_contact_number ? { telephone: job.first_contact_number } : {}),
       url: `${baseUrl}/permanent/job/${slug}/apply`,
     },
   };
 
-  // Clean up undefined values
+  // Strip any undefined/null values before returning
   return JSON.parse(JSON.stringify(schema));
 }
 
-/**
- * Helper function to determine occupational category from job title
- */
-function getOccupationalCategoryFromTitle(title: string): string {
-  const titleLower = title.toLowerCase();
-  
-  if (titleLower.includes('nurse') || titleLower.includes('nursing')) {
-    return 'Nursing';
-  } else if (titleLower.includes('doctor') || titleLower.includes('physician')) {
-    return 'Medical Practice';
-  } else if (titleLower.includes('specialist')) {
-    return 'Medical Specialist';
-  } else if (titleLower.includes('therapist')) {
-    return 'Therapy';
-  } else if (titleLower.includes('gp') || titleLower.includes('general practitioner')) {
-    return 'General Practice';
-  } else {
-    return 'Healthcare';
-  }
+/** Legacy alias kept for backwards compatibility */
+export const generateJobSchemaFromUrl = generateJobSchema;
+
+/* ================= HELPERS ================= */
+
+function mapEngagementType(engagementType?: string): string {
+  if (!engagementType) return 'FULL_TIME';
+  const t = engagementType.toLowerCase();
+  if (t.includes('part')) return 'PART_TIME';
+  if (t.includes('contract') || t.includes('temp')) return 'CONTRACTOR';
+  if (t.includes('casual')) return 'TEMPORARY';
+  return 'FULL_TIME';
 }
 
-/**
- * Generate generic responsibilities based on job title
- */
+function getOccupationalCategoryFromTitle(title: string): string {
+  const t = title.toLowerCase();
+  if (t.includes('nurse') || t.includes('nursing')) return 'Nursing';
+  if (t.includes('doctor') || t.includes('physician')) return 'Medical Practice';
+  if (t.includes('specialist')) return 'Medical Specialist';
+  if (t.includes('therapist')) return 'Therapy';
+  if (t.includes('gp') || t.includes('general practitioner')) return 'General Practice';
+  return 'Healthcare';
+}
+
 function generateGenericResponsibilities(title: string): string[] {
-  const titleLower = title.toLowerCase();
-  
-  if (titleLower.includes('general practitioner') || titleLower.includes('gp')) {
+  const t = title.toLowerCase();
+  if (t.includes('general practitioner') || t.includes('gp')) {
     return [
       'Provide comprehensive primary care to patients of all ages',
       'Diagnose and treat acute and chronic medical conditions',
       'Maintain accurate and detailed patient records',
       'Collaborate with specialists and healthcare team members',
       'Participate in continuous medical education and professional development',
-      'Conduct routine check-ups and health screenings'
+      'Conduct routine check-ups and health screenings',
     ];
-  } else if (titleLower.includes('nurse')) {
+  } else if (t.includes('nurse')) {
     return [
       'Provide direct patient care and support',
       'Administer medications and treatments as prescribed',
       'Monitor patient vital signs and report changes',
       'Coordinate with healthcare team for patient care plans',
       'Educate patients and families on health management',
-      'Maintain accurate nursing documentation'
-    ];
-  } else {
-    return [
-      'Provide quality healthcare services to patients',
-      'Maintain professional medical standards and protocols',
-      'Collaborate with multidisciplinary medical team',
-      'Ensure patient satisfaction and safety',
-      'Participate in team meetings and case discussions',
-      'Stay updated with latest medical practices'
+      'Maintain accurate nursing documentation',
     ];
   }
+  return [
+    'Provide quality healthcare services to patients',
+    'Maintain professional medical standards and protocols',
+    'Collaborate with multidisciplinary medical team',
+    'Ensure patient satisfaction and safety',
+    'Participate in team meetings and case discussions',
+    'Stay updated with latest medical practices',
+  ];
 }
 
-/**
- * Generate generic qualifications based on job title
- */
 function generateGenericQualifications(title: string): string[] {
-  const titleLower = title.toLowerCase();
-  
-  if (titleLower.includes('general practitioner') || titleLower.includes('gp')) {
+  const t = title.toLowerCase();
+  if (t.includes('general practitioner') || t.includes('gp')) {
     return [
       'Medical degree (MBBS or equivalent)',
       'Valid AHPRA registration without restrictions',
       'Minimum 2 years clinical experience in general practice',
       'Strong communication and interpersonal skills',
       'Commitment to evidence-based patient care',
-      'FRACGP or equivalent qualification (preferred)'
+      'FRACGP or equivalent qualification (preferred)',
     ];
-  } else if (titleLower.includes('nurse')) {
+  } else if (t.includes('nurse')) {
     return [
       'Bachelor of Nursing or equivalent qualification',
       'Current AHPRA registration as a Registered Nurse',
       'Clinical experience in relevant healthcare setting',
       'Strong patient care and communication skills',
       'Ability to work in a team environment',
-      'Commitment to ongoing professional development'
-    ];
-  } else {
-    return [
-      'Relevant healthcare qualification and registration',
-      'Valid professional registration with AHPRA',
-      'Experience in healthcare or medical setting',
-      'Strong interpersonal and communication skills',
-      'Commitment to quality patient care',
-      'Ability to work collaboratively in a team'
+      'Commitment to ongoing professional development',
     ];
   }
+  return [
+    'Relevant healthcare qualification and registration',
+    'Valid professional registration with AHPRA',
+    'Experience in healthcare or medical setting',
+    'Strong interpersonal and communication skills',
+    'Commitment to quality patient care',
+    'Ability to work collaboratively in a team',
+  ];
 }
 
+/* ================= MAIN ENTRY POINTS ================= */
+
 /**
- * Main function to get ALL data from URL only
- * This is your "API-less" solution - everything from the URL!
- * IMPORTANT: No baseUrl parameter should be passed from page.tsx
+ * URL-only (no API). Fast with no network call.
+ * Use as a fallback or when speed matters more than data richness.
  */
 export function getJobDataFromSlugOnly(slug: string) {
   try {
-    // Parse everything from the URL
     const { title, location, id } = parseJobSlug(slug);
-    
-    console.log("📌 Parsed from URL:", { title, location, id });
+    console.log('📌 Parsed from URL:', { title, location, id });
 
-    // Get base URL - ONLY from environment variable or default
-    // DO NOT accept a parameter here to prevent overriding
-    const finalBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
-                        'https://medfuturenextjs-seo.vercel.app';
+    const finalBaseUrl =
+      process.env.NEXT_PUBLIC_BASE_URL || 'https://medfuturenextjs-seo.vercel.app';
 
-    console.log("🔍 Using baseUrl:", finalBaseUrl);
-
-    // Generate metadata from URL
-    const metadata = generateJobMetadata({
+    const metadata = generateJobMetadata({ jobTitle: title, location });
+    const schema = generateJobSchema({
       jobTitle: title,
-      location: location,
-    });
-
-    // Generate schema from URL ONLY
-    const schemaMarkup = generateJobSchemaFromUrl({
-      jobTitle: title,
-      location: location,
+      location,
       jobId: id,
       baseUrl: finalBaseUrl,
-      slug: slug,
+      slug,
+      job: null,
     });
 
-    // Return everything generated from the URL
     return {
       success: true,
-      schema: schemaMarkup,
-      metadata: metadata,
-      slug: {
-        full: slug,
-        id: id,
-        title: title,
-        location: location
-      }
+      schema,
+      metadata,
+      slug: { full: slug, id, title, location },
     };
-
   } catch (error) {
     console.error('Error in getJobDataFromSlugOnly:', error);
-    return {
-      success: false,
-      error: 'Failed to generate data from URL',
-      schema: null,
-      metadata: null
-    };
+    return { success: false, error: 'Failed to generate data from URL', schema: null, metadata: null };
   }
 }
 
 /**
- * Create structured data script tag content
+ * Full enrichment: parses slug → fetches real job from backend → builds rich schema/metadata.
+ * Falls back to URL-only data automatically if the API fetch fails.
+ *
+ * Mirrors exactly what JobDescription (PermenantDes.tsx) does:
+ *   apiGet<{ data: Job }>(`web/jobdetails/${jobId}`)
+ *
+ * But runs server-side, so CORS is not a concern.
  */
+export async function getJobDataWithApiEnrichment(slug: string) {
+  const { title, location, id } = parseJobSlug(slug);
+  console.log('📌 Parsed from URL:', { title, location, id });
+
+  const finalBaseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://medfuturenextjs-seo.vercel.app';
+
+  const job = await fetchJobById(id);
+
+  // Use real title/state from API if available
+  const resolvedTitle = job?.job_title ? extractJobTitleOnly(job.job_title) : title;
+  const resolvedLocation = job?.state?.name || location;
+
+  const metadata = generateJobMetadata({
+    jobTitle: resolvedTitle,
+    location: resolvedLocation,
+    jobBrief: job?.job_brief,
+  });
+
+  const schema = generateJobSchema({
+    jobTitle: resolvedTitle,
+    location: resolvedLocation,
+    jobId: id,
+    baseUrl: finalBaseUrl,
+    slug,
+    job, // passes all real fields into the schema
+  });
+
+  console.log(
+    job
+      ? `✅ Schema enriched with real API data for: ${resolvedTitle}`
+      : `⚠️  API unavailable – schema generated from URL for: ${resolvedTitle}`
+  );
+
+  return {
+    success: true,
+    schema,
+    metadata,
+    job,   // raw Job object exposed to page if needed
+    slug: { full: slug, id, title: resolvedTitle, location: resolvedLocation },
+  };
+}
+
+/** Stringify schema for <script type="application/ld+json"> injection */
 export function createSchemaScript(schema: Record<string, unknown>): string {
   return JSON.stringify(schema);
 }
