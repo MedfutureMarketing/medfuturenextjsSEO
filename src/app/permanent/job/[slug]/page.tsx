@@ -79,7 +79,7 @@ export default async function JobPage(props: { params: Params }) {
       
       const schemaMarkup = generateJobSchema({
         job: jobData,
-        baseUrl: baseUrl || "https://yourdomain.com",
+        baseUrl: baseUrl || "https://medfuturenextjs-seo.vercel.app/",
         slug: slugString,
       });
 
