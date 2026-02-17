@@ -115,12 +115,12 @@ export function generateJobMetadata(params: MetadataParams) {
     title: `${formattedTitle} Jobs in ${formattedLocation}`,
     description: jobBrief 
       ? jobBrief.substring(0, 160) 
-      : `${formattedTitle} position available in ${formattedLocation}. Apply now for this opportunity.`,
+      : `${formattedTitle} position available in ${formattedLocation}. Apply now for this medical opportunity.`,
     openGraph: {
       title: `${formattedTitle} Jobs in ${formattedLocation}`,
       description: jobBrief 
         ? jobBrief.substring(0, 160) 
-        : `${formattedTitle} position available in ${formattedLocation}.`,
+        : `${formattedTitle} position available in ${formattedLocation}. Join our healthcare team.`,
       type: 'website' as const,
     },
   };
@@ -161,41 +161,49 @@ export function generateJobSchemaFromUrl(params: JobSchemaParams) {
       address: {
         "@type": "PostalAddress",
         addressLocality: formattedLocation,
-        addressCountry: "Australia", // Default or could be extracted if format is "city-state-country"
+        addressCountry: "Australia",
       },
     },
     
-    // Position Details (reasonable defaults based on job title)
-    employmentType: "FULL_TIME", // Default, or could be extracted if included in URL
-    occupationalCategory: getOccupationalCategoryFromTitle(jobTitle), // Derived from job title
+    // Position Details
+    employmentType: "FULL_TIME",
+    occupationalCategory: getOccupationalCategoryFromTitle(jobTitle),
     
-    // Organization (hiring company) - Static/default
+    // Organization (hiring company)
     hiringOrganization: {
       "@type": "Organization",
-      name: "Medical Healthcare Organization",
+      name: "MedFuture Medical Recruitment",
       sameAs: baseUrl,
     },
     
-    // Description (generated from title and location)
+    // Description
     description: `${formattedTitle} position available in ${formattedLocation}. ` +
-                 `Join our team and advance your career in a supportive healthcare environment.`,
+                 `Join MedFuture and advance your medical career in a supportive healthcare environment. ` +
+                 `Excellent remuneration and professional development opportunities available.`,
     
     // Posting Details
     datePosted: new Date().toISOString().split('T')[0],
     validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
     
-    // Job ID from URL
+    // Job ID
     identifier: {
       "@type": "PropertyValue",
       name: "Job ID",
       value: jobId,
     },
     
-    // Generic responsibilities based on job title
+    // Responsibilities
     responsibilities: generateGenericResponsibilities(jobTitle),
     
-    // Generic qualifications based on job title
+    // Qualifications
     qualifications: generateGenericQualifications(jobTitle),
+    
+    // Application URL
+    applicationContact: {
+      "@type": "ContactPoint",
+      contactType: "Recruitment",
+      url: `${baseUrl}/permanent/job/${slug}/apply`,
+    },
   };
 
   // Clean up undefined values
@@ -216,6 +224,8 @@ function getOccupationalCategoryFromTitle(title: string): string {
     return 'Medical Specialist';
   } else if (titleLower.includes('therapist')) {
     return 'Therapy';
+  } else if (titleLower.includes('gp') || titleLower.includes('general practitioner')) {
+    return 'General Practice';
   } else {
     return 'Healthcare';
   }
@@ -227,29 +237,32 @@ function getOccupationalCategoryFromTitle(title: string): string {
 function generateGenericResponsibilities(title: string): string[] {
   const titleLower = title.toLowerCase();
   
-  if (titleLower.includes('general practitioner')) {
+  if (titleLower.includes('general practitioner') || titleLower.includes('gp')) {
     return [
-      'Provide comprehensive primary care to patients',
-      'Diagnose and treat various medical conditions',
-      'Maintain accurate patient records',
-      'Collaborate with healthcare team members',
-      'Participate in continuous medical education'
+      'Provide comprehensive primary care to patients of all ages',
+      'Diagnose and treat acute and chronic medical conditions',
+      'Maintain accurate and detailed patient records',
+      'Collaborate with specialists and healthcare team members',
+      'Participate in continuous medical education and professional development',
+      'Conduct routine check-ups and health screenings'
     ];
   } else if (titleLower.includes('nurse')) {
     return [
-      'Provide direct patient care',
-      'Administer medications as prescribed',
-      'Monitor patient vital signs',
-      'Coordinate with healthcare team',
-      'Educate patients and families'
+      'Provide direct patient care and support',
+      'Administer medications and treatments as prescribed',
+      'Monitor patient vital signs and report changes',
+      'Coordinate with healthcare team for patient care plans',
+      'Educate patients and families on health management',
+      'Maintain accurate nursing documentation'
     ];
   } else {
     return [
-      'Provide quality healthcare services',
-      'Maintain professional standards',
-      'Collaborate with medical team',
-      'Ensure patient satisfaction',
-      'Follow healthcare protocols'
+      'Provide quality healthcare services to patients',
+      'Maintain professional medical standards and protocols',
+      'Collaborate with multidisciplinary medical team',
+      'Ensure patient satisfaction and safety',
+      'Participate in team meetings and case discussions',
+      'Stay updated with latest medical practices'
     ];
   }
 }
@@ -260,29 +273,32 @@ function generateGenericResponsibilities(title: string): string[] {
 function generateGenericQualifications(title: string): string[] {
   const titleLower = title.toLowerCase();
   
-  if (titleLower.includes('general practitioner')) {
+  if (titleLower.includes('general practitioner') || titleLower.includes('gp')) {
     return [
       'Medical degree (MBBS or equivalent)',
-      'Valid medical license',
-      'Minimum 2 years clinical experience',
-      'Strong communication skills',
-      'Commitment to patient care'
+      'Valid AHPRA registration without restrictions',
+      'Minimum 2 years clinical experience in general practice',
+      'Strong communication and interpersonal skills',
+      'Commitment to evidence-based patient care',
+      'FRACGP or equivalent qualification (preferred)'
     ];
   } else if (titleLower.includes('nurse')) {
     return [
-      'Nursing degree or diploma',
-      'Valid nursing license',
-      'Clinical experience preferred',
-      'Compassionate and patient-focused',
-      'Good communication skills'
+      'Bachelor of Nursing or equivalent qualification',
+      'Current AHPRA registration as a Registered Nurse',
+      'Clinical experience in relevant healthcare setting',
+      'Strong patient care and communication skills',
+      'Ability to work in a team environment',
+      'Commitment to ongoing professional development'
     ];
   } else {
     return [
-      'Relevant healthcare qualification',
-      'Valid professional registration',
-      'Experience in healthcare setting',
-      'Strong interpersonal skills',
-      'Commitment to quality care'
+      'Relevant healthcare qualification and registration',
+      'Valid professional registration with AHPRA',
+      'Experience in healthcare or medical setting',
+      'Strong interpersonal and communication skills',
+      'Commitment to quality patient care',
+      'Ability to work collaboratively in a team'
     ];
   }
 }
@@ -290,24 +306,26 @@ function generateGenericQualifications(title: string): string[] {
 /**
  * Main function to get ALL data from URL only
  * This is your "API-less" solution - everything from the URL!
+ * IMPORTANT: No baseUrl parameter should be passed from page.tsx
  */
-export function getJobDataFromSlugOnly(slug: string, baseUrl?: string) {
+export function getJobDataFromSlugOnly(slug: string) {
   try {
     // Parse everything from the URL
     const { title, location, id } = parseJobSlug(slug);
     
     console.log("📌 Parsed from URL:", { title, location, id });
 
-    // Get base URL
-    const finalBaseUrl = baseUrl || 
-                        process.env.NEXT_PUBLIC_BASE_URL || 
-                        'https://medfuturenextjs-seo.vercel.app/';
+    // Get base URL - ONLY from environment variable or default
+    // DO NOT accept a parameter here to prevent overriding
+    const finalBaseUrl = process.env.NEXT_PUBLIC_BASE_URL || 
+                        'https://medfuturenextjs-seo.vercel.app';
+
+    console.log("🔍 Using baseUrl:", finalBaseUrl);
 
     // Generate metadata from URL
     const metadata = generateJobMetadata({
       jobTitle: title,
       location: location,
-      // No jobBrief available from URL
     });
 
     // Generate schema from URL ONLY
