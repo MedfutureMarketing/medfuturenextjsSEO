@@ -1,6 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-
-
 /**
  * URL, Metadata, and Schema Utilities
  * All job data processing in one place
@@ -168,9 +165,6 @@ export function generateJobSchema(params: JobSchemaParams) {
     .split(/\r?\n/)
     .filter(q => q.trim().length > 0);
 
-  // Format location
-  const jobLocation = `${job.state?.name || ''}, ${job.country?.name || ''}`.trim();
-
   // Create the schema object
   const schema = {
     "@context": "https://schema.org",
@@ -249,6 +243,6 @@ export function generateJobSchema(params: JobSchemaParams) {
 /**
  * Create structured data script tag content
  */
-export function createSchemaScript(schema: any): string {
+export function createSchemaScript(schema: Record<string, unknown>): string {
   return JSON.stringify(schema);
 }
