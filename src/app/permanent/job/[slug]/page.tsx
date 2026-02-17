@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 import { 
-  getJobDataFromSlugOnly,  // New function - NO API CALLS!
+  getCompleteJobData,  // 👈 NEW function that fetches ALL data
   extractJobIdFromSlug,
   createSchemaScript 
 } from "@/lib/urlUtils";
@@ -10,7 +10,7 @@ import {
 type Params = Promise<{ slug: string | string[] }>;
 
 /**
- * Generate dynamic metadata from slug only
+ * Generate dynamic metadata using API data
  */
 export async function generateMetadata(props: { 
   params: Params 
@@ -18,13 +18,13 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   
-  // NO API CALL - just from URL!
-  const result = getJobDataFromSlugOnly(slugString);
+  // This NOW fetches from API!
+  const result = await getCompleteJobData(slugString);
   
   if (!result.success || !result.metadata) {
     return {
-      title: 'Job Not Found',
-      description: 'The requested job could not be found.'
+      title: 'Medical Job Not Found',
+      description: 'The requested medical position could not be found.'
     };
   }
 
@@ -40,21 +40,21 @@ export async function generateMetadata(props: {
 
 /**
  * Main Job Page Component
- * Generates and injects JSON-LD schema markup FROM URL ONLY!
+ * Uses REAL API data for schema markup!
  */
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   
-  // NO API CALL - everything from URL!
-  const result = getJobDataFromSlugOnly(slugString);
+  // This NOW fetches from API and includes ALL job data!
+  const result = await getCompleteJobData(slugString);
   
   let schemaJson = "";
 
-  // Generate schema script if we have data
+  // Generate schema script using REAL API data
   if (result.success && result.schema) {
     schemaJson = createSchemaScript(result.schema);
-    console.log("✅ Schema generated from URL for:", result.slug?.title);
+    console.log("✅ Schema generated with REAL data for:", result.job?.job_title);
   } else {
     console.warn("⚠️ Cannot generate schema -", result.error);
   }
@@ -63,7 +63,7 @@ export default async function JobPage(props: { params: Params }) {
 
   return (
     <>
-      {/* JSON-LD Schema Markup - Generated from URL ONLY! */}
+      {/* JSON-LD Schema Markup - Now with REAL job data! */}
       {schemaJson && (
         <script
           type="application/ld+json"
@@ -75,7 +75,7 @@ export default async function JobPage(props: { params: Params }) {
 
       <div>
         <section className="min-h-screen flex flex-col">
-          <Suspense fallback={<div className="p-6 text-center text-gray-500">Loading job details...</div>}>
+          <Suspense fallback={<div className="p-6 text-center text-gray-500">Loading medical job details...</div>}>
             <JobDescription jobId={jobId} />
           </Suspense>
         </section>
