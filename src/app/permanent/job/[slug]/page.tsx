@@ -13,8 +13,21 @@ import { apiGet } from "@/lib/api";
 type Params = Promise<{ slug: string | string[] }>;
 
 /**
+ * Shared function to fetch job data
+ * Used by both generateMetadata and JobPage
+ */
+async function fetchJobData(jobId: string): Promise<Job | null> {
+  try {
+    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    return res?.data || null;
+  } catch (error) {
+    console.error("Error fetching job data:", error);
+    return null;
+  }
+}
+
+/**
  * Generate dynamic metadata from slug and job data
- * Uses: Job title, location, and brief description
  */
 export async function generateMetadata(props: { 
   params: Params 
@@ -25,14 +38,9 @@ export async function generateMetadata(props: {
   const jobId = extractJobIdFromSlug(slugString);
   const { title, location } = parseJobSlug(slugString);
   
-  // Optionally fetch full job data for better description
-  let jobBrief = undefined;
-  try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    jobBrief = res.data.job_brief;
-  } catch (error) {
-    console.error("Error fetching job for metadata:", error);
-  }
+  // Fetch job data for metadata
+  const jobData = await fetchJobData(jobId);
+  const jobBrief = jobData?.job_brief;
 
   const metadata = generateJobMetadata({
     jobTitle: title,
@@ -52,39 +60,48 @@ export async function generateMetadata(props: {
 
 /**
  * Main Job Page Component
- * Renders job details with full schema markup
+ * Generates and injects JSON-LD schema markup
  */
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   const jobId = extractJobIdFromSlug(slugString);
 
-  let jobData: Job | null = null;
-  let schemaMarkup = null;
+  // Fetch job data (same way as metadata)
+  const jobData = await fetchJobData(jobId);
 
-  // Fetch job data for schema generation
-  try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    jobData = res.data;
+  let schemaJson = "";
 
-    // Generate JSON-LD schema with ALL job data
-    schemaMarkup = generateJobSchema({
-      job: jobData,
-      baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://yourdomain.com",
-      slug: slugString,
-    });
-  } catch (error) {
-    console.error("Error fetching job data:", error);
+  // Generate schema if we have job data
+  if (jobData && jobData.job_title) {
+    try {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+      
+      const schemaMarkup = generateJobSchema({
+        job: jobData,
+        baseUrl: baseUrl || "https://yourdomain.com",
+        slug: slugString,
+      });
+
+      // Serialize to JSON
+      schemaJson = JSON.stringify(schemaMarkup);
+      
+      console.log("✅ Schema generated successfully for:", jobData.job_title);
+    } catch (error) {
+      console.error("❌ Error generating schema:", error);
+    }
+  } else {
+    console.warn("⚠️ Cannot generate schema - jobData missing or no job_title");
   }
 
   return (
     <>
-      {/* JSON-LD Schema Markup - Captures ALL Job Data */}
-      {schemaMarkup && (
+      {/* JSON-LD Schema Markup */}
+      {schemaJson && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schemaMarkup),
+            __html: schemaJson,
           }}
         />
       )}
