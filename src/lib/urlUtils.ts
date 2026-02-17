@@ -1,3 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
+
+
 /**
  * URL, Metadata, and Schema Utilities
  * All job data processing in one place
