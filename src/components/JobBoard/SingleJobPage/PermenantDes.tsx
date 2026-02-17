@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import RegistrationForm from '@/components/Forms/QuickApplySingleJob';
 import Link from "next/link";
+import { apiGet } from "@/lib/api";
 import Permenentico from "@/assets/jobboardico/Permanentico.png"
 import Doctorico from "@/assets/jobboardico/Doctorico.png"
 import Moneyico from "@/assets/jobboardico/Moneyico.png"
@@ -35,16 +36,38 @@ type Job = {
 };
 
 interface JobDescriptionProps {
-  job: Job | null;
-  error?: string | null;
   jobId: string;
 }
 
 /* ================= COMPONENT ================= */
 
-export default function JobDescription({ job, error, jobId }: JobDescriptionProps) {
+export default function JobDescription({ jobId }: JobDescriptionProps) {
   const formRef = useRef<HTMLDivElement>(null);
   const [showRegistrationForm, setShowRegistrationForm] = useState(false);
+  const [job, setJob] = useState<Job | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchJob() {
+      if (!jobId) {
+        setLoading(false);
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+        setJob(res.data);
+      } catch (error) {
+        console.error("Error fetching job:", error);
+        setJob(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchJob();
+  }, [jobId]);
 
   const handleApplyNow = () => {
     const wasClosed = !showRegistrationForm;
@@ -57,8 +80,8 @@ export default function JobDescription({ job, error, jobId }: JobDescriptionProp
     }
   };
 
-  if (error) {
-    return <div className="p-6 text-center text-red-500">{error}</div>;
+  if (loading) {
+    return <div className="p-6 text-center text-gray-500">Loading...</div>;
   }
 
   if (!job) {
