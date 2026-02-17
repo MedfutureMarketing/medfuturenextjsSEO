@@ -2,32 +2,15 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 import { 
-  extractJobIdFromSlug, 
-  parseJobSlug, 
-  generateJobMetadata,
-  generateJobSchema,
-  type Job,
+  getJobDataFromSlugOnly,  // New function - NO API CALLS!
+  extractJobIdFromSlug,
+  createSchemaScript 
 } from "@/lib/urlUtils";
-import { apiGet } from "@/lib/api";
 
 type Params = Promise<{ slug: string | string[] }>;
 
 /**
- * Shared function to fetch job data
- * Used by both generateMetadata and JobPage
- */
-async function fetchJobData(jobId: string): Promise<Job | null> {
-  try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    return res?.data || null;
-  } catch (error) {
-    console.error("Error fetching job data:", error);
-    return null;
-  }
-}
-
-/**
- * Generate dynamic metadata from slug and job data
+ * Generate dynamic metadata from slug only
  */
 export async function generateMetadata(props: { 
   params: Params 
@@ -35,23 +18,20 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   
-  const jobId = extractJobIdFromSlug(slugString);
-  const { title, location } = parseJobSlug(slugString);
+  // NO API CALL - just from URL!
+  const result = getJobDataFromSlugOnly(slugString);
   
-  // Fetch job data for metadata
-  const jobData = await fetchJobData(jobId);
-  const jobBrief = jobData?.job_brief;
-
-  const metadata = generateJobMetadata({
-    jobTitle: title,
-    location: location,
-    jobBrief: jobBrief,
-  });
+  if (!result.success || !result.metadata) {
+    return {
+      title: 'Job Not Found',
+      description: 'The requested job could not be found.'
+    };
+  }
 
   return {
-    title: metadata.title,
-    description: metadata.description,
-    openGraph: metadata.openGraph,
+    title: result.metadata.title,
+    description: result.metadata.description,
+    openGraph: result.metadata.openGraph,
     alternates: {
       canonical: `/permanent/job/${slugString}`,
     },
@@ -60,43 +40,30 @@ export async function generateMetadata(props: {
 
 /**
  * Main Job Page Component
- * Generates and injects JSON-LD schema markup
+ * Generates and injects JSON-LD schema markup FROM URL ONLY!
  */
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-  const jobId = extractJobIdFromSlug(slugString);
-
-  // Fetch job data (same way as metadata)
-  const jobData = await fetchJobData(jobId);
-
+  
+  // NO API CALL - everything from URL!
+  const result = getJobDataFromSlugOnly(slugString);
+  
   let schemaJson = "";
 
-  // Generate schema if we have job data
-  if (jobData && jobData.job_title) {
-    try {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      
-      const schemaMarkup = generateJobSchema({
-        job: jobData,
-        baseUrl: baseUrl || "https://medfuturenextjs-seo.vercel.app/",
-        slug: slugString,
-      });
-
-      // Serialize to JSON
-      schemaJson = JSON.stringify(schemaMarkup);
-      
-      console.log("✅ Schema generated successfully for:", jobData.job_title);
-    } catch (error) {
-      console.error("❌ Error generating schema:", error);
-    }
+  // Generate schema script if we have data
+  if (result.success && result.schema) {
+    schemaJson = createSchemaScript(result.schema);
+    console.log("✅ Schema generated from URL for:", result.slug?.title);
   } else {
-    console.warn("⚠️ Cannot generate schema - jobData missing or no job_title");
+    console.warn("⚠️ Cannot generate schema -", result.error);
   }
+
+  const jobId = extractJobIdFromSlug(slugString);
 
   return (
     <>
-      {/* JSON-LD Schema Markup */}
+      {/* JSON-LD Schema Markup - Generated from URL ONLY! */}
       {schemaJson && (
         <script
           type="application/ld+json"

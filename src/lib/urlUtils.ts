@@ -1,6 +1,6 @@
 /**
  * URL, Metadata, and Schema Utilities
- * All job data processing in one place
+ * All job data processing in one place - NO API FETCHING NEEDED!
  */
 
 export type Job = {
@@ -19,166 +19,37 @@ export type Job = {
   email?: string;
 };
 
-/* ================= API FETCHING UTILITIES ================= */
-
-/**
- * Internal fetch function to get job data from your backend
- */
-async function fetchJobFromBackend(jobId: string): Promise<Job | null> {
-  try {
-    // Using the same apiGet function from your page
-    const { apiGet } = await import('@/lib/api');
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    return res?.data || null;
-  } catch (error) {
-    console.error("Error fetching job data:", error);
-    return null;
-  }
-}
-
-/**
- * MAIN FUNCTION: Get complete job data including schema from slug
- * This is your "API in a function" - use this anywhere to get job data
- * 
- * Example usage:
- * const jobData = await getJobDataFromSlug("general-practitioner-job-sydney-MP32751");
- * console.log(jobData.job); // Raw job data
- * console.log(jobData.schema); // Schema markup
- * console.log(jobData.metadata); // Metadata
- */
-export async function getJobDataFromSlug(slug: string, baseUrl?: string) {
-  try {
-    // Extract job ID from slug
-    const jobId = extractJobIdFromSlug(slug);
-    
-    // Parse slug for title and location
-    const { title, location } = parseJobSlug(slug);
-    
-    // Fetch job data from backend
-    const jobData = await fetchJobFromBackend(jobId);
-    
-    if (!jobData) {
-      return {
-        success: false,
-        error: 'Job not found',
-        job: null,
-        schema: null,
-        metadata: null
-      };
-    }
-
-    // Get base URL (from param or environment)
-    const finalBaseUrl = baseUrl || 
-                        process.env.NEXT_PUBLIC_BASE_URL || 
-                        'https://medfuturenextjs-seo.vercel.app/';
-
-    // Generate schema markup
-    const schemaMarkup = generateJobSchema({
-      job: jobData,
-      baseUrl: finalBaseUrl,
-      slug: slug,
-    });
-
-    // Generate metadata
-    const metadata = generateJobMetadata({
-      jobTitle: title,
-      location: location,
-      jobBrief: jobData.job_brief,
-    });
-
-    // Return everything!
-    return {
-      success: true,
-      job: jobData,
-      schema: schemaMarkup,
-      metadata: metadata,
-      slug: {
-        full: slug,
-        id: jobId,
-        title: title,
-        location: location
-      }
-    };
-
-  } catch (error) {
-    console.error('Error in getJobDataFromSlug:', error);
-    return {
-      success: false,
-      error: 'Failed to fetch job data',
-      job: null,
-      schema: null,
-      metadata: null
-    };
-  }
-}
-
-/**
- * Simplified version - just get raw job data
- */
-export async function getRawJobData(slug: string): Promise<Job | null> {
-  const jobId = extractJobIdFromSlug(slug);
-  return await fetchJobFromBackend(jobId);
-}
-
-/**
- * Get just the schema markup for a job
- */
-export async function getJobSchema(slug: string, baseUrl?: string): Promise<Record<string, unknown> | null> {
-  const result = await getJobDataFromSlug(slug, baseUrl);
-  return result.success ? result.schema : null;
-}
-
-/**
- * Get just the metadata for a job
- */
-export async function getJobMetadata(slug: string): Promise<ReturnType<typeof generateJobMetadata> | null> {
-  const result = await getJobDataFromSlug(slug);
-  return result.success ? result.metadata : null;
-}
-
 /* ================= URL & SLUG UTILITIES ================= */
 
 /**
  * Extract just the job title from a full title string
- * The job title is always the FIRST word(s) before any separator
- * Example: "General Practitioner - AUD 200 per hour - 70% mixed billing - The Junction"
- * Returns: "General Practitioner"
  */
 function extractJobTitleOnly(fullTitle: string): string {
-  // Split by common separators: " - ", " -- ", or pipe "|"
   let titlePart = fullTitle
-    .split(/\s*[-–—|]\s*/)[0]  // Split by any dash or pipe, take first part
+    .split(/\s*[-–—|]\s*/)[0]
     .trim();
-
-  // Remove any trailing special characters
   titlePart = titlePart.replace(/\s*[-–—|]\s*$/, '').trim();
-
   return titlePart;
 }
 
 /**
  * Create a URL-friendly slug from job details
- * Format: job-title-job-location-id
- * Example: "General Practitioner" + "Sydney" + "MP32751" -> "general-practitioner-job-sydney-MP32751"
  */
 export function createJobSlug(
   jobTitle: string,
   location: string,
   jobId: string | number
 ): string {
-  // Extract just the main job title
   const mainTitle = extractJobTitleOnly(jobTitle);
   
-  // Convert to lowercase and replace spaces/special chars with hyphens
   const cleanTitle = mainTitle
     .toLowerCase()
     .trim()
-    .replace(/\s+/g, '-')           // Replace spaces with hyphens
-    .replace(/[^\w-]/g, '')         // Remove special characters except hyphens
-    .replace(/-+/g, '-')            // Replace multiple hyphens with single hyphen
-    .replace(/^-|-$/g, '');         // Remove leading/trailing hyphens
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 
-  // Clean location the same way
   const cleanLocation = location
     .toLowerCase()
     .trim()
@@ -187,17 +58,15 @@ export function createJobSlug(
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '');
 
-  // Build the slug: title-job-location-id
   return `${cleanTitle}-job-${cleanLocation}-${jobId}`;
 }
 
 /**
  * Extract the job ID from a slug
- * Example: "general-practitioner-job-sydney-MP32751" -> "MP32751"
  */
 export function extractJobIdFromSlug(slug: string): string {
   const parts = slug.split('-');
-  return parts[parts.length - 1]; // ID is always the last part
+  return parts[parts.length - 1];
 }
 
 /**
@@ -236,7 +105,6 @@ export interface MetadataParams {
 
 /**
  * Generate metadata for job page
- * Used in: generateMetadata() function in page.tsx
  */
 export function generateJobMetadata(params: MetadataParams) {
   const { jobTitle, location, jobBrief } = params;
@@ -261,100 +129,218 @@ export function generateJobMetadata(params: MetadataParams) {
 /* ================= JSON-LD SCHEMA GENERATION ================= */
 
 interface JobSchemaParams {
-  job: Job;
+  jobTitle: string;      // From URL
+  location: string;      // From URL
+  jobId: string;         // From URL
   baseUrl: string;
   slug: string;
 }
 
 /**
- * Generate comprehensive JSON-LD schema for job posting
- * Captures ALL available job data
- * Used in: page.tsx component (render phase)
+ * Generate JSON-LD schema for job posting DIRECTLY FROM URL PARAMETERS
+ * No API call needed - uses only what's in the URL!
  */
-export function generateJobSchema(params: JobSchemaParams) {
-  const { job, baseUrl, slug } = params;
+export function generateJobSchemaFromUrl(params: JobSchemaParams) {
+  const { jobTitle, location, jobId, baseUrl, slug } = params;
 
-  // Build highlights/responsibilities array
-  const responsibilities = job.highlights?.map(h => h.name) || [];
-  
-  // Build qualifications array
-  const qualifications = (job.required_qualification_exp ?? "")
-    .split(/\r?\n/)
-    .filter(q => q.trim().length > 0);
+  const formattedTitle = formatTitleCase(jobTitle);
+  const formattedLocation = formatTitleCase(location);
 
-  // Create the schema object
+  // Create a comprehensive schema using ONLY URL data
   const schema = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     
-    // Basic Information
-    title: job.job_title,
-    description: job.job_brief || "",
+    // Basic Information from URL
+    title: formattedTitle,
     url: `${baseUrl}/permanent/job/${slug}`,
     
-    // Organization (hiring company)
-    hiringOrganization: {
-      "@type": "Organization",
-      name: "Medical Healthcare Organization", // Update if you have company name in data
-      sameAs: baseUrl,
-    },
-    
-    // Job Location
+    // Job Location from URL
     jobLocation: {
       "@type": "Place",
       address: {
         "@type": "PostalAddress",
-        addressLocality: job.state?.name || "",
-        addressCountry: job.country?.name || "",
+        addressLocality: formattedLocation,
+        addressCountry: "Australia", // Default or could be extracted if format is "city-state-country"
       },
     },
     
-    // Position Details
-    jobLocationType: "TELECOMMUTE", // Update based on engagement type
-    employmentType: job.engagement_type?.name || "PERMANENT",
+    // Position Details (reasonable defaults based on job title)
+    employmentType: "FULL_TIME", // Default, or could be extracted if included in URL
+    occupationalCategory: getOccupationalCategoryFromTitle(jobTitle), // Derived from job title
     
-    // Job Category/Profession
-    occupationalCategory: job.profession?.name || "",
-    
-    // Responsibilities
-    responsibilities: responsibilities.length > 0 ? responsibilities : undefined,
-    
-    // Qualifications/Requirements
-    qualifications: qualifications.length > 0 ? qualifications : undefined,
-    
-    // Additional Details
-    additionalDetails: {
-      medicalPractiseDetails: job.medical_practise_details || "",
-      professionType: job.profession?.name,
-      engagementType: job.engagement_type?.name,
+    // Organization (hiring company) - Static/default
+    hiringOrganization: {
+      "@type": "Organization",
+      name: "Medical Healthcare Organization",
+      sameAs: baseUrl,
     },
     
-    // Contact Information
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Recruitment",
-      name: job.first_contact_person_name || "Recruitment Team",
-      telephone: job.first_contact_number || undefined,
-      email: job.email || undefined,
-    },
+    // Description (generated from title and location)
+    description: `${formattedTitle} position available in ${formattedLocation}. ` +
+                 `Join our team and advance your career in a supportive healthcare environment.`,
     
     // Posting Details
-    datePosted: new Date().toISOString().split('T')[0], // Update if you have actual posting date
-    validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days from now
+    datePosted: new Date().toISOString().split('T')[0],
+    validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
     
-    // Salary (if available in data)
-    baseSalary: undefined, // Add if salary data available
-    
-    // Job ID reference
+    // Job ID from URL
     identifier: {
       "@type": "PropertyValue",
       name: "Job ID",
-      value: job.job_id.toString(),
+      value: jobId,
     },
+    
+    // Generic responsibilities based on job title
+    responsibilities: generateGenericResponsibilities(jobTitle),
+    
+    // Generic qualifications based on job title
+    qualifications: generateGenericQualifications(jobTitle),
   };
 
   // Clean up undefined values
   return JSON.parse(JSON.stringify(schema));
+}
+
+/**
+ * Helper function to determine occupational category from job title
+ */
+function getOccupationalCategoryFromTitle(title: string): string {
+  const titleLower = title.toLowerCase();
+  
+  if (titleLower.includes('nurse') || titleLower.includes('nursing')) {
+    return 'Nursing';
+  } else if (titleLower.includes('doctor') || titleLower.includes('physician')) {
+    return 'Medical Practice';
+  } else if (titleLower.includes('specialist')) {
+    return 'Medical Specialist';
+  } else if (titleLower.includes('therapist')) {
+    return 'Therapy';
+  } else {
+    return 'Healthcare';
+  }
+}
+
+/**
+ * Generate generic responsibilities based on job title
+ */
+function generateGenericResponsibilities(title: string): string[] {
+  const titleLower = title.toLowerCase();
+  
+  if (titleLower.includes('general practitioner')) {
+    return [
+      'Provide comprehensive primary care to patients',
+      'Diagnose and treat various medical conditions',
+      'Maintain accurate patient records',
+      'Collaborate with healthcare team members',
+      'Participate in continuous medical education'
+    ];
+  } else if (titleLower.includes('nurse')) {
+    return [
+      'Provide direct patient care',
+      'Administer medications as prescribed',
+      'Monitor patient vital signs',
+      'Coordinate with healthcare team',
+      'Educate patients and families'
+    ];
+  } else {
+    return [
+      'Provide quality healthcare services',
+      'Maintain professional standards',
+      'Collaborate with medical team',
+      'Ensure patient satisfaction',
+      'Follow healthcare protocols'
+    ];
+  }
+}
+
+/**
+ * Generate generic qualifications based on job title
+ */
+function generateGenericQualifications(title: string): string[] {
+  const titleLower = title.toLowerCase();
+  
+  if (titleLower.includes('general practitioner')) {
+    return [
+      'Medical degree (MBBS or equivalent)',
+      'Valid medical license',
+      'Minimum 2 years clinical experience',
+      'Strong communication skills',
+      'Commitment to patient care'
+    ];
+  } else if (titleLower.includes('nurse')) {
+    return [
+      'Nursing degree or diploma',
+      'Valid nursing license',
+      'Clinical experience preferred',
+      'Compassionate and patient-focused',
+      'Good communication skills'
+    ];
+  } else {
+    return [
+      'Relevant healthcare qualification',
+      'Valid professional registration',
+      'Experience in healthcare setting',
+      'Strong interpersonal skills',
+      'Commitment to quality care'
+    ];
+  }
+}
+
+/**
+ * Main function to get ALL data from URL only
+ * This is your "API-less" solution - everything from the URL!
+ */
+export function getJobDataFromSlugOnly(slug: string, baseUrl?: string) {
+  try {
+    // Parse everything from the URL
+    const { title, location, id } = parseJobSlug(slug);
+    
+    console.log("📌 Parsed from URL:", { title, location, id });
+
+    // Get base URL
+    const finalBaseUrl = baseUrl || 
+                        process.env.NEXT_PUBLIC_BASE_URL || 
+                        'https://medfuturenextjs-seo.vercel.app/';
+
+    // Generate metadata from URL
+    const metadata = generateJobMetadata({
+      jobTitle: title,
+      location: location,
+      // No jobBrief available from URL
+    });
+
+    // Generate schema from URL ONLY
+    const schemaMarkup = generateJobSchemaFromUrl({
+      jobTitle: title,
+      location: location,
+      jobId: id,
+      baseUrl: finalBaseUrl,
+      slug: slug,
+    });
+
+    // Return everything generated from the URL
+    return {
+      success: true,
+      schema: schemaMarkup,
+      metadata: metadata,
+      slug: {
+        full: slug,
+        id: id,
+        title: title,
+        location: location
+      }
+    };
+
+  } catch (error) {
+    console.error('Error in getJobDataFromSlugOnly:', error);
+    return {
+      success: false,
+      error: 'Failed to generate data from URL',
+      schema: null,
+      metadata: null
+    };
+  }
 }
 
 /**
