@@ -19,6 +19,123 @@ export type Job = {
   email?: string;
 };
 
+/* ================= API FETCHING UTILITIES ================= */
+
+/**
+ * Internal fetch function to get job data from your backend
+ */
+async function fetchJobFromBackend(jobId: string): Promise<Job | null> {
+  try {
+    // Using the same apiGet function from your page
+    const { apiGet } = await import('@/lib/api');
+    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    return res?.data || null;
+  } catch (error) {
+    console.error("Error fetching job data:", error);
+    return null;
+  }
+}
+
+/**
+ * MAIN FUNCTION: Get complete job data including schema from slug
+ * This is your "API in a function" - use this anywhere to get job data
+ * 
+ * Example usage:
+ * const jobData = await getJobDataFromSlug("general-practitioner-job-sydney-MP32751");
+ * console.log(jobData.job); // Raw job data
+ * console.log(jobData.schema); // Schema markup
+ * console.log(jobData.metadata); // Metadata
+ */
+export async function getJobDataFromSlug(slug: string, baseUrl?: string) {
+  try {
+    // Extract job ID from slug
+    const jobId = extractJobIdFromSlug(slug);
+    
+    // Parse slug for title and location
+    const { title, location } = parseJobSlug(slug);
+    
+    // Fetch job data from backend
+    const jobData = await fetchJobFromBackend(jobId);
+    
+    if (!jobData) {
+      return {
+        success: false,
+        error: 'Job not found',
+        job: null,
+        schema: null,
+        metadata: null
+      };
+    }
+
+    // Get base URL (from param or environment)
+    const finalBaseUrl = baseUrl || 
+                        process.env.NEXT_PUBLIC_BASE_URL || 
+                        'https://medfuturenextjs-seo.vercel.app/';
+
+    // Generate schema markup
+    const schemaMarkup = generateJobSchema({
+      job: jobData,
+      baseUrl: finalBaseUrl,
+      slug: slug,
+    });
+
+    // Generate metadata
+    const metadata = generateJobMetadata({
+      jobTitle: title,
+      location: location,
+      jobBrief: jobData.job_brief,
+    });
+
+    // Return everything!
+    return {
+      success: true,
+      job: jobData,
+      schema: schemaMarkup,
+      metadata: metadata,
+      slug: {
+        full: slug,
+        id: jobId,
+        title: title,
+        location: location
+      }
+    };
+
+  } catch (error) {
+    console.error('Error in getJobDataFromSlug:', error);
+    return {
+      success: false,
+      error: 'Failed to fetch job data',
+      job: null,
+      schema: null,
+      metadata: null
+    };
+  }
+}
+
+/**
+ * Simplified version - just get raw job data
+ */
+export async function getRawJobData(slug: string): Promise<Job | null> {
+  const jobId = extractJobIdFromSlug(slug);
+  return await fetchJobFromBackend(jobId);
+}
+
+/**
+ * Get just the schema markup for a job
+ */
+export async function getJobSchema(slug: string, baseUrl?: string): Promise<Record<string, unknown> | null> {
+  const result = await getJobDataFromSlug(slug, baseUrl);
+  return result.success ? result.schema : null;
+}
+
+/**
+ * Get just the metadata for a job
+ */
+export async function getJobMetadata(slug: string): Promise<ReturnType<typeof generateJobMetadata> | null> {
+  const result = await getJobDataFromSlug(slug);
+  return result.success ? result.metadata : null;
+}
+
 /* ================= URL & SLUG UTILITIES ================= */
 
 /**
