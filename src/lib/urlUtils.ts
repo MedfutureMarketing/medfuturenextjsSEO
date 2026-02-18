@@ -73,32 +73,6 @@ export function createJobSlug(
   // Build the slug: title-job-location-id
   return `${cleanTitle}-job-${cleanLocation}-${jobId}`;
 }
-// export function createJobSlug(
-//   jobTitle: string,
-//   location: string,
-//   jobId: string | number
-// ): string {
-
-//   // Use FULL job title
-//   const cleanTitle = jobTitle
-//     .toLowerCase()
-//     .trim()
-//     .replace(/\s+/g, '-')
-//     .replace(/[^\w-]/g, '')
-//     .replace(/-+/g, '-')
-//     .replace(/^-|-$/g, '');
-
-//   const cleanLocation = location
-//     .toLowerCase()
-//     .trim()
-//     .replace(/\s+/g, '-')
-//     .replace(/[^\w-]/g, '')
-//     .replace(/-+/g, '-')
-//     .replace(/^-|-$/g, '');
-
-//   return `${cleanTitle}-job-${cleanLocation}-${jobId}`;
-// }
-
 
 /**
  * Extract the job ID from a slug
@@ -137,15 +111,11 @@ export function formatTitleCase(str: string): string {
 
 /* ================= METADATA GENERATION ================= */
 
-/* ================= METADATA GENERATION ================= */
-
-/* ================= METADATA GENERATION ================= */
-
 export interface MetadataParams {
   jobTitle: string;
   location: string;
   jobBrief?: string;
-  jobId?: string | number; // Make sure this is included
+  jobId?: string | number;
 }
 
 /**
@@ -165,7 +135,7 @@ export function generateJobMetadata(params: MetadataParams) {
 
   // Include job ID in the title if provided
   const title = jobId 
-    ? `${formattedTitle} Job in ${formattedLocation} -  ${jobId} | Medfuture Australia`
+    ? `${formattedTitle} Job in ${formattedLocation} - ${jobId} | Medfuture Australia`
     : `${formattedTitle} Job in ${formattedLocation} | Medfuture Australia`;
 
   return {
@@ -181,110 +151,4 @@ export function generateJobMetadata(params: MetadataParams) {
       type: 'website' as const,
     },
   };
-}
-
-/* ================= JSON-LD SCHEMA GENERATION ================= */
-
-interface JobSchemaParams {
-  job: Job;
-  baseUrl: string;
-  slug: string;
-}
-
-/**
- * Generate comprehensive JSON-LD schema for job posting
- * Captures ALL available job data
- * Used in: page.tsx component (render phase)
- */
-export function generateJobSchema(params: JobSchemaParams) {
-  const { job, baseUrl, slug } = params;
-
-  // Build highlights/responsibilities array
-  const responsibilities = job.highlights?.map(h => h.name) || [];
-  
-  // Build qualifications array
-  const qualifications = (job.required_qualification_exp ?? "")
-    .split(/\r?\n/)
-    .filter(q => q.trim().length > 0);
-
-  // Create the schema object
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "JobPosting",
-    
-    // Basic Information
-    title: job.job_title,
-    description: job.job_brief || "",
-    url: `${baseUrl}/permanent/job/${slug}`,
-    
-    // Organization (hiring company)
-    hiringOrganization: {
-      "@type": "Organization",
-      name: "Medical Healthcare Organization", // Update if you have company name in data
-      sameAs: baseUrl,
-    },
-    
-    // Job Location
-    jobLocation: {
-      "@type": "Place",
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: job.state?.name || "",
-        addressCountry: job.country?.name || "",
-      },
-    },
-    
-    // Position Details
-    jobLocationType: "TELECOMMUTE", // Update based on engagement type
-    employmentType: job.engagement_type?.name || "PERMANENT",
-    
-    // Job Category/Profession
-    occupationalCategory: job.profession?.name || "",
-    
-    // Responsibilities
-    responsibilities: responsibilities.length > 0 ? responsibilities : undefined,
-    
-    // Qualifications/Requirements
-    qualifications: qualifications.length > 0 ? qualifications : undefined,
-    
-    // Additional Details
-    additionalDetails: {
-      medicalPractiseDetails: job.medical_practise_details || "",
-      professionType: job.profession?.name,
-      engagementType: job.engagement_type?.name,
-    },
-    
-    // Contact Information
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "Recruitment",
-      name: job.first_contact_person_name || "Recruitment Team",
-      telephone: job.first_contact_number || undefined,
-      email: job.email || undefined,
-    },
-    
-    // Posting Details
-    datePosted: new Date().toISOString().split('T')[0], // Update if you have actual posting date
-    validThrough: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days from now
-    
-    // Salary (if available in data)
-    baseSalary: undefined, // Add if salary data available
-    
-    // Job ID reference
-    identifier: {
-      "@type": "PropertyValue",
-      name: "Job ID",
-      value: job.job_id.toString(),
-    },
-  };
-
-  // Clean up undefined values
-  return JSON.parse(JSON.stringify(schema));
-}
-
-/**
- * Create structured data script tag content
- */
-export function createSchemaScript(schema: Record<string, unknown>): string {
-  return JSON.stringify(schema);
 }

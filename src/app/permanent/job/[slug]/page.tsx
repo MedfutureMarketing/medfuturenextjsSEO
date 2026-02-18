@@ -5,7 +5,6 @@ import {
   extractJobIdFromSlug, 
   parseJobSlug, 
   generateJobMetadata,
-  generateJobSchema,
   type Job,
 } from "@/lib/urlUtils";
 import { apiGet } from "@/lib/api";
@@ -83,46 +82,14 @@ export default async function JobPage(props: { params: Params }) {
   // ONLY fetch job data once here
   const jobData = await fetchJobData(jobId);
 
-  let schemaJson = "";
-
-  // Generate schema if we have job data
-  if (jobData && jobData.job_title) {
-    try {
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-      
-      const schemaMarkup = generateJobSchema({
-        job: jobData,
-        baseUrl: baseUrl || "https://medfuturenextjs-seo.vercel.app/",
-        slug: slugString,
-      });
-
-      schemaJson = JSON.stringify(schemaMarkup);
-      
-      console.log("✅ Schema generated for:", jobData.job_title);
-    } catch (error) {
-      console.error("❌ Error generating schema:", error);
-    }
-  } else {
-    console.log("ℹ️ Using slug data for fallback:", formattedTitle);
-  }
-
   return (
-    <>
-      {schemaJson && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: schemaJson }}
-        />
-      )}
-
-      <div>
-        <section className="min-h-screen flex flex-col">
-          <Suspense fallback={<div className="p-6 text-center text-gray-500">Loading job details...</div>}>
-            <JobDescription jobId={jobId} />
-          </Suspense>
-        </section>
-      </div>
-    </>
+    <div>
+      <section className="min-h-screen flex flex-col">
+        <Suspense fallback={<div className="p-6 text-center text-gray-500">Loading job details...</div>}>
+          <JobDescription jobId={jobId} />
+        </Suspense>
+      </section>
+    </div>
   );
 }
 
