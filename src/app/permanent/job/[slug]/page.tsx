@@ -11,6 +11,14 @@ import { apiGet } from "@/lib/api";
 
 type Params = Promise<{ slug: string | string[] }>;
 
+// Extend the Job type if it doesn't include salary fields
+// Option 1: If you need to extend the imported Job type
+interface JobWithSalary extends Job {
+  salary_min?: number;
+  salary_max?: number;
+  // Add any other fields that might be missing
+}
+
 /**
  * Parse slug once and reuse the data
  */
@@ -39,8 +47,7 @@ function parseSlug(slugString: string) {
 }
 
 /**
- * Generate dynamic metadata from slug 
- * NO API CALL HERE - uses only slug data
+ * Generate dynamic metadata from slug with JobPosting schema
  */
 export async function generateMetadata(props: { 
   params: Params 
@@ -55,8 +62,7 @@ export async function generateMetadata(props: {
   const metadata = generateJobMetadata({
     jobTitle: formattedTitle,
     location: formattedLocation,
-    jobId: jobId, // This gives you what you wanted!
-    // No jobBrief here - avoids API call
+    jobId: jobId,
   });
 
   return {
@@ -71,6 +77,7 @@ export async function generateMetadata(props: {
 
 /**
  * Main Job Page Component - Only makes ONE API call
+ * This is where we add the JSON-LD script
  */
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
@@ -79,11 +86,65 @@ export default async function JobPage(props: { params: Params }) {
   // Parse slug once
   const { jobId, formattedTitle, formattedLocation } = parseSlug(slugString);
   
-  // ONLY fetch job data once here
+  // Fetch job data
   const jobData = await fetchJobData(jobId);
+
+  // Create JobPosting structured data with actual job data if available
+  const jobPostingSchema = {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": jobData?.job_title || formattedTitle,
+    "description": jobData?.job_brief || `View details for ${formattedTitle} position in ${formattedLocation}`,
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Job ID",
+      "value": jobId
+    },
+    "datePosted": new Date().toISOString().split('T')[0],
+    "validThrough": new Date(Date.now() + 30*24*60*60*1000).toISOString().split('T')[0],
+    "employmentType": "FULL_TIME", // You might want to map this from jobData
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Medfuture", // Update with your actual company name
+      "sameAs": "https://www.medfuture.com.au"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": formattedLocation.split(',')[0]?.trim() || formattedLocation,
+        "addressRegion": formattedLocation.split(',')[1]?.trim() || '',
+        "addressCountry": "AU"
+      }
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "AU"
+    },
+    // Check if salary fields exist on the jobData object
+    ...(jobData && 'salary_min' in jobData && jobData.salary_min && 
+       'salary_max' in jobData && jobData.salary_max ? {
+      "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "AUD",
+        "value": {
+          "@type": "QuantitativeValue",
+          "minValue": jobData.salary_min,
+          "maxValue": jobData.salary_max,
+          "unitText": "YEAR"
+        }
+      }
+    } : {})
+  };
 
   return (
     <div>
+      {/* Add JSON-LD script */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
+      />
+      
       <section className="min-h-screen flex flex-col">
         <Suspense fallback={<div className="p-6 text-center text-gray-500">Loading job details...</div>}>
           <JobDescription jobId={jobId} />
@@ -93,10 +154,10 @@ export default async function JobPage(props: { params: Params }) {
   );
 }
 
-// Keep your fetchJobData function as is
-async function fetchJobData(jobId: string): Promise<Job | null> {
+// Update fetchJobData to use the extended type
+async function fetchJobData(jobId: string): Promise<JobWithSalary | null> {
   try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    const res = await apiGet<{ data: JobWithSalary }>(`web/jobdetails/${jobId}`);
     return res?.data || null;
   } catch (error) {
     console.error("Error fetching job data:", error);
