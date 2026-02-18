@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import JobDescription from "@/components/JobBoard/SingleJobPage/PermenantDes";
 import { 
-  extractJobIdFromSlug, 
   parseJobSlug, 
   generateJobMetadata,
   type Job,
@@ -11,63 +10,29 @@ import { apiGet } from "@/lib/api";
 
 type Params = Promise<{ slug: string | string[] }>;
 
-// Extend the Job type if it doesn't include salary fields
-// Option 1: If you need to extend the imported Job type
-interface JobWithSalary extends Job {
-  salary_min?: number;
-  salary_max?: number;
-  // Add any other fields that might be missing
-}
-
-/**
- * Parse slug once and reuse the data
- */
-function parseSlug(slugString: string) {
-  const { title, location, id } = parseJobSlug(slugString);
-  
-  // Format once
-  const formattedTitle = title
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-    
-  const formattedLocation = location
-    .split(' ')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-  
-  return {
-    jobId: id,
-    jobTitle: title,
-    location: location,
-    formattedTitle,
-    formattedLocation,
-    slugString,
-  };
-}
-
-/**
- * Generate dynamic metadata from slug with JobPosting schema
- */
+// Keep your existing generateMetadata as is (since it's working)
 export async function generateMetadata(props: { 
   params: Params 
 }): Promise<Metadata> {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   
-  // Parse slug once
-  const { formattedTitle, formattedLocation, jobId } = parseSlug(slugString);
-
-  // Generate metadata using ONLY slug data (no API call)
+  const { title, location, id } = parseJobSlug(slugString);
+  
+  const formattedTitle = title
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+    
   const metadata = generateJobMetadata({
     jobTitle: formattedTitle,
-    location: formattedLocation,
-    jobId: jobId,
+    location: location,
+    jobId: id,
   });
 
   return {
     title: metadata.title,
-    description: `View details and apply for ${formattedTitle} position in ${formattedLocation}. Job ID: ${jobId}`,
+    description: `View details and apply for ${formattedTitle} position. Job ID: ${id}`,
     openGraph: metadata.openGraph,
     alternates: {
       canonical: `/permanent/job/${slugString}`,
@@ -75,71 +40,113 @@ export async function generateMetadata(props: {
   };
 }
 
-/**
- * Main Job Page Component - Only makes ONE API call
- * This is where we add the JSON-LD script
- */
+// Fetch job data for schema only
+async function fetchJobForSchema(jobId: string) {
+  try {
+    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    return res?.data || null;
+  } catch (error) {
+    console.error("Error fetching job for schema:", error);
+    return null;
+  }
+}
+
+// Main component - only fetches data for schema
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   
-  // Parse slug once
-  const { jobId, formattedTitle, formattedLocation } = parseSlug(slugString);
+  const { title, location, id } = parseJobSlug(slugString);
   
-  // Fetch job data
-  const jobData = await fetchJobData(jobId);
+  // Fetch job data ONLY for the schema
+  const jobData = await fetchJobForSchema(id);
 
-  // Create JobPosting structured data with actual job data if available
-  const jobPostingSchema = {
+  // Format title and location
+  const formattedTitle = title
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  
+  const formattedLocation = location
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+
+  // Create JobPosting schema with whatever data we have
+  const jobPostingSchema: any = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     "title": jobData?.job_title || formattedTitle,
-    "description": jobData?.job_brief || `View details for ${formattedTitle} position in ${formattedLocation}`,
+    "description": jobData?.job_brief || `View details for ${formattedTitle} position`,
     "identifier": {
       "@type": "PropertyValue",
       "name": "Job ID",
-      "value": jobId
+      "value": id
     },
     "datePosted": new Date().toISOString().split('T')[0],
     "validThrough": new Date(Date.now() + 30*24*60*60*1000).toISOString().split('T')[0],
-    "employmentType": "FULL_TIME", // You might want to map this from jobData
+    "employmentType": "FULL_TIME",
     "hiringOrganization": {
       "@type": "Organization",
-      "name": "Medfuture", // Update with your actual company name
-      "sameAs": "https://www.medfuture.com.au"
+      "name": "Medfuture",
+      "sameAs": "https://www.medfuture.com.au/"
     },
     "jobLocation": {
       "@type": "Place",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": formattedLocation.split(',')[0]?.trim() || formattedLocation,
-        "addressRegion": formattedLocation.split(',')[1]?.trim() || '',
-        "addressCountry": "AU"
+        "addressLocality": formattedLocation,
+        "addressCountry": {
+          "@type": "Country",
+          "name": "AU"
+        }
       }
     },
     "applicantLocationRequirements": {
       "@type": "Country",
       "name": "AU"
-    },
-    // Check if salary fields exist on the jobData object
-    ...(jobData && 'salary_min' in jobData && jobData.salary_min && 
-       'salary_max' in jobData && jobData.salary_max ? {
-      "baseSalary": {
+    }
+  };
+
+  // Add optional fields if they exist in jobData
+  if (jobData) {
+    // Add profession if available
+    if (jobData.profession?.name) {
+      jobPostingSchema.occupationalCategory = jobData.profession.name;
+    }
+    
+    // Add salary if available (you'll need to add these fields to your Job type)
+    if ((jobData as any).salary_min && (jobData as any).salary_max) {
+      jobPostingSchema.baseSalary = {
         "@type": "MonetaryAmount",
         "currency": "AUD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": jobData.salary_min,
-          "maxValue": jobData.salary_max,
+          "minValue": (jobData as any).salary_min,
+          "maxValue": (jobData as any).salary_max,
           "unitText": "YEAR"
         }
+      };
+    }
+    
+    // Add employment type based on engagement_type
+    if (jobData.engagement_type?.name) {
+      const type = jobData.engagement_type.name.toLowerCase();
+      if (type.includes('full')) {
+        jobPostingSchema.employmentType = "FULL_TIME";
+      } else if (type.includes('part')) {
+        jobPostingSchema.employmentType = "PART_TIME";
+      } else if (type.includes('contract')) {
+        jobPostingSchema.employmentType = "CONTRACTOR";
+      } else if (type.includes('temporary')) {
+        jobPostingSchema.employmentType = "TEMPORARY";
       }
-    } : {})
-  };
+    }
+  }
 
   return (
     <div>
-      {/* Add JSON-LD script */}
+      {/* Add JSON-LD script - this is the only addition */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
@@ -147,20 +154,9 @@ export default async function JobPage(props: { params: Params }) {
       
       <section className="min-h-screen flex flex-col">
         <Suspense fallback={<div className="p-6 text-center text-gray-500">Loading job details...</div>}>
-          <JobDescription jobId={jobId} />
+          <JobDescription jobId={id} />
         </Suspense>
       </section>
     </div>
   );
-}
-
-// Update fetchJobData to use the extended type
-async function fetchJobData(jobId: string): Promise<JobWithSalary | null> {
-  try {
-    const res = await apiGet<{ data: JobWithSalary }>(`web/jobdetails/${jobId}`);
-    return res?.data || null;
-  } catch (error) {
-    console.error("Error fetching job data:", error);
-    return null;
-  }
 }
