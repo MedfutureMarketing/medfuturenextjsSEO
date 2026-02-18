@@ -13,21 +13,35 @@ import { apiGet } from "@/lib/api";
 type Params = Promise<{ slug: string | string[] }>;
 
 /**
- * Shared function to fetch job data
- * Used by both generateMetadata and JobPage
+ * Parse slug once and reuse the data
  */
-async function fetchJobData(jobId: string): Promise<Job | null> {
-  try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
-    return res?.data || null;
-  } catch (error) {
-    console.error("Error fetching job data:", error);
-    return null;
-  }
+function parseSlug(slugString: string) {
+  const { title, location, id } = parseJobSlug(slugString);
+  
+  // Format once
+  const formattedTitle = title
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+    
+  const formattedLocation = location
+    .split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  
+  return {
+    jobId: id,
+    jobTitle: title,
+    location: location,
+    formattedTitle,
+    formattedLocation,
+    slugString,
+  };
 }
 
 /**
- * Generate dynamic metadata from slug and job data
+ * Generate dynamic metadata from slug 
+ * NO API CALL HERE - uses only slug data
  */
 export async function generateMetadata(props: { 
   params: Params 
@@ -35,24 +49,20 @@ export async function generateMetadata(props: {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
   
-  const jobId = extractJobIdFromSlug(slugString);
-  const { title, location } = parseJobSlug(slugString);
-  
-  // Fetch job data for metadata
-  const jobData = await fetchJobData(jobId);
-  const jobBrief = jobData?.job_brief;
+  // Parse slug once
+  const { formattedTitle, formattedLocation, jobId } = parseSlug(slugString);
 
-  // FIX: Pass the jobId to generateJobMetadata
+  // Generate metadata using ONLY slug data (no API call)
   const metadata = generateJobMetadata({
-    jobTitle: title,
-    location: location,
-    jobBrief: jobBrief,
-    jobId: jobId, // Add this line to include the job ID
+    jobTitle: formattedTitle,
+    location: formattedLocation,
+    jobId: jobId, // This gives you what you wanted!
+    // No jobBrief here - avoids API call
   });
 
   return {
     title: metadata.title,
-    description: metadata.description,
+    description: `View details and apply for ${formattedTitle} position in ${formattedLocation}. Job ID: ${jobId}`,
     openGraph: metadata.openGraph,
     alternates: {
       canonical: `/permanent/job/${slugString}`,
@@ -61,15 +71,16 @@ export async function generateMetadata(props: {
 }
 
 /**
- * Main Job Page Component
- * Generates and injects JSON-LD schema markup
+ * Main Job Page Component - Only makes ONE API call
  */
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
-  const jobId = extractJobIdFromSlug(slugString);
-
-  // Fetch job data (same way as metadata)
+  
+  // Parse slug once
+  const { jobId, formattedTitle, formattedLocation } = parseSlug(slugString);
+  
+  // ONLY fetch job data once here
   const jobData = await fetchJobData(jobId);
 
   let schemaJson = "";
@@ -85,26 +96,22 @@ export default async function JobPage(props: { params: Params }) {
         slug: slugString,
       });
 
-      // Serialize to JSON
       schemaJson = JSON.stringify(schemaMarkup);
       
-      console.log("✅ Schema generated successfully for:", jobData.job_title);
+      console.log("✅ Schema generated for:", jobData.job_title);
     } catch (error) {
       console.error("❌ Error generating schema:", error);
     }
   } else {
-    console.warn("⚠️ Cannot generate schema - jobData missing or no job_title");
+    console.log("ℹ️ Using slug data for fallback:", formattedTitle);
   }
 
   return (
     <>
-      {/* JSON-LD Schema Markup */}
       {schemaJson && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: schemaJson,
-          }}
+          dangerouslySetInnerHTML={{ __html: schemaJson }}
         />
       )}
 
@@ -117,4 +124,15 @@ export default async function JobPage(props: { params: Params }) {
       </div>
     </>
   );
+}
+
+// Keep your fetchJobData function as is
+async function fetchJobData(jobId: string): Promise<Job | null> {
+  try {
+    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    return res?.data || null;
+  } catch (error) {
+    console.error("Error fetching job data:", error);
+    return null;
+  }
 }
