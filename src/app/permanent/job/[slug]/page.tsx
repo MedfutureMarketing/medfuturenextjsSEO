@@ -8,6 +8,7 @@ import {
   type Job,
 } from "@/lib/urlUtils";
 import { apiGet } from "@/lib/api";
+export const dynamic = "force-dynamic";
 
 type Params = Promise<{ slug: string | string[] }>;
 
