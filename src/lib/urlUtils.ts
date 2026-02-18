@@ -73,6 +73,32 @@ export function createJobSlug(
   // Build the slug: title-job-location-id
   return `${cleanTitle}-job-${cleanLocation}-${jobId}`;
 }
+// export function createJobSlug(
+//   jobTitle: string,
+//   location: string,
+//   jobId: string | number
+// ): string {
+
+//   // Use FULL job title
+//   const cleanTitle = jobTitle
+//     .toLowerCase()
+//     .trim()
+//     .replace(/\s+/g, '-')
+//     .replace(/[^\w-]/g, '')
+//     .replace(/-+/g, '-')
+//     .replace(/^-|-$/g, '');
+
+//   const cleanLocation = location
+//     .toLowerCase()
+//     .trim()
+//     .replace(/\s+/g, '-')
+//     .replace(/[^\w-]/g, '')
+//     .replace(/-+/g, '-')
+//     .replace(/^-|-$/g, '');
+
+//   return `${cleanTitle}-job-${cleanLocation}-${jobId}`;
+// }
+
 
 /**
  * Extract the job ID from a slug
@@ -111,10 +137,15 @@ export function formatTitleCase(str: string): string {
 
 /* ================= METADATA GENERATION ================= */
 
+/* ================= METADATA GENERATION ================= */
+
+/* ================= METADATA GENERATION ================= */
+
 export interface MetadataParams {
   jobTitle: string;
   location: string;
   jobBrief?: string;
+  jobId?: string | number; // Make sure this is included
 }
 
 /**
@@ -122,17 +153,28 @@ export interface MetadataParams {
  * Used in: generateMetadata() function in page.tsx
  */
 export function generateJobMetadata(params: MetadataParams) {
-  const { jobTitle, location, jobBrief } = params;
-  const formattedTitle = formatTitleCase(jobTitle);
+  const { jobTitle, location, jobBrief, jobId } = params;
+  
+  // Extract just the main job title if it contains separators
+  const mainTitle = extractJobTitleOnly(jobTitle);
+  const formattedTitle = formatTitleCase(mainTitle);
   const formattedLocation = formatTitleCase(location);
 
+  // Log to verify jobId is received
+  console.log('generateJobMetadata received jobId:', jobId);
+
+  // Include job ID in the title if provided
+  const title = jobId 
+    ? `${formattedTitle} Job in ${formattedLocation} -  ${jobId} | Medfuture Australia`
+    : `${formattedTitle} Job in ${formattedLocation} | Medfuture Australia`;
+
   return {
-    title: `${formattedTitle} Jobs in ${formattedLocation}`,
+    title: title,
     description: jobBrief 
       ? jobBrief.substring(0, 160) 
       : `${formattedTitle} position available in ${formattedLocation}. Apply now for this opportunity.`,
     openGraph: {
-      title: `${formattedTitle} Jobs in ${formattedLocation}`,
+      title: title,
       description: jobBrief 
         ? jobBrief.substring(0, 160) 
         : `${formattedTitle} position available in ${formattedLocation}.`,

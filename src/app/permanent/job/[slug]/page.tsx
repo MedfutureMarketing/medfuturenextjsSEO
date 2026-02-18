@@ -42,10 +42,12 @@ export async function generateMetadata(props: {
   const jobData = await fetchJobData(jobId);
   const jobBrief = jobData?.job_brief;
 
+  // FIX: Pass the jobId to generateJobMetadata
   const metadata = generateJobMetadata({
     jobTitle: title,
     location: location,
     jobBrief: jobBrief,
+    jobId: jobId, // Add this line to include the job ID
   });
 
   return {
