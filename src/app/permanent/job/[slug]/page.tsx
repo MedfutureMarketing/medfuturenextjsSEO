@@ -10,7 +10,14 @@ import { apiGet } from "@/lib/api";
 
 type Params = Promise<{ slug: string | string[] }>;
 
-// Keep your existing generateMetadata as is (since it's working)
+// Extend the Job type for fields that might exist in API but not in type definition
+interface ExtendedJob extends Job {
+  salary_min?: number;
+  salary_max?: number;
+  salary_text?: string;
+}
+
+// Keep your existing generateMetadata as is
 export async function generateMetadata(props: { 
   params: Params 
 }): Promise<Metadata> {
@@ -41,9 +48,9 @@ export async function generateMetadata(props: {
 }
 
 // Fetch job data for schema only
-async function fetchJobForSchema(jobId: string) {
+async function fetchJobForSchema(jobId: string): Promise<ExtendedJob | null> {
   try {
-    const res = await apiGet<{ data: Job }>(`web/jobdetails/${jobId}`);
+    const res = await apiGet<{ data: ExtendedJob }>(`web/jobdetails/${jobId}`);
     return res?.data || null;
   } catch (error) {
     console.error("Error fetching job for schema:", error);
@@ -51,7 +58,55 @@ async function fetchJobForSchema(jobId: string) {
   }
 }
 
-// Main component - only fetches data for schema
+// Define the schema type
+interface JobPostingSchema {
+  "@context": string;
+  "@type": string;
+  title: string;
+  description: string;
+  identifier: {
+    "@type": string;
+    name: string;
+    value: string;
+  };
+  datePosted: string;
+  validThrough: string;
+  employmentType: string;
+  hiringOrganization: {
+    "@type": string;
+    name: string;
+    sameAs: string;
+  };
+  jobLocation: {
+    "@type": string;
+    address: {
+      "@type": string;
+      addressLocality: string;
+      addressCountry: {
+        "@type": string;
+        name: string;
+      };
+    };
+  };
+  applicantLocationRequirements: {
+    "@type": string;
+    name: string;
+  };
+  occupationalCategory?: string;
+  baseSalary?: {
+    "@type": string;
+    currency: string;
+    value: {
+      "@type": string;
+      minValue?: number;
+      maxValue?: number;
+      value?: number;
+      unitText: string;
+    };
+  };
+}
+
+// Main component
 export default async function JobPage(props: { params: Params }) {
   const params = await props.params;
   const slugString = Array.isArray(params.slug) ? params.slug[0] : params.slug;
@@ -72,8 +127,8 @@ export default async function JobPage(props: { params: Params }) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
-  // Create JobPosting schema with whatever data we have
-  const jobPostingSchema: any = {
+  // Create base schema
+  const jobPostingSchema: JobPostingSchema = {
     "@context": "https://schema.org",
     "@type": "JobPosting",
     "title": jobData?.job_title || formattedTitle,
@@ -115,18 +170,33 @@ export default async function JobPage(props: { params: Params }) {
       jobPostingSchema.occupationalCategory = jobData.profession.name;
     }
     
-    // Add salary if available (you'll need to add these fields to your Job type)
-    if ((jobData as any).salary_min && (jobData as any).salary_max) {
+    // Add salary if available
+    if (jobData.salary_min && jobData.salary_max) {
       jobPostingSchema.baseSalary = {
         "@type": "MonetaryAmount",
         "currency": "AUD",
         "value": {
           "@type": "QuantitativeValue",
-          "minValue": (jobData as any).salary_min,
-          "maxValue": (jobData as any).salary_max,
+          "minValue": jobData.salary_min,
+          "maxValue": jobData.salary_max,
           "unitText": "YEAR"
         }
       };
+    } else if (jobData.salary_text) {
+      // Try to parse salary text
+      const salaryMatch = jobData.salary_text.match(/\$?(\d+(?:,\d+)?)/);
+      if (salaryMatch) {
+        const amount = parseFloat(salaryMatch[1].replace(/,/g, ''));
+        jobPostingSchema.baseSalary = {
+          "@type": "MonetaryAmount",
+          "currency": "AUD",
+          "value": {
+            "@type": "QuantitativeValue",
+            "value": amount,
+            "unitText": jobData.salary_text.toLowerCase().includes('per hour') ? 'HOUR' : 'YEAR'
+          }
+        };
+      }
     }
     
     // Add employment type based on engagement_type
@@ -140,13 +210,15 @@ export default async function JobPage(props: { params: Params }) {
         jobPostingSchema.employmentType = "CONTRACTOR";
       } else if (type.includes('temporary')) {
         jobPostingSchema.employmentType = "TEMPORARY";
+      } else if (type.includes('locum')) {
+        jobPostingSchema.employmentType = "TEMPORARY";
       }
     }
   }
 
   return (
     <div>
-      {/* Add JSON-LD script - this is the only addition */}
+      {/* Add JSON-LD script */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPostingSchema) }}
