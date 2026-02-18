@@ -51,8 +51,6 @@ export async function apiPost<
   const response = await fetch(`${baseUrl}/${endpoint}`, {
     method: "POST",
     headers: {
-        cache: "no-store",   // ← ADD THIS LINE
-
       "Content-Type": "application/json",
       accept: "application/json",
     },
