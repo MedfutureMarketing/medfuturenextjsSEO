@@ -21,7 +21,9 @@ const DynamicComponent = () => {
     const ispodiatrist = pathname === '/ahp-division/podiatrist';
     const isphysiotherapy = pathname === '/ahp-division/physiotherapy';
     const ispsychology = pathname === '/mental-health/psychology';
-    
+    const hideHeader = pathname === '/general-practice-division';
+
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -96,7 +98,7 @@ const DynamicComponent = () => {
     return (
         <form onSubmit={handleSubmit} className="space-y-[8px] text-[#4A5565] ">
             {/* Header */}
-            {isFACRRM && (  <div>
+            {!hideHeader && (<div>
                 <h2 className="text-[#0F172A] font-bold mb-1">
                     Get matcheds (60 seconds)
                 </h2>
