@@ -9,8 +9,8 @@ export default function CTA() {
     const [activeTab, setActiveTab] = useState<"job" | "employer">("job");
 
     return (
-        <section className="w-full py-20 px-4 lg:px-0 bg-gradient-to-br from-[#0B3264] via-[#0B3264] to-[#1B62B4] full-width-section">
-            <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(200px,0.85fr)_minmax(300px,1.35fr)] inner-width-section gap-12 items-center">
+        <section className="w-full py-20 px-4 lg:px-0  bg-gradient-to-br from-[#0B3264] via-[#0B3264] to-[#1B62B4] full-width-section">
+            <div className="inner-width-section mx-auto grid grid-cols-1  lg:grid-cols-[minmax(200px,0.85fr)_minmax(300px,1.35fr)] inner-width-section gap-36 items-center">
 
 
                 <div className="space-y-6">
@@ -63,7 +63,7 @@ export default function CTA() {
                     </div>
 
                  
-                    <div className=" px-[30px] py-[25px] bg-white">
+                    <div className=" px-[30px] py-[25px] bg-white rounded-[8px]">
                         {activeTab === "job" ? <JobSeekerForm /> : <EmployerForm />}
                                                 {/* {activeTab === "job" ? <JobSeekerForm /> : <EmployerForm />} */}
 

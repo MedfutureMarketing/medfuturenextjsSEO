@@ -66,17 +66,17 @@ function CounterDisplay({ item }: CounterDisplayProps) {
   return (
     <div
       ref={elementRef}
-      className="flex flex-col items-center justify-center min-h-[85px] rounded-lg border border-slate-200/60 bg-gradient-to-br from-[#074CA405] to-transparent hover:shadow-lg transition-all duration-300 hover:border-slate-300 p-4 group"
+      className="flex flex-col items-center justify-center min-h-[85px] rounded-lg border border-slate-200/60 bg-gradient-to-br from-[#074CA405] to-transparent hover:shadow-lg transition-all duration-300 hover:border-slate-300 lg:p-4 group"
     >
       <div className="relative z-10 flex flex-col items-center justify-center w-full">
-        <div className="text-base sm:text-2xl lg:text-[30px] font-bold text-slate-900 tracking-tight whitespace-nowrap">
+        <div className="text-base sm:text-xs lg:text-[30px] font-bold text-slate-900 tracking-tight whitespace-nowrap">
           {count}
           {item.suffix && (
             <span className="ml-1 font-semibold">{item.suffix}</span>
           )}
         </div>
 
-        <p className="mt-2 text-sm text-slate-600 text-center font-medium">
+        <p className="mt-2 text-xs text-slate-600 text-center font-medium">
           {item.label}
         </p>
       </div>
@@ -125,9 +125,9 @@ export default function CounterSection() {
   }, []);
 
   return (
-    <section className="py-8">
-      <div className="inner-width-section mx-auto px-3 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+    <section className="">
+      <div className=" mx-auto px-0 ">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8">
           {counters.map((item, index) => (
             <div
               key={index}

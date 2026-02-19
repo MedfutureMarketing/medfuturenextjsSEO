@@ -86,7 +86,7 @@ async function getConsultantData(): Promise<ConsultantGroup> {
 function ConsultantCard({ consultant }: { consultant: Consultant }) {
   return (
     <div className="pb-2">
-      <h3 className="text-base lg:text-[16px] font-bold text-gray-900 mb-0.5">
+      <h3 className="text-sm lg:text-[18px] font-bold text-[#040D48] mb-0.5">
         {consultant.name}
       </h3>
 

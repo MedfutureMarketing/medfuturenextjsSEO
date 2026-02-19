@@ -21,6 +21,7 @@ const DynamicComponent = () => {
     const ispodiatrist = pathname === '/ahp-division/podiatrist';
     const isphysiotherapy = pathname === '/ahp-division/physiotherapy';
     const ispsychology = pathname === '/mental-health/psychology';
+    
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -80,7 +81,7 @@ const DynamicComponent = () => {
             const data = await res.json();
             setSuccess(data.message || 'Enquiry submitted successfully');
             form.reset();
-        }  catch (err: unknown) {
+        } catch (err: unknown) {
             if (err instanceof Error) {
                 setError(err.message);
             } else {
@@ -89,29 +90,29 @@ const DynamicComponent = () => {
         }
         finally {
             setLoading(false);
-            }
-        };
+        }
+    };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-5 text-gray-500">
+        <form onSubmit={handleSubmit} className="space-y-[8px] text-[#4A5565] ">
             {/* Header */}
-            <div>
+            {isFACRRM && (  <div>
                 <h2 className="text-[#0F172A] font-bold mb-1">
-                    Get matched (60 seconds)
+                    Get matcheds (60 seconds)
                 </h2>
                 <p className="text-[12px] text-gray-600">
                     Tell us what matters — we'll send a curated shortlist <br />
                     within 48 hours.
                 </p>
-            </div>
+            </div>)}
 
             {/* First / Last Name */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-[8px] mt-[24px]">
                 <input
                     type="text"
                     name="first_name"
                     placeholder="First Name"
-                    className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    className="input h-[40px] border border-[#E2E8F0] text-[#4A5565] rounded-[8px] text-[12px] px-[13px]"
                     required
                 />
                 <input
@@ -129,7 +130,7 @@ const DynamicComponent = () => {
                     type="tel"
                     name="phone_number"
                     placeholder="Phone Number"
-                    className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    className="input h-[40px] text-[#4A5565] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                 />
                 <input
                     type="email"
@@ -502,30 +503,44 @@ const DynamicComponent = () => {
             )}
 
             {/* ================= TERMS ================= */}
-            <label className="flex flex-wrap items-start gap-2 text-xs text-gray-600">
+            <label className="flex items-start gap-2 mt-[22px] text-sm text-gray-600 ">
                 <input
                     type="checkbox"
                     name="agree_terms"
-                    className="w-4 h-4 accent-blue-600 mt-0.5"
+                    className="w-4 h-4 mt-1 accent-blue-600 shrink-0"
                     required
                 />
-                <span>I agree to the</span>
 
-                <Link href="/terms-and-conditions" target="_blank" className="text-blue-600 hover:underline">
-                    Terms and Conditions
-                </Link>
+                <span className="flex flex-wrap gap-1">
+                    <span>I agree to the</span>
 
-                <span>and</span>
+                    <Link
+                        href="/terms-and-conditions"
+                        target="_blank"
+                        className="text-[#074CA4] hover:underline font-medium"
+                    >
+                        Terms and Conditions
+                    </Link>
 
-                <Link href="/privacy-policy" target="_blank" className="text-blue-600 hover:underline">
-                    Privacy Policy
-                </Link>
+                    <span>and</span>
+
+                    <Link
+                        href="/privacy-policy"
+                        target="_blank"
+                        className="text-[#074CA4] hover:underline font-medium"
+                    >
+                        Privacy Policy
+                    </Link>
+
+                    <span>at Medfuture</span>
+                </span>
             </label>
+
 
             {/* Submit */}
             <button
                 type="submit"
-                className="w-full h-[50px] bg-[#074CA4] hover:bg-blue-700 text-white rounded-[4px] transition"
+                className="w-full h-[50px] bg-[#074CA4] cursor-pointer mt-[22px] hover:bg-blue-800 text-white rounded-[4px] transition"
                 disabled={loading}
             >
                 {loading ? 'Submitting…' : 'Submit'}

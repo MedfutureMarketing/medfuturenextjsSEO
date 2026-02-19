@@ -368,7 +368,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
 
   return (
     <>
-      <form className="space-y-6" onSubmit={handleSubmit}>
+      <form className="space-y-6 " onSubmit={handleSubmit}>
         {/* Row 1 - Name Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
