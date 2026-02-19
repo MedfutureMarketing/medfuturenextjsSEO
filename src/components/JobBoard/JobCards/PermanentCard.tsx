@@ -6,6 +6,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { parseJobSearchUrl } from "@/lib/seoJobUrl";
 import Image from "next/image";
 import Pointico from "@/assets/icons/listicon.png"
+import { createJobSlug } from "@/lib/urlUtils";
 
 /* ===================== TYPES ===================== */
 
@@ -377,10 +378,13 @@ export default function JobCard() {
       <div className="grid grid-cols-1 gap-2 block lg:hidden px-4 overflow-y-auto hide-scrollbar ">
         {jobs.map((job) => (
           <div
-            key={job.job_id}
-            onClick={() => router.push(`/permanent/job/${job.job_id}`)}
-            className="border cursor-pointer border-[#E6EDF7] rounded-lg border-2 border-gray-100 p-6 shadow-md transition-all active:bg-gray-100"
-          >
+           key={job.job_id}
+  onClick={() => router.push(`/permanent/job/${createJobSlug(
+    job.job_title,
+    job.state?.name || job.country?.name || 'unknown',
+    job.job_id
+  )}`)}
+  className="border cursor-pointer border-[#E6EDF7] rounded-lg border-2 border-gray-100 p-6 shadow-md transition-all active:bg-gray-100">
             <div className="flex justify-between items-center">
               <span className="text-xs text-gray-500">
                 {job.job_id}
