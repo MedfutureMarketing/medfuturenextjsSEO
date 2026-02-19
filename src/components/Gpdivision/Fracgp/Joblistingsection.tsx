@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { apiGet } from "@/lib/api";
+import { createJobSlug } from "@/lib/urlUtils";
 
 interface BackendJob {
   jobdetails_id: number;
@@ -14,7 +15,16 @@ interface BackendJob {
   state_name: string;
   region_name: string | null;
   created_at: string;
+
+  // optional nested fields if you use them
+  state?: {
+    name?: string;
+  };
+  country?: {
+    name?: string;
+  };
 }
+
 
 interface ApiResponse {
   gpJobs: BackendJob[];
@@ -125,7 +135,11 @@ function JobCard({ job, index }: JobCardProps) {
           {/* Button */}
           <div className="mt-4">
             <Link
-              href={`/permanent/job/${job.job_id}`}
+              href={`/permanent/job/${createJobSlug(
+            job.job_title,
+            job.state?.name || job.country?.name || 'australia',
+            job.job_id
+          )}`}
               className="w-full block text-center cursor-pointer border border-gray-100 py-2.5 px-4 bg-slate-50 hover:bg-[#040D48] text-slate-900 hover:text-white font-semibold rounded-lg transition-all duration-300 text-sm group-hover:shadow-md transform group-hover:scale-105 active:scale-95"
             >
               View & Apply
