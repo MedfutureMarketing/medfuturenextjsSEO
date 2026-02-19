@@ -6,7 +6,6 @@ import { apiGet } from "@/lib/api";
 import { createJobSlug } from "@/lib/urlUtils";
 
 interface BackendJob {
-  [x: string]: any;
   jobdetails_id: number;
   job_id: string;
   job_title: string;
@@ -16,6 +15,14 @@ interface BackendJob {
   state_name: string;
   region_name: string | null;
   created_at: string;
+
+  // optional nested fields if you use them
+  state?: {
+    name?: string;
+  };
+  country?: {
+    name?: string;
+  };
 }
 
 interface ApiResponse {
