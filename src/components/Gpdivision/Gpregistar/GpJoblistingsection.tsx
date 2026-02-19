@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { apiGet } from "@/lib/api";
+import { createJobSlug } from "@/lib/urlUtils";
 
 interface BackendJob {
+  [x: string]: any;
   jobdetails_id: number;
   job_id: string;
   job_title: string;
@@ -38,22 +40,21 @@ function JobCard({ job, index }: JobCardProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative bg-white rounded-lg border border-slate-200/70 p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
-        
+
         <div
-          className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-100/0 transition-all duration-300 pointer-events-none ${
-            isHovered ? "from-blue-50/40 to-slate-100/20" : ""
-          }`}
+          className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-100/0 transition-all duration-300 pointer-events-none ${isHovered ? "from-blue-50/40 to-slate-100/20" : ""
+            }`}
         />
 
         <div className="relative z-10 flex-1 flex flex-col">
-          
+
           {/* Header */}
           <div className="flex items-start justify-between gap-2 mb-3 xs:mb-4">
             <div className="flex-1 min-w-0">
               <p className="text-[10px] xs:text-xs lg:text-[12px] font-semibold text-[#4A5565] uppercase tracking-wider mb-1 truncate">
                 {job.job_id}
               </p>
-              <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg font-bold text-slate-900 leading-tight break-words line-clamp-2">
+              <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-[16px] font-bold text-[#0F172A]  break-words line-clamp-2">
                 {job.job_title}
               </h3>
             </div>
@@ -69,7 +70,7 @@ function JobCard({ job, index }: JobCardProps) {
                 fill="#0A2E5C"
               />
             </svg>
-            <span className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#4A5565]">
+            <span className="text-[11px] xs:text-xs sm:text-sm lg:text-[12px] text-[#4A5565]">
               {job.state_name}
               {job.region_name ? `, ${job.region_name}` : ""}
             </span>
@@ -108,7 +109,11 @@ function JobCard({ job, index }: JobCardProps) {
           {/* Button */}
           <div className="mt-4">
             <Link
-              href={`/permanent/job/${job.job_id}`}
+              href={`/permanent/job/${createJobSlug(
+                job.job_title,
+                job.state?.name || job.country?.name || 'australia',
+                job.job_id
+              )}`}
               className="w-full block text-center cursor-pointer border border-gray-100 py-2.5 px-4 bg-slate-50 hover:bg-[#040D48] text-slate-900 hover:text-white font-semibold rounded-lg transition-all duration-300 text-sm group-hover:shadow-md transform group-hover:scale-105 active:scale-95"
             >
               View & Apply
@@ -192,11 +197,10 @@ export default function RegistrarJobListingSection() {
             {jobs.map((_, index) => (
               <div
                 key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index
+                className={`h-2 rounded-full transition-all duration-300 ${currentSlide === index
                     ? "w-6 bg-[#074CA4]"
                     : "w-2 bg-slate-300"
-                }`}
+                  }`}
               />
             ))}
           </div>

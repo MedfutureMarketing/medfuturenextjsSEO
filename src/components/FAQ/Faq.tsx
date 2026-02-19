@@ -180,7 +180,19 @@ const faqData: FAQData = {
     { question: "What is Medfuture’s one-profile credentialing approach?", answer: "With Medfuture, you credential once and reuse your profile nationally. We manage documentation, compliance and renewals, significantly reducing paperwork and speeding up placements. This allows you to move between roles smoothly without re-credentialing for every new site." },
   ],
   "/general-practice-division/gp-registrars": [
-    { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
+    // { question: "Can I work internationally?", answer: "Yes, international roles require eligibility for work visas and often offer relocation support." },
+    { question: "What is a training-aligned GP job for FRACGP/FACRRM pathways?", answer: "A training-aligned role matches your pathway requirements (FSP/PEP/PFP/RVTS/Independent), has appropriate supervision arrangements, and supports progression toward FRACGP or FACRRM with sustainable rosters and a suitable case mix." },
+    { question: "Do you recruit for MMM1 to MMM7 locations across Australia?", answer: "Yes. Medfuture sources GP opportunities across MMM1–MMM7, with strong demand in rural and remote communities (MMM3–MMM7)." },
+
+    { question: "Can a non-VR GP find PEP or FSP compatible roles through Medfuture?", answer: "Yes. We match AHPRA-registered non‑VR GPs to roles that are realistic for exam preparation and progression, including roles aligned to PEP and FSP." },
+
+    { question: "What makes rural GP jobs (MMM3–MMM7) attractive for fellowship goals?", answer: "Rural clinics often offer broader exposure, continuity of care, strong mentorship culture, and incentives. With the right supervision, rural work can be a strategic career accelerator." },
+
+    { question: "Do you help with clinic selection beyond salary?", answer: "Yes. We focus on supervision quality, roster safety, governance, billing model, clinical support and realistic patient load—so you choose a clinic that supports fellowship success and wellbeing." },
+
+    // { question: "", answer: "" },
+
+
   ],
   "/ahp-division/speech-pathology": [
     { question: "Do you recruit Speech Pathologist / Speech Therapist jobs across Australia?", answer: "Yes. Medfuture recruits Speech Pathology roles Australia-wide across private practice, NDIS, schools, health services, community organisations and telehealth providers." },
@@ -210,6 +222,7 @@ const faqData: FAQData = {
     { question: "What OT settings does Medfuture recruit for?", answer: "NDIS & community, paediatrics, hospitals/rehab, mental health, aged care, and senior/leadership OT roles across Australia." },
 
   ],
+
 };
 
 

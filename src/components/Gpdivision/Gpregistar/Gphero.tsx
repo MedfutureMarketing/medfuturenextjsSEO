@@ -42,19 +42,19 @@ AHPRA-registered Non‑VR GP or GP Registrar? Medfuture sources training-alig
 
                             {/* VALUE CARDS */}
                             <div className="flex flex-wrap gap-4 mt-[40px] justify-start">
-                                <div className="bg-white/21 border border-gray-500 lg:block hidden border-opacity-20 rounded-lg p-5 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
+                                <div className="bg-white/11 border border-gray-500 lg:block hidden border-opacity-20 rounded-lg p-5 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
                                     <h3 className="text-[14px] text-white mb-2">Supervision‑Verified</h3>
                                     <p className="text-xs text-gray-200">
 Roles screened for supervision capacity & training fit.                                    </p>
                                 </div>
 
-                                <div className="bg-white/21 border border-gray-500 lg:block hidden border-opacity-20 rounded-lg p-5 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
+                                <div className="bg-white/11 border border-gray-500 lg:block hidden border-opacity-20 rounded-lg p-5 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
                                     <h3 className="text-[14px] text-white mb-2">MMM‑Mapped Roles</h3>
                                     <p className="text-xs text-gray-200">
 MMM1–MMM7 options with rural career strategy guidance.                                    </p>
                                 </div>
 
-                                <div className="bg-white/21 border border-gray-500 lg:block hidden border-opacity-20 rounded-lg p-5 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
+                                <div className="bg-white/11 border border-gray-500 lg:block hidden border-opacity-20 rounded-lg p-5 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
                                     <h3 className="text-[14px] text-white mb-2">Fellowship Focused</h3>
                                     <p className="text-xs text-gray-200">
 Built around progression to FRACGP / FACRRM.                                    </p>
@@ -65,7 +65,7 @@ Built around progression to FRACGP / FACRRM.                                    
                     </div>
 
                     {/* RIGHT FORM — STATIC */}
-                    <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10 h-fit sticky top-8">
+                    <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-6 h-fit sticky top-8">
                         <FormComponent />
                     </div>
 

@@ -131,7 +131,7 @@ export default function RegistrarCounterSection() {
 
   return (
     <section className="py-8">
-      <div className="inner-width-section mx-auto px-3 lg:px-8">
+      <div className=" mx-auto px-3 lg:px-0">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
           {counters.map((item, index) => (
             <div
