@@ -1,13 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { API_BASE_URL } from '@/lib/api';
 
 /* eslint-disable react/no-unescaped-entities */
 
 const DynamicComponent = () => {
     const pathname = usePathname();
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
     const isFACRRM = pathname === '/general-practice-division/fracgp-facrrm';
     const isGpRegistrars = pathname === '/general-practice-division/gp-registrars';
@@ -18,8 +22,78 @@ const DynamicComponent = () => {
     const isphysiotherapy = pathname === '/ahp-division/physiotherapy';
     const ispsychology = pathname === '/mental-health/psychology';
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        setSuccess(null);
+        setError(null);
+
+        const form = e.currentTarget;
+
+        // Basic fields expected by backend
+        const first_name = (form.elements.namedItem('first_name') as HTMLInputElement | null)?.value ?? '';
+        const last_name = (form.elements.namedItem('last_name') as HTMLInputElement | null)?.value ?? '';
+        const phone_number = (form.elements.namedItem('phone_number') as HTMLInputElement | null)?.value ?? '';
+        const email = (form.elements.namedItem('email') as HTMLInputElement | null)?.value ?? '';
+
+        // Checkbox handling
+        const agreeInput = form.querySelector('input[name="agree_terms"]') as HTMLInputElement | null;
+        const agree_terms = !!agreeInput && agreeInput.checked;
+
+        // derive profession_slug from pathname (last segment)
+        const segments = pathname ? pathname.split('/').filter(Boolean) : [];
+        const profession_slug = segments.length ? segments[segments.length - 1] : '';
+
+        // collect additional fields into array (key/value pairs)
+        const fd = new FormData(form);
+        const baseKeys = new Set(['first_name', 'last_name', 'phone_number', 'email', 'agree_terms']);
+        const additional_data: Array<{ key: string; value: string }> = [];
+
+        for (const [key, value] of fd.entries()) {
+            if (!baseKeys.has(key)) {
+                additional_data.push({ key, value: String(value) });
+            }
+        }
+
+        const payload = {
+            first_name,
+            last_name,
+            phone_number: phone_number || null,
+            email,
+            profession_slug,
+            additional_data: additional_data.length ? additional_data : null,
+            agree_terms,
+        };
+
+        try {
+            const res = await fetch(`${API_BASE_URL}/web/candidate-enquiries`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) {
+                const data = await res.json().catch(() => ({}));
+                throw new Error(data.message || `Request failed with status ${res.status}`);
+            }
+
+            const data = await res.json();
+            setSuccess(data.message || 'Enquiry submitted successfully');
+            form.reset();
+        }  catch (err: unknown) {
+            if (err instanceof Error) {
+                setError(err.message);
+            } else {
+                setError('Submission failed');
+            }
+        }
+        finally {
+            setLoading(false);
+            }
+        };
+
     return (
-        <form className="space-y-5 text-gray-500">
+        <form onSubmit={handleSubmit} className="space-y-5 text-gray-500">
             {/* Header */}
             <div>
                 <h2 className="text-[#0F172A] font-bold mb-1">
@@ -35,15 +109,17 @@ const DynamicComponent = () => {
             <div className="grid grid-cols-2 gap-3">
                 <input
                     type="text"
-                    name="firstName"
+                    name="first_name"
                     placeholder="First Name"
                     className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    required
                 />
                 <input
                     type="text"
-                    name="lastName"
+                    name="last_name"
                     placeholder="Last Name"
                     className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    required
                 />
             </div>
 
@@ -51,7 +127,7 @@ const DynamicComponent = () => {
             <div className="grid grid-cols-2 gap-3">
                 <input
                     type="tel"
-                    name="phoneNumber"
+                    name="phone_number"
                     placeholder="Phone Number"
                     className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                 />
@@ -60,6 +136,7 @@ const DynamicComponent = () => {
                     name="email"
                     placeholder="Email"
                     className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    required
                 />
             </div>
 
@@ -428,8 +505,9 @@ const DynamicComponent = () => {
             <label className="flex flex-wrap items-start gap-2 text-xs text-gray-600">
                 <input
                     type="checkbox"
-                    name="agreeTerms"
+                    name="agree_terms"
                     className="w-4 h-4 accent-blue-600 mt-0.5"
+                    required
                 />
                 <span>I agree to the</span>
 
@@ -446,11 +524,15 @@ const DynamicComponent = () => {
 
             {/* Submit */}
             <button
-                type="button"
+                type="submit"
                 className="w-full h-[50px] bg-[#074CA4] hover:bg-blue-700 text-white rounded-[4px] transition"
+                disabled={loading}
             >
-                Submit
+                {loading ? 'Submitting…' : 'Submit'}
             </button>
+
+            {success && <p className="text-sm text-green-600">{success}</p>}
+            {error && <p className="text-sm text-red-600">{error}</p>}
         </form>
     );
 };

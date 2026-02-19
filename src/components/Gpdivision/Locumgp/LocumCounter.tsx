@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { apiGet } from "@/lib/api";
 
 interface CounterItem {
   value: number;
@@ -8,12 +9,12 @@ interface CounterItem {
   suffix?: string;
 }
 
-const counterData: CounterItem[] = [
-  { value: 2000, label: "Active Locum GP Jobs", suffix: "+" },
-  { value: 9000, label: "Top-rated GPs in Talent Pool", suffix: "+" },
-  { value: 8, label: "States & Territories" },
-  { value: 3, label: "Avg. Time to Offer (Weeks)" },
-];
+interface ProfessionPageResponse {
+  locumJobCounts: number;
+  totalTalentPool: number;
+  totalStates: number;
+  avgTimeToOfferWeeks: number;
+}
 
 interface CounterDisplayProps {
   item: CounterItem;
@@ -91,12 +92,49 @@ function CounterDisplay({ item }: CounterDisplayProps) {
 }
 
 export default function CounterSection() {
+  const [counters, setCounters] = useState<CounterItem[]>([]);
+  
+    useEffect(() => {
+      async function fetchProfessionData() {
+        try {
+          const res = await apiGet<ProfessionPageResponse>(
+            "web/profession-pages/get-all"
+          );
+  
+          const updatedCounters: CounterItem[] = [
+            {
+              value: res.locumJobCounts,
+              label: "Active Locum GP Jobs",
+              suffix: "+",
+            },
+            {
+              value: 9000,
+              label: "Top-rated GPs in Talent Pool",
+              suffix: "+",
+            },
+            {
+              value: 8,
+              label: "States & Territories",
+            },
+            {
+              value: 3,
+              label: "Avg. Time to Offer (Weeks)",
+            },
+          ];
+  
+          setCounters(updatedCounters);
+        } catch (error) {
+          console.error("Failed to fetch profession page data", error);
+        }
+      }
+  
+      fetchProfessionData();
+    }, []);
   return (
-    <section className="py-6 py-12 lg:py-[37px]">
-      <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 md:px-8 lg:px-8">
-        {/* Counters Grid */}
-        <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-2 xs:gap-3 sm:gap-4 md:gap-6 lg:gap-8">
-          {counterData.map((item, index) => (
+    <section className="py-8">
+      <div className="inner-width-section mx-auto px-3 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+          {counters.map((item, index) => (
             <div
               key={index}
               style={{
@@ -118,13 +156,6 @@ export default function CounterSection() {
           to { 
             opacity: 1; 
             transform: translateY(0); 
-          }
-        }
-
-        /* Ensure smooth scrolling on touch devices */
-        @media (max-width: 768px) {
-          * {
-            -webkit-tap-highlight-color: transparent;
           }
         }
       `}</style>
