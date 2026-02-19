@@ -4,6 +4,7 @@ import Image from "next/image";
 import loctionico from "@/assets/homeico/loctionico.png";
 import { useEffect, useState } from "react";
 import { apiGet } from "@/lib/api";
+import { createJobSlug } from "@/lib/urlUtils";
 
 type HomeData = {
   clientCount: number;
@@ -17,6 +18,8 @@ type HomeData = {
     profession_id: number;
     name: string;
     jobDetails: Array<{
+      state: any;
+      country: any;
       jobdetails_id: number;
       job_id: number;
       job_title: string;
@@ -81,7 +84,11 @@ export default function JobsbyProfession() {
       jobs: profession.jobDetails.slice(0, 2).map((job) => ({
         title: job.job_title,
         location: `${job.state_name}, ${job.region_name}`,
-        link: `/permanent/job/${job.job_id}`,
+        link: `/permanent/job/${createJobSlug(
+          job.job_title,
+          job.state?.name || job.country?.name || 'unknown',
+          job.job_id
+        )}`,
       })),
       viewAllText: `View All ${profession.name} Jobs`,
       viewAllLink: `/permanent/${profession.name.toLowerCase().replace(/\s+/g, "-")}-jobs/in-australia`,
@@ -135,12 +142,12 @@ export default function JobsbyProfession() {
         ) : (
           <>
             {/* Desktop Grid */}
-            <div className="lg:block md:block hidden"> 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
-              {visibleProfessions.map((prof, idx) => (
-                <ProfessionCard key={idx} prof={prof} />
-              ))}
-            </div></div>
+            <div className="lg:block md:block hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
+                {visibleProfessions.map((prof, idx) => (
+                  <ProfessionCard key={idx} prof={prof} />
+                ))}
+              </div></div>
 
             {/* View More Button for Desktop */}
             {hasMoreCards && !showAll && (

@@ -84,49 +84,59 @@ async function getConsultantData(): Promise<ConsultantGroup> {
 
 // Consultant Card Component
 function ConsultantCard({ consultant }: { consultant: Consultant }) {
-    return (
-        <div>
-            <h3 className="text-sms lg:text-[16px] font-bold text-gray-900 mb-0">
-                {consultant.name}
-            </h3>
-            <p className="text-sm lg:text-[14px] text-[#040D48] mb-2">
-                {consultant.title}
-            </p>
+  return (
+    <div className="pb-2">
+      <h3 className="text-base lg:text-[16px] font-bold text-gray-900 mb-0.5">
+        {consultant.name}
+      </h3>
 
-            <div className="space-y-2 mb-6">
-                {/* Email */}
-                <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        <Image src={emailico} alt="Email icon" className="object-contain w-full h-full" />
-                    </div>
-                    <a href={`mailto:${consultant.email}`} className="text-xs lg:text-[14px] text-[#4A5565] hover:text-blue-600 break-all">
-                        {consultant.email}
-                    </a>
-                </div>
+      <p className="text-xs sm:text-sm lg:text-[14px] text-[#040D48] mb-3">
+        {consultant.title}
+      </p>
 
-                {/* Phone */}
-                <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        <Image src={callico} alt="Phone icon" className="object-contain w-full h-full" />
-                    </div>
-                    <a href={`tel:${consultant.phone}`} className="text-xs lg:text-[14px] text-[#4A5565] hover:text-blue-600">
-                        {consultant.phone}
-                    </a>
-                </div>
-
-                {/* Location */}
-                <div className="flex items-center gap-3">
-                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                        <Image src={Locationicos} alt="Location icon" className="object-contain w-full h-full" />
-                    </div>
-                    <span className="text-xs lg:text-[14px] text-[#4A5565]">{consultant.location}</span>
-                </div>
-            </div>
-
-            <div className="border-b border-gray-300 mb-8 border-dashed"></div>
+      <div className="space-y-2 mb-5">
+        {/* Email */}
+        <div className="flex items-start gap-3">
+          <div className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0 mt-0.5">
+            <Image src={emailico} alt="Email icon" />
+          </div>
+          <a
+            href={`mailto:${consultant.email}`}
+            className="text-xs sm:text-sm lg:text-[14px] text-[#4A5565] hover:text-blue-600 break-all"
+          >
+            {consultant.email}
+          </a>
         </div>
-    );
+
+        {/* Phone */}
+        <div className="flex items-center gap-3">
+          <div className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0">
+            <Image src={callico} alt="Phone icon" />
+          </div>
+          <a
+            href={`tel:${consultant.phone}`}
+            className="text-xs sm:text-sm lg:text-[14px] text-[#4A5565] hover:text-blue-600"
+          >
+            {consultant.phone}
+          </a>
+        </div>
+
+        {/* Location */}
+        <div className="flex items-center gap-3">
+          <div className="w-4 h-4 lg:w-5 lg:h-5 flex-shrink-0">
+            <Image src={Locationicos} alt="Location icon" />
+          </div>
+          <span className="text-xs sm:text-sm lg:text-[14px] text-[#4A5565]">
+            {consultant.location}
+          </span>
+        </div>
+      </div>
+
+      <div className="lg:border-b lg:border-gray-300 lg:border-dashed mb-6 lg:mb-8" />
+    </div>
+  );
 }
+
 
 // SSR Page Component
 export default async function ConsultantsPage() {
@@ -137,85 +147,78 @@ export default async function ConsultantsPage() {
     const rightConsultants = data.consultants.slice(Math.ceil(data.consultants.length / 2));
 
     return (
-        <div className="full-width-section bg-[#F7F7F782] lg:mt-[130px] mt-5">
-            {/* Header */}
-            <div className="px-4 sm:px-6 inner-width-section lg:px-0 lg:py-[83px]  ">
-                <div className="max-w-7xl mx-auto">
-                    <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
-                        Meet Our Consultants
-                    </p>
-                    <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-8 lg:mb-[52px]">
-                        Your Dedicated Specialist GP Recruitment Experts
-                    </h2>
+        <div className="full-width-section bg-[#F7F7F782] mt-6 lg:mt-[130px]">
+  {/* Header */}
+  <div className="px-4 sm:px-6 inner-width-section lg:px-0 py-8 lg:py-[83px]">
+    <div className="max-w-7xl mx-auto">
+      <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
+        Meet Our Consultants
+      </p>
+
+      <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-6 lg:mb-[52px]">
+        Your Dedicated Specialist GP Recruitment Experts
+      </h2>
+    </div>
+
+    {/* Main Content */}
+    <div className="w-full">
+      <div className="inner-width-section mx-auto">
+
+        {/* Mobile – Single Column */}
+       <div className="lg:hidden">
+  <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4">
+    {data.consultants.map((consultant) => (
+      <div
+        key={consultant.id}
+        className="min-w-[85%] sm:min-w-[70%] snap-center bg-white rounded-xl shadow-sm p-4"
+      >
+        <ConsultantCard consultant={consultant} />
+      </div>
+    ))}
+  </div>
+
+  {/* Optional scroll hint */}
+  <p className="text-xs text-gray-500 mt-2 text-center">
+    Swipe to see more consultants →
+  </p>
+</div>
+
+
+        {/* Desktop – unchanged */}
+        <div className="hidden lg:grid grid-cols-3 gap-8 lg:gap-18">
+          <div className="space-y-8">
+            {leftConsultants.map((consultant) => (
+              <ConsultantCard key={consultant.id} consultant={consultant} />
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center h-full">
+            <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
+              {data.centerImages.map((image, idx) => (
+                <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
+                  <Image
+                    src={image}
+                    alt={`Professional image ${idx + 1}`}
+                    className="w-full h-full object-cover"
+                    placeholder="blur"
+                    loading="lazy"
+                  />
                 </div>
-            
+              ))}
+            </div>
+          </div>
 
-            {/* Main Content */}
-            <div className="px-4 sm:px-6 w-full lg:px-0 ">
-                <div className="inner-width-section mx-auto">
-                    {/* Mobile Layout - Single Column */}
-                    <div className="lg:hidden">
-                        <div className="space-y-6">
-                            {data.consultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
-                        </div>
-
-                        {/* Mobile Images - 2x2 Grid below consultants */}
-                        {/* <div className=" pt-6 border-t border-gray-300">
-                            <div className="grid grid-cols-2 gap-3">
-                                {data.centerImages.map((image, idx) => (
-                                    <div key={idx} className="rounded-lg overflow-hidden shadow-md">
-                                        <Image
-                                            src={image}
-                                            alt={`Professional image ${idx + 1}`}
-                                            className="w-full h-auto object-cover aspect-square"
-                                            placeholder="blur"
-                                            priority={false}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div> */}
-                    </div>
-
-                    {/* Desktop Layout - Three Columns (unchanged) */}
-                    <div className="hidden lg:grid grid-cols-3 gap-8 lg:gap-18">
-                        {/* Left Column */}
-                        <div className="space-y-8">
-                            {leftConsultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
-                        </div>
-
-                        {/* Center Images */}
-                        <div className="flex items-center justify-center h-full">
-                            <div className="grid grid-cols-2 gap-4 py-6 w-full h-full">
-                                {data.centerImages.map((image, idx) => (
-                                    <div key={idx} className="rounded-lg overflow-hidden shadow-md h-full">
-                                        <Image
-                                            src={image}
-                                            alt={`Professional image ${idx + 1}`}
-                                            className="w-full h-full object-cover"
-                                            placeholder="blur"
-                                            priority={false}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-8 lg:ml-24">
-                            {rightConsultants.map((consultant) => (
-                                <ConsultantCard key={consultant.id} consultant={consultant} />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div></div>
+          <div className="space-y-8 lg:ml-24">
+            {rightConsultants.map((consultant) => (
+              <ConsultantCard key={consultant.id} consultant={consultant} />
+            ))}
+          </div>
         </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
     );
 }
