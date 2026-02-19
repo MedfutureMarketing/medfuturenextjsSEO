@@ -137,7 +137,7 @@ function JobCard({ job, index }: JobCardProps) {
             <Link
               href={`/permanent/job/${createJobSlug(
             job.job_title,
-            job.state?.name || job.country?.name || 'australia',
+            job.state?.name || job.country?.name || 'Australia',
             job.job_id
           )}`}
               className="w-full block text-center cursor-pointer border border-gray-100 py-2.5 px-4 bg-slate-50 hover:bg-[#040D48] text-slate-900 hover:text-white font-semibold rounded-lg transition-all duration-300 text-sm group-hover:shadow-md transform group-hover:scale-105 active:scale-95"
