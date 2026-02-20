@@ -65,7 +65,7 @@ export default function JobSeekerHub({ query = "" }: { query?: string }) {
         {/* Left: Search form */}
         <form
           onSubmit={handleFind}
-          className="w-full lg:w-[337px] flex gap-2"
+          className="w-full lg:w-[337px]  flex gap-2"
         >
           <div className="relative flex-1">
             <Image
@@ -119,13 +119,13 @@ export default function JobSeekerHub({ query = "" }: { query?: string }) {
      
           <Link
             href="/job-seeker-hub"
-            className="px-4 lg:px-6  lg:h-[50px] lg:w-[170px] lg:block hidden py-3 bg-[#074CA4] text-white font-[16px] rounded-[4px] hover:bg-gray-400 transition-colors whitespace-nowrap text-center"
+            className="px-4 lg:px-6  lg:h-[50px] lg:w-[170px] lg:block md:block hidden py-3 bg-[#074CA4] text-white font-[16px] rounded-[4px] hover:bg-gray-400 transition-colors whitespace-nowrap text-center"
           >
             Job Seeker Hub
           </Link>
           <Link
             href="/"
-            className="px-4 lg:px-6 py-3 cursor-not-allowed disabled  lg:block hidden bg-[#0D1A3E] text-white font-[16px] rounded-[4px] hover:bg-gray-700 transition-colors whitespace-nowrap text-center"
+            className="px-4 lg:px-6 py-3 cursor-not-allowed disabled  lg:block md:block hidden bg-[#0D1A3E] text-white font-[16px] rounded-[4px] hover:bg-gray-700 transition-colors whitespace-nowrap text-center"
           >
             Employer Hub
           </Link>

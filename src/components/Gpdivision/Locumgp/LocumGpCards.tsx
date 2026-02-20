@@ -158,7 +158,7 @@ export default function LocumGPJobs() {
     return (
         <div className="w-full p-0 lg:mt-[140px] pb-[130px] ">
             <div className="inner-width-section mx-auto">
-                
+                <div className=" px-0 lg:px-0 md:px-8">
                 {/* Header (Unchanged) */}
                 <div className="mb-8">
                     <p className="text-xs lg:text-[14px] font-[500] text-[#074CA4] font-medium mb-2">
@@ -193,7 +193,7 @@ export default function LocumGPJobs() {
                         View All Jobs
                     </Link>
                 </div>
-            </div>
+            </div></div> 
         </div>
     );
 }

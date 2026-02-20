@@ -81,7 +81,7 @@ export default function MedfuturePage() {
 
     return (
         <div className="bg-white pb-[160px] lg:mt-[160px] mt-24">
-            {/* Header Section */}
+            {/* Header Section */}<div className=" px-0 lg:px-0 md:px-8">
             <div className="inner-width-section mx-auto  ">
                 <div className="mb-2">
                     <span className="lg:text-[14px] text-xs font-semibold text-[#074CA4] uppercase tracking-wide">
@@ -203,7 +203,7 @@ export default function MedfuturePage() {
                     </div>
                 </div>
             </div>
-
+</div>
 
 
         </div>

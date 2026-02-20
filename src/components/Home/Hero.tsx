@@ -103,7 +103,7 @@ export default function Hero() {
     return (
         <div className="bg-[#0D1A3E] full-width-section w-full">
   <div className="inner-width-section px-4 lg:px-0">
-
+ <div className=" px-0 lg:px-0 md:px-8">
     {/* HERO CONTENT */}
     <div className="flex flex-col lg:flex-row items-center justify-between gap-10 py-10 lg:py-20">
 
@@ -117,7 +117,7 @@ Trusted Medical Recruitment Agency in Australia Offering 1,000+ Jobs from 9,579+
         </p>
 
         {/* BUTTONS */}
-        <div className="mt-6 flex flex-col sm:flex-row gap-3 lg:hidden block md:justify-center justify-center lg:justify-start">
+        <div className="mt-6 flex flex-col sm:flex-row gap-3 lg:hidden md:hidden block md:justify-start justify-center lg:justify-start">
           <Link 
             href="/job-seeker-hub"
             className="px-6 py-3 bg-[#074CA4] text-white rounded-md text-sm font-medium hover:bg-blue-600 transition text-center"
@@ -173,7 +173,7 @@ Trusted Medical Recruitment Agency in Australia Offering 1,000+ Jobs from 9,579+
         </div>
       ))}
     </div>
-
+</div>
   </div>
 </div>
 
