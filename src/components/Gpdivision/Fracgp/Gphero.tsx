@@ -8,7 +8,7 @@ const HeroSection = () => {
     return (
         <section className="bg-[#040D48] full-width-section">
             <div className="inner-width-section mx-auto py-10 sm:py-12 lg:py-[36px] px-4 sm:px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-8 lg:gap-24 items-start">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] lg:px-0 md:px-8 px-0 gap-8 lg:gap-24 items-start">
 
                     {/* LEFT CONTENT */}
                     <div className="flex flex-col justify-center">

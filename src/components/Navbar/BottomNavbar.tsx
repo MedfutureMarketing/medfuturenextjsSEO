@@ -46,7 +46,7 @@ export default function BottomNav() {
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const rippleId = useRef(0);
 
-  const createRipple = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const createRipple = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const id = rippleId.current++;
 
@@ -66,21 +66,25 @@ export default function BottomNav() {
 
   return (
     <nav className="fixed bottom-0 inset-x-0 z-50 lg:hidden">
-      {/* Glass container */}
-      <div className="relative backdrop-blur-xl bg-white/90 border-t border-white/60 shadow-[0_-8px_32px_rgba(0,0,0,0.08)]">
-        <div className="flex justify-around items-center px-1 sm:px-4 py-1">
+      <div className="backdrop-blur-xl bg-white/90 border-t border-white/60 shadow-[0_-8px_32px_rgba(0,0,0,0.08)]">
+
+        {/* Responsive container */}
+        <div className="flex justify-between items-center px-2 sm:px-6 md:px-10 py-2">
+
           {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const isActive =
+              pathname === item.href ||
+              pathname.startsWith(`${item.href}/`);
 
             return (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={createRipple}
-                className="relative flex flex-col items-center justify-center flex-1 min-w-[60px] max-w-[100px] group touch-manipulation"
+                className="relative flex flex-col items-center justify-center flex-1"
               >
                 {/* Ripple */}
-                <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                <div className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
                   {ripples.map((r) => (
                     <span
                       key={r.id}
@@ -92,43 +96,33 @@ export default function BottomNav() {
 
                 {/* Icon */}
                 <div
-                  className={`flex items-center justify-center rounded-2xl transition-all duration-300
-                    ${isActive
+                  className={`flex items-center justify-center rounded-xl transition-all duration-300
+                  ${isActive
                       ? `bg-gradient-to-br ${item.gradient} text-white shadow-lg scale-100`
-                      : 'bg-white text-gray-500 shadow-sm scale-90 group-hover:scale-95'}
+                      : 'bg-white text-gray-500 shadow-sm scale-95'
+                    }
                   `}
-                  style={{
-                    width: 'calc(12vw)',
-                    height: 'calc(12vw)',
-                    maxWidth: '30px',
-                    maxHeight: '30px',
-                    minWidth: '26px',
-                    minHeight: '26px',
-                  }}
+
                 >
-                  <span
-                    className="w-full h-full flex items-center justify-center"
-                    style={{ fontSize: 'calc(4vw)', maxWidth: '14px', maxHeight: '14px', minWidth: '16px', minHeight: '16px' }}
-                  >
+                  <span className="w-5 h-5 sm:w-6 sm:h-6">
                     {item.icon}
                   </span>
                 </div>
 
                 {/* Label */}
                 <span
-                  className={`mt-1 font-medium transition-colors`}
-                  style={{
-                    fontSize: 'calc(2.5vw)',
-
-                    color: isActive ? '#111' : '#6b7280',
-                  }}
+                  className={`
+                    mt-1 font-medium transition-colors
+                    text-[10px] sm:text-xs md:text-sm
+                    ${isActive ? 'text-black' : 'text-gray-500'}
+                  `}
                 >
                   {item.label}
                 </span>
 
                 {/* Active indicator */}
                 {isActive && (
-                  <span className="absolute -bottom-1 h-1 w-6 rounded-full bg-gradient-to-r from-black/20 to-black/5" />
+                  <span className="absolute -bottom-1 h-1 w-6 rounded-full bg-black/20" />
                 )}
               </Link>
             );
@@ -136,8 +130,11 @@ export default function BottomNav() {
         </div>
       </div>
 
-      {/* iOS safe-area */}
-      <div className="bg-white" style={{ height: 'env(safe-area-inset-bottom)' }} />
+      {/* Safe area */}
+      <div
+        className="bg-white"
+        style={{ height: 'env(safe-area-inset-bottom)' }}
+      />
 
       {/* Ripple animation */}
       <style jsx global>{`
@@ -147,7 +144,7 @@ export default function BottomNav() {
             opacity: 0.4;
           }
           to {
-            transform: scale(6);
+            transform: scale(5);
             opacity: 0;
           }
         }

@@ -127,7 +127,7 @@ export default function CounterSection() {
   return (
     <section className="">
       <div className=" mx-auto px-0 ">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:px-0 md:px-8 px-0 lg:gap-8">
           {counters.map((item, index) => (
             <div
               key={index}

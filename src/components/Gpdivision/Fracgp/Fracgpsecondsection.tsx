@@ -9,8 +9,8 @@ import divisionimage2 from "@/assets/Divisionimages/divisionimage2.png";
 export default function Fracgpsecondsection() {
     return (
         <section className="full-width-section mt-8 xs:mt-12 mt-26 lg:mt-[97px]">
-            <div className="inner-width-section mx-auto px-0  lg:px-0">
-                <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_0.8fr] gap-6 sm:gap-8 md:gap-16 lg:gap-36 items-start">
+            <div className="inner-width-section mx-auto px-0">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_0.8fr] px-0  lg:px-0 md:px-8  gap-6 sm:gap-8 md:gap-16 lg:gap-36 items-start">
                     {/* Left Content */}
                     <div className="space-y-4 xs:space-y-6 sm:space-y-8">
                         {/* Heading */}

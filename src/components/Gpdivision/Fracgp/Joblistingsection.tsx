@@ -182,8 +182,8 @@ export default function JobListingSection() {
 
   return (
     <section className="full-width-section lg:mt-[150px] xs:mt-12 mt-26  lg:py-0 py-6 sm:py-10 lg:py-12 mb-16">
-      <div className="inner-width-section mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-
+      <div className="inner-width-section mx-auto relative z-10">
+<div className=" px-0 lg:px-8 md:px-8">
         {/* Header */}
         <div className="mb-10">
           <div className="mb-4"><p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
@@ -247,7 +247,7 @@ export default function JobListingSection() {
             View All Jobs
           </Link>
         </div>
-      </div>
+      </div> </div>
 
       <style>{`
         @keyframes slideUp {
