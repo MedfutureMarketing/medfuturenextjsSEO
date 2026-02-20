@@ -7,8 +7,8 @@ import Link from 'next/link';
 const OtHeroSection = () => {
     return (
         <section className="bg-[#FFFFFF] full-width-section  ">
-            <div className="inner-width-section mx-auto lg:py-[36px] py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-8 lg:gap-24 items-start">
+            <div className="inner-width-section mx-auto lg:py-[36px] py-12"><div className=" px-0 lg:px-0 md:px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-8 lg:gap-36 items-start">
 
                     {/* LEFT CONTENT */}
                     <div className="flex flex-col justify-center ">
@@ -70,11 +70,12 @@ const OtHeroSection = () => {
                     </div>
 
                     {/* RIGHT FORM — STATIC */}
-                    <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10 h-fit sticky top-8">
+                    <div className="bg-[#F8FAFC] rounded-2xl shadow-2xl p-8 md:p-10 h-fit sticky top-8">
                         <FormComponent />
                     </div>
 
                 </div>
+            </div>
             </div>
         </section>
     );

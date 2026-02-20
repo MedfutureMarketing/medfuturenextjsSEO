@@ -68,7 +68,7 @@ const jobCategories: Record<string, JobCategory> = {
 export default function OccupationalTherapistJobs() {
   return (
     <section className="bg-slate-50 full-width-section px-8 py-[62px] mt-[148px]">
-      <div className="inner-width-section mx-auto">
+      <div className="inner-width-section mx-auto"><div className=" px-0 lg:px-0 md:px-8">
         {/* Header */}
         <div className="mb- max-w-full">
           <p className="text-[#074CA4] text-[14px] font-[500] mb-2">
@@ -108,14 +108,14 @@ export default function OccupationalTherapistJobs() {
             <JobCard category={jobCategories.senior} />
           </div>
         </div>
-      </div>
+      </div></div>
     </section>
   );
 }
 
 function JobCard({ category }: { category: JobCategory }) {
   return (
-    <div className="lg:p-10 px-4 p-5">
+    <div className="lg:py-8 px-4 p-5"><div className=" px-0 lg:px-0 md:px-0">
       <h2 className="lg:text-[18px] text-lg font-bold text-[#0A2E5C] mb-6">
         {category.title}
       </h2>
@@ -131,6 +131,6 @@ function JobCard({ category }: { category: JobCategory }) {
           </li>
         ))}
       </ul>
-    </div>
+    </div></div>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { apiGet } from "@/lib/api";
+import { createJobSlug } from "@/lib/urlUtils";
 
 interface BackendJob {
   jobdetails_id: number;
@@ -14,6 +15,14 @@ interface BackendJob {
   state_name: string;
   region_name: string | null;
   created_at: string;
+
+  // optional nested fields if you use them
+  state?: {
+    name?: string;
+  };
+  country?: {
+    name?: string;
+  };
 }
 
 interface ApiResponse {
@@ -53,7 +62,7 @@ function JobCard({ job, index }: JobCardProps) {
               <p className="text-[10px] xs:text-xs lg:text-[12px] font-semibold text-[#4A5565] uppercase tracking-wider mb-1 truncate">
                 {job.job_id}
               </p>
-              <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg font-bold text-slate-900 leading-tight break-words line-clamp-2">
+              <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-[16px] font-bold text-[#0F172A] leading-tight break-words line-clamp-2">
                 {job.job_title}
               </h3>
             </div>
@@ -69,7 +78,7 @@ function JobCard({ job, index }: JobCardProps) {
                 fill="#0A2E5C"
               />
             </svg>
-            <span className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#4A5565]">
+            <span className="text-[12px] xs:text-xs sm:text-sm lg:text-sm text-[#4A5565]">
               {job.state_name}
               {job.region_name ? `, ${job.region_name}` : ""}
             </span>
@@ -80,7 +89,7 @@ function JobCard({ job, index }: JobCardProps) {
             {job.profession_name && (
               <div className="flex items-center gap-2 xs:gap-3">
                 <div className="w-3 h-3 rounded-sm bg-gradient-to-b from-[#074CA4] to-[#040D48]" />
-                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A]">
+                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-[14px] text-[#0F172A]">
                   {job.profession_name}
                 </p>
               </div>
@@ -89,7 +98,7 @@ function JobCard({ job, index }: JobCardProps) {
             {job.engagement_type_name && (
               <div className="flex items-center gap-2 xs:gap-3">
                 <div className="w-3 h-3 rounded-sm bg-gradient-to-b from-[#074CA4] to-[#040D48]" />
-                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#0F172A]">
+                <p className="text-[11px] xs:text-xs sm:text-sm lg:text-[14px] text-[#0F172A]">
                   {job.engagement_type_name}
                 </p>
               </div>
@@ -108,7 +117,11 @@ function JobCard({ job, index }: JobCardProps) {
           {/* Button */}
           <div className="mt-4">
             <Link
-              href={`/permanent/job/${job.job_id}`}
+              href={`/permanent/job/${createJobSlug(
+                                        job.job_title,
+                                        job.state?.name || job.country?.name || 'Australia',
+                                        job.job_id
+                                      )}`}
               className="w-full block text-center cursor-pointer border border-gray-100 py-2.5 px-4 bg-slate-50 hover:bg-[#040D48] text-slate-900 hover:text-white font-semibold rounded-lg transition-all duration-300 text-sm group-hover:shadow-md transform group-hover:scale-105 active:scale-95"
             >
               View & Apply
@@ -156,7 +169,8 @@ export default function RegistrarJobListingSection() {
           
 
         <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Header Section */}
+       <div className=" px-0 lg:px-0 md:px-8">
+          {/* Header Section */}
             <div className="mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16">
                 {/* Breadcrumb */}
                 <div className="mb-3 xs:mb-4">
@@ -224,7 +238,7 @@ export default function RegistrarJobListingSection() {
             View All Jobs
           </Link>
         </div>
-      </div>
+      </div>   </div>
     </section>
   );
 }

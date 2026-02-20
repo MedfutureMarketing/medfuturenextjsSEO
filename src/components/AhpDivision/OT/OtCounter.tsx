@@ -81,7 +81,7 @@ function CounterDisplay({ item }: CounterDisplayProps) {
           </div>
         </div>
 
-        <p className="mt-1.5 xs:mt-2 sm:mt-2.5 md:mt-3 lg:mt-2 text-[11px] xs:text-xs sm:text-sm md:text-[14px] lg:text-[14px] text-slate-600 text-center leading-tight px-1 xs:px-2 max-w-full xs:max-w-[100px] sm:max-w-[110px] md:max-w-[140px] lg:max-w-none font-medium">
+        <p className="mt-1.5 xs:mt-2 sm:mt-2.5 md:mt-3 lg:mt-2 text-[11px] xs:text-xs sm:text-sm md:text-[14px] lg:text-[14px] text-slate-600 text-center leading-tight px-1 xs:px-2 max-w-full   font-medium">
           {item.label}
         </p>
       </div>
@@ -102,12 +102,12 @@ export default function RegistrarCounterSection() {
         const updatedCounters: CounterItem[] = [
           {
             value: res.occupationalTherapistJobCounts,
-            label: "Active Specialist Occupational Therapist Jobs",
+            label: "Active Specialist OT Jobs",
             suffix: "+",
           },
           {
             value: 9000,
-            label: "Top-rated Occupational Therapists in Talent Pool",
+            label: "Top-rated OT in Talent Pool",
             suffix: "+",
           },
           {
@@ -130,8 +130,8 @@ export default function RegistrarCounterSection() {
   }, []);
 
   return (
-    <section className="py-8">
-      <div className="inner-width-section mx-auto px-3 lg:px-8">
+    <section className=" mb-36">
+      <div className="inner-width-section mx-auto px-3 lg:px-8"><div className=" px-0 lg:px-0 md:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
           {counters.map((item, index) => (
             <div
@@ -144,7 +144,7 @@ export default function RegistrarCounterSection() {
             </div>
           ))}
         </div>
-      </div>
+      </div> </div>
 
       <style>{`
         @keyframes fadeInUp {

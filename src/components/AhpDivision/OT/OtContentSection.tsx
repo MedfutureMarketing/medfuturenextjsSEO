@@ -1,10 +1,10 @@
 import Image from "next/image";
-import Spimage from "@/assets/ahp/spimage.png"
+import Spimage from "@/assets/Divisionimages/occupationaltherapist.webp"
 
 const OTContentSection = () => {
     return (
-        <div className="full-width-section bg-[#C0C0C017] my-[110px] ">
-            <div className="grid lg:grid-cols-2 gap-1 p-0 inner-width-section py-[49px]">
+        <div className="full-width-section bg-[#C0C0C017] my-[110px] "><div className=" px-0 lg:px-0 md:px-8">
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-5 p-0 inner-width-section py-[49px]">
                 {/* Right Side - Image */}
                 <div className="col-span-1 flex justify-start">
                     <Image
@@ -28,7 +28,7 @@ const OTContentSection = () => {
                         We don’t push vacancies. We match OTs to roles that genuinely fit their clinical identity and lifestyle.                    </p>
                 </div>
 
-            </div>
+            </div>  </div>
         </div>
     );
 };
