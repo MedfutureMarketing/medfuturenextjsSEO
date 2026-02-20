@@ -3,8 +3,9 @@ import Spimage from "@/assets/ahp/Phy.png"
 
 const ContentSection = () => {
     return (
-        <div className="full-width-section bg-[#C0C0C017] my-[110px] ">
-            <div className="grid lg:grid-cols-2 gap-1 p-0 inner-width-section py-[49px]">
+        <div className="full-width-section bg-[#C0C0C017] mt-10 mb-[40px] ">  <div className=" px-0 lg:px-0 md:px-8">
+            
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 gap-1 p-0 inner-width-section py-[49px]">
                 {/* Left Side - Text Content */}
                 <div className="col-span-1 text-left">
                     <h2 className="lg:text-[24px]  text-lg font-bold text-[#000000] mb-4">Physiotherapist Jobs in Australia – Transparent Roles, Safe KPIs & Career Progression</h2>
@@ -32,7 +33,7 @@ const ContentSection = () => {
                     />
                 </div>
 
-            </div>
+            </div>   </div>
         </div>
     );
 };

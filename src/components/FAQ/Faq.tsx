@@ -232,6 +232,16 @@ const faqData: FAQData = {
     { question: "What practice settings do Medfuture podiatry roles include?", answer: "We recruit across private practice, community health, aged care/outreach, and senior/lead roles. We focus on transparent caseload expectations such as MSK/biomechanics, sports, paediatrics, nail surgery, and High Risk Foot/diabetes and wound care." },
     { question: "How does Medfuture match podiatrists to clinics?", answer: "We prioritise clinical fit and transparency. Before presenting roles, we clarify caseload mix, appointment length, patient numbers, KPI model, admin/NDIS documentation expectations, team structure, and clinic support so you can visualise day-to-day work before interviews." },
   ],
+  "/ahp-division/physiotherapy": [
+    { question: "What is the average caseload for a Physiotherapist in Australia?", answer: "Caseloads vary by setting. Private practice commonly runs higher patient volumes (often shorter consults), while hospital, rehab and community/NDIS roles may have fewer daily patients with higher complexity and documentation. The key is clarity on session length, daily targets, admin time and report load before you accept." },
+    { question: "Are KPI-based Physiotherapist jobs bad?", answer: "Not inherently. KPI roles can be excellent when expectations are transparent, achievable, and supported with mentoring and a fair ramp-up period. Problems usually come from unclear targets, revenue-only pressure without support, or unrealistic timeframes." },
+    { question: "How do I know if a Physiotherapist job is a burnout risk?", answer: "Common red flags include no clarity on daily consult targets, revenue KPIs without a ramp-up period, no protected admin time, high rebooking pressure, or “supportive team” messaging with no defined supervision structure." },
+    { question: "Should new graduate Physiotherapists work in private practice?", answer: "Yes—if the clinic provides structured supervision, reduced/adjusted KPIs, protected learning time, and a clear development plan. Without those, the first role can become unnecessarily stressful and limit growth." },
+    { question: "Do Physiotherapists need to pay recruitment fees?", answer: "No. Ethical healthcare recruitment should not charge candidates fees for placement. Medfuture does not charge Physiotherapists recruitment fees." },
+    { question: "Can Medfuture help if I am not actively looking?", answer: "Are regional Physiotherapist jobs worth considering?" },
+    { question: "How often do Physiotherapists change jobs?", answer: "It varies. Many Physiotherapists reassess roles every 2–4 years, often triggered by workload, mentorship gaps, progression limits, or lifestyle changes. Your best move is to compare role realities (caseload, KPIs, mentoring, autonomy), not just salary." },
+  ],
+
 
 };
 // { question: "", answer: "" },

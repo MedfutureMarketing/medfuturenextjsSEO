@@ -48,14 +48,11 @@ function JobCard({ job, index }: JobCardProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative bg-white rounded-lg border border-slate-200/70 p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
-
         <div
           className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-100/0 transition-all duration-300 pointer-events-none ${isHovered ? "from-blue-50/40 to-slate-100/20" : ""
             }`}
         />
-
         <div className="relative z-10 flex-1 flex flex-col">
-
           {/* Header */}
           <div className="flex items-start justify-between gap-2 mb-3 xs:mb-4">
             <div className="flex-1 min-w-0">
@@ -67,7 +64,6 @@ function JobCard({ job, index }: JobCardProps) {
               </h3>
             </div>
           </div>
-
           {/* Location */}
           <div className="flex items-center gap-1.5 xs:gap-2 mb-4 xs:mb-5 text-[#0F172A]">
             <svg width="10" height="13" viewBox="0 0 11 14" fill="none" className="flex-shrink-0">
@@ -83,7 +79,6 @@ function JobCard({ job, index }: JobCardProps) {
               {job.region_name ? `, ${job.region_name}` : ""}
             </span>
           </div>
-
           {/* Features */}
           <div className="space-y-2 flex-1">
             {job.profession_name && (
@@ -220,8 +215,8 @@ export default function RegistrarJobListingSection() {
                 <div
                   key={index}
                   className={`h-2 rounded-full transition-all duration-300 ${currentSlide === index
-                      ? "w-6 bg-[#074CA4]"
-                      : "w-2 bg-slate-300"
+                    ? "w-6 bg-[#074CA4]"
+                    : "w-2 bg-slate-300"
                     }`}
                 />
               ))}

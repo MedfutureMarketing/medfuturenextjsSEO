@@ -126,13 +126,13 @@ export default function PhysiotherapistJobs() {
 
   return (
     <div className="full-width-section bg-[#C0C0C017] py-12 px-4 sm:px-6 lg:px-8  mt-[140px]">
-      <div className="inner-width-section mx-auto">
+      <div className="inner-width-section mx-auto"> <div className=" px-0 lg:px-0 md:px-8">
         {/* Header */}
         <div className="mb-12">
-          <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+          <p className="text-xs lg:text-[14px] font-semibold text-[#074CA4] uppercase tracking-wide mb-2">
             Professional Roles
           </p>
-          <h1 className="lg:text-[30px] text-xl font-bold text-gray-900 mb-4">
+          <h1 className="lg:text-[30px] text-xl font-bold text-[#0F172A] mb-4">
             Physiotherapist jobs by setting (Australia)
           </h1>
           <p className="text-gray-600 lg:text-[16px] text-xs max-w-3xl">
@@ -146,7 +146,7 @@ export default function PhysiotherapistJobs() {
             <JobCard key={index} {...card} />
           ))}
         </div>
-      </div>
+      </div>  </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { apiGet } from "@/lib/api";
+import { createJobSlug } from "@/lib/urlUtils";
 
 interface BackendJob {
   jobdetails_id: number;
@@ -14,6 +15,14 @@ interface BackendJob {
   state_name: string;
   region_name: string | null;
   created_at: string;
+
+  // optional nested fields if you use them
+  state?: {
+    name?: string;
+  };
+  country?: {
+    name?: string;
+  };
 }
 
 interface ApiResponse {
@@ -38,22 +47,21 @@ function JobCard({ job, index }: JobCardProps) {
       onMouseLeave={() => setIsHovered(false)}
     >
       <div className="relative bg-white rounded-lg border border-slate-200/70 p-3 xs:p-4 sm:p-5 md:p-6 lg:p-7 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden h-full flex flex-col">
-        
+
         <div
-          className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-100/0 transition-all duration-300 pointer-events-none ${
-            isHovered ? "from-blue-50/40 to-slate-100/20" : ""
-          }`}
+          className={`absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-100/0 transition-all duration-300 pointer-events-none ${isHovered ? "from-blue-50/40 to-slate-100/20" : ""
+            }`}
         />
 
         <div className="relative z-10 flex-1 flex flex-col">
-          
+
           {/* Header */}
           <div className="flex items-start justify-between gap-2 mb-3 xs:mb-4">
             <div className="flex-1 min-w-0">
               <p className="text-[10px] xs:text-xs lg:text-[12px] font-semibold text-[#4A5565] uppercase tracking-wider mb-1 truncate">
                 {job.job_id}
               </p>
-              <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-lg font-bold text-slate-900 leading-tight break-words line-clamp-2">
+              <h3 className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-[16px] font-bold text-[#0F172A] leading-tight break-words line-clamp-2">
                 {job.job_title}
               </h3>
             </div>
@@ -69,7 +77,7 @@ function JobCard({ job, index }: JobCardProps) {
                 fill="#0A2E5C"
               />
             </svg>
-            <span className="text-[11px] xs:text-xs sm:text-sm lg:text-sm text-[#4A5565]">
+            <span className="text-[11px] xs:text-xs sm:text-sm lg:text-[12px] text-[#4A5565]">
               {job.state_name}
               {job.region_name ? `, ${job.region_name}` : ""}
             </span>
@@ -108,7 +116,11 @@ function JobCard({ job, index }: JobCardProps) {
           {/* Button */}
           <div className="mt-4">
             <Link
-              href={`/permanent/job/${job.job_id}`}
+              href={`/permanent/job/${createJobSlug(
+                              job.job_title,
+                              job.state?.name || job.country?.name || 'Australia',
+                              job.job_id
+                            )}`}
               className="w-full block text-center cursor-pointer border border-gray-100 py-2.5 px-4 bg-slate-50 hover:bg-[#040D48] text-slate-900 hover:text-white font-semibold rounded-lg transition-all duration-300 text-sm group-hover:shadow-md transform group-hover:scale-105 active:scale-95"
             >
               View & Apply
@@ -151,80 +163,81 @@ export default function RegistrarJobListingSection() {
   };
 
   return (
-        <section className="full-width-section lg:mt-[150px] lg:py-0 py-6 ">
-            {/* Background decorations */}
-          
+    <section className="full-width-section lg:mt-[150px] lg:py-0 py-6 ">
+      {/* Background decorations */}
 
-        <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10">
-            {/* Header Section */}
-            <div className="mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16">
-                {/* Breadcrumb */}
-                <div className="mb-3 xs:mb-4">
-                    <a href="#" className="text-[11px] xs:text-xs sm:text-[13px] lg:text-[14px] font-semibold text-[#074CA4] hover:text-blue-700 transition-colors">
-                            Live Physiotherapist  opportunities
-                    </a>
-                </div>
 
-                {/* Title */}
-                <div className="mb-4 xs:mb-5 sm:mb-6 md:mb-[22px]">
-                    <h2 className="text-2lg   md:text-[26px] lg:text-[30px] font-bold text-slate-900 mb-2 xs:mb-3 sm:mb-4 leading-tight">
-                            Browse Physiotherapist  Jobs
-                    </h2>
-                    <p className="text-[11px] xs:text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-[#4A5565] max-w-2xl leading-relaxed">
-                            Explore verified physiotherapist roles across healthcare settings, tailored to your skills and career aspirations.
-                    </p>
-                </div>
+      <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className=" px-0 lg:px-0 md:px-8">
+
+          {/* Header Section */}
+          <div className="mb-8 xs:mb-10 sm:mb-12 md:mb-14 lg:mb-16">
+            {/* Breadcrumb */}
+            <div className="mb-3 xs:mb-4">
+              <a href="#" className="text-[11px] xs:text-xs sm:text-[13px] lg:text-[14px] font-semibold text-[#074CA4] hover:text-blue-700 transition-colors">
+                Live Physiotherapist  opportunities
+              </a>
             </div>
 
+            {/* Title */}
+            <div className="mb-4 xs:mb-5 sm:mb-6 md:mb-[22px]">
+              <h2 className="text-2lg   md:text-[26px] lg:text-[30px] font-bold text-slate-900 mb-2 xs:mb-3 sm:mb-4 leading-tight">
+                Browse Physiotherapist  Jobs
+              </h2>
+              <p className="text-[11px] xs:text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-[#4A5565] max-w-2xl leading-relaxed">
+                Explore verified physiotherapist roles across healthcare settings, tailored to your skills and career aspirations.
+              </p>
+            </div>
+          </div>
 
-        {/* Desktop */}
-        <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-          {jobs.map((job, index) => (
-            <JobCard key={job.jobdetails_id} job={job} index={index} />
-          ))}
-        </div>
 
-        {/* Mobile Slider */}
-        <div className="lg:hidden mb-12">
-          <div
-            ref={sliderRef}
-            onScroll={handleScroll}
-            className="flex overflow-x-scroll snap-x snap-mandatory scroll-smooth gap-4 pb-4 -mx-3 px-3 scrollbar-hide"
-          >
+          {/* Desktop */}
+          <div className="hidden lg:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {jobs.map((job, index) => (
-              <div
-                key={job.jobdetails_id}
-                className="flex-shrink-0 w-full snap-center"
-                style={{ minWidth: "100%" }}
-              >
-                <JobCard job={job} index={index} />
-              </div>
+              <JobCard key={job.jobdetails_id} job={job} index={index} />
             ))}
           </div>
 
-          <div className="flex justify-center gap-2 mt-6">
-            {jobs.map((_, index) => (
-              <div
-                key={index}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  currentSlide === index
-                    ? "w-6 bg-[#074CA4]"
-                    : "w-2 bg-slate-300"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
+          {/* Mobile Slider */}
+          <div className="lg:hidden mb-12">
+            <div
+              ref={sliderRef}
+              onScroll={handleScroll}
+              className="flex overflow-x-scroll snap-x snap-mandatory scroll-smooth gap-4 pb-4 -mx-3 px-3 scrollbar-hide"
+            >
+              {jobs.map((job, index) => (
+                <div
+                  key={job.jobdetails_id}
+                  className="flex-shrink-0 w-full snap-center"
+                  style={{ minWidth: "100%" }}
+                >
+                  <JobCard job={job} index={index} />
+                </div>
+              ))}
+            </div>
 
-        <div className="flex justify-center">
-          <Link
-            href="/permanent/psychology-jobs/in-australia?page=1"
-            className="px-8 py-3 bg-[#074CA4] hover:bg-blue-700 text-white rounded-[4px] transition-all duration-300 hover:shadow-lg hover:scale-105 text-base active:scale-95"
-          >
-            View All Jobs
-          </Link>
-        </div>
-      </div>
+            <div className="flex justify-center gap-2 mt-6">
+              {jobs.map((_, index) => (
+                <div
+                  key={index}
+                  className={`h-2 rounded-full transition-all duration-300 ${currentSlide === index
+                      ? "w-6 bg-[#074CA4]"
+                      : "w-2 bg-slate-300"
+                    }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <Link
+              href="/permanent/psychology-jobs/in-australia?page=1"
+              className="px-8 py-3 bg-[#074CA4] hover:bg-blue-700 text-white rounded-[4px] transition-all duration-300 hover:shadow-lg hover:scale-105 text-base active:scale-95"
+            >
+              View All Jobs
+            </Link>
+          </div>
+        </div></div>
     </section>
   );
 }
