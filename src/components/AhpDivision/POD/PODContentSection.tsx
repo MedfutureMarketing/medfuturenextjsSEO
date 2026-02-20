@@ -3,14 +3,14 @@ import Spimage from "@/assets/ahp/POD/pod.png"
 
 const ContentSection = () => {
     return (
-        <div className="full-width-section bg-[#C0C0C017] my-[110px] ">
-            <div className="grid lg:grid-cols-2 gap-1 p-0 inner-width-section py-[49px]">
+        <div className="full-width-section bg-[#C0C0C017] mb-[40px] "><div className=" px-0 lg:px-0 md:px-8">
+            <div className="grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 lg:gap-1 md:gap-10 gap-1 p-0 inner-width-section py-[49px]">
                 {/* Right Side - Image */}
                 <div className="col-span-1 flex justify-start">
                     <Image
                         src={Spimage}
                         alt="Descriptive Alt Text"
-                        className="w-[486px] h-auto object-cover"
+                        className="lg:w-[486px] md:w-[386px] w-full h-auto object-cover"
                         priority={false}
                         loading="lazy"
                     />
@@ -31,7 +31,7 @@ const ContentSection = () => {
                       </div>
 
             </div>
-        </div>
+        </div> </div>
     );
 };
 

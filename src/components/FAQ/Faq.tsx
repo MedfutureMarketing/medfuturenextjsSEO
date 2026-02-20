@@ -190,7 +190,7 @@ const faqData: FAQData = {
 
     { question: "Do you help with clinic selection beyond salary?", answer: "Yes. We focus on supervision quality, roster safety, governance, billing model, clinical support and realistic patient load—so you choose a clinic that supports fellowship success and wellbeing." },
 
-    // { question: "", answer: "" },
+
 
 
   ],
@@ -223,8 +223,18 @@ const faqData: FAQData = {
 
   ],
 
-};
+  "/ahp-division/podiatrist": [
+    { question: "What is a reasonable KPI for a podiatrist in Australia?", answer: "A sustainable KPI depends on appointment length, caseload complexity (MSK vs High Risk Foot), documentation load (including NDIS) and admin support. Transparent clinics explain whether KPIs are revenue-based, patient-based, or mixed, and how targets ramp over time especially for graduates." },
+    { question: "How many patients per day is realistic for a podiatrist?", answer: "For many podiatrists, 20–28 patients/day can be sustainable depending on appointment length (20/30/40+ minutes), case complexity and admin time. Higher volumes should be assessed carefully against documentation requirements and clinical risk." },
+    { question: "Do Medfuture services cost podiatrists anything?", answer: "No. Medfuture does not charge podiatrists recruitment fees. Our recruitment services are funded by employers." },
+    { question: "Can Medfuture help if I’m not ready to move roles yet?", answer: "Yes. Many podiatrists engage months before a move through a confidential Podiatry Career Check, market benchmarking and role-fit planning—without pressure to apply." },
+    { question: "Are regional podiatry jobs worth considering?", answer: "Regional roles often provide stronger packages (salary incentives, relocation support), broader clinical exposure and high community impact. They can suit podiatrists seeking accelerated growth, lifestyle change or reduced metro competition." },
+    { question: "What practice settings do Medfuture podiatry roles include?", answer: "We recruit across private practice, community health, aged care/outreach, and senior/lead roles. We focus on transparent caseload expectations such as MSK/biomechanics, sports, paediatrics, nail surgery, and High Risk Foot/diabetes and wound care." },
+    { question: "How does Medfuture match podiatrists to clinics?", answer: "We prioritise clinical fit and transparency. Before presenting roles, we clarify caseload mix, appointment length, patient numbers, KPI model, admin/NDIS documentation expectations, team structure, and clinic support so you can visualise day-to-day work before interviews." },
+  ],
 
+};
+// { question: "", answer: "" },
 
 export default function FAQ() {
   const pathname = usePathname();
@@ -250,7 +260,7 @@ export default function FAQ() {
   };
 
   return (
-    <section className=" mt-[150px] full-width-section mb-[140px]">
+    <section className=" mt-[140px] full-width-section mb-[140px]">
       {/* Inject JSON-LD directly */}
       <script
         type="application/ld+json"
@@ -258,37 +268,37 @@ export default function FAQ() {
       />
 
       <div className="inner-width-section  ">
-          <div className=" px-0  lg:px-0 md:px-8">
-        <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
-          FAQ
-        </p>
-        <h2 className="lg:text-[36px] text-2xl font-[500] text-gray-900 mb-8 text-left">
-          Quick answers
-        </h2>
+        <div className=" px-0  lg:px-0 md:px-8">
+          <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
+            FAQ
+          </p>
+          <h2 className="lg:text-[36px] text-2xl font-[500] text-gray-900 mb-8 text-left">
+            Quick answers
+          </h2>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="rounded-lg border-b  overflow-hidden">
-              {/* Question */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full px-0 py-4 text-left flex cursor-pointer justify-between items-center lg:text-[16px] text-sm font-[600] text-gray-900  transition"
-              >
-                {faq.question}
-                <span className="text-blue-600 font-bold">{openIndex === index ? "-" : "+"}</span>
-              </button>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="rounded-lg border-b  overflow-hidden">
+                {/* Question */}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full px-0 py-4 text-left flex cursor-pointer justify-between items-center lg:text-[16px] text-sm font-[600] text-gray-900  transition"
+                >
+                  {faq.question}
+                  <span className="text-blue-600 font-bold">{openIndex === index ? "-" : "+"}</span>
+                </button>
 
-              {/* Answer */}
-              <div
-                className={`px-0 pb-0 mb-4 text-gray-700 lg:text-[16px] text-xs transition-all duration-300 ${openIndex === index ? "max-h-96 opacity-100 pt-2" : "max-h-0 opacity-0 overflow-hidden"
-                  }`}
-              >
-                {faq.answer}
+                {/* Answer */}
+                <div
+                  className={`px-0 pb-0 mb-4 text-gray-700 lg:text-[16px] text-xs transition-all duration-300 ${openIndex === index ? "max-h-96 opacity-100 pt-2" : "max-h-0 opacity-0 overflow-hidden"
+                    }`}
+                >
+                  {faq.answer}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      </div></div>
+            ))}
+          </div>
+        </div></div>
     </section>
   );
 }

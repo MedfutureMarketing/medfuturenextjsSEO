@@ -7,7 +7,7 @@ import Link from 'next/link';
 const OtHeroSection = () => {
     return (
         <section className="bg-[#FFFFFF] full-width-section  ">
-            <div className="inner-width-section mx-auto lg:py-[36px] py-12">
+            <div className="inner-width-section mx-auto lg:py-[36px] py-12"><div className=" px-0 lg:px-0 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-8 lg:gap-24 items-start">
 
                     {/* LEFT CONTENT */}
@@ -41,7 +41,6 @@ const OtHeroSection = () => {
                                     Talk to a Consultant
                                 </Link>
                             </div>
-
                             {/* VALUE CARDS */}
                             <div className="flex flex-wrap gap-4 mt-[40px] justify-start">
                                 <div className="bg-[#074CA4]/8 border lg:block hidden border-gray-300 border-opacity-20 rounded-lg py-6 px-3 backdrop-blur-sm flex-1 min-w-[192px] max-w-[192px]">
@@ -50,14 +49,12 @@ const OtHeroSection = () => {
                                         Australia-wide coverage with role scorecards.
                                     </p>
                                 </div>
-
                                 <div className="bg-[#074CA4]/8 border lg:block hidden border-gray-300 border-opacity-20 rounded-lg  py-6 px-3 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
                                     <h3 className="text-[14px] text-[#040D48] font-[700]">Regional roles</h3>
                                     <p className="text-[12px] text-[#040D48] mt-[10px]">
                                         Australia-wide coverage with role scorecards.
                                     </p>
                                 </div>
-
                                 <div className="bg-[#074CA4]/8 border lg:block hidden border-gray-300 border-opacity-20 rounded-lg  py-6 px-3 backdrop-blur-sm flex-1 min-w-[150px] max-w-[192px]">
                                     <h3 className="text-[14px] text-[#040D48] font-[700]">Clinic-fit matching</h3>
                                     <p className="text-[12px] text-[#040D48] mt-[10px]">
@@ -65,17 +62,14 @@ const OtHeroSection = () => {
                                     </p>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                     {/* RIGHT FORM — STATIC */}
-                    <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-10 h-fit sticky top-8">
+                    <div className="bg-[#F8FAFC] rounded-2xl shadow-2xl p-8 md:p-10 h-fit sticky top-8">
                         <FormComponent />
                     </div>
-
                 </div>
-            </div>
+            </div>        </div>
         </section>
     );
 };

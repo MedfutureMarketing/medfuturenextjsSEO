@@ -56,7 +56,7 @@ const jobCategories: JobCategory[] = [
 export default function PodiatristJobsSection() {
   return (
     <section className="bg-[#C0C0C017] full-width-section py-12 px-4 sm:px-6 lg:px-8 mt-[148px]">
-      <div className="inner-width-section mx-auto">
+      <div className="inner-width-section mx-auto"><div className=" px-0 lg:px-0 md:px-8">
         {/* Header */}
         <div className="mb-12">
           <p className="text-[#074CA4] text-[14px] font-medium tracking-wide uppercase mb-3">
@@ -119,7 +119,7 @@ export default function PodiatristJobsSection() {
             </div>
           ))}
         </div>
-      </div>
+      </div>     </div>
     </section>
   );
 }
