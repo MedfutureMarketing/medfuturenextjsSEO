@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type Ripple = { id: number; x: number; y: number };
 
@@ -43,8 +43,36 @@ const NAV_ITEMS = [
 
 export default function BottomNav() {
   const pathname = usePathname();
+
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const rippleId = useRef(0);
+
+  // 👇 NEW: visibility state
+  const [visible, setVisible] = useState(true);
+  const lastScrollY = useRef(0);
+
+  // 👇 NEW: scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // ignore tiny scrolls (prevents flicker)
+      if (Math.abs(currentScrollY - lastScrollY.current) < 5) return;
+
+      if (currentScrollY > lastScrollY.current && currentScrollY > 50) {
+        // scrolling DOWN → hide
+        setVisible(false);
+      } else {
+        // scrolling UP → show
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const createRipple = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -65,12 +93,13 @@ export default function BottomNav() {
   };
 
   return (
-    <nav className="fixed bottom-0 inset-x-0 z-50 lg:hidden">
+    <nav
+      className={`fixed bottom-0 inset-x-0 z-50 lg:hidden transition-transform duration-300 ${
+        visible ? 'translate-y-0' : 'translate-y-full'
+      }`}
+    >
       <div className="backdrop-blur-xl bg-white/90 border-t border-white/60 shadow-[0_-8px_32px_rgba(0,0,0,0.08)]">
-
-        {/* Responsive container */}
         <div className="flex justify-between items-center px-2 sm:px-6 md:px-10 py-2">
-
           {NAV_ITEMS.map((item) => {
             const isActive =
               pathname === item.href ||
@@ -97,25 +126,21 @@ export default function BottomNav() {
                 {/* Icon */}
                 <div
                   className={`flex items-center justify-center rounded-xl transition-all duration-300
-                  ${isActive
+                  ${
+                    isActive
                       ? `bg-gradient-to-br ${item.gradient} text-white shadow-lg scale-100`
                       : 'bg-white text-gray-500 shadow-sm scale-95'
-                    }
+                  }
                   `}
-
                 >
-                  <span className="w-5 h-5 sm:w-6 sm:h-6">
-                    {item.icon}
-                  </span>
+                  <span className="w-5 h-5 sm:w-6 sm:h-6">{item.icon}</span>
                 </div>
 
                 {/* Label */}
                 <span
-                  className={`
-                    mt-1 font-medium transition-colors
-                    text-[10px] sm:text-xs md:text-sm
-                    ${isActive ? 'text-black' : 'text-gray-500'}
-                  `}
+                  className={`mt-1 font-medium transition-colors text-[10px] sm:text-xs md:text-sm ${
+                    isActive ? 'text-black' : 'text-gray-500'
+                  }`}
                 >
                   {item.label}
                 </span>
