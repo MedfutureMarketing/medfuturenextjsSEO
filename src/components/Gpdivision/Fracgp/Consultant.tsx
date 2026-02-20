@@ -150,7 +150,7 @@ export default async function ConsultantsPage() {
         <div className="full-width-section bg-[#F7F7F782] mt-6 lg:mt-[130px]">
   {/* Header */}
   <div className="px-4 sm:px-6 inner-width-section lg:px-0 py-8 lg:py-[83px]">
-    <div className=" px-0 lg:px-8 md:px-8"><div className=" mx-auto">
+    <div className=" px-0 lg:px-0 md:px-8"><div className=" mx-auto">
       <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
         Meet Our Consultants
       </p>

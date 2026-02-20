@@ -258,7 +258,7 @@ export default function FAQ() {
       />
 
       <div className="inner-width-section  ">
-          <div className=" px-3  lg:px-8 md:px-8">
+          <div className=" px-0  lg:px-0 md:px-8">
         <p className="text-xs lg:text-[14px] text-[#074CA4] font-medium mb-2">
           FAQ
         </p>

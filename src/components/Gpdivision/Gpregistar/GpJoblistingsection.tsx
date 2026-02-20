@@ -165,7 +165,7 @@ export default function RegistrarJobListingSection() {
   return (
     <section className="full-width-section lg:mt-[150px] lg:py-0 py-6 sm:py-10 lg:py-12 mb-16">
       <div className="inner-width-section mx-auto px-3 sm:px-6 lg:px-8 relative z-10">
-
+<div className=" px-0 lg:px-0 md:px-8">
         <div className="mb-10">
           <h2 className="md:text-[26px] lg:text-[30px] font-bold text-slate-900 leading-tight">
             Browse Registrar Jobs by state, billing model, DPA/MMM
@@ -221,7 +221,7 @@ export default function RegistrarJobListingSection() {
             View All Jobs
           </Link>
         </div>
-      </div>
+      </div></div>
     </section>
   );
 }

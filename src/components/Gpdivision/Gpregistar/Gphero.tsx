@@ -7,8 +7,9 @@ import Link from 'next/link';
 const HeroSection = () => {
     return (
         <section className="bg-[#040D48] full-width-section  ">
-            <div className="inner-width-section mx-auto lg:py-[36px] py-4">
+            <div className="inner-width-section mx-auto lg:py-[36px] py-4"><div className=" px-0 lg:px-0 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-8 lg:gap-24 items-start">
+
 
                     {/* LEFT CONTENT */}
                     <div className="flex flex-col justify-center ">
@@ -69,7 +70,7 @@ Built around progression to FRACGP / FACRRM.                                    
                         <FormComponent />
                     </div>
 
-                </div>
+                </div>     </div>
             </div>
         </section>
     );

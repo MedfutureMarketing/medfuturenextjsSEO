@@ -9,7 +9,7 @@ import divisionimage2 from "@/assets/Divisionimages/divisionimage2.png";
 export default function Fracgpsecondsection() {
     return (
         <section className="full-width-section mt-8 xs:mt-12 sm:mt-16 mt-20 lg:mt-[97px]">
-            <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 lg:px-8">
+            <div className="inner-width-section mx-auto px-3 xs:px-4 sm:px-6 lg:px-8"> <div className=" px-0 lg:px-0 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-[0.8fr_1.5fr] gap-6 sm:gap-8 md:gap-16 lg:gap-24 items-start">
                     {/* Left Content */}
                     {/* Right Image Grid - Hidden on mobile and tablet */}
@@ -83,7 +83,7 @@ export default function Fracgpsecondsection() {
                 <div className="grid gap-6 xs:gap-8 sm:gap-10 md:gap-12 mt-5 lg:mt-20 mb-24">
                     <CounterSection />
                 </div>
-            </div>
+            </div>   </div>
         </section>
     );
 }
