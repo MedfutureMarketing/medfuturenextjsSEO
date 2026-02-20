@@ -3,8 +3,8 @@ import Spimage from "@/assets/ahp/spimage.png"
 
 const ContentSection = () => {
     return (
-        <div className="full-width-section bg-[#C0C0C017] my-[110px] ">
-            <div className="grid lg:grid-cols-2 gap-16 p-8 inner-width-section py-[49px]">
+        <div className="full-width-section bg-[#C0C0C017] lg:mt-[40px] "><div className=" px-0 lg:px-0 md:px-8">
+            <div className="grid md:grid-cols-2 gird-cols-1 lg:grid-cols-2 gap-16 p-8 inner-width-section py-[49px]">
                 {/* Left Side - Text Content */}
                 <div className="col-span-1">
                     <h1 className="lg:text-[24px]  text-lg font-bold text-[#000000] mb-4">Caseload-Transparent • Supervision-First • Career-Focused Speech Pathology Roles</h1>
@@ -21,12 +21,12 @@ const ContentSection = () => {
                     <Image
                         src={Spimage}
                         alt="Descriptive Alt Text"
-                        className="w-[486px] h-auto object-cover"
+                        className="lg:w-[486px] h-auto object-cover"
                         priority={false}
                         loading="lazy"
                     />
                 </div>
-            </div>
+            </div>   </div>
         </div>
     );
 };

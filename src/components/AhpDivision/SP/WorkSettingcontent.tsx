@@ -5,7 +5,7 @@ import Worksettings from "@/assets/ahp/worksettings.png";
 const WorkSettingContent: React.FC = () => {
   return (
     <div className="full-width-section bg-[#E2E8F02E] mt-[72px] sm:mt-[96px] lg:mt-[146px]">
-      <div className="py-[40px] sm:py-[52px] inner-width-section">
+      <div className="py-[40px] sm:py-[52px] inner-width-section"><div className=" px-0 lg:px-0 md:px-8">
         {/* Breadcrumb */}
         <div className="mb-3 xs:mb-4">
           <a
@@ -69,7 +69,7 @@ const WorkSettingContent: React.FC = () => {
           </ul>
         </div>
       </section>
-    </div>
+    </div>  </div>
   );
 };
 

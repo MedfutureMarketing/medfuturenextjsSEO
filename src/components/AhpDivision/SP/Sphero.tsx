@@ -7,7 +7,7 @@ import Link from 'next/link';
 const HeroSection = () => {
     return (
         <section className="bg-[#FFFFFF] full-width-section  ">
-            <div className="inner-width-section mx-auto lg:py-[36px] py-12">
+            <div className="inner-width-section mx-auto lg:py-[36px] py-12"> <div className=" px-0 lg:px-0 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_0.9fr] gap-8 lg:gap-24 items-start">
 
                     {/* LEFT CONTENT */}
@@ -73,6 +73,7 @@ const HeroSection = () => {
                         <FormComponent />
                     </div>
 
+                </div>
                 </div>
             </div>
         </section>

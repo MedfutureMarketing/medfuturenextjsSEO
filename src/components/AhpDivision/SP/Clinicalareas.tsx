@@ -4,7 +4,7 @@ export default function ClinicalAreas() {
     return (
         <div className="full-width-section py-[140px] ">
             <div className="inner-width-section mx-auto">
-                {/* Header Section */}
+                {/* Header Section */}<div className=" px-0 lg:px-0 md:px-8">
                 {/* Grid Section */}
                 <div className="grid grid-cols-2 gap-6">
                     {/* Paediatric & Developmental */}
@@ -19,7 +19,7 @@ export default function ClinicalAreas() {
                             Your clinical identity matters. We don’t force generalist roles onto specialists.
                         </p>
                     </div>
-                    <div className="col-span-1 bg-gradient-to-b from-[#074CA4] to-white-400 rounded-lg p-8 text-white">
+                    <div className="col-span-1 bg-gradient-to-b from-[#074CA4]  via-[#3F85D9] to-[#D6EAFF] rounded-lg p-8 text-white">
                         <h2 className="lg:text-[18px] text-sm font-bold mb-6">Paediatric & Developmental</h2>
                         <ul className="space-y-1 lg:text-[16px] text-xs">
                             <li className="flex items-start">
@@ -50,7 +50,7 @@ export default function ClinicalAreas() {
                     </div>
 
                     {/* Service Delivery Models */}
-                    <div className="col-span-1 bg-gradient-to-b from-[#074CA4] to-white-400 rounded-lg p-8 text-white">
+                    <div className="col-span-1 bg-gradient-to-b from-[#074CA4]  via-[#3F85D9] to-[#D6EAFF] rounded-lg p-8 text-white">
                         <h2 className="lg:text-[18px] text-sm font-bold mb-6">Service Delivery Models</h2>
                         <ul className="space-y-1 lg:text-[16px] text-xs">
                             <li className="flex items-start ">
@@ -73,7 +73,7 @@ export default function ClinicalAreas() {
                     </div>
 
                     {/* Adult & Neuro */}
-                    <div className="col-span-1 bg-gradient-to-b from-[#074CA4] to-white-400 rounded-lg p-8 text-white">
+                    <div className="col-span-1 bg-gradient-to-b from-[#074CA4]  via-[#3F85D9] to-[#D6EAFF] rounded-lg p-8 text-white">
                         <h2 className="lg:text-[18px] text-sm font-bold mb-6">Adult & Neuro</h2>
                         <ul className="space-y-1 lg:text-[16px] text-xs">
                             <li className="flex items-start">
@@ -95,7 +95,7 @@ export default function ClinicalAreas() {
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div></div>
         </div>
     );
 }

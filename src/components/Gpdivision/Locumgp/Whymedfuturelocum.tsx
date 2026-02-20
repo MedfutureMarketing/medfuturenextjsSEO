@@ -80,7 +80,7 @@ export default function MedfuturePage() {
     ];
 
     return (
-        <div className="bg-white pb-[160px] lg:mt-[160px] mt-24">
+        <div className="bg-white  lg:mt-[130px] mt-24">
             {/* Header Section */}<div className=" px-0 lg:px-0 md:px-8">
             <div className="inner-width-section mx-auto  ">
                 <div className="mb-2">

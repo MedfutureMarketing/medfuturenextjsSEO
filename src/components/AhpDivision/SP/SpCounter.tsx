@@ -130,7 +130,7 @@ export default function RegistrarCounterSection() {
   }, []);
 
   return (
-    <section className="py-8">
+    <section className="py-8"><div className=" px-0 lg:px-0 md:px-8">
       <div className="inner-width-section mx-auto px-3 lg:px-8">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
           {counters.map((item, index) => (
@@ -143,7 +143,7 @@ export default function RegistrarCounterSection() {
               <CounterDisplay item={item} />
             </div>
           ))}
-        </div>
+        </div> </div>
       </div>
 
       <style>{`
