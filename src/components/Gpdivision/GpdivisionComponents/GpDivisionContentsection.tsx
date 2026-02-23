@@ -67,7 +67,7 @@ const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
     return (
         <div className="full-width-section">
             <div className="inner-width-section mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-20">
 
                     {/* ================= MAIN CONTENT ================= */}
                     <div className="lg:col-span-2">

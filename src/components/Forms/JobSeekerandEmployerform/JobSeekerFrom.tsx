@@ -24,6 +24,11 @@ const verifyEmailFormat = (email: string): boolean => {
   return emailRegex.test(email);
 };
 
+const verifyPhoneNumberFormat = (phoneNumber: string): boolean => {
+  const phoneNumberRegex = /^\+?(\d{11}|\d{12}|\d{13})$/;
+  return phoneNumberRegex.test(phoneNumber);
+};
+
 export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerFormProps) {
   const [professions, setProfessions] = useState<Profession[]>([]);
   const [specialities, setSpecialities] = useState<Speciality[]>([]);
@@ -31,6 +36,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [lockedProfessionId, setLockedProfessionId] = useState<number | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [notification, setNotification] = useState({
     show: false,
@@ -197,7 +203,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
         : !verifyEmailFormat(formData.email)
         ? "Please enter a valid email address"
         : "",
-      phone: !formData.phone ? "Please enter your phone number" : "",
+      phone: !formData.phone ? "Please enter your phone number" : !verifyPhoneNumberFormat(formData.phone) ? "Please enter a valid phone number" : "",
       profession: !formData.profession ? "Please select a profession" : "",
       specialty: !formData.specialty ? "Please select a specialty" : "",
       resume: !uploadedFile ? "Please upload your CV" : "",
@@ -217,7 +223,13 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Check terms agreement
+    setTouched(true);
+    const errors = validateForm();
+
+    if (Object.values(errors).some((error) => error)) {
+      return;
+    }
+
     const isAgreeBoxChecked = agreeCheckboxRef.current?.checked;
     if (!isAgreeBoxChecked) {
       setNotification({
@@ -226,13 +238,6 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
         message: "Please agree to the Terms & Conditions and Privacy Policy",
         type: "error",
       });
-      return;
-    }
-
-    setTouched(true);
-    const errors = validateForm();
-
-    if (Object.values(errors).some((error) => error)) {
       return;
     }
 
@@ -335,8 +340,14 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
           agree: false,
           subscribe: false,
         });
+
         setUploadedFile(null);
         setTouched(false);
+
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
+
         if (agreeCheckboxRef.current) {
           agreeCheckboxRef.current.checked = false;
         }
@@ -509,6 +520,7 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
               Upload CV (PDF or DOC)
             </label>
             <input
+              ref={fileInputRef}
               type="file"
               accept=".pdf,.doc,.docx"
               onChange={handleFileChange}

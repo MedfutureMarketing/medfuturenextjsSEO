@@ -241,6 +241,10 @@ const faqData: FAQData = {
     { question: "Can Medfuture help if I am not actively looking?", answer: "Are regional Physiotherapist jobs worth considering?" },
     { question: "How often do Physiotherapists change jobs?", answer: "It varies. Many Physiotherapists reassess roles every 2–4 years, often triggered by workload, mentorship gaps, progression limits, or lifestyle changes. Your best move is to compare role realities (caseload, KPIs, mentoring, autonomy), not just salary." },
   ],
+   "/general-practice-division": [
+    { question: "", answer: "" },
+   ],
+
 
 
 };

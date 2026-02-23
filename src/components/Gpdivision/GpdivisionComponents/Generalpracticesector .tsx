@@ -22,7 +22,7 @@ export default function GeneralPracticeSector() {
                 </div>
 
                 {/* Main Content */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-5 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-5 items-center">
                     {/* Left Column - Content */}
                     <div>
                         <h2 className="text-3xl md:text-[30px] font-bold text-[#0F172A] mb-8">

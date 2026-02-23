@@ -55,8 +55,6 @@ export default function JobSeekerHub({ query = "" }: { query?: string }) {
 
     if (selectedLink) {
       router.push(selectedLink);
-    } else if (search.trim()) {
-      router.push(`/job-search?q=${encodeURIComponent(search)}`);
     }
   };
   return (

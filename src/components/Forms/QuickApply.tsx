@@ -261,6 +261,13 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
       return;
     }
 
+    setTouched(true);
+    const errors = validateForm();
+
+    if (Object.values(errors).some(error => error)) {
+      return;
+    }
+
     const isAgreeBoxChecked = agreeCheckboxRef.current?.checked;
     if (!isAgreeBoxChecked) {
       setNotification({
@@ -269,13 +276,6 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
         message: "Please agree to the Terms of Use and Privacy Policy",
         type: "error"
       });
-      return;
-    }
-
-    setTouched(true);
-    const errors = validateForm();
-
-    if (Object.values(errors).some(error => error)) {
       return;
     }
 

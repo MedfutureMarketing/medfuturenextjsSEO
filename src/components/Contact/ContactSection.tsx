@@ -139,6 +139,7 @@ useEffect(() => {
       });
 
       setSuccess("Your enquiry has been submitted successfully.");
+      setLoading(false);
       setFormData({
         name: "",
         email: "",
