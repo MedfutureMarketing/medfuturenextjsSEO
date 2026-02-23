@@ -121,14 +121,14 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     type="text"
                     name="first_name"
                     placeholder="First Name"
-                    className="input h-[40px] border border-[#E2E8F0] text-[#4A5565] rounded-[8px] text-[12px] px-[13px]"
+                    className="input h-[40px] bg-white border border-[#E2E8F0] text-[#4A5565] rounded-[8px] text-[12px] px-[13px]"
                     required
                 />
                 <input
                     type="text"
                     name="last_name"
                     placeholder="Last Name"
-                    className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                     required
                 />
             </div>
@@ -139,13 +139,13 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     type="tel"
                     name="phone_number"
                     placeholder="Phone Number"
-                    className="input h-[40px] text-[#4A5565] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    className="input h-[40px] bg-white text-[#4A5565] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                 />
                 <input
                     type="email"
                     name="email"
                     placeholder="Email"
-                    className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                    className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                     required
                 />
             </div>
@@ -160,11 +160,11 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                             type="text"
                             name="ahpraNo"
                             placeholder="AHPRA Number"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         />
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred State</option>
                             <option value="NSW">NSW</option>
@@ -179,7 +179,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                             type="text"
                             name="Expectations"
                             placeholder="Income Target/Expectations"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] border bg-white  border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         />
 
                         {/* <select
@@ -200,7 +200,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">AHPRA registration status</option>
                             <option value="NSW">NSW</option>
@@ -210,7 +210,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Pathway</option>
                             <option value="full-time">Full-time</option>
@@ -221,7 +221,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred MMM range</option>
                             <option value="day">Day</option>
@@ -246,7 +246,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Engagement Type</option>
                             <option value="NSW">NSW</option>
@@ -256,7 +256,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white  border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred State*</option>
                             <option value="full-time">Full-time</option>
@@ -267,7 +267,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Start  Date</option>
                             <option value="day">Day</option>
@@ -276,7 +276,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="incomeTarget"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">End  Date</option>
                             <option value="50k-80k">$50,000 - $80,000</option>
@@ -292,7 +292,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Setting</option>
                             <option value="NSW">NSW</option>
@@ -302,7 +302,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Clinical Focus</option>
                             <option value="full-time">Full-time</option>
@@ -313,7 +313,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Career Stage</option>
                             <option value="day">Day</option>
@@ -322,7 +322,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="incomeTarget"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Work Style/ KPI Preference</option>
                             <option value="50k-80k">$50,000 - $80,000</option>
@@ -338,7 +338,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Specialty</option>
                             <option value="NSW">NSW</option>
@@ -348,7 +348,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Seniority</option>
                             <option value="full-time">Full-time</option>
@@ -359,7 +359,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Engagement Type</option>
                             <option value="day">Day</option>
@@ -368,7 +368,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="incomeTarget"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred State</option>
                             <option value="50k-80k">$50,000 - $80,000</option>
@@ -384,7 +384,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Specialty</option>
                             <option value="NSW">NSW</option>
@@ -394,7 +394,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Seniority</option>
                             <option value="full-time">Full-time</option>
@@ -405,7 +405,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Engagement Type</option>
                             <option value="day">Day</option>
@@ -414,7 +414,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="incomeTarget"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred State</option>
                             <option value="50k-80k">$50,000 - $80,000</option>
@@ -430,7 +430,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Specialty</option>
                             <option value="NSW">NSW</option>
@@ -440,7 +440,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Seniority</option>
                             <option value="full-time">Full-time</option>
@@ -451,7 +451,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Engagement Type</option>
                             <option value="day">Day</option>
@@ -460,7 +460,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="incomeTarget"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred State</option>
                             <option value="50k-80k">$50,000 - $80,000</option>
@@ -476,7 +476,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="preferredState"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Registrational Level</option>
                             <option value="NSW">NSW</option>
@@ -486,7 +486,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
                         <select
                             name="availability"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred Setting</option>
                             <option value="full-time">Full-time</option>
@@ -497,7 +497,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
-                            className="input h-[40px] border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
+                            className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
                         >
                             <option value="">Preferred State</option>
                             <option value="day">Day</option>
@@ -526,7 +526,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     required
                 />
 
-                <span className="flex flex-wrap gap-1">
+                <span className="flex text-gray-300 flex-wrap gap-1">
                     <span>I agree to the</span>
 
                     <Link
@@ -555,7 +555,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
             {/* Submit */}
             <button
                 type="submit"
-                className="w-full h-[50px] bg-[#074CA4] cursor-pointer mt-[22px] hover:bg-blue-800 text-white rounded-[4px] transition"
+                className="w-full h-[50px] bg-[#074CA4] cursor-pointer hover:bg-blue-800 text-white rounded-[4px] transition"
                 disabled={loading}
             >
                 {loading ? 'Submitting…' : 'Submit'}

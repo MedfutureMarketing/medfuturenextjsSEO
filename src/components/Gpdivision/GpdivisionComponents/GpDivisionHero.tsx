@@ -107,7 +107,7 @@ const HeroComponent: React.FC = () => {
                                     <div className="relative">
                                         <button
                                             onClick={closeModal}
-                                            className="absolute top-0 right-1 cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
+                                            className="absolute top-0 right-1 text-white cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
                                         >
                                             ✕
                                         </button>
@@ -181,7 +181,7 @@ const HeroComponent: React.FC = () => {
                                         </div>
 
                                         {/* Form Section */}
-                                        <div className="bg-white px-6 py-4 rounded-[4px] border border-white/20">
+                                        <div className=" rounded-[4px] ">
                                             <div className="max-h-[600px] overflow-y-auto">
                                                 {/* Pass the selected role slug to DynamicForm */}
                                                 <DynamicForm selectedRole={selectedRoleData.slug} />

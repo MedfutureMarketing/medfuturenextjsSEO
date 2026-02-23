@@ -51,7 +51,7 @@ const HeroComponent: React.FC = () => {
 
     return (
         <>
-            <section className="relative full-width-section w-full overflow-hidden py-10 sm:py-14 lg:py-16 px-4 sm:px-6 lg:-mt-11">
+            <section className="relative full-width-section w-full overflow-hidden py-10 sm:py-14 lg:py-16 px-4 sm:px-6 -mt-11">
                 {/* Background Image Overlay */}
                 <div className="absolute inset-0 pointer-events-none">
                     <Image
@@ -70,7 +70,7 @@ const HeroComponent: React.FC = () => {
 
                         {/* Left Content */}
                         <div className="lg:col-span-7">
-                            <h1 className="text-lg sm:text-xl lg:text-[36px] font-bold mb-4 lg:mb-6 leading-snug lg:leading-tight">
+                            <h1 className="text-lg sm:text-xl lg:text-[36px] font-bold mb-6 lg:mb-6 leading-snug lg:leading-tight">
                                 Allied Health Jobs in Australia
                                 <span className="block mt-1">
                                     Speech Pathologists • OTs • Physiotherapists • Podiatrists
@@ -106,15 +106,17 @@ const HeroComponent: React.FC = () => {
                         </div>
 
                         {/* Right Content */}
-                        <div className="bg-white/30 p-5 sm:p-6 lg:p-8 border border-gray-600/30 lg:col-span-5">
+                        <div className="bg-white/30  py-4 px-6 border border-gray-600/30 lg:col-span-5">
                             <div>
                                 {selectedRole && (
-                                    <button
-                                        onClick={closeModal}
-                                        className="absolute top-0 right-1 cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
-                                    >
-                                        ✕
-                                    </button>
+                                    <div className="relative">
+                                        <button
+                                            onClick={closeModal}
+                                            className="absolute top-0 right-1 text-white cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
+                                        >
+                                            ✕
+                                        </button>
+                                    </div>
                                 )}
                                 <h2 className="text-white text-lg sm:text-xl md:text-[16px] font-semibold mb-2">
                                     Tell us what you want next
@@ -158,7 +160,7 @@ const HeroComponent: React.FC = () => {
                                         </div>
 
                                         {/* Form Section */}
-                                        <div className="bg-white p-4 sm:p-5 rounded-[4px] border border-white/20">
+                                        <div className="">
                                             <div className="max-h-[600px] overflow-y-auto">
                                                 {/* Pass the selected role slug to DynamicForm */}
                                                 <DynamicForm selectedRole={selectedRoleData.slug} />
