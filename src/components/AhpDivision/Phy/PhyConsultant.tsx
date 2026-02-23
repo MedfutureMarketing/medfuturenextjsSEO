@@ -216,9 +216,9 @@ export default async function ConsultantsPage() {
         </div>
 
       </div>
-    </div>   </div>
+    </div>  
+   </div>
   </div>
 </div>
-
     );
 }

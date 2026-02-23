@@ -7,21 +7,29 @@ import { API_BASE_URL } from '@/lib/api';
 
 /* eslint-disable react/no-unescaped-entities */
 
-const DynamicComponent = () => {
+interface DynamicComponentProps {
+    selectedRole?: string; // e.g., "fracgp-facrrm", "gp-registrars", "locum-gp", "speech-pathology", etc.
+}
+
+const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => {
     const pathname = usePathname();
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    const isFACRRM = pathname === '/general-practice-division/fracgp-facrrm';
-    const isGpRegistrars = pathname === '/general-practice-division/gp-registrars';
-    const islocumgp = pathname === '/general-practice-division/locum-gp';
-    const isSpeech = pathname === '/ahp-division/speech-pathology';
-    const isOccupational = pathname === '/ahp-division/occupational-therapist';
-    const ispodiatrist = pathname === '/ahp-division/podiatrist';
-    const isphysiotherapy = pathname === '/ahp-division/physiotherapy';
-    const ispsychology = pathname === '/mental-health/psychology';
-    const hideHeader = pathname === '/general-practice-division';
+    // Determine form type - first check selectedRole prop, then fall back to pathname
+    const formType = selectedRole || (pathname ? pathname.split('/').filter(Boolean).pop() : '');
+
+    // Form type conditionals - check selectedRole prop first, then pathname
+    const isFACRRM = selectedRole === 'fracgp-facrrm' || pathname === '/general-practice-division/fracgp-facrrm';
+    const isGpRegistrars = selectedRole === 'gp-registrars' || pathname === '/general-practice-division/gp-registrars';
+    const islocumgp = selectedRole === 'locum-gp' || pathname === '/general-practice-division/locum-gp';
+    const isSpeech = selectedRole === 'speech-pathology' || pathname === '/ahp-division/speech-pathology';
+    const isOccupational = selectedRole === 'occupational-therapist' || pathname === '/ahp-division/occupational-therapist';
+    const ispodiatrist = selectedRole === 'podiatrist' || pathname === '/ahp-division/podiatrist';
+    const isphysiotherapy = selectedRole === 'physiotherapy' || pathname === '/ahp-division/physiotherapy';
+    const ispsychology = selectedRole === 'psychology' || pathname === '/mental-health/psychology';
+    const hideHeader = pathname === '/general-practice-division' || !!selectedRole;
 
 
 
@@ -43,9 +51,8 @@ const DynamicComponent = () => {
         const agreeInput = form.querySelector('input[name="agree_terms"]') as HTMLInputElement | null;
         const agree_terms = !!agreeInput && agreeInput.checked;
 
-        // derive profession_slug from pathname (last segment)
-        const segments = pathname ? pathname.split('/').filter(Boolean) : [];
-        const profession_slug = segments.length ? segments[segments.length - 1] : '';
+        // derive profession_slug from selectedRole prop or pathname
+        const profession_slug = selectedRole || (pathname ? pathname.split('/').filter(Boolean).pop() : '');
 
         // collect additional fields into array (key/value pairs)
         const fd = new FormData(form);
@@ -109,7 +116,7 @@ const DynamicComponent = () => {
             </div>)}
 
             {/* First / Last Name */}
-            <div className="grid grid-cols-2 gap-[8px] mt-[24px]">
+            <div className="grid grid-cols-2 gap-[8px]">
                 <input
                     type="text"
                     name="first_name"
@@ -232,6 +239,7 @@ const DynamicComponent = () => {
                     </div>
                 </>
             )}
+
             {/* locum Gp */}
             {islocumgp && (
                 <>
@@ -323,6 +331,7 @@ const DynamicComponent = () => {
                     </div>
                 </>
             )}
+
             {/* ot */}
             {isOccupational && (
                 <>
@@ -368,6 +377,7 @@ const DynamicComponent = () => {
                     </div>
                 </>
             )}
+
             {/* pod */}
             {ispodiatrist && (
                 <>
@@ -413,6 +423,7 @@ const DynamicComponent = () => {
                     </div>
                 </>
             )}
+
             {/* Phy */}
             {isphysiotherapy && (
                 <>
@@ -458,6 +469,7 @@ const DynamicComponent = () => {
                     </div>
                 </>
             )}
+
             {/* psy */}
             {ispsychology && (
                 <>
@@ -503,6 +515,7 @@ const DynamicComponent = () => {
                     </div>
                 </>
             )}
+
 
             {/* ================= TERMS ================= */}
             <label className="flex items-start gap-2 mt-[22px] text-sm text-gray-600 ">

@@ -7,26 +7,36 @@ import backgroundPattern from '@/assets/Divisionimages/gpdivision.webp';
 import Image from 'next/image';
 import DynamicForm from '@/components/Forms/DynamicFrom'; // Adjust path as needed
 
+interface Role {
+    name: string;
+    slug: string;
+    description: string;
+}
+
 const HeroComponent: React.FC = () => {
     const [selectedRole, setSelectedRole] = useState<string | null>(null);
 
-    const roles = [
+    const roles: Role[] = [
         {
-            name: "Speech Pathologist",
-            description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
+            name: "I'm a Specialist GP (FRACGP/FACRRM)",
+            slug: "fracgp-facrrm",
+            description: "Metro, regional, rural • DPA/MMM mapping • flexible rosters"
         },
         {
-            name: "Occupational Therapist",
-            description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
+            name: "I'm a GP Registrar (RACGP/ACRRM)",
+            slug: "gp-registrars",
+            description: "Supervisor-verified clinics • training-safe placements"
         },
         {
-            name: "Physiotherapist",
-            description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
+            name: "I'm Looking for GP Locum Roles",
+            slug: "locum-gp",
+            description: "Short/long-term locums • transparent rates • dedicated support"
         },
-        {
-            name: "Psychologist",
-            description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
-        },
+        // {
+        //     name: "Psychologist",
+        //     slug: "psychology",
+        //     description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
+        // },
     ];
 
     const handleRoleClick = (roleName: string) => {
@@ -60,13 +70,13 @@ const HeroComponent: React.FC = () => {
 
                         {/* Left Content */}
                         <div className="lg:col-span-7">
-                            <h1 className="text-lg sm:text-xl lg:text-[36px]    font-bold mb-4 lg:mb-6 leading-snug lg:leading-tight">
+                            <h1 className="text-lg sm:text-xl lg:text-[36px]  mt-[68px]  font-bold mb-4 lg:mb-6 leading-snug lg:leading-tight">
                                 Medfuture GP Hub: GP Jobs in Australia for FRACGP, FACRRM, Registrars & Locums
 
                             </h1>
 
                             <p className="text-sm sm:text-base md:text-lg mb-6 lg:mb-8 text-gray-200 max-w-2xl leading-relaxed">
-                                Welcome to Medfuture GP Hub — a GP-first career platform built for AHPRA-registered General Practitioners. Explore specialist GP jobs (FRACGP/FACRRM), GP registrar training placements (RACGP/ACRRM), and locum GP roles across NSW, VIC, QLD, WA, SA, TAS and NT, including DPA and MMM 1–7 locations. </p>
+                                Welcome to Medfuture GP Hub — a GP-first career platform built for AHPRA-registered General Practitioners. Explore specialist GP jobs (FRACGP/FACRRM), GP registrar training placements (RACGP/ACRRM), and locum GP roles across NSW, VIC, QLD, WA, SA, TAS and NT, including DPA and MMM 1–7 locations. </p>
 
                             {/* Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -93,6 +103,14 @@ const HeroComponent: React.FC = () => {
                         {/* Right Content */}
                         <div className="bg-white/30 p-5 sm:p-6 lg:p-8 border border-gray-600/30 lg:col-span-5">
                             <div>
+                                {selectedRole && (
+                                    <button
+                                        onClick={closeModal}
+                                        className="absolute top-0 right-1 cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
+                                    >
+                                        ✕
+                                    </button>
+                                )}
                                 <h2 className="text-white text-lg sm:text-xl md:text-[16px] font-semibold mb-2">
                                     Tell us what you want next
                                 </h2>
@@ -108,10 +126,10 @@ const HeroComponent: React.FC = () => {
                                             <div
                                                 key={i}
                                                 onClick={() => handleRoleClick(role.name)}
-                                                className="bg-white rounded-[4px] p-4 sm:p-5 hover:shadow-lg transition-all duration-200 cursor-pointer"
+                                                className="bg-white rounded-[4px] px-4 py-3 hover:shadow-lg transition-all duration-200 cursor-pointer"
                                             >
                                                 <h3 className="text-[#0F172A] font-semibold text-sm lg:text-[14px] mb-1">
-                                                    I'm looking for {role.name} roles
+                                                    {role.name}
                                                 </h3>
                                                 <p className="text-gray-600 text-xs sm:text-sm lg:text-[12px]">
                                                     {role.description}
@@ -127,7 +145,7 @@ const HeroComponent: React.FC = () => {
                                         {/* Selected Role Card */}
                                         <div className="bg-white rounded-[4px] p-4 mb-4 border-l-4 border-blue-500">
                                             <h4 className="text-[#0F172A] font-semibold text-sm mb-1">
-                                                I'm a {selectedRoleData.name}
+                                                {selectedRoleData.name}
                                             </h4>
                                             <p className="text-gray-600 text-xs">
                                                 {selectedRoleData.description}
@@ -135,17 +153,10 @@ const HeroComponent: React.FC = () => {
                                         </div>
 
                                         {/* Form Section */}
-                                        <div className="bg-white p-4 sm:p-5 rounded-[4px] border border-white/20">
-                                            <div className="relative bg-white p-1 rounded-md">
-                                                <button
-                                                    onClick={closeModal}
-                                                    className="absolute top-0 right-1 cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
-                                                >
-                                                    ✕
-                                                </button>
-                                            </div>
+                                        <div className="bg-white px-6 py-4 rounded-[4px] border border-white/20">
                                             <div className="max-h-[600px] overflow-y-auto">
-                                                <DynamicForm />
+                                                {/* Pass the selected role slug to DynamicForm */}
+                                                <DynamicForm selectedRole={selectedRoleData.slug} />
                                             </div>
                                         </div>
                                     </div>
