@@ -13,7 +13,6 @@ export default function RegistrationForm() {
   return (
     <div className="min-h-screen full-width-section flex bg-white overflow-hidden">
       {/* LEFT PANEL */}
-  
       <Panel
         isActive={isSignIn}
         type="left"
@@ -48,7 +47,7 @@ function Panel({
   const isSignIn = activeTab === "signin";
 
   const baseClasses =
-    "absolute lg:static top-0 h-screen w-full lg:w-1/2 transition-all duration-700 ease-out flex items-center justify-center px-6 lg:px-12 py-12";
+    "absolute lg:static top-0 h-[1500px] w-full lg:w-1/2 transition-all duration-700 ease-out flex px-6 lg:px-12 py-12";
 
   const blueBg = "bg-gradient-to-br from-[#0A3B6E] to-[#1a5a9a]";
   const whiteBg = "bg-white";
@@ -90,7 +89,15 @@ function renderContent(
 
 /* ---------------- SECTIONS ---------------- */
 
-function SignInSection({ setActiveTab }: any) {
+interface SectionProps {
+  setActiveTab: (tab: TabType) => void;
+}
+
+interface RegisterSectionProps extends SectionProps {
+  activeTab: TabType;
+}
+
+function SignInSection({ setActiveTab }: SectionProps) {
   return (
     <>
       <h2 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-6">
@@ -102,7 +109,7 @@ function SignInSection({ setActiveTab }: any) {
       </div>
 
       <p className="mt-8 text-center text-gray-600 text-sm">
-        Don’t have an account?{" "}
+        Don&apos;t have an account?{" "}
         <button
           onClick={() => setActiveTab("candidate")}
           className="text-[#0A2E5C] font-semibold hover:underline"
@@ -114,9 +121,9 @@ function SignInSection({ setActiveTab }: any) {
   );
 }
 
-function WelcomeRegister({ setActiveTab }: any) {
+function WelcomeRegister({ setActiveTab }: SectionProps) {
   return (
-    <div className="text-center  text-white">
+    <div className="text-center text-white">
       <h2 className="text-4xl lg:text-5xl font-bold mb-6">Hey There!</h2>
       <p className="text-white/80 mb-10">
         Start your journey by creating an account
@@ -140,7 +147,7 @@ function WelcomeRegister({ setActiveTab }: any) {
   );
 }
 
-function WelcomeBack({ setActiveTab }: any) {
+function WelcomeBack({ setActiveTab }: SectionProps) {
   return (
     <div className="text-center text-white">
       <h2 className="text-4xl lg:text-5xl font-bold mb-6">
@@ -160,7 +167,7 @@ function WelcomeBack({ setActiveTab }: any) {
   );
 }
 
-function RegisterSection({ activeTab, setActiveTab }: any) {
+function RegisterSection({ activeTab, setActiveTab }: RegisterSectionProps) {
   return (
     <>
       <h2 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-6">
@@ -168,7 +175,6 @@ function RegisterSection({ activeTab, setActiveTab }: any) {
       </h2>
 
       <div className="animate-fade-in">
-        {/* 🔥 You can switch forms here */}
         {activeTab === "candidate" ? (
           <CandidateForm />
         ) : (
@@ -193,7 +199,7 @@ function RegisterSection({ activeTab, setActiveTab }: any) {
 
 function Decorations() {
   return (
-    <div className="absolute  inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden">
       <div className="absolute top-10 right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
     </div>
