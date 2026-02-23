@@ -7,24 +7,34 @@ import backgroundPattern from '@/assets/Divisionimages/mentaldivisionbackgroundi
 import Image from 'next/image';
 import DynamicForm from '@/components/Forms/DynamicFrom'; // Adjust path as needed
 
+interface Role {
+    name: string;
+    slug: string;
+    description: string;
+}
+
 const HeroComponent: React.FC = () => {
     const [selectedRole, setSelectedRole] = useState<string | null>(null);
 
-    const roles = [
+    const roles: Role[] = [
         {
-            name: "I’m a Psychologist",
+            name: "Psychologist",
+            slug: "psychology",
             description: "Metro, regional, rural • DPA/MMM mapping • flexible rosters"
         },
-        {
-            name: "I’m a Psychiatrist ",
-            description: "Supervisor-verified clinics • training-safe placements"
-        },
+        // {
+        //     name: "Psychiatrist",
+        //     slug: "psychiatrist",
+        //     description: "Supervisor-verified clinics • training-safe placements"
+        // },
         // {
         //     name: "Physiotherapist",
+        //     slug: "physiotherapy",
         //     description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
         // },
         // {
-        //     name: "Psychologist",
+        //     name: "Other Role",
+        //     slug: "other-role",
         //     description: "Metro, regional, rural • DPA/MMM mapping • Flexible rosters"
         // },
     ];
@@ -66,7 +76,7 @@ const HeroComponent: React.FC = () => {
                             </h1>
 
                             <p className="text-sm sm:text-base md:text-lg lg:mt-[48px] mb-[40px] lg:mb-8 text-gray-200 max-w-2xl leading-relaxed">
-                                Find ethical, sustainable Psychologist and Psychiatrist roles across Australia—private practice, hospitals, community services, NDIS, forensic settings, and telehealth. Medfuture Mental Health Recruitment Hub is built to help you protect your clinical integrity and grow your career long-term.
+                                Find ethical, sustainable Psychologist and Psychiatrist roles across Australia—private practice, hospitals, community services, NDIS, forensic settings, and telehealth. Medfuture Mental Health Recruitment Hub is built to help you protect your clinical integrity and grow your career long-term.
                             </p>
                             {/* Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -93,6 +103,14 @@ const HeroComponent: React.FC = () => {
                         {/* Right Content */}
                         <div className="bg-white/30 p-5 sm:p-6 lg:p-8 border border-gray-600/30 lg:col-span-5">
                             <div>
+                                {selectedRole && (
+                                    <button
+                                        onClick={closeModal}
+                                        className="absolute top-0 right-1 cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
+                                    >
+                                        ✕
+                                    </button>
+                                )}
                                 <h2 className="text-white text-lg sm:text-xl md:text-[16px] font-semibold mb-2">
                                     Tell us what you want next
                                 </h2>
@@ -111,7 +129,7 @@ const HeroComponent: React.FC = () => {
                                                 className="bg-white rounded-[4px] p-4 sm:p-5 hover:shadow-lg transition-all duration-200 cursor-pointer"
                                             >
                                                 <h3 className="text-[#0F172A] font-semibold text-sm lg:text-[14px] mb-1">
-                                                    I'm looking for {role.name} roles
+                                                    I'm a {role.name}
                                                 </h3>
                                                 <p className="text-gray-600 text-xs sm:text-sm lg:text-[12px]">
                                                     {role.description}
@@ -136,16 +154,9 @@ const HeroComponent: React.FC = () => {
 
                                         {/* Form Section */}
                                         <div className="bg-white p-4 sm:p-5 rounded-[4px] border border-white/20">
-                                            <div className="relative bg-white p-1 rounded-md">
-                                                <button
-                                                    onClick={closeModal}
-                                                    className="absolute top-0 right-1 cursor-pointer text-black hover:text-white transition-colors flex items-center gap-1 text-xs"
-                                                >
-                                                    ✕
-                                                </button>
-                                            </div>
                                             <div className="max-h-[600px] overflow-y-auto">
-                                                <DynamicForm />
+                                                {/* Pass the selected role slug to DynamicForm */}
+                                                <DynamicForm selectedRole={selectedRoleData.slug} />
                                             </div>
                                         </div>
                                     </div>
