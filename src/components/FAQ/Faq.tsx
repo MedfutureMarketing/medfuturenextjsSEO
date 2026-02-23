@@ -241,9 +241,28 @@ const faqData: FAQData = {
     { question: "Can Medfuture help if I am not actively looking?", answer: "Are regional Physiotherapist jobs worth considering?" },
     { question: "How often do Physiotherapists change jobs?", answer: "It varies. Many Physiotherapists reassess roles every 2–4 years, often triggered by workload, mentorship gaps, progression limits, or lifestyle changes. Your best move is to compare role realities (caseload, KPIs, mentoring, autonomy), not just salary." },
   ],
-   "/general-practice-division": [
+  "/general-practice-division": [
+    { question: "How is Medfuture different from GP job boards?", answer: "Job boards advertise roles. Medfuture provides structured permanent recruitment for employers  including clinic intake, suitability assessment, compliance-aware delivery, and retention-focused matching to reduce failed hires and vacancy cycles." },
+    { question: "Do you recruit for regional and DPA clinics?", answer: "Yes. We support metro, regional, and DPA GP recruitment across Australia with a retention-first approach and realistic fit assessment." },
+    { question: "How long does permanent GP recruitment take?", answer: "Timelines vary by location and complexity. Medfuture provides realistic delivery timelines upfront and recommends the right recruitment model based on urgency and risk." },
+    { question: "How do you reduce failed GP hires?", answer: "Through structured clinic intake, GP fit screening, compliance-aware delivery (role dependent), earnings realism checks, and retention-focused matching before shortlisting." },
+    { question: "How are recruitment fees structured?", answer: "Fees typically align to role difficulty and risk. Standard metro roles differ from regional, chronic vacancy, and senior roles. Medfuture aligns commercials to complexity and delivery model." },
+    { question: "What information do you need to start?", answer: "Clinic location(s), FT/PT preference, target start date, billing model, practice structure, and any credentialing or onboarding requirements. We will respond with a proposal-ready scope." },
+  ],
+  "/ahp-division": [
+    { question: "What is Allied Health permanent recruitment?", answer: "Allied Health permanent recruitment is the hiring of clinicians into ongoing roles with a focus on workforce stability, caseload sustainability, supervision fit, funding continuity (where relevant), and long-term retention—not just filling vacancies quickly." },
+    { question: "How is Medfuture different from a typical Allied Health recruitment agency?", answer: "Medfuture operates as a permanent recruitment solution provider for employers. We use a Suitability & Stability Framework (setting fit, caseload match, supervision capacity, sustainability/retention risk) to reduce churn and protect service continuity." },
+    { question: "Do you recruit Allied Health clinicians for NDIS providers?", answer: "Yes. We support NDIS providers with recruitment aligned to service continuity, caseload realism, supervision capacity, and defensible recruitment decisions." },
+    { question: "Which Allied Health professions do you focus on?", answer: "Our primary focus is Speech Pathology, Occupational Therapy, Physiotherapy, and Podiatry. We also recruit across broader Allied Health disciplines depending on employer needs." },
+    { question: "How do you reduce Allied Health staff turnover?", answer: "By aligning clinicians to the right setting and caseload, validating supervision support, screening for sustainability and burnout risk, and ensuring expectations are realistic before shortlisting." },
+    { question: "How long does permanent Allied Health recruitment take?", answer: "Timelines vary by location, seniority, and caseload complexity. Medfuture provides realistic delivery timelines upfront and recommends the right engagement model for urgency and risk." },
+    { question: "How are recruitment fees structured?", answer: "Fees typically align to role difficulty and risk. Standard metro roles differ from hard-to-fill, regional, and senior roles. Medfuture aligns commercials to complexity and the chosen delivery model." },
+    { question: "What information do you need to start?", answer: "Service setting(s), location(s), caseload type and complexity, supervision model, key expectations, target start date, and any governance/credentialing requirements. We respond with a proposal-ready scope." },
+
+  ],
+  "/mental-health-division": [
     { question: "", answer: "" },
-   ],
+  ],
 
 
 

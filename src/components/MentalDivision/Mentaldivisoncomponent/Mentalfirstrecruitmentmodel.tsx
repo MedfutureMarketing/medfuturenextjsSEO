@@ -50,7 +50,7 @@ export default function ClinicianFirstRecruitmentModel() {
                 <h3 className="text-lg md:text-[16px] font-semibold text-[#074CA4] mb-2">
                   {model.title}
                 </h3>
-                <p className="text-[#4A5565] text-base leading-relaxed">
+                <p className="text-[#4A5565] lg:text-[14px] text-xs leading-relaxed">
                   {model.description}
                 </p>
               </div>
