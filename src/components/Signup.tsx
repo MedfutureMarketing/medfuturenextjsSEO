@@ -7,59 +7,83 @@ type TabType = "signin" | "candidate" | "employer";
 
 export default function RegistrationForm() {
   const [activeTab, setActiveTab] = useState<TabType>("signin");
+  const [animating, setAnimating] = useState(false);
+  const [displayTab, setDisplayTab] = useState<TabType>("signin");
 
-  const isSignIn = activeTab === "signin";
+  const handleTabChange = (tab: TabType) => {
+    if (tab === activeTab || animating) return;
+    setAnimating(true);
+    // Phase 1: fade content out (300ms)
+    setTimeout(() => {
+      setDisplayTab(tab);
+      setActiveTab(tab);
+      // Phase 2: fade content back in (after swap)
+      setTimeout(() => setAnimating(false), 600);
+    }, 300);
+  };
 
   return (
-    <div className="bg-white min-h-screen full-width-section flex overflow-hidden relative">
-      {/* FULL WIDTH CONTAINER */}
-        {/* LEFT PANEL */}
-        <Panel
-          isActive={isSignIn}
-          type="left"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        />
+    <div className="bg-white min-h-screen full-width-section flex overflow-hidden relative w-full">
+      {/* LEFT PANEL */}
+      <Panel
+        type="left"
+        activeTab={displayTab}
+        setActiveTab={handleTabChange}
+        animating={animating}
+      />
 
-        {/* RIGHT PANEL */}
-        <Panel
-          isActive={!isSignIn}
-          type="right"
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
-        /></div>
-     
-
+      {/* RIGHT PANEL */}
+      <Panel
+        type="right"
+        activeTab={displayTab}
+        setActiveTab={handleTabChange}
+        animating={animating}
+      />
+    </div>
   );
 }
 
 /* ---------------- PANEL COMPONENT ---------------- */
 
 function Panel({
-  isActive,
   type,
   activeTab,
   setActiveTab,
+  animating,
 }: {
-  isActive: boolean;
   type: "left" | "right";
   activeTab: TabType;
   setActiveTab: (tab: TabType) => void;
+  animating: boolean;
 }) {
-  const isSignIn = activeTab === "signin";
-
-  const baseClasses = "w-full lg:w-1/2 transition-all duration-700 ease-out flex px-6 lg:px-12 py-12";
-
-  const blueBg = "bg-gradient-to-br from-[#0A3B6E] to-[#1a5a9a]";
+  const blueBg = "bg-gradient-to-br from-[#0B3264] to-[#1B62B7]";
   const whiteBg = "bg-white";
+  const showWhite = type === "left" ? activeTab === "signin" : activeTab !== "signin";
 
-  const showWhite = type === "left" ? isSignIn : !isSignIn;
+  // On mobile: only show the "form" panel, hide the decorative one
+  const isFormPanel = type === "left" ? activeTab === "signin" : activeTab !== "signin";
 
   return (
-    <div className={`${baseClasses} ${showWhite ? whiteBg : blueBg}`}>
+    <div
+      className={`
+        relative min-h-screen flex py-8 lg:py-12
+        ${isFormPanel ? "flex flex-1" : "hidden lg:flex lg:flex-1"}
+        ${type === "left" ? "justify-center lg:justify-end" : "justify-center lg:justify-start"}
+        ${showWhite ? whiteBg : blueBg}
+        transition-colors duration-700 ease-in-out
+      `}
+    >
       {!showWhite && <Decorations />}
 
-      <div className="relative z-20 w-full ">
+      {/* Content fades + slides up on transition */}
+      <div
+        className={`
+          relative z-20 w-full max-w-xl px-4 sm:px-6 lg:px-10
+          ${type === "left" ? "lg:mr-16" : "lg:ml-16"}
+          transition-all duration-300 ease-in-out
+          ${animating ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}
+        `}
+      >
         {renderContent(type, activeTab, setActiveTab)}
       </div>
     </div>
@@ -101,9 +125,13 @@ interface RegisterSectionProps extends SectionProps {
 function SignInSection({ setActiveTab }: SectionProps) {
   return (
     <>
-      
+      {/* Mobile-only logo/brand mark at top */}
+      <div className="lg:hidden text-center mb-6">
+        <h1 className="text-2xl font-bold text-[#0A2E5C]">Welcome Back!</h1>
+        <p className="text-gray-500 text-sm mt-1">Sign in to continue your experience</p>
+      </div>
 
-      <div className="animate-fade-in ">
+      <div>
         <SignInForm />
       </div>
 
@@ -111,7 +139,7 @@ function SignInSection({ setActiveTab }: SectionProps) {
         Don&apos;t have an account?{" "}
         <button
           onClick={() => setActiveTab("candidate")}
-          className="text-[#0A2E5C] font-semibold hover:underline"
+          className="text-[#0A2E5C] font-semibold cursor-pointer hover:underline"
         >
           Register
         </button>
@@ -122,24 +150,23 @@ function SignInSection({ setActiveTab }: SectionProps) {
 
 function WelcomeRegister({ setActiveTab }: SectionProps) {
   return (
-    <div className="text-center text-white">
-      <h2 className="text-4xl lg:text-5xl font-bold mb-6">Hey There!</h2>
-      <p className="text-white/80 mb-10">
-        Start your journey by creating an account
+    <div className="text-center text-white mt-36 w-full">
+      <h2 className="text-4xl lg:text-[36px] font-bold mb-[24px]">Hey There!</h2>
+      <p className="text-white/80 lg:text-[20px] text-xs mb-10">
+        Begin your amazing journey by creating an account with us today
       </p>
-
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <div className="flex flex-col sm:flex-row gap-3 justify-center">
         <button
           onClick={() => setActiveTab("candidate")}
-          className="btn-outline-white cursor-pointer"
+          className="btn-outline-white border-[1px] rounded-[4px] text-[16px] py-[16px] px-[32px] cursor-pointer hover:bg-white/10 transition-colors duration-200"
         >
-          Candidate
+          Register as Candidate
         </button>
         <button
           onClick={() => setActiveTab("employer")}
-          className="btn-outline-white cursor-pointer"
+          className="btn-outline-white border-[1px] rounded-[4px] text-[16px] py-[16px] px-[32px] cursor-pointer hover:bg-white/10 transition-colors duration-200"
         >
-          Employer
+          Register as Employer
         </button>
       </div>
     </div>
@@ -148,22 +175,17 @@ function WelcomeRegister({ setActiveTab }: SectionProps) {
 
 function WelcomeBack({ setActiveTab }: SectionProps) {
   return (
-    <div className="flex justify-center h-full ">
-      <div className="text-center text-white">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-          Welcome Back!
-        </h2>
-        <p className="text-white/80 mb-10">
-          Login to continue your experience
-        </p>
-
-        <button
-          onClick={() => setActiveTab("signin")}
-          className="btn-outline-white cursor-pointer"
-        >
-          Sign In
-        </button>
-      </div>
+    <div className="text-center text-white mt-36">
+      <h2 className="text-4xl lg:text-5xl font-bold mb-6">Welcome Back!</h2>
+      <p className="text-white/80 mb-10">
+        Stay connected by logging in with your credentials and continue your experience
+      </p>
+      <button
+        onClick={() => setActiveTab("signin")}
+        className="btn-outline-white border-[1px] rounded-[4px] text-[16px] py-[16px] px-[52px] cursor-pointer hover:bg-white/10 transition-colors duration-200"
+      >
+        Sign In
+      </button>
     </div>
   );
 }
@@ -171,11 +193,45 @@ function WelcomeBack({ setActiveTab }: SectionProps) {
 function RegisterSection({ activeTab, setActiveTab }: RegisterSectionProps) {
   return (
     <>
-      <h2 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-6">
+      {/* Mobile-only back + register type toggle */}
+      <div className="lg:hidden mb-4">
+        <div className="flex items-center justify-between mb-4">
+          <button
+            onClick={() => setActiveTab("signin")}
+            className="flex items-center gap-1 text-sm text-[#0A2E5C] font-medium hover:underline"
+          >
+            ← Back to Sign In
+          </button>
+          <div className="flex gap-2 text-sm">
+            <button
+              onClick={() => setActiveTab("candidate")}
+              className={`px-3 py-1 rounded-full border transition-colors duration-200 ${
+                activeTab === "candidate"
+                  ? "bg-[#0A2E5C] text-white border-[#0A2E5C]"
+                  : "text-[#0A2E5C] border-[#0A2E5C] hover:bg-[#0A2E5C]/10"
+              }`}
+            >
+              Candidate
+            </button>
+            <button
+              onClick={() => setActiveTab("employer")}
+              className={`px-3 py-1 rounded-full border transition-colors duration-200 ${
+                activeTab === "employer"
+                  ? "bg-[#0A2E5C] text-white border-[#0A2E5C]"
+                  : "text-[#0A2E5C] border-[#0A2E5C] hover:bg-[#0A2E5C]/10"
+              }`}
+            >
+              Employer
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center font-bold text-[#0A2E5C] mb-6">
         Create Account
       </h2>
 
-      <div className="animate-fade-in">
+      <div>
         {activeTab === "candidate" ? (
           <CandidateForm />
         ) : (
@@ -200,7 +256,7 @@ function RegisterSection({ activeTab, setActiveTab }: RegisterSectionProps) {
 
 function Decorations() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute top-10 right-10 w-40 h-40 bg-white/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
     </div>
