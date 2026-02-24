@@ -407,8 +407,8 @@ export default function CandidateForm() {
   };
 
   return (
-    <div className="w-full max-w-full mx-auto mt-[93px] lg:px-[90px] ">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-4 gap-4 mb-4">
+    <div className=" w-full mx-auto mt-[93px] ">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-4 gap-4 w-xl mb-4">
         <button
           type="button"
           onClick={handleGoogleLogin}
@@ -438,7 +438,7 @@ export default function CandidateForm() {
       </div>
 
       {/* Email registration form - always visible */}
-      <form onSubmit={handleSubmit} className="animate-in fade-in duration-500">
+      <form onSubmit={handleSubmit} className="animate-in fade-in duration-500 w-xl">
         {/* First Name & Last Name */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
           <div>

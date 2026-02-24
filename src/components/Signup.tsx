@@ -11,23 +11,25 @@ export default function RegistrationForm() {
   const isSignIn = activeTab === "signin";
 
   return (
-    <div className="min-h-screen full-width-section flex bg-white overflow-hidden">
-      {/* LEFT PANEL */}
-      <Panel
-        isActive={isSignIn}
-        type="left"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
+    <div className="bg-white min-h-screen full-width-section flex overflow-hidden relative">
+      {/* FULL WIDTH CONTAINER */}
+        {/* LEFT PANEL */}
+        <Panel
+          isActive={isSignIn}
+          type="left"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
 
-      {/* RIGHT PANEL */}
-      <Panel
-        isActive={!isSignIn}
-        type="right"
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
-    </div>
+        {/* RIGHT PANEL */}
+        <Panel
+          isActive={!isSignIn}
+          type="right"
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        /></div>
+     
+
   );
 }
 
@@ -46,8 +48,7 @@ function Panel({
 }) {
   const isSignIn = activeTab === "signin";
 
-  const baseClasses =
-    "absolute lg:static top-0 h-[1500px] w-full lg:w-1/2 transition-all duration-700 ease-out flex px-6 lg:px-12 py-12";
+  const baseClasses = "w-full lg:w-1/2 transition-all duration-700 ease-out flex px-6 lg:px-12 py-12";
 
   const blueBg = "bg-gradient-to-br from-[#0A3B6E] to-[#1a5a9a]";
   const whiteBg = "bg-white";
@@ -58,7 +59,7 @@ function Panel({
     <div className={`${baseClasses} ${showWhite ? whiteBg : blueBg}`}>
       {!showWhite && <Decorations />}
 
-      <div className="relative z-20 w-full max-w-md">
+      <div className="relative z-20 w-full ">
         {renderContent(type, activeTab, setActiveTab)}
       </div>
     </div>
@@ -100,11 +101,9 @@ interface RegisterSectionProps extends SectionProps {
 function SignInSection({ setActiveTab }: SectionProps) {
   return (
     <>
-      <h2 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-6">
-        Sign In
-      </h2>
+      
 
-      <div className="animate-fade-in">
+      <div className="animate-fade-in ">
         <SignInForm />
       </div>
 
@@ -149,20 +148,22 @@ function WelcomeRegister({ setActiveTab }: SectionProps) {
 
 function WelcomeBack({ setActiveTab }: SectionProps) {
   return (
-    <div className="text-center text-white">
-      <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-        Welcome Back!
-      </h2>
-      <p className="text-white/80 mb-10">
-        Login to continue your experience
-      </p>
+    <div className="flex justify-center h-full ">
+      <div className="text-center text-white">
+        <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          Welcome Back!
+        </h2>
+        <p className="text-white/80 mb-10">
+          Login to continue your experience
+        </p>
 
-      <button
-        onClick={() => setActiveTab("signin")}
-        className="btn-outline-white cursor-pointer"
-      >
-        Sign In
-      </button>
+        <button
+          onClick={() => setActiveTab("signin")}
+          className="btn-outline-white cursor-pointer"
+        >
+          Sign In
+        </button>
+      </div>
     </div>
   );
 }

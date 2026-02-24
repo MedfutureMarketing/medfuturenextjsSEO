@@ -63,6 +63,10 @@ export default function SignInForm() {
 
   return (
     <div className="w-full max-w-md mx-auto">
+      <h2 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-6 text-left">
+        Sign In
+      </h2>
+      
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Error Message */}
         {error && (
@@ -83,6 +87,7 @@ export default function SignInForm() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#575D84] focus:ring-2 focus:ring-[#575D84] focus:ring-opacity-10 transition-colors"
+            required
           />
         </div>
 
@@ -98,12 +103,13 @@ export default function SignInForm() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter your password"
             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#575D84] focus:ring-2 focus:ring-[#575D84] focus:ring-opacity-10 transition-colors"
+            required
           />
         </div>
 
         {/* Remember Me & Forgot Password */}
         <div className="flex items-center justify-between">
-          <label className="flex items-center">
+          <label className="flex items-center cursor-pointer">
             <input
               type="checkbox"
               checked={rememberMe}
@@ -112,7 +118,10 @@ export default function SignInForm() {
             />
             <span className="ml-2 text-sm text-gray-600">Remember me</span>
           </label>
-          <Link href="/forgot-password" className="text-sm text-[#575D84] hover:text-[#0A2E5C] font-medium">
+          <Link 
+            href="/forgot-password" 
+            className="text-sm text-[#575D84] hover:text-[#0A2E5C] font-medium transition-colors"
+          >
             Forgot Password?
           </Link>
         </div>
@@ -125,9 +134,6 @@ export default function SignInForm() {
         >
           {loading ? "Signing in..." : "Sign In"}
         </button>
-
-        {/* Sign Up Link */}
-      
       </form>
     </div>
   );
