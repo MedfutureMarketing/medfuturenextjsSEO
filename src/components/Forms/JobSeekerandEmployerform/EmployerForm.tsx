@@ -68,7 +68,7 @@ export default function EmployerRegistrationForm() {
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-[#0A2E5C] px-8 py-6">
           <h1 className="text-2xl font-bold text-white">Employer Registration</h1>
@@ -97,11 +97,16 @@ export default function EmployerRegistrationForm() {
               <div className="relative">
                 <select name="industryType" value={formData.industryType} onChange={handleInputChange} className={`${inputClass} appearance-none`} required>
                   <option value="">Select your entity industry</option>
-                  <option value="healthcare">Healthcare</option>
-                  <option value="technology">Technology</option>
-                  <option value="retail">Retail</option>
-                  <option value="finance">Finance</option>
-                  <option value="education">Education</option>
+                  <option value="hospital">Hospital & Health Systems</option>
+                  <option value="aged_care">Aged Care & Disability Services</option>
+                  <option value="primary_care">Primary Care & General Practice</option>
+                  <option value="mental_health">Mental Health Services</option>
+                  <option value="allied_health">Allied Health Services</option>
+                  <option value="pharmacy">Pharmacy</option>
+                  <option value="pathology_radiology">Pathology & Radiology</option>
+                  <option value="community_health">Community Health</option>
+                  <option value="telehealth">Telehealth</option>
+                  <option value="medical_education">Medical Education & Training</option>
                   <option value="other">Other</option>
                 </select>
                 <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,10 +121,15 @@ export default function EmployerRegistrationForm() {
               <div className="relative">
                 <select name="businessServices" value={formData.businessServices} onChange={handleInputChange} className={`${inputClass} appearance-none`} required>
                   <option value="">Select your business services</option>
-                  <option value="consulting">Consulting</option>
-                  <option value="staffing">Staffing</option>
-                  <option value="outsourcing">Outsourcing</option>
-                  <option value="recruitment">Recruitment</option>
+                  <option value="nursing_staffing">Nursing & Midwifery Staffing</option>
+                  <option value="doctor_recruitment">Doctor & Specialist Recruitment</option>
+                  <option value="allied_health_staffing">Allied Health Staffing</option>
+                  <option value="aged_care_staffing">Aged Care Staffing</option>
+                  <option value="mental_health_staffing">Mental Health Staffing</option>
+                  <option value="locum_staffing">Locum & Temporary Staffing</option>
+                  <option value="permanent_placement">Permanent Placement</option>
+                  <option value="contract_staffing">Contract Staffing</option>
+                  <option value="executive_search">Executive & Leadership Search</option>
                   <option value="other">Other</option>
                 </select>
                 <svg className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -230,13 +240,13 @@ export default function EmployerRegistrationForm() {
           {/* Checkboxes */}
           <div className="mt-6 space-y-3">
             <label className="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" name="agreeToTerms" checked={formData.agreeToTerms} onChange={handleInputChange} className="mt-1 w-4 h-4 text-blue-600 border-[#E2E8F0] accent-blue-600 rounded focus:ring-2 focus:ring-blue-500" required />
+              <input type="checkbox" name="agreeToTerms" checked={formData.agreeToTerms} onChange={handleInputChange} className="mt-1 w-4 h-4 text-blue-600 border-[#E2E8F0] rounded focus:ring-2 focus:ring-blue-500" required />
               <span className="text-sm text-gray-600">
                 I Agree to the <button type="button" className="text-blue-600 hover:underline">Term and Conditions</button> and <button type="button" className="text-blue-600 hover:underline">Privacy Policy</button>
               </span>
             </label>
             <label className="flex items-start gap-3 cursor-pointer">
-              <input type="checkbox" name="subscribeForJobAlert" checked={formData.subscribeForJobAlert} onChange={handleInputChange} className="mt-1 w-4 h-4 text-blue-600 border-[#E2E8F0] accent-blue-600 rounded focus:ring-2 focus:ring-blue-500" />
+              <input type="checkbox" name="subscribeForJobAlert" checked={formData.subscribeForJobAlert} onChange={handleInputChange} className="mt-1 w-4 h-4 text-blue-600 border-[#E2E8F0] rounded focus:ring-2 focus:ring-blue-500" />
               <span className="text-sm text-gray-600">Subscribe for Job Alert</span>
             </label>
           </div>
