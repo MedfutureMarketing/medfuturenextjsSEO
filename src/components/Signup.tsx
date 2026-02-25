@@ -2,7 +2,7 @@
 import { useState } from "react";
 import CandidateForm from "@/components/Signup/CandidateForm";
 import SignInForm from "@/components/SignInForm";
-import EmployerForm from "./Forms/JobSeekerandEmployerform/EmployerForm";
+import EmployerForm from "./Forms/EmployerRegistrationForm";
 
 type TabType = "signin" | "candidate" | "employer";
 
