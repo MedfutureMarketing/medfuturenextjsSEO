@@ -21,7 +21,7 @@ export default function CounterSection() {
     { label: "Total Placements", value: 0 },
   ]);
 
-  const [counts, setCounts] = useState<number[]>([]);
+  const [counts, setCounts] = useState<number[]>([0, 0, 0, 0]);
 
   /** Fetch API data */
   useEffect(() => {
@@ -61,10 +61,7 @@ export default function CounterSection() {
         setCounts((prev) => {
           const updated = [...prev];
           if (updated[index] < counter.value) {
-            updated[index] = Math.min(
-              updated[index] + increment,
-              counter.value
-            );
+            updated[index] = Math.min(updated[index] + increment, counter.value);
           }
           return updated;
         });
@@ -77,21 +74,42 @@ export default function CounterSection() {
   }, [counters]);
 
   return (
-    <section className="text-[#575D84] lg:mb-[46px] lg:mt-[59px] py-8">
-      <div className="inner-width-section max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-        {counters.map((counter, index) => (
-          <div
-            key={index}
-            className="bg-white/10 rounded-lg flex flex-col items-center justify-center"
-          >
-            <p className="lg:text-[48px] text-2xl font-bold">
-              {counts[index] ?? 0}
-            </p>
-            <p className="mt-2 lg:text-[16px] text-sm font-medium">
-              {counter.label}
-            </p>
-          </div>
-        ))}
+    <section className="text-[#575D84] full-width-section my-8 md:my-10 lg:mb-[46px] lg:mt-[59px]">
+      <div className="inner-width-section">
+
+        {/* 2-col on mobile, 2-col on tablet, 4-col on desktop */}
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8">
+          {counters.map((counter, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center text-center
+                         bg-white/10 rounded-xl
+                         py-5 px-3
+                         sm:py-6 sm:px-4
+                         md:py-7 md:px-5
+                         lg:py-8 lg:px-4"
+            >
+              {/* Number */}
+              <p className="font-bold leading-none
+                            text-2xl
+                            sm:text-3xl
+                            md:text-4xl
+                            lg:text-[48px]">
+                {counts[index] ?? 0}
+              </p>
+
+              {/* Label */}
+              <p className="mt-2 font-medium leading-snug
+                            text-xs
+                            sm:text-sm
+                            md:text-sm
+                            lg:text-[16px]">
+                {counter.label}
+              </p>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

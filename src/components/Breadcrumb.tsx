@@ -18,7 +18,7 @@ type RouteConfig = {
 
 const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/permanent/job/", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "Job Detail" },
-  { pattern: "/job-seeker-hub", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Job Seeker Hub" },
+  { pattern: "/job-seeker-hub", bgColor: "bg-[#001C55]", textColor: "text-white", breadcrumbLabel: "Job Seeker Hub" },
   { pattern: "/employer-hub", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "Employer Hub" },
   { pattern: "/contact-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "Contact Us" },
   { pattern: "/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Fracgp - FACRRM" },

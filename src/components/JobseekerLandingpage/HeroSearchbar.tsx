@@ -2,15 +2,9 @@
 
 "use client";
 
-// import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// import HeroImage from "@/assets/homeico/jobseekerhub.png";
-// import uploadCVIcon from "@/assets/icons/upload.png";
-// import registerIcon from "@/assets/icons/register.png";
-// import CallIcon from "@/assets/icons/Call.png";
-// import ReferIcon from "@/assets/icons/Reffer.png";
 import Link from "next/link";
 import { apiGet } from "@/lib/api";
 
@@ -41,7 +35,7 @@ export default function JobseekersearchHero() {
             try {
                 const res = await apiGet<JobSeekerHub>(`web/job-seeker-hub-page/get-all`);
                 setJobSeekerHub(res);
-            } catch {}
+            } catch { }
         }
         fetchJobSeekerHub();
     }, []);
@@ -108,12 +102,18 @@ export default function JobseekersearchHero() {
     ];
 
     return (
-        <section className="bg-[#040D48] full-width-section">
-            <div className="inner-width-section py-14 lg:py-5">
-                <div className="grid items-start gap-10 lg:grid-cols-[1fr_480px]">
+        <section className="bg-[#001C55] full-width-section">
+            <div className="inner-width-section lg:py-5">
 
-                    {/* LEFT CONTENT */}
-                    <div className="flex flex-col gap-6">
+                {/* ── OUTER GRID: single col → tablet 2-col → desktop 2-col ── */}
+                <div className="grid items-start gap-6 lg:mb-[79px] md:mb-[60px] mb-10
+                                md:grid-cols-[1fr_320px] md:gap-8 md:items-start
+                                lg:gap-10 lg:grid-cols-[1fr_440px]">
+
+                    {/* ── LEFT CONTENT ── */}
+                    <div className="flex flex-col gap-2 pb-0 mt-5
+                                    md:mt-10 lg:mt-0 md:py-4
+                                    ">
 
                         {/* Badge */}
                         <div className="inline-flex w-fit">
@@ -123,54 +123,77 @@ export default function JobseekersearchHero() {
                         </div>
 
                         {/* Heading */}
-                        <div>
-                            <h1 className="text-3xl lg:text-[42px] font-bold text-white leading-tight">
+                        <div className="mt-2">
+                            <h1 className="text-xl md:text-2xl lg:text-[36px] font-bold text-white leading-tight">
                                 Medical &amp; Healthcare Jobs in Australia
                             </h1>
-                            <h2 className="text-3xl lg:text-[42px] font-bold text-white/60 leading-tight mt-1">
+                            <h2 className="text-xl md:text-2xl lg:text-[36px] text-white/60 leading-tight mt-1">
                                 Permanent &amp; Locum Opportunities
                             </h2>
                         </div>
 
-                        {/* Description */}
-                        <p className="text-sm lg:text-[15px] text-white/60 max-w-xl leading-relaxed">
-                            Profession-specific recruitment for GP , Medical, Allied Health, Mental Health,
-                            and Oral Health professionals—ethically matched, clinically aligned, and career-first.
+                        {/* Description — hidden on small tablet to save space, shown on larger */}
+                        <p className="text-xs md:text-sm lg:text-[16px] text-white/70 max-w-xl leading-relaxed mt-2
+                                       ">
+                            Profession-specific recruitment for GP, Medical, Allied Health, Mental Health,
+                            and Oral Health professionals — ethically matched, clinically aligned, and career-first.
                             We connect you with trusted employers, compliant roles, and flexible pathways across
                             Australia, offering personalised guidance, transparent processes, and long-term career
                             opportunities that support professional growth, lifestyle balance, and clinical excellence.
                         </p>
 
+                        {/* Description — short version for mobile only */}
+                     
+
                         {/* Stats Row */}
-                        <div className="flex flex-wrap gap-3 mt-2">
+                        <div className="grid grid-cols-3 gap-2 mt-6
+                                        md:grid-cols-3 md:gap-3 md:mt-8
+                                        lg:flex lg:flex-wrap lg:gap-3 lg:mt-[42px]">
                             {stats.map((stat) => (
                                 <div
                                     key={stat.label}
-                                    className="flex flex-col gap-0.5 border border-white/20 rounded-lg px-5 py-3 min-w-[130px]"
+                                    className="flex flex-col gap-0.5 bg-white/10 border border-white/20 rounded-lg
+                                               px-3 py-2.5
+                                               md:px-4 md:py-3
+                                               lg:w-[199px] lg:px-5 lg:py-3"
                                 >
-                                    <span className="text-white/50 text-xs">{stat.label}</span>
-                                    <span className="text-white font-bold text-base lg:text-lg">{stat.value}</span>
+                                    <span className="text-white text-[11px] md:text-xs lg:text-[14px] leading-tight">
+                                        {stat.label}
+                                    </span>
+                                    <span className="text-white font-bold text-xs md:text-sm lg:text-[20px]">
+                                        {stat.value}
+                                    </span>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* RIGHT: Quick Start Card */}
-                    <div className="bg-[#0B1B6B] border border-white/10 rounded-2xl p-6 flex flex-col gap-4">
-                        <div className="mb-1">
+                    {/* ── RIGHT: Quick Start Card ── */}
+                    <div className="bg-white/30 border border-white/10 rounded-[8px] flex flex-col
+                                    p-4 gap-3 mb-6
+                                    md:p-5 md:gap-3 md:mb-0 md:mt-10 md:self-start md:sticky md:top-6
+                                    lg:p-6 lg:gap-4 lg:mb-0 lg:mt-0 lg:static">
+
+                        <div className="mb-0 lg:mb-1">
                             <p className="text-white font-semibold text-base">Quick Start</p>
-                            <p className="text-white/50 text-xs mt-0.5">Choose your pathway — we'll do the heavy lifting.</p>
+                            <p className="text-white/50 text-xs mt-0.5">
+                                Choose your pathway — we'll do the heavy lifting.
+                            </p>
                         </div>
 
                         {quickStartItems.map((item, i) => {
                             const content = (
                                 <div
                                     key={i}
-                                    className={`flex items-start gap-4 rounded-xl px-4 py-4 cursor-pointer transition-all
-                                        ${item.highlight
-                                            ? "bg-white shadow-md"
-                                            : "bg-[#0F2280] hover:bg-[#132899]"
-                                        }`}
+                                    className={`flex items-center gap-3
+                                                rounded-[8px] cursor-pointer transition-all
+                                                px-3 py-3
+                                                md:px-3 md:py-3
+                                                lg:items-start lg:gap-4 lg:px-4 lg:py-4
+                                                ${item.highlight
+                                                    ? "bg-white shadow-md"
+                                                    : "border border-white/10 hover:bg-white/10"
+                                                }`}
                                     onClick={
                                         item.scrollTo
                                             ? () => document.getElementById(item.scrollTo!)?.scrollIntoView({ behavior: "smooth" })
@@ -178,15 +201,19 @@ export default function JobseekersearchHero() {
                                     }
                                 >
                                     {/* Icon */}
-                                    <div className={`mt-0.5 flex-shrink-0 ${item.highlight ? "text-[#040D48]" : "text-white/70"}`}>
+                                    <div className={`flex-shrink-0 ${item.highlight ? "text-[#040D48]" : "text-white/70"}`}>
                                         {item.icon}
                                     </div>
+
                                     {/* Text */}
-                                    <div>
-                                        <p className={`font-semibold text-sm ${item.highlight ? "text-[#040D48]" : "text-white"}`}>
+                                    <div className="min-w-0">
+                                        <p className={`font-semibold lg:text-[14px] text-xs ${item.highlight ? "text-[#040D48]" : "text-white"}`}>
                                             {item.title}
                                         </p>
-                                        <p className={`text-xs mt-0.5 ${item.highlight ? "text-gray-500" : "text-white/50"}`}>
+                                        {/* Subtitle hidden on smallest tablet to keep card compact */}
+                                        <p className={`text-xs mt-0.5 leading-snug
+                                                       hidden sm:block
+                                                       ${item.highlight ? "text-gray-500" : "text-white/50"}`}>
                                             {item.subtitle}
                                         </p>
                                     </div>
@@ -194,11 +221,7 @@ export default function JobseekersearchHero() {
                             );
 
                             if (item.href) {
-                                return (
-                                    <Link href={item.href} key={i}>
-                                        {content}
-                                    </Link>
-                                );
+                                return <Link href={item.href} key={i}>{content}</Link>;
                             }
                             return content;
                         })}
