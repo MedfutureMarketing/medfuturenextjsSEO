@@ -142,7 +142,7 @@ export default function Breadcrumb() {
 
       <nav
         aria-label="Breadcrumb"
-        className={`flex lg:py-[13px] py-4 lg:px-1  px-4 full-width-section ${themeColors.bgColor} ${themeColors.textColor}`}
+        className={`flex lg:py-[13px] py-4 lg:px-1 lg:block hidden  px-4 full-width-section ${themeColors.bgColor} ${themeColors.textColor}`}
       >
         <ol className="flex items-center space-x-2 z-98 lg:text-sm text-[9px] inner-width-section">
           {breadcrumbs.map((breadcrumb, index) => (
