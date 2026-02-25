@@ -4,6 +4,7 @@ import Image from "next/image";
 import loctionico from "@/assets/homeico/loctionico.png";
 import { useEffect, useState } from "react";
 import { apiGet } from "@/lib/api";
+import { createJobSlug } from "@/lib/urlUtils"; // 👈 import your slug helper
 
 type HomeData = {
   clientCount: number;
@@ -38,10 +39,9 @@ type ProfessionCardData = {
   viewAllLink: string;
 };
 
-// Define profession priorities (1-6, lower number = higher priority)
+// Define profession priorities (lower number = higher priority)
 const professionPriorities: Record<string, number> = {
   "Medical Practitioner": 1,
-
   "Speech Pathologist": 3,
   "Occupational Therapists": 4,
   "Physiotherapist": 5,
@@ -50,8 +50,6 @@ const professionPriorities: Record<string, number> = {
   "Exercise Physiologist": 8,
   "Psychology": 9,
   "Behavioural Therapist": 10,
-
-  // Add more professions as needed
 };
 
 export default function JobsbyProfession() {
@@ -73,7 +71,6 @@ export default function JobsbyProfession() {
     fetchHomeData();
   }, []);
 
-  // Sort professions by priority, then by whether they have jobs
   const sortedProfessions = homeData?.professions
     .map((profession) => ({
       title: profession.name,
@@ -81,25 +78,25 @@ export default function JobsbyProfession() {
       jobs: profession.jobDetails.slice(0, 2).map((job) => ({
         title: job.job_title,
         location: `${job.state_name}, ${job.region_name}`,
-        link: `/permanent/job/${job.job_id}`,
+        // ✅ Updated to use createJobSlug
+        link: `/permanent/job/${createJobSlug(
+          job.job_title,
+          job.state_name || "australia",
+          job.job_id
+        )}`,
       })),
       viewAllText: `View All ${profession.name} Jobs`,
       viewAllLink: `/permanent/${profession.name.toLowerCase().replace(/\s+/g, "-")}-jobs/in-australia`,
       hasJobs: profession.jobDetails.length > 0,
-      priority: professionPriorities[profession.name] || 999, // Default to low priority if not in list
+      priority: professionPriorities[profession.name] || 999,
     }))
     .sort((a, b) => {
-      // First sort by priority (1-6 come first)
-      if (a.priority !== b.priority) {
-        return a.priority - b.priority;
-      }
-      // Within same priority, sort by hasJobs: true comes before false
+      if (a.priority !== b.priority) return a.priority - b.priority;
       if (a.hasJobs && !b.hasJobs) return -1;
       if (!a.hasJobs && b.hasJobs) return 1;
       return 0;
     }) || [];
 
-  // Get only first 6 cards for initial display
   const visibleProfessions = showAll ? sortedProfessions : sortedProfessions.slice(0, 6);
   const hasMoreCards = sortedProfessions.length > 6;
 
@@ -135,19 +132,20 @@ export default function JobsbyProfession() {
         ) : (
           <>
             {/* Desktop Grid */}
-            <div className="lg:block md:block hidden"> 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6">
-              {visibleProfessions.map((prof, idx) => (
-                <ProfessionCard key={idx} prof={prof} />
-              ))}
-            </div></div>
+            <div className="lg:block md:block hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {visibleProfessions.map((prof, idx) => (
+                  <ProfessionCard key={idx} prof={prof} />
+                ))}
+              </div>
+            </div>
 
             {/* View More Button for Desktop */}
             {hasMoreCards && !showAll && (
-              <div className="hidden md:flex  justify-center mt-8">
+              <div className="hidden md:flex justify-center mt-8">
                 <button
                   onClick={() => setShowAll(true)}
-                  className="px-8 py-3 bg-[#]  text-[#074CA4] cursor-pointer font-semi-bold hover:text-gray-200 rounded-[4px]  transition-colors"
+                  className="px-8 py-3 text-[#074CA4] cursor-pointer font-semi-bold hover:text-gray-200 rounded-[4px] transition-colors"
                 >
                   View More
                 </button>
