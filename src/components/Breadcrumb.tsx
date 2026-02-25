@@ -36,11 +36,10 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/ahp-division/physiotherapy", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Physiotherapy" },
   { pattern: "/mental-health/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
   { pattern: "/general-practice-division", bgColor: "bg-white ", textColor: "white", breadcrumbLabel: "General Practice Division" },
-  { pattern: "/ahp-division", bgColor: " ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
-  { pattern: "/mental-health", bgColor: " ", textColor: "text-white lg:text-white", breadcrumbLabel: "Allied Health Division" },
-  { pattern: "/sign-up", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
-    { pattern: "/my-account/candidate", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
-
+  { pattern: "/ahp-division", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
+  { pattern: "/mental-health", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Mental Health Division" },
+  { pattern: "/sign-up", bgColor: "bg-white hidden ", textColor: "text-black", breadcrumbLabel: "Sign In" },
+  { pattern: "/my-account/candidate", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "My Account" },
 ];
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {
