@@ -2,6 +2,7 @@
 import { useState } from "react";
 import CandidateForm from "@/components/Signup/CandidateForm";
 import SignInForm from "@/components/SignInForm";
+import EmployerForm from "./Forms/JobSeekerandEmployerform/EmployerForm";
 
 type TabType = "signin" | "candidate" | "employer";
 
@@ -235,7 +236,7 @@ function RegisterSection({ activeTab, setActiveTab }: RegisterSectionProps) {
         {activeTab === "candidate" ? (
           <CandidateForm />
         ) : (
-          <div>Employer Form (TODO)</div>
+          <EmployerForm />
         )}
       </div>
 

@@ -408,11 +408,11 @@ export default function CandidateForm() {
 
   return (
     <div className=" w-full mx-auto ">
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:gap-4 gap-4 lg:w-lg mb-4">
+      <div className="grid grid-cols-3 md:grid-cols-3 lg:gap-4 gap-4 lg:w-lg mb-4">
         <button
           type="button"
           onClick={handleGoogleLogin}
-          className="flex-1 py-2  cursor-pointer lg:w-[170px] h-[48px] text-[#505050] border rounded flex items-center justify-center gap-2 hover:bg-red-600"
+          className="flex-1 py-2  cursor-pointer lg:w-[150px] lg:h-[48px] text-[#505050] border rounded flex items-center justify-center gap-2 hover:bg-red-50"
         >
           <span className="text-[16px] font-bold"> <svg className="w-4 h-4" viewBox="0 0 24 24">
             <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -420,29 +420,29 @@ export default function CandidateForm() {
             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
           </svg></span>
-          <span className="">Google</span>
+          <span className="lg:text-[16px] text-[12px]">Google</span>
         </button>
         <button
           type="button"
           onClick={handleLinkedInLogin}
-          className="flex-1 py-2  cursor-pointer lg:w-[170px] h-[48px] text-[#505050] border rounded flex items-center justify-center gap-2 hover:bg-red-600"
+          className="flex-1 py-2  cursor-pointer lg:w-[150px] lg:h-[48px] text-[#505050] border rounded flex items-center justify-center gap-2 hover:bg-blue-50"
         >
           <span className="h-[18px] w-[18px] font-bold bg-white text-[#0A66C2] rounded-[2px] flex items-center justify-center">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#0A66C2">
               <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
             </svg>
           </span>
-          <span className="">LinkedIn</span>
+          <span className="lg:text-[16px] text-[12px]">LinkedIn</span>
         </button>
         <button
           type="button"
           onClick={handleFacebookLogin}
-          className="flex-1 py-2  cursor-pointer lg:w-[170px] h-[48px] text-[#505050] border rounded flex items-center justify-center gap-2 hover:bg-red-600"
+          className="flex-1 py-2  cursor-pointer lg:w-[150px] lg:h-[48px] text-[#505050] border rounded flex items-center justify-center gap-2 hover:bg-blue-50"
         >
           <span className="text-[18px] font-bold">  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="#1877F2">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
           </svg></span>
-          <span className=" ">Facebook</span>
+          <span className="lg:text-[16px] text-[12px] ">Facebook</span>
         </button>
       </div>
       <div className="flex items-center gap-3 mb-6">
@@ -694,14 +694,14 @@ export default function CandidateForm() {
 
         {/* Where did you hear about us */}
         <div className="mb-5">
-          <label className="block text-[14px] text-xs font-medium text-[#0F172A] mb-2">
+          <label className="block text-[14px] font-medium text-[#0F172A] mb-2">
             Where did you hear about us?*
           </label>
           <select
             name="whereDidYouHear"
             value={formData.whereDidYouHear}
             onChange={handleInputChange}
-            className={`w-full px-4 py-2 border lg:h-[56px] text-gray-600 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${formErrors.whereDidYouHear ? 'border-red-500' : 'border-[#E2E8F0]'
+            className={`w-full px-4 py-2 border text-sm lg:h-[56px] text-gray-600 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white ${formErrors.whereDidYouHear ? 'border-red-500' : 'border-[#E2E8F0]'
               }`}
           >
             <option value="">Select an option</option>
@@ -726,9 +726,9 @@ export default function CandidateForm() {
             name="agreeToTerms"
             checked={formData.agreeToTerms}
             onChange={handleInputChange}
-            className="mt-1 w-4 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
+            className="mt-1 w-5 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
           />
-          <span className="text-sm text-gray-600 text-center">
+          <span className="text-sm text-gray-600 lg:text-center">
             By registration you agree to{' '}
             <a href="/terms-and-conditions" className="text-blue-600 hover:underline">
               Terms and Conditions
@@ -746,7 +746,7 @@ export default function CandidateForm() {
               name="subscribe_for_job_alert"
               checked={formData.subscribe_for_job_alert}
               onChange={handleInputChange}
-              className="mt-1 w-[18px] h-[18px] accent-[#074CA4]"
+            className="mt-1 w-4 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
             />
             <span>Subscribe for job alerts</span>
           </label>
