@@ -23,17 +23,13 @@ export default function EmployerRegistrationForm() {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleInputChange = (e: { target: { checked?: any; name?: any; value?: any; type?: any } }) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
-    if (type === "checkbox") {
-      const checked = e.target.checked;
-      setFormData((prev) => ({ ...prev, [name]: checked }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    const checked = type === "checkbox" ? (e.target as HTMLInputElement).checked : false;
+    setFormData((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
   };
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     console.log("Form submitted:", formData, uploadedFile);
   };
@@ -67,7 +63,7 @@ export default function EmployerRegistrationForm() {
   const labelClass = "block text-sm font-medium text-gray-700 mb-2";
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         {/* Header */}
         <div className="bg-[#0A2E5C] px-8 py-6">
