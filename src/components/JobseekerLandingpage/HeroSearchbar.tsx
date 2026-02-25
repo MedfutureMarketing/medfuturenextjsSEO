@@ -1,14 +1,16 @@
+/* eslint-disable react/no-unescaped-entities */
+
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+// import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import HeroImage from "@/assets/homeico/jobseekerhub.png";
-import uploadCVIcon from "@/assets/icons/upload.png";
-import registerIcon from "@/assets/icons/register.png";
-import CallIcon from "@/assets/icons/Call.png";
-import ReferIcon from "@/assets/icons/Reffer.png";
+// import HeroImage from "@/assets/homeico/jobseekerhub.png";
+// import uploadCVIcon from "@/assets/icons/upload.png";
+// import registerIcon from "@/assets/icons/register.png";
+// import CallIcon from "@/assets/icons/Call.png";
+// import ReferIcon from "@/assets/icons/Reffer.png";
 import Link from "next/link";
 import { apiGet } from "@/lib/api";
 
