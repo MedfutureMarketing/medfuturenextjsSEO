@@ -15,8 +15,8 @@ interface JobSeekerHub {
 
 export default function CounterSection() {
   const [counters, setCounters] = useState<CounterItem[]>([
-    { label: "Total Clients", value: 0 },
-    { label: "Total Jobs", value: 3500 },
+    { label: "Total Clients", value: 18 },
+    { label: "Total Jobs", value: 1500 },
     { label: "Avg Offer Time (days)", value: 14 },
     { label: "Total Placements", value: 0 },
   ]);
@@ -78,11 +78,11 @@ export default function CounterSection() {
       <div className="inner-width-section">
 
         {/* 2-col on mobile, 2-col on tablet, 4-col on desktop */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-56">
           {counters.map((counter, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center text-center
+              className="flex flex-col items-start justify-center text-left
                          bg-white/10 rounded-xl
                          py-5 px-3
                          sm:py-6 sm:px-4

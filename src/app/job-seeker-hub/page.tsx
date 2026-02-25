@@ -12,6 +12,7 @@ import CTAJobseeker from "@/components/JobseekerLandingpage/CTAJobseeker";
 import BlogSection from "@/components/Blog/Blog";
 
 import { getPageMetadata } from "@/lib/getPageMetadata";
+import BrowseByDivisions from "@/components/JobseekerLandingpage/Browsebydivisions";
 
 import { Metadata } from "next";
 export async function generateMetadata(): Promise<Metadata> {
@@ -21,8 +22,9 @@ export default function JobSeeker() {
   return (
     <main className=" bg-white">
       <HeroSearch />
-      <CounterSection/>
+      <CounterSection />
       <WhyMedFuture />
+      <BrowseByDivisions />
       <MedFutureStates />
       <BrowseJobsByProfession />
       <RecruitmentDivisionsTabs />
@@ -31,7 +33,7 @@ export default function JobSeeker() {
       <FAQ />
       <JobSeekertesti />
       <MeetOurConsultants />
-    <section id="upload-cv"><CTAJobseeker /></section>  
+      <section id="upload-cv"><CTAJobseeker /></section>
       <BlogSection />
     </main>
   );
