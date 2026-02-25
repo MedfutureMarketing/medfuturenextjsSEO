@@ -132,7 +132,7 @@ export default function JobseekersearchHero() {
 
                         {/* Description */}
                         <p className="text-sm lg:text-[15px] text-white/60 max-w-xl leading-relaxed">
-                            Profession-specific recruitment for GP &amp; Medical, Allied Health, Mental Health,
+                            Profession-specific recruitment for GP , Medical, Allied Health, Mental Health,
                             and Oral Health professionals—ethically matched, clinically aligned, and career-first.
                             We connect you with trusted employers, compliant roles, and flexible pathways across
                             Australia, offering personalised guidance, transparent processes, and long-term career
