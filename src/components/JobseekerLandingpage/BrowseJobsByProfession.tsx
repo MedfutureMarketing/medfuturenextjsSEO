@@ -118,7 +118,7 @@ export default function BrowseJobsByProfession() {
 
   return (
     <section className="mt-24 lg:mt-[139px]">
-      <div className="inner-width-section space-y-8">
+      <div className="inner-width-section space-y-8  lg:px-0 md:px-36 px-0">
 
         {/* Heading */}
         <h2 className="text-2xl lg:text-[36px] font-[500] text-[#040D48] text-left lg:text-right">

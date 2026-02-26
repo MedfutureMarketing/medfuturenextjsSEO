@@ -106,13 +106,13 @@ export default function JobseekersearchHero() {
             <div className="inner-width-section lg:py-5">
 
                 {/* ── OUTER GRID: single col → tablet 2-col → desktop 2-col ── */}
-                <div className="grid items-start gap-6 lg:mb-[79px] md:mb-[60px] mb-10
+                <div className="grid items-start gap-6 lg:mb-[49px] md:mb-[30px] mb-5 
                                 md:grid-cols-[1fr_320px] md:gap-8 md:items-start
                                 lg:gap-10 lg:grid-cols-[1fr_440px]">
 
                     {/* ── LEFT CONTENT ── */}
                     <div className="flex flex-col gap-2 pb-0 mt-5
-                                    md:mt-10 lg:mt-0 md:py-4
+                                  lg:mt-4 lg:py-0 md:mt-0 lg:mt-0 md:py-10
                                     ">
 
                         {/* Badge */}

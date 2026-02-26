@@ -49,7 +49,7 @@ export default function MedFutureStates() {
                   className="object-cover rounded-[8px] px-[5px] "
                 />
               </div>
-              <p className="mt-2 text-center text-[#040D48] text-sm font-[500] px-[5px] py-[5px]  text-gray-700">
+              <p className="mt-2 text-center text-[#040D48] text-xs font-[500] px-[5px] py-[5px]  text-gray-700">
                 {state.name}
               </p>
             </div>

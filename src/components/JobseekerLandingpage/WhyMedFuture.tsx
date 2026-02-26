@@ -63,7 +63,7 @@ export default function WhyMedfuture() {
                 <div className=" lg:p-16">
 
                     {/* Grid: single col on mobile, two cols on md+ */}
-                    <div className="flex flex-col md:grid md:grid-cols-2 md:gap-28 md:items-center">
+                    <div className="flex flex-col md:grid md:grid-cols-2 lg::gap-28 md:items-center">
 
                         {/* ── LEFT: Why Medfuture ── */}
                         <div className="pb-8 mb-2 md:pb-0 md:mb-0 md:pr-10 md:border-r md:border-dashed md:border-gray-300 lg:pr-16">
@@ -84,10 +84,10 @@ export default function WhyMedfuture() {
                                 <div className="mt-6 md:mt-8 grid grid-cols-3 gap-3 sm:gap-4">
                                     {features.map((f, i) => (
                                         <div key={i} className="flex flex-col items-start gap-2 sm:gap-3">
-                                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-auto md:h-auto [&>svg]:w-full [&>svg]:h-full md:[&>svg]:w-[63px] md:[&>svg]:h-[63px]">
+                                            <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-12 md:h-12 [&>svg]:w-full [&>svg]:h-full md:[&>svg]:w-[63px] md:[&>svg]:h-[63px]">
                                                 {f.icon}
                                             </div>
-                                            <p className="text-[11px] sm:text-xs md:text-sm text-[#0F172A] font-medium leading-snug whitespace-pre-line">
+                                            <p className="text-[11px] sm:text-xs md:text-xs text-[#0F172A] font-medium leading-snug whitespace-pre-line">
                                                 {f.label}
                                             </p>
                                         </div>

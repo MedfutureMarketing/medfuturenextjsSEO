@@ -121,7 +121,7 @@ export default function TestimonialPuzzle() {
                             {homeData?.testimonials?.map((item, index) => (
                                 <div key={index} className="w-[410px] flex-shrink-0">
                                     <div className="  rounded-lg p-0 h-full flex flex-col">
-                                        <p className="text-gray-700 border-l-4 px-8 border-[#074CA4] lg:text-[15px] text-xs leading-relaxed mb-6 flex-grow">
+                                        <p className="text-gray-700 border-l-4 px-8 border-[#074CA4] lg:text-[15px] md:text-md text-xs leading-relaxed mb-6 flex-grow">
                                             {item.comment.length > 310
                                                 ? `${item.comment.substring(0, 180)}...`
                                                 : item.comment}

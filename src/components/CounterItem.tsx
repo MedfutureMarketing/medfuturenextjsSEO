@@ -74,11 +74,11 @@ export default function CounterSection() {
   }, [counters]);
 
   return (
-    <section className="text-[#575D84] full-width-section my-8 md:my-10 lg:mb-[46px] lg:mt-[59px]">
+    <section className="text-[#575D84] full-width-section my-8 md:my-16 lg:mb-[46px] md:mb-5 lg:mt-[39px] md:mt-2">
       <div className="inner-width-section">
 
         {/* 2-col on mobile, 2-col on tablet, 4-col on desktop */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-56">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:gap-6 lg:grid-cols-4 lg:gap-56">
           {counters.map((counter, index) => (
             <div
               key={index}
@@ -91,9 +91,9 @@ export default function CounterSection() {
             >
               {/* Number */}
               <p className="font-bold leading-none
-                            text-2xl
-                            sm:text-3xl
-                            md:text-4xl
+                            text-xl
+                            sm:text-xl
+                            md:text-2xl
                             lg:text-[48px]">
                 {counts[index] ?? 0}
               </p>
@@ -101,8 +101,8 @@ export default function CounterSection() {
               {/* Label */}
               <p className="mt-2 font-medium leading-snug
                             text-xs
-                            sm:text-sm
-                            md:text-sm
+                            sm:text-xs
+                            md:text-xs
                             lg:text-[16px]">
                 {counter.label}
               </p>
