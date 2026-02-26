@@ -117,7 +117,7 @@ export default function BrowseJobsByProfession() {
   };
 
   return (
-    <section className="mt-16 lg:mt-[139px]">
+    <section className="mt-24 lg:mt-[139px]">
       <div className="inner-width-section space-y-8">
 
         {/* Heading */}

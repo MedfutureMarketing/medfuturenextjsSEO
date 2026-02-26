@@ -80,10 +80,10 @@ export default function TestimonialPuzzle() {
                     <p className="text-[#074CA4] text-sm font-medium mb-2">Testimonials</p>
                     <div className="flex items-start justify-between">
                         <div>
-                            <h2 className="text-3xl lg:text-4xl font-bold text-[#1a1a1a] mb-3">
+                            <h2 className="text-xl lg:text-4xl font-bold text-[#1a1a1a] mb-3">
                                 Trusted Voices from Healthcare Professionals
                             </h2>
-                            <p className="text-gray-600 text-base max-w-2xl">
+                            <p className="text-gray-600 lg:text-[16px] text-xs max-w-2xl">
                                 Real experiences and honest feedback from doctors and specialists<br />
                                 who've partnered with Medfuture.
                             </p>
@@ -121,7 +121,7 @@ export default function TestimonialPuzzle() {
                             {homeData?.testimonials?.map((item, index) => (
                                 <div key={index} className="w-[410px] flex-shrink-0">
                                     <div className="  rounded-lg p-0 h-full flex flex-col">
-                                        <p className="text-gray-700 border-l-4 px-8 border-[#074CA4] text-[15px] leading-relaxed mb-6 flex-grow">
+                                        <p className="text-gray-700 border-l-4 px-8 border-[#074CA4] lg:text-[15px] text-xs leading-relaxed mb-6 flex-grow">
                                             {item.comment.length > 310
                                                 ? `${item.comment.substring(0, 180)}...`
                                                 : item.comment}
@@ -154,7 +154,7 @@ export default function TestimonialPuzzle() {
                                 {homeData?.testimonials?.map((item, index) => (
                                     <div key={index} className="w-full flex-shrink-0 px-2">
                                         <div className=" border-l-4 border-[#074CA4] shadow-sm rounded-lg p-6">
-                                            <p className="text-gray-700 text-[15px] leading-relaxed mb-6">
+                                            <p className="text-gray-700 text-xs leading-relaxed mb-6">
                                                 {item.comment.length > 180
                                                     ? `${item.comment.substring(0, 180)}...`
                                                     : item.comment}

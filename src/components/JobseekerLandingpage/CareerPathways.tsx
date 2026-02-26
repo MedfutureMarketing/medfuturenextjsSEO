@@ -28,7 +28,6 @@ const pathways = [
 export default function CareerPathways() {
     return (
         <section className="full-width-section relative mt-10 sm:mt-16 md:mt-20 lg:mt-[125px] overflow-hidden">
-
             {/* Background Image */}
             <Image
                 src={Careerpathwaymedfuture}
@@ -38,13 +37,10 @@ export default function CareerPathways() {
                 sizes="100vw"
                 priority
             />
-
             {/* Overlay — adjust opacity to control image visibility */}
             <div className="absolute inset-0 bg-white/0" />
-
             {/* Content — relative + z-10 to sit above image & overlay */}
             <div className="inner-width-section relative z-10 py-[63px]">
-
                 {/* Header */}
                 <div className="max-w-xl mb-6 md:mb-8 lg:mb-10">
                     <h2 className="text-xl sm:text-2xl md:text-[28px] lg:text-[30px] font-bold text-[#0F172A]">
@@ -55,7 +51,6 @@ export default function CareerPathways() {
                         you can make confident decisions.
                     </p>
                 </div>
-
                 {/* Pathway Cards */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
                     {pathways.map((pathway) => (
@@ -66,13 +61,12 @@ export default function CareerPathways() {
                             <h3 className="text-[13px] sm:text-sm md:text-[16px] font-semibold text-[#0F172A] leading-snug">
                                 {pathway.title}
                             </h3>
-                            <p className="mt-2 text-[11px] sm:text-xs md:text-[13px] text-[#4A5565] leading-relaxed">
+                            <p className="mt-2 text-[11px] sm:text-xs md:text-[16px] text-[#4A5565] leading-relaxed">
                                 {pathway.description}
                             </p>
                         </div>
                     ))}
                 </div>
-
                 {/* Buttons */}
                 <div className="mt-6 md:mt-[70px] flex flex-wrap gap-3 sm:gap-4">
                     <Link
@@ -88,7 +82,6 @@ export default function CareerPathways() {
                         View Locum Jobs
                     </Link>
                 </div>
-
             </div>
         </section>
     );

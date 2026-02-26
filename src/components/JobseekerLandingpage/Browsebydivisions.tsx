@@ -138,7 +138,7 @@ export default function BrowseByDivisions() {
     const [gpDiv, ahpDiv, mhDiv] = divisions;
 
     return (
-        <section className="full-width-section bg-white mt-10 sm:mt-16 md:mt-20 lg:mt-[125px]">
+        <section className="full-width-section bg-white mt-24 md:mt-20 lg:mt-[125px]">
             <div className="inner-width-section">
 
                 {/* ROW 1: Stacked on mobile/tablet | side-by-side on lg */}

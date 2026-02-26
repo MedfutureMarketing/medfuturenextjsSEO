@@ -65,7 +65,7 @@ export default function AlliedHealthProfessions({
     className = ''
 }: AlliedHealthProfessionsProps) {
     return (
-        <section className={`lg:py-16 mt-[160px] px-4 full-width-section bg-[#FBFBFB] ${className}`}>
+        <section className={`lg:py-16 lg:mt-[160px] mt-24 px-4 full-width-section bg-[#FBFBFB] ${className}`}>
             <div className="inner-width-section mx-auto">
                 {/* Header */}
                 <div className="mb-12">

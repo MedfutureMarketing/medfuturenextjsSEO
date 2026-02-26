@@ -3,17 +3,20 @@ import CounterSection from "@/components/CounterItem";
 import WhyMedFuture from "@/components/JobseekerLandingpage/WhyMedFuture";
 import MedFutureStates from "@/components/JobseekerLandingpage/MedFutureStates";
 import BrowseJobsByProfession from "@/components/JobseekerLandingpage/BrowseJobsByProfession";
-import RecruitmentDivisionsTabs from "@/components/JobseekerLandingpage/RecruitmentDivisions";
+// import RecruitmentDivisionsTabs from "@/components/JobseekerLandingpage/RecruitmentDivisions";
 import LocumGpForm from "@/components/Forms/LocumGpForm";
-import JobSeekertesti from "@/components/JobseekerLandingpage/JobSeekerTesti";
+// import JobSeekertesti from "@/components/JobseekerLandingpage/JobSeekerTesti";
 import FAQ from "@/components/FAQ/Faq";
-import MeetOurConsultants from "@/components/Home/MeetConsultants";
+// import MeetOurConsultants from "@/components/Home/MeetConsultants";
 import CTAJobseeker from "@/components/JobseekerLandingpage/CTAJobseeker";
-import BlogSection from "@/components/Blog/Blog";
+// import BlogSection from "@/components/Blog/Blog";
 
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import BrowseByDivisions from "@/components/JobseekerLandingpage/Browsebydivisions";
 import CareerPathways from "@/components/JobseekerLandingpage/CareerPathways";
+import GpDivisiontesti from "@/components/Gpdivision/GpdivisionComponents/GpDivisiontestimony"
+import QuickLinks from "@/components/QuickLinks";
+
 
 import { Metadata } from "next";
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,14 +33,15 @@ export default function JobSeeker() {
       <BrowseJobsByProfession />
       <MedFutureStates />
       <CareerPathways />
-      <RecruitmentDivisionsTabs />
+      <GpDivisiontesti />
+      {/* <RecruitmentDivisionsTabs /> */}
     
 
       <FAQ />
-      <JobSeekertesti />
-      <MeetOurConsultants />
+      {/* <JobSeekertesti /> */}
+      {/* <MeetOurConsultants /> */}
       <section id="upload-cv"><CTAJobseeker /></section>
-      <BlogSection />
+      {/* <BlogSection /> */} <QuickLinks />
     </main>
   );
 }
