@@ -25,10 +25,11 @@ export default function JobSeeker() {
       <CounterSection />
       <WhyMedFuture />
       <BrowseByDivisions />
-      <MedFutureStates />
+        <LocumGpForm />
       <BrowseJobsByProfession />
+      <MedFutureStates />
       <RecruitmentDivisionsTabs />
-      <LocumGpForm />
+    
 
       <FAQ />
       <JobSeekertesti />

@@ -1,6 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image, { StaticImageData } from "next/image";
+import GPcareerhub from "@/assets/jobseeker/gpcareerhub.webp";
+import AHPcareerhub from "@/assets/jobseeker/aphcareerhub.webp";
+import MHcareerhub from "@/assets/jobseeker/mentalhealthcareerhub.webp";
+import navicon from "@/assets/icons/Medfuture.webp";
 
 type Division = {
     id: number;
@@ -10,6 +15,7 @@ type Division = {
     bullets: string[];
     exploreLabel: string;
     exploreHref: string;
+    image: StaticImageData;
 };
 
 const divisions: Division[] = [
@@ -27,6 +33,7 @@ const divisions: Division[] = [
         ],
         exploreLabel: "Explore GP Division",
         exploreHref: "/divisions/gp-medical",
+        image: GPcareerhub,
     },
     {
         id: 2,
@@ -42,6 +49,7 @@ const divisions: Division[] = [
         ],
         exploreLabel: "Explore AHP Division",
         exploreHref: "/divisions/allied-health",
+        image: AHPcareerhub,
     },
     {
         id: 3,
@@ -57,20 +65,13 @@ const divisions: Division[] = [
         ],
         exploreLabel: "Explore Mental Health Division",
         exploreHref: "/divisions/mental-health",
+        image: MHcareerhub,
     },
 ];
 
-function ImagePlaceholder({ className }: { className?: string }) {
-    return (
-        <div className={`bg-gray-200 flex items-center justify-center text-gray-400 text-xs font-medium flex-shrink-0 ${className}`}>
-            Image
-        </div>
-    );
-}
-
 function TagPill({ label }: { label: string }) {
     return (
-        <span className="border border-gray-300 text-gray-600 text-xs px-3 py-1 rounded-full whitespace-nowrap">
+        <span className="border border-[#E2E8F0] text-[#4A5565] text-[11px] sm:text-xs px-2.5 py-1 rounded-[8px] whitespace-nowrap">
             {label}
         </span>
     );
@@ -78,41 +79,57 @@ function TagPill({ label }: { label: string }) {
 
 function ExploreLink({ label, href }: { label: string; href: string }) {
     return (
-        <Link href={href} className="inline-flex items-center gap-1.5 text-[#1A56C4] text-sm font-semibold hover:underline mt-4">
+        <Link
+            href={href}
+            className="inline-flex items-center gap-1.5 text-[#1A56C4] text-[13px] md:text-sm lg:text-[14px] font-semibold hover:underline mt-4 md:mt-5 lg:mt-[26px]"
+        >
             {label}
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <rect x="1" y="1" width="6" height="6" rx="1" stroke="#1A56C4" strokeWidth="1.5" />
-                <rect x="11" y="1" width="6" height="6" rx="1" stroke="#1A56C4" strokeWidth="1.5" />
-                <rect x="1" y="11" width="6" height="6" rx="1" stroke="#1A56C4" strokeWidth="1.5" />
-                <rect x="11" y="11" width="6" height="6" rx="1" stroke="#1A56C4" strokeWidth="1.5" />
-            </svg>
+            <Image src={navicon} alt="Explore" width={12} height={12} />
         </Link>
     );
 }
 
-function DivisionCardContent({ division }: { division: Division }) {
+function DivisionCard({ division }: { division: Division }) {
     return (
-        <div className="flex-1 p-4 md:p-5 flex flex-col justify-center">
-            <h3 className="text-sm md:text-base lg:text-[17px] font-bold text-[#1A56C4]">
-                {division.title}
-            </h3>
-            <p className="mt-1.5 text-xs md:text-sm text-gray-500 leading-relaxed">
-                {division.description}
-            </p>
-            <div className="mt-3 flex flex-wrap gap-1.5">
-                {division.tags.map((tag) => (
-                    <TagPill key={tag} label={tag} />
-                ))}
+        <div className="border border-gray-200 rounded-2xl overflow-hidden h-full">
+            <div className="flex flex-row h-full">
+
+                {/* Image */}
+                <div className="relative flex-shrink-0 w-[90px] sm:w-[120px] md:w-[130px] lg:w-[144px] self-stretch">
+                    <Image
+                        src={division.image}
+                        alt={division.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 90px, (max-width: 768px) 120px, (max-width: 1024px) 130px, 144px"
+                    />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 p-3 sm:p-4 md:p-4 lg:p-5 flex flex-col justify-center min-w-0">
+                    <h3 className="text-[13px] sm:text-sm md:text-[15px] lg:text-[16px] font-bold text-[#074CA4] leading-snug">
+                        {division.title}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs md:text-[13px] lg:text-[14px] text-[#4A5565] mt-2 md:mt-3 lg:mt-[17px] leading-relaxed">
+                        {division.description}
+                    </p>
+                    <div className="mt-2 md:mt-3 flex flex-wrap gap-1 sm:gap-1.5">
+                        {division.tags.map((tag) => (
+                            <TagPill key={tag} label={tag} />
+                        ))}
+                    </div>
+                    <ul className="flex flex-col gap-1 sm:gap-1.5 mt-2 md:mt-3 lg:mt-[20px]">
+                        {division.bullets.map((b) => (
+                            <li key={b} className="flex items-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs md:text-[13px] lg:text-[14px] text-[#575D84]">
+                                <span className="mt-1.5 w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-[#575D84] flex-shrink-0" />
+                                <span className="leading-snug">{b}</span>
+                            </li>
+                        ))}
+                    </ul>
+                    <ExploreLink label={division.exploreLabel} href={division.exploreHref} />
+                </div>
+
             </div>
-            <ul className="mt-3 flex flex-col gap-1.5">
-                {division.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-xs md:text-sm text-gray-700">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#1A56C4] flex-shrink-0" />
-                        {b}
-                    </li>
-                ))}
-            </ul>
-            <ExploreLink label={division.exploreLabel} href={division.exploreHref} />
         </div>
     );
 }
@@ -121,22 +138,21 @@ export default function BrowseByDivisions() {
     const [gpDiv, ahpDiv, mhDiv] = divisions;
 
     return (
-        <section className="full-width-section bg-white my-8 md:my-12 lg:my-16">
+        <section className="full-width-section bg-white mt-10 sm:mt-16 md:mt-20 lg:mt-[125px]">
             <div className="inner-width-section">
 
-                {/* ══════════════════════════════════════════
-                    ROW 1 (desktop): Header LEFT | GP card RIGHT
-                    Mobile: header stacked above card
-                ══════════════════════════════════════════ */}
+                {/* ROW 1: Stacked on mobile/tablet | side-by-side on lg */}
                 <div className="flex flex-col lg:grid lg:grid-cols-[1fr_1fr] lg:gap-8 lg:items-start">
 
                     {/* Section Header */}
-                    <div className="mb-6 lg:mb-0 lg:pt-2">
-                        <p className="text-[#1A56C4] text-sm font-semibold mb-1">Our Divisions</p>
-                        <h2 className="text-2xl md:text-3xl lg:text-[32px] font-bold text-[#0F172A]">
+                    <div className="mb-5 sm:mb-6 md:mb-8 lg:mb-0 lg:pt-2">
+                        <p className="text-[#074CA4] text-xs sm:text-sm lg:text-[14px] font-semibold mb-1">
+                            Our Divisions
+                        </p>
+                        <h2 className="text-xl sm:text-2xl md:text-[28px] lg:text-[30px] font-bold text-[#0F172A]">
                             Browse by Divisions
                         </h2>
-                        <p className="mt-3 text-sm text-gray-500 leading-relaxed max-w-sm">
+                        <p className="mt-3 sm:mt-4 md:mt-5 lg:mt-[35px] text-xs sm:text-sm md:text-[15px] lg:text-[16px] text-[#4A5565] leading-relaxed max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm">
                             Start where your identity is strongest — your profession. Each hub brings
                             together tailored career guidance, market insights, role trends, and curated
                             opportunities designed to match your expertise, ambitions, and preferred
@@ -144,38 +160,15 @@ export default function BrowseByDivisions() {
                         </p>
                     </div>
 
-                    {/* GP Card — image left, content right */}
-                    <div className="border border-gray-200 rounded-2xl overflow-hidden">
-                        <div className="flex flex-col sm:flex-row">
-                            <ImagePlaceholder className="w-full h-48 sm:w-[200px] sm:h-auto lg:w-[220px]" />
-                            <DivisionCardContent division={gpDiv} />
-                        </div>
-                    </div>
+                    {/* GP Card */}
+                    <DivisionCard division={gpDiv} />
 
                 </div>
 
-                {/* ══════════════════════════════════════════
-                    ROW 2 (desktop): AHP card LEFT | MH card RIGHT
-                    Mobile/tablet: stacked
-                ══════════════════════════════════════════ */}
-                <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-
-                    {/* Allied Health Card */}
-                    <div className="border border-gray-200 rounded-2xl overflow-hidden">
-                        <div className="flex flex-col sm:flex-row">
-                            <ImagePlaceholder className="w-full h-48 sm:w-[160px] sm:h-auto lg:w-[180px]" />
-                            <DivisionCardContent division={ahpDiv} />
-                        </div>
-                    </div>
-
-                    {/* Mental Health Card */}
-                    <div className="border border-gray-200 rounded-2xl overflow-hidden">
-                        <div className="flex flex-col sm:flex-row">
-                            <ImagePlaceholder className="w-full h-48 sm:w-[160px] sm:h-auto lg:w-[180px]" />
-                            <DivisionCardContent division={mhDiv} />
-                        </div>
-                    </div>
-
+                {/* ROW 2: Stacked on mobile | 2 cols on md+ */}
+                <div className="mt-4 sm:mt-6 md:mt-6 lg:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-5 lg:gap-8">
+                    <DivisionCard division={ahpDiv} />
+                    <DivisionCard division={mhDiv} />
                 </div>
 
             </div>

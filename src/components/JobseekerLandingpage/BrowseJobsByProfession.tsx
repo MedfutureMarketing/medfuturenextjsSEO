@@ -126,6 +126,9 @@ export default function BrowseJobsByProfession() {
           <span className="font-[700] text-[#074CA4] lg:text-[40px]">
             Profession
           </span>
+          <p className="lg:text-[16px] text-xs font-[400] text-[#575D84] mt-4 text-left lg:text-right">
+            Start where your identity is strongest — your profession. Each hub <br /> includes career guidance, market insights and curated opportunities.
+          </p>
         </h2>
 
         {/* Tabs */}
