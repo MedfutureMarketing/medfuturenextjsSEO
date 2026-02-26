@@ -150,10 +150,10 @@ export default function Menu() {
               </li>
 
               <Link
-                href="/sign-up"
+                href="/sign-in"
                 className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-[4px] hover:bg-gray-400"
               >
-                Sign Up
+                Sign in
               </Link>
             </div>
 

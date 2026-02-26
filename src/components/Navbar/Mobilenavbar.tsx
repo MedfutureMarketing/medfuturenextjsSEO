@@ -12,47 +12,123 @@ interface MobileNavProps {
   onClose: () => void;
 }
 
-const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey }[] = [
-  { label: "Permanent Jobs", href: "/permanent", submenu: "permanent" },
-  { label: "Locum Jobs", href: "/locum", submenu: "locum" },
-  { label: "International Candidates", href: "/international", submenu: "international" },
-  { label: "For Candidates", href: "#", submenu: "candidates" },
-  { label: "Medical Division", href: "#", submenu: "medical" },
-  { label: "Allied Health Division", href: "#", submenu: "allied" },
-  { label: "Mental Health Division", href: "#", submenu: "mental" },
-  { label: "Oral Health Division", href: "#", submenu: "oral" },
-
-
-  //   { label: "Employers", href: "/employer-hub" },
+const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey; icon: React.ReactNode; tag?: string }[] = [
+  {
+    label: "Permanent Jobs",
+    href: "/permanent",
+    submenu: "permanent",
+    tag: "Full-time",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Locum Jobs",
+    href: "/locum",
+    submenu: "locum",
+    tag: "Flexible",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 3" />
+      </svg>
+    ),
+  },
+  {
+    label: "International Candidates",
+    href: "/international",
+    submenu: "international",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20" />
+      </svg>
+    ),
+  },
+  {
+    label: "For Candidates",
+    href: "#",
+    submenu: "candidates",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
+      </svg>
+    ),
+  },
+  {
+    label: "Medical Division",
+    href: "#",
+    submenu: "medical",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.9 4.6-1.4 8-5.5 8-9.9V7l-8-4z" />
+        <path d="M12 8v8M8 12h8" />
+      </svg>
+    ),
+  },
+  {
+    label: "Allied Health Division",
+    href: "#",
+    submenu: "allied",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3" />
+        <path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4" />
+        <circle cx="20" cy="10" r="2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Mental Health Division",
+    href: "#",
+    submenu: "mental",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <path d="M12 2a7 7 0 0 1 7 7c0 3-1.5 5-4 6.5V17a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.5C6.5 14 5 12 5 9a7 7 0 0 1 7-7z" />
+        <path d="M9 21h6" />
+        <path d="M10 17v1m4-1v1" />
+      </svg>
+    ),
+  },
+  {
+    label: "Oral Health Division",
+    href: "#",
+    submenu: "oral",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <path d="M12 2C9 2 6 4 6 7c0 1.5.5 3 1 4.5C8 14 8 17 9 19c.5 1.5 1 3 3 3s2.5-1.5 3-3c1-2 1-5 2-7.5.5-1.5 1-3 1-4.5 0-3-3-5-6-5z" />
+      </svg>
+    ),
+  },
 ];
 
 const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
   permanent: [
     { label: "Jobs in New South Wales (NSW)", href: "/permanent/jobs/in-new-south-wales?page=1" },
     { label: "Jobs in Australian Capital Territory (ACT)", href: "/permanent/jobs/in-australian-capital-territory?page=1" },
-    { label: "Jobs in South Australia (SA) ", href: "/permanent/jobs/in-south-australia?page=1" },
+    { label: "Jobs in South Australia (SA)", href: "/permanent/jobs/in-south-australia?page=1" },
     { label: "Jobs in Northern Territory (NT)", href: "/permanent/jobs/in-northern-territory?page=1" },
     { label: "Jobs in Queensland (QLD)", href: "/permanent/jobs/in-queensland?page=1" },
     { label: "Jobs in Western Australia (WA)", href: "/permanent/jobs/in-western-australia?page=1" },
     { label: "Jobs in Victoria (VIC)", href: "/permanent/jobs/in-victoria?page=1" },
     { label: "Jobs in Tasmania (TAS)", href: "/permanent/jobs/in-tasmania?page=1" },
-
   ],
   locum: [
     { label: "Jobs in New South Wales (NSW)", href: "/locum/jobs/in-new-south-wales?page=1" },
     { label: "Jobs in Australian Capital Territory (ACT)", href: "/locum/jobs/in-australian-capital-territory?page=1" },
-    { label: "Jobs in South Australia (SA) ", href: "/locum/jobs/in-south-australia?page=11" },
+    { label: "Jobs in South Australia (SA)", href: "/locum/jobs/in-south-australia?page=1" },
     { label: "Jobs in Northern Territory (NT)", href: "/locum/jobs/in-northern-territory?page=1" },
     { label: "Jobs in Queensland (QLD)", href: "/locum/jobs/in-queensland?page=1" },
     { label: "Jobs in Western Australia (WA)", href: "/locum/jobs/in-western-australia?page=1" },
     { label: "Jobs in Victoria (VIC)", href: "/locum/jobs/in-victoria?page=1" },
     { label: "Jobs in Tasmania (TAS)", href: "/locum/jobs/in-tasmania?page=1" },
-
   ],
   international: [
-
-    { label: "Jobs for international Candidates", href: "/international" },
-
+    { label: "Jobs for International Candidates", href: "/international" },
   ],
   candidates: [
     { label: "Permanent Jobs", href: "/permanent" },
@@ -64,19 +140,17 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
   medical: [
     { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/general-practice-division/fracgp-facrrm" },
     { label: "General Practitioner (Registrars)", href: "/general-practice-division/gp-registrars" },
-    { label: "International Family Medicine (Specialist Pathway Recruitment)", href: "/international/family-medicine-jobs/in-australia?page=1" },
+    { label: "International Family Medicine", href: "/international/family-medicine-jobs/in-australia?page=1" },
     { label: "Locum GP (Short Term or Ongoing Cover)", href: "/general-practice-division/locum-gp" },
-
   ],
   allied: [
-    { label: "Speech Pathologist ", href: "/ahp-division/speech-pathology" },
+    { label: "Speech Pathologist", href: "/ahp-division/speech-pathology" },
     { label: "Physiotherapy", href: "/ahp-division/physiotherapy" },
-    { label: "Occupational Therapist ", href: "/ahp-division/occupational-therapist" },
+    { label: "Occupational Therapist", href: "/ahp-division/occupational-therapist" },
     { label: "Podiatrist", href: "/ahp-division/podiatrist" },
   ],
   mental: [
     { label: "Psychology", href: "/permanent/psychology-jobs/in-australia?page=1" },
-
   ],
   oral: [
     { label: "Dentist", href: "/permanent/dentists-jobs/in-australia?page=1" },
@@ -84,29 +158,14 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Dental Specialist", href: "/permanent/general-dentist-jobs/in-australia?page=1" },
     { label: "Oral Hygienist", href: "/permanent/oral-hygienist-jobs/in-australia?page=1" },
   ],
-
 };
-
-// const DIVISIONS = [
-//   { label: "Medical Division", href: "/job-seeker-hub/medical-division" },
-//   { label: "Allied Health Division", href: "/job-seeker-hub/allied-health-division" },
-//   { label: "Mental Health Division", href: "/job-seeker-hub/mental-health-division" },
-//   { label: "Oral Health Division", href: "/job-seeker-hub/oral-health-division" },
-// ];
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const [expandedMenu, setExpandedMenu] = useState<MenuKey | null>(null);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
   const toggleSubmenu = (menuKey: MenuKey) => {
@@ -122,115 +181,136 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   return (
     <>
       {/* Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={onClose}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Mobile Menu Drawer */}
       <div
-        className={`fixed top-0 left-0 h-screen w-80 bg-white shadow-2xl z-101 transition-transform duration-300 overflow-y-auto lg:hidden ${isOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
+          isOpen ? "bg-black/50 pointer-events-auto" : "bg-transparent pointer-events-none"
+        }`}
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* Drawer */}
+      <div
+        className={`fixed top-0 left-0 h-screen w-[300px] sm:w-80 bg-white z-[101] flex flex-col transition-transform duration-300 ease-in-out lg:hidden shadow-[4px_0_32px_rgba(0,0,0,0.12)] ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
-        {/* Header with Close Button */}
-        <div className="flex items-center justify-between p-0 border-b border-gray-200 sticky top-0 bg-white">
-          <Image src={MedfutureLogoDark} alt="Medfuture logo" width={120} height={30} />
+
+        {/* Header */}
+        <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#F1F5F9] sticky top-0 bg-white z-10">
+          <Image src={MedfutureLogoDark} alt="Medfuture" width={120} height={30} className="object-contain" />
           <button
             onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-lg transition text-gray-600"
+            className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-[#F1F5F9] transition-colors text-[#64748B]"
             aria-label="Close menu"
           >
-            ✕
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" className="w-4 h-4">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
           </button>
         </div>
 
-        {/* Navigation Items */}
-        <nav className="p-4 space-y-2">
-          {MENU_ITEMS.map((item) => (
-            <div key={item.label}>
-              {item.submenu ? (
-                <>
-                  <button
-                    onClick={() => toggleSubmenu(item.submenu as MenuKey)}
-                    className="w-full text-sm flex items-center justify-between p-3 rounded-lg hover:bg-gray-100 transition font-medium text-gray-900"
-                  >
-                    {item.label}
-                    <span
-                      className={`transition-transform text-gray-600 text-lg ${expandedMenu === item.submenu ? "rotate-180" : ""
-                        }`}
+        {/* Nav section label */}
+        <p className="px-4 pt-4 pb-1.5 text-[10px] font-semibold tracking-[0.1em] uppercase text-[#94A3B8]">
+          Navigation
+        </p>
+
+        {/* Navigation — scrollable */}
+        <nav className="flex-1 overflow-y-auto px-3 pb-4 space-y-0.5">
+          {MENU_ITEMS.map((item) => {
+            const isExpanded = expandedMenu === item.submenu;
+
+            return (
+              <div key={item.label}>
+                {item.submenu ? (
+                  <>
+                    <button
+                      onClick={() => toggleSubmenu(item.submenu as MenuKey)}
+                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
+                        isExpanded
+                          ? "bg-[#074CA4]/8 text-[#074CA4]"
+                          : "hover:bg-[#F8FAFC] text-[#1E293B]"
+                      }`}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-                      </svg>
+                      {/* Icon */}
+                      <span className={`flex-shrink-0 transition-colors duration-200 ${
+                        isExpanded ? "text-[#074CA4]" : "text-[#94A3B8] group-hover:text-[#074CA4]/60"
+                      }`}>
+                        {item.icon}
+                      </span>
 
-                    </span>
-                  </button>
+                      {/* Label */}
+                      <span className="flex-1 text-left text-[12px] font-medium">{item.label}</span>
 
-                  {/* Submenu */}
-                  {expandedMenu === item.submenu && (
-                    <div className="pl-4 mt-1 space-y-1 bg-gray-50 rounded-lg p-3 border border-gray-200">
-                      {SUBMENU_CONFIG[item.submenu].map((subitem) => (
-                        <Link
-                          key={subitem.label}
-                          href={subitem.href}
-                          onClick={handleLinkClick}
-                          className="block p-2 text-xs text-gray-700 hover:text-blue-600 hover:bg-white rounded transition"
-                        >
-                          {subitem.label}
-                        </Link>
-                      ))}
+                      {/* Tag */}
+                      {item.tag && !isExpanded && (
+                        <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-[#EFF6FF] text-[#074CA4]">
+                          {item.tag}
+                        </span>
+                      )}
+
+                      {/* Chevron */}
+                      <span className={`flex-shrink-0 transition-transform duration-300 ${
+                        isExpanded ? "rotate-180 text-[#074CA4]" : "text-[#CBD5E1]"
+                      }`}>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                          <path d="m6 9 6 6 6-6" />
+                        </svg>
+                      </span>
+                    </button>
+
+                    {/* Submenu */}
+                    <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
+                      <div className="ml-3 pl-3 border-l-2 border-[#074CA4]/15 mt-1 mb-1 space-y-0.5">
+                        {SUBMENU_CONFIG[item.submenu as MenuKey].map((subitem) => (
+                          <Link
+                            key={subitem.label}
+                            href={subitem.href}
+                            onClick={handleLinkClick}
+                            className="flex items-center gap-2 px-2 py-2 rounded-lg text-[12px] text-[#475569] hover:text-[#074CA4] hover:bg-[#EFF6FF] transition-all duration-150 group"
+                          >
+                            <span className="w-1 h-1 rounded-full bg-[#CBD5E1] group-hover:bg-[#074CA4] flex-shrink-0 transition-colors" />
+                            {subitem.label}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
-                  )}
-                </>
-              ) : (
-                <Link
-                  href={item.href}
-                  onClick={handleLinkClick}
-                  className="block p-3 rounded-lg hover:bg-gray-100 transition font-medium text-gray-900"
-                >
-                  {item.label}
-                </Link>
-              )}
-            </div>
-          ))}
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={handleLinkClick}
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-[#F8FAFC] transition-colors text-[#1E293B] group"
+                  >
+                    <span className="flex-shrink-0 text-[#94A3B8] group-hover:text-[#074CA4]/60 transition-colors">
+                      {item.icon}
+                    </span>
+                    <span className="text-[13px] font-medium">{item.label}</span>
+                  </Link>
+                )}
+              </div>
+            );
+          })}
         </nav>
 
-        {/* Divider */}
-        <div className="" />
-
-        {/* Browse Divisions Section */}
-        <div className="p-4">
-          {/* <h4 className="font-semibold text-sm text-gray-900 mb-3">Browse Divisions</h4> */}
-          <div className="space-y-2">
-            {/* {DIVISIONS.map((div) => (
-              <Link
-                key={div.label}
-                href={div.href}
-                onClick={handleLinkClick}
-                className="block text-sm text-blue-600 hover:text-blue-700 hover:underline py-1 font-medium"
-              >
-                {div.label}
-              </Link>
-            ))} */}
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="" />
-
-        {/* Sign Up Button */}
-        <div className="p-4">
-          <Link
+        {/* Footer */}
+        <div className="border-t border-[#F1F5F9] p-4 space-y-2.5">
+          {/* <Link
             href="/sign-up"
             onClick={handleLinkClick}
-            className="block w-full text-center py-3 px-4 bg-[#074CA4] text-white font-semibold rounded-md hover:bg-blue-700 transition"
+            className="flex items-center justify-center w-full py-2.5 px-4 bg-[#074CA4] hover:bg-[#0a3d8a] text-white text-[13px] font-semibold rounded-xl transition-colors duration-200"
           >
             Sign Up
+          </Link> */}
+          <Link
+            href="/sign-in"
+            onClick={handleLinkClick}
+            className="flex items-center justify-center w-full py-2.5 px-4 bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#1E293B] text-[13px] font-semibold rounded-xl transition-colors duration-200 border border-[#E2E8F0]"
+          >
+            Sign In
           </Link>
         </div>
+
       </div>
     </>
   );
