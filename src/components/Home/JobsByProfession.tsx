@@ -101,10 +101,10 @@ export default function JobsbyProfession() {
   const hasMoreCards = sortedProfessions.length > 6;
 
   return (
-    <section className="w-full lg:py-[106px] py-10 px-4 lg:px-0">
+    <section className="w-full lg:py-[106px] py-24 md:px-4 lg:px-0">
       <div className="inner-width-section mx-auto">
         <div className="text-left mb-12">
-          <h2 className="text-2xl lg:text-[40px] font-Inter text-gray-800 mb-4">
+          <h2 className="text-xl lg:text-[40px] font-Inter text-gray-800 mb-4">
             Find Jobs by <span className="text-[#074CA4] font-bold">Professions</span>
           </h2>
 

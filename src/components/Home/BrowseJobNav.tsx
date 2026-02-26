@@ -22,18 +22,18 @@ export default function BrowseJobs() {
   ];
 
   return (
-    <section className="w-full bg-white lg:py-[106px]  px-4 lg:px-0">
+    <section className="w-full bg-white lg:py-[106px]  md:px-4 lg:px-0">
       <div className=" mx-auto inner-width-section">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
         
           <div>
-            <h2 className="text-3xl lg:text-[40px]  text-gray-800 ">
+            <h2 className="text-xl lg:text-[40px]  text-gray-800 ">
               Browse<span className="text-[#074CA4] font-bold"> Jobs</span>
             </h2>
 
-            <p className="text-gray-600 text-xs lg:text-[16px] mt-[26px] max-w-md">
+            <p className="text-gray-600 text-xs lg:text-[16px] lg:mt-[26px] mt-5 max-w-md">
               Explore thousands of healthcare opportunities across Australia. Browse jobs by location, profession, or specialty, and find roles that match your skills, experience, and career goals. Our platform connects you with trusted employers, streamlines applications, and helps you take the next confident career step.
             </p>
           </div>

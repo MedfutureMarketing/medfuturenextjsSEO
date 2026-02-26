@@ -130,7 +130,7 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
 
       {/* Job Tags */}
       <div className="inner-width-section">
-        <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-4 lg:px-[0]">
+        <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-[16px] lg:mt-[24px] mb-[16px] lg:mb-[20px] px-0 lg:px-[0]">
           <span className="text-[#0E2851] lg:text-[18px] text-[13px] px-2 lg:px-0 py-1 lg:py-0 rounded bg-gray-100 lg:bg-transparent">
             <Image src={Permenentico} alt="Permanent" className="mr-0 inline-block" />       Permanent
           </span>
@@ -146,7 +146,7 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
         </div>
 
         {/* Job Description */}
-        <div className="prose max-w-none px-4 lg:px-0">
+        <div className="prose max-w-none  lg:px-0">
           <p className="text-[#666666] text-[14px] lg:text-[18px] leading-relaxed">
             {job.job_brief}
           </p>
@@ -181,7 +181,7 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
 
         {/* Contact Information */}
         <div className='grid lg:grid-cols-2 grid-cols-1 lg:items-end'>
-          <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 px-4">
+          <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 ">
             <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
               Contact Us
             </h4>
@@ -203,7 +203,7 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
             </div>
           </div>
 
-          <div className="flex lg:justify-end px-4 lg:px-0 pb-6 mb-6 lg:pb-0">
+          <div className="flex lg:justify-end lg:px-0 pb-6 mb-6 lg:pb-0">
             {/* Quick Apply Button */}
             {!showRegistrationForm && (
               <button

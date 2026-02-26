@@ -204,7 +204,7 @@ export default function LocumJobDescription() {
                     {/* Contact Information */}
                     {/* Contact Information */}
                     <div className='grid lg:grid-cols-2 inner-width-section grid-cols-1 lg:items-end'>
-                        <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 px-4">
+                        <div className="grid grid-cols-1 gap-3 lg:gap-[7px] mb-6 lg:p-0 lg:px-0 ">
                             <h4 className="font-semibold text-[#66768F] mt-6 lg:mt-[40px] text-base text-[14px] lg:text-[18px]">
                                 Contact Us
                             </h4>

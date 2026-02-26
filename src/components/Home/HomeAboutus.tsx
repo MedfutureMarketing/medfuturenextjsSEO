@@ -18,7 +18,7 @@ const cards = [
 
 export default function AboutUs() {
   return (
-    <section className="w-full px-4 lg:px-0">
+    <section className="w-full px-4 py-24 lg:px-0">
       <div className="max-w-screen-2xl mx-auto">
 
         <h2 className="text-2xl lg:text-[40px] text-gray-800 mb-4 text-center lg:text-left">

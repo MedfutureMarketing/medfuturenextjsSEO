@@ -112,7 +112,7 @@ export default function Hero() {
         <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-white leading-tight mb-4">
 Trusted Medical Recruitment Agency in Australia Offering 1,000+ Jobs from 9,579+ Employers        </h1>
 
-        <p className="text-sm text-left sm:text-base text-[#FFFFFFB2] leading-relaxed lg:mx-0">
+        <p className="text-xs text-left sm:text-base text-[#FFFFFFB2] leading-relaxed lg:mx-0">
         Australia’s leading medical recruitment agency delivers results fast. Our average time to hire is 3–7 days, and satisfaction ratings are 4.9/5. Register now and let us match you with top healthcare opportunities.
         </p>
 

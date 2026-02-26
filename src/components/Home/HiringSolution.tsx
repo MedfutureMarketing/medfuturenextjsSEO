@@ -75,18 +75,18 @@ export default function FlexibleHiringSolution() {
     );
 
     return (
-        <section className="w-full bg-gray-50 lg:py-[106px] px-4 lg:px-0 py-10 full-width-section ">
+        <section className="w-full bg-gray-50 lg:py-[106px] md:px-4 lg:px-0 py-24 full-width-section ">
             <div className=" mx-auto inner-width-section">
-                <div className="text-left mb-12">
+                <div className="text-left lg:mb-12 mb-5">
 
-                    <h2 className="text-3xl lg:text-[40px]  text-gray-800 mb-4 text-center lg:text-left">
+                    <h2 className="text-xl lg:text-[40px]  text-gray-800 mb-4 text-left lg:text-left">
                         Flexible <span className="text-[#074CA4] font-bold">Hiring Solutions</span>
                     </h2>
 
                   
-                    <div className="flex flex-col lg:flex-row lg:items-center items-center justify-center lg:justify-between gap-4">
+                    <div className="flex flex-col lg:flex-row lg:items-center items-left justify-start lg:justify-between gap-4">
 
-                        <p className="text-gray-600 lg:text-[16px] text-xs max-w-2xl mx-auto lg:mx-0 text-center lg:text-left">
+                        <p className="text-gray-600 lg:text-[16px] text-xs max-w-2xl mx-auto lg:mx-0 text-left lg:text-left">
                             Every employer is different — and so is our approach. Choose the engagement model that fits your goals, budget and timeframes.
                         </p>
 
@@ -100,7 +100,7 @@ export default function FlexibleHiringSolution() {
 
 
           
-                <div className="hidden md:grid lg:grid-cols-3 gap-6 mb-12">
+                <div className="hidden md:grid lg:grid-cols-3 gap-6 lg:mb-12">
                     {allCards.slice(0, 3).map((card, i) => (
                         <Card key={i} {...card} />
                     ))}
