@@ -13,6 +13,7 @@ import BlogSection from "@/components/Blog/Blog";
 
 import { getPageMetadata } from "@/lib/getPageMetadata";
 import BrowseByDivisions from "@/components/JobseekerLandingpage/Browsebydivisions";
+import CareerPathways from "@/components/JobseekerLandingpage/CareerPathways";
 
 import { Metadata } from "next";
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,6 +29,7 @@ export default function JobSeeker() {
         <LocumGpForm />
       <BrowseJobsByProfession />
       <MedFutureStates />
+      <CareerPathways />
       <RecruitmentDivisionsTabs />
     
 
