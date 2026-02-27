@@ -81,25 +81,11 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
   };
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center">
-          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-[#074CA4] border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"></div>
-          <p className="mt-4 text-gray-600">Loading job details...</p>
-        </div>
-      </div>
-    );
+    return <div className="p-6 text-center text-gray-500">Loading...</div>;
   }
 
   if (!job) {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center text-gray-500">
-          <p className="text-lg">Job not found</p>
-          <p className="text-sm mt-2">The job you're looking for doesn't exist or has been removed.</p>
-        </div>
-      </div>
-    );
+    return <div className="p-6 text-center text-gray-500">Job not found</div>;
   }
 
   return (
@@ -126,7 +112,7 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
             priority
           />
         </div>
-        <div className="flex flex-col inner-width-section lg:flex-row lg:justify-between py-[16px] lg:items-start mb-6 p-0 lg:pl-[43px] rounded-none">
+        <div className="flex flex-col inner-width-section lg:flex-row lg:justify-between py-[16px] lg:items-start mb-6  p-0 lg:pl-[43px]   rounded-none">
           <h1 className="text-[18px] lg:text-[24px] z-50 font-bold text-white lg:pr-[43px] flex-1 mb- lg:mb-0">
             {job.job_title}
           </h1>
@@ -160,7 +146,7 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
         </div>
 
         {/* Job Description */}
-        <div className="prose max-w-none lg:px-0">
+        <div className="prose max-w-none  lg:px-0">
           <p className="text-[#666666] text-[14px] lg:text-[18px] leading-relaxed">
             {job.job_brief}
           </p>
