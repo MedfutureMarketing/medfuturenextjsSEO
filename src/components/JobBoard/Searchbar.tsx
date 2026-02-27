@@ -676,11 +676,11 @@ export default function SearchBarWithLocation() {
           <div className="flex-1 overflow-y-auto p-4">
             {!selectedState ? (
               <div className="space-y-3">
-                <h4 className="text-gray-700 font-semibold mb-4">Select State</h4>
+                <h4 className="text-gray-700 text-sm font-semibold mb-4">Select State</h4>
                 {Object.keys(locationData).map((state) => (
                   <div
                     key={state}
-                    className="p-4 bg-white text-sm text-black border-1 border-gray-100 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
+                    className="p-2 bg-white text-xs text-black border-1 border-gray-100 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
                     onClick={() => setSelectedState(state as State)}
                   >
                     {state}
@@ -699,11 +699,11 @@ export default function SearchBarWithLocation() {
                 >
                   ← Back
                 </button>
-                <h4 className="text-gray-700 font-semibold mb-4">Select Region in {selectedState}</h4>
+                <h4 className="text-gray-700 text-sm font-semibold mb-4">Select Region in {selectedState}</h4>
                 {Object.keys(locationData[selectedState].regions).map((region) => (
                   <div
                     key={region}
-                    className="p-4 bg-white text-black text-sm border-1 border-gray-100 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
+                    className="p-2 bg-white text-black text-xs border-1 border-gray-100 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
                     onClick={() => setSelectedRegion(region)}
                   >
                     {region}
@@ -719,11 +719,11 @@ export default function SearchBarWithLocation() {
                 >
                   ← Back
                 </button>
-                <h4 className="text-gray-700 font-semibold mb-4">Select Suburb in {selectedRegion}</h4>
+                <h4 className="text-gray-700 text-sm font-semibold mb-4">Select Suburb in {selectedRegion}</h4>
                 {locationData[selectedState].regions[selectedRegion].map((suburb) => (
                   <div
                     key={suburb}
-                    className="p-4 bg-white text-black border-1 border-gray-100 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
+                    className="p-2 bg-white text-black text-xs border-1 border-gray-100 rounded-lg cursor-pointer hover:border-blue-500 hover:bg-blue-50 transition"
                     onClick={() => {
                       setSelectedSuburb(suburb);
                       setMobileOpen(false);

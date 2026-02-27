@@ -23,6 +23,8 @@ const disabledRoutes: string[] = [
   // "/contact",
   "/permanent",
   "/permanent/",
+  "/locum",
+  "/locum/",
 ];
 
 function PreloaderContent() {

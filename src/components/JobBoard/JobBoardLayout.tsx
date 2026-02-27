@@ -21,7 +21,7 @@ export default function JobBoardLayout() {
 
                     {/* Right Side - Always takes remaining space */}
                     <div>
-                        <div className="bg-white rounded-lg  mt-[24px] shadow-sm p-0 sticky top-6">
+                        <div className="bg-white rounded-lg  mt-[24px]  p-0 sticky top-6">
                             <JobDescription />
                         </div>
                     </div>
