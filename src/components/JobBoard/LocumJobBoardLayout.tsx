@@ -19,7 +19,7 @@ export default function LocumJobBoardLayout() {
 
                  
                     <div>
-                        <div className="bg-white rounded-lg mt-[26px] shadow-sm p-0 sticky top-6">
+                        <div className="bg-white rounded-lg mt-[26px]  p-0 sticky top-6">
                             <LocumJobDescription />
                         </div>
                     </div>

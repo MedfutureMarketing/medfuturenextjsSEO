@@ -73,7 +73,7 @@ export default function JobDescription() {
 
   if (!jobId) {
     return (
-   <div className="flex h-full items-center justify-center relative overflow-hidden  py-8">
+   <div className="flex h-full items-center justify-center relative overflow-hidden  py-7">
 
   {/* Background blobs */}
   
@@ -105,7 +105,7 @@ export default function JobDescription() {
 
     {/* Subtext */}
     <p className="text-gray-500 leading-relaxed mb-8">
-      You’ll see job descriptions, requirements, and application steps here once you select a position from the list.
+      You will see job descriptions, requirements, and application steps here once you select a position from the list.
     </p>
 
     {/* Action hint */}
@@ -121,7 +121,48 @@ export default function JobDescription() {
   if (!job) {
     return (
       <div className="p-6 text-gray-500 hidden md:block lg:block">
-        Job not found.
+       <div className="flex h-full items-center justify-center relative overflow-hidden  py-7">
+
+  {/* Background blobs */}
+  
+
+  {/* Content */}
+  <div className="relative z-10 text-center max-w-lg px-6">
+
+    {/* Icon */}
+    <div className="mx-auto mb-8 w-28 h-28 rounded-3xl bg-white shadow-lg flex items-center justify-center border border-gray-100">
+      <svg
+        className="w-14 h-14 text-blue-500"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={1.8}
+          d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+        />
+      </svg>
+    </div>
+
+    {/* Heading */}
+    <h2 className="text-3xl font-bold text-gray-800 mb-4">
+      Pick a job to get started
+    </h2>
+
+    {/* Subtext */}
+    <p className="text-gray-500 leading-relaxed mb-8">
+      You will see job descriptions, requirements, and application steps here once you select a position from the list.
+    </p>
+
+    {/* Action hint */}
+    <div className="inline-flex items-center gap-3 bg-white shadow-md border border-gray-100 rounded-full px-5 py-3 text-sm text-gray-600">
+      <span className="text-blue-500 text-lg">👈</span>
+      Browse jobs on the left panel
+    </div>
+  </div>
+</div>
       </div>
     );
   }
