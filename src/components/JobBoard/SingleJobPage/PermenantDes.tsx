@@ -81,11 +81,18 @@ export default function JobDescription({ jobId }: JobDescriptionProps) {
   };
 
   if (loading) {
-    return <div className="p-6 text-center text-gray-500">Loading...</div>;
+    return  <div className="flex justify-center items-center h-64">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#0A2E5C] border-dotted rounded-full border-t-transparent animate-spin"></div>
+          <p className="text-gray-500 text-sm font-medium">
+            Loading job, please wait...
+          </p>
+        </div>
+      </div>;
   }
 
   if (!job) {
-    return <div className="p-6 text-center text-gray-500">Job not found</div>;
+    return <div className="p-6 text-center text-gray-500">Job has been Expired</div>;
   }
 
   return (

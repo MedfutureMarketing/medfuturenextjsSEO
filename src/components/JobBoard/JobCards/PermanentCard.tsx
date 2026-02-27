@@ -330,7 +330,7 @@ export default function JobCard() {
             onClick={() =>
               router.push(`?jobId=${job.job_id}&page=${currentPage}`)
             }
-            className={`border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all
+            className={`border cursor-pointer border-[#E6EDF7] rounded-lg p-4 shadow-md transition-all hover:bg-gray-50
               ${selectedJobId === String(job.job_id) ? "bg-gray-100 text-white   shadow-none border-0" : ""}`}
           >
             <div className="flex justify-between items-center">
@@ -429,7 +429,7 @@ export default function JobCard() {
       </div>
 
       {/* ===================== PAGINATION ===================== */}
-      {totalPages > 1 && (
+      {/* {totalPages > 1 && (
         <div className="flex flex-wrap justify-center gap-2 mt-8 mb-10">
           <button
             disabled={currentPage === 1}
@@ -487,7 +487,77 @@ export default function JobCard() {
             Next
           </button>
         </div>
-      )}
+      )} */}
+      {totalPages > 1 && (
+  <div className="flex justify-center mt-10 mb-12">
+    <div className="flex items-center gap-0 bg-white/80 backdrop-blur-md border border-gray-200 shadow-b-lg rounded-full px-2 py-2">
+
+      {/* Prev */}
+      <button
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage((p) => p - 1)}
+        className="px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer text-gray-600 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        ←
+      </button>
+
+      {/* Pages */}
+      {(() => {
+        const pages: (number | string)[] = [];
+        const showLeftDots = currentPage > 3;
+        const showRightDots = currentPage < totalPages - 2;
+
+        pages.push(1);
+
+        if (showLeftDots) pages.push("dots-left");
+
+        const start = Math.max(2, currentPage - 1);
+        const end = Math.min(totalPages - 1, currentPage + 1);
+
+        for (let i = start; i <= end; i++) {
+          pages.push(i);
+        }
+
+        if (showRightDots) pages.push("dots-right");
+
+        if (totalPages > 1) pages.push(totalPages);
+
+        return pages.map((page, index) =>
+          typeof page === "string" ? (
+            <span
+              key={page + index}
+              className="px-2 text-gray-400 text-[8px]"
+            >
+              •••
+            </span>
+          ) : (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page)}
+              className={`min-w-[36px] h-9 px-3 rounded-full cursor-pointer text-sm font-medium transition-all duration-200
+                ${
+                  currentPage === page
+                    ? "bg-gradient-to-r from-blue-800 to-blue-900 text-white shadow-md scale-105"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+            >
+              {page}
+            </button>
+          )
+        );
+      })()}
+
+      {/* Next */}
+      <button
+        disabled={currentPage === totalPages}
+        onClick={() => setCurrentPage((p) => p + 1)}
+        className="px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer text-gray-600 hover:bg-gray-100 transition disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        →
+      </button>
+    </div>
+  </div>
+)}
     </div>
   );
 }

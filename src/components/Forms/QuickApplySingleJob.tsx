@@ -237,7 +237,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
           : "",
       profession: !formData.profession ? "Please select a profession" : "",
       specialty: !formData.specialty ? "Please select a specialty" : "",
-      resume: !uploadedFile ? "Please upload your CV" : "",
+      resume: "",
       jobSource: !formData.jobSource ? "Please select how you heard about us" : ""
     };
 
@@ -288,34 +288,31 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
       setIsSubmitting(true);
 
       // Upload file first
-      const randomNumber = Math.floor(Math.random() * 1000000);
-      const fileData = new FormData();
-      fileData.append("image", uploadedFile!);
-      fileData.append("folder_path", "desktop/candidate_resume");
-      fileData.append("file_name", `${formData.firstName}_${randomNumber}`);
+      let uploadedFileName: string | null = null;
 
-      const fileUploadResponse = await fetch(`${API_BASE_URL}/upload`, {
-        method: "POST",
-        body: fileData
-      });
+      if (uploadedFile) {
+        const randomNumber = Math.floor(Math.random() * 1000000);
+        const fileData = new FormData();
+        fileData.append("image", uploadedFile);
+        fileData.append("folder_path", "desktop/candidate_resume");
+        fileData.append("file_name", `${formData.firstName}_${randomNumber}`);
 
-      if (!fileUploadResponse.ok) {
-        throw new Error(`File upload failed with status: ${fileUploadResponse.status}`);
-      }
+        const fileUploadResponse = await fetch(`${API_BASE_URL}/upload`, {
+          method: "POST",
+          body: fileData,
+        });
 
-      let fileUploadResult;
-      const contentType = fileUploadResponse.headers.get('content-type');
+        if (!fileUploadResponse.ok) {
+          throw new Error(`File upload failed with status: ${fileUploadResponse.status}`);
+        }
 
-      if (contentType && contentType.includes('application/json')) {
-        fileUploadResult = await fileUploadResponse.json();
-      } else {
-        const text = await fileUploadResponse.text();
-        console.error('File upload response is not JSON:', text);
-        throw new Error("File upload failed - invalid response format");
-      }
+        const fileUploadResult = await fileUploadResponse.json();
 
-      if (!fileUploadResult || !fileUploadResult.fileName) {
-        throw new Error("File upload failed - no filename returned");
+        if (!fileUploadResult?.fileName) {
+          throw new Error("File upload failed - no filename returned");
+        }
+
+        uploadedFileName = fileUploadResult.fileName;
       }
 
       // Submit application - matching Laravel backend validation exactly
@@ -328,7 +325,7 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
         mobile: formData.phone,
         email: formData.email,
         profession: parseInt(formData.profession),
-        cv: fileUploadResult.fileName,
+        cv: uploadedFileName,
         job_id: parseInt(numericJobId), // Convert to integer
         state: null,
         seniority: null,

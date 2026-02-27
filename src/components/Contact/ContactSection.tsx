@@ -99,7 +99,7 @@ const validateForm = useCallback(() => {
     email: !formData.email || !verifyEmailFormat(formData.email)
       ? "Please enter a valid email address"
       : "",
-    mobile: !formData.mobile ? "Please enter your phone number" : "",
+    mobile: !formData.mobile || !verifyPhoneNumberFormat(formData.mobile) ? "Please enter a valid phone number" : "",
     message: !formData.message ? "Please submit your enquiry" : "",
   };
 
@@ -110,6 +110,11 @@ const validateForm = useCallback(() => {
 const verifyEmailFormat = (email: string) => {
   return /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i.test(email);
 }
+
+const verifyPhoneNumberFormat = (phoneNumber: string): boolean => {
+  const phoneNumberRegex = /^\+?(\d{11}|\d{12}|\d{13})$/;
+  return phoneNumberRegex.test(phoneNumber);
+};
 
 
   /* 🔹 ADDED: revalidate on change after submit click */
