@@ -258,7 +258,12 @@ export default function CandidateForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+setTouched(true);
+    const errors = validateForm();
 
+    if (Object.values(errors).some((error) => error)) {
+      return;
+    }
     if (!formData.agreeToTerms) {
       setNotification({
         show: true,
@@ -269,12 +274,7 @@ export default function CandidateForm() {
       return;
     }
 
-    setTouched(true);
-    const errors = validateForm();
-
-    if (Object.values(errors).some((error) => error)) {
-      return;
-    }
+    
 
     try {
       setIsSubmitting(true);
