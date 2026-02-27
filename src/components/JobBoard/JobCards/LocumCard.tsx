@@ -184,7 +184,12 @@ export default function LocumJobList() {
     filters.suburb,
     filters.country,
   ]);
-
+useEffect(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth", // change to "auto" if you want instant
+  });
+}, [currentPage]);
   /* ===================== TIME FORMATTER ===================== */
 
   function timeFromNow(dateString: string) {
@@ -369,66 +374,75 @@ export default function LocumJobList() {
       </div>
 
       {/* ===================== PAGINATION ===================== */}
-      {totalPages > 1 && (
-        <div className="flex flex-wrap justify-center gap-2 mt-8">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((p) => p - 1)}
-            className="px-3 py-1 border border-black text-black rounded disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Prev
-          </button>
+     {totalPages > 1 && (
+  <div className="flex justify-center mt-10 mb-12">
+    <div className="flex flex-wrap items-center gap-2 bg-white/80 backdrop-blur-md border border-gray-200 rounded-full px-2 py-2">
 
-          {(() => {
-            const pages: (number | string)[] = [];
-            const showLeftDots = currentPage > 3;
-            const showRightDots = currentPage < totalPages - 2;
+      {/* Prev */}
+      <button
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage((p) => p - 1)}
+        className="px-4 py-1.5 rounded-full text-sm font-medium  cursor-pointer text-gray-600 hover:bg-gray-100 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        ←
+      </button>
 
-            pages.push(1);
+      {(() => {
+        const pages: (number | string)[] = [];
+        const showLeftDots = currentPage > 3;
+        const showRightDots = currentPage < totalPages - 2;
 
-            if (showLeftDots) pages.push("...");
+        pages.push(1);
 
-            const start = Math.max(2, currentPage - 1);
-            const end = Math.min(totalPages - 1, currentPage + 1);
+        if (showLeftDots) pages.push("dots-left");
 
-            for (let i = start; i <= end; i++) {
-              pages.push(i);
-            }
+        const start = Math.max(2, currentPage - 1);
+        const end = Math.min(totalPages - 1, currentPage + 1);
 
-            if (showRightDots) pages.push("...");
+        for (let i = start; i <= end; i++) {
+          pages.push(i);
+        }
 
-            if (totalPages > 1) pages.push(totalPages);
+        if (showRightDots) pages.push("dots-right");
 
-            return pages.map((page, index) =>
-              page === "..." ? (
-                <span key={`dots-${index}`} className="px-2 text-gray-500">
-                  ...
-                </span>
-              ) : (
-                <button
-                  key={page}
-                  onClick={() => setCurrentPage(page as number)}
-                  className={`px-3 py-1 border rounded ${currentPage === page
-                    ? "bg-black text-white border-black"
-                    : "border-black text-black"
-                    }`}
-                >
-                  {page}
-                </button>
-              )
-            );
-          })()}
+        if (totalPages > 1) pages.push(totalPages);
 
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((p) => p + 1)}
-            className="px-3 py-1 border border-black text-black rounded disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            Next
-          </button>
-        </div>
-      )}
+        return pages.map((page, index) =>
+          typeof page === "string" ? (
+            <span
+              key={page + index}
+              className="px-2 text-gray-400 text-[10px]"
+            >
+              •••
+            </span>
+          ) : (
+            <button
+              key={page}
+              onClick={() => setCurrentPage(page as number)}
+              className={`min-w-[36px] h-9 px-3 rounded-full text-sm  cursor-pointer font-medium transition-all duration-200
+                ${
+                  currentPage === page
+                    ? "bg-gradient-to-r from-black to-gray-800 text-white shadow-md scale-105"
+                    : "text-gray-700 hover:bg-gray-100"
+                }`}
+            >
+              {page}
+            </button>
+          )
+        );
+      })()}
 
+      {/* Next */}
+      <button
+        disabled={currentPage === totalPages}
+        onClick={() => setCurrentPage((p) => p + 1)}
+        className="px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer text-gray-600 hover:bg-gray-100 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+      >
+        →
+      </button>
+    </div>
+  </div>
+)}
       <style jsx>{`
         .scrollbar-hide {
           -ms-overflow-style: none;
