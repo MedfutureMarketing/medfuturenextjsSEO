@@ -155,7 +155,7 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     title: "Permanent Jobs",
     titleHref: "/permanent",
     hub: {
-      title: "Permanent Jobs Hub",
+      title: "Permanent Jobs ",
       titleHref: "/permanent",
       image: permanentHubImage,
       description: "Access permanent roles, market insights, and career support tailored to your clinical focus.",
@@ -552,37 +552,38 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
           <div
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
-            className={`fixed z-[999] transition-all duration-150 w-full left-0 ${
-              open ? "opacity-100 visible" : "opacity-0 invisible"
-            }`}
+            className={`fixed z-[999] transition-all duration-150 w-full left-0 ${open ? "opacity-100 visible" : "opacity-0 invisible"
+              }`}
             style={{ top }}
           >
-            <div className="bg-white inner-width-section shadow-xl border-gray-200">
-              <div className="mx-auto px-6 py-6">
+            <div className="bg-white inner-width-section  shadow-xl border-gray-200">
+              <div className="mx-auto px-6 py-6 mt-2">
                 {/* Layout: Hub | Divider | Professions | Divider | Explore More */}
-                <div className="flex gap-0">
+                <div className="flex gap-0" >
 
+                  {/* ── LEFT: Hub Panel ── */}
+                  {/* ── LEFT: Hub Panel ── */}
                   {/* ── LEFT: Hub Panel ── */}
                   {hasHub && (
                     <>
-                      <div className="w-[220px] flex-shrink-0 pr-6">
-                        {/* Title row */}
-                        <div className="flex items-center gap-2 mb-4">
-                          <h3 className="text-[14px] font-[700] text-[#040D48] leading-tight">
+                      <div className="w-[220px] flex-shrink-0 pr-6  " >
+                        {/* Title row — title left, arrow pushed far right */}
+                        <div className="flex items-center justify-between mb-4">
+                          <h3 className="text-[16px] font-[700] text-[#040D48] leading-tight">
                             {menu.hub!.title}
                           </h3>
                           <Link
                             href={menu.hub!.titleHref || "#"}
-                            className="flex-shrink-0 w-7 h-7 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 transition"
+                            className="flex-shrink-0 w-[40px] h-[40px] rounded-full shadow-md border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-50 transition"
                           >
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#040D48" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#040D48" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                               <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                           </Link>
                         </div>
 
-                        {/* Image — Next.js optimized */}
-                        <div className="rounded-lg overflow-hidden mb-4 bg-gray-100 h-[110px] relative">
+                        {/* Image */}
+                        <div className="rounded-lg overflow-hidden mb-4 bg-gray-100 h-[135px] relative">
                           <Image
                             src={menu.hub!.image}
                             alt={menu.hub!.title}
@@ -599,7 +600,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
 
                         {/* CTA Button */}
                         <Link href={menu.hub!.buttonHref}>
-                          <button className="w-full bg-[#074CA4] hover:bg-[#0557be] text-white text-[14px] font-[400] px-4 py-2.5 rounded-[8px] transition-colors cursor-pointer">
+                          <button className="w-full bg-[#074CA4] hover:bg-[#0557be] text-white text-[13px] font-[500] px-4 py-2.5 rounded-[8px] transition-colors cursor-pointer">
                             {menu.hub!.buttonLabel}
                           </button>
                         </Link>
