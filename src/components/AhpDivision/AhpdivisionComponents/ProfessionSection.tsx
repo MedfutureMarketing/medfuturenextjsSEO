@@ -32,7 +32,7 @@ const defaultProfessions: ProfessionCard[] = [
         description: 'We recruit Speech Pathologists across paediatrics, NDIS, schools, community health, disability services and telehealth—supporting graduate to senior/ clinical lead pathways with structured supervision and manageable caseloads.',
         icon: ahpico1,
         image: ahpdivision1img,
-        link: '/jobs/speech-pathologist'
+        link: '/ahp-division/speech-pathology'
     },
     {
         id: 'occupational-therapist',
@@ -40,7 +40,7 @@ const defaultProfessions: ProfessionCard[] = [
         description: 'Our OT roles span NDIS, mental health, community care, aged care, rehabilitation and functional capacity assessments—matched to your preferred participant mix, travel profile and documentation load.',
         icon: ahpico2,
         image: ahpdivision2img,
-        link: '/jobs/occupational-therapist'
+        link: '/ahp-division/occupational-therapist'
     },
     {
         id: 'physiotherapist',
@@ -48,7 +48,7 @@ const defaultProfessions: ProfessionCard[] = [
         description: 'From private practice and sports clinics to hospitals, rehab, aged care and NDIS—Medifuture supports Physiotherapists at every stage with transparent pay structures, realistic bookings and progression planning.',
         icon: ahpico3,
         image: ahpdivision3img,
-        link: '/jobs/physiotherapist'
+        link: '/ahp-division/physiotherapist'
     },
     {
         id: 'podiatrist',
@@ -56,7 +56,7 @@ const defaultProfessions: ProfessionCard[] = [
         description: 'We place Podiatrists across community health, aged care, NDIS, mobile services and high-risk foot pathways—especially in regional areas with strong mentoring structures and high demand.',
         icon: ahpico4,
         image: ahpdivision4img,
-        link: '/jobs/podiatrist'
+        link: '/ahp-division/podiatrist'
     }
 ];
 

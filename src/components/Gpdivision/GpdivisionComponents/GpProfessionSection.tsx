@@ -56,7 +56,7 @@ const defaultProfessions: ProfessionCard[] = [
         description: 'We place Podiatrists across community health, aged care, NDIS, mobile services and high-risk foot pathways—especially in regional areas with strong mentoring structures and high demand.',
         icon: ahpico4,
         image: ahpdivision4img,
-        link: '/jobs/podiatrist'
+        link: '/international?page=1'
     }
 ];
 

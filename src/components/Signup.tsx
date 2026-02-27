@@ -228,9 +228,9 @@ function RegisterSection({ activeTab, setActiveTab }: RegisterSectionProps) {
         </div>
       </div>
 
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center font-bold text-[#0A2E5C] mb-6">
+      {/* <h2 className="text-2xl sm:text-3xl lg:text-4xl text-center font-bold text-[#0A2E5C] mb-6">
         Create Account
-      </h2>
+      </h2> */}
 
       <div>
         {activeTab === "candidate" ? (

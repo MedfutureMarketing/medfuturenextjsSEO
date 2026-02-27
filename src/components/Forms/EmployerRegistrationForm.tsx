@@ -64,15 +64,15 @@ export default function EmployerRegistrationForm() {
 
   return (
     <div className="min-h-screen ">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className=" mx-auto bg-white  overflow-hidden">
         {/* Header */}
-        <div className="bg-[#0A2E5C] px-8 py-6">
-          <h1 className="text-2xl font-bold text-white">Employer Registration</h1>
-          <p className="text-blue-100 mt-2">Find and hire the best talent for your organization</p>
+        <div className="">
+          <h1 className="text-2xl font-bold text-blue-900">Employer Registration</h1>
+          <p className="text-blue-100 mt-2 text-gray-500">Find and hire the best talent for your organization</p>
         </div>
 
         {/* Form Content */}
-        <div className="p-8">
+        <div className="p-0 mt-10 text-xs">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             {/* Registered Entity */}
