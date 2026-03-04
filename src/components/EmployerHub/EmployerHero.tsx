@@ -52,7 +52,7 @@ export default function EmployerHubPage() {
 
           {/* Body */}
           <p className="text-sm lg:text-[16px] text-[#4A5565] leading-relaxed mb-6 lg:mb-[31px] mt-[31px] max-w-[600px]">
-            Healthcare employers don't just need candidates. They need workforce certainty across
+            Healthcare employers dont just need candidates. They need workforce certainty across
             disciplines — delivered with discipline-specific pipelines, governance-aware screening,
             and a continuity-first approach.
           </p>
