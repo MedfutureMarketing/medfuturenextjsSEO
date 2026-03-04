@@ -2,7 +2,7 @@
 
 
 import EmployerHero from "@/components/EmployerHub/EmployerHero";
-import InfoCards from "@/components/EmployerHub/InfoCards";
+import InfoCards from "@/components/EmployerHub/Countercard";
 import RecruitmentServices from "@/components/EmployerHub/ServicePlan";
 import ExclusiveRecruitmentServices from "@/components/Home/RecruitementServicebox";
 import PLGPForm from "@/components/EmployerHub/PLGPform";

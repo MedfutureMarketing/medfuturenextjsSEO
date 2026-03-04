@@ -19,7 +19,6 @@ type RouteConfig = {
 const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/permanent/job/", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "Job Detail" },
   { pattern: "/job-seeker-hub", bgColor: "bg-[#001C55]", textColor: "text-white", breadcrumbLabel: "Job Seeker Hub" },
-  { pattern: "/employer-hub", bgColor: "bg-[#0A2E5C]", textColor: "text-white", breadcrumbLabel: "Employer Hub" },
   { pattern: "/contact-us", bgColor: "bg-[#0D1A3E]", textColor: "text-white", breadcrumbLabel: "Contact Us" },
   { pattern: "/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Fracgp - FACRRM" },
   { pattern: "/general-practice-division/fracgp-facrrm", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Frac GP / FACRRM" },
@@ -40,6 +39,8 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/mental-health", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Mental Health Division" },
   { pattern: "/sign-up", bgColor: "bg-white hidden ", textColor: "text-black", breadcrumbLabel: "Sign In" },
   { pattern: "/my-account/candidate", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "My Account" },
+    { pattern: "/employer-hub", bgColor: "bg-[#FFFFFF] hidden ", textColor: "text-[#0F172A]", breadcrumbLabel: "My Account" },
+
 ];
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {

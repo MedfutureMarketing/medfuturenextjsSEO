@@ -1,203 +1,171 @@
-'use client'
+"use client";
 
-import React from 'react'
+import { useState } from "react";
 
-export default function EmployerEnquirySection() {
-    return (
-        <section className="max-w-7xl bg-[#FCFCFC] mx-auto px-6 py-20">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+interface FormData {
+  organisation: string;
+  state: string;
+  preferredStartDate: string;
+  division: string;
+  urgency: string;
+  notes: string;
+  agreed: boolean;
+}
 
-                {/* ---------------- Left: How It Works ---------------- */}
-                <div>
-                    <h2 className="text-[36px] font-[700] uppercase text-[#074CA4] font-semibold mb-12">
-                        How It Works
-                    </h2>
+export default function EmployerEnquiryForm() {
+  const [formData, setFormData] = useState<FormData>({
+    organisation: "",
+    state: "",
+    preferredStartDate: "",
+    division: "",
+    urgency: "",
+    notes: "",
+    agreed: false,
+  });
 
-                    <div className="relative space-y-12">
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, type } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value,
+    }));
+  };
 
-                        {/* Vertical dotted line */}
-                        <div className="absolute left-5 top-0 bottom-0 border-l-2 border-dotted border-black" />
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    alert("Form submitted!");
+  };
 
-                        {[
-                            {
-                                step: 1,
-                                title: 'Register as an Employer',
-                                desc: 'Create your employer account to begin connecting with qualified healthcare professionals.'
-                            },
-                            {
-                                step: 2,
-                                title: 'Submit the Vacancy',
-                                desc: 'Share your job details so we can source suitable candidates quickly.'
-                            },
-                            {
-                                step: 3,
-                                title: 'Have the Discovery Call from the Dedicated Recruitment Consultant',
-                                desc: 'Discuss your requirements with our consultant to ensure perfect candidate matching.'
-                            },
-                            {
-                                step: 4,
-                                title: 'Start the Selection Process',
-                                desc: 'Review shortlisted candidates and proceed with interviews to finalise hiring.'
-                            },
-                        ].map((item, ) => (
-                            <div key={item.step} className="relative flex gap-6">
+  return (
+    <div className="border border-slate-200 rounded-lg p-6 bg-white shadow-sm w-full">
+      {/* Header */}
+      <p className="text-xs text-slate-500 font-medium mb-1.5">Fast employer enquiry</p>
+      <h2 className="text-[17px] font-bold text-slate-900 leading-snug mb-1.5">
+        Route your request to the right division
+      </h2>
+      <p className="text-[13px] text-slate-500 leading-relaxed mb-5">
+        Tell us the discipline, location and urgency. We'll respond with options and the right
+        specialist team.
+      </p>
 
-                                {/* Number Circle */}
-                                <div className="relative z-10">
-                                    <div className="w-10 h-10  rounded-full bg-black text-white flex items-center justify-center font-semibold">
-                                        {item.step}
-                                    </div>
-                                </div>
+      {/* Organisation */}
+      <input
+        type="text"
+        name="organisation"
+        placeholder="Organisation / Practice name*"
+        value={formData.organisation}
+        onChange={handleChange}
+        className="w-full px-3 py-2.5 border border-slate-300 rounded-md text-[13.5px] text-slate-900 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 mb-2.5"
+      />
 
-                                {/* Content */}
-                                <div>
-                                    <h4 className="font-semibold text-[#0F172A] text-[20px] mb-1">
-                                        {item.title}
-                                    </h4>
-                                    <p className="text-[#0F172A] text-[16px] max-w-md">
-                                        {item.desc}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+      {/* State + Date row */}
+      <div className="flex gap-2 mb-2.5">
+        <input
+          type="text"
+          name="state"
+          placeholder="State*"
+          value={formData.state}
+          onChange={handleChange}
+          className="flex-1 px-3 py-2.5 border border-slate-300 rounded-md text-[13.5px] text-slate-900 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900"
+        />
+        <div className="relative flex-1">
+          <input
+            type="date"
+            name="preferredStartDate"
+            value={formData.preferredStartDate}
+            onChange={handleChange}
+            className="w-full px-3 py-2.5 border border-slate-300 rounded-md text-[13.5px] text-slate-400 outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900"
+          />
+        </div>
+      </div>
 
-                {/* ---------------- Right: Form ---------------- */}
-                <div className="bg-white  rounded-[8px] p-8 shadow-lg">
-                    <h3 className="text-xl text-center text-[#040D48] font-semibold mb-6">
-                        Ready to Find the Right Talent for <br /> Your GP Team?
-                    </h3>
+      {/* Division + Urgency row */}
+      <div className="flex gap-2 mb-2.5">
+        <div className="relative flex-1">
+          <select
+            name="division"
+            value={formData.division}
+            onChange={handleChange}
+            className="w-full appearance-none px-3 py-2.5 pr-8 border border-slate-300 rounded-md text-[13.5px] text-slate-400 outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 bg-white cursor-pointer"
+          >
+            <option value="" disabled>Division</option>
+            <option value="general-practice">General Practice</option>
+            <option value="allied-health">Allied Health</option>
+            <option value="mental-health">Mental Health</option>
+            <option value="dental">Dental</option>
+            <option value="pharmacy">Pharmacy</option>
+          </select>
+          <ChevronIcon />
+        </div>
+        <div className="relative flex-1">
+          <select
+            name="urgency"
+            value={formData.urgency}
+            onChange={handleChange}
+            className="w-full appearance-none px-3 py-2.5 pr-8 border border-slate-300 rounded-md text-[13.5px] text-slate-400 outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 bg-white cursor-pointer"
+          >
+            <option value="" disabled>Urgency</option>
+            <option value="immediate">Immediate</option>
+            <option value="within-1-month">Within 1 month</option>
+            <option value="within-3-months">Within 3 months</option>
+            <option value="planning-ahead">Planning ahead</option>
+          </select>
+          <ChevronIcon />
+        </div>
+      </div>
 
-                    <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* Notes */}
+      <textarea
+        name="notes"
+        placeholder="Notes"
+        value={formData.notes}
+        onChange={handleChange}
+        rows={3}
+        className="w-full px-3 py-2.5 border border-slate-300 rounded-md text-[13.5px] text-slate-900 placeholder-slate-400 outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900 resize-y min-h-[72px] mb-2.5"
+      />
 
-                        {/* Left Column */}
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Name*
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your full name"
-                                    className="w-full border rounded-md px-4 py-3 bg-[#FCFCFC] placeholder-[#4A556580] text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                />
-                            </div>
+      {/* Terms */}
+      <div className="flex items-start gap-2.5 mb-5">
+        <input
+          type="checkbox"
+          name="agreed"
+          id="terms"
+          checked={formData.agreed}
+          onChange={handleChange}
+          className="mt-0.5 w-4 h-4 accent-blue-900 cursor-pointer shrink-0"
+        />
+        <label htmlFor="terms" className="text-[12.5px] text-slate-500 leading-relaxed">
+          I Agree to the{" "}
+          <a href="#" className="text-blue-800 hover:underline">Term and Conditions</a>{" "}
+          and{" "}
+          <a href="#" className="text-blue-800 hover:underline">Privacy Policy</a>{" "}
+          at Medfuture
+        </label>
+      </div>
 
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Position
-                                </label>
-                                <input
-                                    type="Enter your position"
-                                    placeholder="Your position"
-                                    className="w-full border placeholder-[#4A556580] bg-[#FCFCFC] rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                />
-                            </div>
+      {/* Submit */}
+      <button
+        onClick={handleSubmit}
+        className="w-full py-3.5 bg-blue-900 hover:bg-blue-800 text-white font-semibold text-[15px] rounded-md transition-colors duration-200 cursor-pointer"
+      >
+        Submit
+      </button>
+    </div>
+  );
+}
 
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    placeholder="you@example.com"
-                                    className="w-full border rounded-md bg-[#FCFCFC] px-4 py-3 placeholder-[#4A556580] text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Right Column */}
-                        <div className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Organization
-                                </label>
-                                <input
-                                    type="text"
-                                    placeholder="Organization name"
-                                    className="w-full border rounded-md bg-[#FCFCFC] placeholder-[#4A556580] px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                />
-                            </div>
-
-                            <div>
-                                <label className="block text-sm  font-medium text-gray-700 mb-1">
-                                    Interested Service
-                                </label>
-                                <select
-                                    className="w-full  rounded-md border border-gray-100 bg-[#FCFCFC] px-4 py-3 text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                    defaultValue=""
-                                >
-                                    <option value="" disabled hidden className="text-gray-400">
-                                        Select a service
-                                    </option>
-                                    <option value="permanent">Permanent Recruitment</option>
-                                    <option value="locum">Locum Recruitment</option>
-                                    <option value="international">International Recruitment</option>
-                                </select>
-                            </div>
-
-
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">
-                                    Phone Number
-                                </label>
-                                <input
-                                    type="tel"
-                                    placeholder="+61 XXX XXX XXX"
-                                    className="w-full border rounded-md bg-[#FCFCFC] px-4 py-3 placeholder-[#4A556580] text-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Upload Vacancy */}
-                        <div className="md:col-span-2">
-                            <label className="block text-sm font-medium text-gray-700 mb-1">
-                                Upload Vacancy
-                            </label>
-                            <input
-                                type="file"
-                                className="w-full  rounded-md bg-[#FCFCFC] px-4 py-2 text-sm text-gray-600
-        file:border-0 file:bg-blue-50 file:px-4 file:py-2
-        file:rounded-md file:text-blue-700 file:font-medium"
-                            />
-                        </div>
-
-                        {/* Terms */}
-                        
-
-
-                    </form>
-                    <div className="grid grid-cols-2 gap-4">
-                            {/* Terms & Conditions */}
-                            <div className=" flex items-start gap-3 text-sm text-gray-600">
-                                <input type="checkbox" className="mt-1 accent-blue-500" />
-                                <p>
-                                    I agree to the{' '}
-                                    <span className="text-blue-700 underline cursor-pointer">
-                                        Terms & Conditions
-                                    </span>{' '}
-                                    and{' '}
-                                    <span className="text-blue-700 underline cursor-pointer">
-                                        Privacy Policy
-                                    </span>
-                                </p>
-                            </div>
-
-                            {/* Submit */}
-                            <div className="">
-                                <button
-                                    type="submit"
-                                    className="w-full bg-blue-900 text-white py-3 rounded-md text-sm font-medium hover:bg-blue-800 transition"
-                                >
-                                    Submit Enquiry
-                                </button>
-                            </div>
-                        </div>
-
-
-                </div>
-            </div>
-        </section>
-    )
+function ChevronIcon() {
+  return (
+    <svg
+      className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none w-4 h-4 text-slate-500"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  );
 }

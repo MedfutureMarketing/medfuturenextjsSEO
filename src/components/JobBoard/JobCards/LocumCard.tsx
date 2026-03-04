@@ -157,11 +157,9 @@ export default function LocumJobList() {
         const res = await apiGet<JobApiResponse>(
           `web/jobdetails/paginated-filter?${params.toString()}`
         );
-
         setJobs(res.data);
         setTotalPages(res.pagination.totalPages);
         setTotalJobs(res.pagination.count);
-
         // Show modal if no jobs found after search
         if (res.data.length === 0 && res.pagination.count === 0) {
           setShowNoJobsModal(true);
