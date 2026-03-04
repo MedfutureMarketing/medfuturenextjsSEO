@@ -53,17 +53,17 @@ export default function WhyMedfutureSection() {
         {/* Left Column */}
         <div className="flex-1 min-w-0">
           {/* Label */}
-          <p className="text-[13px] sm:text-[14px] font-semibold text-[#074CA4] mb-3 tracking-wide">
+          <p className="text-xs lg:text-[14px] font-semibold text-[#074CA4] mb-3 tracking-wide">
             Why Medfuture
           </p>
 
           {/* Heading */}
-          <h2 className="text-2xl sm:text-[26px] lg:text-[30px] font-[600] text-[#0F172A] leading-tight mb-4 max-w-sm">
+          <h2 className="text-xl sm:text-[26px] lg:text-[30px] font-[600] text-[#0F172A] leading-tight mb-4 max-w-sm">
             Why healthcare employers choose Medfuture
           </h2>
 
           {/* Body */}
-          <p className="text-sm sm:text-[15px] lg:text-[16px] text-[#4A5565] leading-relaxed mb-8 max-w-[480px]">
+          <p className="text-xs sm:text-[15px] lg:text-[16px] text-[#4A5565] leading-relaxed mb-8 max-w-[480px]">
             Most recruiters focus on roles. We focus on continuity, compliance,
             and outcomes across disciplines.
           </p>
@@ -72,10 +72,10 @@ export default function WhyMedfutureSection() {
           <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:flex sm:flex-wrap sm:gap-x-12 sm:gap-y-5 lg:gap-x-16">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl lg:text-[36px] font-[600] text-slate-900 leading-none mb-1">
+                <p className="text-2xl lg:text-3xl lg:text-[36px] font-[600] text-slate-900 leading-none mb-1">
                   {stat.value}
                 </p>
-                <p className="text-[13px] sm:text-sm lg:text-[16px] text-[#040D48] font-[400] leading-snug">
+                <p className="text-[13px] lg:text-sm lg:text-[16px] text-[#040D48] font-[400] leading-snug">
                   {stat.label}
                 </p>
               </div>
@@ -96,10 +96,10 @@ export default function WhyMedfutureSection() {
               </div>
               {/* Text */}
               <div>
-                <p className="text-[15px] lg:text-[16px] font-[500] text-[#0F172A] mb-1">
+                <p className="text-md lg:text-[16px] font-[500] text-[#0F172A] mb-1">
                   {feature.title}
                 </p>
-                <p className="text-sm lg:text-[16px] text-[#4A5565] leading-relaxed">
+                <p className="text-xs lg:text-[16px] text-[#4A5565] leading-relaxed">
                   {feature.description}
                 </p>
               </div>

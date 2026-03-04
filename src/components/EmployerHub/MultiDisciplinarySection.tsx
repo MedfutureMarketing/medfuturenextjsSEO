@@ -12,7 +12,7 @@ const items = [
 
 export default function MultiDisciplinarySection() {
   return (
-    <section className="relative full-width-section font-sans overflow-hidden mt-[145px]">
+    <section className="relative full-width-section font-sans overflow-hidden lg:mt-[145px]">
 
       {/* Background Image — replace src with your asset */}
       <div className="absolute inset-0 z-0">
@@ -20,7 +20,7 @@ export default function MultiDisciplinarySection() {
           src={Backgroundimage}
           alt="Background"
           fill
-          className="object-contain object-center"
+          className="object-contain hidden lg:block object-center"
         />
         {/* Light overlay to keep text legible */}
         <div className="absolute inset-0 bg-white/70" />
@@ -50,13 +50,13 @@ export default function MultiDisciplinarySection() {
           {items.map((item) => (
             <div key={item.number} className="flex items-center gap-3">
               {/* Number */}
-              <span className="text-[16px] font-[600]  text-[#0F172A] w-6 shrink-0">
+              <span className="lg:text-[16px] text-xs font-[600]  text-[#0F172A] w-6 shrink-0">
                 {item.number}
               </span>
               {/* Line */}
               <span className="w-10 h-px bg-slate-400 shrink-0" />
               {/* Label */}
-              <span className="text-[16px] font-[600] text-[#0F172A]">
+              <span className="lg:text-[16px] text-xs font-[600] text-[#0F172A]">
                 {item.label}
               </span>
             </div>
@@ -64,11 +64,11 @@ export default function MultiDisciplinarySection() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button className="w-fit px-5 py-2.5 bg-blue-900 hover:bg-blue-800 text-white font-semibold text-[14px] rounded-md transition-colors duration-200">
+        <div className="grid grid-cols-2 gap-3">
+          <button className="w-fit px-5 py-2.5 bg-blue-900 hover:bg-blue-800 text-white font-semibold lg:text-[14px] text-xs rounded-md transition-colors duration-200">
             Request a service proposal
           </button>
-          <button className="w-fit px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold text-[13.5px] rounded-md transition-colors duration-200">
+          <button className="w-fit px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-semibold lg:text-[13.5px] text-xs rounded-md transition-colors duration-200">
             Book an employer review
           </button>
         </div>

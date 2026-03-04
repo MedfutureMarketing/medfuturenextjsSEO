@@ -28,6 +28,14 @@ const whatYouReceive = [
   "Commercials (transparent, defensible)",
 ];
 
+function ChevronDown() {
+  return (
+    <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
 export default function ServiceProposalSection() {
   const [form, setForm] = useState({
     organization: "",
@@ -50,34 +58,36 @@ export default function ServiceProposalSection() {
     setForm((prev) => ({ ...prev, [target.name]: value }));
   };
 
+  const inputClass = "w-full border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition bg-white";
+
   return (
-    <section className="full-width-section bg-[#f4f6f8] font-sans py-14 px-4 sm:px-8 lg:px-16 mt-[140px]">
-      <div className="inner-width-section mx-auto">
+    <section className="full-width-section bg-[#f0f2f5] font-sans py-14 mt-[140px]">
+      <div className="inner-width-section mx-auto px-4 sm:px-8 lg:px-16">
 
         {/* Header */}
         <p className="text-[13px] font-semibold text-blue-700 mb-2.5">
           Request Proposal
         </p>
-        <h2 className="text-2xl sm:text-[32px] font-extrabold text-slate-900 mb-3 leading-tight">
+        <h2 className="text-xl lg:text-[38px] font-600 text-slate-900 mb-3 leading-tight">
           Get a tailored service proposal
         </h2>
-        <p className="text-[13.5px] text-slate-500 mb-9 max-w-2xl">
+        <p className="text-[14px] text-slate-500 mb-10 max-w-3xl">
           Send your role list and locations. We reply with service scope, credentialing approach, SLAs and commercials.
         </p>
 
         {/* Two-column layout */}
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="flex flex-col lg:flex-row gap-5 items-start">
 
           {/* ── Left: Form Card ── */}
-          <div className="flex-1 min-w-0 bg-white border border-slate-200 rounded-xl px-7 py-7">
-            <h3 className="text-[16px] font-bold text-slate-900 mb-6">
+          <div className="flex-1 min-w-0 bg-white border border-slate-200 rounded-[8px] px-8 py-8">
+            <h3 className="text-[18px] font-bold text-slate-900 mb-7">
               Employer enquiry
             </h3>
 
             {/* Row 1: Organization + Email */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[12.5px] font-medium text-slate-700">
+                <label className="text-[12.5px] font-medium text-slate-600">
                   Organization
                 </label>
                 <input
@@ -86,11 +96,11 @@ export default function ServiceProposalSection() {
                   value={form.organization}
                   onChange={handleChange}
                   placeholder="e.g. ABC Medical Group"
-                  className="border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                  className={inputClass}
                 />
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-[12.5px] font-medium text-slate-700">
+                <label className="text-[12.5px] font-medium text-slate-600">
                   Email
                 </label>
                 <input
@@ -99,15 +109,15 @@ export default function ServiceProposalSection() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="you@organization.com"
-                  className="border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition"
+                  className={inputClass}
                 />
               </div>
             </div>
 
             {/* Row 2: Recruitment Type + State */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[12.5px] font-medium text-slate-700">
+                <label className="text-[12.5px] font-medium text-slate-600">
                   Recruitment Type
                 </label>
                 <div className="relative">
@@ -115,20 +125,18 @@ export default function ServiceProposalSection() {
                     name="recruitmentType"
                     value={form.recruitmentType}
                     onChange={handleChange}
-                    className="w-full appearance-none border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition bg-white pr-9 cursor-pointer"
+                    className={`${inputClass} appearance-none pr-9 cursor-pointer text-slate-400`}
                   >
                     <option value="" disabled>Select an option</option>
                     {recruitmentTypes.map((t) => (
                       <option key={t} value={t}>{t}</option>
                     ))}
                   </select>
-                  <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+                  <ChevronDown />
                 </div>
               </div>
               <div className="flex flex-col gap-1.5">
-                <label className="text-[12.5px] font-medium text-slate-700">
+                <label className="text-[12.5px] font-medium text-slate-600">
                   State/Territory
                 </label>
                 <div className="relative">
@@ -136,23 +144,21 @@ export default function ServiceProposalSection() {
                     name="state"
                     value={form.state}
                     onChange={handleChange}
-                    className="w-full appearance-none border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition bg-white pr-9 cursor-pointer"
+                    className={`${inputClass} appearance-none pr-9 cursor-pointer text-slate-400`}
                   >
                     <option value="" disabled>Select an option</option>
                     {states.map((s) => (
                       <option key={s} value={s}>{s}</option>
                     ))}
                   </select>
-                  <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
+                  <ChevronDown />
                 </div>
               </div>
             </div>
 
             {/* Roles & Notes */}
-            <div className="flex flex-col gap-1.5 mb-5">
-              <label className="text-[12.5px] font-medium text-slate-700">
+            <div className="flex flex-col gap-1.5 mb-6">
+              <label className="text-[12.5px] font-medium text-slate-600">
                 Roles &amp; notes
               </label>
               <textarea
@@ -161,12 +167,15 @@ export default function ServiceProposalSection() {
                 onChange={handleChange}
                 rows={4}
                 placeholder="e.g. 2x GP (FT) metro + 1x RN (aged care) regional; start 4 weeks; facility credentialing required."
-                className="border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition resize-none"
+                className={`${inputClass} resize-none`}
               />
             </div>
 
+            {/* Divider */}
+            <div className="border-t border-slate-100 mb-5" />
+
             {/* Checkboxes */}
-            <div className="flex flex-col gap-3 mb-6">
+            <div className="flex flex-col gap-3 mb-7">
               <label className="flex items-start gap-2.5 cursor-pointer">
                 <input
                   type="checkbox"
@@ -175,7 +184,7 @@ export default function ServiceProposalSection() {
                   onChange={handleChange}
                   className="mt-0.5 w-4 h-4 accent-blue-800 cursor-pointer shrink-0"
                 />
-                <span className="text-[12.5px] text-slate-600 leading-relaxed">
+                <span className="text-[12.5px] text-slate-500 leading-relaxed">
                   I confirm that I have read and agree to the{" "}
                   <a href="#" className="text-blue-700 underline hover:text-blue-900">Terms of Use</a>
                   {" "}and{" "}
@@ -190,70 +199,70 @@ export default function ServiceProposalSection() {
                   onChange={handleChange}
                   className="w-4 h-4 accent-blue-800 cursor-pointer shrink-0"
                 />
-                <span className="text-[12.5px] text-slate-600">Subscribe for Job Alert</span>
+                <span className="text-[12.5px] text-slate-500">Subscribe for Job Alert</span>
               </label>
             </div>
 
             {/* Submit */}
-            <button className="w-full py-3 bg-blue-900 hover:bg-blue-800 text-white font-semibold text-[14px] rounded-md transition-colors duration-200">
+            <button className="w-full py-3.5 bg-blue-900 hover:bg-blue-800 text-white font-semibold text-[14px] rounded-[4px] transition-colors duration-200">
               Submit &amp; Request Proposal
             </button>
           </div>
 
           {/* ── Right: Info Panel ── */}
-          <div className="w-full lg:w-[360px] shrink-0 flex flex-col gap-4">
+          <div className="w-full lg:w-[480px] shrink-0 flex flex-col gap-4">
 
-            {/* What you receive */}
-            <div className="bg-white border border-slate-200 rounded-xl px-6 py-6">
-              <p className="text-[14.5px] font-bold text-blue-900 mb-4">
+            {/* What you receive — no card border, just white bg */}
+            <div className="bg-white border border-slate-200 rounded-[8px] px-6 py-6">
+              <p className="text-[16px] font-bold text-[#040D48] mb-4">
                 What you receive
               </p>
-              <ul className="flex flex-col gap-2.5">
+              <ul className="flex flex-col gap-3">
                 {whatYouReceive.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-[5px] w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0" />
-                    <span className="text-[13px] text-slate-600 leading-relaxed">{item}</span>
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="text-[#4A5565] lg:text-[14px] leading-relaxed shrink-0">•</span>
+                    <span className="lg:text-[14px] text-[#4A5565] leading-relaxed">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Prefer direct contact */}
-            <div className="bg-white border border-slate-200 rounded-xl px-6 py-5">
-              <p className="text-[14px] font-bold text-slate-900 mb-3.5">
+            <div className="bg-white border border-slate-200 rounded-[8px] px-6 py-6">
+              <p className="text-[14.5px] font-bold text-slate-900 mb-4">
                 Prefer direct contact?
               </p>
-              <div className="flex flex-col gap-1.5 mb-5">
+              <div className="flex flex-col gap-2 mb-5">
                 {[
                   ["Hotline:", "1300 633 388"],
                   ["WhatsApp:", "+61 452 668 811"],
                   ["International:", "+61 452 668 811"],
                   ["Email:", "candidateservices@medfuture.com.au"],
                 ].map(([label, value]) => (
-                  <p key={label} className="text-[12.5px] text-slate-600">
-                    <span className="font-medium">{label}</span> {value}
+                  <p key={label} className="text-[13px] text-slate-600">
+                    <span className="font-semibold text-slate-700">{label}</span> {value}
                   </p>
                 ))}
               </div>
               <div className="flex gap-2">
-                <button className="flex-1 py-2.5 border border-slate-200 rounded-md text-[13px] font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
+                <button className="flex-1 py-2.5 border border-slate-200 rounded-[4px] text-[13px] font-semibold text-slate-700 hover:bg-slate-50 transition-colors">
                   Services
                 </button>
-                <button className="flex-1 py-2.5 bg-blue-900 hover:bg-blue-800 rounded-md text-[13px] font-semibold text-white transition-colors">
+                <button className="flex-1 py-2.5 bg-blue-900 hover:bg-blue-800 rounded-[4px] text-[13px] font-semibold text-white transition-colors">
                   Why Medfuture
                 </button>
               </div>
             </div>
 
             {/* Multi-site employer */}
-            <div className="bg-white border border-slate-200 rounded-xl px-6 py-5">
-              <p className="text-[14px] font-bold text-slate-900 mb-2">
+            <div className="bg-white border border-slate-200 rounded-[8px] px-6 py-6">
+              <p className="text-[14.5px] font-bold text-slate-900 mb-2">
                 Multi-site employer?
               </p>
-              <p className="text-[12.5px] text-slate-500 leading-relaxed mb-4">
+              <p className="text-[13px] text-slate-500 leading-relaxed mb-4">
                 Ask about Workforce Partnership (retained) for priority SLAs and predictable hiring.
               </p>
-              <button className="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-[13px] font-semibold rounded-md transition-colors">
+              <button className="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-[13px] font-semibold rounded-[4px] transition-colors">
                 Explore Partnership
               </button>
             </div>

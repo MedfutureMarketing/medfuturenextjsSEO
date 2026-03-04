@@ -77,13 +77,11 @@ const divisions = [
 function ExploreIcon() {
     return (
         <span className="inline-flex items-center justify-center w-[16px] h-[16px] ml-1.5 shrink-0">
-
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="6.68347" height="6.68347" rx="1.60403" fill="#1B3461" />
                 <rect x="7.35254" width="6.68347" height="6.68347" rx="1.60403" fill="#162950" />
                 <rect x="7.35254" y="7.35181" width="6.68347" height="6.68347" rx="1.60403" fill="#269ED6" />
             </svg>
-
         </span>
     );
 }
@@ -107,17 +105,17 @@ export default function EmployerDivisionsPage() {
     };
 
     return (
-        <div className="full-width-section bg-white font-sans">
+        <div className="full-width-section bg-white font-sans lg:mt-[120px]">
 
             {/* ── Section 1: Employer Divisions ── */}
-            <div className="inner-width-section mx-auto px-4 sm:px-8 lg:px-16 pt-14 pb-10">
+            <div className="inner-width-section mx-auto px-4 sm:px-8 lg:px-16 pb-10">
 
                 {/* Header */}
                 <p className="lg:text-[14px] text-xs font-semibold text-blue-700 mb-2">Choose your division</p>
                 <h2 className="lg:text-[30px] text-xl font-[600] text-[#0F172A] mb-[31px]">
                     Explore our employer divisions
                 </h2>
-                <p className=" lg:text-[16px] text-xs text-[#4A5565] leading-relaxed mb-[70px] max-w-md">
+                <p className="lg:text-[16px] text-xs text-[#4A5565] leading-relaxed mb-[70px] max-w-md">
                     Each division has specialist consultants, tailored pipelines and role-specific recruitment logic.
                 </p>
 
@@ -145,10 +143,10 @@ export default function EmployerDivisionsPage() {
                         {divisions.map((div) => (
                             <div
                                 key={div.id}
-                                className="flex-none w-[240px] sm:w-[270px] border border-slate-150 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-200"
+                                className="flex-none w-[240px] sm:w-[270px] border border-slate-150 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col"
                             >
                                 {/* Image */}
-                                <div className="relative w-full h-[165px] overflow-hidden">
+                                <div className="relative w-full h-[165px] overflow-hidden shrink-0">
                                     <Image
                                         src={div.image}
                                         alt={div.title}
@@ -162,11 +160,11 @@ export default function EmployerDivisionsPage() {
                                 </div>
 
                                 {/* Content */}
-                                <div className="px-4 pt-7 pb-4 flex flex-col gap-2">
-                                    <h3 className="lg:text-[16px] text-md font-bold text-slate-900 leading-snug">
+                                <div className="px-4 pt-7 pb-4 flex flex-col flex-1">
+                                    <h3 className="lg:text-[16px] text-sm font-[600] text-slate-900 leading-snug mb-2">
                                         {div.title}
                                     </h3>
-                                    <p className="lg:text-[14px] text-xs text-slate-500 leading-relaxed">
+                                    <p className="lg:text-[14px] text-xs text-slate-500 leading-relaxed mb-2">
                                         {div.description}
                                     </p>
 
@@ -182,8 +180,8 @@ export default function EmployerDivisionsPage() {
                                         ))}
                                     </div>
 
-                                    {/* Divider */}
-                                    <div className="border-t border-slate-100 mt-2 pt-3">
+                                    {/* Explore — pinned to bottom */}
+                                    <div className="border-t border-slate-100 mt-auto pt-3">
                                         <button className="flex items-center lg:text-[14px] text-xs font-semibold text-slate-700 hover:text-blue-800 transition-colors">
                                             Explore <ExploreIcon />
                                         </button>
@@ -211,7 +209,7 @@ export default function EmployerDivisionsPage() {
 
                 {/* Left: Big heading */}
                 <div className="sm:w-[440px] shrink-0">
-                    <h2 className="text-3xl lg:text-[41.32px]  leading-tight">
+                    <h2 className="text-3xl lg:text-[41.32px] leading-tight">
                         <span className="text-slate-900">Nationwide</span>
                         <br />
                         <span className="text-blue-800">Healthcare Recruitment</span>
@@ -222,7 +220,7 @@ export default function EmployerDivisionsPage() {
 
                 {/* Right: Body */}
                 <div className="flex-1 flex items-center">
-                    <p className="lg:text-[24px] text-sm text-[#0F172A] leading-relaxed ">
+                    <p className="lg:text-[24px] text-sm text-[#0F172A] leading-relaxed">
                         We connect healthcare professionals and employers across all Australian states, delivering
                         jurisdiction-aware, reliable, efficient, and seamless recruitment solutions nationwide.
                     </p>

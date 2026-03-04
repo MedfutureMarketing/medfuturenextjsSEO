@@ -103,7 +103,7 @@ export default function EngagementModelSection() {
     const row2 = services.filter((s) => s.row === 2);
 
     return (
-        <section className="full-width-section bg-white font-sans py-14 px-4 sm:px-8 lg:px-16 mt-[140px]">
+        <section className="full-width-section bg-white font-sans py-14 px-4 sm:px-8 lg:px-16 lg:mt-[140px]">
             <div className="inner-width-section mx-auto">
 
                 {/* Row 1 */}
