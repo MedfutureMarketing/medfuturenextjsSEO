@@ -13,6 +13,8 @@ import EmployerEnquirySection from "@/components/EmployerHub/EmployerEnquirySect
 import FAQ from "@/components/FAQ/Faq";
 import MeetOurConsultants from "@/components/Home/MeetConsultants";
 
+import Employerservices from "@/components/EmployerHub/Employerservices"
+
 
 
 
@@ -21,6 +23,7 @@ export default function EmployerHub() {
     <section className=" ">
       <EmployerHero />
       <InfoCards />
+      <Employerservices/>
       <RecruitmentServices/>
       <ExclusiveRecruitmentServices/>
       <PLGPForm/>

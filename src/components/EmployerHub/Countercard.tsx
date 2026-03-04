@@ -47,54 +47,59 @@ const features = [
 
 export default function WhyMedfutureSection() {
   return (
-    <section className="full-width-section bg-[#f4f5f7] font-sans py-14 px-4 sm:px-8 lg:px-[68px] mt-[121px]">
-      <div className="inner-width-section mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+    <section className="full-width-section bg-[#f4f5f7] font-sans py-10 sm:py-14 px-5 sm:px-8 lg:px-[68px] mt-[60px] sm:mt-[90px] lg:mt-[121px]">
+      <div className="inner-width-section mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
 
         {/* Left Column */}
         <div className="flex-1 min-w-0">
           {/* Label */}
-          <p className="lg:text-[14px] text-xs font-semibold text-[#074CA4] mb-3 tracking-wide">
+          <p className="text-[13px] sm:text-[14px] font-semibold text-[#074CA4] mb-3 tracking-wide">
             Why Medfuture
           </p>
 
           {/* Heading */}
-          <h2 className="text-xl lg:text-[30px] font-[600] text-[#0F172A] leading-tight mb-5 max-w-sm">
+          <h2 className="text-2xl sm:text-[26px] lg:text-[30px] font-[600] text-[#0F172A] leading-tight mb-4 max-w-sm">
             Why healthcare employers choose Medfuture
           </h2>
 
           {/* Body */}
-          <p className="lg:text-[16px] text-xs text-[#4A5565] leading-relaxed mb-10 max-w-[480px]">
+          <p className="text-sm sm:text-[15px] lg:text-[16px] text-[#4A5565] leading-relaxed mb-8 max-w-[480px]">
             Most recruiters focus on roles. We focus on continuity, compliance,
-            and outcomes  across disciplines.
+            and outcomes across disciplines.
           </p>
 
-          {/* Stats */}
-          <div className="flex flex-wrap gap-x-16 gap-y-5">
+          {/* Stats — 2×2 grid on mobile, single row on lg */}
+          <div className="grid grid-cols-2 gap-x-8 gap-y-6 sm:flex sm:flex-wrap sm:gap-x-12 sm:gap-y-5 lg:gap-x-16">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <p className="lg:text-[36px] text-xl font-[600] text-slate-900 leading-none mb-1">
+                <p className="text-2xl sm:text-3xl lg:text-[36px] font-[600] text-slate-900 leading-none mb-1">
                   {stat.value}
                 </p>
-                <p className="lg:text-[16px] text-xs text-[#040D48] font-[400]">{stat.label}</p>
+                <p className="text-[13px] sm:text-sm lg:text-[16px] text-[#040D48] font-[400] leading-snug">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
         </div>
 
+        {/* Divider — visible only on mobile between sections */}
+        <hr className="w-full border-[#e2e4ea] lg:hidden" />
+
         {/* Right Column */}
-        <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-7">
+        <div className="w-full lg:w-[380px] shrink-0 flex flex-col gap-6 sm:gap-7">
           {features.map((feature) => (
             <div key={feature.title} className="flex items-start gap-4">
               {/* Icon */}
-              <div className="mt-0.5 text-slate-400 shrink-0">
+              <div className="mt-0.5 shrink-0">
                 {feature.icon}
               </div>
               {/* Text */}
               <div>
-                <p className="lg:text-[16px] text-xs font-[500] text-[#0F172A] mb-1">
+                <p className="text-[15px] lg:text-[16px] font-[500] text-[#0F172A] mb-1">
                   {feature.title}
                 </p>
-                <p className="lg:text-[16px] text-xs text-[#4A5565] leading-relaxed">
+                <p className="text-sm lg:text-[16px] text-[#4A5565] leading-relaxed">
                   {feature.description}
                 </p>
               </div>
