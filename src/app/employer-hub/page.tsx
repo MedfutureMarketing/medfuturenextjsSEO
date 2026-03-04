@@ -14,6 +14,8 @@ import FAQ from "@/components/FAQ/Faq";
 import MeetOurConsultants from "@/components/Home/MeetConsultants";
 
 import Employerservices from "@/components/EmployerHub/Employerservices"
+import MultiDisciplinarySection from "@/components/EmployerHub/MultiDisciplinarySection";
+import EmployerDivisions from "@/components/EmployerHub/EmployerDivisionsPage"
 
 
 
@@ -24,6 +26,8 @@ export default function EmployerHub() {
       <EmployerHero />
       <InfoCards />
       <Employerservices/>
+      <MultiDisciplinarySection/>
+      <EmployerDivisions/>
       <RecruitmentServices/>
       <ExclusiveRecruitmentServices/>
       <PLGPForm/>

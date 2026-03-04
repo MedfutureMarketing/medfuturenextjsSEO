@@ -39,7 +39,7 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/mental-health", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Mental Health Division" },
   { pattern: "/sign-up", bgColor: "bg-white hidden ", textColor: "text-black", breadcrumbLabel: "Sign In" },
   { pattern: "/my-account/candidate", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "My Account" },
-    { pattern: "/employer-hub", bgColor: "bg-[#FFFFFF] hidden ", textColor: "text-[#0F172A]", breadcrumbLabel: "My Account" },
+  { pattern: "/employer-hub", bgColor: "bg-[#FFFFFF] hidden ", textColor: "text-[#0F172A]", breadcrumbLabel: "Employer Hub" },
 
 ];
 // 🔹 Helper functions
