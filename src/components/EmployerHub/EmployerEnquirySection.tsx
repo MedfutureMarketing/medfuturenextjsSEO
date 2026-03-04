@@ -83,7 +83,7 @@ export default function EmployerEnquiryForm() {
         Route your request to the right division
       </h2>
       <p className="lg:text-[13px] text-xs text-slate-500 leading-relaxed mb-5">
-        Tell us the discipline, location and urgency. We'll respond with options
+        Tell us the discipline, location and urgency. We will respond with options
         and the right specialist team.
       </p>
 
