@@ -182,12 +182,12 @@ export default function LocumJobList() {
     filters.suburb,
     filters.country,
   ]);
-useEffect(() => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth", // change to "auto" if you want instant
-  });
-}, [currentPage]);
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // change to "auto" if you want instant
+    });
+  }, [currentPage]);
   /* ===================== TIME FORMATTER ===================== */
 
   function timeFromNow(dateString: string) {
@@ -321,11 +321,11 @@ useEffect(() => {
 
               <div className="flex justify-between mb-0">
                 <span className="text-[12px] flex flex-wrap gap-2 text-[#4A5565]">
-            
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fillRule="evenodd" clip-rule="evenodd" d="M8.16402 13.98C8.93076 13.2842 9.64037 12.528 10.286 11.7187C11.646 10.01 12.4733 8.32532 12.5293 6.82732C12.5515 6.21851 12.4507 5.61149 12.233 5.0425C12.0154 4.47352 11.6852 3.95425 11.2623 3.51571C10.8395 3.07717 10.3326 2.72836 9.77187 2.49012C9.21118 2.25188 8.60822 2.12909 7.99902 2.12909C7.38981 2.12909 6.78685 2.25188 6.22616 2.49012C5.66547 2.72836 5.15855 3.07717 4.73569 3.51571C4.31282 3.95425 3.98268 4.47352 3.76499 5.0425C3.5473 5.61149 3.44652 6.21851 3.46868 6.82732C3.52535 8.32532 4.35335 10.01 5.71268 11.7187C6.35832 12.528 7.06794 13.2842 7.83468 13.98C7.90846 14.0467 7.96335 14.0951 7.99935 14.1253L8.16402 13.98ZM7.50735 14.7567C7.50735 14.7567 2.66602 10.6793 2.66602 6.66732C2.66602 5.25283 3.22792 3.89628 4.22811 2.89608C5.22831 1.89589 6.58486 1.33398 7.99935 1.33398C9.41384 1.33398 10.7704 1.89589 11.7706 2.89608C12.7708 3.89628 13.3327 5.25283 13.3327 6.66732C13.3327 10.6793 8.49135 14.7567 8.49135 14.7567C8.22202 15.0047 7.77868 15.002 7.50735 14.7567ZM7.99935 8.53398C8.49442 8.53398 8.96921 8.33732 9.31928 7.98725C9.66935 7.63718 9.86602 7.16239 9.86602 6.66732C9.86602 6.17225 9.66935 5.69745 9.31928 5.34738C8.96921 4.99732 8.49442 4.80065 7.99935 4.80065C7.50428 4.80065 7.02948 4.99732 6.67942 5.34738C6.32935 5.69745 6.13268 6.17225 6.13268 6.66732C6.13268 7.16239 6.32935 7.63718 6.67942 7.98725C7.02948 8.33732 7.50428 8.53398 7.99935 8.53398ZM7.99935 9.33398C7.29211 9.33398 6.61383 9.05303 6.11373 8.55294C5.61363 8.05284 5.33268 7.37456 5.33268 6.66732C5.33268 5.96007 5.61363 5.2818 6.11373 4.7817C6.61383 4.2816 7.29211 4.00065 7.99935 4.00065C8.70659 4.00065 9.38487 4.2816 9.88497 4.7817C10.3851 5.2818 10.666 5.96007 10.666 6.66732C10.666 7.37456 10.3851 8.05284 9.88497 8.55294C9.38487 9.05303 8.70659 9.33398 7.99935 9.33398Z" fill="#0A2E5C"/>
-</svg>
-      {job.region?.name}
+
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M8.16402 13.98C8.93076 13.2842 9.64037 12.528 10.286 11.7187C11.646 10.01 12.4733 8.32532 12.5293 6.82732C12.5515 6.21851 12.4507 5.61149 12.233 5.0425C12.0154 4.47352 11.6852 3.95425 11.2623 3.51571C10.8395 3.07717 10.3326 2.72836 9.77187 2.49012C9.21118 2.25188 8.60822 2.12909 7.99902 2.12909C7.38981 2.12909 6.78685 2.25188 6.22616 2.49012C5.66547 2.72836 5.15855 3.07717 4.73569 3.51571C4.31282 3.95425 3.98268 4.47352 3.76499 5.0425C3.5473 5.61149 3.44652 6.21851 3.46868 6.82732C3.52535 8.32532 4.35335 10.01 5.71268 11.7187C6.35832 12.528 7.06794 13.2842 7.83468 13.98C7.90846 14.0467 7.96335 14.0951 7.99935 14.1253L8.16402 13.98ZM7.50735 14.7567C7.50735 14.7567 2.66602 10.6793 2.66602 6.66732C2.66602 5.25283 3.22792 3.89628 4.22811 2.89608C5.22831 1.89589 6.58486 1.33398 7.99935 1.33398C9.41384 1.33398 10.7704 1.89589 11.7706 2.89608C12.7708 3.89628 13.3327 5.25283 13.3327 6.66732C13.3327 10.6793 8.49135 14.7567 8.49135 14.7567C8.22202 15.0047 7.77868 15.002 7.50735 14.7567ZM7.99935 8.53398C8.49442 8.53398 8.96921 8.33732 9.31928 7.98725C9.66935 7.63718 9.86602 7.16239 9.86602 6.66732C9.86602 6.17225 9.66935 5.69745 9.31928 5.34738C8.96921 4.99732 8.49442 4.80065 7.99935 4.80065C7.50428 4.80065 7.02948 4.99732 6.67942 5.34738C6.32935 5.69745 6.13268 6.17225 6.13268 6.66732C6.13268 7.16239 6.32935 7.63718 6.67942 7.98725C7.02948 8.33732 7.50428 8.53398 7.99935 8.53398ZM7.99935 9.33398C7.29211 9.33398 6.61383 9.05303 6.11373 8.55294C5.61363 8.05284 5.33268 7.37456 5.33268 6.66732C5.33268 5.96007 5.61363 5.2818 6.11373 4.7817C6.61383 4.2816 7.29211 4.00065 7.99935 4.00065C8.70659 4.00065 9.38487 4.2816 9.88497 4.7817C10.3851 5.2818 10.666 5.96007 10.666 6.66732C10.666 7.37456 10.3851 8.05284 9.88497 8.55294C9.38487 9.05303 8.70659 9.33398 7.99935 9.33398Z" fill="#0A2E5C" />
+                  </svg>
+                  {job.region?.name}
                 </span>
               </div>
             </div>
@@ -357,13 +357,13 @@ useEffect(() => {
                   {job.job_title}
                 </h3>
               </div>
-               <div className="flex justify-between mb-0">
+              <div className="flex justify-between mb-0">
                 <span className="text-[12px] flex flex-wrap gap-2 text-[#4A5565]">
-            
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fillRule="evenodd" clip-rule="evenodd" d="M8.16402 13.98C8.93076 13.2842 9.64037 12.528 10.286 11.7187C11.646 10.01 12.4733 8.32532 12.5293 6.82732C12.5515 6.21851 12.4507 5.61149 12.233 5.0425C12.0154 4.47352 11.6852 3.95425 11.2623 3.51571C10.8395 3.07717 10.3326 2.72836 9.77187 2.49012C9.21118 2.25188 8.60822 2.12909 7.99902 2.12909C7.38981 2.12909 6.78685 2.25188 6.22616 2.49012C5.66547 2.72836 5.15855 3.07717 4.73569 3.51571C4.31282 3.95425 3.98268 4.47352 3.76499 5.0425C3.5473 5.61149 3.44652 6.21851 3.46868 6.82732C3.52535 8.32532 4.35335 10.01 5.71268 11.7187C6.35832 12.528 7.06794 13.2842 7.83468 13.98C7.90846 14.0467 7.96335 14.0951 7.99935 14.1253L8.16402 13.98ZM7.50735 14.7567C7.50735 14.7567 2.66602 10.6793 2.66602 6.66732C2.66602 5.25283 3.22792 3.89628 4.22811 2.89608C5.22831 1.89589 6.58486 1.33398 7.99935 1.33398C9.41384 1.33398 10.7704 1.89589 11.7706 2.89608C12.7708 3.89628 13.3327 5.25283 13.3327 6.66732C13.3327 10.6793 8.49135 14.7567 8.49135 14.7567C8.22202 15.0047 7.77868 15.002 7.50735 14.7567ZM7.99935 8.53398C8.49442 8.53398 8.96921 8.33732 9.31928 7.98725C9.66935 7.63718 9.86602 7.16239 9.86602 6.66732C9.86602 6.17225 9.66935 5.69745 9.31928 5.34738C8.96921 4.99732 8.49442 4.80065 7.99935 4.80065C7.50428 4.80065 7.02948 4.99732 6.67942 5.34738C6.32935 5.69745 6.13268 6.17225 6.13268 6.66732C6.13268 7.16239 6.32935 7.63718 6.67942 7.98725C7.02948 8.33732 7.50428 8.53398 7.99935 8.53398ZM7.99935 9.33398C7.29211 9.33398 6.61383 9.05303 6.11373 8.55294C5.61363 8.05284 5.33268 7.37456 5.33268 6.66732C5.33268 5.96007 5.61363 5.2818 6.11373 4.7817C6.61383 4.2816 7.29211 4.00065 7.99935 4.00065C8.70659 4.00065 9.38487 4.2816 9.88497 4.7817C10.3851 5.2818 10.666 5.96007 10.666 6.66732C10.666 7.37456 10.3851 8.05284 9.88497 8.55294C9.38487 9.05303 8.70659 9.33398 7.99935 9.33398Z" fill="#0A2E5C"/>
-</svg>
-      {job.region?.name}
+
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M8.16402 13.98C8.93076 13.2842 9.64037 12.528 10.286 11.7187C11.646 10.01 12.4733 8.32532 12.5293 6.82732C12.5515 6.21851 12.4507 5.61149 12.233 5.0425C12.0154 4.47352 11.6852 3.95425 11.2623 3.51571C10.8395 3.07717 10.3326 2.72836 9.77187 2.49012C9.21118 2.25188 8.60822 2.12909 7.99902 2.12909C7.38981 2.12909 6.78685 2.25188 6.22616 2.49012C5.66547 2.72836 5.15855 3.07717 4.73569 3.51571C4.31282 3.95425 3.98268 4.47352 3.76499 5.0425C3.5473 5.61149 3.44652 6.21851 3.46868 6.82732C3.52535 8.32532 4.35335 10.01 5.71268 11.7187C6.35832 12.528 7.06794 13.2842 7.83468 13.98C7.90846 14.0467 7.96335 14.0951 7.99935 14.1253L8.16402 13.98ZM7.50735 14.7567C7.50735 14.7567 2.66602 10.6793 2.66602 6.66732C2.66602 5.25283 3.22792 3.89628 4.22811 2.89608C5.22831 1.89589 6.58486 1.33398 7.99935 1.33398C9.41384 1.33398 10.7704 1.89589 11.7706 2.89608C12.7708 3.89628 13.3327 5.25283 13.3327 6.66732C13.3327 10.6793 8.49135 14.7567 8.49135 14.7567C8.22202 15.0047 7.77868 15.002 7.50735 14.7567ZM7.99935 8.53398C8.49442 8.53398 8.96921 8.33732 9.31928 7.98725C9.66935 7.63718 9.86602 7.16239 9.86602 6.66732C9.86602 6.17225 9.66935 5.69745 9.31928 5.34738C8.96921 4.99732 8.49442 4.80065 7.99935 4.80065C7.50428 4.80065 7.02948 4.99732 6.67942 5.34738C6.32935 5.69745 6.13268 6.17225 6.13268 6.66732C6.13268 7.16239 6.32935 7.63718 6.67942 7.98725C7.02948 8.33732 7.50428 8.53398 7.99935 8.53398ZM7.99935 9.33398C7.29211 9.33398 6.61383 9.05303 6.11373 8.55294C5.61363 8.05284 5.33268 7.37456 5.33268 6.66732C5.33268 5.96007 5.61363 5.2818 6.11373 4.7817C6.61383 4.2816 7.29211 4.00065 7.99935 4.00065C8.70659 4.00065 9.38487 4.2816 9.88497 4.7817C10.3851 5.2818 10.666 5.96007 10.666 6.66732C10.666 7.37456 10.3851 8.05284 9.88497 8.55294C9.38487 9.05303 8.70659 9.33398 7.99935 9.33398Z" fill="#0A2E5C" />
+                  </svg>
+                  {job.region?.name}
                 </span>
               </div>
             </div>
@@ -372,75 +372,74 @@ useEffect(() => {
       </div>
 
       {/* ===================== PAGINATION ===================== */}
-     {totalPages > 1 && (
-  <div className="flex justify-center mt-10 mb-12">
-    <div className="flex flex-wrap items-center gap-2 bg-white/80 backdrop-blur-md border border-gray-200 rounded-full px-2 py-2">
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-10 mb-12">
+          <div className="flex flex-wrap items-center gap-2 bg-white/80 backdrop-blur-md border border-gray-200 rounded-full px-2 py-2">
 
-      {/* Prev */}
-      <button
-        disabled={currentPage === 1}
-        onClick={() => setCurrentPage((p) => p - 1)}
-        className="px-4 py-1.5 rounded-full text-sm font-medium  cursor-pointer text-gray-600 hover:bg-gray-100 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        ←
-      </button>
-
-      {(() => {
-        const pages: (number | string)[] = [];
-        const showLeftDots = currentPage > 3;
-        const showRightDots = currentPage < totalPages - 2;
-
-        pages.push(1);
-
-        if (showLeftDots) pages.push("dots-left");
-
-        const start = Math.max(2, currentPage - 1);
-        const end = Math.min(totalPages - 1, currentPage + 1);
-
-        for (let i = start; i <= end; i++) {
-          pages.push(i);
-        }
-
-        if (showRightDots) pages.push("dots-right");
-
-        if (totalPages > 1) pages.push(totalPages);
-
-        return pages.map((page, index) =>
-          typeof page === "string" ? (
-            <span
-              key={page + index}
-              className="px-2 text-gray-400 text-[10px]"
-            >
-              •••
-            </span>
-          ) : (
+            {/* Prev */}
             <button
-              key={page}
-              onClick={() => setCurrentPage(page as number)}
-              className={`min-w-[36px] h-9 px-3 rounded-full text-sm  cursor-pointer font-medium transition-all duration-200
-                ${
-                  currentPage === page
-                    ? "bg-gradient-to-r from-black to-gray-800 text-white shadow-md scale-105"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage((p) => p - 1)}
+              className="px-4 py-1.5 rounded-full text-sm font-medium  cursor-pointer text-gray-600 hover:bg-gray-100 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              {page}
+              ←
             </button>
-          )
-        );
-      })()}
 
-      {/* Next */}
-      <button
-        disabled={currentPage === totalPages}
-        onClick={() => setCurrentPage((p) => p + 1)}
-        className="px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer text-gray-600 hover:bg-gray-100 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        →
-      </button>
-    </div>
-  </div>
-)}
+            {(() => {
+              const pages: (number | string)[] = [];
+              const showLeftDots = currentPage > 3;
+              const showRightDots = currentPage < totalPages - 2;
+
+              pages.push(1);
+
+              if (showLeftDots) pages.push("dots-left");
+
+              const start = Math.max(2, currentPage - 1);
+              const end = Math.min(totalPages - 1, currentPage + 1);
+
+              for (let i = start; i <= end; i++) {
+                pages.push(i);
+              }
+
+              if (showRightDots) pages.push("dots-right");
+
+              if (totalPages > 1) pages.push(totalPages);
+
+              return pages.map((page, index) =>
+                typeof page === "string" ? (
+                  <span
+                    key={page + index}
+                    className="px-2 text-gray-400 text-[10px]"
+                  >
+                    •••
+                  </span>
+                ) : (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page as number)}
+                    className={`min-w-[36px] h-9 px-3 rounded-full text-sm  cursor-pointer font-medium transition-all duration-200
+                ${currentPage === page
+                        ? "bg-gradient-to-r from-black to-gray-800 text-white shadow-md scale-105"
+                        : "text-gray-700 hover:bg-gray-100"
+                      }`}
+                  >
+                    {page}
+                  </button>
+                )
+              );
+            })()}
+
+            {/* Next */}
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage((p) => p + 1)}
+              className="px-4 py-1.5 rounded-full text-sm font-medium cursor-pointer text-gray-600 hover:bg-gray-100 transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      )}
       <style jsx>{`
         .scrollbar-hide {
           -ms-overflow-style: none;
