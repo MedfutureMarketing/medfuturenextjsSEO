@@ -552,34 +552,37 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
           <div
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
-            className={`fixed z-[999] transition-all duration-150 w-full left-0 ${open ? "opacity-100 visible" : "opacity-0 invisible"
+            className={`fixed z-[99] transition-all duration-150 w-full  left-0 ${open ? "opacity-100 visible" : "opacity-0 invisible"
               }`}
             style={{ top }}
           >
-            <div className="bg-white inner-width-section  shadow-xl border-gray-200">
-              <div className="mx-auto px-6 py-6 mt-2">
+            <div className=" inner-width-section  shadow-xl border-gray-200">
+              <div className="mx-auto px-0 py-0 mt-2 bg-white">
                 {/* Layout: Hub | Divider | Professions | Divider | Explore More */}
-                <div className="flex gap-0" >
+                <div className="flex gap-0 bg-white" >
 
                   {/* ── LEFT: Hub Panel ── */}
                   {/* ── LEFT: Hub Panel ── */}
                   {/* ── LEFT: Hub Panel ── */}
                   {hasHub && (
                     <>
-                      <div className="w-[220px] flex-shrink-0 pr-6  " >
-                        {/* Title row — title left, arrow pushed far right */}
-                        <div className="flex items-center justify-between mb-4">
+                      <div className="w-[270px] flex-shrink-0 px-8 bg-white shadow-[20px_0_40px_-5px_rgba(0,0,0,0.3)] py-4 relative">
+
+                        {/* Arrow — sits ON the right edge / shadow line */}
+                        <Link
+                          href={menu.hub!.titleHref || "#"}
+                          className="absolute -right-5 top-4 z-10 w-[40px] h-[40px] rounded-full shadow-md border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-50 transition"
+                        >
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#040D48" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                          </svg>
+                        </Link>
+
+                        {/* Title row — no arrow here anymore */}
+                        <div className="mb-4">
                           <h3 className="text-[16px] font-[700] text-[#040D48] leading-tight">
                             {menu.hub!.title}
                           </h3>
-                          <Link
-                            href={menu.hub!.titleHref || "#"}
-                            className="flex-shrink-0 w-[40px] h-[40px] rounded-full shadow-md border border-gray-200 bg-white flex items-center justify-center hover:bg-gray-50 transition"
-                          >
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#040D48" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                              <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                          </Link>
                         </div>
 
                         {/* Image */}
@@ -607,12 +610,12 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                       </div>
 
                       {/* Vertical divider */}
-                      <div className="w-px bg-gray-200 mx-4 self-stretch flex-shrink-0" />
+                      <div className="w-px bg-gray-200 mx-4 hidden self-stretch flex-shrink-0" />
                     </>
                   )}
 
                   {/* ── MIDDLE: Professions / Columns ── */}
-                  <div className="flex-1 px-4">
+                  <div className="flex-1 px-16 py-4 bg-white">
                     {menu.professionsHeading && (
                       <h4 className="text-[16px] font-[700] text-[#0F172A] mb-4 pb-1 border-gray-200">
                         {menu.professionsHeading}
@@ -655,10 +658,10 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                   {menu.explore && (
                     <>
                       {/* Vertical divider */}
-                      <div className="w-px bg-gray-200" />
+                      <div className="w-px" />
 
-                      <div className="w-[200px] py-4 px-3 flex-shrink-0 pl-4">
-                        <h4 className="text-[13px] font-[700] text-gray-800 mb-3 pb-1 border-b border-gray-200">
+                      <div className="w-[200px] py-4 px-0  bg-gray-200 flex-shrink-0 px-4">
+                        <h4 className="text-[13px] font-[700] text-gray-800 mb-3 pb-1 border-b border-gray-500">
                           {menu.explore.heading}
                         </h4>
                         <ul className="space-y-2">
