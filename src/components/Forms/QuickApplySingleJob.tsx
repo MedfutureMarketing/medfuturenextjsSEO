@@ -152,6 +152,23 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
     jobSource: ''
   });
 
+  useEffect(() => {
+    const firstName = localStorage.getItem("FIRST_NAME");
+    const lastName = localStorage.getItem("LAST_NAME");
+    const email = localStorage.getItem("EMAIL");
+    const contactNumber = localStorage.getItem("CONTACT_NUMBER");
+
+    if (firstName || lastName || email) {
+      setFormData((prev) => ({
+        ...prev,
+        firstName: firstName || "",
+        lastName: lastName || "",
+        email: email || "",
+        phone: contactNumber || ""
+      }));
+    }
+  }, []);
+
   const [touched, setTouched] = useState(false);
 
   // Filter specialities based on selected profession

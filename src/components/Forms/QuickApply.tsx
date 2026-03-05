@@ -150,6 +150,23 @@ export default function RegistrationForm({ onClose }: RegistrationFormProps) {
 
   const [touched, setTouched] = useState(false);
 
+  useEffect(() => {
+  const firstName = localStorage.getItem("FIRST_NAME");
+  const lastName = localStorage.getItem("LAST_NAME");
+  const email = localStorage.getItem("EMAIL");
+  const contactNumber = localStorage.getItem("CONTACT_NUMBER");
+
+  if (firstName || lastName || email) {
+    setFormData((prev) => ({
+      ...prev,
+      firstName: firstName || "",
+      lastName: lastName || "",
+      email: email || "",
+      phone: contactNumber || ""
+    }));
+  }
+}, []);
+
   // Filter specialities based on selected profession
   useEffect(() => {
     if (formData.profession) {

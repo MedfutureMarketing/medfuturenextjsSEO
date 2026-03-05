@@ -1,5 +1,8 @@
 import { API_BASE_URL } from "@/lib/api";
 import { useState, useRef, useEffect, useCallback } from "react";
+import { PhoneInput } from "react-international-phone";
+import 'react-international-phone/style.css';
+
 
 interface FormErrors {
   company_name?: string;
@@ -628,15 +631,31 @@ export default function EmployerRegistrationForm() {
               <label className={labelClass}>
                 Phone Number<span className="text-red-500">*</span>
               </label>
-              <input
-                type="tel"
-                name="mobile"
-                value={formData.mobile}
-                onChange={handleInputChange}
-                placeholder="+61"
-                className={inputClass}
-                required
-              />
+              <PhoneInput
+                  forceDialCode={true}
+                  defaultCountry="au"
+                  countrySelectorStyleProps={{
+                    buttonStyle: {
+                      zIndex: 5,
+                      position: "absolute",
+                      left: 0,
+                      height: "38px",
+                      width: "56px",
+                      border: "none",
+                      paddingTop: "10px",
+                      paddingBottom: "0px",
+                      backgroundColor: "transparent",
+                      cursor: "pointer",
+                    },
+                  }}
+                  onChange={(mobile) => setFormData({ ...formData, mobile })}
+                  inputProps={{
+                    id: "mobile",
+                    autoComplete: "off",
+                    className: `w-full lg:text-[14px] text-xs text-gray-500 pl-16 focus:outline-none bg-white border-2 ${formErrors.mobile ? 'border-red-300' : 'border-[#e6e8ebff]'                   } rounded-md h-[50px] px-3`,
+                  }}
+                  value={formData.mobile}
+                />
               {formErrors.mobile && touched && (
                 <span className="text-red-500 text-xs mt-1">
                   {formErrors.mobile}

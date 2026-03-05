@@ -79,6 +79,22 @@ export default function ContactSection() {
     message: "",
   });
 
+  useEffect(() => {
+    const firstName = localStorage.getItem("FIRST_NAME");
+    const lastName = localStorage.getItem("LAST_NAME");
+    const email = localStorage.getItem("EMAIL");
+    const contactNumber = localStorage.getItem("CONTACT_NUMBER");
+
+    if (firstName || lastName || email) {
+      setFormData((prev) => ({
+        ...prev,
+        name: firstName || lastName ? `${firstName || ""} ${lastName || ""}` : "",
+        email: email || "",
+        mobile: contactNumber || ""
+      }));
+    }
+  }, []);
+
   /* 🔹 ADDED: click flag (same pattern as EnquiryNow) */
   const [click, setClick] = useState(false);
 

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 
 import { API_BASE_URL } from "../../lib/api";
+import { PhoneInput } from 'react-international-phone';
+import 'react-international-phone/style.css';
 
 type Profession = {
   profession_id: number;
@@ -593,14 +595,30 @@ setTouched(true);
             <label className="block text-[14px] text-xs font-medium text-[#0F172A] mb-2">
               Phone Number*
             </label>
-            <input
-              name="phoneNumber"
-              type="tel"
+            <PhoneInput
+              forceDialCode={true}
+              defaultCountry="au"
+              countrySelectorStyleProps={{
+                buttonStyle: {
+                  zIndex: 5,
+                  position: "absolute",
+                  left: 0,
+                  height: "38px",
+                  width: "56px",
+                  border: "none",
+                  paddingTop: "10px",
+                  paddingBottom: "0px",
+                  backgroundColor: "transparent",
+                  cursor: "pointer",
+                },
+              }}
+              onChange={(phoneNumber) => setFormData({ ...formData, phoneNumber })}
+              inputProps={{
+                id: "phoneNumber",
+                autoComplete: "off",
+                className: `w-full lg:text-[14px] text-xs text-gray-500 pl-16 focus:outline-none bg-white border-2 ${formErrors.phoneNumber ? 'border-red-300' : 'border-[#e6e8ebff]'                   } rounded-md h-[50px] px-3`,
+              }}
               value={formData.phoneNumber}
-              onChange={handleInputChange}
-              placeholder="+61"
-              className={`w-full px-4 py-2 border lg:h-[56px] rounded-[4px] lg:text-[14px] text-xs text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 ${formErrors.phoneNumber ? 'border-red-500' : 'border-[#E2E8F0]'
-                }`}
             />
             {formErrors.phoneNumber && (
               <div className="mt-1 text-xs text-red-600">{formErrors.phoneNumber}</div>

@@ -73,6 +73,23 @@ export default function JobSeekerForm({ jobId = null, onSuccess }: JobSeekerForm
 
   const [touched, setTouched] = useState(false);
 
+  useEffect(() => {
+    const firstName = localStorage.getItem("FIRST_NAME");
+    const lastName = localStorage.getItem("LAST_NAME");
+    const email = localStorage.getItem("EMAIL");
+    const contactNumber = localStorage.getItem("CONTACT_NUMBER");
+
+    if (firstName || lastName || email) {
+      setFormData((prev) => ({
+        ...prev,
+        firstName: firstName || "",
+        lastName: lastName || "",
+        email: email || "",
+        phone: contactNumber || ""
+      }));
+    }
+  }, []);
+
   // Fetch professions and specialities
   useEffect(() => {
     const fetchMeta = async () => {

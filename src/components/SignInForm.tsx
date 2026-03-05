@@ -11,46 +11,73 @@ export default function SignInForm() {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError("");
-    setEmailError("");
-    setLoading(true);
+  e.preventDefault();
+  setError("");
+  setEmailError("");
+  setLoading(true);
 
-    if (!email || !password) {
-      setError("Please fill in all fields");
-      setLoading(false);
-      return;
-    }
+  if (!email || !password) {
+    setError("Please fill in all fields");
+    setLoading(false);
+    return;
+  }
 
-    if (!email.includes("@")) {
-      setEmailError("Invalid email address. Please try again!");
-      setLoading(false);
-      return;
-    }
+  if (!email.includes("@")) {
+    setEmailError("Invalid email address. Please try again!");
+    setLoading(false);
+    return;
+  }
 
-    try {
-      const response = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });
+  try {
+    const response = await fetch("https://dev.medfuture.com.au/medadminapi/public/api/login-web", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
 
-      if (!response.ok) {
-        const data = await response.json();
-        setError(data.message || "Invalid email or password");
-        setLoading(false);
-        return;
+    const data = await response.json();
+
+    if (!response.ok) {
+      // Handle Laravel error responses
+      if (data.error === "user_not_found") {
+        setError("User not found");
+      } else if (data.error === "invalid_credentials") {
+        setError("Invalid email or password");
+      } else {
+        setError(data.error || "Login failed");
       }
-
-      const data = await response.json();
-      console.log("Sign in successful:", data);
-    } catch (err) {
-      setError("An error occurred. Please try again.");
-      console.error(err);
-    } finally {
       setLoading(false);
+      return;
     }
-  };
+
+    localStorage.setItem("TOKEN", data.token);
+
+    localStorage.setItem("USER_ID", data.user.user_id);
+    localStorage.setItem("FIRST_NAME", data.user.f_name);
+    localStorage.setItem("LAST_NAME", data.user.l_name);
+    localStorage.setItem("NICK_NAME", data.user.nick_name);
+    localStorage.setItem("PROFILE_IMAGE", data.user.profile_image);
+    localStorage.setItem("EMAIL", data.user.email);
+    localStorage.setItem("ROLE_NAME", data.user.role.name);
+    localStorage.setItem("ROLE_ID", data.user.role.role_id);
+    localStorage.setItem("CONTACT_NUMBER", data.user.contact_number);
+
+    console.log("Login successful");
+
+    window.location.href = "/my-account/candidate";
+
+  } catch (err) {
+    setError("No response received from server");
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -123,7 +150,7 @@ export default function SignInForm() {
             value={email}
             onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
             placeholder="Enter your email"
-            className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-10 transition-colors ${
+            className={`w-full text-black px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-10 transition-colors ${
               emailError
                 ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:border-[#575D84] focus:ring-[#575D84]"

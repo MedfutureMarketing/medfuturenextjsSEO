@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { API_BASE_URL } from '@/lib/api';
@@ -16,6 +16,36 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const formRef = useRef<HTMLFormElement | null>(null);
+
+    useEffect(() => {
+        const firstName = localStorage.getItem("FIRST_NAME");
+        const lastName = localStorage.getItem("LAST_NAME");
+        const email = localStorage.getItem("EMAIL");
+        const phone = localStorage.getItem("CONTACT_NUMBER");
+
+        if (!formRef.current) return;
+
+        if (firstName) {
+            const input = formRef.current.querySelector('input[name="first_name"]') as HTMLInputElement;
+            if (input) input.value = firstName;
+        }
+
+        if (lastName) {
+            const input = formRef.current.querySelector('input[name="last_name"]') as HTMLInputElement;
+            if (input) input.value = lastName;
+        }
+
+        if (email) {
+            const input = formRef.current.querySelector('input[name="email"]') as HTMLInputElement;
+            if (input) input.value = email;
+        }
+
+        if (phone) {
+            const input = formRef.current.querySelector('input[name="phone_number"]') as HTMLInputElement;
+            if (input) input.value = phone;
+        }
+    }, []);
 
     // Determine form type - first check selectedRole prop, then fall back to pathname
     const formType = selectedRole || (pathname ? pathname.split('/').filter(Boolean).pop() : '');
@@ -103,7 +133,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
     };
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-[8px] text-[#4A5565] ">
+        <form ref={formRef} onSubmit={handleSubmit} className="space-y-[8px] text-[#4A5565] ">
             {/* Header */}
             {!hideHeader && (<div>
                 <h2 className="text-[#0F172A] font-bold mb-1">
