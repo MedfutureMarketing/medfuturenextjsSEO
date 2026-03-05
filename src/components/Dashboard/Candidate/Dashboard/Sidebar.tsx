@@ -1,9 +1,9 @@
 'use client';
 
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Logo from '@/assets/logo/medfuture-white.webp';
 
 interface SidebarProps {
@@ -59,17 +59,31 @@ MenuItem.displayName = 'MenuItem';
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const pathname = usePathname();
+  const router = useRouter();
 
   const menuItems = [
-    { label: 'Dashboard', href: '/my-account/candidate/', icon: '', comingSoon: true },
-
-    { label: 'My Profile', href: '/my-account/candidate/profile', icon: '' },
-    { label: 'Browse Jobs', href: '/permanent/jobs', icon: '', },
-
+    { label: 'Dashboard',    href: '/my-account/candidate/',           icon: '', comingSoon: true },
+    { label: 'My Profile',   href: '/my-account/candidate/profile',    icon: '' },
+    { label: 'Browse Jobs',  href: '/permanent/jobs',                   icon: '' },
     { label: 'Applied Jobs', href: '/my-account/candidate/appliedjobs', icon: '', comingSoon: true },
-    { label: 'Compliance', href: '/compliance', icon: '', comingSoon: true },
-    { label: 'Timesheets', href: '/timesheets', icon: '', comingSoon: true },
+    { label: 'Compliance',   href: '/compliance',                       icon: '', comingSoon: true },
+    { label: 'Timesheets',   href: '/timesheets',                       icon: '', comingSoon: true },
   ];
+
+  // 🔹 Clear all stored user data and redirect to sign-in
+  const handleSignOut = useCallback(() => {
+    localStorage.removeItem('TOKEN');
+    localStorage.removeItem('USER_ID');
+    localStorage.removeItem('FIRST_NAME');
+    localStorage.removeItem('LAST_NAME');
+    localStorage.removeItem('NICK_NAME');
+    localStorage.removeItem('PROFILE_IMAGE');
+    localStorage.removeItem('EMAIL');
+    localStorage.removeItem('ROLE_NAME');
+    localStorage.removeItem('ROLE_ID');
+    localStorage.removeItem('CONTACT_NUMBER');
+    router.replace('/sign-in');
+  }, [router]);
 
   return (
     <>
@@ -122,9 +136,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <div className="px-4 pb-6 flex-shrink-0">
             <button
               type="button"
-              onClick={() => {
-                console.log('Sign out clicked');
-              }}
+              onClick={handleSignOut}
               className="
                 flex items-center gap-3 px-4 py-2 cursor-pointer rounded 
                 transition-colors duration-200
