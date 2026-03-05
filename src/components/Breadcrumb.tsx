@@ -2,7 +2,8 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useState, useMemo, } from "react";
+import { useEffect, useState, useMemo } from "react";
+
 type BreadcrumbItem = {
   href: string;
   label: string;
@@ -14,6 +15,7 @@ type RouteConfig = {
   bgColor: string;
   textColor?: string;
   breadcrumbLabel?: string;
+  hidden?: boolean;
 };
 
 const ROUTE_CONFIGS: RouteConfig[] = [
@@ -34,14 +36,14 @@ const ROUTE_CONFIGS: RouteConfig[] = [
   { pattern: "/ahp-division/podiatrist", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Podiatrist" },
   { pattern: "/ahp-division/physiotherapy", bgColor: "bg-white", textColor: "text-[#040D48]", breadcrumbLabel: "Physiotherapy" },
   { pattern: "/mental-health/psychology", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Psychology" },
-  { pattern: "/general-practice-division", bgColor: "bg-white ", textColor: "white", breadcrumbLabel: "General Practice Division" },
+  { pattern: "/general-practice-division", bgColor: "bg-white", textColor: "text-white", breadcrumbLabel: "General Practice Division" },
   { pattern: "/ahp-division", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Allied Health Division" },
   { pattern: "/mental-health", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "Mental Health Division" },
-  { pattern: "/sign-up", bgColor: "bg-white hidden ", textColor: "text-black", breadcrumbLabel: "Sign In" },
-  { pattern: "/my-account/candidate", bgColor: "bg-[#040D48] hidden ", textColor: "text-white", breadcrumbLabel: "My Account" },
-  { pattern: "/employer-hub", bgColor: "bg-[#FFFFFF] hidden ", textColor: "text-[#0F172A]", breadcrumbLabel: "Employer Hub" },
-
+  { pattern: "/sign-in", bgColor: "bg-white", textColor: "text-black", breadcrumbLabel: "Sign In", hidden: true },
+  { pattern: "/my-account/candidate", bgColor: "bg-[#040D48]", textColor: "text-white", breadcrumbLabel: "My Account", hidden: true },
+  { pattern: "/employer-hub", bgColor: "bg-[#FFFFFF]", textColor: "text-[#0F172A]", breadcrumbLabel: "Employer Hub", hidden: true },
 ];
+
 // 🔹 Helper functions
 const formatSegmentLabel = (segment: string): string => {
   return segment
@@ -49,9 +51,11 @@ const formatSegmentLabel = (segment: string): string => {
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 };
+
 const getRouteConfig = (currentPath: string): RouteConfig | undefined => {
   return ROUTE_CONFIGS.find((route) => currentPath.startsWith(route.pattern));
 };
+
 const generateBreadcrumbs = (pathname: string): BreadcrumbItem[] => {
   if (!pathname) return [];
   const pathSegments = pathname.split("/").filter(Boolean);
@@ -63,7 +67,6 @@ const generateBreadcrumbs = (pathname: string): BreadcrumbItem[] => {
     currentPath += `/${segment}`;
     const isCurrent = index === pathSegments.length - 1;
     const prevSegment = index > 0 ? pathSegments[index - 1] : "";
-
     const matchedRoute = getRouteConfig(currentPath);
 
     let label: string;
@@ -80,6 +83,7 @@ const generateBreadcrumbs = (pathname: string): BreadcrumbItem[] => {
   });
   return breadcrumbs;
 };
+
 // 🔹 JSON-LD Schema for SEO
 const generateBreadcrumbSchema = (breadcrumbs: BreadcrumbItem[]) => {
   return {
@@ -100,13 +104,14 @@ export default function Breadcrumb() {
   const [breadcrumbs, setBreadcrumbs] = useState<BreadcrumbItem[]>([]);
   const [previousPage, setPreviousPage] = useState<string>("");
 
-  // 🔹 Get background and text color with better memoization
+  // 🔹 Get background color, text color, and hidden flag
   const themeColors = useMemo(() => {
-    if (!pathname) return { bgColor: "bg-white", textColor: "" };
+    if (!pathname) return { bgColor: "bg-white", textColor: "", hidden: false };
     const config = getRouteConfig(pathname);
     return {
       bgColor: config?.bgColor || "bg-white",
       textColor: config?.textColor || "",
+      hidden: config?.hidden || false,
     };
   }, [pathname]);
 
@@ -129,8 +134,9 @@ export default function Breadcrumb() {
     return generateBreadcrumbSchema(breadcrumbs);
   }, [breadcrumbs]);
 
-  // Early return for single breadcrumb
+  // Early returns
   if (breadcrumbs.length <= 1) return null;
+  if (themeColors.hidden) return null;
 
   return (
     <>
@@ -142,11 +148,11 @@ export default function Breadcrumb() {
 
       <nav
         aria-label="Breadcrumb"
-        className={`flex lg:py-[13px] py-4 lg:px-1 lg:block hidden   px-4 full-width-section ${themeColors.bgColor} ${themeColors.textColor}`}
+        className={`flex lg:py-[13px] py-4 lg:px-1 lg:block hidden px-4 full-width-section ${themeColors.bgColor} ${themeColors.textColor}`}
       >
         <ol className="flex items-center space-x-2 lg:text-sm text-[9px] inner-width-section">
           {breadcrumbs.map((breadcrumb, index) => (
-            <li key={breadcrumb.href} className="flex items-center z-10  ">
+            <li key={breadcrumb.href} className="flex items-center z-10">
               {index > 0 && (
                 <span className="mx-2 opacity-50" aria-hidden="true">
                   /
@@ -160,12 +166,12 @@ export default function Breadcrumb() {
               ) : (
                 <Link
                   href={breadcrumb.href}
-                  className={`transition-colors ${themeColors.textColor
-                    ? "hover:opacity-70"
-                    : "text-gray-600 hover:text-blue-700"
-                    }`}
+                  className={`transition-colors ${
+                    themeColors.textColor
+                      ? "hover:opacity-70"
+                      : "text-gray-600 hover:text-blue-700"
+                  }`}
                   onClick={(e) => {
-                    // If it's "Job Listings" breadcrumb, go back to previous page
                     if (breadcrumb.label === "Job Listings" && previousPage) {
                       e.preventDefault();
                       router.back();
