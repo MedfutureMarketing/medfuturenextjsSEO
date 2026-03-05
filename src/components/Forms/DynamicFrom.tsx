@@ -548,7 +548,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
 
 
             {/* ================= TERMS ================= */}
-            <label className="flex items-start gap-2 mt-[22px] text-sm text-gray-600 ">
+            <label className="flex items-start gap-2 mt-[22px] text-sm  ">
                 <input
                     type="checkbox"
                     name="agree_terms"
@@ -556,7 +556,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     required
                 />
 
-                <span className="flex text-gray-300 flex-wrap gap-1">
+                <span className="flex  flex-wrap gap-1 text-gray-700">
                     <span>I agree to the</span>
 
                     <Link
