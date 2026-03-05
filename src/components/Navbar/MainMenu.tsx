@@ -133,7 +133,7 @@ export default function Menu() {
             {/* RIGHT SECTION */}
             <div className="hidden lg:flex items-center space-x-6">
               <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
-                <Link href="/employer-hub" className="text-[16px] font-[500] hover:text-gray-400">
+                <Link href="/job-seeker-hub" className="text-[16px] font-[500] hover:text-gray-400">
                   Candidates
                 </Link>
               </li>
