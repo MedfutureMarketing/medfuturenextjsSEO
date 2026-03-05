@@ -162,6 +162,13 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
   const [expandedMenu, setExpandedMenu] = useState<MenuKey | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  // 🔹 Check auth state on mount
+  useEffect(() => {
+    const token = localStorage.getItem("TOKEN");
+    setIsLoggedIn(!!token);
+  }, [isOpen]); // re-check whenever drawer opens
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -195,7 +202,6 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#F1F5F9] sticky top-0 bg-white z-10">
           <Image src={MedfutureLogoDark} alt="Medfuture" width={120} height={30} className="object-contain" />
@@ -232,24 +238,17 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                           : "hover:bg-[#F8FAFC] text-[#1E293B]"
                       }`}
                     >
-                      {/* Icon */}
                       <span className={`flex-shrink-0 transition-colors duration-200 ${
                         isExpanded ? "text-[#074CA4]" : "text-[#94A3B8] group-hover:text-[#074CA4]/60"
                       }`}>
                         {item.icon}
                       </span>
-
-                      {/* Label */}
                       <span className="flex-1 text-left text-[12px] font-medium">{item.label}</span>
-
-                      {/* Tag */}
                       {item.tag && !isExpanded && (
                         <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-[#EFF6FF] text-[#074CA4]">
                           {item.tag}
                         </span>
                       )}
-
-                      {/* Chevron */}
                       <span className={`flex-shrink-0 transition-transform duration-300 ${
                         isExpanded ? "rotate-180 text-[#074CA4]" : "text-[#CBD5E1]"
                       }`}>
@@ -293,24 +292,30 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           })}
         </nav>
 
-        {/* Footer */}
+        {/* Footer — Dashboard or Sign In */}
         <div className="border-t border-[#F1F5F9] p-4 space-y-2.5">
-          {/* <Link
-            href="/sign-up"
-            onClick={handleLinkClick}
-            className="flex items-center justify-center w-full py-2.5 px-4 bg-[#074CA4] hover:bg-[#0a3d8a] text-white text-[13px] font-semibold rounded-xl transition-colors duration-200"
-          >
-            Sign Up
-          </Link> */}
-          <Link
-            href="/sign-in"
-            onClick={handleLinkClick}
-            className="flex items-center justify-center w-full py-2.5 px-4 bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#1E293B] text-[13px] font-semibold rounded-xl transition-colors duration-200 border border-[#E2E8F0]"
-          >
-            Sign In
-          </Link>
+          {isLoggedIn ? (
+            <Link
+              href="/my-account/candidate/profile"
+              onClick={handleLinkClick}
+              className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#074CA4] hover:bg-[#0a3d8a] text-white text-[13px] font-semibold rounded-xl transition-colors duration-200"
+            >
+              {/* User icon */}
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path fillRule="evenodd" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 8a7 7 0 1114 0H5z" clipRule="evenodd" />
+              </svg>
+              Dashboard
+            </Link>
+          ) : (
+            <Link
+              href="/sign-in"
+              onClick={handleLinkClick}
+              className="flex items-center justify-center w-full py-2.5 px-4 bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#1E293B] text-[13px] font-semibold rounded-xl transition-colors duration-200 border border-[#E2E8F0]"
+            >
+              Sign In
+            </Link>
+          )}
         </div>
-
       </div>
     </>
   );
