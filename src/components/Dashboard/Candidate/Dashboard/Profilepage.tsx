@@ -304,7 +304,7 @@ export default function ProfilePage() {
 
             {/* Login Credentials */}
             <div className="border-t pt-6">
-              <h3 className="font-bold text-gray-900 mb-4">Login Credentials</h3>
+              <h3 className="font-[500] text-lg text-gray-900">Login Credentials</h3>
 
               <div className="space-y-4 text-sm">
                 <FieldRow
@@ -353,7 +353,7 @@ export default function ProfilePage() {
           {/* Personal Information */}
           <div className="bg-white rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-lg text-gray-900">Personal Information</h3>
+              <h3 className="font-[500] text-lg text-gray-900">Personal Information</h3>
               <EditSaveButton
                 isEditing={editingSection === "personal"}
                 onEdit={() => handleEdit("personal")}
@@ -361,7 +361,7 @@ export default function ProfilePage() {
                 onCancel={handleCancel}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:text-xs text-xs text-gray-500 font-light gap-6">
               {personalFields.map(({ label, key }) => (
                 <FieldRow
                   key={key}
@@ -377,7 +377,7 @@ export default function ProfilePage() {
           {/* Professional Information */}
           <div className="bg-white rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-lg text-gray-900">Professional Information</h3>
+              <h3 className="font-[500] text-lg text-gray-900">Professional Information</h3>
               <EditSaveButton
                 isEditing={editingSection === "professional"}
                 onEdit={() => handleEdit("professional")}
@@ -385,7 +385,7 @@ export default function ProfilePage() {
                 onCancel={handleCancel}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:text-xs text-xs text-gray-500 font-light gap-6">
               {professionalFields.map(({ label, key }) => (
                 <FieldRow
                   key={key}
@@ -401,7 +401,7 @@ export default function ProfilePage() {
           {/* Geography Information */}
           <div className="bg-white rounded-lg p-6">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="font-bold text-lg text-gray-900">Geography Information</h3>
+               <h3 className="font-[500] text-lg text-gray-900">Geography Information</h3>
               <EditSaveButton
                 isEditing={editingSection === "geo"}
                 onEdit={() => handleEdit("geo")}
@@ -409,7 +409,7 @@ export default function ProfilePage() {
                 onCancel={handleCancel}
               />
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:text-xs text-xs text-gray-500 font-light gap-6">
               {geoFields.map(({ label, key }) => (
                 <FieldRow
                   key={key}

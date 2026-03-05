@@ -73,13 +73,13 @@ export default function JobDescription() {
 
   if (!jobId) {
     return (
-   <div className="flex h-full items-center justify-center relative overflow-hidden  py-7">
+   <div className="flex h-full items-center justify-center relative overflow-hidden   py-7">
 
   {/* Background blobs */}
   
 
   {/* Content */}
-  <div className="relative z-10 text-center max-w-lg px-6">
+  <div className="relative z-10 text-center max-w-lg px-6 lg:block hidden">
 
     {/* Icon */}
     <div className="mx-auto mb-8 w-28 h-28 rounded-3xl bg-white shadow-lg flex items-center justify-center border border-gray-100">

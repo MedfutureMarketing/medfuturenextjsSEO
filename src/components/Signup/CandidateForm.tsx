@@ -409,7 +409,10 @@ setTouched(true);
   };
 
   return (
-    <div className=" w-full mx-auto ">
+    <div className=" w-full mx-auto ">    <h1 className="text-3xl lg:text-4xl font-semi-bold text-[#0A2E5C] mb-8 text-center">
+       Create Account
+      </h1>
+
       <div className="grid grid-cols-3 md:grid-cols-3 lg:gap-4 gap-4 lg:w-lg mb-4">
         <button
           type="button"

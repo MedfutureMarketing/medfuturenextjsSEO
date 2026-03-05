@@ -81,9 +81,9 @@ export default function SignInForm() {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      <h2 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-8 text-center">
+      <h1 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-8 text-center">
         Sign In
-      </h2>
+      </h1>
 
       {/* Social Login Buttons */}
       <div className="flex gap-3 mb-6">
@@ -150,7 +150,7 @@ export default function SignInForm() {
             value={email}
             onChange={(e) => { setEmail(e.target.value); setEmailError(""); }}
             placeholder="Enter your email"
-            className={`w-full text-black px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-10 transition-colors ${
+            className={`w-full  px-4 text-gray-500 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-opacity-10 transition-colors ${
               emailError
                 ? "border-red-500 focus:border-red-500 focus:ring-red-500"
                 : "border-gray-300 focus:border-[#575D84] focus:ring-[#575D84]"
@@ -174,7 +174,7 @@ export default function SignInForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:border-[#575D84] focus:ring-2 focus:ring-[#575D84] focus:ring-opacity-10 transition-colors"
+              className="w-full px-4 py-3 pr-12 text-gray-500 border border-gray-300 rounded-lg focus:outline-none focus:border-[#575D84] focus:ring-2 focus:ring-[#575D84] focus:ring-opacity-10 transition-colors"
               required
             />
             <button

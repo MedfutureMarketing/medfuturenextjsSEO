@@ -133,9 +133,9 @@ export default function LocumJobDescription() {
 
   {/* Content */}
   <div className="relative z-10 text-center max-w-lg px-6">
-
+<div className='lg:block hidden'>
     {/* Icon */}
-    <div className="mx-auto mb-8 w-28 h-28 rounded-3xl bg-white shadow-lg flex items-center justify-center border border-gray-100">
+    <div className="mx-auto mb-8 w-28 h-28 rounded-3xl bg-white shadow-lg flex items-center justify-center border border-gray-100 ">
       <svg
         className="w-14 h-14 text-blue-500"
         fill="none"
@@ -167,7 +167,7 @@ export default function LocumJobDescription() {
       Browse jobs on the left panel
     </div>
   </div>
-</div>
+</div></div>
     );
   }
 

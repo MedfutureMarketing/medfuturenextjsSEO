@@ -122,7 +122,7 @@ export default function Menu() {
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
                   <MegaMenu menuKey="locum" />
                 </li>
-                <li className="relative font-medium cursor-pointer hover:text-blue-600">
+                <li className="relative font-medium cursor-pointer ">
                   <Link href="/international?page=1" className="text-[16px] font-[500] hover:text-gray-400">
                     International Candidates
                   </Link>
