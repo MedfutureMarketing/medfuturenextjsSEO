@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -12,7 +12,14 @@ import MobileNav from "@/components/Navbar/Mobilenavbar";
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
+
+  // 🔹 Check auth state from localStorage on mount
+  useEffect(() => {
+    const token = localStorage.getItem("TOKEN");
+    setIsLoggedIn(!!token);
+  }, [pathname]); // re-check on route change
 
   // ⭐ Check if home page
   const isHomePage = pathname === "/";
@@ -36,10 +43,8 @@ export default function Menu() {
     "/ahp-division/occupational-therapist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
     "/ahp-division/podiatrist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
     "/ahp-division/physiotherapy": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
-
   };
-  const topBarColors =
-    topBarColorMap[pathname] || "bg-white text-[#040D48]";
+  const topBarColors = topBarColorMap[pathname] || "bg-white text-[#040D48]";
 
   // ⭐ HEADER COLORS
   const headerColorMap: Record<string, string> = {
@@ -51,16 +56,13 @@ export default function Menu() {
     "/employer-hub": "bg-white text-[#040D48]",
     "/contact-us": "bg-white text-[#040D48]",
     "/about-us": "bg-white text-[#040D48]",
-    "/general-practitioner-registrar": "bg-white text-[#040D48] ",
-    "/ahp-division/speech-pathology": "bg-white text-[#040D48] ",
-    "/ahp-division/occupational-therapist": "bg-white text-[#040D48] ",
-
-
+    "/general-practitioner-registrar": "bg-white text-[#040D48]",
+    "/ahp-division/speech-pathology": "bg-white text-[#040D48]",
+    "/ahp-division/occupational-therapist": "bg-white text-[#040D48]",
   };
-  const headerColors =
-    headerColorMap[pathname] || "bg-white text-[#040D48]";
+  const headerColors = headerColorMap[pathname] || "bg-white text-[#040D48]";
 
-  // ⭐ LOGO MAP (UNCHANGED)
+  // ⭐ LOGO MAP
   const logoMap: Record<string, StaticImageData> = {
     "/": MedfutureLogoDark,
     "/explore": MedfutureLogoLight,
@@ -78,33 +80,33 @@ export default function Menu() {
     "/job-seeker-hub/mental-health-division": MedfutureLogoDark,
   };
   const activeLogo = logoMap[pathname] || MedfutureLogoDark;
+
   const headerVisibilityMap: Record<string, string> = {
     "/my-account/": "hidden",
     "/my-account/candidate": "hidden",
     "/my-account/candidate/profile": "hidden",
-    "/my-account/candidate/appliedjobs": "hidden", // Add other pages as needed
-
+    "/my-account/candidate/appliedjobs": "hidden",
   };
   const headerVisibility = headerVisibilityMap[pathname] || "";
 
   return (
     <>
       {/* STICKY HEADER */}
-      <div className={`sticky top-0 z-99 ${headerVisibility} `}>
-        <div className={`${headerColors} full-width-section `}>
-          <header className="inner-width-section lg:py-3 py-1.5 flex items-center  justify-between">
-            {/* LEFT SECTION: LOGO + PERMANENT/LOCUM/INTERNATIONAL */}
+      <div className={`sticky top-0 z-99 ${headerVisibility}`}>
+        <div className={`${headerColors} full-width-section`}>
+          <header className="inner-width-section lg:py-3 py-1.5 flex items-center justify-between">
+            {/* LEFT SECTION: LOGO + NAV */}
             <div className="flex items-center space-x-8">
               {/* LOGO */}
               <Link href="/" aria-label="Medfuture">
                 <Image
                   src={activeLogo}
                   alt="Medfuture logo"
-                  width={180} // can keep fixed or adjust
-                  height={40} // base height
+                  width={180}
+                  height={40}
                   style={{
-                    height: "clamp(30px, 5vw, 50px)", // min 30px, max 40px, scales with viewport
-                    width: "auto", // maintain aspect ratio
+                    height: "clamp(30px, 5vw, 50px)",
+                    width: "auto",
                     display: "block",
                   }}
                   priority={false}
@@ -120,41 +122,47 @@ export default function Menu() {
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
                   <MegaMenu menuKey="locum" />
                 </li>
-
                 <li className="relative font-medium cursor-pointer hover:text-blue-600">
-                  <Link href="/international?page=1"
-                    className="text-[16px] font-[500] hover:text-gray-400 "
-                  > International Candidates</Link>
+                  <Link href="/international?page=1" className="text-[16px] font-[500] hover:text-gray-400">
+                    International Candidates
+                  </Link>
                 </li>
               </ul>
             </div>
 
-            {/* RIGHT SECTION: EMPLOYERS + SIGN UP */}
+            {/* RIGHT SECTION */}
             <div className="hidden lg:flex items-center space-x-6">
-              {/* <li className="list-none relative font-medium hover:text-blue-600">
-                <MegaMenu menuKey="candidates" />
-              </li> */}
-              <li className="relative list-none  font-medium cursor-pointer hover:text-blue-600">
-                <Link href="/employer-hub"
-                  className="text-[16px] font-[500] hover:text-gray-400 "
-                >  Candidates</Link>
+              <li className="relative list-none font-medium cursor-pointer hover:text-blue-600">
+                <Link href="/employer-hub" className="text-[16px] font-[500] hover:text-gray-400">
+                  Candidates
+                </Link>
               </li>
 
               <li className="list-none">
-                <Link
-                  href="/employer-hub"
-                  className="text-[16px] font-[500] hover:text-gray-400 "
-                >
+                <Link href="/employer-hub" className="text-[16px] font-[500] hover:text-gray-400">
                   Employers
                 </Link>
               </li>
 
-              <Link
-                href="/sign-in"
-                className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-[4px] hover:bg-gray-400"
-              >
-                Sign in
-              </Link>
+              {/* 🔹 Show user icon if logged in, Sign In button if not */}
+              {isLoggedIn ? (
+                <Link
+                  href="/my-account/candidate"
+                  aria-label="My Account"
+                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#074CA4] hover:bg-[#0d3a72] transition-colors text-white"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <path fillRule="evenodd" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 8a7 7 0 1114 0H5z" clipRule="evenodd" />
+                  </svg>
+                </Link>
+              ) : (
+                <Link
+                  href="/sign-in"
+                  className="inline-flex items-center justify-center h-10 px-6 text-sm font-medium text-white bg-[#074CA4] rounded-[4px] hover:bg-gray-400"
+                >
+                  Sign in
+                </Link>
+              )}
             </div>
 
             {/* MOBILE BUTTON */}
@@ -177,41 +185,38 @@ export default function Menu() {
           style={
             !isHomePage
               ? {
-                borderTopWidth: "1px",
-                borderImageSlice: 1,
-                borderImageSource:
-                  "linear-gradient(to right, #fff, #b5b5b5, #fff)",
-              }
+                  borderTopWidth: "1px",
+                  borderImageSlice: 1,
+                  borderImageSource: "linear-gradient(to right, #fff, #b5b5b5, #fff)",
+                }
               : {}
           }
         >
           <div className="inner-width-section flex py-2 gap-10">
             {/* Left menu */}
-            <li className="list-none font-medium cursor-pointer ">
+            <li className="list-none font-medium cursor-pointer">
               <MegaMenu menuKey="medical" />
             </li>
-            <li className="list-none font-medium cursor-pointer ">
+            <li className="list-none font-medium cursor-pointer">
               <MegaMenu menuKey="allied" />
             </li>
             <li className="list-none font-medium cursor-pointer">
               <MegaMenu menuKey="mental" />
             </li>
-            <li className="list-none font-medium cursor-pointer ">
+            <li className="list-none font-medium cursor-pointer">
               <MegaMenu menuKey="oral" />
             </li>
 
             {/* Right menu */}
             <div className="ml-auto flex gap-8">
-              <li className="list-none font-medium cursor-pointer hover:text-gray-400 ">
-                <Link href="/contact-us">  Contact Us</Link>
+              <li className="list-none font-medium cursor-pointer hover:text-gray-400">
+                <Link href="/contact-us">Contact Us</Link>
               </li>
-              <li className="list-none font-medium cursor-pointer hover:text-gray-400 ">
+              <li className="list-none font-medium cursor-pointer hover:text-gray-400">
                 <MegaMenu menuKey="Explore" />
               </li>
             </div>
           </div>
-
-
         </div>
       </div>
     </>
