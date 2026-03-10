@@ -477,7 +477,6 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                             <option value="part-time">Part-time</option>
                         </select>
                     </div>
-
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
@@ -499,7 +498,6 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     </div>
                 </>
             )}
-
             {/* psy */}
             {ispsychology && (
                 <>
@@ -513,7 +511,6 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                             <option value="VIC">VIC</option>
                             <option value="QLD">QLD</option>
                         </select>
-
                         <select
                             name="availability"
                             className="input h-[40px] bg-white border border-[#E2E8F0] rounded-[8px] text-[12px] px-[13px]"
@@ -523,7 +520,6 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                             <option value="part-time">Part-time</option>
                         </select>
                     </div>
-
                     <div className="grid grid-cols-2 gap-3">
                         <select
                             name="shiftPreference"
@@ -545,8 +541,6 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     </div>
                 </>
             )}
-
-
             {/* ================= TERMS ================= */}
             <label className="flex items-start gap-2 mt-[22px] text-sm  ">
                 <input
@@ -555,10 +549,8 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     className="w-4 h-4 mt-1 accent-blue-600 shrink-0"
                     required
                 />
-
                 <span className="flex  flex-wrap gap-1 text-gray-700">
                     <span>I agree to the</span>
-
                     <Link
                         href="/terms-and-conditions"
                         target="_blank"

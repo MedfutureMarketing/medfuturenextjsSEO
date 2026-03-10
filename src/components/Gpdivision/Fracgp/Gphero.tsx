@@ -28,7 +28,7 @@ const HeroSection = () => {
                         {/* CTA BUTTONS */}
                         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                             <Link
-                                href="/permanent?page=1"
+                                href="/permanent/general-practitioner-jobs/in-australia?page=1"
                                 className="inline-flex lg:text-[14px] text-sm items-center gap-2 justify-center px-6 py-3 bg-white text-[#040D48] font-[500] rounded-[8px] hover:bg-gray-100 transition w-full sm:w-auto"
                             >
                                 <svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
