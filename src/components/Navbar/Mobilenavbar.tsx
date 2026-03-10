@@ -131,11 +131,10 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     { label: "Jobs for International Candidates", href: "/international" },
   ],
   candidates: [
-    { label: "Permanent Jobs", href: "/permanent" },
-    { label: "Locum Jobs", href: "/locum" },
-    { label: "International Jobs", href: "/international" },
-    { label: "Resume Tips", href: "/resources/resume" },
-    { label: "Interview Prep", href: "/resources/interview" },
+    { label: "Job Seeker Hub", href: "/job-seeker-hub" },
+    // { label: "Locum Jobs", href: "/locum" },
+    // { label: "International Jobs", href: "/international" },
+
   ],
   medical: [
     { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/general-practice-division/fracgp-facrrm" },

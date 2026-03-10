@@ -755,7 +755,7 @@ setTouched(true);
               Terms and Conditions
             </a>{' '}
             and{' '}
-            <a href="/privacy" className="text-blue-600 hover:underline">
+            <a href="/privacy-policy" className="text-blue-600 hover:underline">
               Privacy Policy
             </a>
           </span>
@@ -784,7 +784,7 @@ setTouched(true);
       </form>
 
       {/* Checkboxes */}
-      <div className="mb-6 text-center space-y-3 mt-[86px]">
+      {/* <div className="mb-6 text-center space-y-3 mt-[86px]">
         <label className="flex items-center justify-center gap-3">
           <span className="text-sm text-gray-600 text-center">
             If you have an account,{' '}
@@ -793,7 +793,7 @@ setTouched(true);
             </a>
           </span>
         </label>
-      </div>
+      </div> */}
 
       {/* Notification Popup */}
       {notification.show && (

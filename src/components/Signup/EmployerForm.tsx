@@ -521,11 +521,11 @@ export default function EmployerRegistrationForm(): React.JSX.Element {
           />
           <span className="text-sm text-gray-700">
             I Agree to the{' '}
-            <a href="#" className="text-blue-600 hover:underline">
+            <a href="/terms-and-conditions" className="text-blue-600 hover:underline">
               Term and Conditions
             </a>{' '}
             and{' '}
-            <a href="#" className="text-blue-600 hover:underline">
+            <a href="/privacy-policy" className="text-blue-600 hover:underline">
               Privacy Policy
             </a>
           </span>

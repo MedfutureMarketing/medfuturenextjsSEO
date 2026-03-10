@@ -90,9 +90,9 @@ export default function FlexibleHiringSolution() {
                             Every employer is different — and so is our approach. Choose the engagement model that fits your goals, budget and timeframes.
                         </p>
 
-                        <button className="self-center lg:self-auto px-[19px] py-[9.5px] bg-[#074CA4] text-white text-sm lg:text-[14px] rounded-[4px] hover:bg-blue-700 transition-colors whitespace-nowrap">
+                 <Link href="/employer-hub" className="self-center lg:self-auto px-[19px] py-[9.5px] bg-[#074CA4] text-white text-sm lg:text-[14px] rounded-[4px] hover:bg-blue-700 transition-colors whitespace-nowrap">
                             View Employer Hub
-                        </button>
+                        </Link>
 
                     </div>
 

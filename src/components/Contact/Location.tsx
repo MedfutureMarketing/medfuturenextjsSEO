@@ -47,11 +47,11 @@ export default function LocationMap() {
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                               <Link href="/job-seeker-hub"> <button className="rounded-md cursor-pointer bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-slate-700 transition">
+                               <Link href="/job-seeker-hub"> <button className="rounded-md cursor-pointer cursor-pointer bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-gray-300 transition">
                                     Register as a Job Seeker
                                 </button></Link>
 
-                                 <Link href="/employer-hub">  <button className="rounded-md bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-slate-700 transition">
+                                 <Link href="/employer-hub">  <button className="rounded-md cursor-pointer bg-white px-8 py-3 text-[#0F172A] font-[500] hover:bg-gray-300 transition">
                                     Register as an Employer
                                 </button></Link>
                             </div>

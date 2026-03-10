@@ -880,7 +880,7 @@ export default function EmployerRegistrationForm() {
           </button>
 
           {/* Login Link */}
-          <p className="text-center mt-4 text-sm text-gray-600">
+          {/* <p className="text-center mt-4 text-sm text-gray-600">
             If you have an account, Please{" "}
             <button
               type="button"
@@ -888,7 +888,7 @@ export default function EmployerRegistrationForm() {
             >
               Login
             </button>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
