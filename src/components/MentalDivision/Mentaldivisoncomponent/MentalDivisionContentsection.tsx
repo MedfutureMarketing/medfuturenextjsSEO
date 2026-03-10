@@ -21,27 +21,16 @@ interface AlliedHealthHubProps {
 const AlliedHealthHub: React.FC<AlliedHealthHubProps> = ({ jobLinks = [] }) => {
     /* ---------- Default job links ---------- */
     const defaultJobLinks: JobLink[] = [
-        { title: 'Psychologist jobs Sydney', url: '/permanent/general-practitioner-jobs/in-tasmania?page=1' },
-        { title: 'Clinical Psychologist Jobs Australia', url: '/permanent/gp-registrar-jobs/in-victoria?page=1' },
+        { title: 'Psychologist Jobs Australia', url: '/permanent/psychologist-jobs/in-australia?page=1' },
+    { title: 'Psychologist Jobs Sydney', url: '/permanent/psychologist-jobs/in-nsw?page=1' },
+    { title: 'Psychologist Jobs Victoria', url: '/permanent/psychologist-jobs/in-victoria?page=1' },
+    { title: 'Psychologist Jobs Queensland', url: '/permanent/psychologist-jobs/in-queensland?page=1' },
+    { title: 'Psychologist Jobs Western Australia', url: '/permanent/psychologist-jobs/in-western-australia?page=1' },
+    { title: 'Psychologist Jobs South Australia', url: '/permanent/psychologist-jobs/in-south-australia?page=1' },
+    { title: 'Psychologist Jobs ACT', url: '/permanent/psychologist-jobs/in-act?page=1' },
+    { title: 'Psychologist Jobs Tasmania', url: '/permanent/psychologist-jobs/in-tasmania?page=1' },
 
-
-        { title: 'NDIS Psychologist Jobs Australia', url: '/permanent/gp-specialist-jobs/in-new-south-wales?page=1' },
-        { title: 'Hospital consultation-liaison psychiatry jobs', url: '/permanent/gp-specialist-jobs/in-australia?page=1' },
-        { title: 'FRACGP Jobs Australia', url: '#' },
-        { title: 'Community mental health clinician roles', url: '/permanent/general-practitioner-jobs/in-new-south-wales?page=1' },
-        { title: 'Telehealth Psychologist jobs', url: '/permanent/gp-registrar-jobs/in-new-south-wales?page=1' },
-        { title: 'Child & Adolescent Psychiatrist jobs', url: '/permanent/general-practitioner-jobs/in-queensland?page=1' },
-        { title: 'Forensic Psychologist jobs', url: '/permanent/gp-registrar-jobs/in-queensland?page=1' },
-        { title: 'Telepsychiatry jobs Australia', url: '/permanent/gp-specialist-jobs/in-queensland?page=1' },
-        { title: 'Psychiatrist jobs Brisbane', url: '#' },
-        // { title: 'Specialist GP Victoria', url: '/permanent/gp-specialist-jobs/in-victoria?page=1' },
-        // { title: 'Specialist GP SA', url: '/permanent/gp-specialist-jobs/in-south-australia?page=1' },
-        // { title: 'Specialist GP WA', url: '/permanent/gp-specialist-jobs/in-western-australia?page=1' },
-        // { title: 'Specialist GP NT', url: '/permanent/gp-specialist-jobs/in-northern-territory?page=1' },
-        // { title: 'Specialist GP NSW', url: '/permanent/gp-specialist-jobs/in-new-south-wales?page=1' },
-        // { title: 'Specialist GP Australia', url: '/permanent/gp-specialist-jobs/in-australia?page=1' },
-
-    ];
+   ];
 
     const links = jobLinks.length > 0 ? jobLinks : defaultJobLinks;
 
