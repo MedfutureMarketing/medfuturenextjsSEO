@@ -241,7 +241,7 @@ export default function JobListingSection() {
         {/* View All */}
         <div className="flex justify-center">
           <Link
-            href="/permanent/gp-specialist-jobs/in-australia?page=1"
+            href="/permanent/general-practitioner-jobs/in-australia?page=1"
             className="px-8 py-3 bg-[#074CA4] hover:bg-blue-700 text-white rounded-[4px] transition-all duration-300 hover:shadow-lg hover:scale-105 text-base active:scale-95"
           >
             View All Jobs

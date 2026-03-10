@@ -48,7 +48,7 @@ const defaultProfessions: ProfessionCard[] = [
         description: 'From private practice and sports clinics to hospitals, rehab, aged care and NDIS—Medifuture supports Physiotherapists at every stage with transparent pay structures, realistic bookings and progression planning.',
         icon: ahpico3,
         image: ahpdivision3img,
-        link: '/ahp-division/physiotherapist'
+        link: '/ahp-division/physiotherapy'
     },
     {
         id: 'podiatrist',

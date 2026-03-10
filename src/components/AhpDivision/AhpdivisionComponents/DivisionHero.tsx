@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import backgroundPattern from '@/assets/Divisionimages/backgroundimg.webp';
 import Image from 'next/image';
 import DynamicForm from '@/components/Forms/DynamicFrom'; // Adjust path as needed
+import Link from 'next/link';
 
 interface Role {
     name: string;
@@ -85,15 +86,16 @@ const HeroComponent: React.FC = () => {
 
                             {/* Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                                <button className="flex items-center text-[14px] justify-center gap-2 bg-[#074CA4] cursor-pointer hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors duration-200">
+                                    <Link href="/permanent/ahp-jobs/in-australia?page=1">    <button className="flex items-center text-[14px] justify-center gap-2 bg-[#074CA4] cursor-pointer hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors duration-200">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                                         />
                                     </svg>
-                                    Browse GP Jobs
-                                </button>
+                                    Browse Allied Health Jobs
+                                </button></Link> 
 
+                            <Link href="/contact-us">
                                 <button className="flex items-center text-[14px] justify-center gap-2 cursor-pointer bg-transparent hover:bg-white/10 text-white px-6 py-3 rounded-md border border-white transition-colors duration-200">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
@@ -102,6 +104,7 @@ const HeroComponent: React.FC = () => {
                                     </svg>
                                     Talk to a Consultant
                                 </button>
+                            </Link>
                             </div>
                         </div>
 

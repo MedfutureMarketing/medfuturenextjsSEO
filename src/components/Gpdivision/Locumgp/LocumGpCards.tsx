@@ -187,7 +187,7 @@ export default function LocumGPJobs() {
                 {/* Button */}
                 <div className="flex justify-center">
                     <Link
-                        href="/locums"
+                        href="/locum?page=1"
                         className="bg-[#074CA4] text-white font-semibold py-2 px-8 rounded-md hover:bg-opacity-90 transition-colors"
                     >
                         View All Jobs

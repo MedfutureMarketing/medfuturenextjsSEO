@@ -8,12 +8,12 @@ const WorkSettingContent: React.FC = () => {
       <div className="py-[40px] sm:py-[52px] inner-width-section"><div className=" px-0 lg:px-0 md:px-8">
         {/* Breadcrumb */}
         <div className="mb-3 xs:mb-4">
-          <a
-            href="#"
+          <h3
+         
             className="text-[11px] xs:text-xs sm:text-[13px] lg:text-[14px] font-semibold text-[#074CA4] hover:text-blue-700 transition-colors"
           >
             Opportunities Overview
-          </a>
+          </h3>
         </div>
 
         {/* Title */}

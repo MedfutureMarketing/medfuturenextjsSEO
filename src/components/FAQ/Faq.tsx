@@ -205,7 +205,7 @@ const faqData: FAQData = {
 
     { question: "Are telehealth Speech Pathology roles available?", answer: "Yes. We work with providers offering telehealth and hybrid models and we clarify tech expectations, session flow and KPI differences up front." },
 
-    { question: "", answer: "Y" },
+    // { question: "", answer: "Y" },
 
 
   ],

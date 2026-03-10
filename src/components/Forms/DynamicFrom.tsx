@@ -549,7 +549,7 @@ const DynamicComponent: React.FC<DynamicComponentProps> = ({ selectedRole }) => 
                     className="w-4 h-4 mt-1 accent-blue-600 shrink-0"
                     required
                 />
-                <span className="flex  flex-wrap gap-1 text-gray-700">
+                <span className="flex  flex-wrap gap-1 text-gray-300">
                     <span>I agree to the</span>
                     <Link
                         href="/terms-and-conditions"

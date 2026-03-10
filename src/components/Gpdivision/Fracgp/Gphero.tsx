@@ -38,7 +38,7 @@ const HeroSection = () => {
                             </Link>
 
                             <Link
-                                href="/contact"
+                                href="/contact-us"
                                 className="inline-flex lg:text-[14px] text-sm items-center gap-2 justify-center px-6 py-3 border border-white text-white font-semibold rounded-lg hover:bg-gray-500 transition w-full sm:w-auto"
                             >
                                 <svg width="15" height="20" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
