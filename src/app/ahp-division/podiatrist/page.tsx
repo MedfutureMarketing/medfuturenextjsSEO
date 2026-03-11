@@ -7,8 +7,15 @@ import PODWorkSettingContent from "@/components/AhpDivision/POD/PODWorkSettingco
 import PODConsultant from "@/components/AhpDivision/POD/PODConsultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
 
-const OccupationalTherapistPage = () => {
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("podiatrist");
+}
+
+const PodiatristPage = () => {
     return (
         <div>
             <Othero />
@@ -24,4 +31,4 @@ const OccupationalTherapistPage = () => {
     );
 };
 
-export default OccupationalTherapistPage;
+export default PodiatristPage;

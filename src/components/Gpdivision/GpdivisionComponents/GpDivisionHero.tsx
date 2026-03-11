@@ -81,7 +81,7 @@ const HeroComponent: React.FC = () => {
 
                             {/* Buttons */}
                             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                    <Link href="/permanent/mental-health-jobs/in-australia?page=1">
+                    <Link href="/permanent/general-practitioner-jobs/in-australia?page=1">
                                <button className="flex items-center justify-center gap-2 text-[14px] bg-[#074CA4] cursor-pointer hover:bg-blue-700 text-white px-6 py-3 rounded-md transition-colors duration-200">
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}

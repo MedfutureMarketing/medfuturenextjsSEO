@@ -211,6 +211,7 @@ const faqData: FAQData = {
   ],
 
 
+
   "/ahp-division/occupational-therapist": [
     { question: "What is the average caseload for an Occupational Therapist in Australia?", answer: "Caseloads vary by setting. Community/NDIS roles commonly sit around 25–45 active clients depending on complexity, travel and reporting. A safe caseload includes protected admin and report time—not just face-to-face hours." },
     { question: "How many billable hours should an OT be expected to work?", answer: "Many roles target roughly 22–30 billable hours per week. Higher expectations should come with strong admin support, reduced complexity, protected documentation time, and/or higher remuneration." },
@@ -260,8 +261,20 @@ const faqData: FAQData = {
     { question: "What information do you need to start?", answer: "Service setting(s), location(s), caseload type and complexity, supervision model, key expectations, target start date, and any governance/credentialing requirements. We respond with a proposal-ready scope." },
 
   ],
-  "/mental-health-division": [
-    { question: "", answer: "" },
+  "/mental-health": [
+    { question: "Do I need to be AHPRA registered to apply?", answer: "Yes. All roles require current AHPRA registration (or eligibility to hold registration) as a Psychologist or Psychiatrist in Australia. If you are in progress, we can advise on role timing and employer preferences." },
+    { question: "Are NDIS psychology jobs ethically screened?", answer: "Yes. We assess caseload expectations, reporting pressure, session lengths, administrative support, and supervision arrangements before presenting roles—so you can practice safely and sustainably." },
+    { question: "Can psychiatrists work part-time or fractional FTE?", answer: "Absolutely. Many psychiatry roles offer flexible FTE, sessional, VMO, or mixed public-private arrangements—especially where services are expanding access and waitlist reduction programs." },
+    { question: "How quickly can Medfuture match me to a role?", answer: "Psychologists often receive suitable options within days once your preferences are clear. Psychiatry timelines vary by specialty, location, and credentialing requirements, but we prioritise urgent service needs and high-fit roles." },
+    { question: "Do you recruit early-career psychologists?", answer: "Yes. We recruit for early-career, general, and endorsed psychologist roles—matching you with employers that provide appropriate supervision, onboarding, and sustainable caseload structures." },
+    { question: "Do you offer telehealth psychologist and psychiatrist jobs?", answer: "Yes. We recruit for telehealth, hybrid, and in-clinic roles Australia-wide, depending on employer model, service needs, and your preferences." },
+    { question: "Do you recruit for regional and rural Australia?", answer: "Yes. We specialise in regional and rural recruitment and can support relocation planning, incentives conversations, and hybrid/telepsychiatry options where available." },
+    { question: "Is Medfuture aligned with ethical recruitment standards?", answer: "Yes. Our Mental Health Hub is clinician-first, privacy-aware, and compliance-led. We screen employers for fit, governance, and sustainability—not just vacancy pressure." },
+
+
+
+
+
   ],
 
 

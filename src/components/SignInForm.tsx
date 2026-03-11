@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function SignInForm() {
   const [email, setEmail] = useState("");
@@ -79,6 +80,18 @@ export default function SignInForm() {
   }
 };
 
+const handleGoogleLogin = () => {
+  window.location.href = `${API_BASE_URL}/web/auth/google/redirect`;
+};
+
+const handleLinkedInLogin = () => {
+  window.location.href = `${API_BASE_URL}/web/auth/linkedin/redirect`;
+};
+
+const handleFacebookLogin = () => {
+  window.location.href = `${API_BASE_URL}/web/auth/facebook/redirect`;
+};
+
   return (
     <div className="w-full max-w-md mx-auto">
       <h1 className="text-3xl lg:text-4xl font-bold text-[#0A2E5C] mb-8 text-center">
@@ -89,6 +102,7 @@ export default function SignInForm() {
       <div className="flex gap-3 mb-6">
         <button
           type="button"
+          onClick={handleGoogleLogin}
           className="flex-1 flex cursor-pointer items-center justify-center gap-2 py-2.5 px-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
         >
           {/* Google Icon */}
@@ -103,6 +117,7 @@ export default function SignInForm() {
 
         <button
           type="button"
+          onClick={handleLinkedInLogin}
           className="flex-1 cursor-pointer flex items-center justify-center gap-2 py-2.5 px-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
         >
           {/* LinkedIn Icon */}
@@ -114,6 +129,7 @@ export default function SignInForm() {
 
         <button
           type="button"
+          onClick={handleFacebookLogin}
           className="flex-1 cursor-pointer flex items-center justify-center gap-2 py-2.5 px-3 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium text-gray-700"
         >
           {/* Facebook Icon */}

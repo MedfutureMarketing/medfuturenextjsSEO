@@ -6,6 +6,14 @@ import JobListingSection from "@/components/Gpdivision/Fracgp/Joblistingsection"
 import ConsultantsPage from "@/components/Gpdivision/Fracgp/Consultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("fracgp");
+}
+
 
 export default function Fracgp() {
     return (

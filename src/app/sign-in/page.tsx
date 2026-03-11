@@ -1,22 +1,15 @@
-'use client';
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+import SignupPage from "@/components/Signinpage/SignupPage";
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import SignupComponent from '@/components/Signup';
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("signin");
+}
 
 export default function Signup() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const token = localStorage.getItem('TOKEN');
-    if (token) {
-      router.replace('/my-account/candidate/profile');
-    }
-  }, [router]);
-
   return (
     <main>
-      <SignupComponent />
+      <SignupPage />
     </main>
   );
 }

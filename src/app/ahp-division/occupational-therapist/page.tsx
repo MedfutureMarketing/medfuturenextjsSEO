@@ -8,6 +8,16 @@ import OtConsultant from "@/components/AhpDivision/OT/OtConsultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
 
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("occupational");
+}
+
+
+
 const OccupationalTherapistPage = () => {
     return (
         <div>

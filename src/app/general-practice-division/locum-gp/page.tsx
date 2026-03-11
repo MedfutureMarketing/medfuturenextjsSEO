@@ -7,6 +7,15 @@ import ConsultantsPage from '@/components/Gpdivision/Fracgp/Consultant';
 import FAQ from '@/components/FAQ/Faq';
 import CTA from '@/components/Home/CtaHome';
 import LocumGpCards from '@/components/Gpdivision/Locumgp/LocumGpCards';
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("locumgp");
+}
+
+
 export default function LocumGPPage() {
     return (
         <main className="">

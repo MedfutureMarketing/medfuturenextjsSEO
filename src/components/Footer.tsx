@@ -117,15 +117,15 @@ export default function Footer() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
                   </svg>
-                  <span>1300 633 388</span>
+                  <span> notify@medfuture.co.au</span>
                 </li>
-                <li className="flex items-center gap-2">
+                {/* <li className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                   </svg>
-                  <a href="mailto:notify@themedfuture.com" className="hover:text-white transition-colors">
-                    notify@themedfuture.com
+                  <a href="mailto:notify@medfuture.co.au" className="hover:text-white transition-colors">
+                    notify@medfuture.co.au
                   </a>
                 </li>
                 <li className="flex items-center gap-2">
@@ -133,7 +133,7 @@ export default function Footer() {
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clipRule="evenodd" />
                   </svg>
                   <span>+61 1300 633 388</span>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

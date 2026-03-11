@@ -1,17 +1,20 @@
 "use client";
+
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SocialSuccess() {
   const router = useRouter();
+  const params = useSearchParams();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
 
     if (token) {
-      localStorage.setItem("auth_token", token);
-      // router.push("/dashboard");
+      localStorage.setItem("TOKEN", token);
+      router.push("/my-account/candidate");
+    } else {
+      router.push("/login");
     }
   }, []);
 

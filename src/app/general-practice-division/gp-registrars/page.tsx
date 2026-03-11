@@ -7,6 +7,13 @@ import GpJobCards from "@/components/Gpdivision/Gpregistar/GpJoblistingsection";
 import ConsultantsPage from "@/components/Gpdivision/Gpregistar/Consultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("gpregistar");
+}
 
 
 const GPRegistrarsPage = () => {

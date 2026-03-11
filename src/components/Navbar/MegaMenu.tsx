@@ -361,10 +361,10 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     explore: {
       heading: "Explore More",
       links: [
-        { label: "Speech Pathology Jobs in NSW", href: "/ahp-division/speech-pathology" },
-        { label: "Physiotherapy Jobs in VIC", href: "/ahp-division/physiotherapy" },
-        { label: "OT Roles in Queensland", href: "/ahp-division/occupational-therapist" },
-        { label: "Podiatry Jobs in WA", href: "/ahp-division/podiatrist" },
+        { label: "Speech Pathology Jobs in NSW", href: "/permanent/speech-pathologist-jobs/in-new-south-wales?page=1" },
+        { label: "Physiotherapy Jobs in VIC", href: "/permanent/physiotherapy-jobs/in-victoria?page=1" },
+        { label: "OT Roles in Queensland", href: "/permanent/occupational-therapists-jobs/in-queensland?page=1" },
+        { label: "Podiatry Jobs in WA", href: "/permanent/podiatry-jobs/in-western-australia?page=1" },
       ],
     },
   },
@@ -401,9 +401,9 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     explore: {
       heading: "Explore More",
       links: [
-        { label: "Psychology Jobs in NSW", href: "/mental-health/psychology" },
-        { label: "Psychology Jobs in VIC", href: "/mental-health/psychology" },
-        { label: "Psychology Jobs in Tasmania", href: "/mental-health/psychology" },
+        { label: "Psychology Jobs in NSW", href: "/permanent/psychology-jobs/in-new-south-wales?page=1" },
+        { label: "Psychology Jobs in VIC", href: "/permanent/psychology-jobs/in-victoria?page=1" },
+        { label: "Psychology Jobs in Tasmania", href: "/permanent/psychology-jobs/in-tasmania?page=1" },
       ],
     },
   },
@@ -556,7 +556,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
               }`}
             style={{ top }}
           >
-            <div className=" inner-width-section  shadow-xl border-gray-200">
+            <div className=" inner-width-section border-gray-200">
               <div className="mx-auto px-0 py-0 mt-2 bg-white">
                 {/* Layout: Hub | Divider | Professions | Divider | Explore More */}
                 <div className="flex gap-0 bg-white" >
@@ -566,7 +566,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                   {/* ── LEFT: Hub Panel ── */}
                   {hasHub && (
                     <>
-                      <div className="w-[270px] flex-shrink-0 px-8 bg-white shadow-[20px_0_40px_-5px_rgba(0,0,0,0.3)] py-4 relative">
+                      <div className="w-[270px] flex-shrink-0 px-8 bg-white shadow-[20px_0_40px_-35px_rgba(0,0,0,0.3)] py-4 relative">
 
                         {/* Arrow — sits ON the right edge / shadow line */}
                         <Link

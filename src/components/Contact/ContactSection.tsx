@@ -17,17 +17,17 @@ const contacts: Contact[] = [
   {
     title: "GP Metro",
     email: "gprecruitment@medfuture.com.au",
-    phone: "+61 489 071 766",
+    phone: "+61 489 074 798",
   },
   {
     title: "Rural Unit",
-    email: "simg@medfuture.com.au",
-    phone: "+61 483 980 588",
+    email: "gprecruitment@medfuture.com.au",
+    phone: "+61 452 468 515",
   },
   {
     title: "Locum Unit (PLGP)",
-    email: "ahp@medfuture.com.au",
-    phone: "+61 483 965 759",
+    email: "locum@medfuture.com.au",
+    phone: "+61 489 071 766",
   },
   {
     title: "Allied Health Unit",
@@ -36,23 +36,23 @@ const contacts: Contact[] = [
   },
   {
     title: "Mental and Oral Health Unit",
-    email: "nursing@medfuture.com.au",
-    phone: "+61 483 957 757",
+    email: "psychologists@medfuture.com.au",
+    phone: "+61 489 076 754",
   },
   {
     title: "SIMG Unit",
-    email: "helpdesk@medfuture.com.au",
-    phone: "1300 633 388",
+    email: "simg@medfuture.com.au",
+    phone: "61 483 957 925",
   },
   {
     title: "Visa Unit",
-    email: "ahp@medfuture.com.au",
-    phone: "+61 483 965 759",
+    email: "visaservices@intuit7.com",
+    phone: "+61 3 6160 3109",
   },
   {
     title: "New Zealand Unit",
-    email: "nursing@medfuture.com.au",
-    phone: "+61 483 957 757",
+    email: "medicalrecruitment@medfuture.co.nz",
+    phone: "+64 9 887 8496",
   },
 ];
 

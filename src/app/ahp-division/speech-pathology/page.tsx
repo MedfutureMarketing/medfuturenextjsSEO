@@ -7,6 +7,13 @@ import ClinicalAreas from "@/components/AhpDivision/SP/Clinicalareas";
 import SpConsultant from "@/components/AhpDivision/SP/SpConsultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("speechpatho");
+}
 
 const SpeechPathologyPage = () => {
     return (

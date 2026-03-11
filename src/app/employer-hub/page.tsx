@@ -1,6 +1,8 @@
 
 
+import { getPageMetadata } from "@/lib/getPageMetadata";
 
+import { Metadata } from "next";
 import EmployerHero from "@/components/EmployerHub/EmployerHero";
 import InfoCards from "@/components/EmployerHub/Countercard";
 // import RecruitmentServices from "@/components/EmployerHub/ServicePlan";
@@ -18,7 +20,9 @@ import MultiDisciplinarySection from "@/components/EmployerHub/MultiDisciplinary
 import EmployerDivisions from "@/components/EmployerHub/EmployerDivisionsPage"
 import EmployerTestimonialsSection from "@/components/EmployerHub/EmployerTestimonialsSection";
 import ServiceProposalSection from "@/components/EmployerHub/ServiceProposalSection";
-
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("home");
+}
 
 
 export default function EmployerHub() {
