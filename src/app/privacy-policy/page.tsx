@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
 
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("privacy");
+}
 
 export default function Privay() {
   return (

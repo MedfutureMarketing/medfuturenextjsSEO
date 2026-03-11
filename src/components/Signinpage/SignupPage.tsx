@@ -9,7 +9,7 @@ export default function SignupPage() {
   useEffect(() => {
     const token = localStorage.getItem('TOKEN');
     if (token) {
-      router.replace('/my-account/candidate/profile');
+      router.replace('/permanent?page=1');
     }
   }, [router]);
 

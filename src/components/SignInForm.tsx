@@ -70,7 +70,7 @@ export default function SignInForm() {
 
     console.log("Login successful");
 
-    window.location.href = "/my-account/candidate";
+    window.location.href = "/permanent?page=1";
 
   } catch (err) {
     setError("No response received from server");

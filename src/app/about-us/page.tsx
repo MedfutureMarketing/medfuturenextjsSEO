@@ -8,6 +8,13 @@ import LeadershipTeam from "@/components/AboutUs/LeadershipSection"
 import DivisionManagers from "@/components/AboutUs/divisionManagers"
 import GlobalTalentReach from "@/components/AboutUs/GlobalTalentReach"
 import AffiliationsAwards from "@/components/AboutUs/AffiliationsAwards"
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("aboutUs");
+}
 
 export default function AboutUsPage() {
   return (

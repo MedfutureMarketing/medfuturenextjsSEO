@@ -7,6 +7,13 @@ import PhyWorkSettingContent from "@/components/AhpDivision/Phy/PhyWorkSettingco
 import PhyConsultant from "@/components/AhpDivision/Phy/PhyConsultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("physiotherapy");
+}
 
 const OccupationalTherapistPage = () => {
     return (
