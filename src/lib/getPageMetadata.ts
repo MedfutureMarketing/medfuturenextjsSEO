@@ -3,20 +3,21 @@ import { metaDataList, dynamicOverrides } from "@/Data/metaDataList";
 
 const BASE_URL = "https://medfuture.com.au";
 
+// Define the expected shape of params for dynamic pages
 export interface TemplateParams {
   id?: string;
   title?: string;
 }
 
-// ✅ Synchronous — no async, no Promise. Metadata lands in <head> on first byte.
-export function getPageMetadata(
+// Get metadata for a page (static or dynamic)
+export async function getPageMetadata(
   pageKey: string,
-  params?: TemplateParams,
-  path?: string,
-  currentUrl?: string
-): Metadata {
-  // Canonical should never include query params like ?page=1
-  const canonicalUrl = path ? `${BASE_URL}${path}` : BASE_URL;
+  params?: TemplateParams | undefined,
+  path?: string | undefined,
+  currentUrl?: string | undefined
+): Promise<Metadata> {
+  // Use provided currentUrl or fallback to path
+  const canonicalUrl = currentUrl || (path ? `${BASE_URL}${path}` : BASE_URL);
 
   // 1️⃣ Check for dynamic override by full path
   if (path && dynamicOverrides[path]) {
@@ -33,7 +34,7 @@ export function getPageMetadata(
   // 2️⃣ Get metadata from metaDataList
   const pageMeta = metaDataList[pageKey];
 
-  // 3️⃣ Dynamic template (function)
+  // 3️⃣ If dynamic template
   if (typeof pageMeta === "function") {
     const dynamicMeta = pageMeta(params || {});
     return {
@@ -45,7 +46,7 @@ export function getPageMetadata(
     };
   }
 
-  // 4️⃣ Static page
+  // 4️⃣ If static page
   if (pageMeta) {
     return {
       ...pageMeta,
@@ -56,7 +57,7 @@ export function getPageMetadata(
     };
   }
 
-  // 5️⃣ Fallback
+  // 5️⃣ Default fallback
   return {
     title: "Medfuture | Medical & Healthcare Recruitment in Australia",
     description:
