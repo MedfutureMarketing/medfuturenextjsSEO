@@ -74,6 +74,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+    
     jobseeker: {
         path: "/job-seeker-hub",
         title: "Medical Recruitment Agency for Medical Professionals | Medfuture",
@@ -134,7 +135,7 @@ export const metaDataList: Record<
     },
     employee: {
         path: "/",
-        title: "Medfuture | Medical Recruitment Agency in Australia",
+        title: "Medfuturess | Medical Recruitment Agency in Australia",
         description:
             "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
         keywords: [

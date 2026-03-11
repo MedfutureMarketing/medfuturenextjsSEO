@@ -21,9 +21,9 @@ import EmployerDivisions from "@/components/EmployerHub/EmployerDivisionsPage"
 import EmployerTestimonialsSection from "@/components/EmployerHub/EmployerTestimonialsSection";
 import ServiceProposalSection from "@/components/EmployerHub/ServiceProposalSection";
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("home");
+  // Use the correct page key and include the actual path
+  return getPageMetadata("employee", undefined, "/employer-hub");
 }
-
 
 export default function EmployerHub() {
   return (
@@ -33,22 +33,12 @@ export default function EmployerHub() {
       <Employerservices/>
       <MultiDisciplinarySection/>
       <EmployerDivisions/>
-
-        <EmployerTestimonialsSection/>
- <FAQ/>
-   <div className="lg:mt-56 mt-16 mb-16"> <ClientsLogoSlider/></div>
-   <ServiceProposalSection/>
-        {/* ss */}
-      {/* <RecruitmentServices/>
-    
-      <ExclusiveRecruitmentServices/>
-      <PLGPForm/>
-  
-    
-     <TestimonialSection/>
-     <EmployerEnquirySection/>
-     */}
-     {/* <MeetOurConsultants/> */}
+      <EmployerTestimonialsSection/>
+      <FAQ/>
+      <div className="lg:mt-56 mt-16 mb-16">
+        <ClientsLogoSlider/>
+      </div>
+      <ServiceProposalSection/>
     </section>
   );
 }
