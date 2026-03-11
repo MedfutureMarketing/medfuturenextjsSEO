@@ -10,6 +10,14 @@ import CTA from "@/components/Division/DivisionCta"
 // import MentalSector from "@/components/MentalDivision/Mentaldivisoncomponent/Mentalsector "
 import Mentalfirstrecruitmentmodel from "@/components/MentalDivision/Mentaldivisoncomponent/Mentalfirstrecruitmentmodel"
 import MentalHealthSectors from "@/components/MentalDivision/Mentaldivisoncomponent/Mentalhealthsectors"
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("mentalhealth");
+}
+
 
 const MentalDivisionPage = () => {
     return (

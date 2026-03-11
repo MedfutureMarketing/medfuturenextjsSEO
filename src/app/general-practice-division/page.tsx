@@ -9,7 +9,13 @@ import BlogSection from "@/components/Blog/Blog"
 import CTA from "@/components/Division/DivisionCta"
 import GeneralPracticeSector from "@/components/Gpdivision/GpdivisionComponents/Generalpracticesector"
 import Clinicianfirstrecruitmentmodel from "@/components/Gpdivision/GpdivisionComponents/Clinicianfirstrecruitmentmodel"
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
 
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("gpdivison");
+}
 
 
 

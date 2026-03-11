@@ -7,6 +7,14 @@ import AhpDivisiontesti from "@/components/AhpDivision/AhpdivisionComponents/Ahp
 import FAQ from "@/components/FAQ/Faq"
 import BlogSection from "@/components/Blog/Blog"
 import CTA from "@/components/Division/DivisionCta"
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("ahp");
+}
+
 
 const AhpDivisionPage = () => {
     return (
