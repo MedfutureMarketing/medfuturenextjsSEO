@@ -39,6 +39,11 @@ export default function RootLayout({
       })(window, document, "clarity", "script", "vf3wuaoe41");`,
     }}
   />
+   <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="QT2pNG4DqaoXCwI/Y1hNEA"
+          strategy="afterInteractive"
+        />
 
   <Script
     src="https://www.googletagmanager.com/gtag/js?id=G-GV3R8QX989"

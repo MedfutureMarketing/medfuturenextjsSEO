@@ -32,7 +32,7 @@ const divisions: Division[] = [
             "International Doctors (SIMG / Comparable systems)",
         ],
         exploreLabel: "Explore GP Division",
-        exploreHref: "/divisions/gp-medical",
+        exploreHref: "/general-practice-division",
         image: GPcareerhub,
     },
     {
@@ -48,7 +48,7 @@ const divisions: Division[] = [
             "Podiatrists",
         ],
         exploreLabel: "Explore AHP Division",
-        exploreHref: "/divisions/allied-health",
+        exploreHref: "/ahp-division",
         image: AHPcareerhub,
     },
     {
@@ -64,7 +64,7 @@ const divisions: Division[] = [
             "Public, Private and Community settings",
         ],
         exploreLabel: "Explore Mental Health Division",
-        exploreHref: "/divisions/mental-health",
+        exploreHref: "/mental-health",
         image: MHcareerhub,
     },
 ];
@@ -77,22 +77,22 @@ function TagPill({ label }: { label: string }) {
     );
 }
 
-function ExploreLink({ label, href }: { label: string; href: string }) {
+function ExploreLink({ label }: { label: string }) {
     return (
-        <Link
-            href={href}
-            className="inline-flex items-center gap-1.5 text-[#1A56C4] text-[13px] md:text-sm lg:text-[14px] font-semibold hover:underline mt-4 md:mt-5 lg:mt-[26px]"
-        >
+        <span className="inline-flex items-center gap-1.5 text-[#1A56C4] text-[13px] md:text-sm lg:text-[14px] font-semibold mt-4 md:mt-5 lg:mt-[26px]">
             {label}
             <Image src={navicon} alt="Explore" width={12} height={12} />
-        </Link>
+        </span>
     );
 }
 
 function DivisionCard({ division }: { division: Division }) {
     return (
-        <div className="border border-gray-200 rounded-2xl overflow-hidden h-full">
-            <div className="flex flex-row h-full">
+        <Link 
+            href={division.exploreHref}
+            className="block border border-gray-200 rounded-2xl overflow-hidden h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer"
+        >
+            <div className="flex flex-row h-full pointer-events-none">
 
                 {/* Image */}
                 <div className="relative flex-shrink-0 w-[90px] sm:w-[120px] md:w-[130px] lg:w-[144px] self-stretch">
@@ -126,11 +126,11 @@ function DivisionCard({ division }: { division: Division }) {
                             </li>
                         ))}
                     </ul>
-                    <ExploreLink label={division.exploreLabel} href={division.exploreHref} />
+                    <ExploreLink label={division.exploreLabel} />
                 </div>
 
             </div>
-        </div>
+        </Link>
     );
 }
 

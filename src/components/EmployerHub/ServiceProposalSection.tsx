@@ -1,25 +1,7 @@
 "use client";
 
-import { useState } from "react";
-
-const recruitmentTypes = [
-  "Permanent Recruitment",
-  "Locum Recruitment",
-  "International Recruitment",
-  "MCIRCLE Partner Program",
-  "Visa & Migration Services",
-];
-
-const states = [
-  "New South Wales",
-  "Victoria",
-  "Queensland",
-  "Western Australia",
-  "South Australia",
-  "Tasmania",
-  "ACT",
-  "Northern Territory",
-];
+import { useState, useEffect, useCallback } from "react";
+import { API_BASE_URL } from "@/lib/api";
 
 const whatYouReceive = [
   "Service scope (perm / locum-temp / partnership)",
@@ -28,16 +10,52 @@ const whatYouReceive = [
   "Commercials (transparent, defensible)",
 ];
 
+interface FormData {
+  organization: string;
+  email: string;
+  recruitmentType: string;
+  state: string;
+  notes: string;
+  termsAgreed: boolean;
+  subscribeAlert: boolean;
+}
+
+interface FormErrors {
+  organization?: string;
+  email?: string;
+  termsAgreed?: string;
+}
+
+interface States {
+  state_id: number;
+  name: string;
+}
+
+interface JobTypes {
+  id: number;
+  name: string;
+}
+
 function ChevronDown() {
   return (
-    <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#94a3b8"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <polyline points="6 9 12 15 18 9" />
     </svg>
   );
 }
 
 export default function ServiceProposalSection() {
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<FormData>({
     organization: "",
     email: "",
     recruitmentType: "",
@@ -47,8 +65,85 @@ export default function ServiceProposalSection() {
     subscribeAlert: false,
   });
 
+  const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [states, setStates] = useState<States[]>([]);
+  const [jobTypes, setJobTypes] = useState<JobTypes[]>([]);
+
+  useEffect(() => {
+      const fetchStates = async () => {
+        try {
+          const response = await fetch(`${API_BASE_URL}/web/states/get-all`, {
+            headers: {
+              accept: "application/json",
+            },
+          });
+
+          const data = await response.json();
+
+          setStates(data);
+        } catch (error) {
+          console.error("Failed to fetch states", error);
+        }
+      };
+
+      fetchStates();
+    }, []);
+
+    useEffect(() => {
+      const fetchJobTypes = async () => {
+        try {
+          const response = await fetch(`${API_BASE_URL}/web/job_type/get-all`, {
+            headers: {
+              accept: "application/json",
+            },
+          });
+
+          const data = await response.json();
+
+          setJobTypes(data);
+        } catch (error) {
+          console.error("Failed to fetch job types", error);
+        }
+      };
+
+      fetchJobTypes();
+    }, []);
+
+  /* ================= VALIDATION ================= */
+
+  const validateForm = useCallback(() => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const errors: FormErrors = {
+      organization: !form.organization
+        ? "Organisation name is required"
+        : "",
+      email: !form.email
+        ? "Email is required"
+        : !emailRegex.test(form.email)
+        ? "Please enter a valid email"
+        : "",
+      termsAgreed: !form.termsAgreed
+        ? "You must agree to the Terms of Use and Privacy Policy"
+        : "",
+    };
+
+    setFormErrors(errors);
+    return errors;
+  }, [form]);
+
+  useEffect(() => {
+    if (touched) validateForm();
+  }, [form, touched, validateForm]);
+
+  /* ================= INPUT CHANGE ================= */
+
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
   ) => {
     const target = e.target;
     const value =
@@ -58,7 +153,69 @@ export default function ServiceProposalSection() {
     setForm((prev) => ({ ...prev, [target.name]: value }));
   };
 
-  const inputClass = "w-full border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition bg-white";
+  /* ================= SUBMIT ================= */
+
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    setTouched(true);
+
+    const errors = validateForm();
+    if (Object.values(errors).some((error) => error)) return;
+
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `${API_BASE_URL}/web/employer-enquiries/save`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            accept: "application/json",
+          },
+          body: JSON.stringify({
+            organization_name: form.organization,
+            email: form.email,
+            recruitment_type: form.recruitmentType
+              ? Number(form.recruitmentType)
+              : null,
+            state: form.state ? Number(form.state) : null,
+            roles_and_notes: form.notes || null,
+            terms_and_conditions: form.termsAgreed,
+            job_alert: form.subscribeAlert,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to submit enquiry");
+      }
+
+      await response.json();
+
+      alert("Enquiry submitted successfully!");
+
+      setForm({
+        organization: "",
+        email: "",
+        recruitmentType: "",
+        state: "",
+        notes: "",
+        termsAgreed: false,
+        subscribeAlert: false,
+      });
+
+      setTouched(false);
+    } catch (error) {
+      alert("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const inputClass =
+    "w-full border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition bg-white";
 
   return (
     <section className="full-width-section bg-[#f0f2f5] font-sans py-14 mt-[140px]">
@@ -72,7 +229,8 @@ export default function ServiceProposalSection() {
           Get a tailored service proposal
         </h2>
         <p className="text-[14px] text-slate-500 mb-10 max-w-3xl">
-          Send your role list and locations. We reply with service scope, credentialing approach, SLAs and commercials.
+          Send your role list and locations. We reply with service scope,
+          credentialing approach, SLAs and commercials.
         </p>
 
         {/* Two-column layout */}
@@ -88,7 +246,7 @@ export default function ServiceProposalSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
               <div className="flex flex-col gap-1.5">
                 <label className="text-[12.5px] font-medium text-slate-600">
-                  Organization
+                  Organization*
                 </label>
                 <input
                   type="text"
@@ -98,10 +256,16 @@ export default function ServiceProposalSection() {
                   placeholder="e.g. ABC Medical Group"
                   className={inputClass}
                 />
+                {formErrors.organization && touched && (
+                  <span className="text-red-500 text-xs">
+                    {formErrors.organization}
+                  </span>
+                )}
               </div>
+
               <div className="flex flex-col gap-1.5">
                 <label className="text-[12.5px] font-medium text-slate-600">
-                  Email
+                  Email*
                 </label>
                 <input
                   type="email"
@@ -111,6 +275,11 @@ export default function ServiceProposalSection() {
                   placeholder="you@organization.com"
                   className={inputClass}
                 />
+                {formErrors.email && touched && (
+                  <span className="text-red-500 text-xs">
+                    {formErrors.email}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -125,16 +294,21 @@ export default function ServiceProposalSection() {
                     name="recruitmentType"
                     value={form.recruitmentType}
                     onChange={handleChange}
-                    className={`${inputClass} appearance-none pr-9 cursor-pointer text-slate-400`}
+                    className={`${inputClass} appearance-none pr-9 cursor-pointer ${
+                      !form.recruitmentType ? "text-slate-400" : "text-slate-700"
+                    }`}
                   >
-                    <option value="" disabled>Select an option</option>
-                    {recruitmentTypes.map((t) => (
-                      <option key={t} value={t}>{t}</option>
+                    <option value="">Select an option</option>
+                    {jobTypes.map((jt) => (
+                      <option key={jt.id} value={jt.id}>
+                        {jt.name}
+                      </option>
                     ))}
                   </select>
                   <ChevronDown />
                 </div>
               </div>
+
               <div className="flex flex-col gap-1.5">
                 <label className="text-[12.5px] font-medium text-slate-600">
                   State/Territory
@@ -144,11 +318,15 @@ export default function ServiceProposalSection() {
                     name="state"
                     value={form.state}
                     onChange={handleChange}
-                    className={`${inputClass} appearance-none pr-9 cursor-pointer text-slate-400`}
+                    className={`${inputClass} appearance-none pr-9 cursor-pointer ${
+                      !form.state ? "text-slate-400" : "text-slate-700"
+                    }`}
                   >
-                    <option value="" disabled>Select an option</option>
+                    <option value="">Select an option</option>
                     {states.map((s) => (
-                      <option key={s} value={s}>{s}</option>
+                      <option key={s.state_id} value={s.state_id}>
+                        {s.name}
+                      </option>
                     ))}
                   </select>
                   <ChevronDown />
@@ -176,21 +354,39 @@ export default function ServiceProposalSection() {
 
             {/* Checkboxes */}
             <div className="flex flex-col gap-3 mb-7">
-              <label className="flex items-start gap-2.5 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="termsAgreed"
-                  checked={form.termsAgreed}
-                  onChange={handleChange}
-                  className="mt-0.5 w-4 h-4 accent-blue-800 cursor-pointer shrink-0"
-                />
-                <span className="text-[12.5px] text-slate-500 leading-relaxed">
-                  I confirm that I have read and agree to the{" "}
-                  <a href="#" className="text-blue-700 underline hover:text-blue-900">Terms of Use</a>
-                  {" "}and{" "}
-                  <a href="#" className="text-blue-700 underline hover:text-blue-900">Privacy Policy.</a>
-                </span>
-              </label>
+              <div>
+                <label className="flex items-start gap-2.5 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="termsAgreed"
+                    checked={form.termsAgreed}
+                    onChange={handleChange}
+                    className="mt-0.5 w-4 h-4 accent-blue-800 cursor-pointer shrink-0"
+                  />
+                  <span className="text-[12.5px] text-slate-500 leading-relaxed">
+                    I confirm that I have read and agree to the{" "}
+                    <a
+                      href="#"
+                      className="text-blue-700 underline hover:text-blue-900"
+                    >
+                      Terms of Use
+                    </a>{" "}
+                    and{" "}
+                    <a
+                      href="#"
+                      className="text-blue-700 underline hover:text-blue-900"
+                    >
+                      Privacy Policy.
+                    </a>
+                  </span>
+                </label>
+                {formErrors.termsAgreed && touched && (
+                  <span className="text-red-500 text-xs ml-6.5 mt-1 block">
+                    {formErrors.termsAgreed}
+                  </span>
+                )}
+              </div>
+
               <label className="flex items-center gap-2.5 cursor-pointer">
                 <input
                   type="checkbox"
@@ -199,20 +395,26 @@ export default function ServiceProposalSection() {
                   onChange={handleChange}
                   className="w-4 h-4 accent-blue-800 cursor-pointer shrink-0"
                 />
-                <span className="text-[12.5px] text-slate-500">Subscribe for Job Alert</span>
+                <span className="text-[12.5px] text-slate-500">
+                  Subscribe for Job Alert
+                </span>
               </label>
             </div>
 
             {/* Submit */}
-            <button className="w-full py-3.5 bg-blue-900 hover:bg-blue-800 text-white font-semibold text-[14px] rounded-[4px] transition-colors duration-200">
-              Submit &amp; Request Proposal
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              className="w-full py-3.5 bg-blue-900 hover:bg-blue-800 disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold text-[14px] rounded-[4px] transition-colors duration-200"
+            >
+              {loading ? "Submitting..." : "Submit & Request Proposal"}
             </button>
           </div>
 
           {/* ── Right: Info Panel ── */}
           <div className="w-full lg:w-[480px] shrink-0 flex flex-col gap-4">
 
-            {/* What you receive — no card border, just white bg */}
+            {/* What you receive */}
             <div className="bg-white border border-slate-200 rounded-[8px] px-6 py-6">
               <p className="text-[16px] font-bold text-[#040D48] mb-4">
                 What you receive
@@ -220,8 +422,12 @@ export default function ServiceProposalSection() {
               <ul className="flex flex-col gap-3">
                 {whatYouReceive.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
-                    <span className="text-[#4A5565] lg:text-[14px] leading-relaxed shrink-0">•</span>
-                    <span className="lg:text-[14px] text-[#4A5565] leading-relaxed">{item}</span>
+                    <span className="text-[#4A5565] lg:text-[14px] leading-relaxed shrink-0">
+                      •
+                    </span>
+                    <span className="lg:text-[14px] text-[#4A5565] leading-relaxed">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -240,7 +446,10 @@ export default function ServiceProposalSection() {
                   ["Email:", "candidateservices@medfuture.com.au"],
                 ].map(([label, value]) => (
                   <p key={label} className="text-[13px] text-slate-600">
-                    <span className="font-semibold text-slate-700">{label}</span> {value}
+                    <span className="font-semibold text-slate-700">
+                      {label}
+                    </span>{" "}
+                    {value}
                   </p>
                 ))}
               </div>
@@ -260,7 +469,8 @@ export default function ServiceProposalSection() {
                 Multi-site employer?
               </p>
               <p className="text-[13px] text-slate-500 leading-relaxed mb-4">
-                Ask about Workforce Partnership (retained) for priority SLAs and predictable hiring.
+                Ask about Workforce Partnership (retained) for priority SLAs
+                and predictable hiring.
               </p>
               <button className="px-5 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-[13px] font-semibold rounded-[4px] transition-colors">
                 Explore Partnership

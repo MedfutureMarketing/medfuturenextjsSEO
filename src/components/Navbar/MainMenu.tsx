@@ -147,7 +147,7 @@ export default function Menu() {
               {/* 🔹 Show user icon if logged in, Sign In button if not */}
               {isLoggedIn ? (
                 <Link
-                  href="/my-account/candidate/profile"
+                  href="/permanent?page=1"
                   aria-label="My Account"
                   className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#074CA4] hover:bg-[#0d3a72] transition-colors text-white"
                 >

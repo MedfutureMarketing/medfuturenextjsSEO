@@ -295,7 +295,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
         <div className="border-t border-[#F1F5F9] p-4 space-y-2.5">
           {isLoggedIn ? (
             <Link
-              href="/my-account/candidate/profile"
+              href="/permanent?page=1"
               onClick={handleLinkClick}
               className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-[#074CA4] hover:bg-[#0a3d8a] text-white text-[13px] font-semibold rounded-xl transition-colors duration-200"
             >
@@ -303,7 +303,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
                 <path fillRule="evenodd" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 8a7 7 0 1114 0H5z" clipRule="evenodd" />
               </svg>
-              Dashboard
+              Search Jobs
             </Link>
           ) : (
             <Link

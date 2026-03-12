@@ -29,6 +29,7 @@ export default function EmployerRegistrationForm() {
   const [formData, setFormData] = useState({
     company_name: "",
     trade_name: "",
+    abn: "",
     industry_type: "",
     website: "",
     official_contact_name: "",
@@ -297,6 +298,7 @@ export default function EmployerRegistrationForm() {
         vacancy_profile: uploadedFileName,
         hear_about_us: formData.hear_about_us || null,
         subscribe_for_job_alert: formData.subscribeForJobAlert,
+        abn: formData.abn || "1"
       };
 
       const response = await fetch(`${API_BASE_URL}/web/client/save`, {
@@ -334,6 +336,7 @@ export default function EmployerRegistrationForm() {
       setFormData({
         company_name: "",
         trade_name: "",
+        abn: "",
         industry_type: "",
         website: "",
         official_contact_name: "",

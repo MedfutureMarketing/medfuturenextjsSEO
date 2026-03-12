@@ -7,6 +7,13 @@ import PsyWorkSettingContent from "@/components/MentalDivision/Psy/PsyWorkSettin
 import PsyConsultant from "@/components/MentalDivision/Psy/PsyConsultant";
 import FAQ from "@/components/FAQ/Faq";
 import CTA from "@/components/Home/CtaHome";
+import { getPageMetadata } from "@/lib/getPageMetadata";
+import { Metadata } from "next";
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return getPageMetadata("psychology");
+}
 
 const OccupationalTherapistPage = () => {
     return (

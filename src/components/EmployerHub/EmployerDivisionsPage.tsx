@@ -210,11 +210,11 @@ export default function EmployerDivisionsPage() {
                 {/* Left: Big heading */}
                 <div className="sm:w-[440px] shrink-0">
                     <h2 className="text-3xl lg:text-[41.32px] leading-tight">
-                        <span className="text-slate-900">Nationwide</span>
+                        <span className="text-[#074CA4] font-bold">Nationwide</span>
                         <br />
-                        <span className="text-blue-800">Healthcare Recruitment</span>
+                        <span className="text-[#074CA4] lg:text-[35px] font-[500]">Healthcare Recruitment</span>
                         <br />
-                        <span className="text-blue-600">Coverage</span>
+                        <span className="text-[#074CA4]">Coverage</span>
                     </h2>
                 </div>
 

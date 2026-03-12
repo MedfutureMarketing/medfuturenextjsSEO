@@ -67,7 +67,7 @@ export default function FlexibleHiringSolution() {
                 <Link href="/contact-us" className="bg-[#0A2E5C] text-white text-sm py-2 rounded text-center hover:underline">
                     Talk to Us
                 </Link>
-                <Link href="/sign-up" className="border-2 border-[#0A2E5C] text-[#0A2E5C] text-sm py-2 rounded text-center hover:underline">
+                <Link href="/employer-hub" className="border-2 border-[#0A2E5C] text-[#0A2E5C] text-sm py-2 rounded text-center hover:underline">
                     Submit a Vacancy
                 </Link>
             </div>

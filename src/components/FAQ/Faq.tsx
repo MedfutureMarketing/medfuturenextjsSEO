@@ -154,6 +154,25 @@ const faqData: FAQData = {
       "answer": "Absolutely. Medfuture has extensive experience recruiting for regional, rural, and hard-to-fill positions across Australia. We actively source both local and internationally trained healthcare professionals and support them through the recruitment and onboarding process."
     }
   ],
+   "/employer-hub": [
+    {
+      "question": "How quickly can you provide a shortlist?",
+      "answer": "After a structured intake, we target a fast initial shortlist for urgent roles, then refine based on your credentialing and roster requirements."
+    },
+    {
+      "question": "Do you verify credentials before submission?",
+      "answer": "Yes. We verify key credentials and suitability before submission and tailor evidence packs to your facility and role requirements."
+    },
+    {
+      "question": "Do you support multi-site employers?",
+      "answer": "Yes. Our Workforce Partnership model is designed for multi-site and chronic demand with priority SLAs and predictable hiring."
+    },
+    {
+      "question": "Which professions do you recruit?",
+      "answer": "Medical (GP), Nursing & Aged Care, Allied Health, and Mental Health across Australia."
+    },
+    
+  ],
   "/jobs/locum": [
     { question: "What is a locum position?", answer: "Locum positions are temporary jobs covering short-term staffing needs, often with flexible hours." },
     { question: "Are locum jobs full-time?", answer: "No, they are usually temporary or part-time, but can sometimes be full-time." },

@@ -31,7 +31,7 @@ export default function EmployerHubPage() {
                 onClick={() => setActiveTab(pill === activeTab ? null : pill)}
                 className={`px-3 sm:px-4 py-1.5 rounded-full border text-xs lg:text-[13.5px] font-medium transition-colors duration-150 cursor-pointer
                   ${activeTab === pill
-                    ? "bg-blue-900 text-white border-blue-900"
+                    ? "bg-white text-slate-600 border-slate-300 hover:border-slate-400"
                     : "bg-white text-slate-600 border-slate-300 hover:border-slate-400"
                   }`}
               >
