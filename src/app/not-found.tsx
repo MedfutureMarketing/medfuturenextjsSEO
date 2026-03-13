@@ -53,7 +53,7 @@ export default function NotFound() {
                 We Can't Find This Page
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                The page you're looking for may have been moved, deleted, or never existed. Let's
+                The page you are looking for may have been moved, deleted, or never existed. Lets
                 help you find what you need.
               </p>
             </div>
