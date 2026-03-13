@@ -763,7 +763,7 @@ export default function CandidateForm() {
             className="mt-1 w-5 h-4 rounded border-[#E2E8F0] cursor-pointer accent-blue-500 text-blue-600 focus:ring-blue-500"
           />
           <span className="text-sm text-gray-600 lg:text-center">
-            I agree to{' '} Medfuture's 
+            I agree to{' '} Medfuture
             <a href="/terms-and-conditions" className="text-blue-600 hover:underline">
                Terms and Conditions
             </a>{' '}
