@@ -260,7 +260,7 @@ export default function CandidateForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-setTouched(true);
+    setTouched(true);
     const errors = validateForm();
 
     if (Object.values(errors).some((error) => error)) {
@@ -276,7 +276,7 @@ setTouched(true);
       return;
     }
 
-    
+
 
     try {
       setIsSubmitting(true);
@@ -407,11 +407,24 @@ setTouched(true);
   const handleFacebookLogin = () => {
     window.location.href = `${API_BASE_URL}/web/auth/facebook/redirect`;
   };
+  useEffect(() => {
+    if (notification.show) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Optional: Prevent body scroll while modal is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [notification.show]);
 
   return (
     <div className=" w-full mx-auto ">    <h1 className="text-3xl lg:text-4xl font-semi-bold text-[#0A2E5C] mb-8 text-center">
-       Create Account
-      </h1>
+      Create Account
+    </h1>
 
       <div className="grid grid-cols-3 md:grid-cols-3 lg:gap-4 gap-4 lg:w-lg mb-4">
         <button
@@ -619,7 +632,7 @@ setTouched(true);
               inputProps={{
                 id: "phoneNumber",
                 autoComplete: "off",
-                className: `w-full lg:text-[14px] text-xs text-gray-500 pl-16 focus:outline-none bg-white border-2 ${formErrors.phoneNumber ? 'border-red-300' : 'border-[#e6e8ebff]'                   } rounded-md h-[50px] px-3`,
+                className: `w-full lg:text-[14px] text-xs text-gray-500 pl-16 focus:outline-none bg-white border-2 ${formErrors.phoneNumber ? 'border-red-300' : 'border-[#e6e8ebff]'} rounded-md h-[50px] px-3`,
               }}
               value={formData.phoneNumber}
             />
@@ -747,12 +760,12 @@ setTouched(true);
             name="agreeToTerms"
             checked={formData.agreeToTerms}
             onChange={handleInputChange}
-            className="mt-1 w-5 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
+            className="mt-1 w-5 h-4 rounded border-[#E2E8F0] cursor-pointer accent-blue-500 text-blue-600 focus:ring-blue-500"
           />
           <span className="text-sm text-gray-600 lg:text-center">
-            By registration you agree to{' '}
+            I agree to{' '} Medfuture's 
             <a href="/terms-and-conditions" className="text-blue-600 hover:underline">
-              Terms and Conditions
+               Terms and Conditions
             </a>{' '}
             and{' '}
             <a href="/privacy-policy" className="text-blue-600 hover:underline">
@@ -767,7 +780,7 @@ setTouched(true);
               name="subscribe_for_job_alert"
               checked={formData.subscribe_for_job_alert}
               onChange={handleInputChange}
-            className="mt-1 w-4 h-4 rounded border-[#E2E8F0] accent-blue-500 text-blue-600 focus:ring-blue-500"
+              className="mt-1 w-5 h-4 rounded border-[#E2E8F0] cursor-pointer accent-blue-500 text-blue-600 focus:ring-blue-500"
             />
             <span>Subscribe for job alerts</span>
           </label>
@@ -797,21 +810,48 @@ setTouched(true);
 
       {/* Notification Popup */}
       {notification.show && (
-        <div className="fixed inset-0 bg-white/20 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-4">
-            <h3
-              className={`text-xl font-bold mb-2 ${notification.type === 'success' ? 'text-green-600' : 'text-red-600'
-                }`}
-            >
-              {notification.title}
-            </h3>
-            <p className="text-gray-700 mb-4">{notification.message}</p>
-            <button
-              onClick={() => setNotification({ ...notification, show: false })}
-              className="bg-[#074CA4] text-white px-4 py-2 rounded hover:bg-[#055a8a] transition-colors"
-            >
-              Close
-            </button>
+        <div
+          className="fixed inset-0 bg-white/60 backdrop-blur-sm flex items-start justify-center z-50 p-4"
+          onClick={() => setNotification({ ...notification, show: false })}
+        >
+          <div
+            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl transform transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex flex-col items-center text-center">
+              {/* Icon */}
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${notification.type === 'success' ? 'bg-green-100' : 'bg-red-100'
+                }`}>
+                {notification.type === 'success' ? (
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : (
+                  <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                )}
+              </div>
+
+              {/* Title */}
+              <h3 className={`text-2xl font-bold mb-3 ${notification.type === 'success' ? 'text-green-600' : 'text-red-600'
+                }`}>
+                {notification.title}
+              </h3>
+
+              {/* Message */}
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {notification.message}
+              </p>
+
+              {/* Button */}
+              <button
+                onClick={() => setNotification({ ...notification, show: false })}
+                className="w-full bg-[#074CA4] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#055a8a] transition-all duration-200 hover:shadow-lg"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

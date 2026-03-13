@@ -14,6 +14,8 @@ export default function RegistrationForm() {
   const handleTabChange = (tab: TabType) => {
     if (tab === activeTab || animating) return;
     setAnimating(true);
+    // Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     // Phase 1: fade content out (300ms)
     setTimeout(() => {
       setDisplayTab(tab);
