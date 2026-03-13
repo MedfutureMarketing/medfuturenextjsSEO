@@ -74,7 +74,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-
+    
     jobseeker: {
         path: "/job-seeker-hub",
         title: "Medical Recruitment Agency for Medical Professionals | Medfuture",
@@ -308,7 +308,7 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-    signin: {
+     signin: {
         path: "/sign-in",
         title: "Register with Medical Recruitment Agency | Medfuture",
         description:
@@ -424,7 +424,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-
+    
     gpregistar: {
         path: "/general-practice-division/gp-registrars",
         title: "GP Training Program Jobs in Australia",
@@ -718,11 +718,11 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-
-    psychology: {
+    
+  psychology: {
         path: "/mental-health/psychology",
         title: "Medical Recruitment Agency: Psychologist Jobs Australia",
-        description: "Empower your career! Medfuture is a medical recruitment agency with 110+ Psychologist jobs in Australia. View (Full Time & Part Time) vacancies on our site.",
+        description:"Empower your career! Medfuture is a medical recruitment agency with 110+ Psychologist jobs in Australia. View (Full Time & Part Time) vacancies on our site.",
         keywords: [
             "Medfuture",
             "Australia",
@@ -777,7 +777,7 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-    gpdivison: {
+     gpdivison: {
         path: "/general-practice-division",
         title: "General Practice Division | Medfuture",
         description:
@@ -836,7 +836,7 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-    mentalhealth: {
+     mentalhealth: {
         path: "/mental-health",
         title: "Mental Health Division | Medfuture",
         description:
@@ -894,7 +894,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-    ahp: {
+ ahp: {
         path: "/ahp-division",
         title: "Allied Health Jobs in Australia: Medical Recruitment Agency",
         description:
@@ -952,7 +952,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-    physiotherapy: {
+     physiotherapy: {
         path: "/ahp-division/physiotherapy",
         title: "Physiotherapist Jobs Australia: Medical Recruitment Agency",
         description:
@@ -1011,10 +1011,10 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-    aboutUs: {
+     aboutUs: {
         path: "/about-us",
         title: "12 Years of Excellence in Medical Recruitment | Medfuture",
-        description: "Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
+        description:"Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
         keywords: [
             "Medfuture",
             "Australia",
@@ -1072,7 +1072,7 @@ export const metaDataList: Record<
     termsand: {
         path: "/terms-and-conditions",
         title: "Terms And Condition | Medfuture",
-        description: "Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
+        description:"Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
         keywords: [
             "Medfuture",
             "Australia",
@@ -1130,7 +1130,7 @@ export const metaDataList: Record<
     privacy: {
         path: "/privacy-policy",
         title: "Privacy Policy | Medfuture",
-        description: "Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
+        description:"Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
         keywords: [
             "Medfuture",
             "Australia",
@@ -1184,13 +1184,13 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+    
 
 
+    
 
-
-
-    //  When updating section below this be carefull 
-    // Nootttttteee
+//  When updating section below this be carefull 
+// Nootttttteee
 
 
 
@@ -1199,11 +1199,13 @@ export const metaDataList: Record<
     permanent: (params: TemplateParams): MetadataConfig => ({
         title: `${params.title || "Job"} | Medfuture`,
         description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
-        // ✅ Remove alternates from here - let getPageMetadata handle it
+        alternates: {
+            canonical: `${BASE_URL}/permanent/${params.id}?page=1`,
+        },
         openGraph: {
             type: "website",
             locale: "en_US",
-            url: `${BASE_URL}/permanent/${params.id}`,
+            url: `${BASE_URL}/job/${params.id}`,
             siteName: "Medfuture",
             title: `${params.title || "Job"} – Medfuture`,
             description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
