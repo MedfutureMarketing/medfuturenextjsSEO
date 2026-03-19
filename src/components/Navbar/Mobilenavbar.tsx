@@ -61,7 +61,7 @@ const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey; icon: React.
   },
   {
     label: "Medical Division",
-    href: "#",
+    href: "/general-practice-division",
     submenu: "medical",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
@@ -137,19 +137,23 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
 
   ],
   medical: [
+    { label: "General Practice Division", href: "/general-practice-division" },
     { label: "Specialist General Practitioner (FRACGP & FRCRRM)", href: "/general-practice-division/fracgp-facrrm" },
     { label: "General Practitioner (Registrars)", href: "/general-practice-division/gp-registrars" },
     { label: "International Family Medicine", href: "/international/family-medicine-jobs/in-australia?page=1" },
     { label: "Locum GP (Short Term or Ongoing Cover)", href: "/general-practice-division/locum-gp" },
   ],
   allied: [
+    { label: "Allied Health Hub", href: "/ahp-division" },
     { label: "Speech Pathologist", href: "/ahp-division/speech-pathology" },
     { label: "Physiotherapy", href: "/ahp-division/physiotherapy" },
     { label: "Occupational Therapist", href: "/ahp-division/occupational-therapist" },
     { label: "Podiatrist", href: "/ahp-division/podiatrist" },
   ],
   mental: [
-    { label: "Psychology", href: "/permanent/psychology-jobs/in-australia?page=1" },
+        { label: "Mental Health Hub", href: "/mental-health" },
+
+    { label: "Psychology", href: "/mental-health/psychology" },
   ],
   oral: [
     { label: "Dentist", href: "/permanent/dentists-jobs/in-australia?page=1" },
@@ -188,18 +192,16 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
     <>
       {/* Overlay */}
       <div
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${
-          isOpen ? "bg-black/50 pointer-events-auto" : "bg-transparent pointer-events-none"
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ${isOpen ? "bg-black/50 pointer-events-auto" : "bg-transparent pointer-events-none"
+          }`}
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Drawer */}
       <div
-        className={`fixed top-0 left-0 h-screen w-[300px] sm:w-80 bg-white z-[101] flex flex-col transition-transform duration-300 ease-in-out lg:hidden shadow-[4px_0_32px_rgba(0,0,0,0.12)] ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
+        className={`fixed top-0 left-0 h-screen w-[300px] sm:w-80 bg-white z-[101] flex flex-col transition-transform duration-300 ease-in-out lg:hidden shadow-[4px_0_32px_rgba(0,0,0,0.12)] ${isOpen ? "translate-x-0" : "-translate-x-full"
+          }`}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#F1F5F9] sticky top-0 bg-white z-10">
@@ -231,15 +233,13 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                   <>
                     <button
                       onClick={() => toggleSubmenu(item.submenu as MenuKey)}
-                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
-                        isExpanded
+                      className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${isExpanded
                           ? "bg-[#074CA4]/8 text-[#074CA4]"
                           : "hover:bg-[#F8FAFC] text-[#1E293B]"
-                      }`}
+                        }`}
                     >
-                      <span className={`flex-shrink-0 transition-colors duration-200 ${
-                        isExpanded ? "text-[#074CA4]" : "text-[#94A3B8] group-hover:text-[#074CA4]/60"
-                      }`}>
+                      <span className={`flex-shrink-0 transition-colors duration-200 ${isExpanded ? "text-[#074CA4]" : "text-[#94A3B8] group-hover:text-[#074CA4]/60"
+                        }`}>
                         {item.icon}
                       </span>
                       <span className="flex-1 text-left text-[12px] font-medium">{item.label}</span>
@@ -248,9 +248,8 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                           {item.tag}
                         </span>
                       )}
-                      <span className={`flex-shrink-0 transition-transform duration-300 ${
-                        isExpanded ? "rotate-180 text-[#074CA4]" : "text-[#CBD5E1]"
-                      }`}>
+                      <span className={`flex-shrink-0 transition-transform duration-300 ${isExpanded ? "rotate-180 text-[#074CA4]" : "text-[#CBD5E1]"
+                        }`}>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                           <path d="m6 9 6 6 6-6" />
                         </svg>
