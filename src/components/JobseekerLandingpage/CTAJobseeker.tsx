@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function CTAJobseeker() {
   return (
-    <section className="w-full py-20 px-4 lg:px-0 bg-gradient-to-br from-[#0B3264] via-[#0B3264] to-[#1B62B4] full-width-section">
+    <section   className="w-full py-20 px-4 lg:px-0 bg-gradient-to-br from-[#0B3264] via-[#0B3264] to-[#1B62B4] full-width-section">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-[minmax(200px,0.85fr)_minmax(300px,1.35fr)] inner-width-section gap-12 items-center">
 
         {/* LEFT CONTENT */}

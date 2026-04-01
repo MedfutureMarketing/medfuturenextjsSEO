@@ -40,7 +40,8 @@ export default function JobSeeker() {
       <FAQ />
       {/* <JobSeekertesti /> */}
       {/* <MeetOurConsultants /> */}
-      <section id="upload-cv"><CTAJobseeker /></section>
+      <div id="upload-cv" className="mt-28"></div>
+      <section><CTAJobseeker /></section>
       {/* <BlogSection /> */} <QuickLinks />
     </main>
   );

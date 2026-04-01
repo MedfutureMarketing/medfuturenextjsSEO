@@ -132,7 +132,7 @@ const icons: Record<string, JSX.Element> = {
   ),
 
   map: (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#074CA4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="13" height="20" viewBox="0 0 24 24" fill="none" stroke="#074CA4" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" />
       <line x1="8" y1="2" x2="8" y2="18" />
       <line x1="16" y1="6" x2="16" y2="22" />
@@ -342,11 +342,11 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
     explore: {
       heading: "Explore More",
       links: [
-        { label: "GP Jobs in Victoria", href: "/permanent/jobs/in-victoria?page=1" },
+        { label: "GP Jobs in Victoria", href: "/permanent/general-practitioner-jobs/in-australia?page=1" },
         { label: "Permanent Roles in Perth", href: "/permanent/jobs/in-south-perth?page=1" },
         { label: "Locum Jobs in NSW", href: "/locum/jobs/in-new-south-wales?page=1" },
-        { label: "Gp Jobs in Tasmania", href: "/permanent/jobs/in-tasmania?page=1" },
-        { label: "Locum Gp Jobs", href: "/locum/jobs/in-australia?page=1" },
+        { label: "Gp Jobs in Tasmania", href: "/permanent/general-practitioner-jobs/in-tasmania?page=1" },
+        { label: "Locum Gp Jobs", href: "/locum/general-practitioner-jobs/in-australia?page=1" },
         { label: "International OT Jobs", href: "/ahp-division/occupational-therapist" },
       ],
     },
@@ -675,7 +675,7 @@ export default function MegaMenu({ menuKey }: { menuKey: MenuKey }) {
                             <Link key={j} href={link.href} className="flex items-start gap-3 group">
                               {/* Icon circle */}
                               {link.icon && icons[link.icon] && (
-                                <div className="flex-shrink-0 w-9 h-9 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center mt-0.5">
+                                <div className="flex-shrink-0 w-9 h-9 rounded-full   flex items-center justify-center mt-0.5">
                                   {icons[link.icon]}
                                 </div>
                               )}
