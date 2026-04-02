@@ -123,7 +123,7 @@ export default function Hero() {
                         {/* LEFT CONTENT */}
                         <div className="w-full lg:w-1/2 text-left z-10 pr-0 lg:pr-8">
                             <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-white leading-tight mb-4">
-                                Connecting Australia's healthcare services with the right clinicians  faster, safer and with better long-term fit.
+                                Connecting Australias healthcare services with the right clinicians  faster, safer and with better long-term fit.
                             </h1>
 
                             <p className="text-sm sm:text-[16px] text-white/95 leading-relaxed mb-8 max-w-lg">

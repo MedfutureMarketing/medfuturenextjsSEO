@@ -17,6 +17,7 @@ import HealthcareAdvancementSection from "@/components/Home/Healthcareadvancemen
 import Employerservices from "@/components/Home/Employerservices";
 import TestimonialPuzzle from "@/components/Gpdivision/GpdivisionComponents/GpDivisiontestimony"
 import BlogSection from "@/components/Blog/Blog";
+import AffiliationAccreditation from "@/components/Home/Affiliationlogo";
 
 
 export function getSchema(page: string) {
@@ -50,6 +51,7 @@ export default function RootLayout({
         <HealthcareRecruitment/>
         <HealthcareAdvancementSection />
         <Employerservices/>
+        <AffiliationAccreditation/>
         <TestimonialPuzzle/>
         <BlogSection />
         {/* <JobSeekerHubSearch />
