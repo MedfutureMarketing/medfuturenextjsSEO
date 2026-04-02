@@ -2,7 +2,7 @@
 
 export default function ReadyToMove() {
   return (
-    <section className=" py-16 md:py-24 shadow-xl mb-36">
+    <section className="bg-gray-50 py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Column */}
@@ -16,9 +16,9 @@ export default function ReadyToMove() {
             <p className="text-gray-600 text-base leading-relaxed mb-8">
               Whether you are exploring new opportunities or building your team,
               Medfuture provides the support needed to take the next step with
-              confidence. If you're a candidate, please use "Search Jobs."
+              confidence. If you&apos;re a candidate, please use &quot;Search Jobs.&quot;
               <br />
-              If you're an employer, please use "Submit Your Vacancy."
+              If you&apos;re an employer, please use &quot;Submit Your Vacancy.&quot;
             </p>
 
             {/* Action Buttons */}

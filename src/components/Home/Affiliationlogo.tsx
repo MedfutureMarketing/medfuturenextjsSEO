@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import image1 from "@/assets/homeico/affliation/1.png"
 import image2 from "@/assets/homeico/affliation/2.png"
 import image3 from "@/assets/homeico/affliation/3.png"
@@ -9,7 +9,7 @@ import image4 from "@/assets/homeico/affliation/4.png"
 
 interface Logo {
   id: string;
-  src: string | any;
+  src: StaticImageData;
   alt: string;
 }
 
