@@ -1,3 +1,5 @@
+/* eslint-disable react/fillRule */
+
 'use client';
 import Image from 'next/image';
 import Gpm from "@/assets/Homedivisonsection/1.jpg"
