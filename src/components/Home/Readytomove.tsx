@@ -8,7 +8,7 @@ export default function ReadyToMove() {
           {/* Left Column */}
           <div className="flex flex-col justify-center">
             <p className="text-blue-600 text-sm font-semibold mb-3 tracking-wide">
-              Let's Get You Started
+              Lets Get You Started
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Ready to move with Medfuture
