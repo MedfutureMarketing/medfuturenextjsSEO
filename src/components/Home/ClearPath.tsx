@@ -54,13 +54,13 @@ export default function HealthcarePathways() {
 
                             {/* Feature Tags */}
                             <div className="flex flex-wrap gap-2 mb-8">
-                                <span className="px-4 py-2 bg-[#E9F2FF] text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-[#E9F2FF] text-[#4A5565] text-xs font-medium rounded-full ">
                                     Permanent roles
                                 </span>
-                                <span className="px-4 py-2 bg-[#E9F2FF] text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-[#E9F2FF] text-[#4A5565] text-xs font-medium rounded-full ">
                                     Locum flexibility
                                 </span>
-                                <span className="px-4 py-2 bg-[#E9F2FF] text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-[#E9F2FF] text-[#4A5565] text-xs font-medium rounded-full ">
                                     International pathways
                                 </span>
                             </div>
@@ -101,13 +101,13 @@ export default function HealthcarePathways() {
 
                             {/* Feature Tags */}
                             <div className="flex flex-wrap gap-2 mb-8">
-                                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-blue-50 text-[#4A5565] text-xs font-medium rounded-full ">
                                     Permanent hiring
                                 </span>
-                                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-blue-50 text-[#4A5565] text-xs font-medium rounded-full ">
                                     Locum coverage
                                 </span>
-                                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-blue-50 text-[#4A5565] text-xs font-medium rounded-full ">
                                     Hard-to-fill roles
                                 </span>
                             </div>

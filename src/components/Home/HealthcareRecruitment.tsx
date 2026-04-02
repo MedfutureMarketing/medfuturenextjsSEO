@@ -1,6 +1,7 @@
 'use client';
 
 import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import Gpm from "@/assets/Homedivisonsection/1.jpg";
@@ -14,6 +15,7 @@ interface RecruitmentCard {
   description: string;
   iconBgColor: string;
   coverImage: StaticImageData;
+  link: string; // Add this
 }
 
 /* ================= SVG ICONS ================= */
@@ -73,6 +75,7 @@ const HealthcareRecruitment = () => {
         'Recruitment for general practitioners, specialists, and hospital-based roles.',
       iconBgColor: 'bg-blue-600',
       coverImage: Gpm,
+      link: '/general-practice-division', // Add link
     },
     {
       iconSvg: <UsersSVG />,
@@ -81,6 +84,7 @@ const HealthcareRecruitment = () => {
         'Opportunities and hiring solutions across physiotherapy, occupational therapy, speech pathology, and more.',
       iconBgColor: 'bg-blue-700',
       coverImage: Ahp,
+      link: '/allied-health', // Add link
     },
     {
       iconSvg: <BrainSVG />,
@@ -89,6 +93,7 @@ const HealthcareRecruitment = () => {
         'Supporting workforce needs across psychiatry, psychology, and community mental health services.',
       iconBgColor: 'bg-slate-700',
       coverImage: MH,
+      link: '/mental-health', // Add link
     },
     {
       iconSvg: <ToothSVG />,
@@ -97,6 +102,7 @@ const HealthcareRecruitment = () => {
         'Connecting dental professionals with clinics and specialist practices across Australia.',
       iconBgColor: 'bg-gray-700',
       coverImage: doh,
+      link: '/dental-oral-health', // Add link
     },
   ];
 
@@ -161,10 +167,12 @@ const HealthcareRecruitment = () => {
                 </p>
               </div>
 
-              {/* Button */}
-              <button className="w-full text-[14px] bg-[#074CA4] hover:bg-blue-800 cursor-pointer  text-white font-semibold py-3 rounded">
-                Explore
-              </button>
+              {/* Button - Now uses Link */}
+              <Link href={card.link}>
+                <button className="w-full text-[14px] bg-[#074CA4] hover:bg-blue-800 cursor-pointer text-white font-semibold py-3 rounded">
+                  Explore
+                </button>
+              </Link>
             </div>
           </div>
         ))}
