@@ -101,7 +101,7 @@ const HealthcareRecruitment = () => {
   ];
 
   return (
-    <div className="w-full bg-white px-6 py-12 lg:px-0">
+    <div className="w-full bg-white px-6 py-12 lg:px-0 lg:mt-[130px]">
       {/* Top Title */}
       <div className="flex items-center gap-8 mb-16">
         <div className="flex-grow h-px bg-gray-300"></div>
@@ -112,13 +112,13 @@ const HealthcareRecruitment = () => {
 
       {/* Header */}
       <div className="mb-12">
-        <p className="text-sm text-gray-600 mb-2 font-medium">
+        <p className="text-xs  text-[#074CA4] mb-2 font-medium">
           Explore by divisions
         </p>
-        <h2 className="text-4xl font-bold text-gray-900 mb-6">
+        <h2 className="text-xl lg:text-[30px] font-bold text-gray-900 mb-6">
           Specialised recruitment across key healthcare sectors
         </h2>
-        <p className="text-lg text-gray-700 max-w-3xl">
+        <p className="text-xs lg:text-[16px] text-[#4A5565] max-w-2xl">
           Each healthcare discipline has unique workforce needs. Medfuture delivers recruitment
           solutions aligned to clinical scope, service models, and patient care requirements.
         </p>
@@ -162,7 +162,7 @@ const HealthcareRecruitment = () => {
               </div>
 
               {/* Button */}
-              <button className="w-full bg-[#074CA4] hover:bg-blue-800 text-white font-semibold py-3 rounded">
+              <button className="w-full text-[14px] bg-[#074CA4] hover:bg-blue-800 cursor-pointer  text-white font-semibold py-3 rounded">
                 Explore
               </button>
             </div>

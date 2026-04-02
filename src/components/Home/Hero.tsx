@@ -122,22 +122,22 @@ export default function Hero() {
                         
                         {/* LEFT CONTENT */}
                         <div className="w-full lg:w-1/2 text-left z-10 pr-0 lg:pr-8">
-                            <h1 className="text-2xl sm:text-3xl lg:text-[36px] font-bold text-white leading-tight mb-4">
+                            <h1 className="text-2xl sm:text-3xl lg:text-[36px] lg:text-left md:text-center text-left font-bold text-white leading-tight mb-4">
                                 Connecting Australias healthcare services with the right clinicians  faster, safer and with better long-term fit.
                             </h1>
 
-                            <p className="text-sm sm:text-[16px] text-white/95 leading-relaxed mb-8 max-w-lg">
+                            <p className="text-sm sm:text-[16px] text-white/95 leading-relaxed lg:text-left md:text-center text-left mb-8 lg:max-w-lg">
                                 Medfuture supports healthcare employers, doctors, allied health professionals, mental health clinicians and dental teams with permanent, locum and international recruitment pathways built around compliance, continuity and career alignment.
                             </p>
 
                             {/* BADGES - Display as Images */}
-                            <div className="flex flex-wrap gap-6 mb-8">
+                            <div className="flex flex-wrap item-center justify-center md:item-center md:justify-center  lg:item-start lg:justify-start   gap-6 mb-8">
                                 <Image
                                     src={icon1}
                                     alt="2024 Australia Achiever Award"
                                     width={136.1269989013672}
                                     height={136.1269989013672}
-                                    className="object-contain h-[136.1269989013672px] w-auto"
+                                    className="object-contain h-[136.1269989013672px] w-auto "
                                     priority={false}
                                     loading="lazy"
                                 />
@@ -152,7 +152,7 @@ export default function Hero() {
                                 />
                             </div>
                             {/* CTA BUTTONS */}
-                            <div className="flex flex-col sm:flex-row gap-4">
+                            <div className="flex flex-col item-center justify-center md:item-center md:justify-center  lg:item-start lg:justify-start   sm:flex-row gap-4">
                                 <Link
                                     href="/job-seeker-hub"
                                     className="px-6 py-3 bg-[#0066cc] text-white rounded text-sm font-semibold hover:bg-blue-700 transition duration-300 transform hover:translate-y-[-2px] text-center"
@@ -195,8 +195,8 @@ export default function Hero() {
                     </div>
                 </div> 
             </div>
-                <div className="relative z-10 inner-width-section px-4 lg:px-0 py-[50px]">
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-26 pb-16">
+                <div className="relative z-10 inner-width-section px-4 lg:px-0 lg:py-[50px]">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 lg:gap-26 lg:pb-16">
                         {stats.map((stat, index) => (
                             <div
                                 key={index}
@@ -205,7 +205,7 @@ export default function Hero() {
                                 <div className="text-lg sm:text-xl lg:text-[40px] font-bold mb-1">
                                     {stat.value}
                                 </div>
-                                <p className="text-xs sm:text-[16px] text-[#040D48]">
+                                <p className="text-[10px] lg:text-[16px] text-[#040D48]">
                                     {stat.label}
                                 </p>
                             </div>

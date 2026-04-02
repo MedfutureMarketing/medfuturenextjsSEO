@@ -1,19 +1,20 @@
 'use client';
+import Link from 'next/link';
 
 export default function ReadyToMove() {
   return (
-    <section className="bg-gray-50 py-16 md:py-24">
+    <section className="bg-gray-50 py-16 lg:py-24 mb-36">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Column */}
           <div className="flex flex-col justify-center">
-            <p className="text-blue-600 text-sm font-semibold mb-3 tracking-wide">
+            <p className="text-[#074CA4] text-xs lg:text-[14px] font-semibold mb-3 tracking-wide">
               Lets Get You Started
             </p>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h2 className="text-xl md:text-[30px] font-bold text-[#0F172A] mb-6 leading-tight">
               Ready to move with Medfuture
             </h2>
-            <p className="text-gray-600 text-base leading-relaxed mb-8">
+            <p className="text-[#4A5565] text-xs lg:text-[16px] leading-relaxed mb-8">
               Whether you are exploring new opportunities or building your team,
               Medfuture provides the support needed to take the next step with
               confidence. If you&apos;re a candidate, please use &quot;Search Jobs.&quot;
@@ -23,28 +24,32 @@ export default function ReadyToMove() {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 px-8 rounded transition-colors duration-200">
-                Search Jobs
-              </button>
-              <button className="border-2 border-blue-700 text-blue-700 hover:bg-blue-50 font-semibold py-3 px-8 rounded transition-colors duration-200">
-                Submit a Vacancy
-              </button>
+              <Link href="/permanent">
+                <button className="bg-[#074CA4] hover:bg-blue-800 lg:text-md text-xs cursor-pointer text-white font-semibold py-3 px-8 rounded transition-colors duration-200">
+                  Search Jobs
+                </button>
+              </Link>
+              <Link href="/employer-hub">
+                <button className="border-2 border-[#074CA4]  hover:bg-blue-800 lg:text-md text-xs text-[#074CA4] cursor-pointer hover:bg-blue-50 font-semibold py-3 px-8 rounded transition-colors duration-200">
+                  Submit a Vacancy
+                </button>
+              </Link>
             </div>
           </div>
 
           {/* Right Column */}
-          <div className="flex flex-col justify-center">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8">
+          <div className="flex flex-col justify-center bg-[#FCFCFC]">
+            <h3 className="text-lg lg:text-[20px] text-[#0F172A] font-bold text-gray-900 mb-8">
               Contact Us
             </h3>
 
             {/* Phone */}
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center bg-white border-2 py-2 px-2 py-2 px-2 gap-4 mb-6">
               <div className="flex-shrink-0">
                 <svg
                   className="w-6 h-6 text-blue-700"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#074CA4"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -59,12 +64,12 @@ export default function ReadyToMove() {
             </div>
 
             {/* Email */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center bg-white border-2 py-2 px-2 gap-4 mb-8">
               <div className="flex-shrink-0">
                 <svg
                   className="w-6 h-6 text-blue-700"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="#074CA4"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -75,13 +80,15 @@ export default function ReadyToMove() {
                   />
                 </svg>
               </div>
-              <span className="text-gray-700 font-medium">helpdesk@themedfuture.com</span>
+              <span className="text-gray-700 text-lg">helpdesk@themedfuture.com</span>
             </div>
 
             {/* Contact Button */}
-            <button className="bg-blue-900 hover:bg-blue-950 text-white font-semibold py-3 px-6 rounded transition-colors duration-200 w-full">
-              Contact Us
-            </button>
+            <Link href="/contact-us">
+              <button className="bg-[#1B3461] cursor-pointer hover:bg-blue-950 text-white font-semibold py-3 px-6 rounded transition-colors duration-200 w-full">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </div>

@@ -83,8 +83,8 @@ export default function EmployerServices({
     };
 
     return (
-        <section className="bg-white ">
-            <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        <section className="bg-white  py-24 lg:mt-[160px]">
+            <div className="inner-width-section">
                 {/* Header */}
                 <div className="flex items-center gap-8 mb-16">
                     <div className="flex-grow h-px bg-[#0B3264]"></div>
@@ -96,7 +96,7 @@ export default function EmployerServices({
                 {/* Layout */}
                 <div className="space-y-12">
                     {/* Row 1 */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div className="grid grid-cols-1  lg:grid-cols-3 gap-8 items-start">
                         {/* Left Text */}
                         <div className="flex flex-col justify-start pt-4">
                             <p className="text-[#074CA4] text-[14px] font-semibold mb-3 tracking-wide">
@@ -105,9 +105,9 @@ export default function EmployerServices({
                             <h2 className="text-xl md:text-[30px] font-bold text-[#0F172A] mb-6 leading-tight">
                                 Choose the engagement model that matches your urgency
                             </h2>
-                            <button className="bg-[#074CA4] hover:bg-blue-800 text-white text-xs lg:text-[14px] font-semibold py-3 px-5 rounded w-fit">
+                            <Link href="/employer-hub"> <button className="bg-[#074CA4] hover:bg-blue-800 px-[23px] py-[11px] text-white text-xs lg:text-[14px] font-semibold  rounded w-fit">
                                 Request a Service Proposal
-                            </button>
+                            </button></Link>
                         </div>
 
                         {/* First 2 Cards */}
@@ -122,7 +122,7 @@ export default function EmployerServices({
                     </div>
 
                     {/* Row 2 */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {services.slice(2, 5).map((service) => (
                             <ServiceCardComponent
                                 key={service.id}
@@ -170,17 +170,17 @@ function ServiceCardComponent({
 
             {/* Card Content */}
             <div className="relative -mt-12 mx-4 bg-white rounded-lg shadow-md border border-gray-100 p-5">
-                <h3 className="text-[16px] font-semibold text-[#074CA4] mb-2">
+                <h3 className="text-[16px] font-semibold text-center text-[#074CA4] mb-2">
                     {service.title}
                 </h3>
 
-                <p className="text-[#171717B2] text-[14px] leading-relaxed mb-4">
+                <p className="text-[#171717B2] text-[14px] text-center leading-relaxed mb-4">
                     {service.description}
                 </p>
 
                 <Link
                     href={service.exploreLink}
-                    className="inline-flex items-center text-[#575D84] text-sm font-medium group-hover:text-blue-900"
+                    className=" flex flex-wrap items-center cursor-pointer justify-center text-[#575D84] "
                 >
                     Explore
                     <span className="ml-1 transition-transform group-hover:translate-x-1">
@@ -195,7 +195,7 @@ function ServiceCardComponent({
                 </Link>
 
                 {/* Bottom Accent */}
-                <div className="absolute left-0 bottom-0 w-full h-[3px] bg-blue-700 rounded-b-lg"></div>
+                <div className="absolute left-0 bottom-0 w-full h-[4px] bg-[#074CA4] rounded-b-lg"></div>
             </div>
         </div>
     );

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 
 
@@ -11,7 +12,7 @@ export default function HealthcarePathways() {
             {/* Main Container */}
             <div className="w-full inner-width-section py-[60px]">
                 {/* Header Section */}
-                <div className="mb-12 text-white px-8">
+                <div className="mb-12 text-white lg:px-8">
                     <p className="text-[14px] font-medium text-[#FFFFFF] mb-[5px] tracking-wide">
                         Choose your pathway
                     </p>
@@ -24,10 +25,10 @@ export default function HealthcarePathways() {
                 </div>
 
                 {/* Cards Section */}
-                <div className="grid md:grid-cols-2 gap-6 px-8">
+                <div className="grid lg:grid-cols-2 md:grid-cols-2 gap-6 lg:px-8">
                     {/* For Job Seekers Card */}
                     <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 px-8">
-                        <div className="p-8">
+                        <div className="lg:p-8 p-4">
                             {/* Icon */}
                             <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-6">
 
@@ -42,32 +43,34 @@ export default function HealthcarePathways() {
                             </div>
 
                             {/* Heading */}
-                            <h2 className="text-2xl lg:text-[20px] font-bold text-slate-900 mb-4">
+                            <h2 className="text-xl lg:text-[20px] font-bold text-slate-900 mb-4">
                                 For Job Seekers
                             </h2>
 
                             {/* Description */}
-                            <p className="text-slate-700 lg:text-[16px] mb-6 lg:text leading-relaxed text-sm lg:text-[16px]">
+                            <p className="text-slate-700 text-xs mb-6 lg:text leading-relaxed text-sm lg:text-[16px]">
                                 Search and apply for permanent, locum, and international healthcare roles across Australia with guidance from a recruitment team that understands your profession.
                             </p>
 
                             {/* Feature Tags */}
                             <div className="flex flex-wrap gap-2 mb-8">
-                                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-[#E9F2FF] text-blue-700 text-xs font-medium rounded-full border border-blue-200">
                                     Permanent roles
                                 </span>
-                                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-[#E9F2FF] text-blue-700 text-xs font-medium rounded-full border border-blue-200">
                                     Locum flexibility
                                 </span>
-                                <span className="px-4 py-2 bg-blue-50 text-blue-700 text-xs font-medium rounded-full border border-blue-200">
+                                <span className="px-4 py-2 bg-[#E9F2FF] text-blue-700 text-xs font-medium rounded-full border border-blue-200">
                                     International pathways
                                 </span>
                             </div>
 
                             {/* Button */}
-                            <button className="w-full bg-[#074CA4] lg:text-[16px] text-lg hover:bg-blue-700 text-white  py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
-                                Search Jobs
-                            </button>
+                            <Link href="permanent?page=1">
+                                <button className="w-full cursor-pointer bg-[#074CA4] lg:text-[16px] text-lg hover:bg-blue-700 text-white  py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
+                                    Search Jobs
+                                </button>
+                            </Link>
                         </div>
                     </div>
 
@@ -87,7 +90,7 @@ export default function HealthcarePathways() {
                             </div>
 
                             {/* Heading */}
-                            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                            <h2 className="text-2xl cursor-pointer font-bold text-slate-900 mb-4">
                                 For Employers
                             </h2>
 
@@ -110,10 +113,11 @@ export default function HealthcarePathways() {
                             </div>
 
                             {/* Button */}
-                            <button className="w-full bg-[#074CA4] lg:text-[16px] text-lg hover:bg-blue-700 text-white  py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
-                                Explore Employer Services
-
-                            </button>
+                            <Link href="/employer-hub">
+                                <button className="w-full cursor-pointer bg-[#074CA4] lg:text-[16px] text-lg hover:bg-blue-700 text-white  py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
+                                    Explore Employer Services
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

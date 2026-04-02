@@ -72,7 +72,7 @@ export default function BlogSection() {
   const mainMinutes = mainBlog.blogHistory?.[0]?.minutes ?? 0;
 
   return (
-    <section className="py-16 mb-[180px]">
+    <section className="py-16 lg:mb-[180px]">
       <div className="inner-width-section max-w-7xl mx-auto space-y-16">
         
         {/* Section Header */}

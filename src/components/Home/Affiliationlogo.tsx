@@ -40,12 +40,14 @@ interface AffiliationProps {
   logos?: Logo[];
   logosPerView?: number;
   autoPlayInterval?: number;
+  logoOpacity?: number; // Add this prop (0-1)
 }
 
-export default function AffiliationAccreditation({ 
+export default function AffiliationAccreditation({
   logos = DEFAULT_LOGOS,
   logosPerView = 4,
-  autoPlayInterval = 3000
+  autoPlayInterval = 3000,
+  logoOpacity = 1 // Default to full opacity
 }: AffiliationProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -63,7 +65,7 @@ export default function AffiliationAccreditation({
   const visibleLogos = logos.slice(currentIndex, currentIndex + logosPerView);
 
   return (
-    <section className="bg-white py-16 md:py-20">
+    <section className="bg-white py-16 md:py-[150px]">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         {/* Title */}
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-12">
@@ -72,18 +74,19 @@ export default function AffiliationAccreditation({
 
         {/* Auto Slider */}
         <div className="overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center transition-all duration-500">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:gap-42 gap-6 items-center justify-items-center transition-all duration-500">
             {visibleLogos.map((logo) => (
               <div
                 key={logo.id}
-                className="w-full flex items-center justify-center p-4 transition-all duration-500"
+                className="w-full flex items-center  justify-center p-4 transition-all duration-500"
               >
                 <Image
                   src={logo.src}
                   alt={logo.alt}
                   width={150}
                   height={120}
-                  className="max-w-[140px] h-auto object-contain"
+                  className="max-w-[140px] h-auto object-contain grayscale-50"
+                  style={{ opacity: 0.5 }}
                   priority={false}
                 />
               </div>
