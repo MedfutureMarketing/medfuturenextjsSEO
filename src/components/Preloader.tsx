@@ -9,7 +9,7 @@ import LoaderImage from "@/assets/logo/medfuture-logo.webp";
 
 // Pages where preloader is allowed with custom messages
 const routeMessages: Record<string, string> = {
-  "/": "Loading...",
+  "/": "",
   // Add more routes here that should show the preloader
   // "/dashboard": "Loading dashboard...",
   // "/patients": "Loading patients...",
@@ -92,7 +92,9 @@ function PreloaderContent() {
           <div
             className="w-2 h-2 rounded-full bg-blue-500 animate-bounce"
             style={{ animationDelay: "300ms" }}
-          ></div>
+          >
+            
+          </div>
         </div>
 
         {/* Dynamic loading message based on route */}

@@ -3,28 +3,30 @@
 import React from 'react';
 
 
+
+
 export default function HealthcarePathways() {
     return (
-        <div className="bg-[#040D48] flex items-center justify-center p-6">
+        <div className="bg-[#040D48] flex items-center justify-center lg:p-6">
             {/* Main Container */}
             <div className="w-full inner-width-section py-[60px]">
                 {/* Header Section */}
-                <div className="mb-12 text-white">
-                    <p className="text-[14px] font-medium text-blue-300 mb-2 tracking-wide">
+                <div className="mb-12 text-white px-8">
+                    <p className="text-[14px] font-medium text-[#FFFFFF] mb-[5px] tracking-wide">
                         Choose your pathway
                     </p>
-                    <h2 className="text-4xl md:text-[30px] font-bold mb-4 leading-tight">
+                    <h2 className="text-2xl md:text-[30px] font-bold mb-4 leading-tight">
                         Clear pathways for healthcare professionals and employers
                     </h2>
-                    <p className="text-base text-slate-300 max-w-2xl leading-relaxed">
+                    <p className="text-xs lg:text-[16px] text-slate-300 max-w-2xl leading-relaxed">
                         Whether you are planning your next career move or strengthening your workforce, Medfuture provides tailored support aligned with your goals.
                     </p>
                 </div>
 
                 {/* Cards Section */}
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-6 px-8">
                     {/* For Job Seekers Card */}
-                    <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 px-8">
                         <div className="p-8">
                             {/* Icon */}
                             <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mb-6">
@@ -40,12 +42,12 @@ export default function HealthcarePathways() {
                             </div>
 
                             {/* Heading */}
-                            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+                            <h2 className="text-2xl lg:text-[20px] font-bold text-slate-900 mb-4">
                                 For Job Seekers
                             </h2>
 
                             {/* Description */}
-                            <p className="text-slate-700 mb-6 leading-relaxed text-sm">
+                            <p className="text-slate-700 lg:text-[16px] mb-6 lg:text leading-relaxed text-sm lg:text-[16px]">
                                 Search and apply for permanent, locum, and international healthcare roles across Australia with guidance from a recruitment team that understands your profession.
                             </p>
 
@@ -63,9 +65,8 @@ export default function HealthcarePathways() {
                             </div>
 
                             {/* Button */}
-                            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
+                            <button className="w-full bg-[#074CA4] lg:text-[16px] text-lg hover:bg-blue-700 text-white  py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
                                 Search Jobs
-
                             </button>
                         </div>
                     </div>
@@ -109,7 +110,7 @@ export default function HealthcarePathways() {
                             </div>
 
                             {/* Button */}
-                            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
+                            <button className="w-full bg-[#074CA4] lg:text-[16px] text-lg hover:bg-blue-700 text-white  py-3 px-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2 group">
                                 Explore Employer Services
 
                             </button>

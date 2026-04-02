@@ -1295,4 +1295,5 @@ export const dynamicOverrides: Record<string, MetadataConfig> = {
             images: [`${BASE_URL}/twitter-image.jpg`],
         },
     },
+    
 };

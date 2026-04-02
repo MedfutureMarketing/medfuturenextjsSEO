@@ -16,7 +16,7 @@ type HomeData = {
     }>;
 };
 
-export default function TestimonialPuzzle() {
+export default function TestimonialPuzzleTestimonialPuzzle() {
     const [homeData, setHomeData] = useState<HomeData | null>(null);
     const [currentSlide, setCurrentSlide] = useState(0);
 
