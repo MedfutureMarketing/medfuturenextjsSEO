@@ -18,6 +18,7 @@ import Employerservices from "@/components/Home/Employerservices";
 import TestimonialPuzzle from "@/components/Gpdivision/GpdivisionComponents/GpDivisiontestimony"
 import BlogSection from "@/components/Blog/Blog";
 import AffiliationAccreditation from "@/components/Home/Affiliationlogo";
+import ReadyToMove from "@/components/Home/Readytomove";
 
 
 export function getSchema(page: string) {
@@ -54,6 +55,7 @@ export default function RootLayout({
         <AffiliationAccreditation/>
         <TestimonialPuzzle/>
         <BlogSection />
+        <ReadyToMove/>
         {/* <JobSeekerHubSearch />
         <JobsbyProfession />
         <BrowseJobs />
