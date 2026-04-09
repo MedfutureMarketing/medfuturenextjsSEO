@@ -12,7 +12,7 @@ export default function SocialSuccess() {
 
     if (token) {
       localStorage.setItem("TOKEN", token);
-      router.push("/my-account/candidate");
+      router.push("/permanent?page=1");
     } else {
       router.push("/login");
     }

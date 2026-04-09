@@ -230,9 +230,12 @@ export default function CandidateForm() {
         : !verifyEmailFormat(formData.email)
           ? 'Please enter a valid email address'
           : '',
-      phoneNumber: !formData.phoneNumber ? 'Please enter your phone number' : '',
+      phoneNumber: !formData.phoneNumber
+        ? 'Please enter your phone number'
+        : formData.phoneNumber.replace(/\D/g, '').length < 8
+          ? 'Please enter a valid phone number'
+          : '',
       profession: !formData.profession ? 'Please select a profession' : '',
-      specialty: !formData.specialty ? 'Please select a specialty' : '',
       password: !formData.password
         ? 'Please enter a password'
         : formData.password.length < 6

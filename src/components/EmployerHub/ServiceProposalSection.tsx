@@ -222,7 +222,7 @@ export default function ServiceProposalSection() {
       <div className="inner-width-section mx-auto px-4 sm:px-8 lg:px-16">
 
         {/* Header */}
-        <p className="text-[13px] font-semibold text-blue-700 mb-2.5">
+        <p className="text-[13px] font-semibold text-[#074ca4] mb-2.5">
           Request Proposal
         </p>
         <h2 className="text-xl lg:text-[38px] font-600 text-slate-900 mb-3 leading-tight">
@@ -419,7 +419,7 @@ export default function ServiceProposalSection() {
               <p className="text-[16px] font-bold text-[#040D48] mb-4">
                 What you receive
               </p>
-              <ul className="flex flex-col gap-3">
+              <ul className="flex flex-col gap-">
                 {whatYouReceive.map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <span className="text-[#4A5565] lg:text-[14px] leading-relaxed shrink-0">
@@ -441,8 +441,8 @@ export default function ServiceProposalSection() {
               <div className="flex flex-col gap-2 mb-5">
                 {[
                   ["Hotline:", "1300 633 388"],
-                  ["WhatsApp:", "+61 452 668 811"],
-                  ["International:", "+61 452 668 811"],
+                  // ["WhatsApp:", "+61 452 668 811"],
+                  // ["International:", "+61 452 668 811"],
                   ["Email:", "candidateservices@medfuture.com.au"],
                 ].map(([label, value]) => (
                   <p key={label} className="text-[13px] text-slate-600">

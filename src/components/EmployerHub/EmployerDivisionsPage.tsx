@@ -60,18 +60,18 @@ const divisions = [
             </svg>
         ),
     },
-    {
-        id: 5,
-        title: "Pharmacy Recruitment",
-        description: "Community and hospital pharmacy placements with compliance-first vetting.",
-        tags: ["Community", "Hospital", "Locum"],
-        image: Image1,
-        icon: (
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" />
-            </svg>
-        ),
-    },
+    // {
+    //     id: 5,
+    //     title: "Pharmacy Recruitment",
+    //     description: "Community and hospital pharmacy placements with compliance-first vetting.",
+    //     tags: ["Community", "Hospital", "Locum"],
+    //     image: Image1,
+    //     icon: (
+    //         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    //             <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18" />
+    //         </svg>
+    //     ),
+    // },
 ];
 
 function ExploreIcon() {

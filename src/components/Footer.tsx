@@ -100,6 +100,8 @@ export default function Footer() {
                 <li><Link href="https://intuit7.com/" target="_blank" className="hover:text-white transition-colors">Visa & Migration Services</Link></li>
                 <li><Link href="https://themedfuture.com/" target="_blank" className="hover:text-white transition-colors">Medfuture Global</Link></li>
                 <li><Link href="https://medfuture.co.nz/" target="_blank" className="hover:text-white transition-colors">Medfuture New Zealand</Link></li>
+                                <li><Link href="/quicklinks" target="_blank" className="hover:text-white transition-colors">Quick Links</Link></li>
+
               </ul>
             </div>
 
@@ -120,8 +122,8 @@ export default function Footer() {
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
                   </svg>
-                  <a href="mailto:notify@medfuture.co.au" className="hover:underline">
-                    notify@medfuture.co.au
+                  <a href="mailto:helpdesk@themedfuture.com" className="hover:underline">
+                    helpdesk@themedfuture.com
                   </a>
                 </li>
                 {/* <li className="flex items-center gap-2">

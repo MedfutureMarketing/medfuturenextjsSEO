@@ -81,11 +81,10 @@ export default function TestimonialPuzzleTestimonialPuzzle() {
                     <div className="flex items-start justify-between">
                         <div>
                             <h2 className="text-xl lg:text-4xl font-bold text-[#1a1a1a] mb-3">
-                                Trusted Voices from Healthcare Professionals
+                                Trusted by healthcare professionals and organisations
                             </h2>
                             <p className="text-gray-600 lg:text-[16px] text-xs max-w-2xl">
-                                Real experiences and honest feedback from doctors and specialists<br />
-                                who've partnered with Medfuture.
+                                Long-term partnerships are built through consistent delivery, clear communication, and a strong understanding of healthcare workforce needs.
                             </p>
                         </div>
 
@@ -93,7 +92,7 @@ export default function TestimonialPuzzleTestimonialPuzzle() {
                         <div className="hidden lg:flex gap-3">
                             <button
                                 onClick={prevSlide}
-                                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition"
+                                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center  transition"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="gray" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -101,7 +100,7 @@ export default function TestimonialPuzzleTestimonialPuzzle() {
                             </button>
                             <button
                                 onClick={nextSlide}
-                                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-50 transition"
+                                className="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center  transition"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="gray" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -178,7 +177,7 @@ export default function TestimonialPuzzleTestimonialPuzzle() {
                         {/* Mobile Navigation Buttons */}
                         <button
                             onClick={prevSlide}
-                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-gray-300 text-gray-700 w-8 h-8 rounded-full hover:bg-gray-50 transition z-10 flex items-center justify-center"
+                            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 bg-white border border-gray-300 text-gray-700 w-8 h-8 rounded-full  transition z-10 flex items-center justify-center"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -186,7 +185,7 @@ export default function TestimonialPuzzleTestimonialPuzzle() {
                         </button>
                         <button
                             onClick={nextSlide}
-                            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-gray-300 text-gray-700 w-8 h-8 rounded-full hover:bg-gray-50 transition z-10 flex items-center justify-center"
+                            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 bg-white border border-gray-300 text-gray-700 w-8 h-8 rounded-full  transition z-10 flex items-center justify-center"
                         >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

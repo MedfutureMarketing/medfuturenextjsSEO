@@ -5,7 +5,7 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import MedfutureLogoDark from "@/assets/logo/medfuture-logo.webp";
+import MedfutureLogoDark from "@/assets/logo/med-logo.png";
 import MedfutureLogoLight from "@/assets/logo/medfuture-white.webp";
 import MegaMenu from "@/components/Navbar/MegaMenu";
 import MobileNav from "@/components/Navbar/Mobilenavbar";
@@ -27,24 +27,24 @@ export default function Menu() {
   // ⭐ TOP BAR COLORS
   const topBarColorMap: Record<string, string> = {
     "/": "bg-[#074CA4] text-white",
-    "/permanent": "bg-white text-[#040D48]",
-    "/locum": "bg-white text-[#040D48]",
-    "/international": "bg-white text-[#040D48]",
-    "/job-seeker-hub": "bg-white text-[#040D48]",
-    "/employer-hub": "bg-white text-[#040D48]",
-    "/contact-us": "bg-white text-[#040D48]",
-    "/about-us": "bg-white text-[#040D48]",
-    "/general-practitioner-registrar": "bg-white text-[#040D48]",
-    "/job-seeker-hub/medical-division": "bg-white text-[#040D48]",
-    "/job-seeker-hub/allied-health-division": "bg-white text-[#040D48]",
-    "/job-seeker-hub/oral-health-division": "bg-white text-[#040D48]",
-    "/job-seeker-hub/mental-health-division": "bg-white text-[#040D48]",
+    "/permanent": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/locum": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/international": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/job-seeker-hub": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/employer-hub": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/contact-us": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/about-us": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/general-practitioner-registrar": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/job-seeker-hub/medical-division": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/job-seeker-hub/allied-health-division": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/job-seeker-hub/oral-health-division": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
+    "/job-seeker-hub/mental-health-division": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
     "/ahp-division/speech-pathology": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
     "/ahp-division/occupational-therapist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
     "/ahp-division/podiatrist": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
     "/ahp-division/physiotherapy": "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]",
   };
-  const topBarColors = topBarColorMap[pathname] || "bg-white text-[#040D48]";
+  const topBarColors = topBarColorMap[pathname] || "bg-white text-[#040D48] shadow-[0_15px_20px_-18px_rgba(4,13,72,0.25)]";
 
   // ⭐ HEADER COLORS
   const headerColorMap: Record<string, string> = {
@@ -102,13 +102,6 @@ export default function Menu() {
                 <Image
                   src={activeLogo}
                   alt="Medfuture logo"
-                  width={180}
-                  height={40}
-                  style={{
-                    height: "clamp(30px, 5vw, 50px)",
-                    width: "auto",
-                    display: "block",
-                  }}
                   priority={false}
                   loading="lazy"
                 />

@@ -1,7 +1,6 @@
 "use client";
 import icon1 from "@/assets/homeico/2024-australia-achiever.webp"
 import apackinsider from "@/assets/homeico/apackinsider.webp"
-import healthcareTeam from "@/assets/homeico/bgimagemedfuture.png" 
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -11,6 +10,8 @@ import backgroundImage from "@/assets/homeico/imagfinal.jpg";
 type HomeData = {
     clientCount: number;
     candidateCount: number;
+    jobCount: number;
+    placementCount: number;
 };
 
 // Counter animation hook - animates once on mount, then updates smoothly to new values
@@ -73,6 +74,14 @@ export default function Hero() {
         homeData ? homeData.candidateCount : demoCandidateCount,
         2000
     );
+    const animatedActiveJobsCount = useCounterAnimation(
+        homeData ? homeData.jobCount : demoCandidateCount,
+        2000
+    );
+    const animatedPlacementsCount = useCounterAnimation(
+        2605,
+        2000
+    );
 
     useEffect(() => {
         async function fetchHomeData() {
@@ -89,18 +98,27 @@ export default function Hero() {
 
     const stats = [
         {
-            label: "Employers",
+            label: "Healthcare employers",
             value: animatedClientCount.toString() + "+",
             isAnimated: true
         },
         {
-            label: "Professional Placements",
+            label: "Candidates",
             value: animatedCandidateCount.toString() + "+",
             isAnimated: true
         },
-        { label: "Avg, Time to Hire", value: "3-7 Days", isAnimated: false },
-        { label: "Satisfaction", value: "4.9/5", isAnimated: false },
+        {
+            label: "Active Jobs",
+            value: animatedActiveJobsCount.toString() + "+",
+            isAnimated: true
+        },
+        {   label: "Placements", 
+            value: animatedPlacementsCount.toString() + "+", 
+            isAnimated: true 
+        },
+        { label: "Satisfaction Level", value: "4.9/5", isAnimated: false },
     ];
+
     return (
         <>
             {/* HEALTHCARE HERO SECTION */}
@@ -117,42 +135,67 @@ export default function Hero() {
                 {/* Dark Overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-r from-[#003d7a]/80 to-[#1a5fa8]/80 -z-5"></div>
 
-                <div className="inner-width-section px-4 lg:px-0 relative z-10">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-0 lg:gap-0 py-10 lg:py-20 relative">
-                        
-                        {/* LEFT CONTENT */}
-                        <div className="w-full lg:w-1/2 text-left z-10 pr-0 lg:pr-8">
-                            <h1 className="text-2xl sm:text-3xl lg:text-[36px] lg:text-left md:text-center text-left font-bold text-white leading-tight mb-4">
-                                Connecting Australias healthcare services with the right clinicians  faster, safer and with better long-term fit.
+                {/* 
+                  LAYOUT STRATEGY:
+                  - Outer wrapper: full viewport width, relative positioned
+                  - Inner content: constrained by inner-width-section, holds left text
+                  - Right image: absolutely positioned from 45% left to right edge of outer wrapper
+                  - Left content is capped at 45% width so image never overlaps text
+                */}
+                <div className="relative w-full py-10 lg:py-10">
+
+                    {/* RIGHT IMAGE - anchored to right edge of full-width outer container */}
+                    {/* Starts at 45% from left so it never overlaps the text column */}
+                    <div
+                        className="absolute inset-y-0 right-0 hidden lg:block"
+                        style={{ left: "50%", zIndex: 1 }}
+                    >
+                        <div className="relative w-full h-full">
+                            <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                                <source src="/home-page-vid.mp4" type="video/mp4" />
+                            </video>
+                        </div>
+                    </div>
+
+                    {/* LEFT CONTENT — constrained inside inner-width-section, max 45% on desktop */}
+                    <div className="inner-width-section px-4 lg:px-0 relative" style={{ zIndex: 2 }}>
+                        {/* 
+                          lg:max-w-[45%]: hard cap so text never reaches the image area.
+                          This works regardless of what inner-width-section resolves to.
+                        */}
+                        <div className="w-full lg:max-w-[45%] text-left pr-0 lg:pr-6">
+                            <h1 className="text-2xl sm:text-3xl lg:text-[30px] lg:text-left md:text-center text-left font-bold text-white leading-tight mb-4">
+                                Connecting Australia&apos;s healthcare services with the right clinicians — faster, safer and with better long-term fit.
                             </h1>
 
-                            <p className="text-sm sm:text-[16px] text-white/95 leading-relaxed lg:text-left md:text-center text-left mb-8 lg:max-w-lg">
+                            <p className="text-sm sm:text-[16px] text-white/95 leading-relaxed lg:text-left md:text-center text-left mb-8">
                                 Medfuture supports healthcare employers, doctors, allied health professionals, mental health clinicians and dental teams with permanent, locum and international recruitment pathways built around compliance, continuity and career alignment.
                             </p>
 
-                            {/* BADGES - Display as Images */}
-                            <div className="flex flex-wrap item-center justify-center md:item-center md:justify-center  lg:item-start lg:justify-start   gap-6 mb-8">
+                            {/* BADGES */}
+                            <div className="flex flex-wrap items-center justify-center md:items-center md:justify-center lg:items-start lg:justify-start gap-6 mb-10">
                                 <Image
                                     src={icon1}
                                     alt="2024 Australia Achiever Award"
-                                    width={136.1269989013672}
-                                    height={136.1269989013672}
-                                    className="object-contain h-[136.1269989013672px] w-auto "
+                                    width={136}
+                                    height={136}
+                                    className="object-contain h-[136px] w-auto"
                                     priority={false}
                                     loading="lazy"
                                 />
                                 <Image
                                     src={apackinsider}
                                     alt="Apack Insider Recognition"
-                                    width={136.1269989013672}
-                                    height={136.1269989013672}
-                                    className="object-contain h-[136.1269989013672px] w-auto"
+                                    width={136}
+                                    height={136}
+                                    className="object-contain h-[136px] w-auto"
                                     priority={false}
                                     loading="lazy"
                                 />
                             </div>
+
                             {/* CTA BUTTONS */}
-                            <div className="flex flex-col item-center justify-center md:item-center md:justify-center  lg:item-start lg:justify-start   sm:flex-row gap-4">
+                            <div className="flex flex-col items-center justify-center md:items-center md:justify-center lg:items-start lg:justify-start sm:flex-row gap-4">
                                 <Link
                                     href="/job-seeker-hub"
                                     className="px-6 py-3 bg-[#0066cc] text-white rounded text-sm font-semibold hover:bg-blue-700 transition duration-300 transform hover:translate-y-[-2px] text-center"
@@ -168,50 +211,36 @@ export default function Hero() {
                                 </Link>
                             </div>
                         </div>
-                        {/* RIGHT IMAGE - FULL BLEED */}
-                        <div className="absolute right-[-350px] top-0 bottom-0 w-full hidden lg:flex justify-end items-center">
-                            <Image
-                                src={healthcareTeam}
-                                alt="Healthcare professionals team"
-                                width={900}
-                                height={600}
-                                className="h-full w-auto object-cover object-right"
-                                priority={false}
-                                loading="lazy"
-                            />
-                        </div>
-                        {/* MOBILE/TABLET IMAGE */}
-                        <div className="w-full lg:hidden flex justify-center items-center mt-8">
-                            <Image
-                                src={healthcareTeam}
-                                alt="Healthcare professionals team"
-                                width={600}
-                                height={500}
-                                className="w-full max-w-sm h-auto object-cover rounded-lg"
-                                priority={false}
-                                loading="lazy"
-                            />
-                        </div>
                     </div>
-                </div> 
-            </div>
-                <div className="relative z-10 inner-width-section px-4 lg:px-0 lg:py-[50px]">
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 lg:gap-26 lg:pb-16">
-                        {stats.map((stat, index) => (
-                            <div
-                                key={index}
-                                className="text-center text-[#040D48] bg-[rgba(255,255,255,0.08)] rounded-lg py-4"
-                            >
-                                <div className="text-lg sm:text-xl lg:text-[40px] font-bold mb-1">
-                                    {stat.value}
-                                </div>
-                                <p className="text-[10px] lg:text-[16px] text-[#040D48]">
-                                    {stat.label}
-                                </p>
-                            </div>
-                        ))}
+
+                    {/* MOBILE/TABLET IMAGE — visible only below lg breakpoint */}
+                    <div className="w-full lg:hidden flex justify-center items-center mt-8 px-4">
+                        <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                                <source src="/home-page-vid.mp4" type="video/mp4" />
+                            </video>
                     </div>
+
                 </div>
+            </div>
+
+            {/* STATS BAR */}
+            <div className="relative z-10 inner-width-section px-4 lg:px-0 lg:py-[50px]">
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 lg:gap-6 lg:pb-16">
+                    {stats.map((stat, index) => (
+                        <div
+                            key={index}
+                            className="text-center text-[#040D48] bg-[rgba(255,255,255,0.08)] rounded-lg py-4"
+                        >
+                            <div className="text-lg sm:text-xl lg:text-[40px] font-bold mb-1">
+                                {stat.value}
+                            </div>
+                            <p className="text-[10px] lg:text-[16px] text-[#040D48]">
+                                {stat.label}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </>
     );
 }

@@ -452,14 +452,14 @@ const MEGA_MENU_CONFIG: Record<MenuKey, MenuConfig> = {
 
   oral: {
     title: "Oral Health",
-    titleHref: "/",
+    titleHref: "/permanent/oral-health-jobs/in-australia?page=1",
     hub: {
       title: "Oral Health Hub",
-      titleHref: "/",
+      titleHref: "/permanent/oral-health-jobs/in-australia?page=1",
       image: oralHubImage,
       description: "Find dentistry and oral health roles across Australia with career support and placement expertise.",
       buttonLabel: "Explore Oral Health Hub",
-      buttonHref: "/",
+      buttonHref: "/permanent/oral-health-jobs/in-australia?page=1",
     },
     professionsHeading: "Professions",
     columns: [

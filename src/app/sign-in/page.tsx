@@ -6,6 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return getPageMetadata("signin");
 }
 
+
 export default function Signup() {
   return (
     <main>

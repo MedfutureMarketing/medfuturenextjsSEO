@@ -30,52 +30,52 @@ async function getConsultantData(): Promise<ConsultantGroup> {
         consultants: [
             {
                 id: "1",
-                name: "Sree Ranju",
-                title: "Chief Manager - GP Metro and PLGP Unit",
-                email: "sree@medifuture.com.au",
+                name: "Travis Isaac",
+                title: "Recruitment Business Consultant",
+                email: "Travis@medfuture.com.au",
                 phone: "+61 489 071 766",
                 location: "New South Wales",
             },
             {
                 id: "2",
-                name: "Christopher Chris",
+                name: "Roy Benjanmin",
                 title: "Recruitment Business Consultant",
-                email: "christopher@themedifuture.com.au",
+                email: "Roy@medfuture.com.au",
                 phone: "+61 482 090 315",
                 location: "Victoria",
             },
             {
                 id: "3",
-                name: "Alex Johnson",
-                title: "Recruitment Specialist",
-                email: "alex@themedifuture.com.au",
+                name: "Thithy Loga",
+                title: "Team Leader – MOD Unit",
+                email: "Thithy@medfuture.com.au         ",
                 phone: "+61 400 123 456",
                 location: "Tasmania",
             },
             {
                 id: "4",
-                name: "Ridma Gomezzzz",
-                title: "Division Manager - AHP",
-                email: "tamy@themedifuture.com.au",
+                name: "Ruby Williams",
+                title: "Recruitment Business Consultant",
+                email: "Ruby@medfuture.com.au",
                 phone: "+61 123 456 789",
                 location: "Queensland",
             },
-            {
-                id: "5",
-                name: "test Gomezzzz",
-                title: "Division Manager - AHP",
-                email: "tamy@themedifuture.com.au",
-                phone: "+61 123 456 789",
-                location: "Queensland",
-            },
-            {
-                id: "6",
-                name: "test Gomezzzz",
-                title: "Division Manager - AHP",
-                email: "tamy@themedifuture.com.au",
-                phone: "+61 123 456 789",
-                location: "Queensland",
-            },
+            // {
+            //     id: "5",
+            //     name: "test Gomezzzz",
+            //     title: "Division Manager - AHP",
+            //     email: "tamy@themedifuture.com.au",
+            //     phone: "+61 123 456 789",
+            //     location: "Queensland",
+            // },
+            // {
+            //     id: "6",
+            //     name: "test Gomezzzz",
+            //     title: "Division Manager - AHP",
+            //     email: "tamy@themedifuture.com.au",
+            //     phone: "+61 123 456 789",
+            //     location: "Queensland",
+            // },
 
         ],
         centerImages: [testimony1, testimony2, testimony3, testimony4],
@@ -145,7 +145,7 @@ export default async function ConsultantsPage() {
                         Meet Our Consultants
                     </p>
                     <h2 className="text-lg sm:text-2xl lg:text-[30px] font-bold text-[#0F172A] mb-8 lg:mb-[52px]">
-Your Dedicated Psychotherapist Recruitment Experts                    </h2>
+                        Your Dedicated Psychotherapist Recruitment Experts                    </h2>
                 </div>
 
 

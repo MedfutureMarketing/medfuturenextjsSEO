@@ -88,15 +88,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/job-seeker-hub`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/job-seeker-hub`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_US",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/job-seeker-hub`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -133,9 +133,10 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+    
     employee: {
-        path: "/",
-        title: "Medfuturess | Medical Recruitment Agency in Australia",
+        path: "/employee-hub",
+        title: "Employee Hub | Medfuture",
         description:
             "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
         keywords: [
@@ -146,15 +147,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/employee-hub`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/employee-hub`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_US",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/employee-hub`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -191,9 +192,10 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+    
     aboutus: {
-        path: "/",
-        title: "Medfuture | Medical Recruitment Agency in Australia",
+        path: "/about-us",
+        title: "About Us | Medfuture",
         description:
             "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
         keywords: [
@@ -204,15 +206,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/about-us`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/about-us`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_US",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/about-us`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -249,8 +251,9 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+    
     contactus: {
-        path: "/",
+        path: "/contact-us",
         title: "Contact our Medical Recruitment Agency team | Medfuture",
         description:
             "Contact Medfuture, a reliable medical recruitment agency in Australia, for healthcare staffing and recruitment support.",
@@ -262,15 +265,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/contact-us`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/contact-us`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/contact-us`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -308,7 +311,7 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-     signin: {
+    signin: {
         path: "/sign-in",
         title: "Register with Medical Recruitment Agency | Medfuture",
         description:
@@ -321,15 +324,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/sign-in`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/sign-in`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/sign-in`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -366,6 +369,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+
     fracgp: {
         path: "/general-practice-division/fracgp-facrrm",
         title: "GP Jobs for Fellowed GPs | Medfuture",
@@ -379,15 +383,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/general-practice-division/fracgp-facrrm`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/general-practice-division/fracgp-facrrm`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/general-practice-division/fracgp-facrrm`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -438,15 +442,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/general-practice-division/gp-registrars`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/general-practice-division/gp-registrars`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/general-practice-division/gp-registrars`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -483,6 +487,7 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
+    
     locumgp: {
         path: "/general-practice-division/locum-gp",
         title: "Locum GP Jobs in Australia",
@@ -496,15 +501,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/general-practice-division/locum-gp`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/general-practice-division/locum-gp`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/general-practice-division/locum-gp`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -555,15 +560,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/ahp-division/speech-pathology`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/ahp-division/speech-pathology`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/ahp-division/speech-pathology`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -614,15 +619,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/ahp-division/occupational-therapist`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/ahp-division/occupational-therapist`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/ahp-division/occupational-therapist`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -662,9 +667,9 @@ export const metaDataList: Record<
 
     podiatrist: {
         path: "/ahp-division/podiatrist",
-        title: "Podiatrist  Jobs in Australia | Medfuture",
+        title: "Podiatrist Jobs in Australia | Medfuture",
         description:
-            "Grow your career at Medfuture: 36 occupational therapist jobs in Australia, including roles for registered occupational therapists",
+            "Grow your career at Medfuture: 36 podiatrist jobs in Australia, including roles for registered podiatrists",
         keywords: [
             "Medfuture",
             "Australia",
@@ -673,15 +678,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/ahp-division/podiatrist`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/ahp-division/podiatrist`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/ahp-division/podiatrist`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -719,7 +724,7 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
     
-  psychology: {
+    psychology: {
         path: "/mental-health/psychology",
         title: "Medical Recruitment Agency: Psychologist Jobs Australia",
         description:"Empower your career! Medfuture is a medical recruitment agency with 110+ Psychologist jobs in Australia. View (Full Time & Part Time) vacancies on our site.",
@@ -731,15 +736,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/mental-health/psychology`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/mental-health/psychology`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/mental-health/psychology`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -777,11 +782,11 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-     gpdivison: {
+    gpdivison: {
         path: "/general-practice-division",
         title: "General Practice Division | Medfuture",
         description:
-            "Grow your career at Medfuture:  General Practice jobs in Australia, including roles for registered occupational therapists",
+            "Grow your career at Medfuture: General Practice jobs in Australia, including roles for registered practitioners",
         keywords: [
             "Medfuture",
             "Australia",
@@ -790,15 +795,74 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/general-practice-division`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/general-practice-division`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/general-practice-division`,
+            siteName: "Medfuture",
+            title: "Medfuture | Medical Recruitment Agency in Australia",
+            description:
+                "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
+            images: [
+                {
+                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: "Medfuture – Responsive Layout Preview",
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            site: "@yourtwitter",
+            creator: "@yourtwitter",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
+            description:
+                "Explore top medical & healthcare jobs in Australia with Medfuture.",
+            images: [`${BASE_URL}/twitter-image.jpg`],
+        },
+        icons: {
+            icon: "/favicon.ico",
+            shortcut: "/favicon-32x32.png",
+            apple: "/apple-touch-icon.png",
+        },
+        manifest: "/site.webmanifest",
+        category: "Medical & Healthcare Recruitment",
+        metadataBase: new URL(BASE_URL),
+        applicationName: "Medfuture",
+        generator: "Next.js",
+        authors: [{ name: "Medfuture", url: BASE_URL }],
+        creator: "Medfuture",
+        publisher: "Medfuture",
+    },
+    
+    employerhub: {
+        path: "/employer-hub",
+        title: "Employer Hub | Medfuture",
+        description:
+            "Partner with Medfuture to hire top talent in Australia's healthcare sector, including general practitioners and registered occupational therapists. Find the right professionals to strengthen your workforce today.",
+        keywords: [
+            "Medfuture",
+            "Australia",
+            "Medical & Healthcare Recruitment",
+            "Medical",
+            "Healthcare",
+        ],
+        alternates: {
+            canonical: `${BASE_URL}/employer-hub`,
+            languages: {
+                "en-AU": `${BASE_URL}/employer-hub`,
+            },
+        },
+        openGraph: {
+            type: "website",
+            locale: "en_AU",
+            url: `${BASE_URL}/employer-hub`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -836,7 +900,7 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-     mentalhealth: {
+    mentalhealth: {
         path: "/mental-health",
         title: "Mental Health Division | Medfuture",
         description:
@@ -849,131 +913,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/mental-health`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/mental-health`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
-            siteName: "Medfuture",
-            title: "Medfuture | Medical Recruitment Agency in Australia",
-            description:
-                "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
-            images: [
-                {
-                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
-                    width: 1200,
-                    height: 630,
-                    alt: "Medfuture – Responsive Layout Preview",
-                },
-            ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            site: "@yourtwitter",
-            creator: "@yourtwitter",
-            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
-            description:
-                "Explore top medical & healthcare jobs in Australia with Medfuture.",
-            images: [`${BASE_URL}/twitter-image.jpg`],
-        },
-        icons: {
-            icon: "/favicon.ico",
-            shortcut: "/favicon-32x32.png",
-            apple: "/apple-touch-icon.png",
-        },
-        manifest: "/site.webmanifest",
-        category: "Medical & Healthcare Recruitment",
-        metadataBase: new URL(BASE_URL),
-        applicationName: "Medfuture",
-        generator: "Next.js",
-        authors: [{ name: "Medfuture", url: BASE_URL }],
-        creator: "Medfuture",
-        publisher: "Medfuture",
-    },
- ahp: {
-        path: "/ahp-division",
-        title: "Allied Health Jobs in Australia: Medical Recruitment Agency",
-        description:
-            "Your next move starts here! Medfuture is the medical recruitment agency for 300+ Allied Health jobs in Australia. View (Full Time & Part Time) openings today.",
-        keywords: [
-            "Medfuture",
-            "Australia",
-            "Medical & Healthcare Recruitment",
-            "Medical",
-            "Healthcare",
-        ],
-        alternates: {
-            canonical: `${BASE_URL}/`,
-            languages: {
-                "en-AU": `${BASE_URL}/`,
-            },
-        },
-        openGraph: {
-            type: "website",
-            locale: "en_AU",
-            url: `${BASE_URL}/`,
-            siteName: "Medfuture",
-            title: "Medfuture | Medical Recruitment Agency in Australia",
-            description:
-                "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
-            images: [
-                {
-                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
-                    width: 1200,
-                    height: 630,
-                    alt: "Medfuture – Responsive Layout Preview",
-                },
-            ],
-        },
-        twitter: {
-            card: "summary_large_image",
-            site: "@yourtwitter",
-            creator: "@yourtwitter",
-            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
-            description:
-                "Explore top medical & healthcare jobs in Australia with Medfuture.",
-            images: [`${BASE_URL}/twitter-image.jpg`],
-        },
-        icons: {
-            icon: "/favicon.ico",
-            shortcut: "/favicon-32x32.png",
-            apple: "/apple-touch-icon.png",
-        },
-        manifest: "/site.webmanifest",
-        category: "Medical & Healthcare Recruitment",
-        metadataBase: new URL(BASE_URL),
-        applicationName: "Medfuture",
-        generator: "Next.js",
-        authors: [{ name: "Medfuture", url: BASE_URL }],
-        creator: "Medfuture",
-        publisher: "Medfuture",
-    },
-     physiotherapy: {
-        path: "/ahp-division/physiotherapy",
-        title: "Physiotherapist Jobs Australia: Medical Recruitment Agency",
-        description:
-            "Reach your potential! Medfuture is a medical recruitment agency for 140+ Physiotherapist jobs in Australia. Apply (Full Time & Part Time) to join us today.",
-        keywords: [
-            "Medfuture",
-            "Australia",
-            "Medical & Healthcare Recruitment",
-            "Medical",
-            "Healthcare",
-        ],
-        alternates: {
-            canonical: `${BASE_URL}/`,
-            languages: {
-                "en-AU": `${BASE_URL}/`,
-            },
-        },
-        openGraph: {
-            type: "website",
-            locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/mental-health`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -1011,10 +959,11 @@ export const metaDataList: Record<
         publisher: "Medfuture",
     },
 
-     aboutUs: {
-        path: "/about-us",
-        title: "12 Years of Excellence in Medical Recruitment | Medfuture",
-        description:"Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
+    ahp: {
+        path: "/ahp-division",
+        title: "Allied Health Jobs in Australia: Medical Recruitment Agency",
+        description:
+            "Your next move starts here! Medfuture is the medical recruitment agency for 300+ Allied Health jobs in Australia. View (Full Time & Part Time) openings today.",
         keywords: [
             "Medfuture",
             "Australia",
@@ -1023,15 +972,74 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/ahp-division`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/ahp-division`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/ahp-division`,
+            siteName: "Medfuture",
+            title: "Medfuture | Medical Recruitment Agency in Australia",
+            description:
+                "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
+            images: [
+                {
+                    url: `${BASE_URL}/assets/pathwayBanner-ANKLHITn.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: "Medfuture – Responsive Layout Preview",
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            site: "@yourtwitter",
+            creator: "@yourtwitter",
+            title: "Medfuture – Medical & Healthcare Recruitment in Australia",
+            description:
+                "Explore top medical & healthcare jobs in Australia with Medfuture.",
+            images: [`${BASE_URL}/twitter-image.jpg`],
+        },
+        icons: {
+            icon: "/favicon.ico",
+            shortcut: "/favicon-32x32.png",
+            apple: "/apple-touch-icon.png",
+        },
+        manifest: "/site.webmanifest",
+        category: "Medical & Healthcare Recruitment",
+        metadataBase: new URL(BASE_URL),
+        applicationName: "Medfuture",
+        generator: "Next.js",
+        authors: [{ name: "Medfuture", url: BASE_URL }],
+        creator: "Medfuture",
+        publisher: "Medfuture",
+    },
+
+    physiotherapy: {
+        path: "/ahp-division/physiotherapy",
+        title: "Physiotherapist Jobs Australia: Medical Recruitment Agency",
+        description:
+            "Reach your potential! Medfuture is a medical recruitment agency for 140+ Physiotherapist jobs in Australia. Apply (Full Time & Part Time) to join us today.",
+        keywords: [
+            "Medfuture",
+            "Australia",
+            "Medical & Healthcare Recruitment",
+            "Medical",
+            "Healthcare",
+        ],
+        alternates: {
+            canonical: `${BASE_URL}/ahp-division/physiotherapy`,
+            languages: {
+                "en-AU": `${BASE_URL}/ahp-division/physiotherapy`,
+            },
+        },
+        openGraph: {
+            type: "website",
+            locale: "en_AU",
+            url: `${BASE_URL}/ahp-division/physiotherapy`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -1081,15 +1089,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/terms-and-conditions`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/terms-and-conditions`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/terms-and-conditions`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -1139,15 +1147,15 @@ export const metaDataList: Record<
             "Healthcare",
         ],
         alternates: {
-            canonical: `${BASE_URL}/`,
+            canonical: `${BASE_URL}/privacy-policy`,
             languages: {
-                "en-AU": `${BASE_URL}/`,
+                "en-AU": `${BASE_URL}/privacy-policy`,
             },
         },
         openGraph: {
             type: "website",
             locale: "en_AU",
-            url: `${BASE_URL}/`,
+            url: `${BASE_URL}/privacy-policy`,
             siteName: "Medfuture",
             title: "Medfuture | Medical Recruitment Agency in Australia",
             description:
@@ -1184,16 +1192,6 @@ export const metaDataList: Record<
         creator: "Medfuture",
         publisher: "Medfuture",
     },
-    
-
-
-    
-
-//  When updating section below this be carefull 
-// Nootttttteee
-
-
-
 
     // Dynamic template for permanent jobs
     permanent: (params: TemplateParams): MetadataConfig => ({
@@ -1205,7 +1203,7 @@ export const metaDataList: Record<
         openGraph: {
             type: "website",
             locale: "en_US",
-            url: `${BASE_URL}/job/${params.id}`,
+            url: `${BASE_URL}/permanent/${params.id}`,
             siteName: "Medfuture",
             title: `${params.title || "Job"} – Medfuture`,
             description: `Apply for ${params.title || "this job"} at Medfuture. Explore medical & healthcare opportunities across Australia.`,
@@ -1264,7 +1262,7 @@ export const dynamicOverrides: Record<string, MetadataConfig> = {
         },
     },
     "/permanent/general-practitioner-jobs/in-australia": {
-        title: "Specialsss GP Job | Medfuture",
+        title: "Special GP Job | Medfuture",
         description: "Apply for this exclusive GP role in Sydney with Medfuture.",
         alternates: {
             canonical:
@@ -1295,5 +1293,4 @@ export const dynamicOverrides: Record<string, MetadataConfig> = {
             images: [`${BASE_URL}/twitter-image.jpg`],
         },
     },
-    
 };

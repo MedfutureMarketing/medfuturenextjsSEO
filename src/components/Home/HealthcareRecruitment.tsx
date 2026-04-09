@@ -84,7 +84,7 @@ const HealthcareRecruitment = () => {
         'Opportunities and hiring solutions across physiotherapy, occupational therapy, speech pathology, and more.',
       iconBgColor: 'bg-blue-700',
       coverImage: Ahp,
-      link: '/allied-health', // Add link
+      link: '/ahp-division', // Add link
     },
     {
       iconSvg: <BrainSVG />,
@@ -102,7 +102,7 @@ const HealthcareRecruitment = () => {
         'Connecting dental professionals with clinics and specialist practices across Australia.',
       iconBgColor: 'bg-gray-700',
       coverImage: doh,
-      link: '/dental-oral-health', // Add link
+      link: '/permanent/dentists-jobs/in-australia?page=1', // Add link
     },
   ];
 
@@ -169,7 +169,7 @@ const HealthcareRecruitment = () => {
 
               {/* Button - Now uses Link */}
               <Link href={card.link}>
-                <button className="w-full text-[14px] bg-[#074CA4] hover:bg-blue-800 cursor-pointer text-white font-semibold py-3 rounded">
+                <button className="w-full text-[14px] bg-[#074CA4]  cursor-pointer text-white font-semibold py-3 rounded">
                   Explore
                 </button>
               </Link>

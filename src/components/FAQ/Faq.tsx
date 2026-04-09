@@ -289,11 +289,14 @@ const faqData: FAQData = {
     { question: "Do you offer telehealth psychologist and psychiatrist jobs?", answer: "Yes. We recruit for telehealth, hybrid, and in-clinic roles Australia-wide, depending on employer model, service needs, and your preferences." },
     { question: "Do you recruit for regional and rural Australia?", answer: "Yes. We specialise in regional and rural recruitment and can support relocation planning, incentives conversations, and hybrid/telepsychiatry options where available." },
     { question: "Is Medfuture aligned with ethical recruitment standards?", answer: "Yes. Our Mental Health Hub is clinician-first, privacy-aware, and compliance-led. We screen employers for fit, governance, and sustainability—not just vacancy pressure." },
-
-
-
-
-
+  ],
+   "/mental-health/psychology": [
+  { question: "Do I need to be actively job-seeking to speak with Medfuture?", answer: "No. Many psychologists connect months before moving. We keep it confidential and obligation-free." },
+  { question: "Do you recruit telehealth psychologist roles?", answer: "Yes. We recruit telehealth and hybrid roles where clinical governance and support are clear." },
+  { question: "Do you charge any candidate fees?", answer: "No. Medfuture does not charge candidates recruitment fees." },  
+  { question: "How do you ensure clinics are appropriate?", answer: "We prioritise transparency: caseload expectations, admin/reporting time, supervision model, and escalation pathways." },
+  { question: "Will you share my profile with employers?", answer: "Only with your explicit consent for a specific role submission." },
+  { question: "Can you support early-career/provisional pathways?", answer: "Yes. We work with supervision-ready employers and match roles to structured development needs." },
   ],
 
 

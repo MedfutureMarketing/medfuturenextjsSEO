@@ -15,7 +15,7 @@ interface JobSeekerHub {
 
 export default function CounterSection() {
   const [counters, setCounters] = useState<CounterItem[]>([
-    { label: "Total Clients", value: 18 },
+    { label: "Total Candidates", value: 18 },
     { label: "Total Jobs", value: 1500 },
     { label: "Avg Offer Time (days)", value: 14 },
     { label: "Total Placements", value: 0 },
@@ -32,7 +32,7 @@ export default function CounterSection() {
         );
 
         const updatedCounters = [
-          { label: "Total Clients", value: res.totalClients },
+          { label: "Total Candidates", value: res.totalClients },
           { label: "Total Jobs", value: res.totalJobs },
           { label: "Avg Offer Time (days)", value: 14 },
           { label: "Total Placements", value: res.totalCandidates },

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import MedfutureLogoDark from "@/assets/logo/medfuture-logo.webp";
 
-type MenuKey = "permanent" | "locum" | "international" | "candidates" | "medical" | "allied" | "mental" | "oral";
+type MenuKey = "permanent" | "locum" | "international" | "candidates" | "employers" | "medical" | "allied" | "mental" | "oral";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -56,6 +56,17 @@ const MENU_ITEMS: { label: string; href: string; submenu?: MenuKey; icon: React.
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
         <circle cx="12" cy="8" r="4" />
         <path d="M4 21c0-4 4-7 8-7s8 3 8 7" />
+      </svg>
+    ),
+  },
+  {
+    label: "For Employers",
+    href: "#",
+    submenu: "employers",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="w-[18px] h-[18px]">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
       </svg>
     ),
   },
@@ -135,6 +146,9 @@ const SUBMENU_CONFIG: Record<MenuKey, { label: string; href: string }[]> = {
     // { label: "Locum Jobs", href: "/locum" },
     // { label: "International Jobs", href: "/international" },
 
+  ],
+  employers: [
+    { label: "Employer Hub", href: "/employer-hub" },
   ],
   medical: [
     { label: "General Practice Division", href: "/general-practice-division" },

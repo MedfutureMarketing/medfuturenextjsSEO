@@ -21,7 +21,7 @@ import EmployerDivisions from "@/components/EmployerHub/EmployerDivisionsPage"
 import EmployerTestimonialsSection from "@/components/EmployerHub/EmployerTestimonialsSection";
 import ServiceProposalSection from "@/components/EmployerHub/ServiceProposalSection";
 export async function generateMetadata(): Promise<Metadata> {
-  return getPageMetadata("home");
+  return getPageMetadata("Employerhub");
 }
 
 

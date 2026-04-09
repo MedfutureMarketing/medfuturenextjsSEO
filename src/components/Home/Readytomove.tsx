@@ -25,12 +25,12 @@ export default function ReadyToMove() {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/permanent">
-                <button className="bg-[#074CA4] hover:bg-blue-800 lg:text-md text-xs cursor-pointer text-white font-semibold py-3 px-8 rounded transition-colors duration-200">
+                <button className="bg-[#074CA4]  lg:text-md text-xs cursor-pointer text-white font-semibold py-3 px-8 rounded transition-colors duration-200">
                   Search Jobs
                 </button>
               </Link>
               <Link href="/employer-hub">
-                <button className="border-2 border-[#074CA4]  hover:bg-blue-800 lg:text-md text-xs text-[#074CA4] cursor-pointer hover:bg-blue-50 font-semibold py-3 px-8 rounded transition-colors duration-200">
+                <button className="border-2 border-[#074CA4]   lg:text-md text-xs text-[#074CA4] cursor-pointer  font-semibold py-3 px-8 rounded transition-colors duration-200">
                   Submit a Vacancy
                 </button>
               </Link>
@@ -60,7 +60,7 @@ export default function ReadyToMove() {
                   />
                 </svg>
               </div>
-              <span className="text-gray-700 font-medium text-lg">1300</span>
+              <span className="text-gray-700 font-medium text-lg">1300 633 388</span>
             </div>
 
             {/* Email */}
@@ -85,7 +85,7 @@ export default function ReadyToMove() {
 
             {/* Contact Button */}
             <Link href="/contact-us">
-              <button className="bg-[#1B3461] cursor-pointer hover:bg-blue-950 text-white font-semibold py-3 px-6 rounded transition-colors duration-200 w-full">
+              <button className="bg-[#1B3461] cursor-pointer  text-white font-semibold py-3 px-6 rounded transition-colors duration-200 w-full">
                 Contact Us
               </button>
             </Link>

@@ -105,7 +105,7 @@ export default function EmployerServices({
                             <h2 className="text-xl md:text-[30px] font-bold text-[#0F172A] mb-6 leading-tight">
                                 Choose the engagement model that matches your urgency
                             </h2>
-                            <Link href="/employer-hub"> <button className="bg-[#074CA4] hover:bg-blue-800 px-[23px] py-[11px] text-white text-xs lg:text-[14px] font-semibold  rounded w-fit">
+                            <Link href="/employer-hub"> <button className="bg-[#074CA4]  px-[23px] py-[11px] text-white text-xs lg:text-[14px] font-semibold  rounded w-fit">
                                 Request a Service Proposal
                             </button></Link>
                         </div>
@@ -175,22 +175,21 @@ function ServiceCardComponent({
                 </h3>
 
                 <p className="text-[#171717B2] text-[14px] text-center leading-relaxed mb-4">
-                    {service.description}
+                    {service.description}&nbsp;&nbsp;&nbsp;&nbsp;
                 </p>
 
                 <Link
-                    href={service.exploreLink}
-                    className=" flex flex-wrap items-center cursor-pointer justify-center text-[#575D84] "
-                >
+                    href="#"
+                    onClick={(e) => e.preventDefault()}
+                    className="flex flex-wrap items-center justify-center text-[#575D84] cursor-not-allowed pointer-events-none"
+                    >
                     Explore
-                    <span className="ml-1 transition-transform group-hover:translate-x-1">
-
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="6.68347" height="6.68347" rx="1.60403" fill="#1B3461" />
-                            <rect x="7.35156" width="6.68347" height="6.68347" rx="1.60403" fill="#162950" />
-                            <rect x="7.35156" y="7.35156" width="6.68347" height="6.68347" rx="1.60403" fill="#269ED6" />
+                    <span className="ml-1">
+                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <rect width="6.68347" height="6.68347" rx="1.60403" fill="#1B3461" />
+                        <rect x="7.35156" width="6.68347" height="6.68347" rx="1.60403" fill="#162950" />
+                        <rect x="7.35156" y="7.35156" width="6.68347" height="6.68347" rx="1.60403" fill="#269ED6" />
                         </svg>
-
                     </span>
                 </Link>
 

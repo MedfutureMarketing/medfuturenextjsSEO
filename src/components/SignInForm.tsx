@@ -30,7 +30,7 @@ export default function SignInForm() {
   }
 
   try {
-    const response = await fetch("https://dev.medfuture.com.au/medadminapi/public/api/login-web", {
+    const response = await fetch("https://stage.medfuture.com.au/medadminapi/public/api/login-web", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -216,7 +216,7 @@ const handleFacebookLogin = () => {
           {/* Forgot Password aligned right */}
           <div className="flex justify-end mt-1.5">
             <Link
-              href="/forgot-password"
+              href="#"
               className="text-sm text-[#0A2E5C] hover:underline font-medium transition-colors"
             >
               Forgot password?
