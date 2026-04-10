@@ -101,9 +101,9 @@ const staticPages: MetadataInput[] = [
     },
     {
         path: "/about-us",
-        title: "About Us | Medfuture",
+        title: "12 Years of Excellence in Medical Recruitment | Medfuture",
         description:
-            "Medfuture is a trusted Australian medical recruitment agency, connecting local and international healthcare professionals with permanent and locum roles.",
+            "Medfuture is a leading medical recruitment agency in Australia with proven expertise placing healthcare professionals across various specialties since 2014.",
     },
     {
         path: "/contact-us",
@@ -123,7 +123,6 @@ const staticPages: MetadataInput[] = [
         description:
             "Partner with Medfuture to hire top talent in Australia's healthcare sector, including general practitioners and registered occupational therapists. Find the right professionals to strengthen your workforce today.",
     },
-   
     {
         path: "/general-practice-division",
         title: "General Practice Division | Medfuture",

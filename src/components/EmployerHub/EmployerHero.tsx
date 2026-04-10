@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import EmployerEnquiryForm from "@/components/EmployerHub/EmployerEnquirySection";
+import Link from "next/link";
 
 const pills = ["General Practice", "Allied Health", "Mental Health", "Dental", "Pharmacy"];
 
@@ -59,9 +60,9 @@ export default function EmployerHubPage() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 mb-8 sm:mb-10">
-            <button className="w-full sm:w-auto px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-[500] text-xs sm:text-[14.5px] rounded-md transition-colors duration-200 cursor-pointer text-center">
+          <Link   href="#Request-Proposal"><button className="w-full sm:w-auto px-6 py-3 bg-blue-900 hover:bg-blue-800 text-white font-[500] text-xs sm:text-[14.5px] rounded-md transition-colors duration-200 cursor-pointer text-center">
               Request a Service Proposal
-            </button>
+            </button></Link>
             <button className="w-full sm:w-auto px-6 py-3 bg-white text-slate-900 border border-slate-300 hover:border-slate-400 font-[500] text-xs sm:text-[14.5px] rounded-md transition-colors duration-200 cursor-pointer text-center">
               Why Medfuture
             </button>

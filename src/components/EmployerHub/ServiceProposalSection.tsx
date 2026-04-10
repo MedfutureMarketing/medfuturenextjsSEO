@@ -218,7 +218,7 @@ export default function ServiceProposalSection() {
     "w-full border border-slate-200 rounded-md px-3 py-2.5 text-[13px] text-slate-700 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition bg-white";
 
   return (
-    <section className="full-width-section bg-[#f0f2f5] font-sans py-14 mt-[140px]">
+    <section id="Request-Proposal" className="full-width-section bg-[#f0f2f5] font-sans py-14 mt-[140px]">
       <div className="inner-width-section mx-auto px-4 sm:px-8 lg:px-16">
 
         {/* Header */}

@@ -143,18 +143,17 @@ export default function EmployerDivisionsPage() {
                         {divisions.map((div) => (
                             <div
                                 key={div.id}
-                                className="flex-none w-[240px] sm:w-[270px] border border-slate-150 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col"
+                                className="flex-none w-[240px] sm:w-[290px] border border-slate-150 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col"
                             >
                                 {/* Image */}
-                                <div className="relative w-full h-[165px] overflow-hidden shrink-0">
-                                    <Image
-                                        src={div.image}
-                                        alt={div.title}
-                                        fill
-                                        className="object-cover"
-                                    />
+                                <div className="relative w-full h-[165px]  shrink-0">                                    <Image
+                                    src={div.image}
+                                    alt={div.title}
+                                    fill
+                                    className="object-cover"
+                                />
                                     {/* Icon badge — bottom-left overlapping */}
-                                    <div className="absolute -bottom-4 left-4 w-9 h-9 rounded-full bg-blue-800 flex items-center justify-center shadow-md z-10">
+                                    <div className="absolute -bottom-4 left-4 w-9 h-9 rounded-full bg-blue-800 flex items-center justify-center shadow-md z-50">
                                         {div.icon}
                                     </div>
                                 </div>

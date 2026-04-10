@@ -52,7 +52,7 @@ function PreloaderContent() {
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 0);
 
     return () => clearTimeout(timer);
   }, [pathname, searchParams, isAllowed]);
