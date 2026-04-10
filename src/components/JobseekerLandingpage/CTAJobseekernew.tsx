@@ -9,7 +9,7 @@ export default function CTAJobseeker() {
       <div className="w-full ">
         {/* FORM CONTENT */}
         <div className=" rounded-lg bg-white/10">
-          <div className="px-[30px] py-[25px]">
+          <div className="lg:px-[30px] py-[25px]">
             <JobSeekerForm />
           </div>
         </div>

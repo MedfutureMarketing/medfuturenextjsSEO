@@ -252,7 +252,7 @@ export default function JobseekersearchHero() {
                     onClick={() => setIsUploadModalOpen(false)}
                 >
                     <div 
-                        className="relative bg-white rounded-lg shadow-2xl    mt-36 max-h-[90vh] overflow-y-auto"
+                        className="relative bg-white rounded-lg shadow-2xl w-2xl    mt-36 max-h-[90vh] overflow-y-auto"
                         onClick={(e) => e.stopPropagation()}
                     >
                         {/* Close Button */}
