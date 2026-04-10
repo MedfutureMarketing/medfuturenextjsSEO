@@ -266,10 +266,10 @@ export default function LocumJobDescription() {
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">Email:</h3>
           <a href="mailto:locum@medfuture.com.au" className="text-[#4A5565] hover:underline lg:text-[18px] text-[13px] break-all">{job.email}</a>
         </div>
-        <div className="grid grid-cols-[1fr_2fr] ">
+        {/* <div className="grid grid-cols-[1fr_2fr] ">
           <h3 className="font-semi-bold text-[#4A5565] lg:text-[16px] text-[13px]">General Enquiries:</h3>
           <a href="tel:0452468515" className="text-[#4A5565] hover:underline lg:text-[16px] text-[13px]">0452 468 515</a>
-        </div>
+        </div> */}
       </div>
 
       {/* Registration Form (Always Open) */}

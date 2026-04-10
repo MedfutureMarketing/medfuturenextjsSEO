@@ -11,7 +11,7 @@ import jobboard3 from "@/assets/homeico/jobboard3.png"
 import jobboard4 from "@/assets/homeico/jobboard4.png"
 import Jobboard5 from "@/assets/homeico/jobboard5.png"
 import Jobbaord6 from "@/assets/homeico/jobboard6.png"
-import filterico from "@/assets/jobboardico/filterico.png"
+// import filterico from "@/assets/jobboardico/filterico.png"
 
 type ApiSuburb = {
   suberbs_id: number;
@@ -359,13 +359,13 @@ export default function SearchBarWithLocation() {
 
   const getTitleText = (pathname: string) => {
     if (pathname.startsWith("/permanent")) {
-      return "Permanent";
+      return "Browse Jobs";
     }
     if (pathname.startsWith("/locum")) {
-      return "Locum";
+      return "Browse Jobs";
     }
     if (pathname.startsWith("/international")) {
-      return "International ";
+      return "Browse Jobs";
     }
     return "Browse"; // default
   };
